@@ -56,7 +56,9 @@ Both of these TFL arguments are invalid. But the original English arguments are 
 
 The problem is not that we have made a mistake while symbolizing the argument. The problem lies with TFL itself. 
 %`All logicians wear funny hats' is about both logicians and hat-wearing. By not retaining this structure in our symbolization, we lose the connection between Willard's being a logician and Willard's wearing a hat.
-The expressive power of TFL is not rich enough to explain why these English arguments are valid. Arguments in TFL are valid in virtue of the meanings of the connectives $\enot, \eif,\eand, \eor$. These arguments, though are valid in virtue of something else. 
+The expressive power of TFL is not rich enough to explain why these English arguments are valid. 
+TFL can recognise arguments that are valid in virtue of the meanings of `and', `if' etc. But these arguments are valid in virtue of something else.  
+%Arguments in TFL are valid in virtue of the meanings of the connectives $\enot, \eif,\eand, \eor$. These arguments, though are valid in virtue of something else. 
 
 The first argument is valid in virtue of the meaning of `all' and the fact that `Alice' is a name. The second argument is valid in virtue of the meanings of `there is', `every' and `not'.
 
@@ -124,24 +126,31 @@ A predicate expresses a property, in this case the property of being a logician.
 	\gap{} is a logician
 \end{quote}
 
-The idea behind this is that this particular sentence has the subject-predicate form. It expresses that a particular individual has a property. 
+%The idea behind this is that this particular sentence has the subject-predicate form. It expresses that a particular individual has a property. 
 
-In First Order Logic, FOL, we can symbolise these different components. We will use lower-case letters $a,b,c\ldots$ for names (except $x,y,z$ which are used for variables as we will later see), and upper case letters such as $A,B,C,\ldots$ for predicates (except $X,Y,Z$, which are used for metavariables). We can also add numbered subscripts if needed, for example using $d_{27}$ as a name, or $H_{386}$ as a predicate. 
+In First Order Logic, FOL, we can symbolise these different components. We will use lower-case letters like $a,b,c\ldots$ for names (except $x,y,z$ which are used for variables as we will later see), and upper case letters like $A,B,C,\ldots$ for predicates (except $X,Y,Z$, which are used for metavariables). We can also add numbered subscripts if needed, for example using $d_{27}$ as a name, or $H_{386}$ as a predicate. 
 
 \newglossaryentry{name}{
   name = name,
   description = {a symbol of FOL used to pick out an object of the \gls{domain}}
   }
-
-We could then give a symbolisation key specifying: 
+  
+Like in TFL, when symbolising we have to give a symbolisation key to specify how to interpret the predicates and names. In this case, we might give:
 \begin{ekey}
 \item[a] Alice
 \item[Lx] \gap{x} is a logician
 \end{ekey}
 and we can then symbolise `Alice is a logician' as $$La.$$ (We will say (much) more about the ``$x$'' subscript later.)
 
+Note that in FOL the name follows the predicate: we have to write it as $La$. The property of being a logician applies to Alice. 
 
-Let's see some other example sentences which have this same form. Each of these sentences could be symbolised as $La$, though the symbolisation key would have to change in each of these instances.
+As in TFL our choice of which letter to use for our name or predicate doesn't matter. It would be equally good to give
+\begin{ekey}
+\item[a] Alice
+\item[Px] \gap{x} is a logician
+\end{ekey}And then symbolise `Alice is a logician' as $$Pa.$$
+
+Let's see some other example sentences which have this same form. Each of these sentences could similarly be symbolised as $Pa$, though the symbolisation key would have to change in each of these instances.
 \begin{earg}
 \item[\ex{folrocky}] Rocky is strong
 \item[\ex{folbiden}] Joe Biden is a Democrat
@@ -152,25 +161,25 @@ In each of these cases the relevant symbolisation key would then be:
 \begin{enumerate}
 \item[\ref{folrocky}] \begin{ekey}
 \item[a] Rocky
-\item[Lx] \gap{x} is strong
+\item[Px] \gap{x} is strong
 \end{ekey}
 \item[\ref{folbiden}] \begin{ekey}
 \item[a] Joe Biden
-\item[Lx] \gap{x} is a Democrat
+\item[Px] \gap{x} is a Democrat
 \end{ekey}
 \item[\ref{folpalin}] \begin{ekey}
 \item[a] Michael Palin
-\item[Lx] \gap{x} is a member of Monty Python
+\item[Px] \gap{x} is a member of Monty Python
 \end{ekey}
 \end{enumerate}
 Names don't have to name people, for example we can also symbolise
 \begin{earg}
 \item[\ex{foltower}] The Tower of London is in England.
 \end{earg}
-as $La$ using the symbolisation key:
+as $Pa$ using the symbolisation key:
 \begin{ekey}
 \item[a] The Tower of London
-\item[Lx] \gap{x} is in England
+\item[Px] \gap{x} is in England
 \end{ekey}
 What is important, though, is that what we are symbolising as a name in FOL refers to a \emph{specific} person, place, or thing.
 
@@ -431,7 +440,7 @@ Consider
 \begin{earg}
 \item[\ex{q.hat}] Everyone wears a funny hat
 \end{earg}
-This doesn't say of any specific individual that they wear a funny hat. To express this, we introduce the $\forall$ symbol. This is called the \emph{universal quantifier}.
+This doesn't say of any specific individual that they wear a funny hat, but it says everyone does so. To express this, we introduce the $\forall$ symbol. This is called the \emph{universal quantifier}.
 
 \newglossaryentry{universal quantifier}{
   name = universal quantifier,
@@ -448,7 +457,7 @@ For everyone $_x$: $x$ wears a funny hat.
 Here we have made explicit the variable as $x$. In FOL we can also use $y,z$, or also, for example, $x_{32}$ as variables. Quantifiers always have to be followed immediately by a variable. 
 
 
-as $$\forall x Fx$$ If we wanted to symbolise ``Alice wears a funny hat'' we would use $Fa$. To symbolise ``Everyone wears a funny hat'', we paraphrase it as ``For everyone $_x$: $x$ wears a funny hat.'' and then symbolise it as $\forall x Fx$. 
+If we wanted to symbolise ``Alice wears a funny hat'' we would use $Fa$. To symbolise ``Everyone wears a funny hat'', we paraphrase it as ``For everyone $_x$: $x$ wears a funny hat.'' and then symbolise it as $\forall x Fx$. 
 
 
 Whatever we wanted to say of an individual we can now say of everyone using this quantifier.  Consider
@@ -463,25 +472,19 @@ We can break this up:
 \end{equation*}
 
 We have here been using $\forall x$ to be read out-loud as ``for everyone''. 
-But how the quantifier should be read depends on the \define{domain}. The domain is the collection of things that we are talking about.
-
-We can use FOL to talk about things other than people. For example, we might talk about dogs or landmarks. 
-
-Then $\forall x$ shouldn't be read as ``for everyone'' but more generally as ``for all objects in the domain $_x$''. That is, the quantifiers \emph{range over} the objects in the domain. 
+But how the quantifier should be read depends on the \define{domain}. The domain is the collection of things that we are talking about. $\forall x$ should be read as ``for all objects in the domain $_x$''. If the domain also contains dogs, or landmarks, then it also says something about those dogs, or landmarks. We say that the quantifiers \emph{range over} the objects in the domain. 
 
 If I give 
 \begin{ekey}
 \item[Ex]\gap{x} is energetic
 \item[\text{domain}] dogs
 \end{ekey}
-Then $\forall x Ex$ symbolises ``All dogs are energetic''. More schematically, we'd then read $\forall x$ as ``For every dog $_x$ : \ldots". 
+Then $\forall x Ex$ symbolises ``All dogs are energetic''. If the domain is all dogs, then we'd then read $\forall x$ as ``For every dog $_x$ : \ldots". 
 
 If I have a domain consisting of landmarks, then $\forall x$ is read as ``For every landmark $_x$ : \ldots". 
 
 Even when we are restricted to people, domains are important. 
 When we use sentences like ``Everyone wears a funny hat'' in English, we usually do not mean everyone now alive on the Earth. We certainly do not mean everyone who was ever alive or who will ever live. We usually mean something more modest: everyone now in the building, everyone enrolled in the ballet class, or whatever.
-
-We can make this explicit by spelling out these details in the domain. 
 
 
 \newglossaryentry{domain}{
@@ -568,6 +571,7 @@ $$
 	}_{((Px\eand Wx)\eand Nx)}
 }_{\exists x((Px\eand Wx)\eand Nx)}
 $$
+$$\exists x((Px\eand Wx)\eand Nx)$$
 giving our symbolisation key:
 \begin{ekey}
 \item[\text{domain}] people
