@@ -367,6 +367,24 @@ Sentence \ref{quan4} can be paraphrased as, `It is not the case that there is so
 				\end{center}
 	}
 
+
+Finally, consider `only', as in:
+\begin{earg}
+	\item[\ex{quan5}] Only dimes are on the table.
+\end{earg}
+How should we symbolize this?  A good strategy is to consider when the sentence would be false.  If we are saying that only dimes are on the table, we are excluding all the cases where something on the table is a non-dime.  So we can symbolize the sentence the same way we would symbolize `No non-dimes are on the table.' Remembering the lesson we just learned, and symbolizing `$x$ is a non-dime' as `$\enot \atom{D}{x}$', the possible symbolizations are: `$\enot\exists x(\atom{T}{x} \eand \enot \atom{D}{x})$', or alternatively: `$\forall x(\atom{T}{x} \eif \enot\enot \atom{D}{x})$'. Since double negations cancel out, the second is just as good as `$\forall x(\atom{T}{x} \eif \atom{D}{x})$'. In other words, `Only dimes are on the table' and `Everything on the table is a dime' are symbolized the same way.
+
+\factoidbox{
+		If a sentence can be paraphrased in English as \begin{center}
+		`only $F$s are $G$s',
+		\end{center} it can be symbolised as can be symbolized as \begin{center}
+				\begin{tabular}{l}$\enot\exists x (\atom{\meta{G}}{x} \eand \enot\atom{\meta{F}}{x})$, or \\$\forall x (\atom{\meta{G}}{x} \eif \atom{\meta{F}}{x})$
+				\end{tabular}
+				\end{center}
+}
+
+
+
 \section{Empty predicates}
 
 In \S\ref{s:FOLBuildingBlocks}, we emphasized that a name must pick out exactly one object in the domain. However, a predicate need not apply to anything in the domain. A predicate that applies to nothing in the domain is called an \define{empty predicate}. This is worth exploring.

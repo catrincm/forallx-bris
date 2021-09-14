@@ -9,16 +9,84 @@ Way back in \S\ref{s:Valid}, we said that an argument is valid iff it is impossi
 
 In the case of TFL, this led us to develop truth tables. Each line of a complete truth table corresponds to a valuation. So, when faced with a TFL argument, we have a very direct way to assess whether it is possible to make all of the premises true and the conclusion false: just thrash through the truth table.
 
-However, truth tables do not necessarily give us much \emph{insight}. Consider two arguments in TFL:
+However, providing a truth table is not how one will usually work with arguments. When you actually use arguments, for example in philosophical essays, you typically instead will break down an argument into smaller steps. If you are trying to show to your reader that a particular argument is valid, the truth table method says to check all possibilities. We will instead provide an alternative way of showing arguments are valid which matches natural ways of reasoning. 
+
+The idea of natural deduction is how you might go about trying to convince an interlocutor that your argument is valid. You would generally do this by breaking your argument into smaller steps that are obviously valid and piecing these together. 
+
+Suppose you're trying to convince someone that $$A\eif(B\eand C),A\therefore B$$ is valid, and they don't see it. You can help them by breaking it up into two steps: first see that $B\eand C$ follows and then note that $B$ follows from $B\eand C$. 
+
+
+In more detail: 
+Grant me that $A\eif (B\eand C)$ and $A$ are true. Then what else do we know to be true? Here's something: $B\eand C$. Why? Because in general Modus Ponens is an excellent argument pattern: any argument of the form $X,\;X\eif Y\;\therefore\;Y$ is valid: there are no valuations where $X$ and $X\eif Y$ are true but $Y$ is false. So if our premises  $A\eif (B\eand C)$ and $A$ are true, then $B\eand C$ must also be true: that's just Modus Ponens. So now from our supposition of $A\eif(B\eand C)$ and $A$, we now also know $B\eand C$. What else follows from these three statements? Here's something: $B$. Why? Well, $B\eand C$ is true; so certainly $B$ must be true. So we know that from $A\eif(B\eand C)$ and $A$ we can conclude $B$ by walking someone through these two steps. This will be enough to show that $A\eif(B\eand C),\,A\therefore B$ is valid. 
+
+To keep track of what assumptions have been made and steps of the argument we will give precise forms that this argument should be written:
+\begin{pf}
+\hypo{abc}{A\eif (B\eand C)}
+\hypo{a}{A}
+\have{bc}{B\eand C}\by{From}{abc, a}
+\have{b}{B}\by{From}{bc}
+\end{pf}
+Our premises are written above the horizontal line. They have to be granted without justification. Then each new line follows from the previous lines. The vertical line is there to highlight that everything coming below is within the context of the premises that have been assumed; that we are looking for consequences of the premises.
+
+We can also use this presentation to be clear about arguments that we make in English:
+\begin{pf}
+\hypo{abc}{\text{If Alice came to the party, then Beth and Cath came}}
+\hypo{a}{\text{Alice came to the party}}
+\have{bc}{\text{Beth and Cath came to the party}}\by{From}{abc, a}
+\have{b}{\text{Beth came to the party}}\by{From}{bc}
+\end{pf}
+
+You might think of it as a bag you're collecting things to be accepted in. You have to grant the premises, they go in the bag for free, then we give certain rules that allow us to add additional statements which must be true so long as the other things already in the bag are true. 
+
+
+Suppose I provide you with the following argument:
+\begin{pf}
+\hypo{a}{P\eif (\enot Q\eif \enot R)}
+\hypo{c}{P\eif\enot Q}
+\hypo{b}{P\eand S}
+\have{d}{\enot R}\by{From}{a,c,b}
+\end{pf}
+I concluded line 3 as a logical consequence of lines 1, 2 and 3. It does follow, i.e, the argument is valid; but this is not very helpful to someone who doesn't yet see that it's valid.
+
+Instead, we will be describing various rules which we propose that have to be accepted as valid reasoning steps, and all more complicated steps should be broken up into simpler ones. So we should break this argument up into the steps:
+ \begin{pf}
+ \hypo{pqr}{P\eif (\enot Q\eif \enot R)}
+ \hypo{pq}{P\eif\enot Q}
+ \hypo{ps}{P\eand S}
+ \have{p}{P}\by{From}{ps}
+  \have{nqr}{\enot Q\eif R}\by{From}{pqr,p}
+ \have{nq}{\enot Q}\by{From}{pq,p}
+ \have{r}{R}\by{From}{nqr,nq}	
+ \end{pf}
+
+The other thing we should do is to give a name for the steps that we use. Here we've just said `From 1,4', but someone might ask: \emph{how} does it follow from lines 1 and 4. We will give names for the various simple steps of reasoning we use and say: ``well, it follows from lines 1 and 4 by the rule ``\eif E''.''
+ \begin{pf}
+ \hypo{pqr}{P\eif (\enot Q\eif \enot R)}
+ \hypo{pq}{P\eif\enot Q}
+ \hypo{ps}{P\eand S}
+ \have{p}{P}\by{\eand E}{ps}
+  \have{nqr}{\enot Q\eif R}\by{\eif E}{pqr,p}
+ \have{nq}{\enot Q}\by{\eif E}{pq,p}
+ \have{r}{R}\by{\eif E}{nqr,nq}	
+ \end{pf}
+
+We will provide various rules, and describe why they are acceptable. We should then break any other valid arguments should be broken up into these steps of reasoning. 
+
+
+
+\section{More reasons for natural deduction}
+
+
+Using truth tables to show validity does not necessarily give us much \emph{insight}. Consider two arguments in TFL:
 	\begin{align*}
 		P \eor Q, \enot P & \therefore Q\\
 		P \eif Q, P & \therefore Q
 	\end{align*}
 Clearly, these are valid arguments. You can confirm that they are valid by constructing four-line truth tables, but we might say that they make use of different \emph{forms} of reasoning. It might be nice to keep track of these different forms of inference. 
 
-One aim of a \emph{natural deduction system} is to show that particular arguments are valid, in a way that allows us to understand the reasoning that the arguments might involve. We begin with very basic rules of inference. These rules can be combined to offer more complicated arguments. Indeed, with just a small starter pack of rules of inference, we hope to capture all valid arguments. 
+One aim of a \emph{natural deduction system} is to show that particular arguments are valid, in a way that allows us to understand the reasoning that the arguments might involve. 
 
-\emph{This is a very different way of thinking about arguments.} 
+{This is a very different way of thinking about arguments.} 
 
 With truth tables, we directly consider different ways to make sentences true or false. With natural deduction systems, we manipulate sentences in accordance with rules that we have set down as good rules. The latter promises to give us a better insight---or at least, a different insight---into how arguments work.
 
@@ -76,64 +144,57 @@ The modern development of natural deduction dates from simultaneous and unrelate
 Natural deduction selects a few basic rules of inference and natural forms of reasoning and encodes these into a proof system. We will now see natural deduction for TFL. This system will form the basis also for natural deduction for FOL, which will also add rules for the quantifiers. 
 
 \chapter{The First Basic Rules for TFL}\label{s:BasicTFL}
-The idea of natural deduction is how you might go about trying to convince an interlocutor that your argument is valid. You would generally do this by breaking your argument into smaller steps that are obviously valid and piecing these together. 
-
-Suppose you're trying to convince someone that $A\eif(B\eand C),A\therefore B$ is valid, and they don't see it. You can help them by breaking it up into two steps: first use Modus Ponens to get $B\eand C$ and then note that $B$ follows from $B\eand C$. In more detail: 
-
-Grant me that $A\eif (B\eand C)$ and $A$ are true. Then what else do we know to be true? Here's something: $B\eand C$. Why? Because in general Modus Ponens is an excellent argument pattern: any argument of the form $X,\;X\eif Y\;\therefore\;Y$ is valid: there are no valuations where $X$ and $X\eif Y$ are true but $Y$ is false. So if our premises  $A\eif (B\eand C)$ and $A$ are true, then $B\eand C$ must also be true: that's just Modus Ponens. So now from our supposition of $A\eif(B\eand C)$ and $A$, we now also know $B\eand C$. What else follows from these three statements? Here's something: $B$. Why? Well, $B\eand C$ is true; so certainly $B$ must be true. So we know that from $A\eif(B\eand C)$ and $A$ we can conclude $B$ by walking someone through these two steps. This will be enough to show that $A\eif(B\eand C),\,A\therefore B$ is valid. 
-
-To keep track of what assumptions have been made and steps of the argument we will give precise forms that this argument should be written:
-\begin{pf}
-\hypo{abc}{A\eif (B\eand C)}
-\hypo{a}{A}
-\have{bc}{B\eand C}\by{Modus Ponens (which will be called $\eif$E)}{abc, a}
-\have{b}{B}\andE{bc}
-\end{pf}
-
-Each new line follows from the previous lines by an application of one of our simple steps of inference, e.g.~Modus Ponens. We will always justify what allowed us to conclude the next line by adding a citation next to the line, e.g.~``$\eand$E 3''. We are allowed to write $B$ on line 4 because it follows from line 3 by an application of the rule $\eand$E.
-
-You might think of it as a bag you're collecting things to be accepted in. You have to grant the premises, they go in the bag for free, then we give certain rules that allow us to add additional statements which must be true so long as the other things already in the bag are true. 
-
-We will develop this \define{natural deduction} system by specifying some basic rules of the system. For each connective, there will be \define{introduction} rules, that allow us to prove a sentence that has that connective as the main logical operator, and \define{elimination} rules, that allow us to prove something given a sentence that has that connective as the main logical operator.
 
 
+%
+%
+%
+%We will develop this \define{natural deduction} system by specifying some basic rules of the system. For each connective, there will be \define{introduction} rules, that allow us to prove a sentence that has that connective as the main logical operator, and \define{elimination} rules, that allow us to prove something given a sentence that has that connective as the main logical operator.
+%
+%
+%
+%\section{The idea of a formal proof}
+%A \emph{formal proof} is a sequence of sentences, some of which are marked as being initial assumptions (or premises). The last line of the formal proof is the conclusion. (Henceforth, we will simply call these `proofs', but you should be aware that there are \emph{informal proofs} too.)
+%
+%As an illustration, consider:
+%	$$\enot (A \eor B) \therefore \enot A \eand \enot B$$
+%We will start a proof by writing the premise:
+%\begin{pf}
+%	\hypo{a1}{\enot (A \eor B)}
+%\end{pf}
+%Note that we have numbered the premise, since we will want to refer back to it. Indeed, every line on a proof is numbered, so that we can refer back to it. 
+%
+%Note also that we have drawn a line underneath the premise. Everything written above the line is an \emph{assumption}. Everything written below the line will either be something which follows from the assumptions, or it will be some new assumption. We are hoping to conclude that `$\enot A \eand \enot B$'; so we are hoping ultimately to conclude our proof with
+%\begin{pf}
+%	\have[n]{con}{\enot A \eand \enot B}
+%\end{pf}
+%for some number $n$. It doesn't matter which line we end on, but we would obviously prefer a short proof to a long one.
+%
+%Similarly, suppose we wanted to consider:
+%$$A\eor B, \enot (A\eand C), \enot (B \eand \enot D) \therefore \enot C\eor D$$
+%The argument has three premises, so we start by writing them all down, numbered, and drawing a line under them:
+%\begin{pf}
+%	\hypo{a1}{A \eor B}
+%	\hypo{a2}{\enot (A\eand C)}
+%	\hypo{a3}{\enot (B \eand \enot D)}
+%\end{pf}
+%and we are hoping to conclude with some line:
+%\begin{pf}
+%	\have[n]{con}{\enot C \eor D}
+%\end{pf}
+%
+%If we can find a sequence of lines, each of which follows from the earlier lines by one of our rules, then this is a proof that the argument is valid, or we more simply say it is a proof of the argument. 
+%
+%All that remains to do is to explain each of the rules that we can use along the way from premises to conclusion. 
+%%The rules are broken down by our logical connectives.
 
-\section{The idea of a formal proof}
-A \emph{formal proof} is a sequence of sentences, some of which are marked as being initial assumptions (or premises). The last line of the formal proof is the conclusion. (Henceforth, we will simply call these `proofs', but you should be aware that there are \emph{informal proofs} too.)
+We will now describe the various rules one can use. All other valid arguments should be broken up into steps using these rules. We will give a particular list of rules, other systems will choose other particular rules. 
 
-As an illustration, consider:
-	$$\enot (A \eor B) \therefore \enot A \eand \enot B$$
-We will start a proof by writing the premise:
-\begin{pf}
-	\hypo{a1}{\enot (A \eor B)}
-\end{pf}
-Note that we have numbered the premise, since we will want to refer back to it. Indeed, every line on a proof is numbered, so that we can refer back to it. 
+The rules we give will mostly be attached to particular connectives. This is something that helps with the way to go about finding proofs and it has some technical benefits. 
 
-Note also that we have drawn a line underneath the premise. Everything written above the line is an \emph{assumption}. Everything written below the line will either be something which follows from the assumptions, or it will be some new assumption. We are hoping to conclude that `$\enot A \eand \enot B$'; so we are hoping ultimately to conclude our proof with
-\begin{pf}
-	\have[n]{con}{\enot A \eand \enot B}
-\end{pf}
-for some number $n$. It doesn't matter which line we end on, but we would obviously prefer a short proof to a long one.
+%It would be be convenient to present our rules by going through the various connectives and giving introduction and elimination rules. 
+%However, some rules will involve the tool of \emph{subproofs}, which introduces some complexity. So we begin just by giving the rules that don't do so. 
 
-Similarly, suppose we wanted to consider:
-$$A\eor B, \enot (A\eand C), \enot (B \eand \enot D) \therefore \enot C\eor D$$
-The argument has three premises, so we start by writing them all down, numbered, and drawing a line under them:
-\begin{pf}
-	\hypo{a1}{A \eor B}
-	\hypo{a2}{\enot (A\eand C)}
-	\hypo{a3}{\enot (B \eand \enot D)}
-\end{pf}
-and we are hoping to conclude with some line:
-\begin{pf}
-	\have[n]{con}{\enot C \eor D}
-\end{pf}
-
-If we can find a sequence of lines, each of which follows from the earlier lines by one of our rules, then this is a proof that the argument is valid, or we more simply say it is a proof of the argument. 
-
-All that remains to do is to explain each of the rules that we can use along the way from premises to conclusion. 
-%The rules are broken down by our logical connectives.
-
-It would be nice to present our rules by going through the various connectives and giving introduction and elimination rules. However, some rules will involve the tool of \emph{subproofs}, which introudces some complexity. So we begin just by giving the rules that don't do so. 
 
 \section{Reiteration}\label{s:Reiteration}
 The very first rule is so breathtakingly obvious that it is surprising we bother with it at all. 
@@ -144,7 +205,7 @@ If you already have shown something in the course of a proof, the \emph{reiterat
 	\have[$\vdots$]{}{\vdots}
 	\have[10]{a2}{A \eand B} \by{R}{a1}
 \end{pf}
-This indicates that we have written `$A \eand B$' on line 4. Now, at some later line---line 10, for example---we have decided that we want to repeat this. So we write it down again. We also add a citation which justifies what we have written. In this case, we write `R', to indicate that we are using the reiteration rule, and we write `$4$', to indicate that we have applied it to line $4$.
+This indicates that we have written `$A \eand B$' on line 4. Now, at some later line---line 10, for example---we have decided that we want to repeat this. So we write it down again. We also add a citation which justifies what we have written. In this case, we write `A', to indicate that we are using the reiteration rule, and we write `$4$', to indicate that we have applied it to line $4$.
 
 Here is a general expression of the rule:
 \begin{highlighted}
@@ -237,25 +298,25 @@ In this, $\metaX$ is $(A\eor B)$, and $\metaY$ is $\enot F$.
 We would typically now move to introducing Conditional Introduction. However, we will first do all the other rules of the system, because Conditional Introduction involves additional complexity. 
 
 \section{Conjunction Introduction}
-Suppose we want to show that Ludwig is both reactionary and libertarian. One obvious way to do this would be as follows: first we show that Ludwig is reactionary; then we show that Ludwig is libertarian; then we put these two demonstrations together, to obtain the conjunction.
+Suppose we want to show that Alice and Beth both came to the party. One obvious way to do this would be as follows: first we show that Alice came to the party; then Beth came to the party; then we put these two demonstrations together, to obtain the conjunction.
 
 Our natural deduction system will capture this thought straightforwardly. In the example given, we might adopt the following symbolization key:
 	\begin{ekey}
-		\item[R] Ludwig is reactionary
-		\item[L] Ludwig is libertarian
+		\item[A] Alice came to the party
+		\item[B] Beth came to the party
 	\end{ekey}
-Perhaps we are working through a proof, and we have obtained `$R$' on line 8 and `$L$' on line 15. Then on any subsequent line we can obtain `$R \eand L$'. For example our proof might contain the following lines:
+Perhaps we are working through a proof, and we have obtained `$A$' on line 8 and `$B$' on line 15. Then on any subsequent line we can obtain `$A \eand B$'. For example our proof might contain the following lines:
 \begin{pf}
-	\have[8]{a}{R}\hspace*{1em}
-	\have[15]{b}{L}\hspace*{1em}
-	\have[23]{c}{R \eand L} \ai{a, b}\hspace*{1em}
+	\have[8]{a}{A}\hspace*{1em}
+	\have[15]{b}{B}\hspace*{1em}
+	\have[23]{c}{A \eand B} \ai{a, b}\hspace*{1em}
 \end{pf}
 Note that every line of our proof must either be an assumption, or must be justified by some rule. We cite `$\eand$I 8, 15' here to indicate that the line is obtained by the rule of conjunction introduction ($\eand$I) applied to lines 8 and 15. 
 %We could equally well obtain:
 %\begin{pf}
 %	\have[8]{a}{R}
-%	\have[15]{b}{L}
-%	\have[\ ]{c}{L \eand R} \ai{b, a}
+%	\have[15]{b}{B}
+%	\have[\ ]{c}{B \eand R} \ai{b, a}
 %\end{pf}
 %with the citation reverse, to reflect the order of the conjuncts. 
 More generally, here is our conjunction introduction rule:
@@ -286,7 +347,7 @@ To be clear, the statement of the rule is \emph{schematic}. It is not itself a p
 The rule is called `conjunction \emph{introduction}' because it introduces the symbol `$\eand$' into our proof where it may have been absent. 
 
 \section{Conjunction Elimination}
-Correspondingly, we have a rule that \emph{eliminates} that symbol.  Suppose you have shown that Ludwig is both reactionary and libertarian. You are entitled to conclude that Ludwig is reactionary. Equally, you are entitled to conclude that Ludwig is libertarian. Putting this together, we obtain our conjunction elimination rule(s):
+Correspondingly, we have a rule that \emph{eliminates} that symbol.  Suppose you have shown that Alice and Beth both came to the party. You are entitled to conclude that Alice came to the party. Equally, you are entitled to conclude that Beth came to the party. Putting this together, we obtain our conjunction elimination rule(s):
 \factoidbox{
 \begin{pf}
 	\ellipsesline
@@ -430,9 +491,9 @@ Two elimination rules
 %Note that the biconditional, and the right or left half, can be separated from one another, and they can appear in any order. However, in the citation for $\eiff$E, we always cite the biconditional first.
 
 \section{Disjunction Introduction}
-Suppose Ludwig is reactionary. Then Ludwig is reactionary or libertarian. After all, to say that Ludwig is reactionary or libertarian is to say something weaker than to say that Ludwig is reactionary. 
+Suppose Alice came to the party. Then Alice or Beth came to the party. After all, to say that Alice or Beth came to the party is to say something weaker than to say that Alice came to the party. 
 
-Let me emphasize this point. Suppose Ludwig is reactionary. It follows that Ludwig is reactionary \emph{or} he is a kumquat. Equally, it follows that Ludwig is reactionary \emph{or} that kumquats are the only fruit.  Equally, it follows that Ludwig is reactionary \emph{or} that God is dead. Many of these are strange inferences to draw, but there is nothing \emph{logically} wrong with them (even if they maybe violate all sorts of implicit conversational norms).
+Let me emphasize this point. Suppose Alice came to the party. It follows that Alice came to the party \emph{or} I am the Queen of England. Equally, it follows that Alice or the Queen came to the party.  Equally, it follows that Alice came to the party \emph{or} that God is dead. Many of these are strange inferences to draw, but there is nothing \emph{logically} wrong with them (even if they maybe violate all sorts of implicit conversational norms).
 
 Armed with all this, we present the disjunction introduction rule(s):
 \factoidbox{\begin{pf}
@@ -584,7 +645,7 @@ The following proofs are missing their citations (rule and line numbers). Add th
 %\have{p}{P}%\ae{ps}
 \have{s}{S}%\ae{ps}
 \have{r}{R}%\ce{nsor, s}
-\have{re}{R \eor E}%\oi{r}
+\have{re}{A \eor E}%\oi{r}
 \end{pf}
 
 \solutions
@@ -606,55 +667,53 @@ To introduce a conditional we need to introduce another kind of thing: a sub-pro
 \section{Conditional Introduction}
 The following argument is valid:
 	\begin{quote}
-		Ludwig is reactionary. Therefore if Ludwig is libertarian, then Ludwig is both reactionary \emph{and} libertarian.
+		Alice came to the party. Therefore if Beth came to the party, then both Alice and Beth came.
 	\end{quote}
 If someone doubted that this was valid, we might try to convince them otherwise by explaining ourselves as follows:
 	\begin{quote}
-		Assume that Ludwig is reactionary. Now, \emph{additionally} assume that Ludwig is libertarian. Then by conjunction introduction---which we just discussed---Ludwig is both reactionary and libertarian. Of course, that's conditional on the assumption that Ludwig is libertarian. But this just means that, if Ludwig is libertarian, then he is both reactionary and libertarian.
+		Assume that Alice came to the party. Now, \emph{additionally} assume that Beth came to the party. Then by conjunction introduction---which we just discussed---both Alice and Beth came. Of course, that's conditional on the assumption that Beth came to the party. But this just means that, if Beth came to the party, then both Alice and Beth came.
 	\end{quote}
 
 We might write this in a form that is closer to our natural deduction format:
 \begin{pf}
-	\hypo{r}{\text{Ludwig is reactionary}}
+	\hypo{r}{\text{Alice came to the party}}
 	\open
-		\hypo{l}{\text{Suppose that he is libertarian}}
-		\have{rl}{\text{Then he is both libertarian and reactionary}}\ai{r, l}
+		\hypo{l}{\text{Beth came to the party}}
+		\have{rl}{\text{Both Alice and Beth came to the party}}\ai{r, l}
 		\close
-	\have{con}{\parbox[t]{.8\textwidth}{Thus, \emph{if} he is libertarian, then he is both libertarian and reactionary.}}\ci{l-rl}
+	\have{con}{\parbox[t]{.8\textwidth}{Thus, \emph{if} Beth came to the party, both Alice and Beth came.}}\ci{l-rl}
 \end{pf}\medskip  
-The natural deduction format of lines and indentations is there to replace the words and context like ``suppose that''. The ``suppose that'' used on line 2 is represented in the formal system by the indentation and additional line. And like the premises, this line does not need to be justified, it is taken as an assumption, and a line underneath it is drawn. What comes underneath this, on line 3, is still indented, and is within the context of the supposition that he is a libertarian. But once we move to line 4, the additional assumption is no longer in place. It has been \emph{discharged}.
+The natural deduction format of lines and indentations is there to replace the words and context like ``suppose that''. The ``suppose that'' used on line 2 is represented in the formal system by the indentation and additional line. And like the premises, this line does not need to be justified, it is taken as an assumption, and a line underneath it is drawn. What comes underneath this, on line 3, is still indented, and is within the context of the supposition that Beth came to the party. But once we move to line 4, the additional assumption is no longer in place. It has been \emph{discharged}.
 
-Now let's present this again a little more formally: We started with one premise, `Ludwig is reactionary', thus:
+Now let's present this again a little more formally: We started with one premise, `Alice came to the party', thus:
 	\begin{pf}
-		\hypo{r}{R}
+		\hypo{r}{A}
 	\end{pf}
-The next thing we did is to make an \emph{additional} assumption (`Ludwig is libertarian'), for the sake of argument. To indicate that we are no longer dealing \emph{merely} with our original assumption (`$R$'), but with some additional assumption, we continue our proof as follows:
+The next thing we did is to make an \emph{additional} assumption (`Beth came to the party'), for the sake of argument. To indicate that we are no longer dealing \emph{merely} with our original assumption (`$A$'), but with some additional assumption, we continue our proof as follows:
 	\begin{pf}
-		\hypo{r}{R}
+	\hypo{r}{A}
 		\open
-			\hypo{l}{L}
+			\hypo{l}{B}
 	\end{pf}
-Note that we are \emph{not} claiming, on line 2, to have proved `$L$' from line 1, so we do not need to write in any justification for the additional assumption on line 2. We do, however, need to mark that it is an additional assumption. We do this by drawing a line under it (to indicate that it is an assumption) and by indenting it with a further vertical line (to indicate that it is additional). 
+Note that we are \emph{not} claiming, on line 2, to have proved `$B$' from line 1, so we do not need to write in any justification for the additional assumption on line 2. We do, however, need to mark that it is an additional assumption. We do this by drawing a line under it (to indicate that it is an assumption) and by indenting it with a further vertical line (to indicate that it is additional). 
 
 With this extra assumption in place, we are in a position to use $\eand$I. So we can continue our proof:
 	\begin{pf}
-		\hypo{r}{R}
+		\hypo{r}{A}
 		\open
-			\hypo{l}{L}
-			\have{rl}{R \eand L}\ai{r, l}
-%			\close
-%		\have{con}{L \eif (R \eand L)}\ci{l-rl}
+			\hypo{l}{B}
+			\have{rl}{A \eand B}\ai{r, l}
 	\end{pf}
-So we have now shown that, on the additional assumption, `$L$', we can obtain `$R \eand L$'. We can therefore conclude that, if `$L$' obtains, then so does `$R \eand L$'. Or, to put it more briefly, we can conclude `$L \eif (R \eand L)$':
+So we have now shown that, on the additional assumption, `$B$', we can obtain `$A \eand B$'. We can therefore conclude that, if `$B$' obtains, then so does `$A \eand B$'. Or, to put it more briefly, we can conclude `$B \eif (A \eand B)$':
 	\begin{pf}
-		\hypo{r}{R}
+		\hypo{r}{A}
 		\open
-			\hypo{l}{L}
-			\have{rl}{R \eand L}\ai{r, l}
+			\hypo{l}{B}
+			\have{rl}{A \eand B}\ai{r, l}
 			\close
-		\have{con}{L \eif (R \eand L)}\ci{l-rl}
+		\have{con}{B\eif(A\eand B)}\ci{l-rl}
 	\end{pf}
-Observe that we have dropped back to using one vertical line.  We have \emph{discharged} the additional assumption, `$L$', since the conditional itself follows just from our original assumption, `$R$'.
+Observe that we have dropped back to using one vertical line.  We have \emph{discharged} the additional assumption, `$B$', since the conditional itself follows just from our original assumption, `$A$'.
 
 The general pattern at work here is the following. We first make an additional assumption, \metaX; and from that additional assumption, we prove \metaY. In that case, we know the following: If \metaX, then \metaY. This is wrapped up in the rule for conditional introduction:
 \factoidbox{
@@ -728,9 +787,9 @@ The subproof also doesn't need to start immediately. For example:
 \section{Disjunction Elimination}\label{s:orE}
 The disjunction elimination rule also makes use of subproofs.
 
-Suppose that  Ludwig is reactionary or he is libertarian. What can you conclude? Not that Ludwig is reactionary; it might be that he is libertarian instead. Equally, not that Ludwig is libertarian; for he might merely be reactionary. Disjunctions, just by themselves, are hard to work with. 
+Suppose that  Alice came to the party or Beth came to the party. What can you conclude? Not that Alice came to the party; it might be that Beth came to the party instead. Equally, not that Beth came to the party; for it might be that only Alice came. Disjunctions, just by themselves, are hard to work with. 
 
-But suppose that we could somehow show both of the following: first, that Ludwig's being reactionary entails that he is an Austrian economist: second, that Ludwig's being libertarian entails that he is an Austrian economist. Then if we know that Ludwig is reactionary or libertarian, then we know that, whichever he is, Ludwig is an Austrian economist. This insight can be expressed in the following rule, which is our disjunction elimination ($\eor$E) rule:
+But suppose that we could somehow show both of the following: first, that Alice coming to the party entails that it was fun: second, that Beth coming to the party entails that it was fun. Then if we know that Alice or Beth came to the party, then we know that either way, it was fun. This insight can be expressed in the following rule, which is our disjunction elimination ($\eor$E) rule:
 \factoidbox{
 	\begin{pf}
 		\have[m]{ab}{\metaX\eor\metaY}
