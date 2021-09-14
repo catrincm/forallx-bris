@@ -511,25 +511,25 @@ Determine whether each of the following sentences is true or false in that inter
 
 Offering a precise definition of truth in FOL was more than a little fiddly, but now that we are done, we can define various central logical notions. These will look very similar to the definitions we offered for TFL. However, remember that they concern \emph{interpretations}, rather than valuations. 
 
-We will use the symbol $\entails$ for FOL much as we did for TFL. So:
+%We will use the symbol $\entails$ for FOL much as we did for TFL. So:
 \factoidbox{
-	$$\metaX_1, \metaX_2, \ldots, \metaX_n \entails\metaZ$$
+	$$\metaX_1, \metaX_2, \ldots, \metaX_n \therefore\metaZ$$ is \define{valid}
 iff there is no interpretation in which all of $\metaX_1, \metaX_2, \ldots, \metaX_n$ are true and in which \metaZ is false. }
-Derivatively,
-	$$\entails\metaX$$
-means that \metaX is true in every interpretation.
+%Derivatively,
+%	$$\entails\metaX$$
+%means that \metaX is true in every interpretation.
 
 The other logical notions also have corresponding definitions in FOL:
 \factoidbox{
 \begin{itemize}
-\item An FOL sentence $\metaX$ is a \define{logical truth} iff $\metaX$ is true in every interpretation; i.e.,  $\entails\metaX$.
+\item An FOL sentence $\metaX$ is a \define{logical truth} iff $\metaX$ is true in every interpretation.%; i.e.,  $\entails\metaX$.
 \newglossaryentry{logical truth}
 {
 name=logical truth,
 description={A \gls{sentence of FOL} that is true in every \gls{interpretation}. Note that the equivalent notion for TFL is `tautology'}
 }
 
-\item $\metaX$ is a \define{contradiction} iff $\metaX$ is false in every interpretation; i.e., $\entails\enot\metaX$.
+\item $\metaX$ is a \define{contradiction} iff $\metaX$ is false in every interpretation.%; i.e., $\entails\enot\metaX$.
 \newglossaryentry{contradiction of FOL}
 {
   name=contradiction (of FOL),
@@ -537,15 +537,15 @@ description={A \gls{sentence of FOL} that is true in every \gls{interpretation}.
 description={A \gls{sentence of FOL} that is false in every \gls{interpretation}}
 }
   
-\item $\metaX_1, \metaX_2, \ldots \metaX_n \therefore \metaZ$ is \define{valid in FOL} iff there is no interpretation in which all of the premises are true and the conclusion is false; i.e., $\metaX_1,\metaX_2,\ldots \metaX_n \entails\metaZ$. It is \define{invalid in FOL} otherwise.
-\newglossaryentry{logically valid in FOL}
-{
-  name=logical validity (in FOL),
-  text = logically valid,
-description={A property held by arguments if and only if no \gls{interpretation} makes all premises true and the conclusion false}
-}
+%\item $\metaX_1, \metaX_2, \ldots \metaX_n \therefore \metaZ$ is \define{valid in FOL} iff there is no interpretation in which all of the premises are true and the conclusion is false; i.e., $\metaX_1,\metaX_2,\ldots \metaX_n \entails\metaZ$. It is \define{invalid in FOL} otherwise.
+%\newglossaryentry{logically valid in FOL}
+%{
+%  name=logical validity (in FOL),
+%  text = logically valid,
+%description={A property held by arguments if and only if no \gls{interpretation} makes all premises true and the conclusion false}
+%}
 
-\item Two FOL sentences \metaX and \metaY are \define{logically equivalent} iff they are true in exactly the same interpretations as each other; i.e., both $\metaX\entails\metaY$ and $\metaY\entails\metaX$.
+\item Two FOL sentences \metaX and \metaY are \define{logically equivalent} iff they are true in exactly the same interpretations as each other.%r; i.e., both $\metaX\entails\metaY$ and $\metaY\entails\metaX$.
 
 \newglossaryentry{logically equivalent in FOL}
 {
