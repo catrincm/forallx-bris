@@ -124,6 +124,7 @@
 % \tablefbox{...} is used in certain tables to put a box around the contents of specific table cells without having lines that run the whole length of the table
 \newcommand{\tablefbox}[1]{\multicolumn{1}{|p{10em}|}{#1}}
 
+
 %    ****************************************
 %    *          PRACTICE PROBLEMS           *
 %    ****************************************
@@ -131,11 +132,18 @@
 \renewcommand{\theProbPart}{\Alph{ProbPart}}
 \renewcommand{\theHProbPart}{\thechapter.\theProbPart}
 % This inserts a heading and resets the counter:
-\newcommand*{\practiceproblems}{
+
+\newenvironment{practiceproblems}{
 	\setcounter{ProbPart}{0}\section*{Practice exercises}%
   \sectionmark{Practice exercises}%
 	\addcontentsline{toc}{section}{Practice exercises}
-}
+}{}
+
+
+\usepackage{comment}
+\newcommand{\nopracticeproblems}{\excludecomment{practiceproblems}}
+
+
 % This starts a new section which is automatically numbered:
 \newcommand*{\problempart}{\par\noindent\refstepcounter{ProbPart}\textbf{\Alph{ProbPart}. }}
 % This bullet is used to indicate that solutions appear at the end of

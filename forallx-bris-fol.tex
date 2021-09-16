@@ -26,39 +26,39 @@ However, this only allows you to conclude that the original English language arg
 \item \begin{earg}
 \prem Everyone who loves Manchester United hates Manchester City.
 \prem Manchester City is not hated by everyone.
-\conc there is at least one person who doesn't love Manchester United. 
+\conc there is at least one person who doesn't love Manchester United.
 \end{earg}
 \end{enumerate}
 
 We can symbolise these in TFL (follow the strategy as in \pageref{s:SymbolisingComplexTFL}). Since we cannot paraphrase any of these sentences with `and', `if', `or' or `not', we simply have to use atomic sentences. We thus offer the symbolisation:
 $$L, A \therefore H$$
-with the symbolisation 
+with the symbolisation
 \begin{ekey}
 \item[L] Alice is a logician.
 \item[A] All logicians wear funny hats.
 \item[H] Alice wears a funny hat.
 \end{ekey}
 
-And for the second argument we would symbolise this as: 
+And for the second argument we would symbolise this as:
 \begin{equation*}
 P, \enot Q\; \therefore R
 \end{equation*}
-using 
+using
 \begin{ekey}
 \item[P] Everyone who loves Manchester United hates Manchester City.
 \item[Q] Manchester City is hated by everyone.
-\item[R] There is at least one person who doesn't love Manchester United. 
+\item[R] There is at least one person who doesn't love Manchester United.
 \end{ekey}
 
-Both of these TFL arguments are invalid. But the original English arguments are themselves valid. 
+Both of these TFL arguments are invalid. But the original English arguments are themselves valid.
 
 
 
-The problem is not that we have made a mistake while symbolizing the argument. The problem lies with TFL itself. 
+The problem is not that we have made a mistake while symbolizing the argument. The problem lies with TFL itself.
 %`All logicians wear funny hats' is about both logicians and hat-wearing. By not retaining this structure in our symbolization, we lose the connection between Willard's being a logician and Willard's wearing a hat.
-The expressive power of TFL is not rich enough to explain why these English arguments are valid. 
-TFL can recognise arguments that are valid in virtue of the meanings of `and', `if' etc. But these arguments are valid in virtue of something else.  
-%Arguments in TFL are valid in virtue of the meanings of the connectives $\enot, \eif,\eand, \eor$. These arguments, though are valid in virtue of something else. 
+The expressive power of TFL is not rich enough to explain why these English arguments are valid.
+TFL can recognise arguments that are valid in virtue of the meanings of `and', `if' etc. But these arguments are valid in virtue of something else.
+%Arguments in TFL are valid in virtue of the meanings of the connectives $\enot, \eif,\eand, \eor$. These arguments, though are valid in virtue of something else.
 
 The first argument is valid in virtue of the meaning of `all' and the fact that `Alice' is a name. The second argument is valid in virtue of the meanings of `there is', `every' and `not'.
 
@@ -68,7 +68,7 @@ The details of FOL will be explained throughout this chapter.
 
 %, but we will here give a sneak-preview by saying how the first argument will be symbolised in FOL to give you some ideas of how FOL works.
 %
-%We can symbolise this as: 
+%We can symbolise this as:
 %\begin{equation*}
 %La,\; \forall x(Lx \eif Hx)\;\therefore\; Ha
 %\end{equation*}
@@ -84,19 +84,19 @@ The details of FOL will be explained throughout this chapter.
 %
 %First, `$a$' is a name that our symbolisation key specifies stands for the particular person, Alice. In FOL, we indicate names with lowercase italic letters such as $a$, $b$ or $c$.
 %
-%Second, `$L$' and `$H$' are predicates. In English, predicates are expressions with gaps, for example that `\blank\ is a logician' or `\blank\ wears a funny hat'. In order to make a complete sentence, we need to fill in the gap. We need to say something like `Alice is a logician' or `Bertie wears a funny hat'. In FOL we make complete sentences by placing the name next to the predicate, such as $La$ or $Ha$. When our symbolisation key specifies that `$a$' stands for Alice and $Lx$ stands for `\gap{} is a logician', then $La$ stands for `Alice is a logician. 
+%Second, `$L$' and `$H$' are predicates. In English, predicates are expressions with gaps, for example that `\blank\ is a logician' or `\blank\ wears a funny hat'. In order to make a complete sentence, we need to fill in the gap. We need to say something like `Alice is a logician' or `Bertie wears a funny hat'. In FOL we make complete sentences by placing the name next to the predicate, such as $La$ or $Ha$. When our symbolisation key specifies that `$a$' stands for Alice and $Lx$ stands for `\gap{} is a logician', then $La$ stands for `Alice is a logician.
 %
 %Third, we have quantifiers. $\forall$ will roughly convey `Everything \ldots'. How to more precisely read it depends on the further component of the symbolisation key which is the domain. Our domain here is given as people, which means we roughly read $\forall$ as `Every person is such that:\ldots' or `For all people\ldots'. So then `$\forall x Lx$ symbolises `Every person is a logician'. In our example argument above, we have symbolised `Every logician wears a funny hat' as $\forall x(Lx \eif Hx)$, which we can naturally read out-loud as `For all people: if they are a logician, then they wear a funny hat'. We will discuss this in much more detail later. Just one final note here: FOL has another quantifier, $\exists$, which roughly conveys `There is at least one \ldots'.  $\exists x Lx$ is read as: `there is at least one person that is a logician.'
 %
 %
 %%As a final sneak-preview, we will be able to symbolise the second argument:
-%%We can symbolise this as: 
+%%We can symbolise this as:
 %%\begin{equation*}
 %%\forall x(Lxu\eif Hxc),\; \enot \forall xHxc\; \therefore\; \exists x\enot Lxu
 %%\end{equation*}
 %%using the symbolisation key:
 %%\begin{ekey}
-%%\item[\text{domain}] people and 
+%%\item[\text{domain}] people and
 %%\item[Lx] \gap{x} is a logician
 %%\item[Hx] \gap{x} wears a funny hat
 %%\item[a] Alice
@@ -111,30 +111,30 @@ The details of FOL will be explained throughout this chapter.
 
 Consider
 \begin{quote}
- Alice is a logician. 
+ Alice is a logician.
 \end{quote}
-In TFL we used an atomic sentence to represent this. In FOL we will break it into two components: a name and a predicate. 
+In TFL we used an atomic sentence to represent this. In FOL we will break it into two components: a name and a predicate.
 
 \begin{quote}
- $\overbrace{\text{Alice}}^{\text{Name}}\overbrace{\text{ is a logician}}^{\text{Predicate}}$. 
+ $\overbrace{\text{Alice}}^{\text{Name}}\overbrace{\text{ is a logician}}^{\text{Predicate}}$.
 \end{quote}
 
-A name picks out an individual. The name `Alice' is picking out some particular person, Alice. 
+A name picks out an individual. The name `Alice' is picking out some particular person, Alice.
 
-A predicate expresses a property, in this case the property of being a logician. The predicate is: 
+A predicate expresses a property, in this case the property of being a logician. The predicate is:
 \begin{quote}
 	\gap{} is a logician
 \end{quote}
 
-%The idea behind this is that this particular sentence has the subject-predicate form. It expresses that a particular individual has a property. 
+%The idea behind this is that this particular sentence has the subject-predicate form. It expresses that a particular individual has a property.
 
-In First Order Logic, FOL, we can symbolise these different components. We will use lower-case letters like $a,b,c\ldots$ for names (except $x,y,z$ which are used for variables as we will later see), and upper case letters like $A,B,C,\ldots$ for predicates (except $X,Y,Z$, which are used for metavariables). We can also add numbered subscripts if needed, for example using $d_{27}$ as a name, or $H_{386}$ as a predicate. 
+In First Order Logic, FOL, we can symbolise these different components. We will use lower-case letters like $a,b,c\ldots$ for names (except $x,y,z$ which are used for variables as we will later see), and upper case letters like $A,B,C,\ldots$ for predicates (except $X,Y,Z$, which are used for metavariables). We can also add numbered subscripts if needed, for example using $d_{27}$ as a name, or $H_{386}$ as a predicate.
 
 \newglossaryentry{name}{
   name = name,
   description = {a symbol of FOL used to pick out an object of the \gls{domain}}
   }
-  
+
 Like in TFL, when symbolising we have to give a symbolisation key to specify how to interpret the predicates and names. In this case, we might give:
 \begin{ekey}
 \item[a] Alice
@@ -142,7 +142,7 @@ Like in TFL, when symbolising we have to give a symbolisation key to specify how
 \end{ekey}
 and we can then symbolise `Alice is a logician' as $$La.$$ (We will say more about the ``$x$'' subscript later.)
 
-Note that in FOL the name follows the predicate: we have to write it as $La$. The property of being a logician applies to Alice. 
+Note that in FOL the name follows the predicate: we have to write it as $La$. The property of being a logician applies to Alice.
 
 As in TFL our choice of which letter to use for our name or predicate doesn't matter. It would be equally good to give
 \begin{ekey}
@@ -157,7 +157,7 @@ Let's see some other example sentences which have this same form. Each of these 
 \item[\ex{folpalin}] Michael Palin is a member of Monty Python
 \end{earg}
 
-In each of these cases the relevant symbolisation key would then be: 
+In each of these cases the relevant symbolisation key would then be:
 \begin{enumerate}
 \item[\ref{folrocky}] \begin{ekey}
 \item[a] Rocky
@@ -196,7 +196,7 @@ But this would be wrong. Do not do this. The reason  is that `Buses' does not re
 
 \section{Names, predicates and connectives}
 In FOL we will also make use of all of the tools from TFL.
-We can symbolise 
+We can symbolise
 \begin{earg}
 \item[\ex{foland}] $\underbrace{\underbrace{\text{Joe is happy}}_{Hj}\text{ and }\underbrace{\text{Katie is sad}}_{Sk}}_{(Hj\eand Sk)}$.
 \end{earg}
@@ -238,20 +238,20 @@ One final example. To symbolise:
 \end{earg}
 we might simply offer
 $$Ah$$
-using 
+using
 \begin{ekey}
 \item[Ax]\gap{x} is a red car
 \item[h] Herbie
 \end{ekey}
-But it is more informative to observe that we can naturally paraphrase it as `Herbie is red and Herbie is a car' so symbolise it as 
+But it is more informative to observe that we can naturally paraphrase it as `Herbie is red and Herbie is a car' so symbolise it as
 $$Rh\eand Ch$$
-using 
+using
 \begin{ekey}
 \item[Rx]\gap{x} is red
 \item[Cx] \gap{x} is a car
 \item[h] Herbie
 \end{ekey}
-Since this latter symbolisation extracts more of the information from the original sentence, it is generally going to be better. 
+Since this latter symbolisation extracts more of the information from the original sentence, it is generally going to be better.
 
 
 %\section{Names}
@@ -277,7 +277,7 @@ Since this latter symbolisation extracts more of the information from the origin
 %
 
 %\section{Predicates}
-%The second component of FOL is predicates. 
+%The second component of FOL is predicates.
 %
 %The simplest predicates are properties of individuals. They are things you can say about an object. Here are some examples of English predicates:
 %	\begin{quote}
@@ -436,7 +436,7 @@ We symbolise this as $$Rabcd$$ using:
 
 \section{Universal Quantifier}
 
-Consider 
+Consider
 \begin{earg}
 \item[\ex{q.hat}] Everyone wears a funny hat
 \end{earg}
@@ -448,16 +448,16 @@ This doesn't say of any specific individual that they wear a funny hat, but it s
 }
 
 
-We read $\forall$ as ``for all'' or ``for every''. In this case what do we want to say holds of all the people? We want to say that they wear a funny hat. In this sentence we used the ``they''. This doesn't refer to any particular person, Harry or Katie, instead it can refer to anyone. That is, we are using it as a variable. 
+We read $\forall$ as ``for all'' or ``for every''. In this case what do we want to say holds of all the people? We want to say that they wear a funny hat. In this sentence we used the ``they''. This doesn't refer to any particular person, Harry or Katie, instead it can refer to anyone. That is, we are using it as a variable.
 We might then paraphrase ``Everyone wears a funny hat'' more explicitly as:
 \begin{quotation}
 For everyone $_x$: $x$ wears a funny hat.
 \end{quotation}
 
-Here we have made explicit the variable as $x$. In FOL we can also use $y,z$, or also, for example, $x_{32}$ as variables. Quantifiers always have to be followed immediately by a variable. 
+Here we have made explicit the variable as $x$. In FOL we can also use $y,z$, or also, for example, $x_{32}$ as variables. Quantifiers always have to be followed immediately by a variable.
 
 
-If we wanted to symbolise ``Alice wears a funny hat'' we would use $Fa$. To symbolise ``Everyone wears a funny hat'', we paraphrase it as ``For everyone $_x$: $x$ wears a funny hat.'' and then symbolise it as $\forall x Fx$. 
+If we wanted to symbolise ``Alice wears a funny hat'' we would use $Fa$. To symbolise ``Everyone wears a funny hat'', we paraphrase it as ``For everyone $_x$: $x$ wears a funny hat.'' and then symbolise it as $\forall x Fx$.
 
 
 Whatever we wanted to say of an individual we can now say of everyone using this quantifier.  Consider
@@ -466,25 +466,25 @@ Whatever we wanted to say of an individual we can now say of everyone using this
 \end{earg}
 We can break this up:
 \begin{equation*}
-\underbrace{\underbrace{\text{For everyone $_x$}}_{\forall x}\ :\ 
+\underbrace{\underbrace{\text{For everyone $_x$}}_{\forall x}\ :\
  \underbrace{\underbrace{\text{$x$ is happy}}_{Hx}\text{ and }
  \underbrace{\text{$x$ wears a funny hat}}_{Fx}}_{(Hx\eand Fx)}}_{\forall x(Hx\eand Fx)}.
 \end{equation*}
 So we can symbolise it as $$\forall x(Hx\eand Fx)$$
 
-We have here been using $\forall x$ to be read out-loud as ``for everyone''. 
-But how the quantifier should be read depends on the \define{domain}. The domain is the collection of things that we are talking about. $\forall x$ should be read as ``for all objects in the domain $_x$''. If the domain also contains dogs, or landmarks, then it also says something about those dogs, or landmarks. We say that the quantifiers \emph{range over} the objects in the domain. 
+We have here been using $\forall x$ to be read out-loud as ``for everyone''.
+But how the quantifier should be read depends on the \define{domain}. The domain is the collection of things that we are talking about. $\forall x$ should be read as ``for all objects in the domain $_x$''. If the domain also contains dogs, or landmarks, then it also says something about those dogs, or landmarks. We say that the quantifiers \emph{range over} the objects in the domain.
 
-If I give 
+If I give
 \begin{ekey}
 \item[Ex]\gap{x} is energetic
 \item[\text{domain}] dogs
 \end{ekey}
-Then $\forall x Ex$ symbolises ``All dogs are energetic''. If the domain is all dogs, then we'd then read $\forall x$ as ``For every dog $_x$ : \ldots". 
+Then $\forall x Ex$ symbolises ``All dogs are energetic''. If the domain is all dogs, then we'd then read $\forall x$ as ``For every dog $_x$ : \ldots".
 
-If I have a domain consisting of landmarks, then $\forall x$ is read as ``For every landmark $_x$ : \ldots". 
+If I have a domain consisting of landmarks, then $\forall x$ is read as ``For every landmark $_x$ : \ldots".
 
-Domains are useful even when we are just talking about people. 
+Domains are useful even when we are just talking about people.
 When we use sentences like ``Everyone wears a funny hat'' in English, we usually do not mean everyone now alive on the Earth. We certainly do not mean everyone who was ever alive or who will ever live. We usually mean something more modest: everyone now in the building, everyone enrolled in the ballet class, or whatever.
 
 
@@ -493,7 +493,7 @@ When we use sentences like ``Everyone wears a funny hat'' in English, we usually
   description = {the collection of objects assumed for a symbolization in FOL, or that gives the range of the quantifiers in an \gls{interpretation}}
 }
 
-The domain can be chosen however you like, however, in FOL domains have to contain at least one object. 
+The domain can be chosen however you like, however, in FOL domains have to contain at least one object.
 
 %
 %So if we want to talk about people in Chicago, we define the domain to be people in Chicago.
@@ -522,15 +522,15 @@ The domain can be chosen however you like, however, in FOL domains have to conta
 
 
 \section{Existential Quantifier}
-The Universal Quantifier, $\forall$, allows us to capture English notions like ``every'', ``for all'' and ``any''. The final component of FOL is the Existential Quantifier, $\exists$. This allows us to capture ``for some'', ``there exists''. 
+The Universal Quantifier, $\forall$, allows us to capture English notions like ``every'', ``for all'' and ``any''. The final component of FOL is the Existential Quantifier, $\exists$. This allows us to capture ``for some'', ``there exists''.
 
-To symbolise 
+To symbolise
 \begin{earg}
 \item[\ex{q.e}] Someone is angry.
 \end{earg}
 We paraphrase it as:
 \begin{ebullet}
-\item $\underbrace{\text{There is someone $_x$ such that}}_{\exists x}$: $\underbrace{\text{$x$ is angry}}_{Ax}$. 
+\item $\underbrace{\text{There is someone $_x$ such that}}_{\exists x}$: $\underbrace{\text{$x$ is angry}}_{Ax}$.
 \end{ebullet}
 and symbolise it as $\exists x Ax$ giving the symbolisation key
 \begin{ekey}
@@ -539,7 +539,7 @@ and symbolise it as $\exists x Ax$ giving the symbolisation key
 \end{ekey}
 
 
-To symbolise 
+To symbolise
 \begin{earg}
 \item[\ex{q.e}] There is a logician who wears glasses
 \end{earg}
@@ -551,13 +551,13 @@ giving our symbolisation key:
 \item[Gx]\gap{x} wears glasses
 \end{ekey}
 
-To symbolise 
+To symbolise
 \begin{earg}
 \item[\ex{q.e}] There is a Polish woman who won the Nobel Prize
 \end{earg}
 We break this up as:
 $$
-\underbrace{	
+\underbrace{
 	\underbrace{\text{There is someone $_x$}}_{\exists x}:
 	\underbrace{
 		\underbrace{\text{$x$ is a Polish woman}}_{
@@ -582,7 +582,7 @@ giving our symbolisation key:
 \end{ekey}
 
 
-As for the universal quantifier, how to read ``$\exists x$'' depends on the domain. We might talk not about people but about dogs. If our domain is dogs, then we read $\exists x$ as ``There is a dog $_x$ such that:``. 
+As for the universal quantifier, how to read ``$\exists x$'' depends on the domain. We might talk not about people but about dogs. If our domain is dogs, then we read $\exists x$ as ``There is a dog $_x$ such that:``.
 
 If we want to symbolise:
 \begin{earg}
@@ -606,8 +606,8 @@ Before going further with more symbolisations and symbolisations involving many-
 %
 %%
 %%
-%%In FOL we will symbolise it as: 
-%%In FOL we use $x,y,z$ etc as variables. 
+%%In FOL we will symbolise it as:
+%%In FOL we use $x,y,z$ etc as variables.
 %%
 %%We will then symbolise \ref{q.hat} as $$\forall x Hx$$ using the symbolisation key:
 %%\begin{ekey}
@@ -615,15 +615,15 @@ Before going further with more symbolisations and symbolisations involving many-
 %%\item[\text{domain}]people
 %%\end{ekey}
 %%
-%%We can then semi-formally read $$\forall x Hx$$ as 
+%%We can then semi-formally read $$\forall x Hx$$ as
 %%\begin{quote}
-%%For everyone $x$, $x$ wears a funny hat. 
+%%For everyone $x$, $x$ wears a funny hat.
 %%\end{quote}
 %
-%A quantifier must always be followed by a \define{variable}. In FOL, variables are usually $x$, $y$ and $z$, they might also have subscripts $x_1,y_{27},z_{333}$; we also sometimes use $u,v,w$. 
-%So we might symbolize sentence \ref{q.a} as $\forall x Hx$.  The variable $x$ is serving as a kind of placeholder. If you give me an $x$ then $Hx$ says that that particular person is happy. 
+%A quantifier must always be followed by a \define{variable}. In FOL, variables are usually $x$, $y$ and $z$, they might also have subscripts $x_1,y_{27},z_{333}$; we also sometimes use $u,v,w$.
+%So we might symbolize sentence \ref{q.a} as $\forall x Hx$.  The variable $x$ is serving as a kind of placeholder. If you give me an $x$ then $Hx$ says that that particular person is happy.
 %
-%The symbolisation key doesn't specify who $x$ refers to; it can refer to anyone. So $Hx$ itself isn't going to be true or false, it is only true or false once you provide the additional information of who $x$ refers to. 
+%The symbolisation key doesn't specify who $x$ refers to; it can refer to anyone. So $Hx$ itself isn't going to be true or false, it is only true or false once you provide the additional information of who $x$ refers to.
 %
 %
 %\newglossaryentry{variable}{
@@ -635,7 +635,7 @@ Before going further with more symbolisations and symbolisations involving many-
 %It should be pointed out that there is no special reason to use $x$ rather than some other variable. The sentences $\forall x Hx$, $\forall y Hy$, $\forall z Hz$, and $\forall x_5 Hx_5$ use different variables, but they will all be logically equivalent.
 %
 %
-%The way we should actually read $\forall x Hx$ depends on an additional component: the domain. 
+%The way we should actually read $\forall x Hx$ depends on an additional component: the domain.
 %
 %
 %\section{Quantifiers}
@@ -645,7 +645,7 @@ Before going further with more symbolisations and symbolisations involving many-
 %%		\item[\ex{q.ac}] Everyone is at least as tough as Elsa.
 %		\item[\ex{q.e}] Someone is angry.
 %	\end{earg}
-%%It might be tempting to symbolize sentence \ref{q.a} as $Ha \eand Hg \eand Hm$. Yet this would only say that Elsa, Gregor, and Marybeth are happy. 
+%%It might be tempting to symbolize sentence \ref{q.a} as $Ha \eand Hg \eand Hm$. Yet this would only say that Elsa, Gregor, and Marybeth are happy.
 %We want to say that \emph{everyone} is happy, even those with no names. In order to do this, we introduce the $\forall$ symbol. This is called the \define{universal quantifier}.
 %
 %\newglossaryentry{universal quantifier}{
@@ -653,10 +653,10 @@ Before going further with more symbolisations and symbolisations involving many-
 %  description = {the symbol $\forall$ of FOL used to symbolize generality; $\forall x\, Fx$ is true iff every member of the domain is~$F$}
 %}
 %
-%A quantifier must always be followed by a \define{variable}. In FOL, variables are usually $x$, $y$ and $z$, they might also have subscripts $x_1,y_{27},z_{333}$; we also sometimes use $u,v,w$. 
-%So we might symbolize sentence \ref{q.a} as $\forall x Hx$.  The variable $x$ is serving as a kind of placeholder. If you give me an $x$ then $Hx$ says that that particular person is happy. 
+%A quantifier must always be followed by a \define{variable}. In FOL, variables are usually $x$, $y$ and $z$, they might also have subscripts $x_1,y_{27},z_{333}$; we also sometimes use $u,v,w$.
+%So we might symbolize sentence \ref{q.a} as $\forall x Hx$.  The variable $x$ is serving as a kind of placeholder. If you give me an $x$ then $Hx$ says that that particular person is happy.
 %
-%The symbolisation key doesn't specify who $x$ refers to; it can refer to anyone. So $Hx$ itself isn't going to be true or false, it is only true or false once you provide the additional information of who $x$ refers to. 
+%The symbolisation key doesn't specify who $x$ refers to; it can refer to anyone. So $Hx$ itself isn't going to be true or false, it is only true or false once you provide the additional information of who $x$ refers to.
 %
 %
 %\newglossaryentry{variable}{
@@ -687,11 +687,11 @@ Before going further with more symbolisations and symbolisations involving many-
 %
 %\section{When the domain does not match up}
 %\todo[inline]{Non-people}
-%Suppose we want to symbolise 		
+%Suppose we want to symbolise
 %\begin{earg}
 %	\item[\ex{q.a}] Everyone is happy.
 %\end{earg}
-%But we also have dogs in our domain because we also want to symbolise 
+%But we also have dogs in our domain because we also want to symbolise
 
 
 \section{Symbolisations}
@@ -702,9 +702,9 @@ Before moving to symbolise more complex sentences, we explicitly summarise our s
 \begin{enumerate}
 \item See if the sentence can be paraphrased in English in one of the standard forms.
 	\begin{itemize}
-	\item If not, it's an atomic formula: identify the predicate and the variables or names. 
+	\item If not, it's an atomic formula: identify the predicate and the variables or names.
 	\end{itemize}
-\item Use the symbolisation trick for that form. 
+\item Use the symbolisation trick for that form.
 \item Repeat the procedure with the components. Etc.
 \end{enumerate}
 \end{highlighted}
@@ -726,8 +726,8 @@ If \metaX, then \metaY&$(\metaX\eif\metaY)$\\
 \end{tabular}
 \end{center}
 \end{highlighted}
-	
-Also remember that there were various further tricks from \ref{ch.TFL}, such as `\metaX only if \metaY' as $(\metaX\eif\metaY)$ and `Unless \metaX, \metaY' as $(\metaX\eor\metaY)$. These still apply in the FOL setting. We will also see some more such tricks later.  
+
+Also remember that there were various further tricks from \ref{ch.TFL}, such as `\metaX only if \metaY' as $(\metaX\eif\metaY)$ and `Unless \metaX, \metaY' as $(\metaX\eor\metaY)$. These still apply in the FOL setting. We will also see some more such tricks later.
 
 \todo[inline]{This has all been reorganised. Now give some worked examples!!}
 
@@ -777,7 +777,7 @@ This is the \emph{problem of non-referring terms}, and we will return to it late
 
 
 
-To symbolise 
+To symbolise
 \begin{earg}
 	\item[\ex{loveseveryone1}] Everyone loves Alice.
 \end{earg}
@@ -791,7 +791,7 @@ So we give the symbolisation $$\forall x Lxa$$ with the symbolisation key:
 \item[Lxy]\gap{x} loves \gap{y}
 \item[a] Alice
 \end{ekey}
-If we instead want to symbolise 
+If we instead want to symbolise
 \begin{earg}
 	\item[\ex{loveseveryone2}] Alice loves everyone.
 \end{earg}
@@ -801,7 +801,7 @@ We paraphrase this as:
 \end{equation*}
 So we give the symbolisation $$\forall x Lax$$
 
-To symbolise 
+To symbolise
 \begin{earg}
 	\item[\ex{lovesesomeonethemselves}] Someone loves themselves.
 \end{earg}
@@ -813,7 +813,7 @@ So we give the symbolisation $$\exists x Lxx$$
 
 
 
-If we want to symbolise 
+If we want to symbolise
 \begin{earg}
 	\item[\ex{lovesesomeonethemselves}] Some dog likes playing with Finley.
 \end{earg}
@@ -827,13 +827,13 @@ So we'd offer $\exists  x\, Pxf$ with the symbolisation key:
 \item[Pxy]\gap{x} likes playing with \gap{y}
 \item[f] Finley
 \end{ekey}
-This symbolisation is only legitimate, though, if Finley is referring to a dog rather than, for example, a person. This is because, as we said in \ref{s:Domain}, names have to name members of the domain. If Finley is a person then we have to ensure that our domain contains people too. But then how do we symbolise ``for some dog''? 
+This symbolisation is only legitimate, though, if Finley is referring to a dog rather than, for example, a person. This is because, as we said in \ref{s:Domain}, names have to name members of the domain. If Finley is a person then we have to ensure that our domain contains people too. But then how do we symbolise ``for some dog''?
 
 We can instead paraphrase it as:
 \begin{equation*}
 \underbrace{\underbrace{\text{For some thing $_x$}}_{\exists x}: \underbrace{
 	\underbrace{\text{$x$ is a dog}}_{Dx}
-	\text{ and } 
+	\text{ and }
 	\underbrace{\text{$x$ likes playing with Finley.}}_{Pxf}
 }_{(Dx\eand Pxf)}}_{\exists x (Dx\eand Pxf)}
 \end{equation*}
@@ -854,7 +854,7 @@ We work as follows:
 			\underbrace{\text{Finley is quiet}}_{Qf}
 		}_{\enot\,Wf}
 		}
- 	\text{ and } 
+ 	\text{ and }
 	\underbrace{\text{some dog is quiet. }}_{
 		\underbrace{\underbrace{\text{there is some dog $_x$ such that}}_{\exists x} \underbrace{\text{$x$ is quiet}}_{Qx}}_{\exists x Qx}
 		}
@@ -867,7 +867,7 @@ giving the symbolisation key
 \item[Qx]\gap{x} is quiet
 \item[f] Finley
 \end{ekey}
-Note, that as per \ref{s:Domains}, this symbolisation is only legitimate assuming that Finley names a dog. Names have to name members of the domain. 
+Note, that as per \ref{s:Domains}, this symbolisation is only legitimate assuming that Finley names a dog. Names have to name members of the domain.
 
 Consider:
 \begin{earg}
@@ -889,15 +889,15 @@ So we symbolise this sentence as $$\enot \forall x Qx$$
 
 
 
-We now have the tools to symbolise our second argument from the introduction. 
+We now have the tools to symbolise our second argument from the introduction.
 
 \begin{earg}
 \prem Everyone who loves Manchester United hates Manchester City.
 \prem Manchester City is not hated by everyone.
-\conc there is at least one person who doesn't love Manchester United. 
+\conc there is at least one person who doesn't love Manchester United.
 \end{earg}
 
-%We start with 
+%We start with
 %\begin{earg}
 %\item[\ex{q.mu1}] Everyone who loves Manchester United hates Manchester City.
 %\end{earg}
@@ -922,7 +922,7 @@ We now have the tools to symbolise our second argument from the introduction.
 \todo[inline]{Change this to be about providing the symbolisation form: `for every person, $x$, ...$x$...'}
 %\label{s:MoreMonadic}
 
-%We now have all of the pieces of FOL. 
+%We now have all of the pieces of FOL.
 %Symbolizing more complicated sentences will only be a matter of knowing the right way to combine predicates, names, quantifiers, and connectives. There is a knack to this, and there is no substitute for practice.
 
 %\section{Dealing with syncategorematic adjectives}
@@ -988,7 +988,7 @@ Notice that we needed to use a conditional with the universal quantifier, but we
 		\end{tabular}
 		\end{center} it can be symbolised as can be symbolized as $$\exists x (\meta{F}x \eand \meta{G}x).$$
 	}
-	
+
 Sentence \ref{quan3} can be paraphrased as, `It is not the case that every coin on the table is a dime'. So we can symbolize it by $\enot \forall x(Tx \eif Dx)$. You might look at sentence \ref{quan3} and paraphrase it instead as, `Some coin on the table is not a dime'. You would then symbolize it by $\exists x(Tx \eand \enot Dx)$. Although it is probably not immediately obvious yet, these two sentences are logically equivalent. (This is due to the logical equivalence between $\enot\forall x\metaX$ and $\exists x\enot\metaX$, mentioned in \S\ref{s:FOLBuildingBlocks}, along with the equivalence between $\enot(\metaX\eif\metaY)$ and $\metaX\eand\enot\metaY$.)
 	\factoidbox{
 		If a sentence can be paraphrased in English as \begin{center}
@@ -1103,26 +1103,26 @@ In general, the universal quantifier can be used to symbolize the English expres
 %\begin{enumerate}
 %\item See if the sentence can be paraphrased in English in one of the standard forms.
 %	\begin{itemize}
-%	\item If not, it's an atomic formula: identify the predicate and the variables or names. 
+%	\item If not, it's an atomic formula: identify the predicate and the variables or names.
 %	\end{itemize}
-%\item Use the symbolisation trick for that form. 
+%\item Use the symbolisation trick for that form.
 %\item Repeat the procedure with the component sentences. Etc.
 %\end{enumerate}
 %\end{highlighted}
 %
 %Our key forms are:
 %
-%%We might informally describe our strategy as: 
+%%We might informally describe our strategy as:
 %%
 %%\begin{itemize}
-%%\item For every \metaPredicate, \metaX holds of it. 
+%%\item For every \metaPredicate, \metaX holds of it.
 %%\end{itemize}
 %%
-%%But, we formally will do this with variables, to say explicitly who the `it' is. 
+%%But, we formally will do this with variables, to say explicitly who the `it' is.
 %%
 %%So we use:
 %%\begin{itemize}
-%%\item For every \metaPredicate, $_\metav$, \metaX(\metav). 
+%%\item For every \metaPredicate, $_\metav$, \metaX(\metav).
 %%\end{itemize}
 %
 %\begin{highlighted}
@@ -1144,12 +1144,12 @@ In general, the universal quantifier can be used to symbolize the English expres
 %\end{tabular}
 %\end{center}
 %\end{highlighted}
-%	
-%Also remember that there were various further tricks from \ref{ch.TFL}, such as `\metaX only if \metaY' as $(\metaX\eif\metaY)$ and `Unless \metaX, \metaY' as $(\metaX\eor\metaY)$. These still apply in the FOL setting. 
+%
+%Also remember that there were various further tricks from \ref{ch.TFL}, such as `\metaX only if \metaY' as $(\metaX\eif\metaY)$ and `Unless \metaX, \metaY' as $(\metaX\eor\metaY)$. These still apply in the FOL setting.
 %
 %\todo[inline]{This has all been reorganised. Now give some worked examples!!}
 %
-%Consider 	
+%Consider
 %\begin{earg}
 %	\item[\ex{loves everyone}] Alice loves everyone.
 %\end{earg}
@@ -1283,7 +1283,7 @@ Must we always distinguish between different ways of being skilled, good, bad, o
 \todo[inline]{Add a section on the ``common mistakes'' in giving sentences. Catrin loves everyone. Billy and Joe are happy. Where brackets are needed. }
 
 
-\practiceproblems
+\begin{practiceproblems}
 \problempart
 \label{pr.BarbaraEtc}
 Here are the syllogistic figures identified by Aristotle and his successors, along with their medieval names:
@@ -1371,6 +1371,7 @@ For each argument, write a symbolization key and symbolize the argument in FOL.
 %\item An antelope is bigger than a bread box. I am thinking of something that is no bigger than a bread box, and it is either an antelope or a cantaloupe. As such, I am thinking of a cantaloupe.
 \item All babies are illogical. Nobody who is illogical can manage a crocodile. Berthold is a baby. Therefore, Berthold is unable to manage a crocodile.
 \end{earg}
+\end{practiceproblems}
 
 
 \chapter{Multiple quantifiers}\label{s:MultipleGenerality}
@@ -1595,7 +1596,7 @@ But this is incompatible with the ``obvious meaning'' of Nicholls'
 claim, i.e., the first reading. So what Nicholls claims amounts to
 treason against the Queen!
 
-\practiceproblems
+\begin{practiceproblems}
 \solutions
 Warning: some of these problems require you to use identity, which hasn't yet been introduced. See Chapter \ref{ch.identity}.
 
@@ -1747,17 +1748,18 @@ symbolize the following sentences in FOL:
 
 
 
+\end{practiceproblems}
 
 
 \chapter{Sentences of FOL}\label{s:FOLSentences}
 \todo[inline]{This section got moved above symbolising with one quantifier. But I actually think it might be better}
-We will now carefully introduce what it is to be a sentence of FOL. 
-%This is important so that when we know what complex sentence of FOL can look like, and so when symbolising complex sentences of English how to do it. 
+We will now carefully introduce what it is to be a sentence of FOL.
+%This is important so that when we know what complex sentence of FOL can look like, and so when symbolising complex sentences of English how to do it.
 
 %We know how to represent English sentences in FOL. The time has finally come to define the notion of a \emph{sentence} of FOL.
 
 \section{Vocabulary of FOL}
-We'll start by summarising, a bit more formally, the vocabulary of FOL. What can sentences of FOL be built from. 
+We'll start by summarising, a bit more formally, the vocabulary of FOL. What can sentences of FOL be built from.
 
 \begin{description}
 \item[Predicates] $A,B,C,\ldots,W$,
@@ -1775,7 +1777,7 @@ with subscripts, as needed: $A_1^3, Z_2^3,A_{25}^3,J_{375}^3,\ldots$
 \item[Names] $a,b,c,\ldots, s, t$, or
 with subscripts, as needed $a_1, b_{224}, h_7, m_{32},\ldots$
 \item[Variables] $x,y,z$, or
-with subscripts, as needed $x_1, y_1, z_1, x_2,\ldots$. $u,v,w$ may also be used. 
+with subscripts, as needed $x_1, y_1, z_1, x_2,\ldots$. $u,v,w$ may also be used.
 \item[Connectives]  $\enot,\eand,\eor,\eif,\eiff$
 \item[Brackets] ( , )
 \item[Quantifiers]  $\forall, \exists$
@@ -2017,7 +2019,7 @@ We will adopt the same notational conventions governing brackets that we did for
 
 %Fourth, we may omit brackets between each pair of disjuncts when writing long series of disjunctions.
 
-\practiceproblems
+\begin{practiceproblems}
 \problempart
 \label{pr.freeFOL}
 Identify which variables are bound and which are free.
@@ -2030,6 +2032,7 @@ Identify which variables are bound and which are free.
 \end{earg}
 
 
+\end{practiceproblems}
 
 \chapter{Ambiguity}
 
@@ -2097,7 +2100,7 @@ In chapter~\ref{subsec.defdesc}, we encountered another scope ambiguity, arising
 \end{earg}
 If the definite description has wide scope, and we are interpreting the `not' as an `inner' negation (as we said before), sentence~\ref{thenot} is interpreted to assert the existence of a single King of France, to whom we are ascribing non-baldness. In this reading, it is symbolized as `$\exists x\bigl[{K}{x} \eand \forall y({K}{y} \eif x=y)) \eand \enot {B}{x}\bigr]$'. In the other reading, the `not' denies the sentence `The King of France is bald', and we would symbolize it as: `$\enot\exists x\bigl[{K}{x} \eand \forall y({K}{y} \eif x=y)) \eand {B}{x}\bigr]$'. In the first case, we say that the definite description has wide scope and in the second that it has narrow scope.
 
-\practiceproblems
+\begin{practiceproblems}
 \problempart
 Each of the following sentences is ambiguous. Provide a symbolization key for each, and symbolize all readings.
 \begin{earg}
@@ -2112,3 +2115,5 @@ Russell gave the following example in his paper `On Denoting':
 	I have heard of a touchy owner of a yacht to whom a guest, on first seeing it, remarked, `I thought your yacht was larger than it is'; and the owner replied, `No, my yacht is not larger than it is'.
 \end{quote}
 Explain what's going on.
+
+\end{practiceproblems}

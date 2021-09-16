@@ -132,7 +132,7 @@ Give a proof for each of the following arguments:
 	\have{a}{A}\ae{ab}
 	\have{bc}{B \eif C}\ce{abc, a}
 	\have{b}{B}\ae{ab}
-	\have{c}{C}\ce{bc, b}	
+	\have{c}{C}\ce{bc, b}
 \close
 \have{con}{(A \eand B) \eif C}\ci{ab-c}
 \end{pf}}
@@ -199,7 +199,7 @@ Give a proof for each of the following arguments:
         \have{g}{G}\ce{nfg,nf}
         \have{gh2}{G \eor H}\oi{g}
         \have{bot2}{\ered}\ri{ncon, gh2}
-\close        
+\close
 \have{con}{(G \eor H)}\pbc{ncon-bot2}
 \end{pf}
 }
@@ -353,7 +353,7 @@ The following proofs are missing their citations (rule and line numbers). Add th
 \end{pf}
 \end{multicols}
 
-\problempart 
+\problempart
 Give a proof for each of these arguments:
 \begin{earg}
 \item $E\eor F$, $F\eor G$, $\enot F \therefore E \eand G$
@@ -472,11 +472,11 @@ Show that each of the following sentences is a theorem:
 \have{con}{J \eiff [J\eor (L\eand\enot L)]}\bi{j1-jlnl1, jlnl2-j5}
 \end{pf}}
 
-\item $((A \eif B) \eif A) \eif A$ 
+\item $((A \eif B) \eif A) \eif A$
 \myanswer{\begin{pf}
 \open
 	\hypo{aba}{(A \eif B) \eif A}
-	\open 
+	\open
 		\hypo{na}{\enot A}
 		\have{nab}{\enot (A \eif B)}\mt{aba, na}
 		\open
@@ -528,7 +528,7 @@ Provide proofs to show each of the following:
 \close
 \have{N}{N}\pbc{nN-red}
 \have{NM}{N \eand M}\ai{N, M}
-\have{con}{(N \eand M) \eor \enot M}\oi{NM}	
+\have{con}{(N \eand M) \eor \enot M}\oi{NM}
 \end{pf}}
 
 
@@ -717,7 +717,7 @@ Show that each of the following pairs of sentences are provably equivalent: %TB:
 \have{cnd}{C \eand \enot D}\ai{c2, nd}
 \end{pf}
 \end{multicols}}
-6. $\enot G \eiff H$, $\enot(G \eiff H)$ 
+6. $\enot G \eiff H$, $\enot(G \eiff H)$
 \myanswer{\begin{multicols}{2}
 \begin{pf}
 \hypo{ngh}{\enot G \eiff H}
@@ -803,7 +803,7 @@ If you know that $\metaX\proves\metaY$, what can you say about $(\metaX\eand\met
 \open
 	\hypo{a}{\metaX}
 	\have[m]{b1}{\metaY}
-\close 
+\close
 \open
 	\hypo{b}{\metaY}
 	\have[m+n]{a1}{\metaX}
@@ -817,7 +817,7 @@ If you know that $\metaX\proves\metaY$, what can you say about $(\metaX\eand\met
 
 \chapter{Derived rules}\setcounter{ProbPart}{0}
 \problempart
-Provide proof schemes that justify the addition of the third and fourth De Morgan rules as derived rules. 
+Provide proof schemes that justify the addition of the third and fourth De Morgan rules as derived rules.
 
 \
 \\\myanswer{Third rule:
@@ -834,7 +834,7 @@ Provide proof schemes that justify the addition of the third and fourth De Morga
 			\open
 				\hypo{b}{\metaY}
 				\have{con2}{\ered}\ri{b, nb}
-			\close			
+			\close
 			\have{con3}{\ered}\oe{aob, a-con1, b-con2}
 		\close
 		\have{con}{\enot (\metaX \eor \metaY)}\ni{aob-con3}
@@ -865,13 +865,13 @@ The proofs you offered in response to the practice exercises of \S\S\ref{s:Furth
 
 \chapter{Soundness and completeness}\setcounter{ProbPart}{0}
 
-\practiceproblems
-\noindent\problempart Use either a derivation or a truth table for each of the following. 
+\begin{practiceproblems}
+\noindent\problempart Use either a derivation or a truth table for each of the following.
 \begin{enumerate}%[label=(\arabic*)]
 \item Show that $A \eif [((B \eand C) \eor D) \eif A]$ is a theorem..
 \item Show that $A \eif (A \eif B)$ is not a theorem.
 \item Show that the sentence $A \eif \enot{A}$ is not a contradiction.
-\item Show that the sentence $A \eiff \enot A$ is a contradiction. 
+\item Show that the sentence $A \eiff \enot A$ is a contradiction.
 \item Show that the sentence $ \enot (W \eif (J \eor J)) $ is contingent.
 \item Show that the sentence $ \enot(X \eor (Y \eor Z)) \eor (X \eor (Y \eor Z))$ is not contingent.
  \item Show that the sentence $B \eif \enot S$ is equivalent to the sentence $\enot \enot B \eif \enot S$.
@@ -879,11 +879,11 @@ The proofs you offered in response to the practice exercises of \S\S\ref{s:Furth
 \item Show that the sentences $\enot(A \eor B)$, $C$, $C \eif A$  are jointly inconsistent.
 \item Show that the sentences $\enot(A \eor B)$, $\enot{B}$, $B \eif A$ are jointly consistent
 \item Show that $\enot(A \eor (B \eor C)) $ \therefore $ \enot{C}$ is valid.
-\item Show that $\enot(A \eand (B \eor C))$ \therefore $ \enot{C}$ is invalid. 
+\item Show that $\enot(A \eand (B \eor C))$ \therefore $ \enot{C}$ is invalid.
 \end{enumerate}
 
 
-\noindent\problempart Use either a derivation or a truth table for each of the following. 
+\noindent\problempart Use either a derivation or a truth table for each of the following.
 \begin{enumerate}%[label=(\arabic*)]
 \item Show that $A \eif (B \eif A)$ is a theorem.
 \item Show that $\enot (((N \eiff Q) \eor Q) \eor N)$ is not a theorem.
@@ -896,5 +896,7 @@ The proofs you offered in response to the practice exercises of \S\S\ref{s:Furth
 \item Show that the sentences $ \enot (W \eif W)$, $(W \eiff W) \eand W$, $E \eor (W \eif \enot (E \eand W))$ are jointly inconsistent.
 \item Show that the sentences  $\enot R \eor C $, $(C \eand R) \eif \enot R$, $(\enot (R \eor R) \eif R) $ are jointly consistent.
 \item Show that $\enot \enot (C \eiff \enot C), ((G \eor C) \eor G) \therefore ((G \eif C) \eand G) $ is valid.
-\item Show that $ \enot \enot L,  (C \eif \enot L) \eif C) \therefore \enot C$ is invalid. 
+\item Show that $ \enot \enot L,  (C \eif \enot L) \eif C) \therefore \enot C$ is invalid.
 \end{enumerate}
+
+\end{practiceproblems}
