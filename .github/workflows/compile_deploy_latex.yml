@@ -58,10 +58,9 @@ jobs:
           path: github_artifacts
       - name: move
         run: mkdir -p github_deploy && mv github_artifacts/*/* github_deploy
-      - name: deploy on orphan branch
+      - name: deploy on gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./github_deploy
           publish_branch: gh-pages
-          force_orphan: true
