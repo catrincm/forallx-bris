@@ -76,15 +76,15 @@ Our standard way to present them is:
 \begin{earg}
 \prem Premise 1
 \prem Premise 2
-\prem \dots
-\prem Premise $n$
+\item[] \dots
+\item[$n$.] Premise $n$
 \conc Conclusion
 \end{earg}
 For	example
 	\begin{earg}
 	\prem If I acted of my own free will, then I could have acted otherwise.
 	\prem I could not have acted otherwise.
-	\conc Therefore: I did not act of my own free will.
+	\conc I did not act of my own free will.
 	\end{earg}
 %It can often be useful to label our premises and conclusions so they can be referred back to, for example:
 %\begin{earg}
@@ -93,6 +93,9 @@ For	example
 %\conc I did not act of my own free will.
 %\end{earg}
 %Note that we don't actually need to label the conclusion because there is only one.
+
+The three dots in this final line can be read ``therefore''. Really then we're duplicating things by also adding the word ``Therefore''. But we do this to really carefully highlight that this is the conclusion. If you are writing your answers up on the computer and cannot use this symbol, you don't have to use it. But make sure it is very clear what the conclusion of the argument is. 
+%. Bu. It is our concise way to identify the conclusion of the argument. \todo{should I delete it throughout?}
 
 
 Often arguments are presented simply in a paragraph of text, or in a speech or article, and we first have to work out what the premises and conclusions are.
@@ -331,6 +334,7 @@ description={a sentence in an \gls{argument} other than the \gls{conclusion}}
 name=conclusion,
 description={the last sentence in an \gls{argument}}
 }
+
 
 
 
@@ -761,6 +765,91 @@ target.
 rebuttal or criticism
 \end{enumerate}
 
+
+%\section{Ambiguity}
+%Some sentences depend on context for whether they are true or false. For example the truth of `I have long hair' depends on who is uttering it. Sometimes we will use examples where the context does matter. Everything that we say, though, still holds when the context is held fixed throughout the course of the argument.
+%
+%
+%In English, sentences can be \emph{ambiguous}. There are many sources of ambiguity. One is \emph{lexical ambiguity:} a sentence can contain words which have more than one meaning.  For instance, `bank' can mean the bank of a river, or a financial institution. So I might say that `Katie went to the bank' when she took a stroll along the river, or when she went to deposit a check.  When we talk about sentences, we assume that all words have been disambiguated and it is settled whether `bank' is somewhere you have a picnic or where you deposit your money.
+%
+%
+%Here are some examples of arguments whose validity depends on how we
+%interpret ambiguous sentences. It is a good exercise to try to spot how
+%one reading makes the argument deductively valid and the other reading
+%does not.
+%
+%\begin{earg}
+%\prem {Salvatore brought a hat from Italy.}
+%\conc {Salvatore has been to Italy.}
+%\end{earg}
+%
+%\begin{earg}
+%\prem {Bill and Barb are married.}
+%\conc {Bill is Barb's husband.}
+%\end{earg}
+%
+%\begin{earg}
+%\prem {Charlotte's Web is a children's novel about a pig named Wilbur who
+%is saved from being slaughtered by an intelligent spider named
+%Charlotte. }
+%\conc {In C.W., Charlotte saves Wilbur.}
+%\end{earg}
+%
+%\begin{earg}
+%\prem {John saw the man on the mountain with a telescope.}
+%\conc {The man on the mountain has a telescope.}
+%\end{earg}
+%
+%If we are to get very far with formal logic, we will need to have a way
+%of dealing with ambiguity. The key idea here come from a
+%mathematician-philosopher named Gottlob Frege. Frege's idea was this.
+%Because natural languages contain ambiguous sentences, we need a special
+%artificial language for the purpose of studying logical consequence.
+%Such a language should be free of ambiguity. Each sentence should have
+%exactly one meaning, and exactly one logical form. If we could devise
+%such a language, then we could say clearly and systematically which
+%arguments are formally valid. Such a language is called a \emph{formal}
+%language.
+%
+%In order to design an unambiguous formal language language, we need to
+%get some grip on the sources of ambiguity in natural language. That way,
+%we can make sure to prevent those sources from including ambiguity in
+%our formal language. What are the sources of ambiguity? Let's consider
+%another example.
+%
+%\begin{quote}
+%``I shot an elephant in my pajamas''\footnote{: See
+%  \href{http://www.youtube.com/watch?v=NfN_gcjGoJo}{The Marx Brothers
+%  Video}.}
+%\end{quote}
+%
+%What makes this sentence ambiguous is that it is not clear which words
+%are meant to modify which other words. The sentence might be read in one
+%of two ways, either as:
+%
+%%\includegraphics{/static/img/elephant1.svg}
+%
+%Or alternatively, as
+%
+%%\includegraphics{/static/img/elephant2.svg}
+%
+%The meaning of the sentence depends on how we read it. Of course, we can
+%eliminate the ambiguity by specifying which of the trees above we
+%intend. But this is pretty awkward. A better way to eliminate the
+%ambiguity is to use \emph{parentheses} to stick together the units that
+%are supposed to go together---the units that we do not unpack until
+%further down the tree.
+%
+%So we might express the first reading of the sentence by writing ``I
+%((shot an elephant) in my pajamas)'', and the second by writing ``I
+%(shot (an elephant in my pajamas))''.\footnote{: This idea may seem
+%  unfamiliar, but it is actually something that you have been doing for
+%  a long time. If you know the difference between
+%  ``\((2 + 2) \times 2\)'' and ``\(2 + (2 \times 2)\)'' then you know
+%  how to disambiguate language by using parentheses.}
+%
+%Our formal language will make use of parentheses for the same purpose.
+%
 
 
 \section{Ampliative Arguments}
