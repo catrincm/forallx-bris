@@ -147,8 +147,22 @@ Consider the following sentences:
 		\item $(\enot (A \eor B) \eiff ((\enot C \eand \enot A) \eif \enot B))$
 		\item $((\enot (A \eand \enot B) \eif C) \eand \enot (A \eand D))$
 	\end{earg}
-        For each sentence, find a logically equivalent sentence in DNF and one in CNF.
-
+For each sentence, find an equivalent sentence in DNF and one in CNF.
+\myanswer{We give a solution for (2). The truth table for $\enot (A \eiff B)$ is:
+\begin{center}
+\begin{tabular}{c c | l}
+$A$ & $B$ & $\enot (A \eiff B)$\\
+\hline
+T & T & F \\
+T & F & T \\
+F & T & T \\
+F & F & F \\
+\end{tabular}
+\end{center}
+A sentence in DNF can be read off from lines 2 and 3:
+\[(A \eand \enot B) \eor (\enot A \eand B)\]
+and one in CNF from lines 1 and~4:
+\[(\enot A \eor \enot B) \eand (A \eor B).\]}
 \end{practiceproblems}
 
 

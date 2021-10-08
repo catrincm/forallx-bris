@@ -1,11 +1,14 @@
 \PassOptionsToPackage{disable}{todonotes}
 \documentclass[openany,oneside]{memoir}
 
-
-\usepackage{../forallxbris-style-textbook}
-\usepackage{../forallxbris}
+\usepackage{forallxbris-style-textbook}
+\usepackage{forallxbris}
 
 %\pagestyle{forallxpage}
+%\noanswers
+%
+%\nopracticeproblems
+
 
 
 \usepackage[absolute,overlay]{textpos}
@@ -47,8 +50,10 @@
 
 
 
-\begin{document}
+%\includeonly{forallx-bris-prooftfl}
 
+
+\begin{document}
 
 % make front cover
 \thispagestyle{empty}
@@ -68,13 +73,6 @@
       \sffamily\fontsize{24pt}{28pt}\selectfont
       \color{black}
       \textbf{\uppercase{Bristol}}
-      
-      
-    \vspace*{1cm}
-    \color{black}
-    \sffamily
-    \fontsize{20pt}{22pt}\selectfont
-    \textbf{Solutions to\\ Selected Exercises}
 
     \end{raggedleft}
   \end{minipage}
@@ -83,9 +81,8 @@
 \
     \vfill
     \noindent Version from \today\par
-    \noindent Download \href{https://github.com/catrincm/forallx-bris/raw/master/forallxbris.pdf}{here}. \par 
-    \noindent Warning: I do not guarantee the solutions match the rules or systems we have learned. And they may be numbered differently. 
-%    \noindent Please redownload every week.\par
+    \noindent Download \href{https://catrincm.github.io/forallx-bris/forallxbris.pdf}{here}. \par 
+    \noindent Please redownload every week.\par
 \newpage\color{black}
 
 
@@ -97,25 +94,6 @@
 
 
 
-\frontmatter
-\include{forallx-sol-frontmatter}
-
-\currentpdfbookmark{Table of Contents}{name}
-\tableofcontents*
-
-\mainmatter
-\include{forallx-sol-what}
-\include{forallx-sol-tfl}
-\include{forallx-sol-truthtables}
-\include{forallx-sol-prooftfl}
-\include{forallx-sol-fol}
-\include{forallx-sol-interpretations}
-\include{forallx-sol-prooffol}
-\include{forallx-sol-ml}
-\include{forallx-sol-metatheory}
-
-
+\input{forallx-bris-content}
 
 \end{document}
-
-

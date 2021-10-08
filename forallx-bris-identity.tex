@@ -133,39 +133,83 @@ It might be tempting to add a predicate to our symbolization key, to symbolize t
 
 \begin{practiceproblems}
 
-%\solutions
 %\problempart
 %\label{pr.FOLcandies}
 %Using the following symbolization key:
 %\begin{ekey}
 %\item[\text{domain}] candies
-%\item[Cx] \gap{x} has chocolate in it.
-%\item[Mx] \gap{x} has marzipan in it.
-%\item[Sx] \gap{x} has sugar in it.
-%\item[Tx] Boris has tried \gap{x}.
-%\item[Bxy] \gap{x} is better than \gap{y}.
+%\item[\atom{C}{x}] \gap{x} has chocolate in it.
+%\item[\atom{M}{x}] \gap{x} has marzipan in it.
+%\item[\atom{S}{x}] \gap{x} has sugar in it.
+%\item[\atom{T}{x}] Boris has tried \gap{x}.
+%\item[\atom{B}{x,y}] \gap{x} is better than \gap{y}.
 %\end{ekey}
-%symbolize the following English sentences in FOL:
+%symbolize the following English sentences in FOL:\\
+%\myanswer{Comment: these are deliberately tricky. What follows is the \emph{best} we can offer in FOL, for each of these sentences. Some are not great.}
 %\begin{earg}
 %\item Boris has never tried any candy.
+%\item[] \myanswer{$\forall x(\atom{C}{x} \eif \enot \atom{T}{x})$}
 %\item Marzipan is always made with sugar.
+%\item[] \myanswer{$\forall x(\atom{M}{x} \eif \atom{S}{x})$}
 %\item Some candy is sugar-free.
+%\item[] \myanswer{$\exists x \enot \atom{S}{x}$}
 %\item The very best candy is chocolate.
+%\item[] \myanswer{Simply can't be done! The best we can offer is as in answer to 8.}
 %\item No candy is better than itself.
+%\item[] \myanswer{$\forall x \enot \atom{B}{x,x}$}
 %\item Boris has never tried sugar-free chocolate.
+%\item[] \myanswer{$\forall x((\atom{C}{x} \eand \atom{S}{x}) \eif \enot \atom{T}{x})$}
 %\item Boris has tried marzipan and chocolate, but never together.
+%\item[] \myanswer{$\exists x(\atom{M}{x} \eand \atom{T}{x}) \eand \exists x(\atom{C}{x} \eand \atom{T}{x}) \eand \forall x ((\atom{M}{x} \eand \atom{C}{x}) \eif \enot \atom{T}{x})$}
 %%\item Boris has tried nothing that is better than sugar-free marzipan.
 %\item Any candy with chocolate is better than any candy without it.
+%\item[] \myanswer{$\forall x(\atom{C}{x} \eif \forall (\enot \atom{C}{y} \eif \atom{B}{x,y}))$}
 %\item Any candy with chocolate and marzipan is better than any candy that lacks both.
+%\item[] \myanswer{$\forall x\bigl[(\atom{C}{x} \eand \atom{M}{x})\eif \forall \bigl((\enot \atom{C}{y} \eand \enot \atom{M}{y}) \eif Bxy\bigr)\bigr]$}
 %\end{earg}
 
-
+\problempart Consider the sentence,
+\begin{earg}
+	\item[\ex{except2}] Every officer except Pavel owes money to Hikaru.
+\end{earg}
+Symbolize this sentence, using `$\atom{F}{x}$' for `\gap{x} is an officer'.  Are you confident that your symbolization is true if, and only if, sentence~\ref{except2} is true?  What happens if every officer owes money to Hikaru, Pavel does not, but Pavel isn't an officer? \myanswer{Most people, including most linguists thinking about `except', read sentence~\ref{except2} as entailing all three of the following:
+\begin{earg}
+	\item No officer who is not Pavel owes money to Hikaru
+	\item Pavel does not owe money to Hikaru
+	\item Pavel is an officer
+\end{earg}
+So it can be symbolized as `$\forall x((\atom{F}{x} \eand \enot x = p) \eif \enot\atom{O}{x}{h}) \eand \enot \atom{O}{p,h} \eand \atom{F}{p}$'.}
 
 \problempart Explain why:
 	\begin{ebullet}
-		\item   `$\exists x \forall y(Ay \eiff x\eid  y)$' is a good symbolization of `there is exactly one apple'.
-		\item `$\exists x \exists y \bigl[\enot\, x\eid y \eand \forall z(Az \eiff (x\eid  z \eor y \eid z))\bigr]$' is a good symbolization of `there are exactly two apples'.
-	\end{ebullet}
+		\item   `$\exists x \forall y(\atom{A}{y} \eiff x= y)$' is a good symbolization of `there is exactly one apple'.
+		\item[] \myanswer{We might naturally read this in English thus: 
+		\begin{ebullet}
+			\item There is something, $x$, such that, if you choose any object at all, if you chose an apple then you chose $x$ itself, and if you chose $x$ itself then you chose an apple.
+		\end{ebullet}
+		The $x$ in question must therefore be the one and only thing which is an apple.}
+		\item `$\exists x \exists y \bigl[\enot x = y \eand \forall z(\atom{A}{z} \eiff (x= z \eor y = z)\bigr]$' is a good symbolization of `there are exactly two apples'.
+		\item[] \myanswer{Similarly to the above, we might naturally read this in English thus: 
+		\begin{ebullet}
+			\item There are two distinct things, $x$ and $y$, such that if you choose any object at all, if you chose an apple then you either chose $x$ or $y$, and if you chose either $x$ or $y$ then you chose an apple.
+		\end{ebullet}
+		The $x$ and $y$ in question must therefore be the only things which are apples, and since they are distinct, there are two of them.}
+	\end{ebullet}		
+
+
+\chapter{Sentences of FOL}\setcounter{ProbPart}{0}
+\problempart
+\label{pr.freeFOL}
+Identify which variables are bound and which are free.
+\myanswer{We underline the bound variables, and overline the free variables.}
+\begin{earg}
+\item $\exists x\, \atom{L}{\underline{x},\overline{y}} \eand \forall y\,\atom{L}{\underline{y},\overline{x}}$
+\item $\forall x\, \atom{A}{\underline{x}} \eand \atom{B}{\overline{x}}$
+\item $\forall x (\atom{A}{\underline{x}} \eand \atom{B}{\underline{x}}) \eand \forall y(\atom{C}{\overline{x}} \eand \atom{D}{\underline{y}})$
+\item $\forall x\exists y[\atom{R}{\underline{x},\underline{y}} \eif (\atom{J}{\overline{z}} \eand \atom{K}{\underline{x}})] \eor \atom{R}{\overline{y},\overline{x}}$
+\item $\forall x_1(\atom{M}{\overline{x_2}} \eiff \atom{L}{\overline{x_2},\underline{x_1}}) \eand \exists x_2\, \atom{L}{\overline{x_3},\underline{x_2}}$
+\end{earg}
+
 
 \end{practiceproblems}
 
@@ -536,50 +580,123 @@ We obtain line 4 by replacing `$b$' in line 3 with `$a$'; this is justified give
 
 \begin{practiceproblems}
 \problempart
-\label{pr.identity}
-Provide a proof of each claim.
+Using the following symbolization key:
+\begin{ekey}
+\item[\text{domain}] people
+\item[\atom{K}{x}] \gap{x} knows the combination to the safe.
+\item[\atom{S}{x}] \gap{x} is a spy.
+\item[\atom{V}{x}] \gap{x} is a vegetarian.
+\item[\atom{T}{x,y}] \gap{x} trusts \gap{y}.
+\item[h] Hofthor
+\item[i] Ingmar
+\end{ekey}
+symbolize the following sentences in FOL:
 \begin{earg}
-\item $Pa \eor Qb, Qb \eif b\eid c, \enot Pa \proves Qc$
-\item $m\eid n \eor n\eid o, An \proves Am \eor Ao$
-\item $\forall x\ x\eid m, Rma\proves \exists x Rxx$
-\item $\forall x\forall y(Rxy \eif x\eid y)\proves Rab \eif Rba$
-\item $\enot \exists x\enot\, x\eid m \proves \forall x\forall y (Px \eif Py)$
-\item $\exists x Jx, \exists x \enot Jx\proves \exists x \exists y\ \enot\, x\eid y$
-\item $\forall x(x\eid n \eiff Mx), \forall x(Ox \eor \enot Mx)\proves On$
-\item $\exists x Dx, \forall x(x\eid p \eiff Dx)\proves Dp$
-\item $\exists x\bigl[(Kx \eand \forall y(Ky \eif x\eid y)) \eand Bx\bigr], Kd\proves Bd$
-\item $\proves Pa \eif \forall x(Px \eor \enot\, x\eid a)$
+\item Hofthor trusts a vegetarian.
+\item[] \myanswer{$\exists x(\atom{V}{x} \eand \atom{T}{h,x})$}
+\item Everyone who trusts Ingmar trusts a vegetarian.
+\item[] \myanswer{$\forall x\bigl[\atom{T}{x,i} \eif \exists y(\atom{T}{x,y} \eand \atom{V}{y})\bigr]$}
+\item Everyone who trusts Ingmar trusts someone who trusts a vegetarian.
+\item[] \myanswer{$\forall x\bigl[\atom{T}{x,i} \eif \exists y\bigr(\atom{T}{x,y} \eand \exists z(\atom{T}{y,z} \eand \atom{V}{z})\bigr)\bigr]$}
+\item Only Ingmar knows the combination to the safe.
+\item[] \myanswer{$\forall x(\atom{K}{i} \eif x = i)$\\Comment: does the English claim entail that Ingmar \emph{does} know the combination to the safe? If so, then we should formalise this with a `$\eiff$'.}
+\item Ingmar trusts Hofthor, but no one else.
+\item[] \myanswer{$\forall x(\atom{T}{i,x} \eiff x = h)$}
+\item The person who knows the combination to the safe is a vegetarian.
+\item[] \myanswer{$\exists x\bigl[\atom{K}{x} \eand \forall y(\atom{K}{y} \eif x = y) \eand \atom{V}{x}\bigr]$}
+\item The person who knows the combination to the safe is not a spy.
+\item[] \myanswer{$\exists x\bigl[\atom{K}{x} \eand \forall y(\atom{K}{y} \eif x = y) \eand \enot \atom{S}{x}\bigr]$\\
+Comment: the scope of negation is potentially ambiguous here; I have read it as \emph{inner} negation.}
+\end{earg}
+
+
+\solutions
+\problempart
+\label{pr.FOLcards}
+Using the following symbolization key:
+\begin{ekey}
+\item[\text{domain}] cards in a standard deck
+\item[\atom{B}{x}] \gap{x} is black.
+\item[\atom{C}{x}] \gap{x} is a club.
+\item[\atom{D}{x}] \gap{x} is a deuce.
+\item[\atom{J}{x}] \gap{x} is a jack.
+\item[\atom{M}{x}] \gap{x} is a man with an axe.
+\item[\atom{O}{x}] \gap{x} is one-eyed.
+\item[\atom{W}{x}] \gap{x} is wild.
+\end{ekey}
+symbolize each sentence in FOL:
+\begin{earg}
+\item All clubs are black cards.
+\item[] \myanswer{$\forall x (\atom{C}{x} \eif \atom{B}{x})$}
+\item There are no wild cards.
+\item[] \myanswer{$\enot \exists x\, \atom{W}{x}$}
+\item There are at least two clubs.
+\item[] \myanswer{$\exists x \exists y(\enot x = y \eand \atom{C}{x} \eand \atom{C}{y})$}
+\item There is more than one one-eyed jack.
+\item[] \myanswer{$\exists x \exists y(\enot x = y \eand \atom{J}{x} \eand \atom{O}{x}  \eand \atom{J}{y} \eand \atom{O}{y})$}
+\item There are at most two one-eyed jacks.
+\item[] \myanswer{$\forall x \forall y \forall z\bigl[(\atom{J}{x} \eand \atom{O}{x} \eand \atom{J}{y} \eand \atom{O}{y} \eand \atom{J}{z} \eand \atom{O}{z}) \eif (x = y \eor x = z \eor y = z)\bigr]$}
+\item There are two black jacks.
+\item[] \myanswer{$\exists x \exists y(\enot x = y \eand \atom{B}{x} \eand \atom{J}{x} \eand \atom{B}{y} \eand \atom{J}{y})$\\
+Comment: I am reading this as `there are \emph{at least} two\ldots'. If the suggestion was that there are \emph{exactly} two, then a different FOL sentence would be required, namely:\\
+$\exists x \exists y \bigl(\enot x = y \eand \atom{B}{x} \eand \atom{J}{x} \eand \atom{B}{y} \eand \atom{J}{y} \eand \forall z[(\atom{B}{z} \eand \atom{J}{z}) \eif (x = z \eor y = z)]\bigr)$}
+\item There are four deuces.
+\item[] \myanswer{$\exists w \exists x \exists y \exists z(\enot w = x \eand \enot w = y \eand \enot w = z \eand \enot x = y \eand \enot x = z \eand \enot y = z \eand \atom{D}{w} \eand \atom{D}{x} \eand \atom{D}{y} \eand \atom{D}{z})$\\
+Comment: I am reading this as `there are \emph{at least} four\ldots'. If the suggestion is that there are \emph{exactly} four, then we should offer instead:\\
+$\exists w \exists x \exists y \exists z\bigl(\enot w = x \eand \enot w = y \eand \enot w = z \eand \enot x = y \eand \enot x = z \eand \enot y = z \eand \atom{D}{w} \eand \atom{D}{x} \eand \atom{D}{y} \eand \atom{D}{z} \eand \forall v[\atom{D}{v} \eif (v = w \eor v = x \eor v = y \eor v =z)]\bigr)$}
+\item The deuce of clubs is a black card.
+\item[] \myanswer{$\exists x \bigl[\atom{D}{x} \eand \atom{C}{x} \eand \forall y\bigl((\atom{D}{y} \eand \atom{C}{y}) \eif x = y\bigr) \eand \atom{B}{x}\bigr]$}
+\item One-eyed jacks and the man with the axe are wild.
+\item[] \myanswer{$\forall x \bigl[(\atom{J}{x} \eand \atom{O}{x}) \eif \atom{W}{x}\bigr] \eand \exists x\bigl[\atom{M}{x} \eand \forall y(\atom{M}{y} \eif x = y) \eand \atom{W}{x}\bigr]$}
+\item If the deuce of clubs is wild, then there is exactly one wild card.
+\item[] \myanswer{$\exists x \bigl(\atom{D}{x} \eand \atom{C}{x} \eand \forall y \bigl[(\atom{D}{y} \eand \atom{C}{y}) \eif x= y\bigr] \eand \atom{W}{x}\bigr) \eif \exists x \bigl(\atom{W}{x} \eand \forall y(\atom{W}{y} \eif x = y)\bigr)$\\
+Comment: if there is not exactly one deuce of clubs, then the above sentence is true. Maybe that's the wrong verdict. Perhaps the sentence should definitely be taken to imply that there is one and only one deuce of clubs, and then express a conditional about wildness. If so, then we might symbolize it thus:
+\\$\exists x \bigl(\atom{D}{x} \eand \atom{C}{x} \eand \forall y \bigl[(\atom{D}{y} \eand \atom{C}{y}) \eif x = y\bigr] \eand \bigl[\atom{W}{x} \eif \forall y (\atom{W}{y} \eif x = y)\bigr]\bigl)$}
+\item The man with the axe is not a jack.
+\item[] \myanswer{$\exists x \bigl[\atom{M}{x} \eand \forall y(\atom{M}{y} \eif x = y) \eand \enot \atom{J}{x}\bigr]$}
+\item The deuce of clubs is not the man with the axe.
+\item[] \myanswer{$\exists x \exists y\bigl(\atom{D}{x} \eand \atom{C}{x} \eand \forall z[(\atom{D}{z} \eand \atom{C}{z}) \eif x = z] \eand \atom{M}{y} \eand \forall z(\atom{M}{z} \eif y = z) \eand \enot x = y\bigr)$}
+
+\end{earg}
+
+\
+
+\problempart Using the following symbolization key:
+\begin{ekey}
+\item[\text{domain}] animals in the world
+\item[\atom{B}{x}] \gap{x} is in Farmer Brown's field.
+\item[\atom{H}{x}] \gap{x} is a horse.
+\item[\atom{P}{x}] \gap{x} is a Pegasus.
+\item[\atom{W}{x}] \gap{x} has wings.
+\end{ekey}
+symbolize the following sentences in FOL:
+\begin{earg}
+\item There are at least three horses in the world.
+\item[] \myanswer{$\exists x \exists y \exists z (\enot x = y \eand \enot x = z \eand \enot y = z \eand \atom{H}{x} \eand \atom{H}{y} \eand \atom{H}{z})$}
+\item There are at least three animals in the world.
+\item[] \myanswer{$\exists x \exists y \exists z (\enot x = y \eand \enot x = z \eand \enot y = z)$}
+\item There is more than one horse in Farmer Brown's field.
+\item[] \myanswer{$\exists x \exists y (\enot x = y \eand \atom{H}{x} \eand \atom{H}{y} \eand \atom{B}{x} \eand \atom{B}{y})$}
+\item There are three horses in Farmer Brown's field.
+\item[] \myanswer{$\exists x \exists y \exists z(\enot x = y \eand \enot x = z \eand \enot y = z \eand \atom{H}{x} \eand \atom{H}{y} \eand \atom{H}{z} \eand \atom{B}{x} \eand \atom{B}{y} \eand \atom{B}{z})$\\Comment: I have read this as `there are \emph{at least} three\ldots'. If the suggestion was that there are \emph{exactly} three, then a different FOL sentence would be required.}
+\item There is a single winged creature in Farmer Brown's field; any other creatures in the field must be wingless.
+\item[] \myanswer{$\exists x\bigl[\atom{W}{x} \eand \atom{B}{x} \eand \forall y\bigl((\atom{W}{y} \eand \atom{B}{y}) \eif x = y)\bigr]$}
+\item The Pegasus is a winged horse.
+\item[] \myanswer{$\exists x \bigl[\atom{P}{x} \eand \forall y(\atom{P}{y} \eif x = y) \eand \atom{W}{x} \eand \atom{H}{x}\bigr]$}
+\item The animal in Farmer Brown's field is not a horse.
+\item[] \myanswer{$\exists x \bigl[ Bx \eand \forall y (\atom{B}{y} \eif x = y) \eand \enot \atom{H}{x}\bigr]$\\Comment: the scope of negation might be ambiguous here; I have read it as \emph{inner} negation.}
+\item The horse in Farmer Brown's field does not have wings.
+\item[] \myanswer{$\exists x \bigl[\atom{H}{x} \eand \atom{B}{x} \eand \forall y \bigl((\atom{H}{y} \eand \atom{B}{y}) \eif x = y\bigr) \eand \enot \atom{W}{x}\bigr]$\\Comment: the scope of negation might be ambiguous here; I have read it as \emph{inner} negation.}
+
 \end{earg}
 
 \problempart
-Show that the following are provably equivalent:
-\begin{ebullet}
-\item $\exists x \bigl([Fx \eand \forall y (Fy \eif x \eid y)] \eand x \eid  n\bigr)$
-\item $Fn \eand \forall y (Fy \eif n\eid  y)$
-\end{ebullet}
-And hence that both have a decent claim to symbolize the English sentence `Nick is the F'.
-
-\
-
-\problempart
-In \S\ref{ch.identity}, we claimed that the following are logically equivalent symbolizations of the English sentence `there is exactly one F':
-\begin{ebullet}
-\item $\exists x Fx \eand \forall x \forall y \bigl[(Fx \eand Fy) \eif x \eid  y\bigr]$
-\item $\exists x \bigl[Fx \eand \forall y (Fy \eif x \eid y)\bigr]$
-\item $\exists x \forall y (Fy \eiff x \eid y)$
-\end{ebullet}
-Show that they are all provably equivalent. (\emph{Hint}: to show that three claims are provably equivalent, it suffices to show that the first proves the second, the second proves the third and the third proves the first; think about why.)
-
-
-\
-\problempart
-Symbolize the following argument
-	\begin{quote}
-		There is exactly one F. There is exactly one G. Nothing is both F and G. So: there are exactly two things that are either F or G.
-	\end{quote}
-And offer a proof of it.
-%\begin{ebullet}
-%\item  $\exists x \bigl[Fx \eand \forall y (Fy \eif x \eid y)\bigr], \exists x \bigl[Gx \eand \forall y ( Gy \eif x \eid y)\bigr], \forall x (\enot Fx \eor \enot Gx) \proves \exists x \exists y \bigl[\enot\, x\eid y \eand \forall z ((Fz \eor Gz) \eif (x \eid y \eor x \eid z))\bigr]$
-%\end{ebullet}
+In this chapter, we symbolized `Nick is the traitor' by `$\exists x (\atom{T}{x} \eand \forall y(\atom{T}{y} \eif x = y) \eand x = n)$'. Explain why these would be equally good symbolisations:
+	\begin{ebullet}
+		\item $\atom{T}{n} \eand \forall y(\atom{T}{y} \eif n = y)$
+		\item[] \myanswer{This sentence requires that Nick is a traitor, and that Nick alone is a traitor. Otherwise put, there is one and only one traitor, namely, Nick. Otherwise put: Nick is the traitor.}
+		\item $\forall y(\atom{T}{y} \eiff y = n)$
+		\item[] \myanswer{This sentence can be understood thus: Take anything you like; now, if you chose a traitor, you chose Nick, and if you chose Nick, you chose a traitor. So there is one and only one traitor, namely, Nick, as required.}
+	\end{ebullet}
 
 \end{practiceproblems}
