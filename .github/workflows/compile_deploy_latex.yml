@@ -4,50 +4,73 @@
 name: compile_deploy_latex
 on: [push]
 jobs:
-  compile-docs:
+  compile-doc-1:
     runs-on: ubuntu-latest
     env:
       # Edit here with the names of your latex file and directory (can use ".")
       DIR: .
       FILE: forallxbris
-      FILE-accessible: forallxbris-accessible
-      FILE-answers: forallxbris-withanswers
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Install TeXlive
         run: sudo apt-get install texlive-full latexmk cm-super
       - name: LaTeX compile
-        run: latexmk -pdf -bibtex forallxbris
+        working-directory: ${{ env.DIR }}
+        run: latexmk -pdf -bibtex ${{ env.FILE }}
       - name: move
-        run: mkdir -p github_artifacts && mv forallxbris.pdf ./github_artifacts/
+        run: mkdir -p github_artifacts && mv ${{ env.DIR }}/${{ env.FILE }}.pdf ./github_artifacts/
       - name: Upload pdf as artifact
         uses: actions/upload-artifact@v2
         with:
-          name: forallxbris.pdf
+          name: ${{ env.FILE }}.pdf
           path: ./github_artifacts
-      - name: LaTeX compile accessible
-        run: latexmk -pdf -bibtex forallxbris-accessible
+  compile-doc-2:
+    runs-on: ubuntu-latest
+    env:
+      # Edit here with the names of your latex file and directory (can use ".")
+      DIR: .
+      FILE: forallxbris-accessible
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install TeXlive
+        run: sudo apt-get install texlive-full latexmk cm-super
+      - name: LaTeX compile
+        working-directory: ${{ env.DIR }}
+        run: latexmk -pdf -bibtex ${{ env.FILE }}
       - name: move
-        run: mkdir -p github_artifacts && mv forallxbris-accessible.pdf ./github_artifacts/
+        run: mkdir -p github_artifacts && mv ${{ env.DIR }}/${{ env.FILE }}.pdf ./github_artifacts/
       - name: Upload pdf as artifact
         uses: actions/upload-artifact@v2
         with:
-          name: forallxbris-accessible.pdf
+          name: ${{ env.FILE }}.pdf
           path: ./github_artifacts
-      - name: LaTeX compile withanswers
-        run: latexmk -pdf -bibtex forallxbris-withanswers
+  compile-doc-withanswers:
+    runs-on: ubuntu-latest
+    env:
+      # Edit here with the names of your latex file and directory (can use ".")
+      DIR: .
+      FILE: forallxbris-withanswers
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install TeXlive
+        run: sudo apt-get install texlive-full latexmk cm-super
+      - name: LaTeX compile
+        working-directory: ${{ env.DIR }}
+        run: latexmk -pdf -bibtex ${{ env.FILE }}
       - name: move
-        run: mkdir -p github_artifacts && mv forallxbris-withanswers.pdf ./github_artifacts/
+        run: mkdir -p github_artifacts && mv ${{ env.DIR }}/${{ env.FILE }}.pdf ./github_artifacts/
       - name: Upload pdf as artifact
         uses: actions/upload-artifact@v2
         with:
-          name: forallxbris-withanswers.pdf
+          name: ${{ env.FILE }}.pdf
           path: ./github_artifacts
   deploy:
     # Edit here if compiling multiple papers
+    needs: [compile-doc-1,compile-doc-2,compile-doc-withanswers]
     runs-on: ubuntu-latest
-    needs: [compile-docs]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
