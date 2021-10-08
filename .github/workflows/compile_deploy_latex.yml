@@ -46,7 +46,6 @@ jobs:
           path: ./github_artifacts
   deploy:
     # Edit here if compiling multiple papers
-    needs: [compile-docs]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
