@@ -532,18 +532,17 @@ The rule \emph{Law of Excluded Middle} encodes this fact: it simply says that yo
 As always, $\metaX$ can be whatever you want, e.g.~$(A\eand(B\eif C))$. Then the rule tells us, e.g.~that you can write $(A\eand(B\eif C))\eor\enot(A\eand(B\eif C))$ on any line of the proof.
 
 
-To see the rule in action, consider:
-$$A\eif B,\enot A\eif B\;\therefore B$$
-We can give the following proof to show this is valid:
-\begin{pf}
-	\hypo{a}{A\eif B}
-	\hypo{b}{\enot A\eif B}
-	\have{lem}{A\eor\enot A}\LEM
-	\have{conc}{B}\orE{a,b,lem}
-\end{pf}
-The law of Excluded Middle is often used in combination with Disjunction Elimination.
-
-However, we will not yet introduce Disjunction Elimination. It will be introduced in \S\ref{s:orE}
+%To see the rule in action, consider:
+%$$A\eif B,\enot A\eif B\;\therefore B$$
+%We can give the following proof to show this is valid:
+%\begin{pf}
+%	\hypo{a}{A\eif B}
+%	\hypo{b}{\enot A\eif B}
+%	\have{lem}{A\eor\enot A}\LEM
+%	\have{conc}{B}\orE{a,b,lem}
+%\end{pf}
+The law of Excluded Middle is often used in combination with Disjunction Elimination. 
+However, we will not yet introduce Disjunction Elimination. It will be introduced in \S\ref{s:orE}. That's when we'll see the full power of the LEM rule. 
 
 
 %
