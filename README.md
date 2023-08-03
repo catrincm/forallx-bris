@@ -16,6 +16,10 @@ then altered by
 Catrin Campbell-Moore
 University of Bristol
 
+PDF can be viewed at
+- [forall x : Bristol](https://catrincm.github.io/forallx-bris/forallxbris.pdf)
+- [forall x : Bristol - accessible](https://catrincm.github.io/forallx-bris/forallxbris-accessible.pdf)
+- [forall x : Bristol - with answers](https://catrincm.github.io/forallx-bris/forallxbris-withanswers.pdf)
 
 [![Creative Commons License](https://i.creativecommons.org/l/by-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-sa/4.0/)
 
