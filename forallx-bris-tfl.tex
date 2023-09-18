@@ -2,10 +2,10 @@
 \part{Truth-functional logic}
 \label{ch.TFL}
 \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
-
+ 
 \chapter{First steps to symbolization}
+In this chapter we wish to commence our study of logical validity and logical consequence and, indeed, whenever we now talk about validity and arguments being valid we mean logical validity. In \S\ref{s:Valid} we already introduced the idea that logical validity is validity in virtue of (logical) form. Let us now take another look at this idea and how it can be captured in a formal language.
 
-\section{Validity in virtue of form}\label{s:ValidityInVirtueOfForm}
 Consider this argument:
 	\begin{earg}
 		\prem It is raining outside.
@@ -44,70 +44,28 @@ Be careful, though, not every argument of this form is sure to be invalid.
 It’s possible to have an argument of this form that’s valid – see if you can work out how!
 But most arguments of this form are invalid.
 
-
- Consider an argument like:
-	\begin{earg}
-		\prem Jenny is  happy or sad.
-		\prem Jenny is not happy.
-		\conc Jenny is sad.
-	\end{earg}
-Again, this is a valid argument. The structure here is something like:
+There a lot more valid argument forms. For example the 
+argument form
 	\begin{earg}
 		\prem A or B
 		\prem not-A
 		\conc B
 	\end{earg}
-A superb structure! Here is another example:
-	\begin{earg}
-		\prem It's not the case that Jim both studied hard and acted in lots of plays.
-		\prem Jim studied hard
-		\conc Jim did not act in lots of plays.
-	\end{earg}
-This valid argument has a structure which we might represent thus:
+as well as the form
 	\begin{earg}
 		\prem not-(A and B)
 		\prem A
 		\conc not-B
 	\end{earg}
-These examples illustrate an important idea, which we might describe as \emph{validity in virtue of form}. The validity of the arguments just considered has nothing very much to do with the meanings of English expressions like `Jenny is miserable', `Dipan is an avid reader of Tolstoy', or `Jim acted in lots of plays'. If it has to do with meanings at all, it is with the meanings of phrases like `and', `or', `not,' and `if\ldots, then\ldots'.
+lead to valid arguments independently of what expressions we substitute for `A' and `B'. These examples illustrate the important idea that the validity of the arguments just considered has nothing to do with the meanings of English expressions like `Jenny is miserable', `Dipan is an avid reader of Tolstoy', or any other sentence. If it has to do with meanings at all, it is with the meanings of phrases like `and', `or', `not,' and `if\ldots, then\ldots'.
 
 In Parts \ref{ch.TFL}--\ref{ch.NDTFL}, we are going to develop a formal language which allows us to symbolize many arguments in such a way as to show that they are valid in virtue of their form. That language will be \emph{truth-functional logic}, or TFL.
 
-It will have sentences like $$(A\eand (B\eif\enot C))$$
-
-
-
-
-
-
-\section{Validity for special reasons}
-There are plenty of arguments that are valid, but not for reasons relating to their form. Take an example:
-	\begin{earg}
-		\prem Juanita is a vixen
-		\conc Juanita is a fox
-	\end{earg}
-It is impossible for the premise to be true and the conclusion false. So the argument is valid. However, the validity is not related to the form of the argument. Here is an invalid argument with the same form:
-	\begin{earg}
-		\prem Juanita is a vixen
-		\conc Juanita is a cathedral
-	\end{earg}
-This might suggest that the validity of the first argument \emph{is} keyed to the meaning of the words `vixen' and `fox'. But, whether or not that is right, it is not simply the \emph{shape} of the argument that makes it valid. Equally, consider the argument:
-	\begin{earg}
-		\prem The sculpture is green all over.
-		\conc The sculpture is not red all over.
-	\end{earg}
-Again, it seems impossible for the premise to be true and the conclusion false, for nothing can be both green all over and red all over. So the argument is valid, but here is an invalid argument with the same form:
-	\begin{earg}
-		\prem The sculpture is green all over.
-		\conc The sculpture is not shiny all over.
-	\end{earg}
-The argument is invalid, since it is possible to be green all over and shiny all over. (One might paint their nails with an elegant shiny green varnish.) Plausibly, the validity of the first argument is keyed to the way that colours (or colour-words) interact, but, whether or not that is right, it is not simply the \emph{shape} of the argument that makes it valid.
-
-The important moral can be stated as follows. \emph{At best, TFL will help us to understand arguments that are valid due to their form.}
-
+It will have sentences like $$(A\eand (B\eif\enot C)),$$
+which we will read ``$A$ and if $B$, then it is not the case that $C$''.
 \section{Atomic sentences}
 
-We started isolating the form of an argument, in \S\ref{s:ValidityInVirtueOfForm}, by replacing  \emph{subsentences} of sentences with individual letters. Thus in the first example of this section, `it is raining outside' is a subsentence of `If it is raining outside, then Jenny is miserable', and we replaced this subsentence with `$A$'.
+We started isolating the form of an argument by replacing  \emph{subsentences} of sentences with individual letters. Thus in the first example of this section, `it is raining outside' is a subsentence of `If it is raining outside, then Jenny is miserable', and we replaced this subsentence with `$A$'.
 
 Our artificial language, TFL, pursues this idea absolutely ruthlessly. We start with some \emph{atomic sentences}. These will be the basic building blocks out of which more complex sentences are built. We will use uppercase Roman letters for atomic sentences of TFL (except for $X$, $Y$, and $Z$ which we reserve for metavariables). There are only twenty-three letters $A$--$W$, but there is no limit to the number of atomic sentences that we might want to consider. By adding subscripts to letters, we obtain new atomic sentences. So, here are five different atomic sentences of TFL:
 	$$A, P, P_1, P_2, A_{234}$$

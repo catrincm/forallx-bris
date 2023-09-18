@@ -270,7 +270,12 @@ There are many other kinds of sentences, for example:
 
 \end{description}
 
-Our focus is only on \emph{declarative sentences} --- those sentences which can be true or false --- for example `spiders have eight legs'. We typically drop the term `declarative' and simply call them sentences, but bear in mind that it is only these sorts of sentences that are relevant in this textbook.
+Arguments are formed of \emph{declarative sentences} --- those sentences which can be true or false --- for example `spiders have eight legs'. 
+
+\begin{highlighted}An \define{argument} consists of a collection of declarative sentences of which one is marked as the conclusion of the argument.\end{highlighted}
+
+
+We typically drop the term `declarative' and simply call them sentences, but bear in mind that it is only these sorts of sentences that are relevant in this textbook.
 
 You should not confuse the idea of a sentence that can be true or false with the difference between fact and opinion. Often, sentences in logic will express things that would count as facts--- such as `spiders have eight legs' or `Kierkegaard liked almonds.' They can also express things that you might think of as matters of opinion---such as, `Almonds are tasty.' In other words, a sentence is not disqualified from being part of an argument because we don't know if it is true or false, or because its truth or falsity is a matter of opinion. All that matters is whether it is the sort of thing that could be true or false. If it is, it can play the role of premise or conclusion.
 
@@ -441,7 +446,7 @@ What about the following argument:
 	\prem The butler didn't do it.
 	\conc The gardener did it.
 \end{earg}
-We don't have any context for what the sentences in this argument refer to. Perhaps you suspect that ``did it'' here means ``was the perpetrator'' of some unspecified crime. You might imagine that the argument occurs in a mystery novel or TV show, perhaps spoken by a detective working through the evidence. But even without having any of this information, you probably agree that the argument is a good one in the sense that whatever the premises refer to, if they are both true, the conclusion cannot but be true as well. If the first premise is true, i.e., it's true that ``the butler did it or the gardener did it,'' then at least one of them ``did it,'' whatever that means. And if the second premise is true, then the butler did not ``do it.'' That leaves only one option: ``the gardener did it'' must be true. Here, the conclusion follows from the premises. We call arguments that have this property \define{valid}.
+We don't have any context for what the sentences in this argument refer to. Perhaps you suspect that ``did it'' here means ``was the perpetrator'' of some unspecified crime. You might imagine that the argument occurs in a mystery novel or TV show, perhaps spoken by a detective working through the evidence. But even without having any of this information, you probably agree that the argument is a good one in the sense that whatever the premises refer to, if they are both true, the conclusion is guaranteed to be true as well. If the first premise is true, i.e., it's true that ``the butler did it or the gardener did it,'' then at least one of them ``did it,'' whatever that means. And if the second premise is true, then the butler did not ``do it.'' That leaves only one option: ``the gardener did it'' must be true. Here, the conclusion follows from the premises. We call arguments that have this property \define{valid}.
 
 By way of contrast, consider the following argument:
 \begin{earg}\label{argMaidDriver}
@@ -449,29 +454,16 @@ By way of contrast, consider the following argument:
 	\prem The maid didn't do it.
 	\conc The driver did it.
 \end{earg}
-We still have no idea what is being talked about here. But, again, you probably agree that this argument is different from the previous one in an important respect. If the premises are true, it is not guaranteed that the conclusion is also true. The premises of this argument do not rule out, by themselves, that someone other than the maid or the driver ``did it.'' So there is a case where both premises are true, and yet the driver didn't do it, i.e., the conclusion is not true. In this second argument, the conclusion does not follow from the premises. If, like in this argument, the conclusion does not follow from the premises, we say it is \define{invalid}.
+We still have no idea what is being talked about here. But, again, you probably agree that this argument is different from the previous one in an important respect. If the premises are true, it is not guaranteed that the conclusion is also true. The premises of this argument do not rule out, by themselves, that someone other than the maid or the driver ``did it.'' In this second argument, the conclusion does not follow from the premises. If, like in this argument, the conclusion does not follow from the premises, we say it is \define{invalid}.
 
 
-\section{Validity}
-How did we determine that the second argument is invalid? We pointed to a case in which the premises are true and in which the conclusion is not.  This was the scenario where neither the driver nor the maid did it, but some third person did.  Let's call such a case a \define{counterexample} to the argument. If there is a counterexample to an argument, the conclusion cannot be a consequence of the premises. For the conclusion to be a consequence of the premises, the truth of the premises must guarantee the truth of the conclusion. If there is a counterexample, the truth of the premises does not guarantee the truth of the conclusion.
+\section{Logical Validity}\todo{consistency and logical truth}
+We said the first argument was valid because the truth of its premises guarantees the truth of the conclusion. In fact in this argument the premises guarantee the truth independently of whether we are talking about butlers, crocodiles, murderers or cake thieves. It is irrelevant for the validity of the argument what the premises and the conclusion are about. The argument is valid on all interpretations on which the  premises of the argument are true. To put it in less abstract terms an argument is valid if and only if no \define{counterexample} to the argument can be produced. In fact, such arguments are called \define{logically valid}.
 
-As logicians, we want to be able to determine when the conclusion of an argument follows from the premises. And the conclusion is a consequence of the premises if there is no counterexample---no case where the premises are all true but the conclusion is not.
-This motivates a definition:
-
-	\factoidbox{
-		A sentence \metaY is a \define{consequence} of sentences $\metaX_1$, \dots, $\metaX_n$ if and only if there is no case where $\metaX_1$, \dots, $\metaX_n$ are all true and \metaY is not true. (We then also say that \metaY \define{follows from} $\metaX_1$, \dots, $\metaX_n$ or that $\metaX_1$, \dots, $\metaX_n$ \define{entail}~\metaY.)
+\factoidbox{
+		An argument is \define{logically valid} if and only if there is no interpretation such that all the premises are true and the conclusion false. Otherwise the argument is \define{logically invalid}. 
 	}
-
-We said that arguments where the conclusion is a consequence of the premises are called valid, and those where the conclusion isn't a consequence of the premises are invalid. That is:
-
-	\factoidbox{
-		An argument is \define{valid} if and only if there is no case where all the premises are true and the conclusion false.
-	}
-
-	\factoidbox{
-		An argument is \define{invalid} if and only if it is not valid. That is, there is some case where all the premises are true and the conclusion is false.
-	}
-
+	
 \newglossaryentry{valid}
 {
 name=valid,
@@ -484,84 +476,61 @@ name=invalid,
 description={A property of arguments that holds when the conclusion is not a consequence of the premises; the opposite of \gls{valid}}
 }
 
-\section{Cases and types of validity}
-The ``definitions'' from the previous section are incomplete: it does not tell us what a ``case'' is or what it means to be ``true in a case.''  So far we've only seen an example: a hypothetical scenario involving three people. Of the three people in the scenario---a driver, a maid, and some third person---the driver and maid didn't do it, but the third person did. In this scenario, as described, the driver didn't do it, and so it is a case in which the sentence ``the driver did it'' is not true. The premises of our second argument are true, but the conclusion is not true: the scenario is a counterexample.
+Earlier we introduced the idea that the conclusion of an argument is meant to follow from the premises; that it is a consequence of the premises. This motivates the following definition:
 
-One thing that logicians do is to make the notion of ``case'' more precise, and investigate which arguments are valid when ``case'' is made precise in one way or another. If we take ``case'' to mean ``hypothetical scenario'' like the counterexample to the second argument, it's clear that the first argument counts as valid. If we imagine a scenario in which either the butler or the gardener did it, and also the butler didn't do it, we are automatically imagining a scenario in which the gardener did it. So any hypothetical scenario in which the premises of our first argument are true automatically makes the conclusion of our first argument true. This makes the first argument valid.
+\factoidbox{
+		A sentence \metaY is a \define{logical consequence} of sentences $\metaX_1$, \dots, $\metaX_n$ if and only if there is no interpretation such that $\metaX_1$, \dots, $\metaX_n$ are all true and \metaY is not true. (We then also say that \metaY \define{logically follows from} $\metaX_1$, \dots, $\metaX_n$.)
+	}% or that $\metaX_1$, \dots, $\metaX_n$ \define{entail}~\metaY
+	
+Another way of saying that  \metaY is a logical consequence of sentences $\metaX_1$, \dots, $\metaX_n$ is to say that the argument with premises $\metaX_1$, \dots, $\metaX_n$ and conclusion \metaY is logically valid.
 
-Making ``case'' more specific by interpreting it as ``hypothetical scenario'' is an advance. But it is not the end of the story.  The first problem is that we don't know what to count as a hypothetical scenario. Are they limited by the laws of physics? By what is conceivable, in a very general sense?  What answers we give to these questions determine which arguments we count as valid.
+Logically valid arguments are arguments for which there is no interpretation such that all premises are but the conclusion is not. It is irrelevant whether such an interpretation is ``reasonable'': no matter how unreasonable an interpretation is that can be used to give a counterexample to an argument, if there exists such an interpretation the argument will not be logically valid.
 
-Suppose the answer to the first question is ``yes.'' Consider the following argument:
-	\begin{earg}
-		\prem The spaceship \emph{Rocinante} took six hours to reach Jupiter from Tycho space station.
-		\conc The distance between Tycho space station and Jupiter is less than 14~billion kilometers.
-	\end{earg}
-A counterexample to this argument would be a scenario in which the \emph{Rocinante} makes a trip of over 14 billion kilometers in 6 hours, exceeding the speed of light. Since such a scenario is incompatible with the laws of physics, there is no such scenario if hypothetical scenarios have to conform to the laws of physics.  If hypothetical scenarios are not limited by the laws of physics, however, there is a counterexample: a scenario where the \emph{Rocinante} travels faster than the speed of light.
-
-Suppose the answer to the second question is ``yes,'' and consider another argument:
-	\begin{earg}
-		\prem Priya is an ophthalmologist.
-		\conc Priya is an eye doctor.
-	\end{earg}
-If we're allowing only conceivable scenarios, this is also a valid argument. If you imagine Priya being an ophthalmologist, you thereby imagine Priya being an eye doctor. That's just what ``ophthalmologist'' and ``eye doctor'' mean.  A scenario where Priya is an ophthalmologist but not an eye doctor is ruled out by the conceptual connection between these words.
-
-When we consider cases of various kinds in order to evaluate the validity of an argument, we will make a few assumptions. The first assumption is that every case makes every sentence true or false---at least, every sentence in the argument under consideration.
-So imagined scenarios have to specify all relevant facts.
-Any imagined scenario which leaves it undetermined if a sentence in our argument is true will not be considered as a potential counterexample.
-%For instance, a scenario where Priya is a dentist but not an ophthalmologist will count as a case to be considered in the first few arguments in this section, but not as a case to be considered in the last two: it doesn't tell us if Mei is a mathematician, a botanist, or an acrobat.
-%If a case doesn't make a sentence true, we say it makes it \define{false}. We'll thus assume that cases make sentences true or false but never both.\footnote{Even if these assumptions seem common-sensical to you, they are controversial among philosophers of logic. First of all, there are logicians who want to consider cases where sentences are neither true nor false, but have some kind of intermediate level of truth. More controversially, some philosophers think we should allow for the possibility of sentences to be both true and false at the same time. There are systems of logic in which sentences can be neither true nor false, or both, but we will not discuss them in this book.}
-
-Depending on what kinds of cases we consider as potential counterexamples, then, we arrive at different notions of consequence and validity. We might call an argument \define{nomologically valid} if there are no counterexamples that don't violate the laws of nature, and an argument \define{conceptually valid} if there are no counterexamples that don't violate conceptual connections between words.
-For both of these notions of validity, aspects of the world (e.g., what the laws of nature are) and aspects of the meaning of the sentences in the argument (e.g., that ``ophthalmologist'' just means a kind of eye doctor) figure into whether an argument is valid.
-
-%\section{Formal validity}
-
-One distinguishing feature of \emph{logical} consequence, however, is that it should not depend on the content of the premises and conclusion, but only on their logical form. In other words, as logicians we want to develop a theory that can make finer-grained distinctions still. For instance, both
-\begin{earg}
-	\prem Either Priya is an ophthalmologist or a dentist.
-	\prem Priya isn't a dentist.
-	\conc Priya is an eye doctor.
-\end{earg}
-and
+Is there a straightforward way of telling whether an argument is logical valid? Is there some feature that sets apart all logically valid arguments from other (possibly convincing) arguments? We have already seen that logical validity should not depend on the content of the premises and conclusion. Rather it should only depend on their (logical) form. For instance, consider the logically valid argument 
 \begin{earg}
 	\prem Either Priya is an ophthalmologist or a dentist.
 	\prem Priya isn't a dentist.
 	\conc Priya is an ophthalmologist.
 \end{earg}
-are valid arguments. But while the validity of the first depends on the content (i.e., the meaning of ``ophthalmologist'' and ``eye doctor''), the second does not. The second argument is \define{formally valid}. We can describe the ``form'' of this argument as a pattern, something like this:
+We can describe the ``form'' of this argument as the following pattern:
 \begin{earg}
 	\prem Either $a$ is an $F$ or a $G$.
 	\prem $a$ isn't an $F$.
 	\conc $a$ is a $G$.
 \end{earg}
-Here, $a$, $F$, and $G$ are placeholders for appropriate expressions that, when substituted for $a$, $F$, and $G$, turn the pattern into an argument consisting of sentences. For instance,
+Here, $a$, $F$, and $G$ are placeholders for appropriate expressions that, when substituted for $a$, $F$, and $G$, turn the pattern into an argument consisting of sentences (at a first approximation this is also one way of understanding the ``interpretation'' talk). For instance,
 \begin{earg}
 	\prem Either Mei is a mathematician or a botanist.
 	\prem Mei isn't a botanist.
 	\conc Mei is a mathematician.
 \end{earg}
-is an argument of the same form, but the first argument above is not: we would have to replace $F$ by different expressions (once by ``ophthalmologist'' and once by ``eye doctor'') to obtain it from the pattern.
+is an argument of the same form and it is also logically valid. However, the following argument is not of the same form: 
+\begin{earg}
+	\prem Either Priya is an ophthalmologist or a dentist.
+	\prem Priya isn't a dentist.
+	\conc Priya is an eye doctor.
+\end{earg}
+we would have to replace $F$ by different expressions (once by ``ophthalmologist'' and once by ``eye doctor'') to obtain it from the pattern. This argument is not logically valid. To see that the conclusion follows from the premises we need the additional information that an ophthalmologist is indeed an eye doctor, that is, we need information that ``ophthalmologist'' and ``eye doctor'' mean the same thing.
 
-Moreover, the first argument is not formally valid. \emph{Its} form is this:
+To see more clearly that the latter argument cannot be deemed valid solely on the basis of its logical form let's consider \emph{its} form:
 \begin{earg}
 	\prem Either $a$ is an $F$ or a $G$.
 	\prem $a$ isn't an $F$.
 	\conc $a$ is a $H$.
 \end{earg}
-In this pattern we can replace $F$ by ``ophthalmologist'' and $H$ by ``eye doctor'' to obtain the original argument.  But here is another argument of the same form:
+In this pattern we can replace $F$ by ``ophthalmologist'' and $H$ by ``eye doctor'' to obtain the original argument.  But here is another argument of the same form which can be obtained by replacing $F$ by ``is a mathematician'', $G$ by ``is a botanist'', and. $H$ by ``is an acrobat'':
 \begin{earg}
 	\prem Either Mei is a mathematician or a botanist.
 	\prem Mei isn't a botanist.
 	\conc Mei is an acrobat.
 \end{earg}
-This argument is clearly not valid, since we can imagine a mathematician named Mei who is not an acrobat.
+This argument is clearly not logically valid. The conclusion does not follow from the premises of the argument.
 
-Our strategy as logicians will be to come up with a notion of ``case'' on which an argument turns out to be valid if it is formally valid. Clearly such a notion of ``case'' will have to violate not just some laws of nature but some laws of English. Since the first argument is invalid in this sense, we must allow as counterexample a case where Priya is an ophthalmologist but not an eye doctor.  That case is not a conceivable situation: it is ruled out by the meanings of ``ophthalmologist'' and ``eye doctor.''
-
+In logically valid arguments the conclusion follows from the premises of the argument solely in virtue of its logical form, that is, the logical structure of the premises and the conclusion. This feature is an aspect of the so-called \define{formality} of logic. Much of the present logic course will be devoted to studying and determining valid argument forms and structures, and to make precise the idea of \emph{interpretation} we used in discussing the validity of arguments.
 
 \section{Sound arguments}
 
-Before we go on and execute this strategy, a few clarifications. Arguments in our sense, as conclusions which (supposedly) follow from premises, are of course used all the time in everyday, philosophical and scientific discourse. When they are, arguments are given to support or even prove their conclusions. Now, if an argument is valid, it will support its conclusion, but \emph{only if} its premises are all true. Validity rules out the possibility that the premises are true and the conclusion is not true at the same time. It does not, by itself, rule out the possibility that the conclusion is not true, period.  In other words, it is perfectly possibly for a valid argument to have a conclusion that isn't true!
+Arguments in our sense, as conclusions which (supposedly) follow from premises, are of course used all the time in everyday reasoning, but also philosophical and scientific discourse. When they are, arguments are given to support or even prove their conclusions. Now, if an argument is logically valid, it will support its conclusion, but \emph{only if} its premises are all true. Logical validity rules out that the premises are true and the conclusion is not true. It does not, by itself, rule out that the conclusion is not true, period.  In other words, a logically valid argument may have a conclusion that is not true!
 
 Consider this example:
 	\begin{earg}
@@ -569,145 +538,64 @@ Consider this example:
 		\prem Oranges are not fruit.
 		\conc Oranges are musical instruments.
 	\end{earg}
-The conclusion of this argument is ridiculous. Nevertheless, it follows from the premises. \emph{If} both premises are true, \emph{then} the conclusion just has to be true. So the argument is valid.
+The conclusion of this argument is ridiculous. Nevertheless, it logically follows from the premises due to the logical form of the argument. For what the argument is concerned, it is not relevant whether the oranges are musical instruments (of course, they are not!). What is relevant is that if according to a (weird) interpretation Oranges are either fruit or musical instruments, but not fruit, then oranges are musical instruments according to that interpretation: \emph{If} both premises are true, \emph{then} the conclusion just has to be true independently of the content of the premises and the conclusion. The argument is logically valid.
 
-Conversely, having true premises and a true conclusion is not enough to make an argument valid. Consider this example:
+Conversely, having true premises and a true conclusion is not enough to make an argument logically valid. Consider this example:
 	\begin{earg}
 		\prem London is in England.
 		\prem Beijing is in China.
 		\conc Paris is in France.
 	\end{earg}
-The premises and conclusion of this argument are, as a matter of fact, all true, but the argument is invalid. If Paris were to declare independence from the rest of France, then the conclusion would no longer be true, even though both of the premises would remain true. Thus, there is a case where the premises of this argument are true without the conclusion being true. So the argument is invalid.
+The premises and conclusion of this argument are, as a matter of fact, all true, but the argument is invalid. The logical form of premises and conclusion do not guarantee that the conclusion is true whenever the premises are true: on an interpretation on which Paris is not in France, perhaps because it declared independence from the rest of France,  the conclusion is not true, even though both of the premises would remain true. So the argument is invalid. 
 
-The important thing to remember is that validity is not about the actual truth or falsity of the sentences in the argument. It is about whether it is \emph{possible} for all the premises to be true and the conclusion to be not true at the same time (in some hypothetical case). What is in fact the case has no special role to play; and what the facts are does not determine whether an argument is valid or not.\footnote{Well, there is one case where it does: if the premises are in fact true and the conclusion is in fact not true, then we live in a counterexample; so the argument is invalid.} Nothing about the way things are can by itself determine if an argument is valid. It is often said that logic doesn't care about feelings. Actually, it doesn't care about facts, either.
+The important thing to remember is that logical validity is not about the truth or falsity of the sentences in the argument. It is about whether conclusion follows from the premises of the argument in virtue of their logical form; about whether the conclusion is true whenever the premises are true, that is, whether for all interpretations on which all premises are true, the conclusion is true likewise. Nothing about the way things are---whether something is true or false---can by itself determine if an argument is logically valid. It is often said that logic doesn't care about feelings. Actually, it doesn't care about facts, either.
 
-When we use an argument to prove that its conclusion \emph{is true}, then, we need two things. First, we need the argument to be valid, i.e., we need the conclusion to follow from the premises. But we also need the premises to be true. We will say that an argument is \define{sound} if and only if it is both valid and all of its premises are true.
+When we use an argument to prove that its conclusion \emph{is true}, then, we need two things. First, we need the argument to be logically valid, i.e., we need the conclusion to logically follow from the premises. But we also need the premises to be true. We will say that an argument is \define{sound} if and only if it is both logically valid and all of its premises are true.
 
 \newglossaryentry{sound}
 {
 name=sound,
-description={A property of arguments that holds if the argument is valid and has all true premises}
+description={A property of arguments that holds if the argument is logically valid and has all true premises}
 }
 
-The flip side of this is that when you want to rebut an argument, you have two options: you can show that (one or more of) the premises are not true, or you can show that the argument is not valid.  Logic, however, will only help you with the latter!
+The flip side of this is that when you want to rebut an argument, you have two options: you can show that (one or more of) the premises are not true, or you can show that the argument is not logically valid.  Logic, however, will only help you with the latter!
 
-%\section{Inductive arguments}
-%
-%Many good arguments are invalid. Consider this one:
-%	\begin{earg}
-%		\prem Every winter so far, it has snowed in Calgary.
-%	\conc It will snow in Calgary this coming winter.
-%\end{earg}
-%This argument generalises from observations about many (past) cases to a conclusion about all (future) cases. Such arguments are called \define{inductive} arguments. Nevertheless, the argument is invalid. Even if it has snowed in Calgary every winter thus far, it remains \emph{possible} that Calgary will stay dry all through the coming winter. In fact, even if it will henceforth snow every January in Calgary, we could still \emph{imagine} a case in which this year is the first year it doesn't snow all winter. And that hypothetical scenario is a case where the premises of the argument are true but the conclusion is not, making the argument invalid.
-%
-%The point of all this is that inductive arguments---even good inductive arguments---are not (deductively) valid. They are not \emph{watertight}. Unlikely though it might be, it is \emph{possible} for their conclusion to be false, even when all of their premises are true. In this book, we will set aside (entirely) the question of what makes for a good inductive argument. Our interest is simply in sorting the (deductively) valid arguments from the invalid ones.
-%
-%So: we are interested in whether or not a conclusion \emph{follows from} some premises. Don't, though, say that the premises \emph{infer} the conclusion. Entailment is a relation between premises and conclusions; inference is something we do. So if you want to mention inference when the conclusion follows from the premises, you could say that \emph{one may infer} the conclusion from the premises.
-%
-%
-%
-%%
-%%
-%%\chapter{Valid arguments}
-%%\label{s:Valid}
-%%
-%%\section{Validity}
-%%
-%%An argument is just a series of sentences, called the premises, followed by a single sentence, called the conclusion.
-%%The aim of an argument is that the premises should \emph{support} the conclusion.
-%%
-%%There are different ways that premises can support a conclusion. In logic we are interested in the strongest possible such relation: that if the premises are true, the conclusion \emph{must} be true. That it is impossible that the premises are true and conclusion false. We call such an argument \emph{valid}:
-%%
-%%	\factoidbox{
-%%		An argument is \define{valid} if and only if it is impossible for all of the premises to be true and the conclusion false.
-%%	}
-%%
-%%\newglossaryentry{valid}
-%%{
-%%name=valid,
-%%description={A property of arguments where it is impossible for the premises to be true and the conclusion false}
-%%}
-%%
-%%\newglossaryentry{invalid}
-%%{
-%%name=invalid,
-%%description={A property of arguments that holds when it is possible for the premises to be true without the conclusion being true; the opposite of \gls{valid}}
-%%}
-%%
-%%For example, the following is invalid:
-%%	\begin{earg}
-%%		\prem Jenny is miserable.
-%%		\prem If it is raining outside, then Jenny is miserable.
-%%		\conc It is raining outside.
-%%	\end{earg}
-%%This is invalid because it is possible that Jenny is miserable for some other reason.
-%%
-%%However, the following is valid:
-%%\begin{earg}
-%%	\prem Professor Plum or Colonel Mustard are guilty.
-%%	\prem Professor Plum is not guilty.
-%%	\conc Colonel Mustard is guilty.
-%%\end{earg}
-%%It is impossible for the premises to be true and the conclusion false.
-%%
-%%Consider this example:
-%%	\begin{earg}
-%%		\prem Oranges are either fruits or musical instruments.
-%%		\prem Oranges are not fruits.
-%%		\conc Oranges are musical instruments.
-%%	\end{earg}
-%%The conclusion of this argument is ridiculous. Nevertheless, it follows from the premises. \emph{If} both premises were true, \emph{then} the conclusion just has to be true. So the argument is valid.
-%%
-%%This highlights that valid arguments do not need to have true premises or true conclusions. Conversely, having true premises and a true conclusion is not enough to make an argument valid. Consider this example:
-%%	\begin{earg}
-%%		\prem London is in England.
-%%		\prem Beijing is in China.
-%%		\conc Paris is in France.
-%%	\end{earg}
-%%The premises and conclusion of this argument are, as a matter of fact, all true, but the argument is invalid. If Paris were to declare independence from the rest of France, then the conclusion would be false, even though both of the premises would remain true. Thus, it is \emph{possible} for the premises of this argument to be true and the conclusion false. The argument is therefore invalid.
-%%
-%%The important thing to remember is that validity is not about the actual truth or falsity of the sentences in the argument. It is about whether it is \emph{possible} for all the premises to be true and the conclusion false.
-%%
-%%To determine whether or not the premises of an argument are true is often a very important matter. However, that is normally a task best left to experts in the field: as it might be, historians, scientists, or whomever. In our role as \emph{logicians}, we are more concerned with arguments \emph{in general}. So we are (usually) more concerned with whether the argument is valid or not than whether its conclusion is true. Nonetheless, we will say that an argument is \define{sound} if and only if it is both valid and all of its premises are true. A sound argument must have a true conclusion.
-%%
-%%\begin{center}
-%%
-%%  \begin{tikzpicture}
-%%
-%%        \node[draw,shape=ellipse] (premise) {Premise};
-%%        \node[draw,shape=ellipse] (conclusion) [below=2cm of premise] {Conclusion};
-%%        \draw[->] (premise)--(conclusion);
-%%
-%%        \node (arg) [below=1cm of premise] {};
-%%
-%%        \node (labelpremise) [right=1cm of premise] {true};
-%%        \node (labelarg) [below=1cm of labelpremise] {valid};
-%%
-%%        \draw[->,decorate,decoration=snake] (labelpremise)--(premise);
-%%        \draw[->,decorate,decoration=snake] (labelarg)--(arg);
-%%
-%%        				\node (bracetop) [above=.01cm of labelpremise.north east] {};
-%%        				\node (bracebottom) [below=.01cm of labelarg.south east] {};
-%%%
-%%        \draw [decorate,decoration={brace,amplitude=10pt}]
-%%        					(bracetop) -- (bracebottom) node [midway,align=center,xshift=1cm] {sound};
-%%    \end{tikzpicture}
-%%\end{center}
-%%
-%%
-%%\newglossaryentry{sound}
-%%{
-%%name=sound,
-%%description={A property of arguments that holds if the argument is valid and has all true premises}
-%%}
-%%
-%%
-%%
-%%So: we are interested in whether or not a conclusion \emph{follows from} some premises.
-%%Don't, though, say that the premises \emph{infer} the conclusion. Instead we say that the premises \define{entail} the conclusion.
-%%Entailment is a relation between premises and conclusions; inference is something we do.
-%%It would be correct to say that \emph{one may infer} the conclusion from the premises, but not simply that the premises infer the conclusion.
-%
+
+
+\section{Beyond Logical Validity}
+Most arguments we make and evaluate in everyday reasoning are not logically valid. We are often interested in whether the conclusion follows from the premises given certain implicit or explicit background assumptions. Sometimes we simply leave out certain obvious premises (more below), but sometimes we are, more generally, interested in other forms of validity than logical validity. For example, in the discussion above we found the argument with the conclusion ``Priya is an eye doctor'' not to be logically valid: the conclusion did not follow from the premises simply because of its logical form. However, in some sense the argument seemed a good one, but the conclusion can only be deemed to follow from the premises once we acknowledge that ``ophthalmologist'' is just a fancy word for an eye doctor. We can find interpretations on which all premises are true and the conclusion false, but such interpretations violate the conceptual/meaning connection between these words. Arguments for which there is no interpretation that respects all conceptual/meaning connection between the various words of our language are called \define{conceptually validity}. For example, the arguments
+
+\begin{earg}
+		\prem Priya is an ophthalmologist.
+		\conc Priya is an eye doctor.
+	\end{earg}
+	
+	\begin{earg}
+		\prem Jonas is a bachelor.
+		\conc Jonas is an unmarried man.
+	\end{earg}
+	
+	are both conceptually valid but not logically valid. All logically valid arguments are also conceptually valid, but not the other way around.
+	
+	There are further interesting categories of validity that can be distinguished from both logical and conceptual validity. Consider the following argument:
+	\begin{earg}
+		\prem The spaceship \emph{Rocinante} took six hours to reach Jupiter from Tycho space station.
+		\conc The distance between Tycho space station and Jupiter is less than 14~billion kilometers.
+	\end{earg}
+This argument is neither logically nor conceptually valid as the truth of the conclusion is not guaranteed by the truth of the premises in virtue of its logical form nor by specific conceptual or meaning connections between certain English words. However, an interpretation on which the premise is true, but the conclusion false violates the laws of physics: the interpretation would require \emph{Rocinante} to make a trip of over 14 billion kilometers in 6 hours, exceeding the speed of light. Indeed, if we consider only interpretations that respect the laws of nature, then the truth of the conclusion follows from the truth of the premise. Arguments of this kind, that is, arguments for which there is no interpretation that respects the laws of nature and such that all premises are true but the conclusion is false are called \define{nomologically valid}.
+
+We could list further categories of validity, but the point is that when we discuss whether an argument is valid or not we need to make sure that we agree on the category of validity we are interested in: in the natural sciences we might be interested in nomological validity. In logic we are interested in logical validity. 
+
+%When we consider cases of various kinds in order to evaluate the validity of an argument, we will make a few assumptions. The first assumption is that every case makes every sentence true or false---at least, every sentence in the argument under consideration.
+%So imagined scenarios have to specify all relevant facts.
+%Any imagined scenario which leaves it undetermined if a sentence in our argument is true will not be considered as a potential counterexample.
+%For instance, a scenario where Priya is a dentist but not an ophthalmologist will count as a case to be considered in the first few arguments in this section, but not as a case to be considered in the last two: it doesn't tell us if Mei is a mathematician, a botanist, or an acrobat.
+%If a case doesn't make a sentence true, we say it makes it \define{false}. We'll thus assume that cases make sentences true or false but never both.\footnote{Even if these assumptions seem common-sensical to you, they are controversial among philosophers of logic. First of all, there are logicians who want to consider cases where sentences are neither true nor false, but have some kind of intermediate level of truth. More controversially, some philosophers think we should allow for the possibility of sentences to be both true and false at the same time. There are systems of logic in which sentences can be neither true nor false, or both, but we will not discuss them in this book.}
+
+%Depending on what kinds of cases we consider as potential counterexamples, then, we arrive at different notions of consequence and validity. We might call an argument \define{nomologically valid} if there are no counterexamples that don't violate the laws of nature, and an argument \define{conceptually valid} if there are no counterexamples that don't violate conceptual connections between words.
+%For both of these notions of validity, aspects of the world (e.g., what the laws of nature are) and aspects of the meaning of the sentences in the argument (e.g., that ``ophthalmologist'' just means a kind of eye doctor) figure into whether an argument is valid.
+
+%\section{Formal validity}
 
 \section{Missing premises}
 
@@ -717,13 +605,9 @@ The flip side of this is that when you want to rebut an argument, you have two o
 %When someone is using an argument, they often leave premises out, usually when the premise is thought to be
 %obvious and so doesn't need to be stated explicitly.
 
-If someone you disagree with makes an invalid
-argument, you might be tempted just to dismiss it as
-obviously incorrect.
-But it’s more useful (and more charitable) to consider
-whether there are missing premises that could be filled
-in that make the argument better.
-Perhaps the author was assuming that this
+We already highlighted that most arguments we encounter in daily life are not logically valid. Sometimes arguments turn out to be, e.g., conceptually or nomologically valid, but more often the interlocutor has failed to make explicit an underlying assumption or premise. If the missing premise is explicitly added, the argument may turn out to be logically valid after all. Sometimes it is not obvious to tell what kind of implicit underlying assumption are assumed in the formulation of an argument. If someone you disagree with makes an invalid
+argument it’s often more useful (and more charitable) to consider
+whether there are missing premises rather than to simply dismiss the argument. Perhaps the author or interlocutor was assuming that an additional
 premise was so obvious that it didn’t need to be stated.
 
 For example an author might make the following argument:
@@ -731,7 +615,7 @@ For example an author might make the following argument:
 \prem I could not have acted otherwise.
 \conc I did not act of my own free will.
 \end{earg}
-This argument is invalid. But, it can be made valid by addition of the premise:
+This argument is invalid. But, it can be made logically valid by addition of the premise:
 \begin{earg}
 \prem If I could not have acted otherwise, I did not act of my own free will.
 \end{earg}
@@ -856,7 +740,7 @@ rebuttal or criticism
 
 
 \section{Ampliative Arguments}
-Sometimes there are no plausible missing premises you could add to someone's argument to make it valid.
+The type of arguments we have considered so far are called \define{deductive} arguments. In deductive arguments the truth of the premises is supposed to guarantee the truth of the conclusion. Not all good arguments are deductive and sometimes there are no plausible missing premises you could add to someone's argument to make it valid (be it logically valid or valid in some other sense).
 However, this doesn't necessarily mean that the author was wrong or mistaken.
 Deductively valid arguments with plausible premises are good arguments, but they aren't the only good arguments there are. This is just as well, since many arguments we give in our everyday lives are not deductively valid, even after filling in plausible missing premises. Here's an example:
 	\begin{earg}
@@ -895,12 +779,12 @@ London: John Murray)
 \problempart
 \begin{enumerate}
 \item What kind of things are valid or invalid?
-\item When is an argument said to be valid?
+\item When is an argument said to be logically valid?
 \item When is an argument said to be sound?
 \end{enumerate}
 
 \problempart
-Are the following valid? If it is invalid, describe a counterexample.
+Are the following logically valid? If it is invalid, describe a counterexample.
 \begin{enumerate}
 \item[x.]
 \begin{earg}
@@ -945,7 +829,7 @@ Are the following valid? If it is invalid, describe a counterexample.
 
 
 \problempart
-Which of the following arguments is valid? Which is invalid?
+Which of the following arguments is logically valid? Which is invalid?
 
 \begin{earg}
 \item Socrates is a man.
@@ -966,8 +850,8 @@ Which of the following arguments is valid? Which is invalid?
 \end{earg}
 
 \begin{earg}
-\item Abe Lincoln was either from France or from Luxemborg.
-\item Abe Lincoln was not from Luxemborg.
+\item Abe Lincoln was either from France or from Luxembourg.
+\item Abe Lincoln was not from Luxembourg.
 \item[$\therefore$] Abe Lincoln was from France. \hfill \myanswer{Valid}
 \end{earg}
 
@@ -990,11 +874,11 @@ Which of the following arguments is valid? Which is invalid?
 \label{pr.EnglishCombinations}
 Could there be:
 	\begin{earg}
-		\item A valid argument that has one false premise and one true premise? \hfill \myanswer{Yes. \\Example: the first argument, above.}
-		\item A valid argument that has only false premises? \hfill \myanswer{Yes.\\Example: Socrates is a frog, all frogs are excellent pianists, therefore Socrates is an excellent pianist.}
-		\item A valid argument with only false premises and a false conclusion? \hfill \myanswer{Yes. \\The same example will suffice.}
-		\item An invalid argument that can be made valid by the addition of a new premise? \hfill\myanswer{Yes.\\ Plenty of examples, but let me offer a more general observation. We can \emph{always} make an invalid argument valid, by adding a contradiction into the premises. For an argument is valid if and only if it is impossible for all the premises to be true and the conclusion false. If the premises are contradictory, then it is impossible for them all to be true (and the conclusion false).}
-		\item A valid argument that can be made invalid by the addition of a new premise? \hfill \myanswer{No.\\ An argument is valid if and only if it is impossible for all the premises to be true and the conclusion false. Adding another premise will only make it harder for the premises all to be true together.}
+		\item A logically valid argument that has one false premise and one true premise? \hfill \myanswer{Yes. \\Example: the first argument, above.}
+		\item A logically valid argument that has only false premises? \hfill \myanswer{Yes.\\Example: Socrates is a frog, all frogs are excellent pianists, therefore Socrates is an excellent pianist.}
+		\item A logically valid argument with only false premises and a false conclusion? \hfill \myanswer{Yes. \\The same example will suffice.}
+		\item An invalid argument that can be made logically valid by the addition of a new premise? \hfill\myanswer{Yes.\\ Plenty of examples, but let me offer a more general observation. We can \emph{always} make an invalid argument valid, by adding a contradiction into the premises. For an argument is valid if and only if it is impossible for all the premises to be true and the conclusion false. If the premises are contradictory, then it is impossible for them all to be true (and the conclusion false).}
+		\item A logically valid argument that can be made invalid by the addition of a new premise? \hfill \myanswer{No.\\ An argument is valid if and only if it is impossible for all the premises to be true and the conclusion false. Adding another premise will only make it harder for the premises all to be true together.}
 	\end{earg}
 In each case: if so, give an example; if not, explain why not.
 
@@ -1006,9 +890,9 @@ In each case: if so, give an example; if not, explain why not.
 \end{practiceproblems}
 
 
-\chapter{Other logical notions}\label{s:BasicNotions}
+%\chapter{Other logical notions}\label{s:BasicNotions}
 
-In \S\ref{s:Valid}, we introduced the ideas of consequence and of valid argument.  This is one of the most important ideas in logic. In this section, we will introduce are some similarly important ideas. They all rely, as did validity, on the idea that sentences are true (or not) in cases. For the rest of this section, we'll take cases in the sense of conceivable scenario, i.e., in the sense in which we used them to define conceptual validity. The points we made about different kinds of validity can be made about our new notions along similar lines: if we use a different idea of what counts as a ``case'' we will get different notions.  And as logicians we will, eventually, consider a more permissive definition of case than we do here.
+%In \S\ref{s:Valid}, we introduced the ideas of consequence and of valid argument.  This is one of the most important ideas in logic. In this section, we will introduce are some similarly important ideas. They all rely, as did validity, on the idea that sentences are true (or not) in cases. For the rest of this section, we'll take cases in the sense of conceivable scenario, i.e., in the sense in which we used them to define conceptual validity. The points we made about different kinds of validity can be made about our new notions along similar lines: if we use a different idea of what counts as a ``case'' we will get different notions.  And as logicians we will, eventually, consider a more permissive definition of case than we do here.
 
 %\section{Truth values}
 %As we said in \S\ref{s:Arguments}, arguments consist of premises and a conclusion. Note that many kinds of English sentence cannot be used to express premises or conclusions of arguments. For example:
@@ -1021,248 +905,56 @@ In \S\ref{s:Valid}, we introduced the ideas of consequence and of valid argument
 
 %The general point is that, the premises and conclusion of an argument must be capable of having a \define{truth value}. The two truth values that concern us are just True and False.
 
-\section{Joint possibility}
+%\section{Joint possibility}
 
-Consider these two sentences:
-	\begin{ebullet}
-		\item[B1.] Jane's only brother is shorter than her.
-		\item[B2.] Jane's only brother is taller than her.
-	\end{ebullet}
-Logic alone cannot tell us which, if either, of these sentences is true. Yet we can say that \emph{if} the first sentence (B1) is true, \emph{then} the second sentence (B2) must be false. Similarly, if B2 is true, then B1 must be false. There is no possible scenario where both sentences are true together. These sentences are incompatible with each other, they cannot all be true at the same time. This motivates the following definition:
-	\factoidbox{
-		Sentences are \define{jointly possible} if and only if there is a case where they are all true together.
-	}
-B1 and B2 are \emph{jointly impossible}, while, say, the following two sentences are jointly possible:
-	\begin{ebullet}
-		\item[B1.] Jane's only brother is shorter than her.
-		\item[B2.] Jane's only brother is younger than her.
-	\end{ebullet}
+%Consider these two sentences:
+	%\begin{ebullet}
+		%\item[B1.] Jane's only brother is shorter than her.
+		%\item[B2.] Jane's only brother is taller than her.
+	%\end{ebullet}
+%Logic alone cannot tell us which, if either, of these sentences is true. Yet we can say that \emph{if} the first sentence (B1) is true, \emph{then} the second sentence (B2) must be false. Similarly, if B2 is true, then B1 must be false. There is no possible scenario where both sentences are true together. These sentences are incompatible with each other, they cannot all be true at the same time. This motivates the following definition:
+%	\factoidbox{
+%		Sentences are \define{jointly possible} if and only if there is a case where they are all true together.
+%	}
+%B1 and B2 are \emph{jointly impossible}, while, say, the following two sentences are jointly possible:
+%	\begin{ebullet}
+%		\item[B1.] Jane's only brother is shorter than her.
+%		\item[B2.] Jane's only brother is younger than her.
+%	\end{ebullet}
 
-\newglossaryentry{possibility}
-{
-name=joint possibility,
-text={jointly possible},
-description={A property possessed by some sentences when they are all true in a single case}
-}
+%\newglossaryentry{possibility}
+%{
+%name=joint possibility,
+%text={jointly possible},
+%description={A property possessed by some sentences when they are all true in a single case}
+%}
 
-We can ask about the joint possibility of any number of sentences. For example, consider the following four sentences:
-	\begin{ebullet}
-		\item[G1.] \label{MartianGiraffes} There are at least four giraffes at the wild animal park.
-		\item[G2.] There are exactly seven gorillas at the wild animal park.
-		\item[G3.] There are not more than two martians at the wild animal park.
-		\item[G4.] Every giraffe at the wild animal park is a martian.
-	\end{ebullet}
-G1 and G4 together entail that there are at least four martian giraffes at the park. This conflicts with G3, which implies that there are no more than two martian giraffes there. So the sentences G1--G4 are jointly impossible. They cannot all be true together. (Note that the sentences G1, G3 and G4 are jointly impossible. But if sentences are already jointly impossible, adding an extra sentence to the mix cannot make them jointly possible!)
+%We can ask about the joint possibility of any number of sentences. For example, consider the following four sentences:
+%	\begin{ebullet}
+%		\item[G1.] \label{MartianGiraffes} There are at least four giraffes at the wild animal park.
+%		\item[G2.] There are exactly seven gorillas at the wild animal park.
+%		\item[G3.] There are not more than two martians at the wild animal park.
+%		\item[G4.] Every giraffe at the wild animal park is a martian.
+%	\end{ebullet}
+%G1 and G4 together entail that there are at least four martian giraffes at the park. This conflicts with G3, which implies that there are no more than two martian giraffes there. So the sentences G1--G4 are jointly impossible. They cannot all be true together. (Note that the sentences G1, G3 and G4 are jointly impossible. But if sentences are already jointly impossible, adding an extra sentence to the mix cannot make them jointly possible!)
 
-\section[Necessary truths and falsehoods]{Necessary truths, necessary falsehoods, and contingency}
+%\section[Necessary truths and falsehoods]{Necessary truths, necessary falsehoods, and contingency}
 
-In assessing arguments for validity, we care about what would be true \emph{if} the premises were true, but some sentences just \emph{must} be true. Consider these sentences:
-	\begin{earg}
-		\item[\ex{Acontingent}] It is raining.
-		\item[\ex{Atautology}] Either it is raining here, or it is not.
-		\item[\ex{Acontradiction}] It is both raining here and not raining here.
-	\end{earg}
-In order to know if sentence \ref{Acontingent} is true, you would need to look outside or check the weather channel. It might be true; it might be false. A sentence which is capable of being true and capable of being false (in different circumstances, of course) is called \define{contingent}.
+%In assessing arguments for validity, we care about what would be true \emph{if} the premises were true, but some sentences just \emph{must} be true. Consider these sentences:
+%	\begin{earg}
+%		\item[\ex{Acontingent}] It is raining.
+%		\item[\ex{Atautology}] Either it is raining here, or it is not.
+%		\item[\ex{Acontradiction}] It is both raining here and not raining here.
+%	\end{earg}
+%In order to know if sentence \ref{Acontingent} is true, you would need to look outside or check the weather channel. It might be true; it might be false. A sentence which is capable of being true and capable of being false (in different circumstances, of course) is called \define{contingent}.
 
-\newglossaryentry{contingent sentence}
-{
-name=contingent sentence,
-description={A sentence that is neither a \gls{necessary truth} nor a \gls{necessary falsehood}; a sentence that in some case is true and in some other case, false}
-}
+%\newglossaryentry{contingent sentence}
+%{
+%name=contingent sentence,
+%description={A sentence that is neither a \gls{necessary truth} nor a \gls{necessary falsehood}; a sentence that in some case is true and in some other case, false}
+%}
 
-Sentence \ref{Atautology} is different. You do not need to look outside to know that it is true. Regardless of what the weather is like, it is either raining or it is not. That is a \define{necessary truth}.
-
-\newglossaryentry{necessary truth}
-{
-name={necessary truth},
-description={A sentence that is true in every case}
-}
-
-Equally, you do not need to check the weather to determine whether or not sentence \ref{Acontradiction} is true. It must be false, simply as a matter of logic. It might be raining here and not raining across town; it might be raining now but stop raining even as you finish this sentence; but it is impossible for it to be both raining and not raining in the same place and at the same time. So, whatever the world is like, it is not both raining here and not raining here. It is a \define{necessary falsehood}.
-
-\newglossaryentry{necessary falsehood}
-{
-name={necessary falsehood},
-description={A sentence that is false in every case}
-}
-
-Something might \emph{always} be true and still be contingent. For instance, if there never were a time when the universe contained fewer than seven things, then the sentence `At least seven things exist' would always be true. Yet the sentence is contingent: the world could have been much, much smaller than it is, and then the sentence would have been false.
-
-\section{Necessary equivalence}
-
-We can also ask about the logical relations \emph{between} two sentences. For example:
-\begin{earg}
-\prem John went to the store after he washed the dishes.
-\prem John washed the dishes before he went to the store.
-\end{earg}
-These two sentences are both contingent, since John might not have gone to the store or washed dishes at all. Yet they must have the same truth-value. If either of the sentences is true, then they both are; if either of the sentences is false, then they both are. When two sentences have the same truth value in every case, we say that they are \define{necessarily equivalent}.
-
-\newglossaryentry{necessary equivalence}
-{
-name={necessary equivalence},
-text={necessarily equivalent},
-description={A property held by a pair of sentences that, in every case, are either both true or both false}
-}
+%Sentence \ref{Atautology} is different. You do not need to look outside to know that it is true. Regardless of what the weather is like, it is either raining or it is not. That is a \define{necessary truth}.
 
 
-\section*{Summary of logical notions}
-\begin{highlighted}
-\begin{itemize}
-\item An argument is \define{valid} if there is no case where the premises are all true and the conclusion is not; it is \define{invalid} otherwise.
-
-\item A \define{necessary truth} is a sentence that is true in every case.
-
-\item A \define{necessary falsehood} is a sentence that is false in every case.
-
-\item A \define{contingent sentence} is a sentence that is neither a necessary truth nor a necessary falsehood; a sentence that is true in some case and false in some other case.
-
-\item Two sentences are \define{necessarily equivalent} if, in every case, they are both true or both false.
-
-\item A collection of sentences is \define{jointly possible} if there is a case where they are all true together; it is \define{jointly impossible} otherwise.
-\end{itemize}
-\end{highlighted}
-
-\begin{practiceproblems}
-\problempart
-\label{pr.EnglishTautology2}
-For each of the following: Is it necessarily true, necessarily false, or contingent?
-\begin{earg}
-\item Caesar crossed the Rubicon.
-\hfill \myanswer{Contingent}
-\item Someone once crossed the Rubicon.
-\hfill \myanswer{Contingent}
-\item No one has ever crossed the Rubicon.
-\hfill \myanswer{Contingent}
-\item If Caesar crossed the Rubicon, then someone has.
-\hfill \myanswer{Necessarily true}
-\item Even though Caesar crossed the Rubicon, no one has ever crossed the Rubicon.
-\hfill \myanswer{Necessarily false}
-\item If anyone has ever crossed the Rubicon, it was Caesar.
-\hfill \myanswer{Contingent}
-\end{earg}
-
-\problempart
-For each of the following: Is it a necessary truth, a necessary falsehood, or contingent?
-\begin{earg}
-\item Elephants dissolve in water. \myanswer{\hfill Contingent}
-\item Wood is a light, durable substance useful for building things.\myanswer{\hfill Contingent}
-%\item If wood were a good building material, it would be useful for building things.
-\item I live in a three story building that is two stories tall.\myanswer{\hfill Necessarily false}
-%\item If gerbils were mammals they would nurse their young.
-\end{earg}
-
-\problempart Which of the following pairs of sentences are necessarily  equivalent?
-
-\begin{earg}
-\item Elephants dissolve in water.	\\
-	If you put an elephant in water, it will disintegrate.
-\item All mammals dissolve in water.\\
-	If you put an elephant in water, it will disintegrate.
-\item George Bush was the 43rd president. \\
-	 Barack Obama is the 44th president.
-\item Barack Obama is the 44th president. \\
-	  Barack Obama was president immediately after the 43rd president.
-\item Elephants dissolve in water. 	\\
-	All mammals dissolve in water.
-\end{earg}
-\problempart Which of the following pairs of sentences are necessarily equivalent?
-
-\begin{earg}
-\item  Thelonious Monk played piano.	\\
-	John Coltrane played tenor sax.
-\item  Thelonious Monk played gigs with John Coltrane.	\\
-	John Coltrane played gigs with Thelonious Monk.
-\item  All professional piano players have big hands.	\\
-	Piano player Bud Powell had big hands.
-\item  Bud Powell suffered from severe mental illness.	 \\
-	All piano players suffer from severe mental illness.
-\item John Coltrane was deeply religious.	 \\
-John Coltrane viewed music as an expression of spirituality.
-\end{earg}
-
-\noindent \problempart 
-Consider the following sentences: 
-\begin{enumerate}%[label=(\alph*)]
-\item[G1] \label{itm:at_least_four}There are at least four giraffes at the wild animal park.
-\item[G2] \label{itm:exactly_seven} There are exactly seven gorillas at the wild animal park.
-\item[G3] \label{itm:not_more_than_two} There are not more than two Martians at the wild animal park.
-\item[G4] \label{itm:martians} Every giraffe at the wild animal park is a Martian.
-\end{enumerate}
-
-Now consider each of the following collections of sentences. Which are jointly possible? Which are jointly impossible?
-\begin{earg}
-\item Sentences G2, G3, and G4
-\hfill \myanswer{Jointly possible}
-\item Sentences G1, G3, and G4
-\hfill \myanswer{Jointly impossible}
-\item Sentences G1, G2, and G4
-\hfill \myanswer{Jointly possible}
-\item Sentences G1, G2, and G3
-\hfill \myanswer{Jointly possible}
-\end{earg}
-
-\problempart Consider the following sentences.
-\begin{enumerate}%[label=(\alph*)]
-\item[M1] \label{itm:allmortal} All people are mortal.
-\item[M2] \label{itm:socperson} Socrates is a person.
-\item[M3] \label{itm:socnotdie} Socrates will never die.
-\item[M4] \label{itm:socmortal} Socrates is mortal.
-\end{enumerate}
-Which combinations of sentences are jointly possible? Mark each ``possible'' or ``impossible.''
-\begin{earg}
-\item Sentences M1, M2, and M3
-\item Sentences M2, M3, and M4
-\item Sentences M2 and M3
-\item Sentences M1 and M4
-\item Sentences M1, M2, M3, and M4
-\end{earg}
-
-\problempart
-\label{pr.EnglishCombinations2}
-Which of the following is possible? If it is possible, give an example. If it is not possible, explain why.
-\begin{earg}
-\item A valid argument that has one false premise and one true premise
-\item[] \myanswer{Yes: `All whales are mammals (\emph{true}).  All mammals
-  are plants (\emph{false}). So all whales are plants.' }
-\item A valid argument that has a false conclusion
-\item[] \myanswer{Yes. (See example from previous exercise.)}
-\item A valid argument, the conclusion of which is a necessary falsehood
-\item[] \myanswer{Yes: `$1+1=3$. So $1+2=4$.'}
-\item An invalid argument, the conclusion of which is a necessary truth
-\item[] \myanswer{No. If the conclusion is necessarily true, then there is no way to make it false, and hence no way to make it false whilst making all the premises true.} 
-\item A necessary truth that is contingent
-\item[] \myanswer{No. If a sentence is a necessary truth, it cannot
-  possibly be false, but a contingent sentence can be false.} 
-\item Two necessarily equivalent sentences, both of which are necessary truths
-\item[] \myanswer{Yes: `4 is even', `4 is divisible by 2'.} 
-\item Two necessarily equivalent sentences, one of which is a necessary truth and one of which is contingent
-\item[] \myanswer{No.  A necessary truth cannot possibly be false,
-  while a contingent sentence can be false.  So in any situation in
-  which the contingent sentence is false, it will have a different
-  truth value from the necessary truth. Thus they will not necessarily
-  have the same truth value, and so will not be equivalent.}
-\item Two necessarily equivalent sentences that together are jointly impossible
-\item[] \myanswer{Yes: `$1+1=4$' and `$1+1=3$'.} 
-\item A jointly possible collection of sentences that contains a necessary falsehood
-\item[] \myanswer{No. If a sentence is necessarily false, there is no way to make it true, let alone it along with all the other sentences.}
-\item A jointly impossible set of sentences that contains a necessary truth
-\item[] \myanswer{Yes: `$1+1=4$' and `$1+1=2$'.}
-\end{earg}
-
-
-\problempart
-Which of the following is possible? If it is possible, give an example. If it is not possible, explain why.
-
-\begin{earg}
-\item A valid argument, whose premises are all necessary truths, and whose conclusion is contingent
-\item A valid argument with true premises and a false conclusion
-\item A jointly possible collection of sentences that contains two sentences that are not necessarily equivalent
-\item A jointly possible collection of sentences, all of which are contingent
-\item A false necessary truth
-\item A valid argument with false premises
-\item A necessarily equivalent pair of sentences that are not jointly possible
-\item A necessary truth that is also a necessary falsehood
-\item A jointly possible collection of sentences that are all necessary falsehoods
-\end{earg}
-
-\end{practiceproblems}
+%\end{practiceproblems}
