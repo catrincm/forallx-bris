@@ -17,8 +17,8 @@ jobs:
       - name: Upload pdf as artifact
         uses: actions/upload-artifact@v3
         with:
-          name: forallxbris-johannes.pdf
-          path: ./github_artifacts
+          name: forallxbris.pdf
+          path: ./github_artifacts/johannes
   deploy:
     # Edit here if compiling multiple papers
     needs: [upload-doc-johannes]
