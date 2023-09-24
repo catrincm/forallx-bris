@@ -1,0 +1,1338 @@
+%!TEX root = forallxbris.tex
+\part{Truth-functional logic}
+\label{ch.TFL}
+\addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
+ 
+\chapter{First steps to symbolization}
+In this chapter we wish to commence our study of logical validity and logical consequence and, indeed, whenever we now talk about validity and arguments being valid we mean logical validity. In \S\ref{s:Valid} we already introduced the idea that logical validity is validity in virtue of (logical) form. Let us now take another look at this idea and how it can be captured in a formal language.
+
+Consider this argument:
+	\begin{earg}
+		\prem It is raining outside.
+		\prem If it is raining outside, then Jenny is miserable.
+		\conc Jenny is miserable.
+	\end{earg}
+and another argument:
+	\begin{earg}
+		\prem Jenny is an anarcho-syndicalist.
+		\prem If Jenny is an anarcho-syndicalist, then Dipan is an avid reader of Tolstoy.
+		\conc Dipan is an avid reader of Tolstoy.
+	\end{earg}
+Both arguments are valid, and there is a straightforward sense in which we can say that they share a common structure. We might express the structure thus:
+	\begin{earg}
+		\prem A
+		\prem If A, then B
+		\conc B
+	\end{earg}
+This looks like an excellent argument \emph{structure}. Indeed, surely any argument with this \emph{structure} will be valid.
+
+What about:
+	\begin{earg}
+		\prem Jenny is miserable.
+		\prem If it is raining outside, then Jenny is miserable.
+		\conc It is raining outside.
+	\end{earg}
+The form of this argument is:
+\begin{earg}
+\prem	$B$
+\prem	If $A$ then $B$
+\conc $A$
+\end{earg}
+Arguments of this form are generally invalid.
+
+Be careful, though, not every argument of this form is sure to be invalid.
+It’s possible to have an argument of this form that’s valid – see if you can work out how!
+But most arguments of this form are invalid.
+
+There a lot more valid argument forms. For example the 
+argument form
+	\begin{earg}
+		\prem A or B
+		\prem not-A
+		\conc B
+	\end{earg}
+as well as the form
+	\begin{earg}
+		\prem not-(A and B)
+		\prem A
+		\conc not-B
+	\end{earg}
+lead to valid arguments independently of what expressions we substitute for `A' and `B'. These examples illustrate the important idea that the validity of the arguments just considered has nothing to do with the meanings of English expressions like `Jenny is miserable', `Dipan is an avid reader of Tolstoy', or any other sentence. If it has to do with meanings at all, it is with the meanings of phrases like `and', `or', `not,' and `if\ldots, then\ldots'.
+
+In Parts \ref{ch.TFL}--\ref{ch.NDTFL}, we are going to develop a formal language which allows us to symbolize many arguments in such a way as to show that they are valid in virtue of their form. That language will be \emph{truth-functional logic}, or TFL. It will have sentences like $$(A\eand (B\eif\enot C)),$$
+which we will read ``$A$ and if $B$, then it is not the case that $C$''. 
+\section{Atomic sentences}
+
+We started isolating the form of an argument by replacing  \emph{subsentences} of sentences with individual letters. Thus in the first example of this section, `it is raining outside' is a subsentence of `If it is raining outside, then Jenny is miserable', and we replaced this subsentence with `$A$'.
+
+Our artificial language, TFL, pursues this idea absolutely ruthlessly. We start with some \emph{atomic sentences}. These will be the basic building blocks out of which more complex sentences are built. We will use uppercase Roman letters for atomic sentences of TFL (except for $X$, $Y$, and $Z$ which we reserve for metavariables). There are only twenty-three letters $A$--$W$, but there is no limit to the number of atomic sentences that we might want to consider. By adding subscripts to letters, we obtain new atomic sentences. So, here are five different atomic sentences of TFL:
+	$$A, P, P_1, P_2, A_{234}$$
+We will use atomic sentences to represent, or \emph{symbolize}, certain English sentences. To do this, we provide a \define{symbolization key}, such as the following:
+	\begin{ekey}
+		\item[A] It is raining outside
+		\item[C] Jenny is miserable
+	\end{ekey}
+In doing this, we are not fixing this symbolization \emph{once and for all}. We are just saying that, for the time being, we will think of the atomic sentence of TFL, $A$, as symbolizing the English sentence `It is raining outside', and the atomic sentence of TFL, $C$, as symbolizing the English sentence `Jenny is miserable'. Later, when we are dealing with different sentences or different arguments, we can provide a new symbolization key; as it might be:
+	\begin{ekey}
+		\item[A] Jenny is an anarcho-syndicalist
+		\item[C] Dipan is an avid reader of Tolstoy
+	\end{ekey}
+It is important to understand that whatever structure an English sentence might have is lost when it is symbolized by an atomic sentence of TFL. From the point of view of TFL, an atomic sentence is just a letter. It can be used to build more complex sentences, but it cannot be taken apart.
+
+\newglossaryentry{atomic sentence}
+{
+name=atomic sentence,
+description={A sentence used to represent a basic sentence; a single letter in TFL, or a predicate symbol followed by names in FOL}
+}
+
+\newglossaryentry{symbolization key}
+{
+name=symbolization key,
+description={A list that shows which English sentences are represented by which \glspl{atomic sentence} in TFL}
+}
+
+\chapter{Connectives}
+\label{s:TFLConnectives}
+
+In the previous chapter, we considered symbolizing fairly basic English sentences with atomic sentences of TFL. This leaves us wanting to deal with the English expressions `and', `or', `not', and so forth. These are \emph{connectives}---they can be used to form new sentences out of old ones. In TFL, we will make use of logical connectives to build complex sentences from atomic components. There are five logical connectives in TFL. This table summarises them, and they are explained throughout this section.
+
+\newglossaryentry{connective}
+{
+name=connective,
+description={A logical operator in TFL used to combine \glspl{atomic sentence} into larger sentences}
+}
+	\begin{table}[h]
+	\center
+	\begin{tabular}{l l l}
+
+	\textbf{symbol}&\textbf{what it is called}&\textbf{rough meaning}\\
+	\hline
+	\enot&negation&`It is not the case that$\ldots$'\\
+	\eand&conjunction&`Both$\ldots$\ and $\ldots$'\\
+	\eor&disjunction&`$\ldots$\ or $\ldots$'\\
+	\eif&conditional&`If $\ldots$\ then $\ldots$'\\
+	\eiff&biconditional&`$\ldots$ if and only if $\ldots$'\\
+
+	\end{tabular}
+	\end{table}
+
+These are not the only connectives of English of interest. Others are, e.g., `unless', `neither \dots{} nor \dots', and `because'. We will see that the first two can be expressed by the connectives we will discuss, while the last cannot. `Because', in contrast to the others, is not \emph{truth functional}. In \S\ref{??} we shall explain what this means precisely.
+
+
+\section{Negation}
+
+Consider how we might symbolize these sentences:
+	\begin{earg}
+	\item[\ex{not1}] Mary is in Barcelona.
+	\item[\ex{not2}] It is not the case that Mary is in Barcelona.
+	\item[\ex{not3}] Mary is not in Barcelona.
+	\end{earg}
+In order to symbolize sentence \ref{not1}, we will need an atomic sentence. We might offer this symbolization key:
+	\begin{ekey}
+		\item[B] Mary is in Barcelona.
+	\end{ekey}
+Since sentence \ref{not2} is obviously related to  sentence \ref{not1}, we will not want to symbolize it with a completely different sentence. Roughly, sentence \ref{not2} means something like `It is not the case that B'. In order to symbolize this, we need a symbol for negation. We will use `\enot'. Now we can symbolize sentence \ref{not2} with $\enot B$.
+
+Sentence \ref{not3} also contains the word `not', and it is obviously equivalent to sentence \ref{not2}. As such, we can also symbolize it with $\enot B$.
+\factoidbox{
+If a sentence can be paraphrased as `it is not the case that \metaX'\\ it can be symbolised as $\enot\metaX$.
+}
+It will help to offer a few more examples:
+	\begin{earg}
+		\item[\ex{not4}] The widget can be replaced.
+		\item[\ex{not5}] The widget is irreplaceable.
+		\item[\ex{not5b}] The widget is not irreplaceable.
+	\end{earg}
+Let us use the following representation key:
+	\begin{ekey}
+		\item[R] The widget is replaceable
+	\end{ekey}
+Sentence \ref{not4} can now be symbolized by $R$. Moving on to sentence \ref{not5}: saying the widget is irreplaceable means that it is not the case that the widget is replaceable. So even though sentence \ref{not5} does not contain the word `not', we will symbolize it as follows: $\enot R$.
+
+Sentence \ref{not5b} can be paraphrased as `It is not the case that the widget is irreplaceable.' Which can again be paraphrased as `It is not the case that it is not the case that the widget is replaceable'. So we might symbolize this English sentence with the TFL sentence $\enot\enot R$.
+
+But some care is needed when handling negations. Consider:
+	\begin{earg}
+		\item[\ex{not6}] Jane is happy.
+		\item[\ex{not7}] Jane is unhappy.
+	\end{earg}
+If we let the TFL-sentence $H$ symbolize  `Jane is happy', then we can symbolize sentence \ref{not6} as $H$. However, it would be a mistake to symbolize sentence \ref{not7} with $\enot{H}$. If Jane is unhappy, then she is not happy; but sentence \ref{not7} does not mean the same thing as `It is not the case that Jane is happy'. Jane might be neither happy nor unhappy; she might be in a state of blank indifference. In order to symbolize sentence \ref{not7}, then, we would need a new atomic sentence of TFL.
+\newglossaryentry{negation}
+{
+name=negation,
+description={The symbol \enot, used to represent words and phrases that function like the English word ``not''}
+}
+
+\section{Conjunction}
+\label{s:ConnectiveConjunction}
+
+Consider these sentences:
+	\begin{earg}
+		\item[\ex{and1}]Adam is athletic.
+		\item[\ex{and2}]Barbara is athletic.
+		\item[\ex{and3}]Adam is athletic, and Barbara is also athletic.
+	\end{earg}
+We will need separate atomic sentences of TFL to symbolize sentences \ref{and1} and \ref{and2}; perhaps
+	\begin{ekey}
+		\item[A] Adam is athletic.
+		\item[B] Barbara is athletic.
+	\end{ekey}
+Sentence \ref{and1} can now be symbolized as $A$, and sentence \ref{and2} can be symbolized as $B$. Sentence \ref{and3} roughly says `A and B'. We need another symbol, to deal with `and'. We will use `\eand'. Thus we will symbolize it as $(A\eand B)$. This connective is called \define{conjunction}. We also say that $A$ and $B$ are the two \define{conjuncts} of the conjunction $(A \eand B)$.
+
+	\factoidbox{
+%		A sentence can be symbolized as $(\metaX\eand\metaY)$ if it can be paraphrased in English as `Both\ldots, and\ldots', or as `\ldots, but \ldots', or as `although \ldots, \ldots'.
+		If a sentence can be paraphrased as `\metaX and \metaY' \\it can be symbolised as $\metaX\eand\metaY$.
+	}
+
+
+\newglossaryentry{conjunction}
+{
+name=conjunction,
+description={The symbol \eand, used to represent words and phrases that function like the English word ``and''; or a sentence formed using that symbol}
+}
+
+\newglossaryentry{conjunct}
+{
+name=conjunct,
+description={A sentence joined to another by a \gls{conjunction}}
+}
+
+
+Notice that we make no attempt to symbolize the word `also' in sentence \ref{and3}. Words like `both' and `also' function to draw our attention to the fact that two things are being conjoined. Maybe they affect the emphasis of a sentence, but we will not (and cannot) symbolize such things in TFL.
+
+Some more examples will bring out this point:
+	\begin{earg}
+		\item[\ex{and4}]Barbara is athletic and energetic.
+		\item[\ex{and5}]Barbara and Adam are both athletic.
+		\item[\ex{and6}]Although Barbara is energetic, she is not athletic.
+	\item[\ex{and7}]Adam is athletic, but Barbara is more athletic than him.
+	\end{earg}
+Sentence \ref{and4} is obviously a conjunction. The sentence says two things (about Barbara). In English, it is permissible to refer to Barbara only once. It \emph{might} be tempting to think that we need to symbolize sentence \ref{and4} with something along the lines of `$B$ and energetic'. This would be a mistake. Once we symbolize part of a sentence as $B$, any further structure is lost, as $B$ is an atomic sentence of TFL. Conversely, `energetic' is not an English sentence at all. What we are aiming for is something like `$B$ and Barbara is energetic'. So we need to add another sentence letter to the symbolization key. Let $E$ symbolize `Barbara is energetic'. Now the entire sentence can be symbolized as $(B\eand E)$.
+
+Sentence \ref{and5} says one thing about two different subjects. It says of both Barbara and Adam that they are athletic, even though in English we use the word `athletic' only once. The sentence can be paraphrased as `Barbara is athletic, and Adam is athletic'. We can symbolize this in TFL as $(B\eand A)$, using the same symbolization key that we have been using.
+
+Sentence \ref{and6} is slightly more complicated. The word `although' sets up a contrast between the first part of the sentence and the second part. Nevertheless, the sentence tells us both that Barbara is energetic and that she is not athletic. In order to make each of the conjuncts an atomic sentence, we need to replace `she' with `Barbara'. So we can paraphrase sentence \ref{and6} as, `\emph{Both} Barbara is energetic, \emph{and} Barbara is not athletic'. The second conjunct contains a negation, so we paraphrase further: `\emph{Both} Barbara is energetic \emph{and} \emph{it is not the case that} Barbara is athletic'. Now we can symbolize this with the TFL sentence $(E\eand\enot B)$. Note that we have lost all sorts of nuance in this symbolization. There is a distinct difference in tone between sentence \ref{and6} and `Both Barbara is energetic and it is not the case that Barbara is athletic'. TFL does not (and cannot) preserve these nuances.
+
+Sentence \ref{and7} raises similar issues. There is a contrastive structure, but this is not something that TFL can deal with. So we can paraphrase the sentence as `\emph{Both} Adam is athletic, \emph{and} Barbara is more athletic than Adam'. (Notice that we once again replace the pronoun `him' with `Adam'.) How should we deal with the second conjunct? We already have the sentence letter $A$, which is being used to symbolize `Adam is athletic', and the sentence $B$ which is being used to symbolize `Barbara is athletic'; but neither of these concerns their relative athleticity. So, to symbolize the entire sentence, we need a new sentence letter. Let the TFL sentence $R$ symbolize the English sentence `Barbara is more athletic than Adam'. Now we can symbolize sentence \ref{and7} by $(A \eand R)$.
+
+We can add these to our toolbox for symbolisation:
+	\factoidbox{
+		If a sentence can be paraphrased as \begin{itemize}
+		\item `\metaX and \metaY'
+		\item `\metaX but \metaY'
+		\item `Both \metaX and \metaY'
+		\item `Although \metaX, \metaY'
+		\end{itemize} it can be symbolised as $\metaX\eand\metaY$.
+	}
+
+
+
+\section{Disjunction}
+
+Consider these sentences:
+	\begin{earg}
+		\item[\ex{or1}] Fatima will play videogames, or she will watch movies.
+		\item[\ex{or2}] Fatima or Omar will play videogames.
+	\end{earg}
+For these sentences we can use this symbolization key:
+	\begin{ekey}
+		\item[F] Fatima will play videogames.
+		\item[O] Omar will play videogames.
+		\item[M] Fatima will watch movies.
+	\end{ekey}
+However, we will again need to introduce a new symbol. Sentence \ref{or1} is symbolized by $(F \eor M)$. The connective is called \define{disjunction}. We also say that $F$ and $M$ are the \define{disjuncts} of the disjunction $(F \eor M)$.
+
+\newglossaryentry{disjunction}
+{
+name=disjunction,
+description={The connective \eor, used to represent words and phrases that function like the English word ``or'' in its inclusive sense; or a sentence formed by using this connective}
+}
+
+\newglossaryentry{disjunct}
+{
+name=disjunct,
+description={A sentence joined to another by a \gls{disjunction}}
+}
+
+Sentence \ref{or2} is only slightly more complicated. There are two subjects, but the English sentence only gives the verb once. However, we can paraphrase sentence \ref{or2} as `Fatima will play videogames, or Omar will play videogames'. Now we can obviously symbolize it by $(F \eor O)$ again.
+	\factoidbox{
+If a sentence can be paraphrased as `\metaX or \metaY' \\it can be symbolised as $\metaX\eor\metaY$.
+	}
+\metaX and \metaY need to be the sorts of things that can be whole sentences. We cannot simply take $\metaX$ to be `Fatima', instead we first need to paraphrase it as in \ref{or1}
+
+Sometimes in English, the word `or' is used in a way that excludes the possibility that both disjuncts are true. This is called an \define{exclusive or}.  An \emph{exclusive or} is clearly intended when it says, on a restaurant menu, `Entrees come with either soup or salad': you may have soup; you may have salad; but, if you want \emph{both} soup \emph{and} salad, then you have to pay extra.
+
+At other times, the word `or' allows for the possibility that both disjuncts might be true. This is probably the case with sentence \ref{or2}, above. Fatima might play videogames alone, Omar might play videogames alone, or they might both play. Sentence \ref{or2} merely says that \emph{at least} one of them plays videogames. This is called an \define{inclusive or}. The TFL symbol `\eor' always symbolizes an \emph{inclusive or}.
+
+TFL can symbolise the exclusive or, it just doesn't do it with `\eor'. We will discuss this in \S\ref{S.ExclusiveOr}
+
+\section{Conditional}\todo{Say more about ``only if''! Students thought it was $\eiff$}
+Consider the sentence
+	\begin{earg}
+		\item[\ex{if1}] If Jean is in Paris, then she is in France.
+	\end{earg}
+Let's use the following symbolization key:
+	\begin{ekey}
+		\item[P] Jean is in Paris.
+		\item[F] Jean is in France
+	\end{ekey}
+Sentence \ref{if1} is roughly of this form: `if P, then F'. We will use the symbol `\eif' to symbolize this `if\ldots, then\ldots' structure. So we symbolize sentence \ref{if1} by $(P\eif F)$. 	The connective `$\eif$' is called \define{the conditional}. Here, $P$ is called the \define{antecedent} of the conditional $(P \eif F)$, and $F$ is called the \define{consequent}.
+	\factoidbox{
+	 If a sentence can be paraphrased as \\`If \metaX, then \metaY' it can be symbolised as $\metaX\eif\metaY$.
+	}
+
+
+
+
+\newglossaryentry{conditional}
+{
+name=conditional,
+description={The symbol \eif, used to represent words and phrases that function like the English phrase ``if \dots{} then \dots''; a sentence formed by using this symbol}
+}
+
+
+\noindent Now consider the sentences
+\begin{earg}
+		\item[\ex{if3}] If Jean is in Paris, she's in France.
+		\item[\ex{if4}] Jean is in France if she is in Paris.
+\end{earg}
+
+
+Sentence \ref{if3} and \ref{if4} are just rephrasings of \ref{if1}. So we will again symbolise them as $(P\eif F)$.
+
+Now consider
+\begin{earg}
+		\item[\ex{if2}] Jean is in France only if she is in Paris.
+\end{earg}
+
+\ref{if2} is also a conditional. In \ref{if1}--\ref{if4} we took as an antecedent the part of sentence that has the word `if' in it. It might then be tempting to do the same here and symbolize this as $(P\eif F)$. That would be a mistake. Your knowledge of geography tells you that sentence \ref{if1} is unproblematically true: there is no way for Jean to be in Paris that doesn't involve Jean being in France. But sentence \ref{if2} is not so straightforward: were  Jean in Dieppe, Lyons, or Toulouse, Jean would be in France without being in Paris, thereby rendering sentence \ref{if2} false. Since geography alone dictates the truth of sentence \ref{if1}, whereas travel plans (say) are needed to know the truth of sentence \ref{if2}, they must mean different things.
+In fact, sentence \ref{if2} can be paraphrased as `If Jean is in France, then Jean is in Paris'. So we can symbolize it by $(F \eif P)$: the other way around to \ref{if1}.
+	\factoidbox{
+	 If a sentence can be paraphrased as \begin{itemize}
+	 \item `If \metaX, then \metaY'
+	 \item `If \metaX, \metaY'
+	 \item `\metaY if \metaX'
+	 \item `\metaX only if \metaY'
+	 \end{itemize} it can be symbolised as $\metaX\eif\metaY$.
+	}
+
+\noindent At this point, a word of warning about the connective `\eif'  seems required: while the connectives like `\eand' and `\eor' arguable closely track our understanding of `\emph{and}' and `\emph{or}' in natural language, the situation is slightly more complicated with respect to `\eif' and `\emph{if\ldots, then\ldots}'. We will return to this in \S\S\ref{s:IndicativeSubjunctive} and \ref{s:ParadoxesOfMaterialConditional}.
+
+% The conditional is also closely related to necessary and sufficient conditions, which we introduced in \S\ref{s.Nec Sufficient Conditions}. \todo{not anymore!!! Should I talk about these somewhere???} Consider:
+%	\begin{earg}
+%		\item[\ex{ifnec1}] For Jean to be in Paris, it is necessary that Jean be in France.
+%		\item[\ex{ifnec2}] It is a necessary condition on Jean's being in Paris that she be in France.
+%		\item[\ex{ifsuf1}] For Jean to be in France, it is sufficient that Jean be in Paris.
+%		\item[\ex{ifsuf2}] It is a sufficient condition on Jean's being in France that she be in Paris.
+%	\end{earg}
+%If we think deeply about it, all four of these sentences mean the same as  `Necessarily, if Jean is in Paris, then Jean is in France'. So they can all involve $(P \eif F)$. We don't actually have the tools to symbolise these sentences themselves, we'd need something for `necessarily'. Indeed we won't cover that in this textbook, but there are more powerful logics called `modal logic', which would allow us to symbolise this as $\square (P\eif F)$. But that's something to leave for a future logic course.
+%
+
+
+\section{Biconditional}
+Consider these sentences:
+	\begin{earg}
+		\item[\ex{iff1}] Laika is a dog only if she is a mammal
+		\item[\ex{iff2}] Laika is a dog if she is a mammal
+		\item[\ex{iff3}] Laika is a dog if and only if she is a mammal
+	\end{earg}
+We will use the following symbolization key:
+	\begin{ekey}
+		\item[D] Laika is a dog
+		\item[M] Laika is a mammal
+	\end{ekey}
+Sentence \ref{iff1}, for reasons discussed above, can be symbolized by $D \eif M$.
+
+Sentence \ref{iff2} is importantly different. It can be paraphrased as, `If Laika is a mammal then Laika is a dog'. So it can be symbolized by $M \eif D$.
+
+Sentence \ref{iff3} says something stronger than either \ref{iff1} or \ref{iff2}. It can be paraphrased as `Laika is a dog if Laika is a mammal, and Laika is a dog only if Laika is a mammal'. This is just the conjunction of sentences \ref{iff1} and \ref{iff2}. So we can symbolize it as $((D \eif M) \eand (M \eif D))$. We call this a \define{biconditional}, because it entails the conditional in both directions.
+
+\newglossaryentry{biconditional}
+{
+name=biconditional,
+description={The symbol \eiff, used to represent words and phrases that function like the English phrase ``if and only if''; or a sentence formed using this connective.}
+}
+
+We could treat every biconditional this way. So, just as we do not need a new TFL symbol to deal with \emph{exclusive or}, we do not really need a new TFL symbol to deal with biconditionals. Because the biconditional occurs so often, however, we will use the symbol `\eiff' for it. We can then symbolize sentence \ref{iff3} with the TFL sentence $(D \eiff M)$.
+
+The expression `if and only if' occurs a lot especially in philosophy, mathematics, and logic. For brevity, we can abbreviate it with the snappier word `iff'. We will follow this practice. So `if' with only \emph{one} `f' is the English conditional. But `iff' with \emph{two} `f's is the English biconditional. Armed with this we can say:
+	\factoidbox{
+If a sentence can be paraphrased as `\metaX if and only if \metaY'\\ it can be symbolised as $\metaX\eiff\metaY$.
+	}
+A word of caution. Ordinary speakers of English often use `if \ldots, then\ldots' when they really mean to use something more like `\ldots if and only if \ldots'. Perhaps your parents told you, when you were a child: `if you don't eat your greens, you won't get any dessert'. Suppose you ate your greens, but that your parents refused to give you any dessert, on the grounds that they were only committed to the \emph{conditional} (roughly `if you get dessert, then you will have eaten your greens'), rather than the biconditional (roughly, `you get dessert iff you eat your greens'). Well, a tantrum would rightly ensue. So, be aware of this when interpreting people; but in your own writing, make sure you use the biconditional iff you mean to.
+
+\begin{practiceproblems}
+\solutions
+%\problempart Using the symbolization key given, symbolize each English sentence in TFL.\label{pr.monkeysuits}
+%	\begin{ekey}
+%		\item[M] Those creatures are men in suits.
+%		\item[C] Those creatures are chimpanzees.
+%		\item[G] Those creatures are gorillas.
+%	\end{ekey}
+%\begin{earg}
+%\item Those creatures are not men in suits.
+%\item Those creatures are men in suits, or they are not.
+%\item Those creatures are gorillas or chimpanzees.
+%\item Those creatures are neither gorillas nor chimpanzees.
+%\item If those creatures are chimpanzees, then they gorillas.
+%\item Those creatures are gorillas if they are men in suits.
+%\end{earg}
+
+\problempart Using the symbolization key given, symbolize each English sentence in TFL.
+\begin{ekey}
+\item[A] Mister Ace was murdered.
+\item[B] The butler did it.
+\item[C] The cook did it.
+\item[D] The Duchess is lying.
+\item[E] Mister Edge was murdered.
+\item[F] The murder weapon was a frying pan.
+\end{ekey}
+\begin{earg}
+\item Mister Ace and Mister Edge were murdered.\myanswer{\item[]$A\eand E$}
+\item The butler or the cook did it.\myanswer{\item[]$B\eor C$}
+\item The butler didn't do it.\myanswer{\item[]$\enot B$}
+\item If Mister Ace was murdered, then the cook did it.\myanswer{\item[]$A\eif C$}
+\item The cook did it if Mister Edge was murdered.\myanswer{\item[]$E\eif C$}
+\item Either the butler did it, or the Duchess is lying.\myanswer{\item[]$B\eor D$}
+\item The cook did it only if the Duchess is lying.\myanswer{\item[]$C\eif D$}
+\item If the murder weapon was a frying pan, then the culprit was the cook.\myanswer{\item[]$F\eif C$}
+\item If the murder weapon was not a frying pan, then the culprit was either the cook or the butler.\myanswer{\item[]$\enot F\eif (C\eor B)$}
+%\item Mister Ace was murdered if and only if Mister Edge was not murdered.
+%\item The Duchess is lying, unless it was Mister Edge who was murdered.
+%\item If Mister Ace was murdered, he was done in with a frying pan.
+%\item Since the cook did it, the butler did not.
+\item Of course the Duchess is lying!\myanswer{\item[]$D$}
+\end{earg}
+\solutions
+
+\problempart Using the symbolization key given, symbolize each English sentence in TFL.\label{pr.avacareer}
+	\begin{ekey}
+		\item[E_1] Ava is an electrician.
+		\item[E_2] Harrison is an electrician.
+		\item[F_1] Ava is a firefighter.
+		\item[F_2] Harrison is a firefighter.
+		\item[S_1] Ava is satisfied with her career.
+		\item[S_2] Harrison is satisfied with his career.
+	\end{ekey}
+\begin{earg}
+\item Ava and Harrison are both electricians. \myanswer{\item[]$E_1\eand E_2$}
+\item If Ava is a firefighter, then she is satisfied with her career.\myanswer{\item[]$F_1\eif S_1$}
+%\item Ava is a firefighter, unless she is an electrician.
+\item Harrison is an unsatisfied electrician.\myanswer{\item[]$E_2\eand\enot S_2$}
+%\item Neither Ava nor Harrison is an electrician.
+%\item Both Ava and Harrison are electricians, but neither of them find it satisfying.
+\item Harrison is satisfied only if he is a firefighter.\myanswer{\item[]$S_2\eif F_2$}
+%\item If Ava is not an electrician, then neither is Harrison, but if she is, then he is too.
+%\item Ava is satisfied with her career if and only if Harrison is not satisfied with his.
+%\item If Harrison is both an electrician and a firefighter, then he must be satisfied with his work.
+%\item It cannot be that Harrison is both an electrician and a firefighter.
+%\item Harrison and Ava are both firefighters if and only if neither of them is an electrician.
+\end{earg}
+
+
+
+\end{practiceproblems}
+
+\chapter{Sentences of TFL}\label{s:TFLSentences}
+\todo{This went threough a major rewrite. Check it!!!}
+
+We have seen connectives in TFL, but there is another part of the language of TFL: brackets. These provide TFL with its grammar.
+
+Sentences of TFL will be things like:
+
+$$A\eor (B\eand C)$$ $$\enot (A\eand B)$$
+
+There are two purposes of grammar.
+
+The first is to avoid nonsense.
+Just as in English we want to avoid
+\begin{center}
+The and dog brown or is.
+\end{center}
+in TFL we want to avoid
+$$A\eand\eor B\eif$$
+which would be nonsense.
+
+
+The second purpose is to avoid ambiguity.
+Just as we wish to avoid
+\begin{center}
+John's tired and Sue's tall or Rob's short
+\end{center}
+in English, in TFL we wish to avoid ambiguity.
+Brackets are sort of like punctuation in English, they help us know what goes with what.
+\begin{earg}
+\item[\ex{engamb}] John's tired and Sue's tall or Rob's short
+\end{earg}
+By adding commas this can either be read as:
+\begin{earg}
+\item[\ex{engamb1}] John's tired, and Sue's tall or Rob's short.
+\item[\ex{engamb2}] John's tired and Sue's tall, or Rob's short
+\end{earg}
+In TFL we follow mathematics in using brackets to do this.
+\begin{earg}
+\item[\ex{engamb}] John's tired and Sue's tall or Rob's short
+\end{earg}
+By adding commas this can either be read as:
+\begin{earg}
+\item[\ex{engamb1}] John's tired, and Sue's tall or Rob's short.
+\item[\ex{engamb2}] John's tired and Sue's tall, or Rob's short
+\end{earg}
+In mathematics,
+\begin{earg}
+\item[\ex{mathamb}] $9 + 3 \times 4$
+\end{earg}
+can either be read as:
+\begin{earg}
+\item[\ex{mathamb1}] $9 + (3 \times 4) \qquad(=9+12=21)$
+\item[\ex{mathamb2}] $(9+3) \times 4 \qquad(=12\times 4=48)$
+\end{earg}
+In TFL,
+\begin{earg}
+\item[\ex{mathamb}] $A\eand B\eor C$
+\end{earg}
+can either be read as:
+\begin{earg}
+\item[\ex{mathamb1}] $A\eand (B\eor C)$
+\item[\ex{mathamb2}] $(A\eand B)\eor C$
+\end{earg}
+In fact, we will say that $A\eand B\eor C$ is not a sentence of TFL at all. It is only expressions which have proper grammar which count as sentences.
+
+To make this precise, this chapter offers a formal definition of what it is to be a sentence in TFL.
+
+%The sentence `either apples are red, or berries are blue' is a sentence of English, and the sentence $(A\eor B)$ is a sentence of TFL. Although we can identify sentences of English when we encounter them, we do not have a formal definition of `sentence of English'. But in this chapter, we will offer a complete \emph{definition} of what counts as a sentence of TFL. This is one respect in which a formal language like TFL is more precise than a natural language like English.
+
+
+
+\section{Syntactic rules of TFL}\label{s.sentsTFL}
+We give rules for what counts as a sentence which will together give us a definition.
+
+We start with the rule:
+\begin{enumerate}
+\item[1.]
+Any uppercase Roman letters $A$--$W$, or with subscripts, e.g., $A_1, B_3, A_{100}, J_{375}$, are sentences of TFL.\\These are called atomic sentences.
+\end{enumerate}
+We only permit use of $A$--$W$ because $X$, $Y$, and $Z$ are reserved for metavariables.
+
+Our second rule says:
+\begin{enumerate}
+\item[2.]
+If $\metaX$ is a sentence of TFL, then so is $\enot \metaX$.
+\end{enumerate}
+By rule 1, we know that $A$ is a sentence. Rule 2 then allows us to conclude that $\enot A$ is also a sentence. We could then apply it again and conclude that $\enot\enot A$ is also a sentence.
+
+\define{Formation trees} help us keep track of this process. For the case of $\enot\enot A$ this would be:
+\begin{center}
+\begin{forest}
+	[$\mainconnective{\enot}\, \enot A$
+		[$\mainconnective{\enot}A$
+			[$A$]
+		]
+	]
+\end{forest}
+\end{center}
+
+Our third rule says:
+\begin{enumerate}
+\item[3.] If \metaX and \metaY are sentences, then so is $(\metaX\eand\metaY)$.
+\end{enumerate}
+By rule 1, $B_1$ and $D$ are both sentences. So rule 3 allows us to conclude that $(B_1\eand D)$ is a sentence. We might then apply rule 2 to conclude that $\enot(B_1\eand D)$ is also a sentence.
+\begin{center}
+\begin{forest}
+	[$\mainconnective{\enot}\,  (B_1 \eand D)$
+		[$(B_1\mainconnective{\eand} D)$
+			[$B_1$]
+			[$D$]
+		]
+	]
+\end{forest}
+\end{center}
+
+We then give similar rules for each of our other connectives: $\eor, \eif$ and $\eiff$.
+
+We summarise this in a definition:
+	\factoidbox{\label{TFLsentences}
+	\begin{enumerate}
+		\item Every atomic sentence is a sentence.
+		\item If \metaX is a sentence, then $\enot\metaX$ is a sentence.
+		\item If \metaX and \metaY are sentences, then $(\metaX\eand\metaY)$ is a sentence.
+		\item If \metaX and \metaY are sentences, then $(\metaX\eor\metaY)$ is a sentence.
+		\item If \metaX and \metaY are sentences, then $(\metaX\eif\metaY)$ is a sentence.
+		\item If \metaX and \metaY are sentences, then $(\metaX\eiff\metaY)$ is a sentence.
+		\item Nothing else is a sentence.
+	\end{enumerate}
+	}
+\newglossaryentry{sentence of TFL}
+{
+name=sentence of TFL,
+description={A string of symbols in TFL that can be built up according to the recursive rules given on p.~\pageref{TFLsentences}}
+}
+
+For example, consider $(A \eand (B \eor C))$ we can check this is a sentence by drawing the following formation tree:
+\label{S:formationtree}
+\begin{center}
+\begin{forest}
+	[$(A\mainconnective{\eand} (B\eor C))$
+		[$A$]
+		[$(B\mainconnective{\eor} C)$
+			[$B$]
+			[$C$]
+		]
+	]
+\end{forest}
+\end{center}
+Each of the steps here tracks one of the rules of what it is to be a sentence. So we can conclude that this is a sentence of TFL. This also helps us see how to read it.
+It has a different formation tree from $((A\eand B)\eor C)$:
+\begin{center}
+\begin{forest}
+	[$((A{\eand} B)\mainconnective{\eor} C))$
+		[$(A\mainconnective{\eand} B)$
+			[$A$]
+			[$B$]
+		]
+		[$C$]
+	]
+\end{forest}
+\end{center}
+$A\eand B\eor C$ is not a sentence of TFL. It cannot be broken up into smaller sentences by any of our rules. It needs brackets to be a well-formed sentence.
+The different formations will be important when we describe truth-tables for these sentences. $((A\eand B)\eor C)$ and $((A\eand B)\eor C)$ will differ in when they are true.
+
+
+
+Definitions like this are called \emph{recursive}. Recursive definitions begin with some specifiable base elements, and then present ways to generate indefinitely many more elements by compounding together previously established ones. To give you a better idea of what a recursive definition is, we can give a recursive definition of the idea of \emph{an ancestor of mine}. We specify a base clause.
+	\begin{ebullet}
+		\item My parents are ancestors of mine.
+	\end{ebullet}
+and then offer further clauses like:
+	\begin{ebullet}
+		\item If x is an ancestor of mine, then x's parents are ancestors of mine.
+		\item Nothing else is an ancestor of mine.
+	\end{ebullet}
+Using this definition, we can easily check to see whether someone is my ancestor: just check whether she is the parent of the parent of\ldots one of my parents. And the same is true for our recursive definition of sentences of TFL. Just as the recursive definition allows complex sentences to be built up from simpler parts, the definition allows us to decompose sentences into their simpler parts. Once we get down to atomic sentences, then we know we are ok.
+
+
+
+One more example: consider $\enot (P \eand \enot (\enot Q \eor P))$ we can check this is a sentence by drawing the following formation tree:
+\label{S:formationtree}
+\begin{center}
+\begin{forest}
+	[$\mainconnective{\enot}\,  (P \eand \enot (\enot Q \eor P))$
+		[$(P \,\mainconnective{\eand}\,  \enot (\enot Q \eor P))$
+			[$P$]
+			[$\mainconnective{\enot}\,   (\enot Q\eor P)$
+				[$\mainconnective{\enot}\,   Q$
+					[$Q$]
+				]
+				[$P$]
+			]
+		]
+	]
+\end{forest}
+\end{center}
+each of the steps here tracks one of the rules of what it is to be a sentence. So we can conclude that this is a sentence of TFL. This also helps us see how to read it.
+The will be important when we consider the circumstances under which a particular sentence would be true or false. The sentence $\enot Q$ is true if and only if the sentence $Q$ is false, and so on through the structure of the sentence, until we arrive at the atomic components. We will return to this point in Part~\ref{ch.TruthTables}.
+
+This displays clearly the recursive structure of the tree. The sentences further up the tree are formed by one of the formation rules from the sentences further down the tree. The main connective of each sentence is in red.
+
+
+%
+%Let's consider some examples.
+%
+%Suppose we want to know whether or not $\enot \enot \enot D$ is a sentence of TFL. Looking at the second clause of the definition, we know that $\enot \enot \enot D$ is a sentence \emph{if} $\enot \enot D$ is a sentence. So now we need to ask whether or not $\enot \enot D$ is a sentence. Again looking at the second clause of the definition, $\enot \enot D$ is a sentence \emph{if} $\enot D$ is. So, $\enot D$ is a sentence \emph{if} $D$ is a sentence. Now $D$ is an atomic sentence of TFL, so we know that $D$ is a sentence by the first clause of the definition. So for a compound sentence like $\enot \enot \enot D$, we must apply the definition repeatedly. Eventually we arrive at the atomic sentences from which the sentence is built up.
+%
+%Next, consider the example $\enot (P \eand \enot (\enot Q \eor R))$. Looking at the second clause of the definition, this is a sentence if $(P \eand \enot (\enot Q \eor R))$ is, and this is a sentence if \emph{both} $P$ \emph{and} $\enot (\enot Q \eor R)$ are sentences. The former is an atomic sentence, and the latter is a sentence if $(\enot Q \eor R)$ is a sentence. It is. Looking at the fourth clause of the definition, this is a sentence if both $\enot Q$ and $R$ are sentences, and both are!
+%
+
+
+When drawing these trees we have highlighted a particular connective on each of our nodes. We call that connective the \define{main connective} of the sentence.
+\factoidbox{The \define{main connective} of sentence is the last connective that was introduced in the construction of the sentence.}
+
+
+ In the case of $((\enot E \eor F) \eif \enot\enot G)$, the main connective is $\eif$. Here we can see that the whole sentence can be described in the form $(\metaX\eif\metaY)$ with both $\metaX$ and $\metaY$ being complete sentences (put $\metaX=(\enot E\eor F)$ and $\metaY=\enot\enot G$). That's enough to see that $\eif$ is the main operator.
+ In the case of $\enot\enot\enot D$, the main logical operator is the very first $\enot$ sign. This is because we can see the sentence as having the form $\enot\metaX$ with $\metaX$ being the complete sentence $\enot\enot D$. In the case of $(P \eand \enot (\enot Q \eor R))$, the main logical operator is $\eand$: it's an $(\metaX\eand\metaY)$ with $\metaX$ as $P$ and $\metaY$ as $\enot (\enot Q \eor R)$.
+
+\newglossaryentry{main logical operator}
+{
+	name=main connective,
+	description={The last connective that you add when you assemble a sentence using the recursive definition.}
+}
+
+\newglossaryentry{formation tree}
+{
+	name=formation tree,
+	description={A tree showing the structure of a sentence and its subsentences.}
+}
+
+
+
+We also say:
+\factoidbox{The \define{scope} of an instance of a connective is the subsentence for which it is the main connective.}
+\newglossaryentry{scope}
+{
+name=scope,
+description={The subsentence of which that instance of the connective is the main connective.}
+}
+For example, in:
+$$(P \eand (\enot (R \eand Q) \eiff P))$$
+The scope of the $\enot$  is $\enot (R\eand Q)$.
+
+To see this, we can draw the formation tree:
+
+\begin{center}
+	\begin{forest}
+[$(P \,\mainconnective{\eand}\,  (\enot (R \eand Q) \eiff P))$
+	[$P$]
+	[$(\enot (R \eand Q) \,\mainconnective{\eiff}\,  P))$
+		[$\mainconnective{\enot}\,   (R \eand Q)$
+			[$(R\,\mainconnective{\eand}\,   Q)$
+				[$R$]
+				[$Q$]
+			]
+		]
+		[$P$]
+	]
+]
+\end{forest}
+\end{center}
+$\enot (R\eand Q)$ is the subsentence in which $\enot$ is the main logical operator. We have worked that out by drawing the formation tree and finding the lowest sentence in which that connective instance appears.
+
+We might informally describe the scope as the part of the whole sentence that that connective cares about. For the purposes of the connective $\eand$ in $(A\eor (B\eand \enot C))$, the truth value of $A$ is irrelevant. It is only what is going on with $B$ and $\enot C$ that matters for it. The notion of scope will be very important when we look at First Order Logic.
+
+
+%which was constructed by conjoining $P$ with $ (\enot (R \eand B) \eiff Q)$. This last sentence was constructed by placing a biconditional between $\enot (R \eand B)$ and $Q$. The former of these sentences---a subsentence of our original sentence---is a sentence for which $\enot$ is the main logical operator. So the scope of the negation is just $\enot(R \eand B)$.
+%More generally:
+%	\factoidbox{The \define{scope} of an instance of a connective is the subsentence for which it is the main connective.}
+\newglossaryentry{scope}
+{
+name=scope,
+description={The subsentence of which that instance of the connective is the main connective.}
+}
+
+%\section{Formation Trees}
+%\label{FormationTrees}
+%When we will be using truth tables it will help to see the structure of a sentence more explicitly. We can do this by numbering the components of the sentences.
+%
+%Consider $$(P \eand (\enot (R \eand B) \eiff Q))$$
+%
+%We start by numbering the atomic sentence with 1:
+%
+%$$(\NumberConnective{P}{1} \eand (\enot (\NumberConnective{R}{1} \eand \NumberConnective{B}{1}) \eiff \NumberConnective{Q}{1}))$$
+%
+%These are sentences
+%
+
+%We look for the main connective and give it number 1:
+%
+%$$(P \NumberConnective{\eand}{1} (\enot (R \eand B) \eiff Q))$$
+%
+%Then we consider the two subsentences: $P$ and $(\enot (R \eand B) \eiff Q))$ and assign 2 to the main connectives of these. The main connective of $(\enot (R \eand B) \eiff Q))$ is $\enot$: we number that 2.
+%
+%$$(P \NumberConnective{\eand}{1} (\NumberConnective{\enot}{2} (R \eand B) \eiff Q))$$
+%
+%$P$ doesn't have a main connective. We will then finish by numbering the atomic sentence
+%%
+%%\synttree[$(P \eand (\enot (R \eand B) \eiff Q))$
+%%	[$P$]
+%%	[$(\enot (R \eand B) \eiff Q))$
+%%		[$(R \eand B)$
+%%			[$R$]
+%%			[$B$]
+%%		]
+%%		[$Q$]
+%%	]
+%%]
+
+
+
+
+
+\section{Bracketing conventions}
+\label{TFLconventions}
+
+
+Strictly speaking, $A\eand B$ is not a sentence of TFL. When we introduce a connective $\eand,\eor,\eif$ or $\eiff$, strictly speaking, we must include brackets. It is only $(A\eand B)$
+The reason for this rule is that we might use $(A\eand B)$ as a subsentence in a more complicated sentence. For example, we might want to negate $(A\eand B)$, obtaining $\enot(A\eand B)$. If we just had $A \eand B$ without the brackets and put a negation in front of it, we would have $\enot A \eand B$. It is most natural to read this as meaning the same thing as $(\enot A \eand B)$, but this may be very different from $\enot(A\eand B)$.
+
+When working with TFL, however, it will make our lives easier if we are sometimes a little less than strict. So, here are some convenient conventions.
+
+First,  we allow ourselves to omit the \emph{outermost} brackets of a sentence. Thus we allow ourselves to write $A\eand B$ instead of the sentence $(A\eand B)$. However, we must remember to put the brackets back in, when we want to embed the sentence into a more complicated sentence!
+
+Second, it can be a bit painful to stare at long sentences with many nested pairs of brackets. To make things a bit easier on the eyes, we will  allow ourselves to use square brackets, `[' and `]', instead of rounded ones. So there is no logical difference between $(P\eor Q)$ and $[P\eor Q]$, for example.
+
+Combining these two conventions, we can rewrite the unwieldy sentence
+$$(((H \eif I) \eor (I \eif H)) \eand (J \eor K))$$
+rather more clearly as follows:
+$$\bigl[(H \eif I) \eor (I \eif H)\bigr] \eand (J \eor K)$$
+The scope of each connective is now much easier to pick out.
+
+\begin{practiceproblems}
+
+\solutions
+\problempart
+\label{pr.wiffTFL}
+For each of the following: (a) Is it a sentence of TFL, strictly speaking? (b) Is it a sentence of TFL, allowing for our relaxed bracketing conventions?
+\begin{earg}
+\item $(A)$\hfill \myanswer{(a) no (b) no}
+\item $J_{374} \eor \enot J_{374}$\hfill \myanswer{(a) no (b) yes}
+\item $\enot \enot \enot \enot F$\hfill \myanswer{(a) yes (b) yes}
+\item $\enot \eand S$\hfill \myanswer{(a) no (b) no}
+\item $(G \eand \enot G)$\hfill \myanswer{(a) yes (b) yes}
+\item $(A \eif (A \eand \enot F)) \eor (D \eiff E)$\hfill \myanswer{(a) no (b) yes}
+\item $[(Z \eiff S) \eif W] \eand [J \eor X]$\hfill \myanswer{(a) no (b) yes}
+\item $(F \eiff \enot D \eif J) \eor (C \eand D)$\hfill \myanswer{(a) no (b) no}
+\end{earg}
+
+\problempart
+Are there any sentences of TFL that contain no atomic sentences? Explain your answer.
+\\\myanswer{No. Atomic sentences contain atomic sentences (trivially). And every more complicated sentence is built up out of less complicated sentences, that were in turn built out of less complicated sentences, \ldots, that were ultimately built out of atomic sentences.}
+
+
+
+\problempart
+What is the scope of each connective in the sentence
+$$\bigl[(H \eif I) \eor (I \eif H)\bigr] \eand (J \eor K)$$
+\myanswer{The scope of the left-most instance of `$\eif$' is `$(H \eif I)$'.\\
+The scope of the right-most instance of `$\eif$' is `$(I \eif H)$'.\\
+The scope of the left-most instance of `$\eor$ is `$\bigl[(H \eif I) \eor (I \eif H)\bigr]$'\\
+The scope of the right-most instance of `$\eor$' is `$(J \eor K)$'\\
+The scope of the conjunction is the entire sentence; so conjunction is the main logical connective of the sentence.}
+
+\end{practiceproblems}
+
+\chapter{Symbolising complex sentences}\label{s:SymbolisingComplexTFL}
+In \S\ref{s:TFLConnectives} we discussed how to symbolise sentences. But we mostly focused on simple sentences. Sentences of English, though, might end up having much more complex structure.
+
+%Consider symbolising:
+%\begin{earg}
+%\item[\ex{complex}] If
+%\end{earg}
+\todo{Think of a good example}
+
+Our general strategy will be:
+\begin{highlighted}
+\begin{enumerate}
+\item See if the sentence can be reformulated naturally with `if', `and' etc between sentences. If not, use an atomic sentence.
+\item Replace the `and' with $\eand$, or as appropriate (with brackets).
+\item Repeat the procedure with the sentences connected by $\eand$.
+\end{enumerate}
+\end{highlighted}
+
+
+
+We can now see some cases where the brackets are very important.
+
+Consider, for example, how negation might interact with conjunction. Consider:
+	\begin{earg}
+		\item[\ex{negcon1}] It's not the case that you will get both soup and salad.
+		\item[\ex{negcon2}] You will not get soup but you will get salad.
+	\end{earg}
+Sentence \ref{negcon1} can be paraphrased as `It is not the case that: both you will get soup and you will get salad'. Using this symbolization key:
+	\begin{ekey}
+		\item[S_1] You will get soup.
+		\item[S_2] You will get salad.
+	\end{ekey}
+We would symbolize `both you will get soup and you will get salad' as $(S_1 \eand S_2)$. To symbolize sentence \ref{negcon1}, then, we simply negate the whole sentence, thus: $\enot (S_1 \eand S_2)$.
+
+Sentence \ref{negcon2} is a conjunction: you \emph{will not} get soup, and you \emph{will} get salad. `You will not get soup' is symbolized by $\enot S_1$. So to symbolize sentence \ref{negcon2} itself, we offer $(\enot S_1 \eand S_2)$.
+
+These English sentences are very different, and their symbolizations differ accordingly. In one of them, the entire conjunction is negated. In the other, just one conjunct is negated. Brackets help us to keep track of things like the \emph{scope} of the negation.
+%
+
+
+
+
+	\begin{earg}
+		\item[\ex{or3}] You will not have soup, or you will not have salad.
+		\item[\ex{or4}] You will have neither soup nor salad.
+		\item[\ex{or.xor}] You get either soup or salad (but not both).
+	\end{earg}
+Using the same symbolization key as before, sentence \ref{or3} can be paraphrased in this way: `Either \emph{it is not the case that} you get soup, or \emph{it is not the case that} you get salad'. To symbolize this in TFL, we need both disjunction and negation. `It is not the case that you get soup' is symbolized by $\enot S_1$. `It is not the case that you get salad' is symbolized by $\enot S_2$. So sentence \ref{or3} itself is symbolized by $(\enot S_1 \eor \enot S_2)$.
+
+Sentence \ref{or4} also requires negation. It can be paraphrased as, `\emph{It is not the case that} either you get soup or you get salad'. Since this negates the entire disjunction, we symbolize sentence \ref{or4} with $\enot (S_1 \eor S_2)$.
+
+Sentence \ref{or.xor} is an \emph{exclusive or}. We can break the sentence into two parts. The first part says that you get one or the other. We symbolize this as $(S_1 \eor S_2)$. The second part says that you do not get both. We can paraphrase this as: `It is not the case both that you get soup and that you get salad'. Using both negation and conjunction, we symbolize this with $\enot(S_1 \eand S_2)$. Now we just need to put the two parts together. As we saw above, `but' can usually be symbolized with $\eand$. Sentence \ref{or.xor} can thus be symbolized as $((S_1 \eor S_2) \eand \enot(S_1 \eand S_2))$.
+
+Sometimes in English it is ambiguous whether the `or' is to be understood in English inclusively or exclusively.
+When symbolising into TFL, one needs to decide if you want to add `but not both' or not.
+
+It is also important to note that even though the TFL symbol `\eor' always symbolizes \emph{inclusive or}, we can symbolize an \emph{exclusive or} in {TFL}. We just have to use a few of our other symbols as well.
+
+\begin{highlighted}
+\begin{itemize}
+\item If a sentence can be paraphrased as `neither \metaX or \metaY' \\it can be symbolised as $\enot(\metaX\eor\metaY)$.
+\item If a sentence paraphrased as `either \metaX or \metaY, but not both' (an \emph{exclusive or}) \\it can be symbolised as $((\metaX \eor \metaY) \eand \enot(\metaX \eand \metaY))$.
+\end{itemize}
+\end{highlighted}
+
+\section{Unless}
+An especially difficult case is when we use the English-language connective `unless':
+
+\begin{earg}
+\item[\ex{unless1}] Unless you wear a jacket, you will catch a cold.
+\item[\ex{unless2}] You will catch a cold unless you wear a jacket.
+\end{earg}
+These two sentences are equivalent. They are also equivalent to the following:
+\begin{earg}
+\item[\ex{unless3}]  If you do not wear a jacket, then you will catch a cold.
+\item[\ex{unless4}]  If you do not catch a cold, then you wore a jacket.
+\item [\ex{unless5}] Either you will wear a jacket or you will catch a cold.
+\end{earg}
+And we know how to symbolise these sentences. We will use the symbolization key:
+	\begin{ekey}
+		\item[J] You will wear a jacket.
+		\item[D] You will catch a cold.
+	\end{ekey} and can then give the symbolizations $\enot J \eif D$, $\enot D \eif J$ and $J \eor D$.
+
+All three are correct symbolizations. Indeed, in chapter \ref{s:SemanticConcepts} we will see that all three symbolizations are equivalent in TFL.
+% TODO: it might be useful to reference exercise 11.F.3 explicitly
+% here, since the point is not discussed in the main text
+	\factoidbox{
+		If a sentence can be paraphrased as `Unless \metaX, \metaY', \\then it can be symbolized as $(\metaX\eor\metaY)$.
+	}
+Again, though, there is a little complication. `Unless' can be symbolized as a conditional; but as we said above, people often use the conditional (on its own) when they mean to use the biconditional. Equally, `unless' can be symbolized as a disjunction; but there are two kinds of disjunction (exclusive and inclusive). So it will not surprise you to discover that ordinary speakers of English often use `unless' to mean something more like the biconditional, or like exclusive disjunction. Suppose someone says: `I will go running unless it rains'. They probably mean something like `I will go running iff it does not rain' (i.e.\ the biconditional), or  `either I will go running or it will rain, but not both' (i.e.\ exclusive disjunction). Again: be aware of this when interpreting what other people have said, but be precise in your writing.
+
+\begin{practiceproblems}
+\problempart Using the symbolization key given, symbolize each English sentence in TFL.\label{pr.monkeysuits}
+	\begin{ekey}
+		\item[M] Those creatures are men in suits.
+		\item[C] Those creatures are chimpanzees.
+		\item[G] Those creatures are gorillas.
+	\end{ekey}
+\begin{earg}
+\item Those creatures are not men in suits.
+\myanswer{\item[] $\enot M$}
+\item Those creatures are men in suits, or they are not.
+\myanswer{\item[] $(M \eor \enot M$)} 
+\item Those creatures are either gorillas or chimpanzees.
+\myanswer{\item[] $(G \eor C)$}
+\item Those creatures are neither gorillas nor chimpanzees.
+\myanswer{\item[] $\enot (C \eor G)$}
+\item If those creatures are chimpanzees, then they are neither gorillas nor men in suits.
+\myanswer{\item[] $(C \eif \enot(G \eor M))$}
+\item Unless those creatures are men in suits, they are either chimpanzees or they are gorillas.
+\myanswer{\item[] $(M \eor (C \eor G))$}
+\end{earg}
+
+\problempart Using the symbolization key given, symbolize each English sentence in TFL.
+\begin{ekey}
+\item[A] Mister Ace was murdered.
+\item[B] The butler did it.
+\item[C] The cook did it.
+\item[D] The Duchess is lying.
+\item[E] Mister Edge was murdered.
+\item[F] The murder weapon was a frying pan.
+\end{ekey}
+\begin{earg}
+\item Either Mister Ace or Mister Edge was murdered.
+\myanswer{\item[] $(A \eor E)$}
+\item If Mister Ace was murdered, then the cook did it.
+\myanswer{\item[] $(A \eif C)$}
+\item If Mister Edge was murdered, then the cook did not do it.
+\myanswer{\item[] $(E \eif \enot C)$}
+\item Either the butler did it, or the Duchess is lying.
+\myanswer{\item[] $(B \eor D)$}
+\item The cook did it only if the Duchess is lying.
+\myanswer{\item[] $(C \eif D)$}
+\item If the murder weapon was a frying pan, then the culprit must have been the cook.
+\myanswer{\item[] $(F \eif C)$}
+\item If the murder weapon was not a frying pan, then the culprit was either the cook or the butler.
+\myanswer{\item[] $(\enot F \eif (C \eor B))$}
+\item Mister Ace was murdered if and only if Mister Edge was not murdered.
+\myanswer{\item[] $(A \eiff \enot E)$}
+\item The Duchess is lying, unless it was Mister Edge who was murdered.
+\myanswer{\item[] $(D \eor E)$}
+\item If Mister Ace was murdered, he was done in with a frying pan.
+\myanswer{\item[] $(A \eif F)$}
+\item Since the cook did it, the butler did not.
+\myanswer{\item[] $(C \eand \enot B)$}
+\item Of course the Duchess is lying!
+\myanswer{\item[] $D$}
+\end{earg}
+
+
+\problempart Using the symbolization key given, symbolize each English sentence in TFL.\label{pr.avacareer}
+	\begin{ekey}
+		\item[E_1] Ava is an electrician.
+		\item[E_2] Harrison is an electrician.
+		\item[F_1] Ava is a firefighter.
+		\item[F_2] Harrison is a firefighter.
+		\item[S_1] Ava is satisfied with her career.
+		\item[S_2] Harrison is satisfied with his career.
+	\end{ekey}
+\begin{earg}
+\item Ava and Harrison are both electricians.
+\myanswer{\item[] $(E_1 \eand E_2)$}
+\item If Ava is a firefighter, then she is satisfied with her career.
+\myanswer{\item[] $(F_1 \eif S_1)$}
+\item Ava is a firefighter, unless she is an electrician.
+\myanswer{\item[] $(F_1 \eor E_1)$}
+\item Harrison is an unsatisfied electrician.
+\myanswer{\item[] $(E_2 \eand \enot S_2)$}
+\item Neither Ava nor Harrison is an electrician.
+\myanswer{\item[] $\enot (E_1 \eor E_2)$}
+\item Both Ava and Harrison are electricians, but neither of them find it satisfying.
+\myanswer{\item[] $((E_1 \eand E_2) \eand \enot (S_1 \eor S_2))$}
+\item Harrison is satisfied only if he is a firefighter.
+\myanswer{\item[] $(S_2 \eif F_2)$}
+\item If Ava is not an electrician, then neither is Harrison, but if she is, then he is too.
+\myanswer{\item[] $((\enot E_1 \eif \enot E_2) \eand (E_1 \eif  E_2))$}
+\item Ava is satisfied with her career if and only if Harrison is not satisfied with his.
+\myanswer{\item[] $(S_1 \eiff \enot S_2)$}
+\item If Harrison is both an electrician and a firefighter, then he must be satisfied with his work.
+\myanswer{\item[] $((E_2 \eand F_2) \eif S_2)$}
+\item It cannot be that Harrison is both an electrician and a firefighter.
+\myanswer{\item[] $\enot (E_2 \eand F_2)$}
+\item Harrison and Ava are both firefighters if and only if neither of them is an electrician.
+\myanswer{\item[] $((F_2 \eand F_1) \eiff \enot(E_2 \eor E_1))$}
+\end{earg}
+
+
+\problempart
+\label{pr.spies}
+Give a symbolization key and symbolize the following English sentences in TFL.
+\myanswer{\begin{ekey}
+\item[A] Alice is a spy.
+\item[B] Bob is a spy.
+\item[C] The code has been broken.
+\item[G] The German embassy will be in an uproar.
+\end{ekey}}
+\begin{earg}
+\item Alice and Bob are both spies.
+\myanswer{\item[] $(A \eand B)$}
+\item If either Alice or Bob is a spy, then the code has been broken.
+\myanswer{\item[] $((A \eor B) \eif C)$}
+\item If neither Alice nor Bob is a spy, then the code remains unbroken.
+\myanswer{\item[] $(\enot (A \eor B) \eif \enot C)$}
+\item The German embassy will be in an uproar, unless someone has broken the code.
+\myanswer{\item[] $(G \eor C)$}
+\item Either the code has been broken or it has not, but the German embassy will be in an uproar regardless.
+\myanswer{\item[] $((C \eor \enot C) \eand G)$}
+\item Either Alice or Bob is a spy, but not both.
+\myanswer{\item[] $((A \eor B) \eand \enot (A \eand B))$}
+\end{earg}
+
+
+\problempart Give a symbolization key and symbolize the following English sentences in TFL.
+\myanswer{\begin{ekey}
+\item[F] There is food to be found in the pridelands.
+\item[R] Rafiki will talk about squashed bananas.
+\item[A] Simba is alive.
+\item[K] Scar will remain as king.
+\end{ekey}}
+\begin{earg}
+\item If there is food to be found in the pridelands, then Rafiki will talk about squashed bananas.
+\myanswer{\item[] $(F \eif R)$}
+\item Rafiki will talk about squashed bananas unless Simba is alive.
+\myanswer{\item[] $(R \eor A)$}
+\item Rafiki will either talk about squashed bananas or he won't, but there is food to be found in the pridelands regardless.
+\myanswer{\item[] $((R \eor \enot R) \eand F)$}
+\item Scar will remain as king if and only if there is food to be found in the pridelands.
+\myanswer{\item[] $(K \eiff F)$}
+\item If Simba is alive, then Scar will not remain as king.
+\myanswer{\item[] $(A \eif \enot K)$}
+\end{earg}
+
+
+\problempart
+For each argument, write a symbolization key and symbolize all of the sentences of the argument in TFL.
+\begin{earg}
+\item If Dorothy plays the piano in the morning, then Roger wakes up cranky. Dorothy plays piano in the morning unless she is distracted. So if Roger does not wake up cranky, then Dorothy must be distracted.
+\myanswer{\begin{ekey}
+\item[P] Dorothy plays the Piano in the morning.
+\item[C] Roger wakes up cranky.
+\item[D] Dorothy is distracted.
+\end{ekey}}
+\myanswer{\item[] $(P \eif C)$, $(P \eor D)$, $(\enot C \eif D)$}
+\item It will either rain or snow on Tuesday. If it rains, Neville will be sad. If it snows, Neville will be cold. Therefore, Neville will either be sad or cold on Tuesday.
+\myanswer{\begin{ekey}
+\item[T_1] It rains on Tuesday
+\item[T_2] It snows on Tuesday
+\item[S] Neville is sad on Tuesday
+\item[C] Neville is cold on Tuesday
+\end{ekey}}
+\myanswer{\item[] $(T_1 \eor T_2)$, $(T_1 \eif S)$, $(T_2 \eif C)$, $(S \eor C)$}
+\item If Zoog remembered to do his chores, then things are clean but not neat. If he forgot, then things are neat but not clean. Therefore, things are either neat or clean; but not both.
+\myanswer{\begin{ekey}
+\item[Z] Zoog remembered to do his chores
+\item[C] Things are clean
+\item[N] Things are neat
+\end{ekey}}
+\myanswer{\item[] $(Z \eif (C \eand \enot N))$, $(\enot Z \eif (N \eand \enot C))$, $((N \eor C) \eand \enot (N \eand C))$.}
+\end{earg}
+
+\problempart
+For each argument, write a symbolization key and translate the argument as well as possible into TFL. The part of the passage in italics is there to provide context for the argument, and doesn't need to be symbolized.
+\begin{earg}
+\item It is going to rain soon. I know because my leg is hurting, and my leg hurts if it's going to rain.
+
+%{\color{red}
+%\begin{ekey}
+%\item[A:]  
+%\item[B:]  
+%\item[C:]  %\end{ekey}
+
+%begin{\earg}
+%\item[1.]  
+%\item[2.]  
+%\item[$\therefore$]  
+%}
+
+\item  \emph{Spider-man tries to figure out the bad guy's plan.} If Doctor Octopus gets the uranium, he will blackmail the city. I am certain of this because if Doctor Octopus gets the uranium, he can make a dirty bomb, and if he can make a dirty bomb, he will blackmail the city.
+
+%{\color{red}
+%\begin{ekey}
+%\item[A:]  
+%\item[B:]  
+%\item[C:]  %\end{ekey}
+
+%begin{\earg}
+%\item[1.]  
+%\item[2.]  
+%\item[$\therefore$]  
+%}
+
+\item \emph{A westerner tries to predict the policies of the Chinese government.} If the Chinese government cannot solve the water shortages in Beijing, they will have to move the capital. They don't want to move the capital. Therefore they must solve the water shortage. But the only way to solve the water shortage is to divert almost all the water from the Yangzi river northward. Therefore the Chinese government will go with the project to divert water from the south to the north.       
+
+
+
+%{\color{red}
+%\begin{ekey}
+%\item[A:]  
+%\item[B:]  
+%\item[C:]  %\end{ekey}
+
+%begin{\earg}
+%\item[1.]  
+%\item[2.]  
+%\item[$\therefore$]  
+%}
+
+\end{earg}
+
+
+
+\end{practiceproblems}
+
+
+\chapter{Ambiguity}\label{s:AbmbiguityTFL}
+
+In English, sentences can be \define{ambiguous}, i.e., they can have more than one meaning.  There are many sources of ambiguity. One is \emph{lexical ambiguity:} a sentence can contain words which have more than one meaning.  For instance, `bank' can mean the bank of a river, or a financial institution. So I might say that `I went to the bank' when I took a stroll along the river, or when I went to deposit a check.  Depending on the situation, a different meaning of `bank' is intended, and so the sentence, when uttered in these different contexts, expresses different meanings.
+
+A different kind of ambiguity is \emph{structural ambiguity}.  This arises when a sentence can be interpreted in different ways, and depending on the interpretation, a different meaning is selected.  A famous example due to Noam Chomsky is the following:
+\begin{earg}
+	\prem Flying planes can be dangerous.
+\end{earg}
+There is one reading in which `flying' is used as an adjective which modifies `planes'. In this sense, what's claimed to be dangerous are airplanes which are in the process of flying.  In another reading, `flying' is a gerund: what's claimed to be dangerous is the act of flying a plane.  In the first case, you might use the sentence to warn someone who's about to launch a hot air baloon.  In the second case, you might use it to counsel someone against becoming a pilot.
+
+When the sentence is uttered, usually only one meaning is intended. Which of the possible meanings an utterance of a sentence intends is determined by context, or sometimes by how it is uttered (which parts of the sentence are stressed, for instance). Often one interpretation is much more likely to be intended, and in that case it will even be difficult to ``see'' the unintended reading.  This is often the reason why a joke works, as in this example from Groucho Marx:
+\begin{earg}
+	\prem One morning I shot an elephant in my pajamas.
+	\prem How he got in my pajamas, I don't know.
+\end{earg}
+
+Ambiguity is related to, but not the same as, vagueness. An adjective, for instance `rich' or `tall,' is \define{vague} when it is not always possible to determine if it applies or not.  For instance, a person who's 6~ft 4~in (1.9~m) tall is pretty clearly tall, but a building that size is tiny.  Here, context has a role to play in determining what the clear cases and clear non-cases are (`tall for a person,' `tall for a basketball player,' `tall for a building'). Even when the context is clear, however, there will still be cases that fall in a middle range.
+
+In TFL, we generally aim to avoid ambiguity. We will try to give our symbolization keys in such a way that they do not use ambiguous words or  disambiguate them if a word has different meanings. So, e.g., your symbolization key will need two different sentence letters for `Rebecca went to the (money) bank' and `Rebecca went to the (river) bank.' Vagueness is harder to avoid. Since we have stipulated that every case (and later, every valuation) must make every basic sentence (or sentence letter) either true or false and nothing in between, we cannot accommodate borderline cases in TFL.
+
+It is an important feature of sentences of TFL that they \emph{cannot} be structurally ambiguous. Every sentence of TFL can be read in one, and only one, way. This feature of TFL is also a strength. If an English sentence is ambiguous, TFL can help us make clear what the different meanings are.  Although we are pretty good at dealing with ambiguity in everyday conversation, avoiding it can sometimes be terribly important. Logic can then be usefully applied: it helps philosopher express their thoughts clearly, mathematicians to state their theorems rigorously, and software engineers to specify loop conditions, database queries, or verification criteria unambiguously.
+
+Stating things without ambiguity is of crucial importance in the law as well. Here, ambiguity can, without exaggeration, be a matter of life and death. Here is a famous example of where a death sentence hinged on the interpretation of an ambiguity in the law. Roger Casement (1864--1916) was a British diplomat who was famous in his time for publicizing human-rights violations in the Congo and Peru (for which he was knighted in 1911). He was also an Irish nationalist. In 1914--16, Casement secretly travelled to Germany, with which Britain was at war at the time, and tried to recruit Irish prisoners of war to fight against Britain and for Irish independence. Upon his return to Ireland, he was captured by the British and tried for high treason.
+
+The law under which Casement was tried is the \emph{Treason Act of 1351}. That act specifies what counts as treason, and so the prosecution had to establish at trial that Casement's actions met the criteria set forth in the Treason Act. The relevant passage stipulated that someone is guilty of treason
+\begin{quote}
+	if a man is adherent to the King's enemies in his
+realm, giving to them aid and comfort in the realm, or elsewhere.
+\end{quote}
+Casement's defense hinged on the last comma in this sentence, which is not present in the original French text of the law from 1351.  It was not under dispute that Casement had been `adherent to the King's enemies', but the question was whether being adherent to the King's enemies constituted treason only when it was done in the realm, or also when it was done abroad. The defense argued that the law was ambiguous. The claimed ambiguity hinged on whether `or elsewhere' attaches only to `giving aid and comfort to the King's enemies' (the natural reading without the comma), or to both `being adherent to the King's enemies' and `giving aid and comfort to the King's enemies' (the natural reading with the comma).  Although the former interpretation might seem far fetched, the argument in its favor was actually not unpersuasive. Nevertheless, the court decided that the passage should be read with the comma, so Casement's antics in Germany were treasonous, and he was sentenced to death. Casement himself wrote that he was `hanged by a comma'.
+
+We can use TFL to symbolize both readings of the passage, and thus to provide a disambiguiation. First, we need a symbolization key:
+\begin{ekey}
+	\item[A] Casement was adherent to the King's enemies in the realm.
+	\item[G] Casement gave aid and comfort to the King's enemies in the realm.
+	\item[B] Casement was adherent to the King's enemies abroad.
+	\item[H] Casement gave aid and comfort to the King's enemies abroad.
+\end{ekey}
+The interpretation according to which Casement's behavior was not treasonous is this:
+\begin{earg}
+	\prem $A \lor (G \lor H)$
+\end{earg}
+The interpretation which got him executed, on the other hand, can be symbolized by:
+\begin{earg}
+	\prem $(A \lor B) \lor (G \lor H)$
+\end{earg}
+Remember that in the case we're dealing with Casement, was adherent to the King's enemies abroad ($B$ is true), but not in the realm, and he did not give the King's enemies aid or comfort in or outside the realm ($A$, $G$, and~$H$ are false).
+
+One common source of structural ambiguity in English arises from its lack of parentheses. For instance, if I say `I like movies that are not long and boring', you will most likely think that what I dislike are movies that are long and boring. A less likely, but possible, interpretation is that I like movies that are both (a) not long and (b) boring. The first reading is more likely because who likes boring movies? But what about `I like dishes that are not sweet and flavorful'? Here, the more likely interpretation is that I like savory, flavorful dishes.  (Of course, I could have said that better, e.g., `I like dishes that are not sweet, yet flavorful'.) Similar ambiguities result from the interaction of `and' with `or'. For instance, suppose I ask you to send me a picture of a small and dangerous or stealthy animal.  Would a leopard count? It's stealthy, but not small. So it depends whether I'm looking for small animals that are dangerous or stealthy (leopard doesn't count), or whether I'm after either a small, dangerous animal or a stealthy animal (of any size).
+
+These kinds of ambiguities are called \emph{scope ambiguities}, since they depend on whether or not a connective is in the scope of another. For instance, the sentence, `\emph{Avengers: Endgame} is not long and boring' is ambiguous between:
+\begin{earg}
+	\item[\ex{scamb1}] \emph{Avengers: Endgame} is not: both long and boring.
+	\item[\ex{scamb2}] \emph{Avengers: Endgame} is both: not long and boring.
+\end{earg}
+Sentence~\ref{scamb2} is certainly false, since \emph{Avengers: Endgame} is over three hours long. Whether you think~\ref{scamb1} is true depends on if you think it is boring or not. We can use the symbolization key:
+\begin{ekey}
+	\item[B] \emph{Avengers: Endgame} is boring.
+	\item[L] \emph{Avengers: Endgame} is long.
+\end{ekey}
+Sentence~\ref{scamb1} can now be symbolized as `$\enot(L \eand B)$', whereas sentence~\ref{scamb2} would be `$\enot L \eand B$'. In the first case, the `\eand' is in the scope of `\enot', in the second case `\enot' is in the scope of `\eand'.
+
+The sentence `Tai Lung is small and dangerous or stealthy' is ambiguous between:
+\begin{earg}
+	\item[\ex{scamb3}] Tai Lung is either both small and dangerous or stealthy.
+	\item[\ex{scamb4}] Tai Lung is both small and either dangerous or stealthy.
+\end{earg}
+We can use the following symbolization key:
+\begin{ekey}
+	\item[D] Tai Lung is dangerous.
+	\item[S] Tai Lung is small.
+	\item[T] Tai Lung is stealthy.
+\end{ekey}
+The symbolization of sentence~\ref{scamb3} is `$(S \eand D) \eor T$' and that of sentence~\ref{scamb4} is `$S \eand (D \eor T)$'. In the first, \eand is in the scope of \eor, and in the second \eor is in the scope of \eand.
+
+\begin{practiceproblems}
+\solutions
+\problempart The following sentences are ambiguous. Give symbolization keys for each and symbolize the different readings.
+\begin{earg}
+	\item Haskell is a birder and enjoys watching cranes.
+	\item The zoo has lions or tigers and bears.
+	\item The flower is not red or fragrant.
+\end{earg}
+
+
+\end{practiceproblems}
+
+
+\chapter{Use and mention}\label{s:UseMention}
+In this Part, we have talked a lot \emph{about} sentences. So we should pause to explain an important, and very general, point.
+
+\section{Quotation conventions}
+Consider these two sentences:
+	\begin{itemize}
+		\item Justin Trudeau is the Prime Minister.
+		\item The expression `Justin Trudeau' is composed of two uppercase letters and eleven lowercase letters
+	\end{itemize}
+When we want to talk about the Prime Minister, we \emph{use} his name. When we want to talk about the Prime Minister's name, we \emph{mention} that name, which we do by putting it in quotation marks.
+
+There is a general point here. When we want to talk about things in the world, we just \emph{use} words. When we want to talk about words, we typically have to \emph{mention} those words. We need to indicate that we are mentioning them, rather than using them. To do this, some convention is needed. We can put them in quotation marks, or display them centrally in the page (say). So this sentence:
+	\begin{itemize}
+		\item `Justin Trudeau' is the Prime Minister.
+	\end{itemize}
+says that some \emph{expression} is the Prime Minister. That's false. The \emph{man} is the Prime Minister; his \emph{name} isn't. Conversely, this sentence:
+	\begin{itemize}
+		\item Justin Trudeau is composed of two uppercase letters and eleven lowercase letters.
+	\end{itemize}
+also says something false: Justin Trudeau is a man, made of flesh rather than letters. One final example:
+	\begin{itemize}
+		\item ``\,`Justin Trudeau'\,'' is the name of `Justin Trudeau'.
+	\end{itemize} 
+On the left-hand-side, here, we have the name of a name. On the right hand side, we have a name. Perhaps this kind of sentence only occurs in logic textbooks, but it is true nonetheless.
+
+Those are just general rules for quotation, and you should observe them carefully in all your work! To be clear, the quotation-marks here do not indicate reported speech. They indicate that you are moving from talking about an object, to talking about a name of that object.
+
+
+\section{Object language and metalanguage}
+These general quotation conventions are very important for us. After all, we are describing a formal language here, TFL, and so we must often \emph{mention} expressions from TFL.
+
+When we talk about a language, the language that we are talking about is called the \define{object language}. The language that we use to talk about the object language is called the \define{metalanguage}.
+\label{def.metalanguage}
+\newglossaryentry{object language}
+{
+name=object language,
+description={A language that is constructed and studied by logicians. In this textbook,
+ the object languages are TFL and FOL}
+}
+
+\newglossaryentry{metalanguage}
+{
+name=metalanguage,
+description={The language logicians use to talk about the object language. In this textbook, the metalanguage is English, supplemented by certain symbols like metavariables and technical terms like ``valid''}
+}
+
+For the most part, the object language in this chapter has been the formal language that we have been developing: TFL. The metalanguage is English. Not conversational English exactly, but English supplemented with some additional vocabulary to help us get along.
+
+Now, we have used uppercase letters as sentence letters of TFL:
+	$$A, B, C, Z, A_1, B_4, A_{25}, J_{375},\ldots$$
+These are sentences of the object language (TFL). They are not sentences of English. So we must not say, for example:
+	\begin{itemize}
+		\item $D$ is a sentence letter of TFL.
+	\end{itemize}
+Obviously, we are trying to come out with an English sentence that says something about the object language (TFL), but `$D$' is a sentence of TFL, and not part of English. So the preceding is gibberish, just like:
+	\begin{itemize}
+		\item \foreignlanguage{german}{Schnee ist weiß} is a German sentence.
+	\end{itemize}
+What we surely meant to say, in this case, is:
+	\begin{itemize}
+		\item `\foreignlanguage{german}{Schnee ist weiß}' is a German sentence.
+	\end{itemize}
+Equally, what we meant to say above is just:
+	\begin{itemize}
+		\item `$D$' is a sentence letter of TFL.
+	\end{itemize}
+The general point is that, whenever we want to talk in English about some specific expression of TFL, we need to indicate that we are \emph{mentioning} the expression, rather than \emph{using} it. We can either deploy quotation marks, or we can adopt some similar convention, such as  placing it centrally in the page.
+
+
+\section{Metavariables}\label{s:Metavariables}
+However, we do not just want to talk about \emph{specific} expressions of TFL. We also want to be able to talk about \emph{any arbitrary} sentence of TFL. Indeed, we had to do this in \S\ref{s:TFLSentences}, when we presented the inductive definition of a sentence of TFL. We used uppercase script letters to do this, namely:
+	$$\metaX, \metaY, \metaZ,\metaX_1,\metaY_1,\metaZ_1\ldots$$
+These symbols do not belong to TFL. Rather, they are part of our (augmented) metalanguage that we use to talk about \emph{any} expression of TFL. To explain why we need them, recall the second clause of the recursive definition of a sentence of TFL:
+	\begin{itemize}
+		\item[2.] If $\metaX$ is a sentence, then $\enot \metaX$ is a sentence.
+	\end{itemize}
+This talks about \emph{arbitrary} sentences. If we had instead offered:
+	\begin{itemize}
+		\item[2$'$.] If `$A$' is a sentence, then `$\enot A$' is a sentence.
+	\end{itemize}
+this would not have allowed us to determine whether `$\enot B$' is a sentence. To emphasize:
+	\factoidbox{
+	  `$\metaX$' is a symbol (called a \define{metavariable}) in augmented English, which we use to talk about expressions of TFL. 	`$A$' is a particular sentence letter of TFL.}
+
+        \newglossaryentry{metavariables}
+{
+name=metavariables,
+description={A variable in the metalanguage that can represent any sentence in the object language}
+}
+But this last example raises a further complication, concerning quotation conventions. We did not include any quotation marks in the second clause of our inductive definition. Should we have done so?
+
+The problem is that the expression on the right-hand-side of this rule, i.e., `$\enot\metaX$', is not a sentence of English, since it contains~`$\enot$'. So we might try to write:
+	\begin{itemize}
+		\item[2$''$.] If \metaX is a sentence, then `$\enot \metaX$' is a sentence.
+	\end{itemize}
+But this is no good: `$\enot \metaX$' is not a TFL sentence, since `$\metaX$' is a symbol of (augmented) English rather than a symbol of TFL.
+
+What we really want to say is something like this:
+	\begin{itemize}
+		\item[2$'''$.] If \metaX is a sentence, then the result of concatenating the symbol `$\enot$' with the sentence \metaX is a sentence.
+	\end{itemize}
+This is impeccable, but rather long-winded. %Quine introduced a convention that speeds things up here. In place of (2$''$), he suggested:
+%	\begin{numberlist}
+%		\item[2$'''$.] If \metaX and \metaY are sentences, then $\ulcorner (\metaX\eand\metaY)\urcorner$ is a sentence
+%	\end{numberlist}
+%The rectangular quote-marks are sometimes called `Quine quotes', after Quine. The general interpretation of an expression like `$\ulcorner (\metaX\eand\metaY)\urcorner$' is in terms of rules for concatenation.
+But we can avoid long-windedness by creating our own conventions. We can perfectly well stipulate that an expression like `$\enot \metaX$' should simply be read \emph{directly} in terms of rules for concatenation. So, \emph{officially}, the metalanguage expression `$\enot \metaX$'
+simply abbreviates:
+\begin{quote}
+	the result of concatenating the symbol `$\enot$' with the sentence \metaX
+\end{quote}
+and similarly, for expressions like `$(\metaX \eand \metaY)$', `$(\metaX \eor \metaY)$', etc.
+
+
+\section{Quotation conventions for arguments}
+One of our main purposes for using TFL is to study arguments, and that will be our concern in \S\ref{ch.TruthTables}. In English, the premises of an argument are often expressed by individual sentences, and the conclusion by a further sentence. Since we can symbolize English sentences, we can symbolize English arguments using TFL.
+
+Or rather, we can use TFL to symbolize each of the \emph{sentences} used in an English argument. However, TFL itself has no way to flag some of them as the \emph{premises} and another as the \emph{conclusion} of an argument.  (Contrast this with natural English, which uses words like `so', `therefore', etc., to mark that a sentence is the \emph{conclusion} of an argument.)
+
+%So, if we want to symbolize an \emph{argument} in TFL, what are we to do? 
+
+%An obvious thought would be to add a new symbol to the \emph{object} language of TFL itself, which we could use to separate the premises from the conclusion of an argument. However, adding a new symbol to our object language would add significant complexity to that language, since that symbol would require an official syntax.\footnote{\emph{The following footnote should be read only after you have finished the entire book!} And it would require a semantics. Here, there are deep barriers concerning the semantics. First: an object-language symbol which adequately expressed `therefore' for TFL would not be truth-functional. (\emph{Exercise}: why?) Second: a paradox known as `validity Curry' shows that FOL itself \emph{cannot} be augmented with an adequate, object-language `therefore'.} 
+
+So, we need another bit of notation. Suppose we want to symbolize the premises of an argument with $\metaX_1$, \dots,~$\metaX_n$ and the conclusion with $\metaZ$. Then we will write:
+$$\metaX_1, \ldots, \metaX_n \therefore \metaZ$$
+The role of the symbol `$\therefore$' is simply to indicate which sentences are the premises and which is the conclusion.
+
+%Strictly, this extra notation is \emph{unnecessary}. After all, we could always just write things down long-hand, saying: the premises of the argument are well symbolized by $\metaX_1, \ldots \metaX_n$, and the conclusion of the argument is well symbolized by $\metaZ$. But having some convention will save us some time. Equally, the particular convention we chose was fairly \emph{arbitrary}. After all, an equally good convention would have been to underline the conclusion of the argument. Still, this is the convention we will use.
+
+Strictly, the symbol `$\therefore$' will not be a part of the object language, but of the \emph{metalanguage}. As such, one might think that we would need to put quote-marks around the TFL-sentences which flank it. That is a sensible thought, but adding these quote-marks would make things harder to read. Moreover---and as above---recall that \emph{we} are stipulating some new conventions. So, we can simply stipulate that these quote-marks are unnecessary. That is, we can simply write:
+$$A, A \eif B \therefore B$$
+\emph{without any quotation marks}, to indicate an argument whose premises are (symbolized by) `$A$' and `$A \eif B$' and whose conclusion is (symbolized by)~`$B$'.
+In this Part, we have talked a lot \emph{about} sentences. So we should pause to explain an important, and very general, point.
+
