@@ -67,6 +67,29 @@ jobs:
         with:
           name: ${{ env.FILE }}.pdf
           path: ./github_artifacts
+  compile-doc-johannes:
+    runs-on: ubuntu-latest
+    env:
+      # Edit here with the names of your latex file and directory (can use ".")
+      DIR: .
+      FILE: forallxbris
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: 'johannes'
+      - name: Install TeXlive
+        run: sudo apt-get install texlive-full latexmk cm-super
+      - name: LaTeX compile
+        working-directory: ${{ env.DIR }}
+        run: latexmk -pdf -bibtex ${{ env.FILE }}
+      - name: move
+        run: mkdir -p github_artifacts && mv ${{ env.DIR }}/${{ env.FILE }}.pdf ./github_artifacts/
+      - name: Upload pdf as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.FILE }}.pdf
+          path: ./github_artifacts
   deploy:
     # Edit here if compiling multiple papers
     needs: [compile-doc-main,compile-doc-accessible,compile-doc-withanswers,compile-doc-johannes]
