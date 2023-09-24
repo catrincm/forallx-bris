@@ -1,4 +1,5 @@
 # Github workflow to compile latex and deploy the pdf to an orphan branch.
+# https://gist.github.com/dgerosa/2e1f47a39180f39bde848e38243efa94
 # From Davide Gerosa (2021) https://github.com/dgerosa
 
 name: compile_deploy_latex
