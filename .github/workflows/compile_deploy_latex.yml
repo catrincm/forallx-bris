@@ -5,95 +5,22 @@
 name: compile_deploy_latex
 on: [push]
 jobs:
-  compile-doc-main:
+  build_latex:
     runs-on: ubuntu-latest
-    env:
-      # Edit here with the names of your latex file and directory (can use ".")
-      DIR: .
-      FILE: forallxbris
     steps:
-      - name: Checkout
+      - name: Set up Git repository
         uses: actions/checkout@v4
-      - name: Install TeXlive
-        run: sudo apt-get install texlive-full latexmk cm-super
-      - name: LaTeX compile
-        working-directory: ${{ env.DIR }}
-        run: latexmk -pdf -bibtex ${{ env.FILE }}
-      - name: move
-        run: mkdir -p github_artifacts && mv ${{ env.DIR }}/${{ env.FILE }}.pdf ./github_artifacts/
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: forallxbris.tex
       - name: Upload pdf as artifact
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ env.FILE }}.pdf
-          path: ./github_artifacts
-  compile-doc-accessible:
-    runs-on: ubuntu-latest
-    env:
-      # Edit here with the names of your latex file and directory (can use ".")
-      DIR: .
-      FILE: forallxbris-accessible
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Install TeXlive
-        run: sudo apt-get install texlive-full latexmk cm-super
-      - name: LaTeX compile
-        working-directory: ${{ env.DIR }}
-        run: latexmk -pdf -bibtex ${{ env.FILE }}
-      - name: move
-        run: mkdir -p github_artifacts && mv ${{ env.DIR }}/${{ env.FILE }}.pdf ./github_artifacts/
-      - name: Upload pdf as artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: ${{ env.FILE }}.pdf
-          path: ./github_artifacts
-  compile-doc-withanswers:
-    runs-on: ubuntu-latest
-    env:
-      # Edit here with the names of your latex file and directory (can use ".")
-      DIR: .
-      FILE: forallxbris-withanswers
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Install TeXlive
-        run: sudo apt-get install texlive-full latexmk cm-super
-      - name: LaTeX compile
-        working-directory: ${{ env.DIR }}
-        run: latexmk -pdf -bibtex ${{ env.FILE }}
-      - name: move
-        run: mkdir -p github_artifacts && mv ${{ env.DIR }}/${{ env.FILE }}.pdf ./github_artifacts/
-      - name: Upload pdf as artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: ${{ env.FILE }}.pdf
-          path: ./github_artifacts
-  compile-doc-johannes:
-    runs-on: ubuntu-latest
-    env:
-      # Edit here with the names of your latex file and directory (can use ".")
-      DIR: .
-      FILE: forallxbris
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: 'johannes'
-      - name: Install TeXlive
-        run: sudo apt-get install texlive-full latexmk cm-super
-      - name: LaTeX compile
-        working-directory: ${{ env.DIR }}
-        run: latexmk -pdf -bibtex ${{ env.FILE }}
-      - name: move
-        run: mkdir -p github_artifacts && mv ${{ env.DIR }}/${{ env.FILE }}.pdf ./github_artifacts/
-      - name: Upload pdf as artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: ${{ env.FILE }}.pdf
+          name: forallxbris.pdf
           path: ./github_artifacts
   deploy:
-    # Edit here if compiling multiple papers
-    needs: [compile-doc-main,compile-doc-accessible,compile-doc-withanswers,compile-doc-johannes]
+    needs: [build_latex]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
