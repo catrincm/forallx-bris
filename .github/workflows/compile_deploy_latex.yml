@@ -7,20 +7,17 @@ on: [push]
 jobs:
   upload-doc-johannes:
     runs-on: ubuntu-latest
-    env:
-      DIR: .
-      FILE: forallxbris
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           ref: 'johannes'
       - name: move
-        run: mkdir -p github_artifacts && mv ${{ env.DIR }}/${{ env.FILE }}.pdf ./github_artifacts/
+        run: mkdir -p github_artifacts && mv ./forallxbris.pdf ./github_artifacts/
       - name: Upload pdf as artifact
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ env.FILE }}.pdf
+          name: forallxbris-johannes.pdf
           path: ./github_artifacts
   deploy:
     # Edit here if compiling multiple papers
