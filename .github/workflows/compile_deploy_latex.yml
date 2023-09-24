@@ -26,6 +26,8 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           path: github_artifacts
+      - name: Debug - List contents of github_artifacts
+        run: ls -R github_artifacts
       - name: move
         run: mkdir -p github_deploy && mv github_artifacts/*/* github_deploy
       - name: deploy on gh-pages
