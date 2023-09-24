@@ -12,7 +12,7 @@ jobs:
       FILE: forallxbris
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Install TeXlive
         run: sudo apt-get install texlive-full latexmk cm-super
       - name: LaTeX compile
@@ -33,7 +33,7 @@ jobs:
       FILE: forallxbris-accessible
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Install TeXlive
         run: sudo apt-get install texlive-full latexmk cm-super
       - name: LaTeX compile
@@ -54,7 +54,7 @@ jobs:
       FILE: forallxbris-withanswers
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Install TeXlive
         run: sudo apt-get install texlive-full latexmk cm-super
       - name: LaTeX compile
@@ -73,8 +73,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-      - uses: actions/download-artifact@v2
+        uses: actions/checkout@v4
+      - uses: actions/download-artifact@v3
         with:
           path: github_artifacts
       - name: move
