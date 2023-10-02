@@ -122,8 +122,8 @@ with `$\wedge$' to form the sentence `$A\wedge C$'. If think of `$A$' and `$C$' 
 Similarly, on this understanding we get the following readings:
 \begin{itemize}
 \item $\neg A$: It is not the case that it is raining outside. (Alternatively, it is not raining outside).
-\item $A\vee B$: It is raining outside \emph{or} Jenny is miserable.
-\item $A\rightarrow B$: \emph{If} it is raining outside, \emph{then} Jenny is miserable.
+\item $A\vee C$: It is raining outside \emph{or} Jenny is miserable.
+\item $A\rightarrow C$: \emph{If} it is raining outside, \emph{then} Jenny is miserable.
 %\item $A\leftrightarrow B$: It is raining outside, \emph{if and only if} Jenny is miserable.
  \end{itemize}
  We shall go back to studying the connection between the connectives of truth-functional logic and various conjunction-words of English in \S\ref{sec:tt}, when we discuss the precise meaning of the connectives in truth-functional logic. For now we focus on completing the description of the formal language of truth-functional logic.
@@ -304,8 +304,8 @@ In the case of $((\enot E \eor F) \eif \enot\enot G)$, the main connective is $\
 
 
 
-\subsection{Recursive Definition}
-The definition of a TFL-sentence is a so-called \emph{recursive} definition. Recursive definitions begin with some specifiable base elements, and then present ways to generate indefinitely many more elements by compounding together previously established ones. To give you a better idea of what a recursive definition is, we can give a recursive definition of the idea of \emph{an ancestor of mine}. We specify a base clause.
+\subsection{Inductive Definition}
+The definition of a TFL-sentence is a so-called \emph{recursive} definition. Recursive definitions begin with some specifiable base elements, and then present ways to generate indefinitely many more elements by compounding together previously established ones. To give you a better idea of what an inductive definition is, we can give an inductive definition of the idea of \emph{an ancestor of mine}. We specify a base clause.
 	\begin{ebullet}
 		\item My parents are ancestors of mine.
 	\end{ebullet}
@@ -314,7 +314,7 @@ and then offer further clauses like:
 		\item If x is an ancestor of mine, then x's parents are ancestors of mine.
 		\item Nothing else is an ancestor of mine.
 	\end{ebullet}
-Using this definition, we can easily check to see whether someone is my ancestor: just check whether she is the parent of the parent of\ldots one of my parents. And the same is true for our recursive definition of sentences of TFL. Just as the recursive definition allows complex sentences to be built up from simpler parts, the definition allows us to decompose sentences into their simpler parts. Once we get down to atomic sentences, then we know we are ok.
+Using this definition, we can easily check to see whether someone is my ancestor: just check whether she is the parent of the parent of\ldots one of my parents. And the same is true for our recursive definition of sentences of TFL. Just as the inductivedefinition allows complex sentences to be built up from simpler parts, the definition allows us to decompose sentences into their simpler parts. Once we get down to atomic sentences, then we know we are ok.
 
 \section{Bracketing conventions}
 \label{TFLconventions}
@@ -383,7 +383,8 @@ also says something false: Justin Trudeau is a man, made of flesh rather than le
 	\end{itemize} 
 On the left-hand-side, here, we have the name of a name. On the right hand side, we have a name. Perhaps this kind of sentence only occurs in logic textbooks, but it is true nonetheless.
 
-Those are just general rules for quotation, and you should observe them carefully in all your work! To be clear, the quotation-marks here do not indicate reported speech. They indicate that you are moving from talking about an object, to talking about a name of that object.
+Those are just general rules for quotation, and you should observe them carefully in all your work! To be clear, the quotation-marks here do not indicate reported speech. They indicate that you are moving from talking about an object, to talking about a name of that object. 
+
 
 
 \section{Object language and metalanguage}
@@ -494,7 +495,7 @@ In this Part, we have talked a lot \emph{about} sentences. So we should pause to
 
 \chapter{Semantics of TFL}
 \section{Truth tables}\label{sec:tt}
-We have completed introducing the syntax of the language of TFL. It is now time to turn to the semantics of TFL. The idea underlying the semantics is to specify conditions when sentences of TFL are true. In \S\ref{} we introduced the idea that an argument is logically valid if there is no interpretation on which all premises of the argument are true but the conclusion false. Accordingly, if we wish to make a start on making this idea more precise, we need to say when a sentence of TFL is true according to an interpretation and when it is false. The target of this chapter is to give precise rules for determining this. The important feature of truth functional logic is that the truth value of a complex sentence, such as $A\eor(B\eand C)$ is fully determined by the truths of is component parts, that is $A$, $B$ and $C$. If we're told whether $A$, $B$ and $C$ are true or false, then we will be able to say whether $A\eor(B\eand C)$ is true or false.
+We have completed introducing the syntax of the language of TFL. It is now time to turn to the semantics of TFL. The idea underlying the semantics is to specify conditions when sentences of TFL are true. In \S\ref{} we introduced the idea that an argument is logically valid if there is no interpretation on which all premises of the argument are true but the conclusion false. Accordingly, if we wish to make a start on making this idea more precise, we need to say when a sentence of TFL is true according to an interpretation and when it is false. The target of this chapter is to give precise rules for determining this. The important feature of truth functional logic is that the truth value of a complex sentence, such as $`A\eor(B\eand C)'$ is fully determined by the truths of is component parts, that is $`A'$, $`B'$ and $`C'$. If we're told whether $`A'$, $`B'$ and $C$ are true or false, then we will be able to say whether $`A\eor(B\eand C)'$ is true or false.
 
 To be able to do this, we need to describe how the truth values of sentences are to be combined to obtain the truth value of a sentence that has been obtained via the formation rules 2-5. To do this we work through each of our connectives describing the rules governing it.
 
