@@ -8,6 +8,10 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: 'johannes'
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: forallxbris.tex
       - name: Rename PDF file
         run: mv ./forallxbris.pdf ./forallxbris-js.pdf
       - name: Upload pdf as artifact
@@ -16,7 +20,6 @@ jobs:
           name: forallxbris-js.pdf
           path: ./
   deploy:
-    # Edit here if compiling multiple papers
     needs: [upload-doc-johannes]
     runs-on: ubuntu-latest
     steps:
