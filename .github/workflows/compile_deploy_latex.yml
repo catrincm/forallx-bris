@@ -6,27 +6,6 @@ on:
       - master
 
 jobs:
-  compile-latex:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: 'master'
-      - name: Compile LaTeX - forallxbris
-        uses: xu-cheng/latex-action@v3
-        with:
-          root_file: forallxbris.tex
-      - name: Rename and Upload PDFs as artifacts
-        run: |
-          mkdir -p github_deploy
-          mv *.pdf github_deploy/
-        if: success()
-      - name: Upload PDFs as artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: pdf-artifacts
-          path: github_deploy/
   compile-latex-for-johannes:
     runs-on: ubuntu-latest
     steps:
@@ -40,7 +19,9 @@ jobs:
           root_file: forallxbris.tex
       - name: Rename and Upload PDFs as artifacts
         run: |
-          mv *.pdf *-js.pdf
+          mv forallxbris.pdf forallxbris-js.pdf
+          mv forallxbris-withanswers.pdf forallxbris-withanswers-js.pdf
+          mv forallxbris-accessible.pdf forallxbris-accessible-js.pdf
           mkdir -p github_deploy
           mv *.pdf github_deploy/
         if: success()
@@ -51,7 +32,7 @@ jobs:
           path: github_deploy/
 
   deploy:
-    needs: [compile-latex, compile-latex-for-johannes]
+    needs: [compile-latex-for-johannes]
     runs-on: ubuntu-latest
     steps:
       - name: Download PDFs
