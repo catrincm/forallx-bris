@@ -17,14 +17,6 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: forallxbris.tex
-      - name: Compile LaTeX - forallxbris-withanswers
-        uses: xu-cheng/latex-action@v3
-        with:
-          root_file: forallxbris-withanswers.tex
-      - name: Compile LaTeX - forallxbris-accessible
-        uses: xu-cheng/latex-action@v3
-        with:
-          root_file: forallxbris-accessible.tex
       - name: Rename and Upload PDFs as artifacts
         run: |
           mkdir -p github_deploy
@@ -46,19 +38,9 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: forallxbris.tex
-      - name: Compile LaTeX - forallxbris-withanswers
-        uses: xu-cheng/latex-action@v3
-        with:
-          root_file: forallxbris-withanswers.tex
-      - name: Compile LaTeX - forallxbris-accessible
-        uses: xu-cheng/latex-action@v3
-        with:
-          root_file: forallxbris-accessible.tex
       - name: Rename and Upload PDFs as artifacts
         run: |
-          mv forallxbris.pdf forallxbris-js.pdf
-          mv forallxbris-withanswers.pdf forallxbris-withanswers-js.pdf
-          mv forallxbris-accessible.pdf forallxbris-accessible-js.pdf
+          mv *.pdf *-js.pdf
           mkdir -p github_deploy
           mv *.pdf github_deploy/
         if: success()
