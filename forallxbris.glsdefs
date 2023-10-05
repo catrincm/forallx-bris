@@ -1,0 +1,1400 @@
+\glsdefs@newdocentry{premise indicator word}%
+{%
+name={premise indicator},%
+sort={premise indicator},%
+type={main},%
+first={premise indicator},%
+firstplural={premise indicators},%
+text={premise indicator},%
+plural={premise indicators},%
+description={a word or phrase such as ``because'' used to indicate that what follows is the premise of an argument},%
+descriptionplural={a word or phrase such as ``because'' used to indicate that what follows is the premise of an argument},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{conclusion indicator word}%
+{%
+name={conclusion indicator},%
+sort={conclusion indicator},%
+type={main},%
+first={conclusion indicator},%
+firstplural={conclusion indicators},%
+text={conclusion indicator},%
+plural={conclusion indicators},%
+description={a word or phrase such as ``therefore'' used to indicate that what follows is the conclusion of an argument},%
+descriptionplural={a word or phrase such as ``therefore'' used to indicate that what follows is the conclusion of an argument},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{argument}%
+{%
+name={argument},%
+sort={argument},%
+type={main},%
+first={argument},%
+firstplural={arguments},%
+text={argument},%
+plural={arguments},%
+description={a connected series of sentences, divided into \gls {premise}s and \gls {conclusion}},%
+descriptionplural={a connected series of sentences, divided into \gls {premise}s and \gls {conclusion}},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{premise}%
+{%
+name={premise},%
+sort={premise},%
+type={main},%
+first={premise},%
+firstplural={premises},%
+text={premise},%
+plural={premises},%
+description={a sentence in an \gls {argument} other than the \gls {conclusion}},%
+descriptionplural={a sentence in an \gls {argument} other than the \gls {conclusion}},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{conclusion}%
+{%
+name={conclusion},%
+sort={conclusion},%
+type={main},%
+first={conclusion},%
+firstplural={conclusions},%
+text={conclusion},%
+plural={conclusions},%
+description={the last sentence in an \gls {argument}},%
+descriptionplural={the last sentence in an \gls {argument}},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{valid}%
+{%
+name={valid},%
+sort={valid},%
+type={main},%
+first={valid},%
+firstplural={valids},%
+text={valid},%
+plural={valids},%
+description={A property of arguments where there conclusion is a consequence of the premises},%
+descriptionplural={A property of arguments where there conclusion is a consequence of the premises},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{invalid}%
+{%
+name={invalid},%
+sort={invalid},%
+type={main},%
+first={invalid},%
+firstplural={invalids},%
+text={invalid},%
+plural={invalids},%
+description={A property of arguments that holds when the conclusion is not a consequence of the premises; the opposite of \gls {valid}},%
+descriptionplural={A property of arguments that holds when the conclusion is not a consequence of the premises; the opposite of \gls {valid}},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{sound}%
+{%
+name={sound},%
+sort={sound},%
+type={main},%
+first={sound},%
+firstplural={sounds},%
+text={sound},%
+plural={sounds},%
+description={A property of arguments that holds if the argument is logically valid and has all true premises},%
+descriptionplural={A property of arguments that holds if the argument is logically valid and has all true premises},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{atomic sentence}%
+{%
+name={atomic sentence},%
+sort={atomic sentence},%
+type={main},%
+first={atomic sentence},%
+firstplural={atomic sentences},%
+text={atomic sentence},%
+plural={atomic sentences},%
+description={A sentence used to represent a basic sentence; a single letter in TFL, or a predicate symbol followed by names in FOL},%
+descriptionplural={A sentence used to represent a basic sentence; a single letter in TFL, or a predicate symbol followed by names in FOL},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{connective}%
+{%
+name={connective},%
+sort={connective},%
+type={main},%
+first={connective},%
+firstplural={connectives},%
+text={connective},%
+plural={connectives},%
+description={A logical operator in TFL used to combine \glspl {atomic sentence} into larger sentences},%
+descriptionplural={A logical operator in TFL used to combine \glspl {atomic sentence} into larger sentences},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{sentence of TFL}%
+{%
+name={sentence of TFL},%
+sort={sentence of TFL},%
+type={main},%
+first={sentence of TFL},%
+firstplural={sentence of TFLs},%
+text={sentence of TFL},%
+plural={sentence of TFLs},%
+description={A string of symbols in TFL that can be built up according to the recursive rules given on p.~\pageref {TFLsentences}},%
+descriptionplural={A string of symbols in TFL that can be built up according to the recursive rules given on p.~\pageref {TFLsentences}},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{main connective}%
+{%
+name={main connective},%
+sort={main connective},%
+type={main},%
+first={main connective},%
+firstplural={main connectives},%
+text={main connective},%
+plural={main connectives},%
+description={The last connective that you add when you assemble a sentence using the recursive definition.},%
+descriptionplural={The last connective that you add when you assemble a sentence using the recursive definition.},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{formation tree}%
+{%
+name={formation tree},%
+sort={formation tree},%
+type={main},%
+first={formation tree},%
+firstplural={formation trees},%
+text={formation tree},%
+plural={formation trees},%
+description={A tree showing the structure of a sentence and its subsentences.},%
+descriptionplural={A tree showing the structure of a sentence and its subsentences.},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{object language}%
+{%
+name={object language},%
+sort={object language},%
+type={main},%
+first={object language},%
+firstplural={object languages},%
+text={object language},%
+plural={object languages},%
+description={A language that is constructed and studied by logicians. In this textbook, the object languages are TFL and FOL},%
+descriptionplural={A language that is constructed and studied by logicians. In this textbook, the object languages are TFL and FOL},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{metalanguage}%
+{%
+name={metalanguage},%
+sort={metalanguage},%
+type={main},%
+first={metalanguage},%
+firstplural={metalanguages},%
+text={metalanguage},%
+plural={metalanguages},%
+description={The language logicians use to talk about the object language. In this textbook, the metalanguage is English, supplemented by certain symbols like metavariables and technical terms like ``valid''},%
+descriptionplural={The language logicians use to talk about the object language. In this textbook, the metalanguage is English, supplemented by certain symbols like metavariables and technical terms like ``valid''},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{metavariables}%
+{%
+name={metavariables},%
+sort={metavariables},%
+type={main},%
+first={metavariables},%
+firstplural={metavariabless},%
+text={metavariables},%
+plural={metavariabless},%
+description={A variable in the metalanguage that can represent any sentence in the object language},%
+descriptionplural={A variable in the metalanguage that can represent any sentence in the object language},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{truth value}%
+{%
+name={truth value},%
+sort={truth value},%
+type={main},%
+first={truth value},%
+firstplural={truth values},%
+text={truth value},%
+plural={truth values},%
+description={One of the two logical values sentences can have: True and False},%
+descriptionplural={One of the two logical values sentences can have: True and False},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{negation}%
+{%
+name={negation},%
+sort={negation},%
+type={main},%
+first={negation},%
+firstplural={negations},%
+text={negation},%
+plural={negations},%
+description={The symbol \enot , used to represent words and phrases that function like the English word ``not''},%
+descriptionplural={The symbol \enot , used to represent words and phrases that function like the English word ``not''},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{conjunct}%
+{%
+name={conjunct},%
+sort={conjunct},%
+type={main},%
+first={conjunct},%
+firstplural={conjuncts},%
+text={conjunct},%
+plural={conjuncts},%
+description={A sentence joined to another by a \gls {conjunction}},%
+descriptionplural={A sentence joined to another by a \gls {conjunction}},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{disjunction}%
+{%
+name={disjunction},%
+sort={disjunction},%
+type={main},%
+first={disjunction},%
+firstplural={disjunctions},%
+text={disjunction},%
+plural={disjunctions},%
+description={The connective \eor , used to represent words and phrases that function like the English word ``or'' in its inclusive sense; or a sentence formed by using this connective},%
+descriptionplural={The connective \eor , used to represent words and phrases that function like the English word ``or'' in its inclusive sense; or a sentence formed by using this connective},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{disjunct}%
+{%
+name={disjunct},%
+sort={disjunct},%
+type={main},%
+first={disjunct},%
+firstplural={disjuncts},%
+text={disjunct},%
+plural={disjuncts},%
+description={A sentence joined to another by a \gls {disjunction}},%
+descriptionplural={A sentence joined to another by a \gls {disjunction}},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{conditional}%
+{%
+name={conditional},%
+sort={conditional},%
+type={main},%
+first={conditional},%
+firstplural={conditionals},%
+text={conditional},%
+plural={conditionals},%
+description={The symbol \eif , used to represent words and phrases that function like the English phrase ``if \dots {} then \dots ''; a sentence formed by using this symbol},%
+descriptionplural={The symbol \eif , used to represent words and phrases that function like the English phrase ``if \dots {} then \dots ''; a sentence formed by using this symbol},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{antecedent}%
+{%
+name={antecedent},%
+sort={antecedent},%
+type={main},%
+first={antecedent},%
+firstplural={antecedents},%
+text={antecedent},%
+plural={antecedents},%
+description={The sentence on the left side of a \gls {conditional}},%
+descriptionplural={The sentence on the left side of a \gls {conditional}},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{consequent}%
+{%
+name={consequent},%
+sort={consequent},%
+type={main},%
+first={consequent},%
+firstplural={consequents},%
+text={consequent},%
+plural={consequents},%
+description={The sentence on the right side of a \gls {conditional}},%
+descriptionplural={The sentence on the right side of a \gls {conditional}},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{valuation}%
+{%
+name={valuation},%
+sort={valuation},%
+type={main},%
+first={valuation},%
+firstplural={valuations},%
+text={valuation},%
+plural={valuations},%
+description={An assignment of \glspl {truth value} to particular atomic \glspl {sentence of TFL}},%
+descriptionplural={An assignment of \glspl {truth value} to particular atomic \glspl {sentence of TFL}},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{Truthval}%
+{%
+name={Truth relative to a valuation},%
+sort={Truth relative to a valuation},%
+type={main},%
+first={Truth relative to a valuation},%
+firstplural={Truth relative to a valuations},%
+text={Truth relative to a valuation},%
+plural={Truth relative to a valuations},%
+description={a list of recursive rules that allow us to determine whether a sentence of TFL is true given a particular valuation, p.~\pageref {Truthval}},%
+descriptionplural={a list of recursive rules that allow us to determine whether a sentence of TFL is true given a particular valuation, p.~\pageref {Truthval}},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{soundness}%
+{%
+name={soundness},%
+sort={soundness},%
+type={main},%
+first={soundness},%
+firstplural={soundnesss},%
+text={soundness},%
+plural={soundnesss},%
+description={A property held by logical systems if and only if $\proves $ implies $\entails $},%
+descriptionplural={A property held by logical systems if and only if $\proves $ implies $\entails $},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{completeness}%
+{%
+name={completeness},%
+sort={completeness},%
+type={main},%
+first={completeness},%
+firstplural={completenesss},%
+text={completeness},%
+plural={completenesss},%
+description={A property held by logical systems if and only if $\entails $ implies $\proves $},%
+descriptionplural={A property held by logical systems if and only if $\entails $ implies $\proves $},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{theorem}%
+{%
+name={theorem},%
+sort={theorem},%
+type={main},%
+first={theorem},%
+firstplural={theorems},%
+text={theorem},%
+plural={theorems},%
+description={A sentence that can be proved without any premises},%
+descriptionplural={A sentence that can be proved without any premises},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{provably equivalent}%
+{%
+name={provable equivalence},%
+sort={provable equivalence},%
+type={main},%
+first={provably equivalent},%
+firstplural={provably equivalents},%
+text={provably equivalent},%
+plural={provably equivalents},%
+description={A property held by pairs of statements if and only if there is a derivation which takes you from each one to the other one},%
+descriptionplural={A property held by pairs of statements if and only if there is a derivation which takes you from each one to the other one},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{provably inconsistent}%
+{%
+name={provable inconsistency},%
+sort={provable inconsistency},%
+type={main},%
+first={provably inconsistent},%
+firstplural={provably inconsistents},%
+text={provably inconsistent},%
+plural={provably inconsistents},%
+description={Sentences are provably inconsistent iff a contradiction can be derived from them},%
+descriptionplural={Sentences are provably inconsistent iff a contradiction can be derived from them},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{name}%
+{%
+name={name},%
+sort={name},%
+type={main},%
+first={name},%
+firstplural={names},%
+text={name},%
+plural={names},%
+description={a symbol of FOL used to pick out an object of the \gls {domain}},%
+descriptionplural={a symbol of FOL used to pick out an object of the \gls {domain}},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{predicate}%
+{%
+name={predicate},%
+sort={predicate},%
+type={main},%
+first={predicate},%
+firstplural={predicates},%
+text={predicate},%
+plural={predicates},%
+description={a symbol of FOL used to symbolize a property or relation},%
+descriptionplural={a symbol of FOL used to symbolize a property or relation},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{universal quantifier}%
+{%
+name={universal quantifier},%
+sort={universal quantifier},%
+type={main},%
+first={universal quantifier},%
+firstplural={universal quantifiers},%
+text={universal quantifier},%
+plural={universal quantifiers},%
+description={the symbol $\forall $ of FOL used to symbolize generality; $\forall x\, Fx$ is true iff every member of the domain is~$F$},%
+descriptionplural={the symbol $\forall $ of FOL used to symbolize generality; $\forall x\, Fx$ is true iff every member of the domain is~$F$},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{domain}%
+{%
+name={domain},%
+sort={domain},%
+type={main},%
+first={domain},%
+firstplural={domains},%
+text={domain},%
+plural={domains},%
+description={the collection of objects assumed for a symbolization in FOL, or that gives the range of the quantifiers in an \gls {interpretation}},%
+descriptionplural={the collection of objects assumed for a symbolization in FOL, or that gives the range of the quantifiers in an \gls {interpretation}},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{empty predicate}%
+{%
+name={empty predicate},%
+sort={empty predicate},%
+type={main},%
+first={empty predicate},%
+firstplural={empty predicates},%
+text={empty predicate},%
+plural={empty predicates},%
+description={a \gls {predicate} that applies to no object in the \gls {domain}},%
+descriptionplural={a \gls {predicate} that applies to no object in the \gls {domain}},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{formula}%
+{%
+name={formula of FOL},%
+sort={formula of FOL},%
+type={main},%
+first={formula of FOL},%
+firstplural={formula of FOLs},%
+text={formula of FOL},%
+plural={formula of FOLs},%
+description={A string of symbols in FOL that can be built up according to the recursive rules given on p.~\pageref {FOLformula}},%
+descriptionplural={A string of symbols in FOL that can be built up according to the recursive rules given on p.~\pageref {FOLformula}},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{main logical operator}%
+{%
+name={main logical operator},%
+sort={main logical operator},%
+type={main},%
+first={main logical operator},%
+firstplural={main logical operators},%
+text={main logical operator},%
+plural={main logical operators},%
+description={the operator used last in the construction of a \gls {formula}},%
+descriptionplural={the operator used last in the construction of a \gls {formula}},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{scope}%
+{%
+name={scope},%
+sort={scope},%
+type={main},%
+first={scope},%
+firstplural={scopes},%
+text={scope},%
+plural={scopes},%
+description={the subformula of a \gls {formula} of FOL for which the \gls {main logical operator} is the operator},%
+descriptionplural={the subformula of a \gls {formula} of FOL for which the \gls {main logical operator} is the operator},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{bound variable}%
+{%
+name={bound variable},%
+sort={bound variable},%
+type={main},%
+first={bound variable},%
+firstplural={bound variables},%
+text={bound variable},%
+plural={bound variables},%
+description={an occurrence of a variable in a \gls {formula} which is in the scope of a quantifier followed by the same variable},%
+descriptionplural={an occurrence of a variable in a \gls {formula} which is in the scope of a quantifier followed by the same variable},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{free variable}%
+{%
+name={free variable},%
+sort={free variable},%
+type={main},%
+first={free variable},%
+firstplural={free variables},%
+text={free variable},%
+plural={free variables},%
+description={an occurrence of a variable in a \gls {formula} which is not a \gls {bound variable}},%
+descriptionplural={an occurrence of a variable in a \gls {formula} which is not a \gls {bound variable}},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{sentence of FOL}%
+{%
+name={sentence of FOL},%
+sort={sentence of FOL},%
+type={main},%
+first={sentence of FOL},%
+firstplural={sentence of FOLs},%
+text={sentence of FOL},%
+plural={sentence of FOLs},%
+description={a expression of FOL constructed according to the recursive rules. },%
+descriptionplural={a expression of FOL constructed according to the recursive rules. },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{interpretation}%
+{%
+name={interpretation},%
+sort={interpretation},%
+type={main},%
+first={interpretation},%
+firstplural={interpretations},%
+text={interpretation},%
+plural={interpretations},%
+description={a specification of a \gls {domain} together with the objects the \glspl {name} pick out and which objects the \glspl {predicate} are true of},%
+descriptionplural={a specification of a \gls {domain} together with the objects the \glspl {name} pick out and which objects the \glspl {predicate} are true of},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{logical truth}%
+{%
+name={logical truth},%
+sort={logical truth},%
+type={main},%
+first={logical truth},%
+firstplural={logical truths},%
+text={logical truth},%
+plural={logical truths},%
+description={A \gls {sentence of FOL} that is true in every \gls {interpretation}. Note that the equivalent notion for TFL is `tautology'},%
+descriptionplural={A \gls {sentence of FOL} that is true in every \gls {interpretation}. Note that the equivalent notion for TFL is `tautology'},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{contradiction of FOL}%
+{%
+name={contradiction (of FOL)},%
+sort={contradiction (of FOL)},%
+type={main},%
+first={contradiction},%
+firstplural={contradictions},%
+text={contradiction},%
+plural={contradictions},%
+description={A \gls {sentence of FOL} that is false in every \gls {interpretation}},%
+descriptionplural={A \gls {sentence of FOL} that is false in every \gls {interpretation}},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{logically equivalent in FOL}%
+{%
+name={logical equivalence (in FOL)},%
+sort={logical equivalence (in FOL)},%
+type={main},%
+first={logically equivalent},%
+firstplural={logically equivalents},%
+text={logically equivalent},%
+plural={logically equivalents},%
+description={A property held by pairs of \glspl {sentence of FOL} if and only if the sentences have the same truth value in every \gls {interpretation}.},%
+descriptionplural={A property held by pairs of \glspl {sentence of FOL} if and only if the sentences have the same truth value in every \gls {interpretation}.},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{logically consistent in FOL}%
+{%
+name={logical consistency (in FOL)},%
+sort={logical consistency (in FOL)},%
+type={main},%
+first={jointly consistent},%
+firstplural={jointly consistents},%
+text={jointly consistent},%
+plural={jointly consistents},%
+description={A property held by \glspl {sentence of FOL} if and only if some \gls {interpretation} makes all the sentences true},%
+descriptionplural={A property held by \glspl {sentence of FOL} if and only if some \gls {interpretation} makes all the sentences true},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{disjunctive normal form}%
+{%
+name={disjunctive normal form (DNF)},%
+sort={disjunctive normal form (DNF)},%
+type={main},%
+first={disjunctive normal form},%
+firstplural={disjunctive normal forms},%
+text={disjunctive normal form},%
+plural={disjunctive normal forms},%
+description={a sentence which is a disjunction of conjunctions of atomic sentences or negated atomic sentences},%
+descriptionplural={a sentence which is a disjunction of conjunctions of atomic sentences or negated atomic sentences},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{conjunctive normal form}%
+{%
+name={conjunctive normal form (DNF)},%
+sort={conjunctive normal form (DNF)},%
+type={main},%
+first={conjunctive normal form},%
+firstplural={conjunctive normal forms},%
+text={conjunctive normal form},%
+plural={conjunctive normal forms},%
+description={a sentence which is a conjunction of disjunctions of atomic sentences or negated atomic sentences},%
+descriptionplural={a sentence which is a conjunction of disjunctions of atomic sentences or negated atomic sentences},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{expressively adequate}%
+{%
+name={expressive adequacy},%
+sort={expressive adequacy},%
+type={main},%
+first={expressively adequate},%
+firstplural={expressively adequates},%
+text={expressively adequate},%
+plural={expressively adequates},%
+description={property of a collection of connectives which holds iff every possible truth table is the truth table of a sentence involving only those connectives},%
+descriptionplural={property of a collection of connectives which holds iff every possible truth table is the truth table of a sentence involving only those connectives},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+

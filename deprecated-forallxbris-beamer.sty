@@ -1,0 +1,134 @@
+%!TEX root = forallxbris.tex
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{forallxbristextbook}[Sep.~2018 support for a logic textbook]
+
+
+
+
+\usepackage{etex} % add for presentation
+
+
+\setbeameroption{hide notes}
+
+
+\author{Catrin Campbell-Moore}\institute{Bristol University}
+
+
+
+
+\usetheme{Singapore}
+%\useoutertheme[compact]{smoothbars}
+%\setbeamertemplate{footline}{}
+\setbeamertemplate{navigation symbols}{}
+\usepackage{appendixnumberbeamer} 
+%\setbeamercovered{transparent}
+\setbeamertemplate{headline}{\vspace{1em}} % If want no shading in Singapore
+\setbeamertemplate{blocks}[rounded][shadow=true]
+
+%Was fiddling:
+%\setbeamertemplate{headline}{\pgfuseshading{beamer@headfade}}
+%\AtBeginDocument{%
+%  {
+%    \usebeamercolor{section in head/foot}
+%  }
+%\pgfdeclareverticalshading{beamer@headfade}{\paperwidth}
+%  {%
+%    color(0cm)=(bg);
+%    color(1.25cm)=(section in head/foot.bg)%
+%  }
+%  \setbeamercolor{section in head/foot}{bg=}
+%}
+%\addtoheadtemplate{\pgfuseshading{beamer@headfade}\vskip-1.25cm}{}
+
+\newcommand{\mytitlepage}{\begin{frame}[noframenumbering]	
+		\thispagestyle{empty}
+		\titlepage 
+	\end{frame}\pdfbookmark{Introduction}{Introduction}}
+	
+%		\newcommand{\myoutlinepage}{\begin{frame}[noframenumbering]{Outline}
+%				\tableofcontents
+%			\end{frame}
+%			\AtBeginSection[]{\frame[noframenumbering]{\frametitle{Outline}%
+%					\tableofcontents[current
+%					]
+%				}}}
+%
+%		\newcommand{\myoutlinepage}{\begin{frame}[noframenumbering]{Outline}
+%				\tableofcontents
+%			\end{frame}
+			
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+%  \newcommand*{\sectionbookmark}[1][]{%
+%    \bookmark[%
+%      level=section,%
+%      dest=\@currentHref,%
+%      #1%
+%    ]%
+%  }
+  
+%\newcommand{\sectionframe}[1]{
+%  \begin{frame}
+%  \vfill
+%  \centering
+%  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{structure}
+%    \usebeamerfont{title}#1\par%
+%  \end{beamercolorbox}
+%  \vfill
+%  \end{frame}
+%\pdfbookmark{#1}{#1}
+%  }
+
+  
+
+
+	\newcommand{\bibcommand}{\appendix
+		\begin{frame}[allowframebreaks]{References}
+			\def\newblock{}
+			%	\bibliographystyle{apalike}
+			\bibliographystyle{plainnat}
+			\bibliography{/Users/CCMoore/Dropbox/research/projects/mybib}
+		\end{frame}}
+					
+					
+
+
+\renewcommand{\alert}[1]{\textbf{#1}}
+
+
+
+\BeforeBeginEnvironment{highlighted}{%
+    \setbeamercolor{block body}{fg=black, bg=structure!20!white}
+}
+\AfterEndEnvironment{highlighted}{
+ \setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!20!bg, fg=black}
+}
+\newenvironment{highlighted}{\begin{block}{}}{\end{block}}
+
+\newenvironment{earg}%
+{\begin{block}{}\begin{enumerate}}%
+	{\end{enumerate}\end{block}}
+\newenvironment{ekey}%
+{\begin{block}{}\begin{itemize}}%
+	{\end{itemize}\end{block}}
+	
+\newenvironment{samplesent}%
+{\begin{block}{}\begin{itemize}}%
+	{\end{itemize}\end{block}}
+
+	
+\newcommand{\todo}[1]{\textcolor{green}{#1}}
+	\newcommand{\hidetodo}{\renewcommand{\todo}[1]{}}
+	\newcommand{\showtodo}{}
+\newcommand{\comment}[1]{\textcolor{red}{#1}}
+	\newcommand{\hidecomments}{\renewcommand{\comment}[1]{}}
+	\newcommand{\showcomments}{}
+\newcommand{\hideall}{\hidecomments\hidetodo}
