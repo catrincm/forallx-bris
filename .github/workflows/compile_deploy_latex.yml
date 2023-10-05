@@ -20,8 +20,6 @@ jobs:
       - name: Rename and Upload PDFs as artifacts
         run: |
           mv forallxbris.pdf forallxbris-js.pdf
-          mv forallxbris-withanswers.pdf forallxbris-withanswers-js.pdf
-          mv forallxbris-accessible.pdf forallxbris-accessible-js.pdf
           mkdir -p github_deploy
           mv *.pdf github_deploy/
         if: success()
