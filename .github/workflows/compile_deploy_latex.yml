@@ -31,7 +31,7 @@ jobs:
           mv *.pdf github_deploy/
         if: success()
       - name: Upload PDFs as artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: pdf-artifacts
           path: github_deploy/
@@ -63,7 +63,7 @@ jobs:
           mv *.pdf github_deploy/
         if: success()
       - name: Upload PDFs as artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: pdf-artifacts
           path: github_deploy/
