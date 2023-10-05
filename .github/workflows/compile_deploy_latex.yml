@@ -1,38 +1,84 @@
 name: compile_deploy_latex
-on: [push]
+on:
+  push:
+    branches:
+      - johannes
+      - master
+
 jobs:
-  upload-doc-johannes:
+  compile-latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: 'master'
+      - name: Compile LaTeX - forallxbris
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: forallxbris.tex
+      - name: Compile LaTeX - forallxbris-withanswers
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: forallxbris-withanswers.tex
+      - name: Compile LaTeX - forallxbris-accessible
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: forallxbris-accessible.tex
+      - name: Rename and Upload PDFs as artifacts
+        run: |
+          mkdir -p github_deploy
+          mv *.pdf github_deploy/
+        if: success()
+      - name: Upload PDFs as artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: pdf-artifacts
+          path: github_deploy/
+  compile-latex-for-johannes:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           ref: 'johannes'
-      - name: Compile LaTeX document
-        uses: xu-cheng/latex-action@v2
+      - name: Compile LaTeX - forallxbris
+        uses: xu-cheng/latex-action@v3
         with:
           root_file: forallxbris.tex
-      - name: Rename PDF file
-        run: mv ./forallxbris.pdf ./forallxbris-js.pdf
-      - name: Upload pdf as artifact
+      - name: Compile LaTeX - forallxbris-withanswers
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: forallxbris-withanswers.tex
+      - name: Compile LaTeX - forallxbris-accessible
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: forallxbris-accessible.tex
+      - name: Rename and Upload PDFs as artifacts
+        run: |
+          mv forallxbris.pdf forallxbris-js.pdf
+          mv forallxbris-withanswers.pdf forallxbris-withanswers-js.pdf
+          mv forallxbris-accessible.pdf forallxbris-accessible-js.pdf
+          mkdir -p github_deploy
+          mv *.pdf github_deploy/
+        if: success()
+      - name: Upload PDFs as artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: forallxbris-js.pdf
-          path: ./
+          name: pdf-artifacts
+          path: github_deploy/
+
   deploy:
-    needs: [upload-doc-johannes]
+    needs: [compile-latex, compile-latex-for-johannes]
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - uses: actions/download-artifact@v3
+      - name: Download PDFs
+        uses: actions/download-artifact@v3
         with:
-          path: github_artifacts
-      - name: move
-        run: mkdir -p github_deploy && mv github_artifacts/*/* github_deploy
-      - name: deploy on gh-pages
+          path: github_deploy
+      - name: Deploy on gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./github_deploy
+          publish_dir: ./static
           publish_branch: gh-pages
