@@ -1,45 +1,36 @@
 name: compile_deploy_latex
-on:
-  push:
-    branches:
-      - johannes
-      - master
-
+on: [push]
 jobs:
-  compile-latex-for-johannes:
+  upload-doc-johannes:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           ref: 'johannes'
-      - name: Compile LaTeX - forallxbris
-        uses: xu-cheng/latex-action@v3
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
         with:
           root_file: forallxbris.tex
-      - name: Rename and Upload PDFs as artifacts
-        run: |
-          mv forallxbris.pdf forallxbris-js.pdf
-          mkdir -p github_deploy
-          mv *.pdf github_deploy/
-        if: success()
-      - name: Upload PDFs as artifacts
-        uses: actions/upload-artifact@v3
+      - name: Rename PDF file
+        run: mv ./forallxbris.pdf ./forallxbris-js.pdf
+      - name: Upload pdf as artifact
+        uses: actions/upload-artifact@v2
         with:
-          name: pdf-artifacts
-          path: github_deploy/
-
+          name: forallxbris-js.pdf
+          path: ./
   deploy:
-    needs: [compile-latex-for-johannes]
+    needs: [upload-doc-johannes]
     runs-on: ubuntu-latest
     steps:
-      - name: Download PDFs
-        uses: actions/download-artifact@v3
+      - name: Checkout
+        uses: actions/checkout@v4
+      - uses: actions/download-artifact@v3
         with:
-          path: github_deploy
+          path: github_artifacts
       - name: move
-        run: mv github_deploy/pdf-artifacts/*/* github_deploy
-      - name: Deploy on gh-pages
+        run: mkdir -p github_deploy && mv github_artifacts/*/* github_deploy
+      - name: deploy on gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
