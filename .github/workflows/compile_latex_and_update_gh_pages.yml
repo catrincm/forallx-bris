@@ -20,16 +20,20 @@ jobs:
           git config user.name "GitHub Action"
           git config user.email "action@github.com"
 
+      - name: Stash files
+        run: |
+          git stash push -u forallxbris.pdf README.md
+
       - name: Update 'gh-pages' branch with new files
         run: |
           git checkout gh-pages
           git pull origin gh-pages
-          cp ./forallxbris.pdf ./forallxbris.pdf
+          git stash pop
           cp ./forallxbris.pdf ./forallxbris-js.pdf
           cp ./README.md ./index.md
 
       - name: Commit and push to 'gh-pages' branch
         run: |
           git add forallxbris.pdf forallxbris-js.pdf index.md
-          git commit -m "Update GitHub Pages with latest PDF and README"
+          git commit -m "Update GitHub Pages with latest files"
           git push origin gh-pages
