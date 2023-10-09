@@ -17,9 +17,10 @@ jobs:
           path: 'johannes-dir'
 
       - name: Compile LaTeX document in 'johannes-dir'
-        uses: xu-cheng/latex-action@v2
-        with:
-          root_file: johannes-dir/forallxbris.tex
+        run: |
+          cd johannes-dir
+          pdflatex -interaction=nonstopmode forallxbris.tex
+          pdflatex -interaction=nonstopmode forallxbris.tex
 
       - name: Checkout 'gh-pages' branch to 'gh-pages-dir'
         uses: actions/checkout@v4
