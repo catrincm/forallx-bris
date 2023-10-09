@@ -1,4 +1,4 @@
-name: compile_latex_and_update_gh_pages
+name: compile_and_copy_latex
 
 on:
   push:
@@ -11,28 +11,24 @@ jobs:
 
     steps:
       - name: Checkout 'johannes' branch
-        uses: actions/checkout@v4
-        with:
-          ref: 'johannes'
+        uses: actions/checkout@v2
 
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
           root_file: forallxbris.tex
 
-      - name: Rename PDF and copy README for gh-pages
+      - name: Copy renamed PDF to docs directory
         run: |
-          cp forallxbris.pdf forallxbris-js.pdf
-          cp README.md index.md
+          mkdir -p docs
+          cp ./forallxbris.pdf ./docs/
+          cp ./docs/forallxbris.pdf ./docs/forallxbris-js.pdf
+          cp README.md ./docs/index.md
 
-      - name: Copy files to 'gh-pages' branch
-        uses: planetoftheweb/copy-to-branches@v1
-        env:
-          key: johannes
-          target: gh-pages
-          files: forallxbris.pdf forallxbris-js.pdf index.md
-
-      - name: Cleanup
+      - name: Push to Repository
         run: |
-          rm forallxbris-js.pdf
-          rm index.md
+          git config user.name "GitHub Action"
+          git config user.email "action@github.com"
+          git add ./docs/forallxbris.pdf ./docs/forallxbris-js.pdf ./docs/index.md
+          git commit -m "Copy PDF and README to docs directory"
+          git push
