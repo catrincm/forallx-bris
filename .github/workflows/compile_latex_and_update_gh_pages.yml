@@ -10,29 +10,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout 'johannes' branch to 'johannes-dir'
+      - name: Checkout 'johannes' branch
         uses: actions/checkout@v4
         with:
           ref: 'johannes'
-          path: 'johannes-dir'
 
-      - name: Checkout 'gh-pages' branch to 'gh-pages-dir'
-        uses: actions/checkout@v4
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
         with:
-          ref: 'gh-pages'
-          path: 'gh-pages-dir'
+          root_file: forallxbris.tex
 
-      - name: Copy files from 'johannes' to 'gh-pages' branch
+      - name: Rename PDF and copy README for gh-pages
         run: |
-          cp johannes-dir/forallxbris.pdf gh-pages-dir/
-          cp johannes-dir/forallxbris.pdf gh-pages-dir/forallxbris-js.pdf
-          cp johannes-dir/README.md gh-pages-dir/index.md
+          cp forallxbris.pdf forallxbris-js.pdf
+          cp README.md index.md
 
-      - name: Commit and push to 'gh-pages' branch
+      - name: Copy files to 'gh-pages' branch
+        uses: planetoftheweb/copy-to-branches@v1
+        env:
+          key: johannes
+          target: gh-pages
+          files: forallxbris.pdf forallxbris-js.pdf index.md
+
+      - name: Cleanup
         run: |
-          cd gh-pages-dir
-          git config user.name "GitHub Action"
-          git config user.email "action@github.com"
-          git add forallxbris.pdf forallxbris-js.pdf index.md
-          git commit -m "Update GitHub Pages with latest PDF and README"
-          git push origin gh-pages
+          rm forallxbris-js.pdf
+          rm index.md
