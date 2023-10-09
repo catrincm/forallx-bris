@@ -10,27 +10,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout 'johannes' branch
+      - name: Checkout repository with full history
         uses: actions/checkout@v4
         with:
-          ref: 'johannes'
-
-      - name: Compile LaTeX document
-        uses: xu-cheng/latex-action@v2
-        with:
-          root_file: forallxbris.tex
+          fetch-depth: 0
 
       - name: Set up Git
         run: |
           git config user.name "GitHub Action"
           git config user.email "action@github.com"
 
-      - name: Checkout 'gh-pages' branch and move files
+      - name: Update 'gh-pages' branch with new files
         run: |
           git checkout gh-pages
-          cp ../forallxbris.pdf ./forallxbris.pdf
-          cp ../forallxbris.pdf ./forallxbris-js.pdf
-          cp ../README.md ./index.md
+          git pull origin gh-pages
+          cp ./forallxbris.pdf ./forallxbris.pdf
+          cp ./forallxbris.pdf ./forallxbris-js.pdf
+          cp ./README.md ./index.md
 
       - name: Commit and push to 'gh-pages' branch
         run: |
