@@ -1,0 +1,38 @@
+name: compile_and_copy_latex
+
+on:
+  push:
+    branches:
+      - johannes
+
+jobs:
+  compile_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 'johannes' branch
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX documents
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: |
+            forallxbris.tex
+            forallxbris-accessible.tex
+            forallxbris-withanswers.tex
+
+      - name: Copy PDFs and README to docs directory
+        run: |
+          cp ./forallxbris.pdf ./docs/
+          cp ./forallxbris-accessible.pdf ./docs/
+          cp ./forallxbris-withanswers.pdf ./docs/
+          cp ./docs/forallxbris.pdf ./docs/forallxbris-js.pdf
+          cp README.md ./docs/index.md
+
+      - name: Push to Repository
+        run: |
+          git config user.name "GitHub Action"
+          git config user.email "action@github.com"
+          git add ./docs/forallxbris.pdf ./docs/forallxbris-js.pdf ./docs/forallxbris-accessible.pdf ./docs/forallxbris-withanswers.pdf ./docs/index.md
+          git commit -m "Copy PDFs and README to docs directory"
+          git push
