@@ -65,7 +65,7 @@ When one introduces a language there are (at least) two task: the first is to sp
 
 %In Parts \ref{ch.TFL}--\ref{ch.NDTFL}, we are going to develop a formal system which allows us to symbolize many arguments in such a way as to show that they are valid in virtue of their form. That language will be \emph{truth-functional logic}, or TFL. It will have sentences like $$(A\eand (B\eif\enot C)),$$ which we will read ``$A$ and if $B$, then it is not the case that $C$''.
 
-\chapter{Syntax of TFL}
+\chapter{Syntax of TFL}\label{ch:syntfl}
 \section{Atomic sentences}\label{sec:as}
 
 We started isolating the form of an argument by replacing  \emph{subsentences} of sentences with individual letters. Thus in the first example of this section, `it is raining outside' is a subsentence of `If it is raining outside, then Jenny is miserable', and we replaced this subsentence with `$A$'.
@@ -495,7 +495,7 @@ In this Part, we have talked a lot \emph{about} sentences. So we should pause to
 
 \chapter{Semantics of TFL}
 \section{Truth tables}\label{sec:tt}
-We have completed introducing the syntax of the language of TFL. It is now time to turn to the semantics of TFL. The idea underlying the semantics is to specify conditions when sentences of TFL are true. In \S\ref{} we introduced the idea that an argument is logically valid if there is no interpretation on which all premises of the argument are true but the conclusion false. Accordingly, if we wish to make a start on making this idea more precise, we need to say when a sentence of TFL is true according to an interpretation and when it is false. The target of this chapter is to give precise rules for determining this. The important feature of truth functional logic is that the truth value of a complex sentence, such as $`A\eor(B\eand C)'$ is fully determined by the truths of is component parts, that is $`A'$, $`B'$ and $`C'$. If we're told whether $`A'$, $`B'$ and $C$ are true or false, then we will be able to say whether $`A\eor(B\eand C)'$ is true or false.
+We have completed introducing the syntax of the language of TFL. It is now time to turn to the semantics of TFL. The idea underlying the semantics is to specify conditions when sentences of TFL are true. In \S\ref{ch:syntfl} we introduced the idea that an argument is logically valid if there is no interpretation on which all premises of the argument are true but the conclusion false. Accordingly, if we wish to make a start on making this idea more precise, we need to say when a sentence of TFL is true according to an interpretation and when it is false. The target of this chapter is to give precise rules for determining this. The important feature of truth functional logic is that the truth value of a complex sentence, such as $`A\eor(B\eand C)'$ is fully determined by the truths of is component parts, that is $`A'$, $`B'$ and $`C'$. If we're told whether $`A'$, $`B'$ and $C$ are true or false, then we will be able to say whether $`A\eor(B\eand C)'$ is true or false.
 
 To be able to do this, we need to describe how the truth values of sentences are to be combined to obtain the truth value of a sentence that has been obtained via the formation rules 2-5. To do this we work through each of our connectives describing the rules governing it.
 
@@ -509,7 +509,7 @@ To be able to do this, we need to describe how the truth values of sentences are
 \subsection{Negation}
 The `$\neg$'-connective is called negation. When we introduced the `$\neg$'-connective we said it should roughly be understood as `it is not the case' or, perhaps, simply `not'. Let's make that official:
 \factoidbox{
-If a sentence can be paraphrased as `it is not the case that \metaX'\\ it can be symbolised as $\enot\metaX$.
+If a sentence can be paraphrased as `it is not the case that \ldots'\\ it can be symbolised as $\enot\metaX$.
 }
 What does that mean for the truth rules? Consider:
 \begin{earg}
@@ -551,7 +551,7 @@ description={The symbol \enot, used to represent words and phrases that function
 The $\wedge$-connective, called conjunction, is meant to be understood of the English word `and': 
 \factoidbox{
 %		A sentence can be symbolized as $(\metaX\eand\metaY)$ if it can be paraphrased in English as `Both\ldots, and\ldots', or as `\ldots, but \ldots', or as `although \ldots, \ldots'.
-		If a sentence can be paraphrased as `\metaX and \metaY' \\it can be symbolised as $\metaX\eand\metaY$.
+		If a sentence can be paraphrased as `\ldots and\ldots' \\it can be symbolised as $(\metaX\eand\metaY)$.
 	}
 
 What is the appropriate truth rule for conjunction? Consider:
@@ -569,7 +569,7 @@ Which we summarise
 \begin{highlighted}
 \begin{center}
 \begin{tabular}{cccc}
-If \metaX is:&and \metaY is:&&then $\metaX\eand\metaY$ is:\\
+If \metaX is:&and \metaY is:&&then $(\metaX\eand\metaY)$ is:\\
 T & T &$\leadsto$& T\\
 T & F &$\leadsto$& F\\
 F & T &$\leadsto$& F\\
@@ -588,7 +588,7 @@ F & F &$\leadsto$& F
 %F & F & F
 %\end{tabular}
 %\end{center}
-Note that conjunction is \emph{symmetrical}. The truth value for $\metaX \eand \metaY$ is always the same as the truth value for $\metaY \eand \metaX$.
+Note that conjunction is \emph{symmetrical}. The truth value for $(\metaX \eand \metaY)$ is always the same as the truth value for $(\metaY \eand \metaX)$.
 
 \newglossaryentry{conjunct}
 {
@@ -611,7 +611,7 @@ name=disjunct,
 description={A sentence joined to another by a \gls{disjunction}}
 }
 \factoidbox{
-If a sentence can be paraphrased as `\metaX or \metaY' \\it can be symbolised as $\metaX\eor\metaY$.
+If a sentence can be paraphrased as `\ldots or \ldots' \\it can be symbolised as $(\metaX\eor\metaY)$.
 	}
 
 Whereas the truth rules for the negation and conjunction were relatively straightforward, the rule for disjunction is a bit more subtle.
@@ -622,9 +622,9 @@ Consider:
 If she cannot speak either German or French, then this is false. If she can speak German but not French, then it is true, and if she can speak French but not German it is also true.
 We have the general rules:
 \begin{itemize}
-\item If $\metaX$ and $\metaY$ are both false, then $\metaX\eor\metaY$ is false.
-\item  If $\metaX$ is true and $\metaY$ is false, then $\metaX\eor\metaY$ is true.
-\item  If $\metaX$ is false and $\metaY$ is true, then $\metaX\eor\metaY$ is true.
+\item If $\metaX$ and $\metaY$ are both false, then $(\metaX\eor\metaY)$ is false.
+\item  If $\metaX$ is true and $\metaY$ is false, then $(\metaX\eor\metaY)$ is true.
+\item  If $\metaX$ is false and $\metaY$ is true, then $(\metaX\eor\metaY)$ is true.
 \end{itemize}
 
 But what if she can speak both? Is it true or false?
@@ -639,10 +639,10 @@ she speaks French (but not both).
 In logic there can be no ambiguity. We choose that $\eor$ stands for the \emph{inclusive or}.
 That is, we give the final rule:
 \begin{itemize}
-\item If $\metaX$ and $\metaY$ are both true, then $\metaX\eor\metaY$ is true.
+\item If $\metaX$ and $\metaY$ are both true, then $(\metaX\eor\metaY)$ is true.
 \end{itemize}
 
-So, when we turn to symbolisations of arguments, one should only symbolise a sentence as $\metaX\eor \metaY$ if it is to be read as the \emph{inclusive or}. To symbolise the exclusive or, you need to use the more complex sentence: $(\metaX\eor\metaY)\eand \enot(\metaX\eand\metaY)$, which essentially makes explicit the whispered ``but not both''. (Once we have completed our presentation of the truth tables you should check that $(\metaX\eor\metaY)\eand \enot(\metaX\eand\metaY)$ can indeed be understood as exclusive or.)
+So, when we turn to symbolisations of arguments, one should only symbolise a sentence as $(\metaX\eor \metaY)$ if it is to be read as the \emph{inclusive or}. To symbolise the exclusive or, you need to use the more complex sentence: $((\metaX\eor\metaY)\eand \enot(\metaX\eand\metaY))$, which essentially makes explicit the whispered ``but not both''. (Once we have completed our presentation of the truth tables you should check that $((\metaX\eor\metaY)\eand \enot(\metaX\eand\metaY))$ can indeed be understood as exclusive or.)
 
 %Sometimes the English is ambiguous, in which case one should point that out when symbolising and give the two alternative symbolisations.
 
@@ -666,7 +666,7 @@ To summarise the rules for $\eor$:
 \begin{highlighted}
 \begin{center}
 \begin{tabular}{cccc}
-If \metaX is:&and \metaY is:&&then $\metaX\eor\metaY$ is:\\
+If \metaX is:&and \metaY is:&&then $(\metaX\eor\metaY)$ is:\\
 T & T &$\leadsto$& T\\
 T & F &$\leadsto$& T\\
 F & T &$\leadsto$& T\\
@@ -679,7 +679,7 @@ Like conjunction, disjunction is symmetrical.
 \subsection{Conditional}\todo{Say more about ``only if''! Students thought it was $\eiff$}
 The `$\rightarrow$'-connective is called the conditional-connective and it is meant to be related to our understanding of \emph{if\ldots, then\ldots} sentences. Here, $P$ is called the \define{antecedent} of the conditional $(P \eif Q)$, and $Q$ is called the \define{consequent}.
 	\factoidbox{
-	 If a sentence can be paraphrased as \\`If \metaX, then \metaY' it can be symbolised as $\metaX\eif\metaY$.
+	 If a sentence can be paraphrased as \\`If \ldots, then \ldots' it can be symbolised as $(\metaX\eif\metaY)$.
 	}
 
 
@@ -688,7 +688,7 @@ The `$\rightarrow$'-connective is called the conditional-connective and it is me
 \newglossaryentry{conditional}
 {
 name=conditional,
-description={The symbol \eif, used to represent words and phrases that function like the English phrase ``if \dots{} then \dots''; a sentence formed by using this symbol}
+description={The symbol \eif, used to represent words and phrases that function like the English phrase ``if \ldots{} then \ldots''; a sentence formed by using this symbol}
 }
 What are the truth rules for the conditional? Consider the sentence:
 \begin{earg}
@@ -718,7 +718,7 @@ We summarise these rules:
 \begin{highlighted}
 \begin{center}
 \begin{tabular}{cccc}
-If \metaX is:&and \metaY is:&&then $\metaX\eif\metaY$ is:\\
+If \metaX is:&and \metaY is:&&then $(\metaX\eif\metaY)$ is:\\
 T & T &$\leadsto$& T\\
 T & F &$\leadsto$& F\\
 F & T &$\leadsto$& T\\
@@ -862,7 +862,7 @@ We discuss constructing complete truth tables for sentences of TFL in more detai
 
  
  \section{Validity and other logical notions}
- In \S\ref{??} we said that an argument was valid, if and only if there is no interpretation such that all premises are true but the conclusion false. At that point the definition was suggestive, but we lacked a clear understanding of `interpretation' and when a sentence is true relative to an interpretation. But for the language of TFL we can now turn the informal definition in a precise and rigorous definition.
+ In \S\ref{s:Valid} we said that an argument was valid, if and only if there is no interpretation such that all premises are true but the conclusion false. At that point the definition was suggestive, but we lacked a clear understanding of `interpretation' and when a sentence is true relative to an interpretation. But for the language of TFL we can now turn the informal definition in a precise and rigorous definition.
  
  Recall that an argument consisted of a number of premises together with a conclusion. A TFL-argument then can be written as $X_1,\ldots,X_n\therefore Y$ where $X_1,\ldots,X_n, Y$ are sentences of TFL, and $X_1,\ldots,X_n$ are the premises and $Y$ the conclusion of the argument.
  
@@ -909,7 +909,7 @@ A logical truth follows from every sentence. In contrast, every sentence  follow
 Every sentence $Y$ follows from a contradiction $X$, since $X\therefore Y$ is valid: there is no valuation on which $X$ is true (and $Y$ false).
 
 We end this section by introducing two further important logical notions: \define{consistency} and \define{logical equivalence}.
-\factoidbox{\label{TFLconsist}A collection of TFL-sentences $X_1,\ldots,X_n$ is \define{consistent} iff there is a valuation relative to which $X_1,\ldots,X_n$ are true. Otherwise the collection is \define{inconsistent}.}
+\factoidbox{\label{TFLconsist}A collection of TFL-sentences $X_1,\ldots,X_n$ (with possibly $n=1$) is \define{consistent} iff there is a valuation relative to which $X_1,\ldots,X_n$ are true. Otherwise the collection is \define{inconsistent}. Every sentence in a consistent collection is called \define{contingent}.}
 Any collection of sentences that contains a logical contradiction is inconsistent. But there are of course many collections of sentences that are consistent. Give some examples!
 
 The final notion we introduce is that of logical equivalence.
@@ -1347,10 +1347,10 @@ Write complete truth tables for the following sentences and mark the column that
 \end{center}
 }
 
-\item $[C \eiff (D \eor E)] \eand \enot C$
+\item $[C \eif (D \eor E)] \eand \enot C$
 
 \myanswer{
-\begin{center}
+%\begin{center}
 \begin{tabular}{cccccc|c|cc}
 \cline{7-7}
 ~	&	[C 	&	\eiff 	&	(D 	&	\eor 	&	E)] 	&	\eand 	&	 \enot 	&	 C \\
@@ -1368,11 +1368,11 @@ Write complete truth tables for the following sentences and mark the column that
 \end{center}
 }
 
-\item $\enot(G \eand (B \eand H)) \eiff (G \eor (B \eor H))$
+\item $\enot(G \eand (B \eand H)) \eif (G \eor (B \eor H))$
 
 \myanswer{
 \begin{center}
-\begin{tabular}{ccccccc|c|ccccc}
+%\begin{tabular}{ccccccc|c|ccccc}
 \cline{8-8}
 ~	&\enot&	(G 	&\eand &	(B 	&	 \eand 	&	 H))	&	\eiff 	&	(G 	& \eor 	& (B 	& \eor	& H))	\\
 \cline{2-13}
@@ -1418,10 +1418,10 @@ Write complete truth tables for the following sentences and mark the column that
 \vspace{1em}
 
 
-\item	$(\enot P \eor \enot M) \eiff M $
+\item	$(\enot P \eor \enot M) \eif M $
 
 \myanswer{
-\begin{center}
+%\begin{center}
 \begin{tabular}{cccccc|c|c}
 \cline{7-7}
 	&	(\enot 	&	P 	&	\eor 	&	\enot 	& 	 M) 	& 	\eiff 	&	 M \\
@@ -1482,27 +1482,26 @@ Write complete truth tables for the following sentences and mark the column that
 \vspace{1em}
 
 
-\item	$\enot [(D \eiff O) \eiff A] \eif (\enot D \eand O) $
-
-\myanswer{
-\begin{center}
-\begin{tabular}{ccccccc|c|cccc}
-\cline{8-8}
-	&	\enot 	&	[(D 	&	\eiff 	&	O) 	&	\eiff 	&	 A]	& 	\eif 	 &	(\enot 	& 	D 	 & 	 \eand &O) \\ 
-	\hline
-	&	F		&	T	&	T	&	T	&	T	&	T	&	T	&	F		&	T	&	F	&T	\\
-	&	T		&	T	&	T	&	T	&	F	&	F	&	F	&	F		&	T	&	F	&T	\\
-	&	T		&	T	&	F	&	F	&	F	&	T	&	F	&	F		&	T	&	F	&F	\\
-	&	F		&	T	&	F	&	F	&	T	&	F	&	T	&	F		&	T	&	F	&F	\\
-	&	T		&	F	&	F	&	T	&	F	&	T	&	T	&	T		&	F	&	T	&T	\\
-	&	F		&	F	&	F	&	T	&	T	&	F	&	T	&	T		&	F	&	T	&T	\\
-	&	F		&	F	&	T	&	F	&	T	&	T	&	T	&	T		&	F	&	F	&F	\\
-	&	T		&	F	&	T	&	F	&	F	&	F	&	F	&	T		&	F	&	F	&F	\\
-\cline{8-8}
-\end{tabular}
-\end{center}
-}
-\vspace{1em}
+%\item	$\enot [(D \eiff O) \eiff A] \eif (\enot D \eand O) $
+%\myanswer{
+%&\begin{center}
+%\begin{tabular}{ccccccc|c|cccc}
+%\cline{8-8}
+%	&	\enot 	&	[(D 	&	\eiff 	&	O) 	&	\eiff 	&	 A]	& 	\eif 	 &	(\enot 	& 	D 	 & 	 \eand &O) \\ 
+%	\hline
+%	&	F		&	T	&	T	&	T	&	T	&	T	&	T	&	F		&	T	&	F	&T	\\
+%	&	T		&	T	&	T	&	T	&	F	&	F	&	F	&	F		&	T	&	F	&T	\\
+%	&	T		&	T	&	F	&	F	&	F	&	T	&	F	&	F		&	T	&	F	&F	\\
+%	&	F		&	T	&	F	&	F	&	T	&	F	&	T	&	F		&	T	&	F	&F	\\
+%	&	T		&	F	&	F	&	T	&	F	&	T	&	T	&	T		&	F	&	T	&T	\\
+%	&	F		&	F	&	F	&	T	&	T	&	F	&	T	&	T		&	F	&	T	&T	\\
+%	&	F		&	F	&	T	&	F	&	T	&	T	&	T	&	T		&	F	&	F	&F	\\
+%	&	T		&	F	&	T	&	F	&	F	&	F	&	F	&	T		&	F	&	F	&F	\\
+%\cline{8-8}
+%\end{tabular}
+%\end{center}
+%}
+%\vspace{1em}
 \end{earg}
 
 
@@ -1635,7 +1634,7 @@ F & F & F & F & F & F & \TTbf{T} & F & F & F & F & \TTbf{T} & F & F & F & F & \T
 \item $A \eiff [A \eif (B \eand \enot B)]$ \vspace{.5ex} \hfill \myanswer{Contradiction}
 
 
-\item $[(A \eand B) \eiff B] \eif (A \eif B)$ \vspace{.5ex} \hfill \myanswer{Contingent}
+\item $[(A \eand B) \eif B] \eif (A \eif B)$ \vspace{.5ex} \hfill \myanswer{Contingent}
 
 
 \end{earg}
@@ -1655,88 +1654,24 @@ Determine whether each the following sentences are logically equivalent using co
 \label{pr.TT.equiv2}
 Determine whether each the following sentences are logically equivalent using complete truth tables. If the two sentences really are equivalent, write ``equivalent.'' Otherwise write, ``not equivalent.''
 \begin{earg}
-\item $A\eif A$ and $A \eiff A$
+\item $A\eif A$ and $(A \eif A)\wedge (\neg A\rightarrow\neg A)$
 \item $\enot(A \eif B)$ and $\enot A \eif \enot B$
 \item $A \eor B$ and $\enot A \eif B$
 \item$(A \eif B) \eif C$ and $A \eif (B \eif C)$
-\item $A \eiff (B \eiff C)$ and $A \eand (B \eand C)$
+\item $A \eif (B \eand C)$ and $A \eand (B \eand C)$
 \end{earg}
 
 \problempart
 \label{pr.TT.satisfiable2}
-Determine whether each collection of sentences is jointly satisfiable or jointly unsatisfiable using a complete truth table.
-
-\begin{earg}
-
-\item $A \eand \enot B$, $\enot(A \eif B)$, $B \eif A$ %Consistent
-
-\myanswer{
-\begin{center}
-\begin{tabular}{ccccccccccccccc} 
-~ 	&	A 	& \eand	&  \enot & B &  & \enot &  (A &  \eif & B)	 & 	 & 	 B	 & 	\eif  & A  & Consistent \\ 
-\cline{2-5} \cline{7-10}\cline{12-14} 
-	& 	T   & F     &   F	 & T &  &  F	& 	T &   T	  & T 	 & 	 & 	 T	 & 	 T	  & T  &	  \\ 
-\cline{2-14}
-	& \multicolumn{1}{|r}{T}& 	\textbf{T}	 & T	 & F & & \textbf{T}	 & 	 T	 & 	 F	 	 & 	 F	 	 & 	 & 	 F	 	 & 	 \textbf{T}	 	 & 	 \multicolumn{1}{r|}{T}	 	 & 	  \\ 
-\cline{2-14}
-	& 	 F	 				 & 	 F	 & 	 F	 & T & 	& 	 F	 & 	 F	 & 	 T	 	 & 	 T	 	 & 	  & 	 T	 	 & 	 F	 	 & 	 F	 	 & 	  \\ 
-	& 	 F	  				& 	 F	 & 	 T	 & 	F&  & 	 F	 & 	 F	 & 	 T	 	 & 	 F	 	 & 	  & 	 F	 	 & 	 T	 	 & 	 F	 	 & 	  \\ 
-\end{tabular}
-\end{center}
-}
-
-\item $A \eor B$, $A \eif \enot A$, $B \eif \enot B$ %unsatisfiable.
-
-\myanswer{
-\begin{center}
-\begin{tabular}{ccccccccccccccc} 
-  & A	 & \eor 	 & B 	 & 	 	 & A 	 & \eif 	 & 	\enot & A 	 & 	 	 & B 	 & \eif 	 & \enot	 & 	B 	 & 	Insatisfiable \\ 
-\cline{2-4}\cline{6- 9} \cline{11-14}
-   &	 T	 & 	 T	 &T  	 & 	 	 & T	 & 	 F	 & 	F 	 & T 	 & 	 	 & 	T 	 & 	F 	 & 	 F	 & 	T 	 & 	 \\ 
-   &	 T	& 	 T	 & F 	 & 	 	 & 	T 	 & 	 F	 & 	 F	 & 	 T	 & 	 	 & 	F 	 & 	 T	 & 	 T	 & 	 F	 & 	 \\ 
-   &	 F	& 	 T	 & 	 T	 & 	 	 & 	F 	 & 	 T	 & 	 T	 & 	F 	 & 	 	 & 	 T	 & 	 F	 & 	 F	 & 	 T	 & 	 \\ 
-   &	 F	& 	 F	 & 	 F	 & 	 	 & 	 F	 & 	 T	 & 	 T	 & 	 F	 & 	 	 & 	 F	 & 	 T	 & 	 T	 & 	 F	 & 	 \\ 
-\end{tabular}
-\end{center}
-}
-
-\item $\enot(\enot A \eor B) $, $A \eif \enot C$, $A \eif (B \eif C)$ \hfill \myanswer{Consistent}
-
-\myanswer{
-\begin{center}
-\begin{tabular}{ccccccccccccccccc}
-   \enot & (\enot & A & \eor & B) &  & A  & \eif 	 & \enot 	 & C & 	 & A & \eif 	& (B & \eif & C) &  \\ 
- \cline{1-5}\cline{7-10} \cline{12-16} 
-	F 	& 	F	 & 	T & T	 & T & 	  & T & F	 & 	 F & T 	 & 	 & T & T	 & T	 & T 	 & T 	 & \\ 
-   	 F	& 	F	 & 	T & T	 & T & 	  & T & T	 & 	 T & F	 & 	 & T & F	 & T	 & F	 & F 	 & \\ 
-   	 T & 	F 	& 	T & F	 & F & 	  & T & F	 & 	 F & T	 & 	 & T & T	 & F	 & T	 & T 	 & \\ 
-\cline{1-16}
-   	 \multicolumn{1}{|r}{\TTbf{T}}		&  F	 & 	T & F	 & 	F &  & 	T & \TTbf{T}	 & 	 T & F 	& 	 & T & \TTbf{T}	 & F	 & T	 & \multicolumn{1}{r|}{F} 	 & \\ 
-\cline{1-16}
-   	 F	& 	T	 & 	F & T	 & 	T &  & 	F & T	 & 	 F & T	 & 	 & F	 & F	 & T	 & T	 & T 	 & \\ 
-   	 F	& 	 T	& 	F & T	 & 	T &  & 	F & T	 & 	T & F 	& 	 & F	 & T	 & T	 & F 	 & F 	 & \\ 
-   	 F	& 	 T	& 	F & T	 & 	F &  & 	F & T	 & 	F & T	 & 	 & F	 & T	 & F	 & T	 & T 	 & \\ 
-   	 F	& 	 T	& 	F & T	 & 	F &  & 	F & T	 & 	T & F	 & 	 & F	 & T	 & F	 & T	 & F 	 & \\ 
-\end{tabular}
-\end{center}
-}
-
-
-
-\item $A \eif B$, $A \eand \enot B$ \hfill \myanswer{Insatisfiable}
-
-\item $A \eif (B \eif C)$, $(A \eif B) \eif C$, $A \eif C$ \hfill \myanswer{ Consistent} 
-
-\end{earg}
 
 \noindent\problempart
 \label{pr.TT.satisfiable3}
 Determine whether each collection of sentences is consistent or inconsistent, using a complete truth table.
 \begin{earg}
 \item $\enot B$, $A \eif B$, $A$ \vspace{.5ex} \hfill \myanswer{Insatisfiable}
-\item $\enot(A \eor B)$, $A \eiff B$, $B \eif A$\vspace{.5ex} \hfill \myanswer{Consistent}
+\item $\enot(A \eor B)$, $A \eif B$, $B \eif A$\vspace{.5ex} \hfill \myanswer{Consistent}
 \item $A \eor B$, $\enot B$, $\enot B \eif \enot A$\vspace{.5ex} \hfill \myanswer{Insatisfiable}
-\item $A \eiff B$, $\enot B \eor \enot A$, $A \eif B$\vspace{.5ex} \hfill \myanswer{Consistent} 
+\item $B \eif A$, $\enot B \eor \enot A$, $A \eif B$\vspace{.5ex} \hfill \myanswer{Consistent} 
 \item $(A \eor B) \eor C$, $\enot A \eor \enot B$, $\enot C \eor \enot B$\vspace{.5ex} \hfill \myanswer{Consistent}
 \end{earg}
 
@@ -1746,22 +1681,22 @@ Determine whether each argument is valid or invalid, using a complete truth tabl
 \begin{earg}
 \item $A\eif B$, $B \therefore  A$ \hfill \myanswer{Invalid}
 
-\item $A\eiff B$, $B\eiff C \therefore A\eiff C$ \hfill \myanswer{Valid}
+\item $A\eif B$, $B\eif C \therefore A\eif C$ \hfill \myanswer{Valid}
 
 \item $A \eif B$, $A \eif C\therefore B \eif C$ \hfill \myanswer{Invalid}.
 
-\item $A \eif B$, $B \eif A\therefore A \eiff B$ \hfill \myanswer{Valid} 
+%\item $A \eif B$, $B \eif A\therefore A \eiff B$ \hfill \myanswer{Valid} 
 \end{earg}
 
 \noindent\problempart
 \label{pr.TT.valid3}
-Determine whether each argument is valid or invalid, using a complete truth table.
+Determine whether each argument is valid or invalid, using a complete truth table. If invalid, provide a valuation that is a counterexample.
 \begin{earg}
-\item $A\eor\bigl[A\eif(A\eiff A)\bigr] \therefore  A $\vspace{.5ex} \hfill \myanswer{Invalid}
+\item $A\eor\bigl[A\eif(A\eif A)\bigr] \therefore  A $\vspace{.5ex} \hfill \myanswer{Invalid}
 \item $A\eor B$, $B\eor C$, $\enot B \therefore A \eand C$\vspace{.5ex} \hfill \myanswer{Valid}
 \item $A \eif B$, $\enot A\therefore \enot B$ \vspace{.5ex} \hfill \myanswer{Invalid}
 \item $A$, $B\therefore \enot(A\eif \enot B)$ \vspace{.5ex} \hfill \myanswer{Valid}
-\item $\enot(A \eand B)$, $A \eor B$, $A \eiff B\therefore C$ \vspace{.5ex} \hfill \myanswer{Valid}
+\item $\enot(A \eand B)$, $A \eor B$, $A \eif B\therefore C$ \vspace{.5ex} \hfill \myanswer{Valid}
 \end{earg}
 
 \noindent\problempart
