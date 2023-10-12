@@ -13,19 +13,20 @@ jobs:
       - name: Checkout 'johannes' branch
         uses: actions/checkout@v4
 
-      - name: Compile LaTeX documents
+      - name: Compile forallxbris.tex
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: |
-            forallxbris.tex
-            forallxbris-accessible.tex
-            forallxbris-withanswers.tex
+          root_file: forallxbris.tex
+
+      - name: Compile forallxbris-accessible.tex
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: forallxbris-accessible.tex
 
       - name: Copy PDFs and README to docs directory
         run: |
           cp ./forallxbris.pdf ./docs/
           cp ./forallxbris-accessible.pdf ./docs/
-          cp ./forallxbris-withanswers.pdf ./docs/
           cp ./docs/forallxbris.pdf ./docs/forallxbris-js.pdf
           cp README.md ./docs/index.md
 
@@ -33,6 +34,6 @@ jobs:
         run: |
           git config user.name "GitHub Action"
           git config user.email "action@github.com"
-          git add ./docs/forallxbris.pdf ./docs/forallxbris-js.pdf ./docs/forallxbris-accessible.pdf ./docs/forallxbris-withanswers.pdf ./docs/index.md
+          git add ./docs/forallxbris.pdf ./docs/forallxbris-js.pdf ./docs/forallxbris-accessible.pdf ./docs/index.md
           git commit -m "Copy PDFs and README to docs directory"
           git push
