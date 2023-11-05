@@ -305,7 +305,7 @@ This rule allows us to show, for instance, that $\ediamond\ebox A\proves_\mlSfiv
 	\have{5}{\enot\ebox A}\rfive{3}
 	\close
 	\have{6}{\ebox\enot\ebox A}\boxI{4-5}
-	\have{7}{\ered}\ne{2,6}
+	\have{7}{\ered}\ri{2,6}
 	\close
 	\have{8}{\ebox A}\by{IP}{3-7}
 \end{nd}\]
@@ -318,7 +318,7 @@ We got \mlSfive{} just by adding the rule R$\mathbf{5}$ rule to \mlSfour. In fac
 	\open
 	\hypo{2}{\ebox\enot\ebox A}
 	\have{3}{\enot\ebox A}\rt{2}
-	\have{4}{\ered}\ne{1,3}
+	\have{4}{\ered}\ri{1,3}
 	\close
 	\have{5}{\enot\ebox\enot\ebox A}\ni{2-4}
 	\open
@@ -331,9 +331,9 @@ We got \mlSfive{} just by adding the rule R$\mathbf{5}$ rule to \mlSfour. In fac
 	\close
 	\have{10}{\ebox \enot\ebox A}\boxI{8-9}
 	\have{11}{\enot\ebox\enot\ebox A}\rfive{5}
-	\have{12}{\ered}\ne{10,11}
+	\have{12}{\ered}\ri{10,11}
 	\close
-	\have{13}{\ebox A}\pbc{7-12}
+	\have{13}{\ebox A}\notE{7-12}
 	\close
 	\have{14}{\ebox\ebox A}\boxI{6-13}
 \end{nd}\]

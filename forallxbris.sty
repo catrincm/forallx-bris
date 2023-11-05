@@ -589,8 +589,8 @@
   \def\oi{\by{{\eor}I}}%
   \def\oe{\by{{\eor}E}}%
   \def\ni{\by{{\enot}I}}%
-  \def\ne{\by{{\enot}E}}%
-  \def\pbc{\by{PbC}}% TB: tertium non datur
+%  \def\ne{\by{{\enot}E}}% CCM: this used to be used for bot I rule. notE now for proof by contradiction.
+%  \def\pbc{\by{PbC}}% TB: tertium non datur. CCM renamed to Proof by Contradiction
   \def\ri{\by{{\ered}I}}% TB: reductio introduction
   \def\re{\by{{\ered}E}}% TB: reductio elimination
   \def\ii{\by{$=$I}}%
@@ -670,7 +670,8 @@
 % alternate set of commands
 
 \newcommand*{\notI}{\ni}
-%\newcommand*{\notE}{\ne}
+\newcommand*{\notE}{\by{{\enot}E}}
+\newcommand*{\pbc}{\notE}
 \newcommand*{\iffI}{\bi}
 \newcommand*{\iffE}{\be}
 \newcommand*{\ifI}{\ci}

@@ -968,18 +968,18 @@ To see this in practice, and interacting with negation, consider this proof:
 	\end{pf}
 
 
-\subsection{Proof by Contradiction} \todo[inline]{I don't really like the term negation elimination for it!! SP is right that students get it wrong all the time about which they're allowed to use and which not. We should let them use this!}% New by SP
+\subsection{Negation Elimination} \todo[inline]{CCM Nov 23: not sure whose comments is this about not liking the rule... ??: I don't really like the term negation elimination for it!! SP is right that students get it wrong all the time about which they're allowed to use and which not. We should let them use this!}% New by SP
 
-The next rule is quite similar. If assuming that something is false leads you to a contradiction, then that assumption must be wrong --- and so that `something' must in fact be true.
+The negation elimination rule is quite similar. If assuming that something is false leads you to a contradiction, then that assumption must be wrong --- and so that `something' must in fact be true.
 \factoidbox{\begin{pf}
 \open
 	\hypo[m]{a}{\enot\metaX}
 	\ellipsesline
 	\have[n]{x}{\ered}
 \close
-\have[\ ]{na}{\metaX}\pbc{a-x}
+\have[\ ]{na}{\metaX}\notE{a-x}
 \end{pf}}
-This is called the method of \emph{proof by contradiction}, or \emph{indirect proof}. It allows us to prove something by assuming its negation and showing that it leads to contradiction. This technique is very common in mathematics.\footnote{
+This is also called the method of \emph{proof by contradiction}, or \emph{indirect proof}. It allows us to prove something by assuming its negation and showing that it leads to contradiction. This technique is very common in mathematics.\footnote{
 For example it is used to show that $\sqrt{2}$ is irrational.  We begin by assuming that $\sqrt{2}$ is rational (i.e.~that there is a fraction $\frac{p}{q}$ whose square is $2$) and then derive contradiction from this assumption.
 }
 
@@ -990,10 +990,10 @@ For example:
 			\hypo{nd}{\enot D}
 			\have{ndr}{\ered}\ri{d, nd}
 		\close
-		\have{con}{D}\pbc{nd-ndr}
+		\have{con}{D}\notE{nd-ndr}
 	\end{pf}
 
-There is no explicit rule for Negation Elimination. Though both Proof by Contradiction and Contradiction Introduction involve eliminating negations.
+%There is no explicit rule for Negation Elimination. Though both Proof by Contradiction and Contradiction Introduction involve eliminating negations.
 
 
 \section{Additional assumptions and subproofs}
@@ -1096,7 +1096,7 @@ When you are starting a proof, look at the premises; later, look at the sentence
 For a short proof, you might be able to eliminate the premises and introduce the conclusion. A long proof is formally just a number of short proofs linked together, so you can fill the gap by alternately working back from the conclusion and forward from the premises.
 
 \paragraph{Try proceeding indirectly.}
-If you cannot find a way to show $\metaX$ directly, try starting by assuming $\enot \metaX$. If a contradiction follows, then you will be able to obtain $\metaX$ by PbC.
+If you cannot find a way to show $\metaX$ directly, try starting by assuming $\enot \metaX$. If a contradiction follows, then you will be able to obtain $\metaX$ by $\enot$E.
 
 \paragraph{Law of Excluded Middle.}
 If you're hitting a blank, try seeing if there's some instance of LEM that might help you. These arguments do just need some inspiration to see the instance of LEM that'll be helpful.
@@ -1670,7 +1670,7 @@ and
 	\hypo[j]{j}{\enot \metaX}
 	\have{bot}{\ered}\redI{j,m}
 	\close
-\have{con}{\metaX}\pbc{j - (bot)}
+\have{con}{\metaX}\notE{j - (bot)}
 \end{pf}
 So again,  we can derive the double negations rules from the \emph{basic} rules of \S\ref{s:BasicTFL}.
 
