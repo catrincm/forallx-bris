@@ -939,7 +939,9 @@ Here is a proof corresponding with the argument:
 \end{pf}
 \section{Negation}
 \subsection{Negation Introduction}
-If assuming something leads you to a contradiction, then the assumption must be wrong. We have a contradiction when we both have $\metaY$ and $\enot\metaY$ for some sentence $\metaY$. So if assuming $\metaX$ leads to both $\metaY$ and $\enot\metaY$, then $\metaX$ must be false.  This thought motivates the following rule:
+If assuming something leads you to a contradiction, then the assumption must be wrong. 
+%We have a contradiction when we both have $\metaY$ and $\enot\metaY$ for some sentence $\metaY$. So if assuming $\metaX$ leads to both $\metaY$ and $\enot\metaY$, then $\metaX$ must be false.  
+This thought motivates the following rule:
 \factoidbox{\begin{pf}
 \open
 	\hypo[m]{a}{\metaX}
@@ -975,7 +977,13 @@ Should it be called neg Elim? For normalisation need negE to be the explosion. B
 }
 
 
-The next rule is quite similar. If assuming that something is false leads you to a contradiction, then that assumption must be wrong --- and so that `something' must in fact be true. In other words, if we assume $\enot\metaX$ and derive a contradiction, then we can conclude $\metaX$: we eliminate the negation.
+%If the assumption that $\metav{A}$ is true leads to a contradiction, $\metav{A}$ cannot be true, i.e., it must be false, i.e., $\enot\metav{A}$ must be true. Of course, if the assumption that $\metav{A}$ is false (i.e., the assumption that $\enot\metav{A}$ is true) leads to a contradiction, then $\metav{A}$ cannot be false, i.e., $\metav{A}$ must be true. So we can consider the following rule:
+
+The negation elimination rule is quite similar but switches $\metaX$ and $\enot\metaX$. 
+\todo{CCM Nov 23: improve the below, it's a bit confusing, maybe repeat the notI motivation. Above commented out is the forallxyyc}
+
+We motivate the rule by the following thought:
+If assuming that something is false leads you to a contradiction, then that assumption must be wrong --- and so that `something' must in fact be true. In other words, if we assume $\enot\metaX$ and derive a contradiction, then we can conclude $\metaX$: we eliminate the negation.
 \factoidbox{\begin{pf}
 \open
 	\hypo[m]{a}{\enot\metaX}
@@ -987,11 +995,19 @@ The next rule is quite similar. If assuming that something is false leads you to
 %\have[m]{axx}{\metaX \eif \ered}
 %\have[\ ]{na}{\enot\metaX}\ni{axx}
 \end{pf}}
-This is also called the method of \emph{proof by contradiction}, or \emph{indirect proof}. It allows us to prove something by assuming its negation and showing that it leads to contradiction. This technique is very common in mathematics.\footnote{
-For example it is used to show that $\sqrt{2}$ is irrational.  We begin by assuming that $\sqrt{2}$ is rational (i.e.~that there is a fraction $\frac{p}{q}$ whose square is $2$) and then derive contradiction from this assumption.
+Formally, the rule is very similar to $\enot$I, but they are different.\footnote{There are logicians who accept $\enot$I but reject $\enot$E. They are called ``intuitionists.'' Intuitionists reject the law of excluded middle. They don't buy our basic assumption that every sentence has one of two truth values, true or false. For intuitionists, $\metaX$ and $\enot\enot\metaX$ are not equivalent. 
+%To get the system of intuitionist logic, we reject $\enot$E and LEM. We then need to add the rule of explosion as a basic rule. This rule is derivable in our system.
+}
+ $\enot$I introduced a negation, but $\enot$E eliminates a negation. In the conclusion of $\enot$E, there may be no negation symbols.
+
+Some textbooks call this the rule of \emph{indirect proof} or the method of \emph{proof by contradiction}. It allows us to prove something by showing that its negation leads to contradiction. This technique is very common in mathematics.%
+\footnote{
+For example it is used to show there are infinitely many prime numbers. We assume, for contradiction, that there are not infinitely many primes, so there must be a biggest prime number. We can then use this assumption to construct a further prime number which is larger than the biggest prime number. This is a contradiction. We can thus conclude that there are infinitely many primes.
 }
 
-For example:
+
+
+To see this rule in action, here is an example proof using it:
 	\begin{pf}
 		\hypo{d}{\enot\enot D}
 		\open
@@ -1003,8 +1019,19 @@ For example:
 		\have{con}{D}\notE{nd2,nnd}
 	\end{pf}
 
-There is no explicit rule for Negation Elimination. Though both Proof by Contradiction and Contradiction Introduction involve eliminating negations.
 
+This rule also allows us to prove that anything follows from a contradiction. For example:
+	\begin{pf}
+		\hypo{a}{A}
+		\hypo{na}{\enot A}
+		\open
+			\hypo{nb}{\enot B}
+			\have{a2}{A}\Reiteration{a}
+			\have{na2}{\enot A}\Reiteration{na}
+		\close
+		\have{b}{B}\notE{nb-na2}
+	\end{pf}
+	
 \section{Additional assumptions and subproofs}
 The rules we have just seen involve the idea of making additional assumptions. These need to be handled with some care.
 
@@ -1447,6 +1474,17 @@ Here, then, `Jane is unhappy' should not be thought of as equivalent to `It is n
 %Since in logic we are always allowed to draw this inference, we would then have to be careful about our symbolisations. Should `Jane is unhappy' really be symbolised as $\enot A$ when $A$ symbolises `Jane is happy'? Not really. It's possible that Jane is neither happy nor unhappy. But its symbolisation as $\enot A$ would
 
 
+\section{Explosion}
+From a contradiction anything follows. This is called the rule of explosion. It is also sometimes called \emph{ex falso quod libet}. 
+
+%Our elimination rule for `$\ered$' is known as \emph{ex falso quod libet}, or \emph{explosion}. This means `anything follows from a contradiction', and the idea is precisely that: if we obtained a contradiction, symbolized by `$\ered$', then we can infer whatever we like. How can this be motivated, as a rule of argumentation? Well, consider the English rhetorical device `\ldots and if \emph{that's} true, I'll eat my hat'. Since contradictions simply cannot be true, if one \emph{i}s true then not only will I eat my hat, I'll have it too.\footnote{Thanks to Adam Caulton for this.} Here is the formal rule:
+
+\factoidbox{\begin{pf}
+	\have[m]{x}{\metaX}
+	\have[n]{nx}{\enot \metaX}
+	\have[\ ]{y}{\metaY}\by{Explosion}{x,nx}
+\end{pf}}
+
 %
 %%\subsection{Proof by contradiction}
 %%A further rule is very closely related to $\enot$I. This is \emph{proof by contradiction}, also sometimes called \emph{indirect proof}. It allows us to prove something by assuming its negation and showing that it leads to contradiction. This technique is incredibly common in mathematics, for example it is used to show that $\sqrt{2}$ is irrational.
@@ -1484,6 +1522,9 @@ And the fourth is the reverse of the third:
 	\have[\ ]{dm}{\enot (\metaX \eor \metaY)}\dem{ab}
 \end{pf}}
 \bigskip
+
+
+
 \emph{There are many more rules one could add to the system as derived rules. But these are all the ones we'll introduce.}
 
 \begin{practiceproblems}
@@ -1729,6 +1770,21 @@ So again,  we can derive the double negations rules from the \emph{basic} rules 
 %%\end{pf}
 %%
 %\newpage
+
+\section{Derivation of Explosion}
+
+Here is a demonstration of how we could derive explosion using the basic rules:
+\begin{pf}
+	\have[m]{x}{\metaX}
+	\have[n]{nx}{\enot \metaX}
+		\open
+		\hypo{ny}{\enot \metaY}
+		\have{x2}{\metaX}\Reiteration{x}
+		\have{nx2}{\enot\metaX}\Reiteration{nx}
+		\close
+	\have[\ ]{y}{\metaY}\notE{ny-nx2}
+\end{pf}
+
 \section{Derivation of De Morgan rules}
 Here is a demonstration of how we could derive the first De Morgan rule:
  	\begin{pf}
