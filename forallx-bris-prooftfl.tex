@@ -570,41 +570,41 @@ However, we will not yet introduce Disjunction Elimination. It will be introduce
 
 
 
-\section{Contradiction}
-Instead of tackling negation directly, we will first think about \emph{contradiction}. \todo[inline]{Why? maybe we should simply do Explosion and }
-
-\subsection{Contradiction Introduction}
-An effective form of argument is to argue your opponent into contradicting themselves. At that point, you have them on the ropes. They have to give up at least one of their assumptions. We are going to make use of this idea in our proof system, by adding a new symbol, `$\ered$', to our proofs. This should be read as something like `contradiction!'\ or `reductio!'\ or `but that's absurd!'  The rule for introducing this symbol is that we can use it whenever we explicitly contradict ourselves, i.e.\ whenever we find both a sentence and its negation appearing in our proof:
-\factoidbox{
-\begin{pf}
-\ellipsesline
-\have[m]{a}{\metaX}
-\ellipsesline
-\have[n]{na}{\enot\metaX}
-\ellipsesline
-\have[ ]{bot}{\ered}\ri{a, na}
-\end{pf}}
-It does not matter what order the sentence and its negation appear in, and they do not need to appear on adjacent lines.
-
-%This rule is also called Negation Elimination as it eliminates the $\enot$.
-
-\subsection{Contradiction Elimination}
-Our elimination rule for `$\ered$' is known as \emph{ex falso quod libet}, or \emph{explosion}. This means `anything follows from a contradiction', and the idea is precisely that: if we obtained a contradiction, symbolized by `$\ered$', then we can infer whatever we like. How can this be motivated, as a rule of argumentation? Well, consider the English rhetorical device `\ldots and if \emph{that's} true, I'll eat my hat'. Since contradictions simply cannot be true, if one \emph{i}s true then not only will I eat my hat, I'll have it too.\footnote{Thanks to Adam Caulton for this.} Here is the formal rule:
-\factoidbox{\begin{pf}
-\ellipsesline
-\have[m]{bot}{\ered}
-\have[ ]{}{\metaX}\re{bot}
-\end{pf}}
-Note that \metaX can be \emph{any} sentence whatsoever.
-
-A final remark. We have said that `$\ered$' should be read as something like `contradiction!' but this does not tell us much about the symbol. There are, roughly, three ways to approach the symbol.
-	\begin{ebullet}
-		\item We might regard `$\ered$' as a new atomic sentence of TFL, but one which can only ever have the truth value False.
-		\item We might regard `$\ered$' as an abbreviation for some canonical contradiction, such as `$A \eand \enot A$'. This will have the same effect as the above---obviously, `$A \eand \enot A$' only ever has the truth value False---but it means that, officially, we do not need to add a new symbol to TFL.
-%		The disadvantage of this view is why should it be fixed to `$A$', an
-		\item We might regard `$\ered$', not as a symbol of TFL, but as something more like a \emph{punctuation mark} that appears in our proofs. (It is on a par with the line numbers and the vertical lines, say.)
-	\end{ebullet}
-There is something very philosophically attractive about the third option, but here we will \emph{officially} adopt the first. `$\ered$' is to be read as a sentence letter that is always false. This means that we can manipulate it, in our proofs, just like any other sentence.
+%\section{Contradiction}
+%Instead of tackling negation directly, we will first think about \emph{contradiction}. \todo[inline]{Why? maybe we should simply do Explosion and }
+%
+%\subsection{Contradiction Introduction}
+%An effective form of argument is to argue your opponent into contradicting themselves. At that point, you have them on the ropes. They have to give up at least one of their assumptions. We are going to make use of this idea in our proof system, by adding a new symbol, `$\ered$', to our proofs. This should be read as something like `contradiction!'\ or `reductio!'\ or `but that's absurd!'  The rule for introducing this symbol is that we can use it whenever we explicitly contradict ourselves, i.e.\ whenever we find both a sentence and its negation appearing in our proof:
+%\factoidbox{
+%\begin{pf}
+%\ellipsesline
+%\have[m]{a}{\metaX}
+%\ellipsesline
+%\have[n]{na}{\enot\metaX}
+%\ellipsesline
+%\have[ ]{bot}{\ered}\ri{a, na}
+%\end{pf}}
+%It does not matter what order the sentence and its negation appear in, and they do not need to appear on adjacent lines.
+%
+%%This rule is also called Negation Elimination as it eliminates the $\enot$.
+%
+%\subsection{Contradiction Elimination}
+%Our elimination rule for `$\ered$' is known as \emph{ex falso quod libet}, or \emph{explosion}. This means `anything follows from a contradiction', and the idea is precisely that: if we obtained a contradiction, symbolized by `$\ered$', then we can infer whatever we like. How can this be motivated, as a rule of argumentation? Well, consider the English rhetorical device `\ldots and if \emph{that's} true, I'll eat my hat'. Since contradictions simply cannot be true, if one \emph{i}s true then not only will I eat my hat, I'll have it too.\footnote{Thanks to Adam Caulton for this.} Here is the formal rule:
+%\factoidbox{\begin{pf}
+%\ellipsesline
+%\have[m]{bot}{\ered}
+%\have[ ]{}{\metaX}\re{bot}
+%\end{pf}}
+%Note that \metaX can be \emph{any} sentence whatsoever.
+%
+%A final remark. We have said that `$\ered$' should be read as something like `contradiction!' but this does not tell us much about the symbol. There are, roughly, three ways to approach the symbol.
+%	\begin{ebullet}
+%		\item We might regard `$\ered$' as a new atomic sentence of TFL, but one which can only ever have the truth value False.
+%		\item We might regard `$\ered$' as an abbreviation for some canonical contradiction, such as `$A \eand \enot A$'. This will have the same effect as the above---obviously, `$A \eand \enot A$' only ever has the truth value False---but it means that, officially, we do not need to add a new symbol to TFL.
+%%		The disadvantage of this view is why should it be fixed to `$A$', an
+%		\item We might regard `$\ered$', not as a symbol of TFL, but as something more like a \emph{punctuation mark} that appears in our proofs. (It is on a par with the line numbers and the vertical lines, say.)
+%	\end{ebullet}
+%There is something very philosophically attractive about the third option, but here we will \emph{officially} adopt the first. `$\ered$' is to be read as a sentence letter that is always false. This means that we can manipulate it, in our proofs, just like any other sentence.
 
 \section{Strategies}
 We have a few more rules to introduce, but at this point we pause to mention a strategies to come up with proofs yourself:
@@ -937,47 +937,55 @@ Here is a proof corresponding with the argument:
 %\have{ndconc}{\enot D \eif ((P \eand D) \eor (P \eand \enot D))}{\ci{b-abo}}
 	\have{con}{(P \eand D) \eor (P \eand \enot D)}\orE{lem,b-abo,nb-anbo}
 \end{pf}
-
-
 \section{Negation}
-%There is obviously a tight link between contradiction and negation. Indeed, the $\ered$I rule essentially behaves as a rule for negation elimination: we introduce `$\ered$' when a sentence and its negation both appear in our proof. So there is no need for us to add a further rule for negation elimination.
-
 \subsection{Negation Introduction}
-If assuming something leads you to a contradiction, then the assumption must be wrong. This thought motivates the following rule:
+If assuming something leads you to a contradiction, then the assumption must be wrong. We have a contradiction when we both have $\metaY$ and $\enot\metaY$ for some sentence $\metaY$. So if assuming $\metaX$ leads to both $\metaY$ and $\enot\metaY$, then $\metaX$ must be false.  This thought motivates the following rule:
 \factoidbox{\begin{pf}
 \open
 	\hypo[m]{a}{\metaX}
 	\ellipsesline
-	\have[n]{x}{\ered}
+	\have[n]{x}{\metaY}\ellipsesline
+	\have[k]{y}{\enot\metaY}
 \close
-\have[\ ]{na}{\enot\metaX}\ni{a-x}
+\have[\ ]{na}{\enot\metaX}\ni{a-y}
 %\have[m]{axx}{\metaX \eif \ered}
 %\have[\ ]{na}{\enot\metaX}\ni{axx}
 \end{pf}}
 %There can be as many lines between $i$ and $j$ as you like.
+It does not matter whether in the subproof you first derive $\metaY$ and then derive $\enot\metaY$ or whether you first derive $\enot\metaY$ and the derive $\metaY$. It is only important that in the subproof you derive both $\metaY$ and $\enot\metaY$.
+
 To see this in practice, and interacting with negation, consider this proof:
+
 	\begin{pf}
 		\hypo{d}{D}
 		\open
 			\hypo{nd}{\enot D}
-			\have{ndr}{\ered}\ri{d, nd}
+			\have{d2}{D}\Reiteration{d}
+			\have{nd2}{\enot D}\Reiteration{nd}
+%			\have{ndr}{\ered}\ri{d, nd}
 		\close
 %		\have{ndxx}{\enot D \eif \ered}{\ci{nd-ndr}}
-		\have{con}{\enot\enot D}\ni{nd-ndr}
+		\have{con}{\enot\enot D}\notI{nd-nd2} %contradiction in d2,nd2
 %		\have{con}{\enot\enot D}\ni{ndxx}
 	\end{pf}
 
+\subsection{Negation Elimination} \todo[inline]{CCM Nov 23: 
+Should definitely ahve this instead of LEM as students always accidently use it anyway.
+Should it be called neg Elim? For normalisation need negE to be the explosion. But I don't really care. 
+}
 
-\subsection{Negation Elimination} \todo[inline]{CCM Nov 23: not sure whose comments is this about not liking the rule... ??: I don't really like the term negation elimination for it!! SP is right that students get it wrong all the time about which they're allowed to use and which not. We should let them use this!}% New by SP
 
-The negation elimination rule is quite similar. If assuming that something is false leads you to a contradiction, then that assumption must be wrong --- and so that `something' must in fact be true.
+The next rule is quite similar. If assuming that something is false leads you to a contradiction, then that assumption must be wrong --- and so that `something' must in fact be true. In other words, if we assume $\enot\metaX$ and derive a contradiction, then we can conclude $\metaX$: we eliminate the negation.
 \factoidbox{\begin{pf}
 \open
 	\hypo[m]{a}{\enot\metaX}
 	\ellipsesline
-	\have[n]{x}{\ered}
+	\have[n]{x}{\metaY}\ellipsesline
+	\have[k]{y}{\enot\metaY}
 \close
-\have[\ ]{na}{\metaX}\notE{a-x}
+\have[\ ]{na}{\metaX}\notE{a-y}
+%\have[m]{axx}{\metaX \eif \ered}
+%\have[\ ]{na}{\enot\metaX}\ni{axx}
 \end{pf}}
 This is also called the method of \emph{proof by contradiction}, or \emph{indirect proof}. It allows us to prove something by assuming its negation and showing that it leads to contradiction. This technique is very common in mathematics.\footnote{
 For example it is used to show that $\sqrt{2}$ is irrational.  We begin by assuming that $\sqrt{2}$ is rational (i.e.~that there is a fraction $\frac{p}{q}$ whose square is $2$) and then derive contradiction from this assumption.
@@ -988,13 +996,14 @@ For example:
 		\hypo{d}{\enot\enot D}
 		\open
 			\hypo{nd}{\enot D}
-			\have{ndr}{\ered}\ri{d, nd}
+%			\have{ndr}{\ered}\ri{d, nd}
+			\have{nnd}{\enot\enot D}\Reiteration{d}
+			\have{nd2}{\enot D}\Reiteration{nd}
 		\close
-		\have{con}{D}\notE{nd-ndr}
+		\have{con}{D}\notE{nd2,nnd}
 	\end{pf}
 
-%There is no explicit rule for Negation Elimination. Though both Proof by Contradiction and Contradiction Introduction involve eliminating negations.
-
+There is no explicit rule for Negation Elimination. Though both Proof by Contradiction and Contradiction Introduction involve eliminating negations.
 
 \section{Additional assumptions and subproofs}
 The rules we have just seen involve the idea of making additional assumptions. These need to be handled with some care.
@@ -1503,9 +1512,9 @@ The following proofs are missing their citations (rule and line numbers). Add th
 	\hypo{a1}{\enot L}
 	\have{a2}{\enot O}{}
 	\have{a3}{L}{}
-	\have{a4}{\ered}{}
+%	\have{a4}{\ered}{}
 \close
-\have{nlxx}{\enot L \eif \ered}
+%\have{nlxx}{\enot L \eif \ered}
 \have{3b}{\enot\enot L}{}
 \have{3}{L}{}
 \end{pf}
@@ -1603,8 +1612,12 @@ You now want, on line $k$, to prove $\metaY$. You can do this with the rule of D
 		\have[n]{na}{\enot \metaX}
 		\open
 			\hypo[k]{a}{\metaX}
-			\have{red}{\ered}\ri{a, na}
-			\have{b1}{\metaY}\re{red}
+			\open
+			\hypo{a1}{\neg\metaY}
+			\have{a2}{\metaX}\Reiteration{a}
+			\have{a3}{\enot\metaX}\Reiteration{na}
+			\close
+			\have{b1}{\metaY}\pbc{a1-a3}
 		\close
 %	\have{xtoy}{\metaX\eif\metaY}{\ci{(a)-(b1)}}
 		\open
@@ -1637,17 +1650,18 @@ Suppose in the course of you proof you already have $\metaX\eif\metaY$, say on l
 %%, on line $k$,
 %to prove $\enot \metaX$.
  You can do this with the rule of Modus Tollens (MT), introduced in \S\ref{s:Further}. But you could also do this with the \emph{basic} rules of \S\ref{s:BasicTFL}:
+
 \begin{pf}
 	\have[m]{ab}{\metaX\eif\metaY}
 	\have[n]{nb}{\enot\metaY}
 		\open
 		\hypo[k]{a}{\metaX}
+		\have{nb2}{\enot\metaY}\Reiteration{nb}
 		\have{b}{\metaY}\ce{ab, a}
-		\have{nb1}{\ered}\ri{b, nb}
+%		\have{nb1}{\ered}\ri{b, nb}
 		\close
 %\have{xtoxx}{X \eif \ered}{\ci{(a)-(nb1)}}
-	\have{no}{\enot\metaX}\ni{a-nb1}
-%\have{no}{\enot\metaX}{\ni{xtoxx}}
+	\have{no}{\enot\metaX}\notI{a-b} % contradiction in b,nb
 \end{pf}
 Again, the rule of MT can be derived from the \emph{basic} rules of \S\ref{s:BasicTFL}.
 
@@ -1655,22 +1669,24 @@ Again, the rule of MT can be derived from the \emph{basic} rules of \S\ref{s:Bas
 
 \section{Derivation of Double-negation rules}
 Consider the following deduction schema:
+
 \begin{pf}
 \have[m]{m}{\metaX}
 	\open
 	\hypo[j]{j}{\enot \metaX}
-	\have{bot}{\ered}\redI{j,m}
-	\close
-\have{con}{\enot\enot\metaX}\notI{j - (bot)}
+	\have{l}{\metaX}\Reiteration{m}
+	\have{k}{\enot\metaX}\Reiteration{j}\close
+\have{con}{\enot\enot\metaX}\notI{j - k ()}
 \end{pf}
 and
+
 \begin{pf}
-\have[m]{m}{\enot \enot \metaX}
+\have[m]{m}{\enot\enot\metaX}
 	\open
 	\hypo[j]{j}{\enot \metaX}
-	\have{bot}{\ered}\redI{j,m}
-	\close
-\have{con}{\metaX}\notE{j - (bot)}
+	\have{l}{\enot\enot\metaX}\Reiteration{m}
+	\have{k}{\enot\metaX}\Reiteration{j}\close
+\have{con}{\metaX}\notE{j - k}
 \end{pf}
 So again,  we can derive the double negations rules from the \emph{basic} rules of \S\ref{s:BasicTFL}.
 
@@ -1723,7 +1739,7 @@ Here is a demonstration of how we could derive the first De Morgan rule:
 			\open
 				\hypo{b}{\metaY}
 				\have{ab}{\metaX \eand \metaY}\ai{a,b}
-				\have{nab1}{\ered}\ri{ab, nab}
+				\have{nab1}{\enot(\metaX \eand \metaY)}\Reiteration{nab}
 			\close
 %		\have{ytoxx}{\metaY \eif \ered}{\ci{(b)-(nab1)}}
 			\have{nb}{\enot \metaY}\ni{b-nab1}%\ni{ytoxx}
@@ -1742,26 +1758,25 @@ Here is a demonstration of how we could derive the second De Morgan rule:
  	\begin{pf}
 		\have[m]{nab}{\enot \metaX \eor \enot \metaY}
 		\open
-			\hypo[k]{ab}{\metaX \eand \metaY}
-			\have{a}{\metaX}\ae{ab}
-			\have{b}{\metaY}\ae{ab}
+		\hypo{nx}{\enot\metaX}
 			\open
-				\hypo{na}{\enot \metaX}
-				\have{c1}{\ered}\ri{a, na}
+				\hypo[k]{ab}{\metaX \eand \metaY}
+				\have{x1}{\metaX}\andE{ab}
+				\have{nx1}{\enot\metaX}\Reiteration{nx}
 			\close
-%\have{nxtoxx}{\enot \metaX \eif \ered}{\ci{(na)-(c1)}}
+			\have{abc1}{\enot(\metaX \eand \metaY)}\ni{ab - nx1}
+			\close
 			\open
-				\hypo{nb}{\enot \metaY}
-				\have{c2}{\ered}\ri{b, nb}
+			\hypo{ny}{\enot\metaY}
+			\open
+			\hypo[l]{rab1}{\metaX \eand \metaY}
+				\have{y1}{\metaY}\ae{ab}
+				\have{ny1}{\enot\metaY}\Reiteration{ny}
 			\close
-%\have{nytoxx}{\enot \metaY \eif \ered}{\ci{(nb)-(c2)}}
-			\have{con2}{\ered}\oe{nab, na-c1, nb-c2}
-%			\have{con2}{\ered}\oe{nab,nxtoxx,nytoxx}
-		\close
-%		\have{abtoxx}{(\metaX \eand \metaY)\eif \ered}\ci{(ab)-(con2)}
-		\have{nab}{\enot (\metaX \eand \metaY)}\ni{ab-con2}
-%		\have{nab}{\enot (\metaX \eand \metaY)}\ni{abtoxx}
-	\end{pf}
+			\have{abc2}{\enot(\metaX \eand \metaY)}\notI{rab1 - ny1}
+			\close
+			\have{abc}{\enot(\metaX \eand \metaY)}\orE{nab, nx-abc1,ny-abc2}
+\end{pf}
 Similar demonstrations can be offered explaining how we could derive the third and fourth De Morgan rules. These are left as exercises.
 
 \begin{practiceproblems}
@@ -2047,10 +2062,9 @@ description={A sentence that can be proved without any premises}
 			\hypo{con}{A \eand \enot A}
 			\have{a}{A}\ae{con}
 			\have{na}{\enot A}\ae{con}
-			\have{red}{\ered}\ri{a, na}
+%			\have{red}{\ered}\ri{a, na}
 		\close
-	\have{conxx}{(A \eand \enot A) \to \ered}{\ci{con-red}}
-		\have{lnc}{\enot (A \eand \enot A)}\ni{conxx}%\ni{con-red}
+		\have{lnc}{\enot (A \eand \enot A)}\ni{con-na}% 
 	\end{pf}
 We have therefore proved `$\enot (A \eand \enot A)$' on no (undischarged) assumptions. This particular theorem is an instance of what is sometimes called \emph{the Law of Non-Contradiction}.
 
@@ -2073,7 +2087,7 @@ As in the case of showing that a sentence is a theorem, it is relatively easy to
 
 Here is a third, related, bit of terminology:
 	\factoidbox{
-		The sentences $\metaX_1,\metaX_2,\ldots, \metaX_n$ are \define{provably inconsistent} iff a contradiction can be proved from them, i.e.\ $\metaX_1,\metaX_2,\ldots, \metaX_n \proves \ered$. If they are not \define{inconsistent}, we call them \define{provably consistent}.
+		The sentences $\metaX_1,\metaX_2,\ldots, \metaX_n$ are \define{provably inconsistent} iff a contradiction can be proved from them, i.e.\ $\metaX_1,\metaX_2,\ldots, \metaX_n \proves \metaY\eand\enot\metaY$ for some $\metaY$. If they are not \define{inconsistent}, we call them \define{provably consistent}.
 	}
 
 \newglossaryentry{provably inconsistent}

@@ -321,44 +321,55 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 \vspace{-10pt}
 \hrulefill
 \vspace{-10pt}
-\begin{multicols}{2}
-\subsubsection*{Contradiction}
-
-\begin{pf}
-\have[m]{a}{\metaX}
-\have[n]{na}{\enot\metaX}
-\have[ ]{bot}{\ered}\ri{a, na}
-\end{pf}
-
-\vfill\null
-\columnbreak
-
-\begin{pf}
-
-\have[m]{bot}{\ered}
-\\\have[ ]{}{\metaX}\re{bot}
-\end{pf}
-\end{multicols} % Contradiction
-
-\vspace{-10pt}
-\hrulefill
-\vspace{-10pt}
+%\begin{multicols}{2}
+%\subsubsection*{Contradiction}
+%
+%\begin{pf}
+%\have[m]{a}{\metaX}
+%\have[n]{na}{\enot\metaX}
+%\have[ ]{bot}{\ered}\ri{a, na}
+%\end{pf}
+%
+%\vfill\null
+%\columnbreak
+%
+%\begin{pf}
+%
+%\have[m]{bot}{\ered}
+%\\\have[ ]{}{\metaX}\re{bot}
+%\end{pf}
+%\end{multicols} % Contradiction
+%
+%\vspace{-10pt}
+%\hrulefill
+%\vspace{-10pt}
 \begin{multicols}{2}
 \subsubsection*{Negation}
-\begin{pf}
-\open
-	\hypo[m]{a}{\metaX}
-	\ellipsesline
-	\have[n]{nb}{\ered}
-\close
-\have[\ ]{na}{\enot\metaX}\ni{a-nb}
-\end{pf}
+%\begin{pf}
+%\open
+%	\hypo[m]{a}{\metaX}
+%	\ellipsesline
+%	\have[n]{nb}{\ered}
+%\close
+%\have[\ ]{na}{\enot\metaX}\ni{a-nb}
+%\end{pf}
 
 %\begin{pf}
 %\have[m]{a}{\metaX \eif \ered}
 %\have[\ ]{na}{\enot\metaX}\ni{a}
 %\end{pf}
 
+\begin{pf}
+\open
+	\hypo[m]{a}{\metaX}
+	\ellipsesline
+	\have[n]{x}{\metaY}\ellipsesline
+	\have[k]{y}{\enot\metaY}
+\close
+\have[\ ]{na}{\enot\metaX}\ni{a-y}
+%\have[m]{axx}{\metaX \eif \ered}
+%\have[\ ]{na}{\enot\metaX}\ni{axx}
+\end{pf}
 \vfill\null
 \columnbreak
 
@@ -366,10 +377,21 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 \open
 	\hypo[m]{a}{\enot\metaX}
 	\ellipsesline
-	\have[n]{nb}{\ered}
+	\have[n]{x}{\metaY}\ellipsesline
+	\have[k]{y}{\enot\metaY}
 \close
-\have[\ ]{na}{\metaX}\notE{a-nb}
+\have[\ ]{na}{\metaX}\notE{a-y}
+%\have[m]{axx}{\metaX \eif \ered}
+%\have[\ ]{na}{\enot\metaX}\ni{axx}
 \end{pf}
+%\begin{pf}
+%\open
+%	\hypo[m]{a}{\enot\metaX}
+%	\ellipsesline
+%	\have[n]{nb}{\ered}
+%\close
+%\have[\ ]{na}{\metaX}\notE{a-nb}
+%\end{pf}
 %\begin{pf}
 %\have[m]{a}{\enot\metaX \eif \ered}
 %\have[\ ]{na}{\metaX}\ne{a}
