@@ -979,9 +979,10 @@ Should it be called neg Elim? For normalisation need negE to be the explosion. B
 
 %If the assumption that $\metav{A}$ is true leads to a contradiction, $\metav{A}$ cannot be true, i.e., it must be false, i.e., $\enot\metav{A}$ must be true. Of course, if the assumption that $\metav{A}$ is false (i.e., the assumption that $\enot\metav{A}$ is true) leads to a contradiction, then $\metav{A}$ cannot be false, i.e., $\metav{A}$ must be true. So we can consider the following rule:
 
-The negation elimination rule is quite similar but switches $\metaX$ and $\enot\metaX$. 
+The negation elimination rule is quite similar.
+% but switches $\metaX$ and $\enot\metaX$. 
 \todo{CCM Nov 23: improve the below, it's a bit confusing, maybe repeat the notI motivation. Above commented out is the forallxyyc}
-
+%
 We motivate the rule by the following thought:
 If assuming that something is false leads you to a contradiction, then that assumption must be wrong --- and so that `something' must in fact be true. In other words, if we assume $\enot\metaX$ and derive a contradiction, then we can conclude $\metaX$: we eliminate the negation.
 \factoidbox{\begin{pf}
@@ -997,10 +998,10 @@ If assuming that something is false leads you to a contradiction, then that assu
 \end{pf}}
 Formally, the rule is very similar to $\enot$I, but they are different.\footnote{There are logicians who accept $\enot$I but reject $\enot$E. They are called ``intuitionists.'' Intuitionists reject the law of excluded middle. They don't buy our basic assumption that every sentence has one of two truth values, true or false. For intuitionists, $\metaX$ and $\enot\enot\metaX$ are not equivalent. 
 %To get the system of intuitionist logic, we reject $\enot$E and LEM. We then need to add the rule of explosion as a basic rule. This rule is derivable in our system.
-}
- $\enot$I introduced a negation, but $\enot$E eliminates a negation. In the conclusion of $\enot$E, there may be no negation symbols.
-
-Some textbooks call this the rule of \emph{indirect proof} or the method of \emph{proof by contradiction}. It allows us to prove something by showing that its negation leads to contradiction. This technique is very common in mathematics.%
+} They switch $\metaX$ and $\enot\metaX$. 
+ $\enot$I introduced a negation, but $\enot$E eliminates a negation.
+ 
+Sometimes this is called the rule of \emph{indirect proof}, \emph{reductio ad absurdum} or \emph{proof by contradiction}. It allows us to prove something by showing that its negation leads to contradiction. This technique is very common in mathematics.%
 \footnote{
 For example it is used to show there are infinitely many prime numbers. We assume, for contradiction, that there are not infinitely many primes, so there must be a biggest prime number. We can then use this assumption to construct a further prime number which is larger than the biggest prime number. This is a contradiction. We can thus conclude that there are infinitely many primes.
 }
@@ -1018,6 +1019,7 @@ To see this rule in action, here is an example proof using it:
 		\close
 		\have{con}{D}\notE{nd2,nnd}
 	\end{pf}
+	Here $\metaX$ is $D$ and $\metaY$ is $\enot D$. 
 
 
 This rule also allows us to prove that anything follows from a contradiction. For example:

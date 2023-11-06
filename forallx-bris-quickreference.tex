@@ -226,7 +226,7 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 	{\noindent\par\noindent\small$\begin{nd}}
 	{\end{nd}$\noindent\normalsize\ignorespacesafterend}
 	
-
+\vspace{-5pt}
 %{\LARGE \textbf{Basic Rules of Proof}}
 
 %\hrulefill
@@ -343,6 +343,7 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 %\vspace{-10pt}
 %\hrulefill
 %\vspace{-10pt}
+%\newpage
 \begin{multicols}{2}
 \subsubsection*{Negation}
 %\begin{pf}
@@ -358,19 +359,19 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 %\have[m]{a}{\metaX \eif \ered}
 %\have[\ ]{na}{\enot\metaX}\ni{a}
 %\end{pf}
-
 \begin{pf}
 \open
 	\hypo[m]{a}{\metaX}
 	\ellipsesline
-	\have[n]{x}{\metaY}\ellipsesline
+	\have[n]{x}{\metaY}
+	\ellipsesline
 	\have[k]{y}{\enot\metaY}
 \close
 \have[\ ]{na}{\enot\metaX}\ni{a-y}
 %\have[m]{axx}{\metaX \eif \ered}
 %\have[\ ]{na}{\enot\metaX}\ni{axx}
 \end{pf}
-\vfill\null
+%\vfill\null
 \columnbreak
 
 \begin{pf}
@@ -384,18 +385,7 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 %\have[m]{axx}{\metaX \eif \ered}
 %\have[\ ]{na}{\enot\metaX}\ni{axx}
 \end{pf}
-%\begin{pf}
-%\open
-%	\hypo[m]{a}{\enot\metaX}
-%	\ellipsesline
-%	\have[n]{nb}{\ered}
-%\close
-%\have[\ ]{na}{\metaX}\notE{a-nb}
-%\end{pf}
-%\begin{pf}
-%\have[m]{a}{\enot\metaX \eif \ered}
-%\have[\ ]{na}{\metaX}\ne{a}
-%\end{pf}
+
 
 
 \end{multicols} % Negation
@@ -510,6 +500,14 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 %		\have[ ]{a}{\metaX}\by{IP}{na-red}
 %	\end{pf}
 
+
+
+\subsubsection*{Explosion}
+	\begin{pf}
+	\have[m]{ab}{\metaX}
+	\have[n]{a}{\enot\metaX}
+	\have[\ ]{b}{\metaY} \by{Explosion}{ab,a}
+	\end{pf}
 
 
 %
