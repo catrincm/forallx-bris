@@ -1,0 +1,189 @@
+\documentclass{article}
+
+
+\usepackage{forallxbris}
+
+\begin{document}
+\begin{itemize}
+\item 
+	\begin{pf}
+		\have[m]{ab}{\metaX\eor\metaY}
+		\have[n]{na}{\enot \metaX}
+		\open
+			\hypo[k]{a}{\metaX}
+			\open
+			\hypo{a1}{\neg\metaY}
+			\have{a2}{\metaX}\Reiteration{a}
+			\have{a3}{\enot\metaX}\Reiteration{na}
+			\close
+			\have{b1}{\metaY}\pbc{a1-a3}
+		\close
+%	\have{xtoy}{\metaX\eif\metaY}{\ci{(a)-(b1)}}
+		\open
+			\hypo{b}{\metaY}
+			\have{b2}{\metaY}\by{R}{b}
+		\close
+%	\have{ytoy}{\metaY\eif\metaY}{\ci{(b)-(b2)}}
+	\have{con}{\metaY}\oe{ab, a-b1, b-b2}
+%	\have{con}{\metaY}\oe{ab, xtoy, ytoy}
+\end{pf}
+
+
+%\item
+%	\begin{pf}
+%		\have[m]{ab}{\metaX\eor\metaY}
+%		\have[n]{na}{\enot \metaX}
+%		\open
+%			\hypo[k]{a}{\metaX}
+%			\have{red}{\ered}\ri{a, na}
+%			\have{b1}{\metaY}\re{red}
+%		\close
+%%	\have{xtoy}{\metaX\eif\metaY}{\ci{(a)-(b1)}}
+%		\open
+%			\hypo{b}{\metaY}
+%			\have{b2}{\metaY}\by{R}{b}
+%		\close
+%%	\have{ytoy}{\metaY\eif\metaY}{\ci{(b)-(b2)}}
+%	\have{con}{\metaY}\oe{ab, a-b1, b-b2}
+%%	\have{con}{\metaY}\oe{ab, xtoy, ytoy}
+%\end{pf}
+
+
+\item
+ 	\begin{pf}
+		\have[m]{nab}{\enot (\metaX \eand \metaY)}
+		\have[j]{lem}{\metaX\eor\enot\metaX}\LEM
+		\open
+			\hypo[k]{a}{\metaX}
+			\open
+				\hypo{b}{\metaY}
+				\have{ab}{\metaX \eand \metaY}\ai{a,b}
+				\have{nab1}{\enot(\metaX \eand \metaY)}\Reiteration{nab}
+			\close
+%		\have{ytoxx}{\metaY \eif \ered}{\ci{(b)-(nab1)}}
+			\have{nb}{\enot \metaY}\ni{b-nab1}%\ni{ytoxx}
+			\have{dis}{\enot\metaX \eor \enot \metaY}\oi{nb}
+		\close
+%\have{xtocon}{\metaX \eif (\enot \metaX \eor \enot \metaY)}{\ci{(a)-(dis)}}
+			\open
+			\hypo{na1}{\enot \metaX}
+			\have{dis1}{\enot\metaX \eor \enot \metaY}\oi{na1}
+		\close
+%\have{nxtocon}{\enot\metaX \eif (\enot \metaX \eor \enot \metaY)}{\ci{(na1)-(dis1)}}
+		\have{con}{\enot \metaX \eor \enot \metaY}\orE{lem,a-dis, na1-dis1}
+%\have{con}{\enot \metaX \eor \enot \metaY}\orE{lem,xtocon,nxtocon}
+	\end{pf}
+	
+	
+\item 
+ 	\begin{pf}
+		\have[m]{nab}{\enot \metaX \eor \enot \metaY}
+		\open
+		\hypo{nx}{\enot\metaX}
+			\open
+				\hypo[k]{ab}{\metaX \eand \metaY}
+				\have{x1}{\metaX}\andE{ab}
+				\have{nx1}{\enot\metaX}\Reiteration{nx}
+			\close
+			\have{abc1}{\enot(\metaX \eand \metaY)}\ni{ab-nx1}
+			\close
+			\open
+			\hypo{ny}{\enot\metaY}
+			\open
+			\hypo[l]{rab1}{\metaX \eand \metaY}
+				\have{y1}{\metaY}\ae{ab}
+				\have{ny1}{\enot\metaY}\Reiteration{ny}
+			\close
+			\have{abc2}{\enot(\metaX \eand \metaY)}\ni{rab1-ny1}
+			\close
+			\have{abc}{\enot(\metaX \eand \metaY)}\orE{nab, nx-abc1,ny-abc2}
+\end{pf}
+
+
+
+\item
+
+The following `proofs' are \emph{incorrect}. Explain the mistakes they make.
+\begin{pf}
+\hypo{abc}{\enot L \eif (A \eand L)}
+\have{lem}{L\eor\enot L}\LEM
+\open
+	\hypo{nl}{\enot L}
+	\have{a}{A}\ce{abc, nl}
+\close
+\open
+	\hypo{l}{L}
+	\have{red}{\ered}\ri{l, nl}
+	\have{a2}{A}\re{red}
+\close
+\have{con}{A}\orE{lem,nl-a, l-a2}
+\end{pf}
+
+
+\item
+The following three proofs are missing their citations (rule and line numbers). Add them, to turn them into \emph{bona fide} proofs. Additionally, write down the argument that corresponds to each proof.
+
+
+\begin{pf}
+\hypo{nlcjol}{\enot L \eif (J \eor L)}
+\hypo{nl}{\enot L}
+\have{jol}{J \eor L}%\ce{nlcjol, nl}
+\open
+	\hypo{j}{J}
+%	\have{jj}{J \eand J}%\ai{j}
+%	\have{j2}{J}%\ae{jj}
+	\have{j2}{J}%\r{j}
+\close
+\have{jtoj}{J \eif J}%{\ci{j-j2}}
+\open
+	\hypo{l}{L}
+	\have{red}{\ered}%\ri{l, nl}
+	\have{j3}{J}%\re{red}
+\close
+\have{ltoj}{L \eif J}%{\ci{l-j3}}
+%\have{conc}{J}%\oe{jol, j-j2, l-j3}
+\have{conc}{J}%\oe{jol, jtoj, ltoj}
+\end{pf}
+\end{itemize}
+
+
+
+
+
+\noindent FOL:
+\begin{itemize}
+\item 
+
+\begin{pf}
+	\hypo{An}{\forall x \enot A x}
+	\open
+		\hypo{E}{\exists x Ax}
+		\open
+			\hypo{c}{Ac}%\by{for $\exists$E}{}
+			\have{nc}{\enot Ac}\Ae{An}
+			\have{red}{\ered}\ri{c,nc}
+		\close
+		\have{red2}{\ered}\Ee{E,c-red}
+	\close
+	\have{dada}{\enot \exists x Ax}\ni{E-red2}
+\end{pf}
+
+\item 
+\begin{pf}
+	\hypo{nEna}{\exists x  \enot Ax}
+	\open
+		\hypo{Aa}{\forall x Ax}
+		\open
+			\hypo{nac}{\enot Ac}%\by{for $\exists$E}{}
+			\have{a}{Ac}\Ae{Aa}
+			\have{con}{\ered}\ri{a,nac}
+		\close
+		\have{con1}{\ered}\Ee{nEna, nac-con}
+	\close
+	\have{dada}{\enot \forall x Ax}\ni{Aa-con1}
+\end{pf}
+\end{itemize}
+
+
+Not bothering to fix in modal logic or metatheory sections
+\end{document}
