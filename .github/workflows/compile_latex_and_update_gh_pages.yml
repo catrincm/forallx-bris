@@ -3,14 +3,14 @@ name: compile_and_copy_latex
 on:
   push:
     branches:
-      - johannes
+      - test-latex-script
 
 jobs:
   compile_and_deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout 'johannes' branch
+      - name: Checkout branch
         uses: actions/checkout@v4
 
       - name: Compile forallxbris.tex
@@ -18,22 +18,35 @@ jobs:
         with:
           root_file: forallxbris.tex
 
+      - name: Move forallxbris.pdf to docs directory
+        run: |
+          cp ./forallxbris.pdf ./docs/
+          cp ./docs/forallxbris.pdf ./docs/forallxbris-js.pdf
+
       - name: Compile forallxbris-accessible.tex
         uses: xu-cheng/latex-action@v3
         with:
           root_file: forallxbris-accessible.tex
 
-      - name: Copy PDFs and README to docs directory
-        run: |
-          cp ./forallxbris.pdf ./docs/
-          cp ./forallxbris-accessible.pdf ./docs/
-          cp ./docs/forallxbris.pdf ./docs/forallxbris-js.pdf
-          cp README.md ./docs/index.md
+      - name: Move forallxbris-accessible.pdf to docs directory
+        run: cp ./forallxbris-accessible.pdf ./docs/
 
-      - name: Push to Repository
+      - name: Copy README to docs directory
+        run: cp README.md ./docs/index.md
+
+      - name: Checkout 'gh-pages' branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+
+      - name: Copy ./docs/ directory
+        run: |
+          cp -r ./docs/ ./
+
+      - name: Push to 'gh-pages' branch
         run: |
           git config user.name "GitHub Action"
           git config user.email "action@github.com"
-          git add ./docs/forallxbris.pdf ./docs/forallxbris-js.pdf ./docs/forallxbris-accessible.pdf ./docs/index.md
-          git commit -m "Copy PDFs and README to docs directory"
-          git push
+          git add .
+          git commit -m "Update gh-pages branch"
+          git push origin gh-pages
