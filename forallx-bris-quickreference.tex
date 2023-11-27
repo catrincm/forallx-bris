@@ -228,229 +228,133 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 	
 \vspace{-5pt}
 %{\LARGE \textbf{Basic Rules of Proof}}
-
-%\hrulefill
+\newcommand{\separatepfs}{\vspace{-10pt}\hrulefill\vspace{-5pt}}
+% Conjunction section with two-column layout
 \begin{multicols}{2}
 \subsubsection*{Conjunction}
 
 \begin{pf}
-	\have[m]{a}{\metaX}
-	\have[n]{b}{\metaY}
-	\have[\ ]{c}{\metaX\eand\metaY} \ai{a, b}
+	\have[m]{x}{\metaX}
+	\have[n]{y}{\metaY}
+	\have[\ ]{xy}{\metaX \eand \metaY} \andI{x,y}
 \end{pf}
 
 \vfill\null
 \columnbreak
 
 \begin{pf}
-	\have[m]{ab}{\metaX\eand\metaY}
-\\	\have[\ ]{a}{\metaX} \ae{ab}
-
-	\have[m]{ab}{\metaX\eand\metaY}
-\\	\have[\ ]{b}{\metaY} \ae{ab}
+	\have[m]{xy}{\metaX \eand \metaY}
+	\have[\ ]{x}{\metaX} \andE{xy}
 \end{pf}
-\end{multicols} % Conjunction
+\smallskip
+\begin{pf}
+	\have[m]{xy}{\metaX \eand \metaY}
+	\have[\ ]{y}{\metaY} \andE{xy}
+\end{pf}
+\end{multicols}
 
-\vspace{-10pt}
-\hrulefill
-\vspace{-10pt}
+\separatepfs
+% Disjunction section with two-column layout
 \begin{multicols}{2}
 \subsubsection*{Disjunction}
 
 \begin{pf}
-	\have[m]{a}{\metaX}
-	\have[\ ]{ab}{\metaX\eor\metaY}\oi{a}
-
-	\have[m]{a}{\metaX}
-\\	\have[\ ]{ba}{\metaY\eor\metaX}\oi{a}
+	\have[m]{x}{\metaX}
+	\have[\ ]{xy}{\metaX \eor \metaY}\orI{x}
+\end{pf}
+\smallskip
+\begin{pf}
+	\have[m]{x}{\metaX}
+	\have[\ ]{xy}{\metaY \eor \metaX}\orI{x}
 \end{pf}
 
 \vfill\null
 \columnbreak
 
 \begin{pf}
-	\have[m]{ab}{\metaX\eor\metaY}
-\\	\open
-		\hypo[i]{a}{\metaX}
+	\have[m]{xy}{\metaX \eor \metaY}
+	\open
+		\hypo[i]{x}{\metaX}
 		\ellipsesline
-		\have[j]{c1}{\metaZ}
+		\have[j]{z1}{\metaZ}
 	\close
 	\open
-		\hypo[k]{b}{\metaY}
+		\hypo[k]{y}{\metaY}
 		\ellipsesline
-		\have[l]{c2}{\metaZ}
+		\have[l]{z2}{\metaZ}
 	\close
-	\have[\ ]{c}{\metaZ} \oe{ab,a-c1, b-c2}
+	\have[\ ]{z}{\metaZ} \orE{xy,x-z1,y-z2}
 \end{pf}
-%
-%\begin{pf}
-%	\have[m]{ab}{\metaX\eor\metaY}
-%	\have[i]{xz}{\metaX\eif\metaZ}
-%	\have[j]{yz}{\metaX\eif\metaZ}
-%	\have[\ ]{c}{\metaZ} \oe{ab,xz,yz}
-%\end{pf}
+\end{multicols}
 
-\end{multicols} % Disjunction
-
-
-\vspace{-10pt}
-\hrulefill
-\vspace{-10pt}
+\separatepfs
+% Conditional section with two-column layout
 \begin{multicols}{2}
 \subsubsection*{Conditional}
 
 \begin{pf}
 	\open
-		\hypo[m]{a}{\metaX}
+		\hypo[m]{x}{\metaX}
 		\ellipsesline
-		\have[n]{b}{\metaY}
+		\have[n]{y}{\metaY}
 	\close
-	\have[\ ]{ab}{\metaX\eif\metaY}\ci{a-b}
+	\have[\ ]{xy}{\metaX \eif \metaY}\ifI{x-y}
 \end{pf}
 
 \vfill\null
 \columnbreak
 
 \begin{pf}
-	\have[m]{ab}{\metaX\eif\metaY}
-\\	\have[n]{a}{\metaX}
-	\have[\ ]{b}{\metaY} \ce{ab,a}
+	\have[m]{xy}{\metaX \eif \metaY}
+	\have[n]{x}{\metaX}
+	\have[\ ]{y}{\metaY} \ifE{xy,x}
 \end{pf}
-\end{multicols} % Conditional
+\end{multicols}
 
-\vspace{-10pt}
-\hrulefill
-\vspace{-10pt}
-%\begin{multicols}{2}
-%\subsubsection*{Contradiction}
-%
-%\begin{pf}
-%\have[m]{a}{\metaX}
-%\have[n]{na}{\enot\metaX}
-%\have[ ]{bot}{\ered}\ri{a, na}
-%\end{pf}
-%
-%\vfill\null
-%\columnbreak
-%
-%\begin{pf}
-%
-%\have[m]{bot}{\ered}
-%\\\have[ ]{}{\metaX}\re{bot}
-%\end{pf}
-%\end{multicols} % Contradiction
-%
-%\vspace{-10pt}
-%\hrulefill
-%\vspace{-10pt}
-%\newpage
+\separatepfs
+% Negation section with two-column layout
 \begin{multicols}{2}
 \subsubsection*{Negation}
-%\begin{pf}
-%\open
-%	\hypo[m]{a}{\metaX}
-%	\ellipsesline
-%	\have[n]{nb}{\ered}
-%\close
-%\have[\ ]{na}{\enot\metaX}\ni{a-nb}
-%\end{pf}
 
-%\begin{pf}
-%\have[m]{a}{\metaX \eif \ered}
-%\have[\ ]{na}{\enot\metaX}\ni{a}
-%\end{pf}
 \begin{pf}
 \open
-	\hypo[m]{a}{\metaX}
+	\hypo[m]{x}{\metaX}
 	\ellipsesline
-	\have[n]{x}{\metaY}
+	\have[n]{y}{\metaY}
 	\ellipsesline
-	\have[k]{y}{\enot\metaY}
+	\have[k]{ny}{\enot\metaY}
 \close
-\have[\ ]{na}{\enot\metaX}\ni{a-y}
-%\have[m]{axx}{\metaX \eif \ered}
-%\have[\ ]{na}{\enot\metaX}\ni{axx}
+\have[\ ]{nx}{\enot\metaX}\notI{x-ny}
 \end{pf}
-%\vfill\null
+
 \columnbreak
 
 \begin{pf}
 \open
-	\hypo[m]{a}{\enot\metaX}
+	\hypo[m]{nx}{\enot\metaX}
 	\ellipsesline
-	\have[n]{x}{\metaY}\ellipsesline
-	\have[k]{y}{\enot\metaY}
+	\have[n]{y}{\metaY}
+	\ellipsesline
+	\have[k]{ny}{\enot\metaY}
 \close
-\have[\ ]{na}{\metaX}\notE{a-y}
-%\have[m]{axx}{\metaX \eif \ered}
-%\have[\ ]{na}{\enot\metaX}\ni{axx}
+\have[\ ]{x}{\metaX}\notE{nx-ny}
 \end{pf}
-
-
-
-\end{multicols} % Negation
-
-\vspace{-10pt}
-\hrulefill
-\vspace{-10pt}
+\end{multicols}
+\separatepfs
+% Reiteration and Law of Excluded Middle section with two-column layout
 \begin{multicols}{2}
 \subsubsection*{Reiteration}
 
 \begin{pf}
-	\have[m]{a}{\metaX}
-	\have[\ ]{c}{\metaX} \by{R}{a}
+	\have[m]{x}{\metaX}
+	\have[\ ]{x2}{\metaX} \Reiteration{x}
 \end{pf}
 
 \subsubsection*{Law of Excluded Middle}
 \begin{pf}
-	\have[\ ]{lem}{\metaX\eor\enot\metaX}\LEM
+	\have[\ ]{lem}{\metaX \eor \enot\metaX}\LEM
 \end{pf}
-\end{multicols}  % R and LEM
-
-
-%\hrulefill
-%\begin{multicols}{2}
-%\subsubsection*{Biconditional}
-%
-%\begin{pf}
-%\have[m]{ab}{\metaX\eiff\metaY}
-%\have[\ ]{b}{(\metaX\eif\metaY)\eand(\metaY\eif\metaX)}\iffE{ab}
-%\end{pf}
-%
-%\vfill\null
-%\columnbreak
-%
-%\begin{pf}
-%
-%\have[m]{b}{(\metaX\eif\metaY)\eand(\metaY\eif\metaX)}
-%\\\have[\ ]{ab}{\metaX\eiff\metaY}\iffI{b}
-%\end{pf}
-%
-%%\begin{pf}
-%%	\open
-%%		\hypo[i]{a1}{\metaX} 
-%%		\have[j]{b1}{\metaY}
-%%	\close
-%%	\open
-%%		\hypo[k]{b2}{\metaY}
-%%		\have[l]{a2}{\metaX}
-%%	\close
-%%	\have[\ ]{ab}{\metaX\eiff\metaY}\bi{a1-b1,b2-a2}
-%%
-%%	\have[m]{ab}{\metaX\eiff\metaY}
-%%\\	\have[n]{a}{\metaX}
-%%	\have[\ ]{b}{\metaY} \be{ab,a}
-%%
-%%	\have[m]{ab}{\metaX\eiff\metaY}
-%%\\	\have[n]{a}{\metaY}
-%%	\have[\ ]{b}{\metaX} \be{ab,a}
-%%\end{pf}
-%
-%\end{multicols} % Biconditional
-
-
-
-
+\end{multicols}
 
 
 
