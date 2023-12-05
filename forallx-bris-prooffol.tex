@@ -181,7 +181,8 @@ To give our rule in general we need to introduce some new notation for this abil
 	\have[m]{a}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}
 	\have[\ ]{c}{\exists \meta{x}\metaX(\ldots \meta{x} \ldots \meta{c}\ldots)} \Ei{a}
 \end{pf}
-\meta{x} must not occur in $\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$}All the cases we've seen in this section follow this rule.
+\meta{x} must not occur in $\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$
+}All the cases we've seen in this section follow this rule.
 
 You might have noticed the additional constraint that's added to the rule. It is {part} of the rule; so if you are asked to write the rule $\exists$I  you {must} include this constraint. However, you will not need to worry about it in practice. It's simply there to guarantee that applications of the rule yield sentences of FOL. If the rule were not there we would be allowed to argue as follows:
 \begin{pf}
@@ -238,8 +239,9 @@ The crucial thought here is that `$a$' was just some \emph{arbitrary} name. Ther
 	\have[m]{a}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}
 	\have[\ ]{c}{\forall \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)} \Ai{a}
 \end{pf}
-	\meta{c} must not occur in any undischarged assumption\\
-	\meta{x} must not occur in $\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$}
+	\meta{c} must not occur in any undischarged assumption or premise.
+	\meta{x} must not occur in $\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$
+	}
 A crucial aspect of this rule, though, is bound up in the first constraint. This constraint ensures that we are always reasoning at a sufficiently general level.
 %\footnote{Recall from \S\ref{s:BasicTFL} that we are treating `$\ered$' as a canonical contradiction. But if it were the canonical contradiction as involving some \emph{constant}, it might interfere with the constraint mentioned here. To avoid such problems, we will treat `$\ered$' as a canonical contradiction \emph{that involves no particular names}.}
 To see the constraint in action, consider this terrible argument:
@@ -300,7 +302,7 @@ Putting this together, we obtain the existential elimination rule ($\exists$E):
 	\have[\ ]{d}{\metaY} \Ee{a,b-c}
 \end{pf}
 \meta{c} must not occur in any assumption undischarged before line $i$\\
-\meta{c} must not occur in $\exists \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)$\\
+\meta{c} must not occur in $\exists \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)$ or in a premise\\
 \meta{c} must not occur in \metaY
 }
 As with universal introduction, the constraints are extremely important. To see why, consider the following terrible argument:
