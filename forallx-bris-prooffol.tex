@@ -557,34 +557,64 @@ When all the quantifiers occur at the beginning of a sentence, that sentence is 
 
 \chapter{Derived rules}\label{s:DerivedFOL}
 As in the case of TFL, we first introduced some rules for FOL as basic (in \S\ref{s:BasicFOL}), and then added some further rules for conversion of quantifiers (in \S\ref{s:CQ}). In fact, the CQ rules should be regarded as \emph{derived} rules, for they can be derived from the  \emph{basic} rules of \S\ref{s:BasicFOL}. (The point here is as in \S\ref{s:Derived}.) Here is a justification for the first CQ rule:
+
 \begin{pf}
-	\hypo{An}{\forall x \enot A x}
-	\open
-		\hypo{E}{\exists x Ax}
-		\open
-			\hypo{c}{Ac}%\by{for $\exists$E}{}
-			\have{nc}{\enot Ac}\Ae{An}
-			\have{red}{\ered}\ri{c,nc}
-		\close
-		\have{red2}{\ered}\Ee{E,c-red}
-	\close
-	\have{dada}{\enot \exists x Ax}\ni{E-red2}
+\hypo{1}{\forall x\neg Px}
+\open
+\hypo{2}{\exists x Px}
+\open
+\hypo{3}{Pb}
+\open
+\hypo{4}{Da\vee\neg Da}
+\have{5}{\neg Pb}\Ae{1}
+\have{6}{Pb}\by{R}{3}
+\close
+\have{7}{\neg(Da\vee\neg Da)}\ni{4-6}
+\close
+\have{8}{\neg(Da\vee\neg Da)}\Ee{2,3-7}
+\have{9}{Da\vee\neg Da}\LEM
+\close
+\have{10}{\neg\exists x Px}\ni{2-9}
 \end{pf}
+
+
 %You will note that on line 3 I have written `for $\exists$E'. This is not technically a part of the proof. It is just a reminder---to me and to you---of why I have bothered to introduce `$\enot Ac$' out of the blue. You might find it helpful to add similar annotations to assumptions when performing proofs. But do not add annotations on lines other than assumptions: the proof requires its own citation, and your annotations will clutter it.
 Here is a justification of the third CQ rule:
+
 \begin{pf}
-	\hypo{nEna}{\exists x  \enot Ax}
-	\open
-		\hypo{Aa}{\forall x Ax}
-		\open
-			\hypo{nac}{\enot Ac}%\by{for $\exists$E}{}
-			\have{a}{Ac}\Ae{Aa}
-			\have{con}{\ered}\ri{a,nac}
-		\close
-		\have{con1}{\ered}\Ee{nEna, nac-con}
-	\close
-	\have{dada}{\enot \forall x Ax}\ni{Aa-con1}
+\hypo{1}{\exists x\neg Px}
+\open
+\hypo{1a}{\forall x Px}
+\open
+\hypo{2}{\neg Pb}
+\open
+\hypo{3}{Da\vee\neg Da}
+
+\have{4}{Pb}\Ae{1a}
+\have{5}{\neg Pb}\by{R}{2}
+\close
+\have{6}{\neg(Da\vee\neg Da)}\ni{3-5}
+\close
+\have{7}{\neg(Da\vee\neg Da)}\Ee{1,2-6}
+\have{8}{Da\vee\neg Da}\LEM
+\close
+\have{9}{\neg\forall x Px}\ni{1a-9}
 \end{pf}
+
+
+%\begin{pf}
+%	\hypo{nEna}{\exists x  \enot Ax}
+%	\open
+%		\hypo{Aa}{\forall x Ax}
+%		\open
+%			\hypo{nac}{\enot Ac}%\by{for $\exists$E}{}
+%			\have{a}{Ac}\Ae{Aa}
+%			\have{con}{\ered}\ri{a,nac}
+%		\close
+%		\have{con1}{\ered}\Ee{nEna, nac-con}
+%	\close
+%	\have{dada}{\enot \forall x Ax}\ni{Aa-con1}
+%\end{pf}
 This explains why the CQ rules can be treated as derived. Similar justifications can be offered for the other two CQ rules.
 
 \begin{practiceproblems}
