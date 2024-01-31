@@ -18,7 +18,8 @@ jobs:
       - name: Compile forallxbris.tex
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: ./main_repo/forallxbris.tex
+          root_file: forallxbris.tex
+          working_directory: ./main_repo
 
       - name: Copy forallxbris.pdf to site directory and rename
         run: |
