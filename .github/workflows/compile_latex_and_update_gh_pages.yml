@@ -12,41 +12,26 @@ jobs:
     steps:
       - name: Checkout branch
         uses: actions/checkout@v4
-
-      - name: Compile forallxbris.tex
-        uses: xu-cheng/latex-action@v3
         with:
-          root_file: forallxbris.tex
-
-      - name: Move forallxbris.pdf to docs directory
-        run: |
-          cp ./forallxbris.pdf ./docs/
-          cp ./docs/forallxbris.pdf ./docs/forallxbris-js.pdf
-
-      - name: Compile forallxbris-accessible.tex
-        uses: xu-cheng/latex-action@v3
-        with:
-          root_file: forallxbris-accessible.tex
-
-      - name: Move forallxbris-accessible.pdf to docs directory
-        run: cp ./forallxbris-accessible.pdf ./docs/
+          path: main_repo
 
       - name: Copy README to docs directory
-        run: cp README.md ./docs/index.md
+        run: cp README.md ./main_repo/docs/index.md
 
       - name: Checkout 'gh-pages' branch
         uses: actions/checkout@v4
         with:
           ref: gh-pages
+          path: gh_pages_repo
 
       - name: Copy ./docs/ directory
         run: |
-          cp -r ./docs/ ./
+          cp -r ./main_repo/docs/ ./gh_pages_repo/
 
       - name: Push to 'gh-pages' branch
         run: |
+          cd gh_pages_repo
           git config user.name "GitHub Action"
           git config user.email "action@github.com"
           git add .
-          git commit -m "Update gh-pages branch"
-          git push origin gh-pages
+          git diff --staged --quiet || (git commit -m "Update gh-pages branch" && git push origin gh-pages)
