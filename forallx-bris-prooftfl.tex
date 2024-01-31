@@ -428,37 +428,37 @@ Simple, but effective. In fact this shows that we didn't need to have the rule o
 
 
 
-\section{Biconditional}
-
-For the biconditional we encode the idea that $\metaX\eiff\metaY$ is equivalent to $(\metaX\eif\metaY)\eand(\metaY\eif\metaX)$.
-% instead of $\metaX\eiff\metaY$. We thus introduce the rules allowing you to move between these formulations:
-
-The rules we give, then, are very closely related to the rules for conjunction:
-Two elimination rules
-\factoidbox{
-\begin{pf}
-\ellipsesline
-\have[m]{ab}{\metaX\eiff\metaY}
-\ellipsesline
-\have[\ ]{b}{\metaX\eif\metaY}\iffE{ab}
-\end{pf}and
-\begin{pf}
-\ellipsesline
-\have[m]{ab}{\metaX\eiff\metaY}
-\ellipsesline
-\have[\ ]{b}{\metaY\eif\metaX}\iffE{ab}
-\end{pf}
-}and an introduction rule:
-\factoidbox{
-\begin{pf}
-\ellipsesline
-\have[m]{a}{\metaX\eif\metaY}
-\ellipsesline
-\have[n]{b}{\metaY\eif\metaX}
-\ellipsesline
-\have[\ ]{ab}{\metaX\eiff\metaY}\iffI{a,b}
-\end{pf}
-}
+%\section{Biconditional}
+%
+%For the biconditional we encode the idea that $\metaX\eiff\metaY$ is equivalent to $(\metaX\eif\metaY)\eand(\metaY\eif\metaX)$.
+%% instead of $\metaX\eiff\metaY$. We thus introduce the rules allowing you to move between these formulations:
+%
+%The rules we give, then, are very closely related to the rules for conjunction:
+%Two elimination rules
+%\factoidbox{
+%\begin{pf}
+%\ellipsesline
+%\have[m]{ab}{\metaX\eiff\metaY}
+%\ellipsesline
+%\have[\ ]{b}{\metaX\eif\metaY}\iffE{ab}
+%\end{pf}and
+%\begin{pf}
+%\ellipsesline
+%\have[m]{ab}{\metaX\eiff\metaY}
+%\ellipsesline
+%\have[\ ]{b}{\metaY\eif\metaX}\iffE{ab}
+%\end{pf}
+%}and an introduction rule:
+%\factoidbox{
+%\begin{pf}
+%\ellipsesline
+%\have[m]{a}{\metaX\eif\metaY}
+%\ellipsesline
+%\have[n]{b}{\metaY\eif\metaX}
+%\ellipsesline
+%\have[\ ]{ab}{\metaX\eiff\metaY}\iffI{a,b}
+%\end{pf}
+%}
 
 %The rules for the biconditional will be like double-barrelled versions of the rules for the conditional.
 %
@@ -1159,8 +1159,12 @@ The following two `proofs' are \emph{incorrect}. Explain the mistakes they make.
 \close
 \open
 	\hypo{l}{L}
-	\have{red}{\ered}\ri{l, nl}
-	\have{a2}{A}\re{red}
+	\open
+	\hypo{la}{\neg A}
+	\have{lr}{L}\by{R}{l}
+	\have{nlr}{\neg L}\by{R}{nl}
+	\close
+	\have{a2}{A}\by{$\neg$E}{la-nlr}
 \close
 \have{con}{A}\orE{lem,nl-a, l-a2}
 \end{pf}
@@ -1172,7 +1176,7 @@ The following two `proofs' are \emph{incorrect}. Explain the mistakes they make.
 \have{bc}{B \eor C}\oi{b}
 \have{d}{D}\ce{bc, bcd}
 \end{pf}
-
+\newpage
 \problempart
 The following three proofs are missing their citations (rule and line numbers). Add them, to turn them into \emph{bona fide} proofs. Additionally, write down the argument that corresponds to each proof.
 \begin{multicols}{2}
@@ -1528,7 +1532,7 @@ And the fourth is the reverse of the third:
 
 
 \emph{There are many more rules one could add to the system as derived rules. But these are all the ones we'll introduce.}
-
+\newpage
 \begin{practiceproblems}
 \solutions
 \problempart

@@ -908,9 +908,11 @@ A logical truth follows from every sentence. In contrast, every sentence  follow
 \factoidbox{\label{TFLcontra}$X$ is a \define{logical contradiction} if there is no valuation $v$ such that X is true relative to $v$.}
 Every sentence $Y$ follows from a contradiction $X$, since $X\therefore Y$ is valid: there is no valuation on which $X$ is true (and $Y$ false).
 
-We end this section by introducing two further important logical notions: \define{consistency} and \define{logical equivalence}.
-\factoidbox{\label{TFLconsist}A collection of TFL-sentences $X_1,\ldots,X_n$ (with possibly $n=1$) is \define{consistent} iff there is a valuation relative to which $X_1,\ldots,X_n$ are true. Otherwise the collection is \define{inconsistent}. Every sentence in a consistent collection is called \define{contingent}.}
-Any collection of sentences that contains a logical contradiction is inconsistent. But there are of course many collections of sentences that are consistent. Give some examples!
+We end this section by introducing three further important logical notions: \define{consistency}, \define{contingency} and \define{logical equivalence}.
+\factoidbox{\label{TFLconsist}A collection of TFL-sentences $X_1,\ldots,X_n$ (with possibly $n=1$) is \define{consistent} iff there is a valuation relative to which $X_1,\ldots,X_n$ are true. Otherwise the collection is \define{inconsistent}.}
+
+\factoidbox{\label{TFLconting}A sentence of TFL  is called \define{contingent}. If it is part of a consistent collection and not a logifical truth.}
+Any collection of sentences that contains a logical contradiction is inconsistent, and so a logical contradiction is not a contingent sentence. A contingent sentence is a sentence for which we can find a valuation relative to which it is true, but we can also find a valuation relative to which it is false. 
 
 The final notion we introduce is that of logical equivalence.
 \factoidbox{\label{TFLequiv}$X$ and $Y$ are \define{logically equivalent} if and only if $X$ follows from $Y$ and $Y$ follows from $X$.}
@@ -1175,16 +1177,16 @@ F & F & T & F & F & F & \TTbf{T} & T & F & T & T & F
 \end{center}}
 \item $(\enot A \eand \enot B) \eif\enot(A \eor B) $ %taut
 
-\myanswer{\begin{center}
-\begin{tabular}{c c | d e e e e e e e e f}
-$A$ & $B$&$\enot$&$(A$&$\eor$&$B)$&$\leftarrow$&$(\enot$&$A$&$\eand$&$\enot$&$B)$\\
-\hline
-T & T & F & T & T & T & \TTbf{T} & F & T & F & F & T\\
-T & F & F & T& T & F & \TTbf{T} & F & T & F & T & F\\
-F & T & F & F & T & T & \TTbf{T} & T & F & F & F & T\\
-F & F & T & F & F & F & \TTbf{T} & T & F & T & T & F
- \end{tabular}
-\end{center}}
+%\myanswer{\begin{center}
+%\begin{tabular}{c c | d e e e e e e e e f}
+%$A$ & $B$&$\enot$&$(A$&$\eor$&$B)$&$\leftarrow$&$(\enot$&$A$&$\eand$&$\enot$&$B)$\\
+%\hline
+%T & T & F & T & T & T & \TTbf{T} & F & T & F & F & T\\
+%T & F & F & T& T & F & \TTbf{T} & F & T & F & T & F\\
+%F & T & F & F & T & T & \TTbf{T} & T & F & F & F & T\\
+%F & F & T & F & F & F & \TTbf{T} & T & F & T & T & F
+% \end{tabular}
+%\end{center}}
 
 
 \item $\bigl[(A\eand B) \eand\enot(A\eand B)\bigr] \eand C$ %contradiction
@@ -1349,45 +1351,45 @@ Write complete truth tables for the following sentences and mark the column that
 
 \item $[C \eif (D \eor E)] \eand \enot C$
 
-\myanswer{
+%\myanswer{
 %\begin{center}
-\begin{tabular}{cccccc|c|cc}
-\cline{7-7}
-~	&	[C 	&	\eiff 	&	(D 	&	\eor 	&	E)] 	&	\eand 	&	 \enot 	&	 C \\
-\cline{2-9}
-	&	T	&	T	&	T	&	T	&	T	&	F		&	F		&	T	\\
-	&	T	&	T	&	T	&	T	&	F	&	F		&	F		&	T	\\
-	&	T	&	T	&	F	&	T	&	T	&	F		&	F		&	T	\\
-	&	T	&	F	&	F	&	F	&	F	&	F		&	F		&	T	\\
-	&	F	&	F	&	T	&	T	&	T	&	F		&	T		&	F	\\
-	&	F	&	F	&	T	&	T	&	F	&	F		&	T		&	F	\\
-	&	F	&	F	&	F	&	T	&	T	&	F		&	T		&	F	\\
-	&	F	&	T	&	F	&	F	&	F	&	T		&	T		&	F	\\
-\cline{7-7}
-\end{tabular}
-\end{center}
-}
+%\begin{tabular}{cccccc|c|cc}
+%\cline{7-7}
+%~	&	[C 	&	\eiff 	&	(D 	&	\eor 	&	E)] 	&	\eand 	&	 \enot 	&	 C \\
+%\cline{2-9}
+%	&	T	&	T	&	T	&	T	&	T	&	F		&	F		&	T	\\
+%	&	T	&	T	&	T	&	T	&	F	&	F		&	F		&	T	\\
+%	&	T	&	T	&	F	&	T	&	T	&	F		&	F		&	T	\\
+%	&	T	&	F	&	F	&	F	&	F	&	F		&	F		&	T	\\
+%	&	F	&	F	&	T	&	T	&	T	&	F		&	T		&	F	\\
+%	&	F	&	F	&	T	&	T	&	F	&	F		&	T		&	F	\\
+%	&	F	&	F	&	F	&	T	&	T	&	F		&	T		&	F	\\
+%	&	F	&	T	&	F	&	F	&	F	&	T		&	T		&	F	\\
+%\cline{7-7}
+%\end{tabular}
+%\end{center}
+%}
 
 \item $\enot(G \eand (B \eand H)) \eif (G \eor (B \eor H))$
 
-\myanswer{
-\begin{center}
+%\myanswer{
+%\begin{center}
 %\begin{tabular}{ccccccc|c|ccccc}
-\cline{8-8}
-~	&\enot&	(G 	&\eand &	(B 	&	 \eand 	&	 H))	&	\eiff 	&	(G 	& \eor 	& (B 	& \eor	& H))	\\
-\cline{2-13}
-	&F	   &	T	&	  T &	T	&	T		&	T	&	F	&	T	&	T	&	T	&	T	&	T	\\
-	&T	   &	T	&	  F &	T	&	F		&	F	&	T	&	T	&	T	&	T	&	T	&	F	\\	
-	&T	   &	T	&	 F  &	F	&	F		&	T	&	T	&	T	&	T	&	F	&	T	&	T	\\
-	&T	   &	T	&	 F  &	F	&	F		&	F	&	T	&	T	&	T	&	F	&	F	&	F	\\
-	&T	   &	F	&	F   &	T	&	T		&	T	&	T	&	F	&	T	&	T	&	T	&	T	\\
-	&T	   &	F	&	F   &	T	&	F		&	F	&	T	&	F	&	T	&	T	&	T	&	F	\\
-	&T	   &	F	&	F   &	F	&	F		&	T	&	T	&	F	&	T	&	F	&	T	&	T	\\
-	&T	   &	F	&	F   &	F	&	F		&	F	&	F	&	F	&	F	&	F	&	F	&	F	\\
-\cline{8-8}
-\end{tabular}
-\end{center}
-}
+%\cline{8-8}
+%~	&\enot&	(G 	&\eand &	(B 	&	 \eand 	&	 H))	&	\eiff 	&	(G 	& \eor 	& (B 	& \eor	& H))	\\
+%\cline{2-13}
+%	&F	   &	T	&	  T &	T	&	T		&	T	&	F	&	T	&	T	&	T	&	T	&	T	\\
+%	&T	   &	T	&	  F &	T	&	F		&	F	&	T	&	T	&	T	&	T	&	T	&	F	\\	
+%	&T	   &	T	&	 F  &	F	&	F		&	T	&	T	&	T	&	T	&	F	&	T	&	T	\\
+%	&T	   &	T	&	 F  &	F	&	F		&	F	&	T	&	T	&	T	&	F	&	F	&	F	\\
+%	&T	   &	F	&	F   &	T	&	T		&	T	&	T	&	F	&	T	&	T	&	T	&	T	\\
+%	&T	   &	F	&	F   &	T	&	F		&	F	&	T	&	F	&	T	&	T	&	T	&	F	\\
+%	&T	   &	F	&	F   &	F	&	F		&	T	&	T	&	F	&	T	&	F	&	T	&	T	\\
+%	&T	   &	F	&	F   &	F	&	F		&	F	&	F	&	F	&	F	&	F	&	F	&	F	\\
+%\cline{8-8}
+%\end{tabular}
+%\end{center}
+%}
 
 \vspace{1em}
 
@@ -1420,20 +1422,20 @@ Write complete truth tables for the following sentences and mark the column that
 
 \item	$(\enot P \eor \enot M) \eif M $
 
-\myanswer{
+%\myanswer{
 %\begin{center}
-\begin{tabular}{cccccc|c|c}
-\cline{7-7}
-	&	(\enot 	&	P 	&	\eor 	&	\enot 	& 	 M) 	& 	\eiff 	&	 M \\
- \hline
-	&	F		&	T	&	F	&	F		&	T	&	F	&	T	\\
-	&	F		&	T	&	T	&	T		&	F	&	F	&	F	\\
-	&	T		&	F	&	T	&	F		&	T	&	T	&	T	\\
-	&	T		&	F	&	T	&	T		&	F	&	F	&	F	\\
-\cline{7-7}
-\end{tabular}
-\end{center}
-}
+%\begin{tabular}{cccccc|c|c}
+%\cline{7-7}
+%	&	(\enot 	&	P 	&	\eor 	&	\enot 	& 	 M) 	& 	\eiff 	&	 M \\
+% \hline
+%	&	F		&	T	&	F	&	F		&	T	&	F	&	T	\\
+%	&	F		&	T	&	T	&	T		&	F	&	F	&	F	\\
+%	&	T		&	F	&	T	&	F		&	T	&	T	&	T	\\
+%	&	T		&	F	&	T	&	T		&	F	&	F	&	F	\\
+%\cline{7-7}
+%\end{tabular}
+%\end{center}
+%}
 \vspace{1em}
 
 
@@ -1530,7 +1532,7 @@ T&F&F\\
 F&T&T\\
 F&F&T
 \end{tabular}\myanswer{\quad\begin{minipage}{.75\textwidth}
-$\enot( A\eand \enot B)$;\\ or the more systematic answer following G.2.: $$(A\eand B)\eor (\enot A\eand B)\eor (\enot A\eand\enot B)$$
+$\enot( A\eand \enot B)$;\\ or a more systematic answer by simply writing out the different options when the sentence is true: $$((A\eand B)\eor (\enot A\eand B))\eor (\enot A\eand\enot B)$$
 \end{minipage}}
 
 \end{enumerate}
@@ -1539,14 +1541,14 @@ Suppose $X$ is TFL sentence containing two atomic sentences. Then there are in f
 \begin{enumerate}
 \item Can you explain why?\myanswer{\\ The first line might have T or F, the second line might have T or F, etc. There are 4 valuations, so there are $2\times 2\times 2\times 2=2^4=16$ different ways of putting Ts and Fs to these 4 lines. I.e.~16 different columns. }
 \item Can you show for each of these combinations that there is a sentence of TFL with that column describing its truth.
-\myanswer{\\
-See section 37.2 of forall$x$:Bristol for the general argument for this.
-}
+%\myanswer{\\
+%See section 37.2 of forall$x$:Bristol for the general argument for this.
+%}
 \item {} Can you show there's always a formula just using $\enot$ and $\eand$ with that column describing its truth.
-\myanswer{\\
-The previous answer had that every truth table can be given by a sentence with $\eand, \eor$ and $\enot$. We can replace any instances of $\eor$ by $\eand$ using: $$\metaX\eor\metaY\text{ is logically equivalent to }\enot(\enot\metaX\eand\enot\metaY)$$
-See 37.4 of forall$x$:Bristol for more details.
-}
+%\myanswer{\\
+%The previous answer had that every truth table can be given by a sentence with $\eand, \eor$ and $\enot$. We can replace any instances of $\eor$ by $\eand$ using: $$\metaX\eor\metaY\text{ is logically equivalent to }\enot(\enot\metaX\eand\enot\metaY)$$
+%See 37.4 of forall$x$:Bristol for more details.
+%}
 \end{enumerate}
 
 If you want additional practice, you can construct truth tables for any of the sentences and arguments in the exercises for the previous chapter.
@@ -1631,7 +1633,7 @@ F & F & F & F & F & F & \TTbf{T} & F & F & F & F & \TTbf{T} & F & F & F & F & \T
 \item $\enot[A \eif (B \eif A)]$\vspace{.5ex} \hfill \myanswer{Contradiction}
 
 
-\item $A \eiff [A \eif (B \eand \enot B)]$ \vspace{.5ex} \hfill \myanswer{Contradiction}
+%\item $(A \eif [A \eif (B \eand \enot B)]$ \vspace{.5ex} \hfill \myanswer{Contradiction}
 
 
 \item $[(A \eand B) \eif B] \eif (A \eif B)$ \vspace{.5ex} \hfill \myanswer{Contingent}
@@ -1668,9 +1670,9 @@ Determine whether each the following sentences are logically equivalent using co
 \label{pr.TT.satisfiable3}
 Determine whether each collection of sentences is consistent or inconsistent, using a complete truth table.
 \begin{earg}
-\item $\enot B$, $A \eif B$, $A$ \vspace{.5ex} \hfill \myanswer{Insatisfiable}
+\item $\enot B$, $A \eif B$, $A$ \vspace{.5ex} \hfill \myanswer{Inconsistent}
 \item $\enot(A \eor B)$, $A \eif B$, $B \eif A$\vspace{.5ex} \hfill \myanswer{Consistent}
-\item $A \eor B$, $\enot B$, $\enot B \eif \enot A$\vspace{.5ex} \hfill \myanswer{Insatisfiable}
+\item $A \eor B$, $\enot B$, $\enot B \eif \enot A$\vspace{.5ex} \hfill \myanswer{Inconsistent}
 \item $B \eif A$, $\enot B \eor \enot A$, $A \eif B$\vspace{.5ex} \hfill \myanswer{Consistent} 
 \item $(A \eor B) \eor C$, $\enot A \eor \enot B$, $\enot C \eor \enot B$\vspace{.5ex} \hfill \myanswer{Consistent}
 \end{earg}
