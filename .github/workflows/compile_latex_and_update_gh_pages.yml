@@ -13,25 +13,29 @@ jobs:
       - name: Checkout 'johannes' branch
         uses: actions/checkout@v4
         with:
+          ref: johannes
           path: main_repo
 
       - name: Compile forallxbris.tex
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: ./main_repo/forallxbris.tex
+          root_file: forallxbris.tex
+          working_directory: ./main_repo
 
-      - name: Copy forallxbris.pdf to site directory and rename
+      - name: Copy PDF to site directory and rename
         run: |
           cp ./main_repo/forallxbris.pdf ./main_repo/site/
-          cp ./main_repo/site/forallxbris.pdf ./main_repo/site/forallxbris-js.pdf
+          cp ./main_repo/forallxbris.pdf ./main_repo/forallxbris-js.pdf
 
-      - name: Compile forallxbris-accessible.tex
+      - name: Compile forallxbris.tex
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: ./main_repo/forallxbris-accessible.tex
+          root_file: forallxbris-accessible.tex
+          working_directory: ./main_repo
 
-      - name: Copy forallxbris-accessible.pdf to site directory
-        run: cp ./main_repo/forallxbris-accessible.pdf ./main_repo/site/
+      - name: Copy PDF to site directory
+        run: |
+          cp ./main_repo/forallxbris-accessible.pdf ./main_repo/site/
 
       - name: Copy README to site directory
         run: cp ./main_repo/README.md ./main_repo/site/index.md
