@@ -27,7 +27,8 @@ jobs:
 
       - name: Copy ./docs/ directory
         run: |
-          cp -r ./main_repo/docs/ ./gh_pages_repo/
+          cp -r ./main_repo/docs/* ./gh_pages_repo/
+
 
       - name: Push to 'gh-pages' branch
         run: |
