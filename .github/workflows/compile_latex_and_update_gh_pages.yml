@@ -18,7 +18,7 @@ jobs:
       - name: Compile forallxbris.tex
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: forallxbris.tex
+          root_file: ./main_repo/forallxbris.tex
 
       - name: Copy forallxbris.pdf to site directory and rename
         run: |
@@ -28,7 +28,7 @@ jobs:
       - name: Compile forallxbris-accessible.tex
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: forallxbris-accessible.tex
+          root_file: ./main_repo/forallxbris-accessible.tex
 
       - name: Copy forallxbris-accessible.pdf to site directory
         run: cp ./main_repo/forallxbris-accessible.pdf ./main_repo/site/
