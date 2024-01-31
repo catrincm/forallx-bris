@@ -16,7 +16,8 @@ jobs:
           path: main_repo
 
       - name: Copy README to docs directory
-        run: cp README.md ./main_repo/docs/index.md
+        run: cp ./main_repo/README.md ./main_repo/docs/index.md
+
 
       - name: Checkout 'gh-pages' branch
         uses: actions/checkout@v4
