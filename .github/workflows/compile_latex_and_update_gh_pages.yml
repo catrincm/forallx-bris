@@ -15,9 +15,17 @@ jobs:
         with:
           path: main_repo
 
-      - name: Copy README to docs directory
-        run: cp ./main_repo/README.md ./main_repo/docs/index.md
+      - name: Compile forallxbris.tex
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: ./main_repo/forallxbris.tex
 
+      - name: Copy forallxbris.pdf to site directory and rename
+        run: |
+          cp ./main_repo/forallxbris.pdf ./main_repo/site/
+
+      - name: Copy README to site directory
+        run: cp ./main_repo/README.md ./main_repo/site/index.md
 
       - name: Checkout 'gh-pages' branch
         uses: actions/checkout@v4
@@ -25,10 +33,9 @@ jobs:
           ref: gh-pages
           path: gh_pages_repo
 
-      - name: Copy ./docs/ directory
+      - name: Copy ./site/ directory to gh-pages
         run: |
-          cp -r ./main_repo/docs/* ./gh_pages_repo/
-
+          cp -r ./main_repo/site/* ./gh_pages_repo/
 
       - name: Push to 'gh-pages' branch
         run: |
