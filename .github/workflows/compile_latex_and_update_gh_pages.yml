@@ -25,9 +25,9 @@ jobs:
       - name: Copy PDF to site directory and rename
         run: |
           cp ./main_repo/forallxbris.pdf ./main_repo/site/
-          cp ./main_repo/forallxbris.pdf ./main_repo/forallxbris-js.pdf
+          cp ./main_repo/forallxbris.pdf ./main_repo/site/forallxbris-js.pdf
 
-      - name: Compile forallxbris.tex
+      - name: Compile forallxbris-accessible.tex
         uses: xu-cheng/latex-action@v3
         with:
           root_file: forallxbris-accessible.tex
