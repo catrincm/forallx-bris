@@ -17,7 +17,7 @@
 \RequirePackage{xspace} % CCM for metavars
 %\RequirePackage[l2tabu, orthodox]{nag}
 \usepackage[cal=boondoxo]{mathalfa}
-
+\usepackage[german,english]{babel}
 % The original fitchproofs was written in 2005
 % Comments marked "TB" are additions by Tim Button in September 2012
 
@@ -173,9 +173,12 @@
 \newenvironment{ebullet}% TB: added to give a nice bulleted enivronment
 {\begin{list}{\textbullet}{\itemsep=0pt \parsep=0pt}}%
 {\end{list}}
-
 \newcommand{\ekeylabel}[1]{{\makebox[8ex][r]{\ensuremath{ #1}:}}}
 \newenvironment{ekey}{\begin{list}{}{\renewcommand{\makelabel}{\ekeylabel} \itemsep=0pt \parsep=0pt}}{\end{list}}
+
+% enumerate -- used for numbered examples; counter resets every
+% chapter
+
 
 %    ****************************************
 %    *             TRUTH TABLES             *
@@ -586,8 +589,8 @@
   \def\oi{\by{{\eor}I}}%
   \def\oe{\by{{\eor}E}}%
   \def\ni{\by{{\enot}I}}%
-  \def\ne{\by{{\enot}E}}%
-  \def\pbc{\by{PbC}}% TB: tertium non datur
+%  \def\ne{\by{{\enot}E}}% CCM: this used to be used for bot I rule. notE now for proof by contradiction.
+%  \def\pbc{\by{PbC}}% TB: tertium non datur. CCM renamed to Proof by Contradiction
   \def\ri{\by{{\ered}I}}% TB: reductio introduction
   \def\re{\by{{\ered}E}}% TB: reductio elimination
   \def\ii{\by{$=$I}}%
@@ -667,7 +670,8 @@
 % alternate set of commands
 
 \newcommand*{\notI}{\ni}
-%\newcommand*{\notE}{\ne}
+\newcommand*{\notE}{\by{{\enot}E}}
+\newcommand*{\pbc}{\notE}
 \newcommand*{\iffI}{\bi}
 \newcommand*{\iffE}{\be}
 \newcommand*{\ifI}{\ci}
@@ -678,6 +682,8 @@
 \newcommand*{\orE}{\oe}
 \newcommand*{\redI}{\ri}
 \newcommand*{\redE}{\re}
+\newcommand*{\botI}{\ri}
+\newcommand*{\botE}{\re}
 \newcommand*{\forallI}{\Ai}
 \newcommand*{\forallE}{\Ae}
 \newcommand*{\existsI}{\Ei}

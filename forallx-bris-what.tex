@@ -50,7 +50,6 @@ These are vital skills used in all philosophy as well as in life more generally.
 
 
 
-%One of the main things we will do is to give tools to understand the structure of arguments and whether it has a g
 
 This Part discusses arguments in natural languages like English. Throughout this textbook we will also consider arguments in formal languages and say what it is for those to be valid or invalid. We want formal validity, as defined in the formal language, to have at least some of the important features of natural-language validity.
 
@@ -62,14 +61,6 @@ This Part discusses arguments in natural languages like English. Throughout this
 \section{Finding the components of an argument}
 
 
-%An argument, as we understand it, is a series of sentences, the \emph{premises}, followed by a single sentence, the \emph{conclusion}.
-%For example:
-%	\begin{earg}
-%	\prem  If I acted of my own free will, then I could have acted otherwise.
-%	\prem  I could not have acted otherwise.
-%	\conc I did not act of my own free will.
-%	\end{earg}
-%The three dots in this final line should be read ``therefore''. It is our concise way to identify the conclusion of the argument. \todo{should I delete it throughout?}
 
 Arguments consist of a list of \emph{premises} along with a \emph{conclusion}. In a good argument, the conclusion will follow from the premises.
 Our standard way to present them is:
@@ -86,15 +77,8 @@ For	example
 	\prem I could not have acted otherwise.
 	\conc I did not act of my own free will.
 	\end{earg}
-%It can often be useful to label our premises and conclusions so they can be referred back to, for example:
-%\begin{earg}
-%\item If I acted of my own free will, then I could have acted otherwise.
-%\item I could not have acted otherwise.
-%\conc I did not act of my own free will.
-%\end{earg}
-%Note that we don't actually need to label the conclusion because there is only one.
 
-The three dots in this final line can be read ``therefore''. Really then we're duplicating things by also adding the word ``Therefore''. But we do this to really carefully highlight that this is the conclusion. If you are writing your answers up on the computer and cannot use this symbol, that's OK. But make sure it is very clear what the conclusion of the argument is. 
+The three dots in this final line can be read ``therefore''. Really then we're duplicating things by also adding the word ``Therefore''. But we do this to really carefully highlight that this is the conclusion. If you are writing your answers up on the computer and cannot use this symbol, that's OK. But make sure it is very clear what the conclusion of the argument is.
 %. Bu. It is our concise way to identify the conclusion of the argument. \todo{should I delete it throughout?}
 
 
@@ -270,7 +254,7 @@ There are many other kinds of sentences, for example:
 
 \end{description}
 
-Arguments are formed of \emph{declarative sentences} --- those sentences which can be true or false --- for example `spiders have eight legs'. 
+Arguments are formed of \emph{declarative sentences} --- those sentences which can be true or false --- for example `spiders have eight legs'.
 
 \begin{highlighted}An \define{argument} consists of a collection of declarative sentences of which one is marked as the conclusion of the argument.\end{highlighted}
 
@@ -461,9 +445,9 @@ We still have no idea what is being talked about here. But, again, you probably 
 We said the first argument was valid because the truth of its premises guarantees the truth of the conclusion. In fact in this argument the premises guarantee the truth independently of whether we are talking about butlers, crocodiles, murderers or cake thieves. It is irrelevant for the validity of the argument what the premises and the conclusion are about. The argument is valid on all interpretations on which the  premises of the argument are true. To put it in less abstract terms an argument is valid if and only if no \define{counterexample} to the argument can be produced. In fact, such arguments are called \define{logically valid}.
 
 \factoidbox{
-		An argument is \define{logically valid} if and only if there is no interpretation such that all the premises are true and the conclusion false. Otherwise the argument is \define{logically invalid}. 
+		An argument is \define{logically valid} if and only if there is no interpretation such that all the premises are true and the conclusion false. Otherwise the argument is \define{logically invalid}.
 	}
-	
+
 \newglossaryentry{valid}
 {
 name=valid,
@@ -481,12 +465,12 @@ Earlier we introduced the idea that the conclusion of an argument is meant to fo
 \factoidbox{
 		A sentence \metaY is a \define{logical consequence} of sentences $\metaX_1$, \dots, $\metaX_n$ if and only if there is no interpretation such that $\metaX_1$, \dots, $\metaX_n$ are all true and \metaY is not true. (We then also say that \metaY \define{logically follows from} $\metaX_1$, \dots, $\metaX_n$.)
 	}% or that $\metaX_1$, \dots, $\metaX_n$ \define{entail}~\metaY
-	
+
 Another way of saying that  \metaY is a logical consequence of sentences $\metaX_1$, \dots, $\metaX_n$ is to say that the argument with premises $\metaX_1$, \dots, $\metaX_n$ and conclusion \metaY is logically valid.
 
 Logically valid arguments are arguments for which there is no interpretation such that all premises are but the conclusion is not. It is irrelevant whether such an interpretation is ``reasonable'': no matter how unreasonable an interpretation is that can be used to give a counterexample to an argument, if there exists such an interpretation the argument will not be logically valid.
 
-Is there a straightforward way of telling whether an argument is logical valid? Is there some feature that sets apart all logically valid arguments from other (possibly convincing) arguments? We have already seen that logical validity should not depend on the content of the premises and conclusion. Rather it should only depend on their (logical) form. For instance, consider the logically valid argument 
+Is there a straightforward way of telling whether an argument is logical valid? Is there some feature that sets apart all logically valid arguments from other (possibly convincing) arguments? We have already seen that logical validity should not depend on the content of the premises and conclusion. Rather it should only depend on their (logical) form. For instance, consider the logically valid argument
 \begin{earg}
 	\prem Either Priya is an ophthalmologist or a dentist.
 	\prem Priya isn't a dentist.
@@ -504,7 +488,7 @@ Here, $a$, $F$, and $G$ are placeholders for appropriate expressions that, when 
 	\prem Mei isn't a botanist.
 	\conc Mei is a mathematician.
 \end{earg}
-is an argument of the same form and it is also logically valid. However, the following argument is not of the same form: 
+is an argument of the same form and it is also logically valid. However, the following argument is not of the same form:
 \begin{earg}
 	\prem Either Priya is an ophthalmologist or a dentist.
 	\prem Priya isn't a dentist.
@@ -546,7 +530,7 @@ Conversely, having true premises and a true conclusion is not enough to make an 
 		\prem Beijing is in China.
 		\conc Paris is in France.
 	\end{earg}
-The premises and conclusion of this argument are, as a matter of fact, all true, but the argument is invalid. The logical form of premises and conclusion do not guarantee that the conclusion is true whenever the premises are true: on an interpretation on which Paris is not in France, perhaps because it declared independence from the rest of France,  the conclusion is not true, even though both of the premises would remain true. So the argument is invalid. 
+The premises and conclusion of this argument are, as a matter of fact, all true, but the argument is invalid. The logical form of premises and conclusion do not guarantee that the conclusion is true whenever the premises are true: on an interpretation on which Paris is not in France, perhaps because it declared independence from the rest of France,  the conclusion is not true, even though both of the premises would remain true. So the argument is invalid.
 
 The important thing to remember is that logical validity is not about the truth or falsity of the sentences in the argument. It is about whether conclusion follows from the premises of the argument in virtue of their logical form; about whether the conclusion is true whenever the premises are true, that is, whether for all interpretations on which all premises are true, the conclusion is true likewise. Nothing about the way things are---whether something is true or false---can by itself determine if an argument is logically valid. It is often said that logic doesn't care about feelings. Actually, it doesn't care about facts, either.
 
@@ -563,20 +547,22 @@ The flip side of this is that when you want to rebut an argument, you have two o
 
 
 \section{Beyond Logical Validity}
+\todo{Remove this!!!}
+
 Most arguments we make and evaluate in everyday reasoning are not logically valid. We are often interested in whether the conclusion follows from the premises given certain implicit or explicit background assumptions. Sometimes we simply leave out certain obvious premises (more below), but sometimes we are, more generally, interested in other forms of validity than logical validity. For example, in the discussion above we found the argument with the conclusion ``Priya is an eye doctor'' not to be logically valid: the conclusion did not follow from the premises simply because of its logical form. However, in some sense the argument seemed a good one, but the conclusion can only be deemed to follow from the premises once we acknowledge that ``ophthalmologist'' is just a fancy word for an eye doctor. We can find interpretations on which all premises are true and the conclusion false, but such interpretations violate the conceptual/meaning connection between these words. Arguments for which there is no interpretation that respects all conceptual/meaning connection between the various words of our language are called \define{conceptually validity}. For example, the arguments
 
 \begin{earg}
 		\prem Priya is an ophthalmologist.
 		\conc Priya is an eye doctor.
 	\end{earg}
-	
+
 	\begin{earg}
 		\prem Jonas is a bachelor.
 		\conc Jonas is an unmarried man.
 	\end{earg}
-	
+
 	are both conceptually valid but not logically valid. All logically valid arguments are also conceptually valid, but not the other way around.
-	
+
 	There are further interesting categories of validity that can be distinguished from both logical and conceptual validity. Consider the following argument:
 	\begin{earg}
 		\prem The spaceship \emph{Rocinante} took six hours to reach Jupiter from Tycho space station.
@@ -584,7 +570,7 @@ Most arguments we make and evaluate in everyday reasoning are not logically vali
 	\end{earg}
 This argument is neither logically nor conceptually valid as the truth of the conclusion is not guaranteed by the truth of the premises in virtue of its logical form nor by specific conceptual or meaning connections between certain English words. However, an interpretation on which the premise is true, but the conclusion false violates the laws of physics: the interpretation would require \emph{Rocinante} to make a trip of over 14 billion kilometers in 6 hours, exceeding the speed of light. Indeed, if we consider only interpretations that respect the laws of nature, then the truth of the conclusion follows from the truth of the premise. Arguments of this kind, that is, arguments for which there is no interpretation that respects the laws of nature and such that all premises are true but the conclusion is false are called \define{nomologically valid}.
 
-We could list further categories of validity, but the point is that when we discuss whether an argument is valid or not we need to make sure that we agree on the category of validity we are interested in: in the natural sciences we might be interested in nomological validity. In logic we are interested in logical validity. 
+We could list further categories of validity, but the point is that when we discuss whether an argument is valid or not we need to make sure that we agree on the category of validity we are interested in: in the natural sciences we might be interested in nomological validity. In logic we are interested in logical validity.
 
 %When we consider cases of various kinds in order to evaluate the validity of an argument, we will make a few assumptions. The first assumption is that every case makes every sentence true or false---at least, every sentence in the argument under consideration.
 %So imagined scenarios have to specify all relevant facts.

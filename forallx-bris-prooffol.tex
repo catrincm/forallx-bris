@@ -181,7 +181,8 @@ To give our rule in general we need to introduce some new notation for this abil
 	\have[m]{a}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}
 	\have[\ ]{c}{\exists \meta{x}\metaX(\ldots \meta{x} \ldots \meta{c}\ldots)} \Ei{a}
 \end{pf}
-\meta{x} must not occur in $\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$}All the cases we've seen in this section follow this rule.
+\meta{x} must not occur in $\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$
+}All the cases we've seen in this section follow this rule.
 
 You might have noticed the additional constraint that's added to the rule. It is {part} of the rule; so if you are asked to write the rule $\exists$I  you {must} include this constraint. However, you will not need to worry about it in practice. It's simply there to guarantee that applications of the rule yield sentences of FOL. If the rule were not there we would be allowed to argue as follows:
 \begin{pf}
@@ -238,8 +239,9 @@ The crucial thought here is that `$a$' was just some \emph{arbitrary} name. Ther
 	\have[m]{a}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}
 	\have[\ ]{c}{\forall \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)} \Ai{a}
 \end{pf}
-	\meta{c} must not occur in any undischarged assumption\\
-	\meta{x} must not occur in $\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$}
+	\meta{c} must not occur in any undischarged assumption or premise.
+	\meta{x} must not occur in $\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$
+	}
 A crucial aspect of this rule, though, is bound up in the first constraint. This constraint ensures that we are always reasoning at a sufficiently general level.
 %\footnote{Recall from \S\ref{s:BasicTFL} that we are treating `$\ered$' as a canonical contradiction. But if it were the canonical contradiction as involving some \emph{constant}, it might interfere with the constraint mentioned here. To avoid such problems, we will treat `$\ered$' as a canonical contradiction \emph{that involves no particular names}.}
 To see the constraint in action, consider this terrible argument:
@@ -300,7 +302,7 @@ Putting this together, we obtain the existential elimination rule ($\exists$E):
 	\have[\ ]{d}{\metaY} \Ee{a,b-c}
 \end{pf}
 \meta{c} must not occur in any assumption undischarged before line $i$\\
-\meta{c} must not occur in $\exists \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)$\\
+\meta{c} must not occur in $\exists \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)$ or in a premise\\
 \meta{c} must not occur in \metaY
 }
 As with universal introduction, the constraints are extremely important. To see why, consider the following terrible argument:
@@ -555,34 +557,64 @@ When all the quantifiers occur at the beginning of a sentence, that sentence is 
 
 \chapter{Derived rules}\label{s:DerivedFOL}
 As in the case of TFL, we first introduced some rules for FOL as basic (in \S\ref{s:BasicFOL}), and then added some further rules for conversion of quantifiers (in \S\ref{s:CQ}). In fact, the CQ rules should be regarded as \emph{derived} rules, for they can be derived from the  \emph{basic} rules of \S\ref{s:BasicFOL}. (The point here is as in \S\ref{s:Derived}.) Here is a justification for the first CQ rule:
+
 \begin{pf}
-	\hypo{An}{\forall x \enot A x}
-	\open
-		\hypo{E}{\exists x Ax}
-		\open
-			\hypo{c}{Ac}%\by{for $\exists$E}{}
-			\have{nc}{\enot Ac}\Ae{An}
-			\have{red}{\ered}\ri{c,nc}
-		\close
-		\have{red2}{\ered}\Ee{E,c-red}
-	\close
-	\have{dada}{\enot \exists x Ax}\ni{E-red2}
+\hypo{1}{\forall x\enot Px}
+\open
+\hypo{2}{\exists x Px}
+\open
+\hypo{3}{Pb}
+\open
+\hypo{4}{Da\eor\enot Da}
+\have{5}{\enot Pb}\Ae{1}
+\have{6}{Pb}\by{R}{3}
+\close
+\have{7}{\enot(Da\eor\enot Da)}\ni{4-6}
+\close
+\have{8}{\enot(Da\eor\enot Da)}\Ee{2,3-7}
+\have{9}{Da\eor\enot Da}\LEM
+\close
+\have{10}{\enot\exists x Px}\ni{2-9}
 \end{pf}
+
+
 %You will note that on line 3 I have written `for $\exists$E'. This is not technically a part of the proof. It is just a reminder---to me and to you---of why I have bothered to introduce `$\enot Ac$' out of the blue. You might find it helpful to add similar annotations to assumptions when performing proofs. But do not add annotations on lines other than assumptions: the proof requires its own citation, and your annotations will clutter it.
 Here is a justification of the third CQ rule:
+
 \begin{pf}
-	\hypo{nEna}{\exists x  \enot Ax}
-	\open
-		\hypo{Aa}{\forall x Ax}
-		\open
-			\hypo{nac}{\enot Ac}%\by{for $\exists$E}{}
-			\have{a}{Ac}\Ae{Aa}
-			\have{con}{\ered}\ri{a,nac}
-		\close
-		\have{con1}{\ered}\Ee{nEna, nac-con}
-	\close
-	\have{dada}{\enot \forall x Ax}\ni{Aa-con1}
+\hypo{1}{\exists x\enot Px}
+\open
+\hypo{1a}{\forall x Px}
+\open
+\hypo{2}{\enot Pb}
+\open
+\hypo{3}{Da\eor\enot Da}
+
+\have{4}{Pb}\Ae{1a}
+\have{5}{\enot Pb}\by{R}{2}
+\close
+\have{6}{\enot(Da\eor\enot Da)}\ni{3-5}
+\close
+\have{7}{\enot(Da\eor\enot Da)}\Ee{1,2-6}
+\have{8}{Da\eor\enot Da}\LEM
+\close
+\have{9}{\enot\forall x Px}\ni{1a-9}
 \end{pf}
+
+
+%\begin{pf}
+%	\hypo{nEna}{\exists x  \enot Ax}
+%	\open
+%		\hypo{Aa}{\forall x Ax}
+%		\open
+%			\hypo{nac}{\enot Ac}%\by{for $\exists$E}{}
+%			\have{a}{Ac}\Ae{Aa}
+%			\have{con}{\ered}\ri{a,nac}
+%		\close
+%		\have{con1}{\ered}\Ee{nEna, nac-con}
+%	\close
+%	\have{dada}{\enot \forall x Ax}\ni{Aa-con1}
+%\end{pf}
 This explains why the CQ rules can be treated as derived. Similar justifications can be offered for the other two CQ rules.
 
 \begin{practiceproblems}

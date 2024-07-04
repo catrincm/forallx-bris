@@ -212,8 +212,8 @@ We saw in \S\ref{s:FOLSentences} that FOL formulas can be built up from simpler 
 		\
 		\\$\metaX \eif \metaY$ is true in an interpretation under a variable assignment \textbf{iff}\\ either $\metaX$ is false or $\metaY$ is true in that interpretation under that variable assignment
 
-		\
-		\\$\metaX \eiff \metaY$ is true in an interpretation under a variable assignment \textbf{iff} \\$\metaX$ has the same truth value as $\metaY$ in that interpretation under that variable assignment
+		%\
+		%\\$\metaX \eiff \metaY$ is true in an interpretation under a variable assignment \textbf{iff} \\$\metaX$ has the same truth value as $\metaY$ in that interpretation under that variable assignment
 	}
 This is just another presentation of the truth rules we gave for the connectives in TFL; it just does so in a slightly different way. Some examples will probably help to illustrate the idea. On our go-to interpretation:
 	\begin{earg}
@@ -300,7 +300,10 @@ Consider a new interpretation: \begin{center}
 \end{ekey}
 \end{center}
 
- Is $\exists x\forall y Rxy$ true? We need to find some choice of an object for $x$ where $\forall y Rxy$ is true under that choice (``variable assignment''). Let's (with foresight) chose the number 3 for $x$ ($x\mapsto 3$). Is $\forall y Rxy$ true under this variable assignment $x\mapsto 3$? To check this we need to do something more with our variable assignment: we need to extend it with a choice of an object for $y$. Moreover, we need to think about all ways of picking an object for $y$, while we've fixed $x$ as the number 3. Consider, e.g.~$y\mapsto 1$. Then we have to evaluate whether $Rxy$ is true with $x\mapsto 3,\, y\mapsto 1$. This is true iff there is an arrow from 3 ($x$) to 1 ($y$), and there is such an arrow.  We can work through all the cases an see that all of them have an arrow from $3$, so $Rxy$ is true for any choice of object for $y$:
+ Is $\exists x\forall y Rxy$ true? We need to find some choice of an object for $x$ where $\forall y Rxy$ is true under that choice (``variable assignment''). Let's (with foresight) chose the number 3 for $x$ ($x\mapsto 3$). Let's call this particular variable assignment $\alpha$. $\alpha$ also assigns objects to all other variables of the language (we just don't care which ones) Is $\forall y Rxy$ true under the variable assignment $\alpha$? Intuitively, the answer is yes as there is an arrow from 3 to 1, 2, 3, and 4, that is, all objects of the domain.
+ 
+  %To check this we need to do something more with our variable assignment: we need to extend it with a choice of an object for $y$. 
+ To evaluate the universal quantifier $\forall y$ we need to think about all ways of picking an object for $y$, not only the one of the particular variable assignment $\alpha$. Moreover, in doing so we need to keep the assignment of $3$ to $x$ fixed. This means we need to evaluate whether $Rxy$ is true under all assignments that differ from the assignment $\alpha$ at most in that they might assign a different object $y$ than $\alpha$. Since in this case our domain has four objects this means that there are only four different objects an assignment can assign to $x$ (whilst assigning $3$ to $x$). If $Rxy$ is true on all these options $\exists x\forall y Rxy$ is true:
 \begin{center}
  \begin{tabular}{cc|c}
 &&$Rxy$\Bstrut\\\hline\Tstrut
@@ -309,7 +312,7 @@ $x\mapsto 3$&$y\mapsto 2$&T\\
 $x\mapsto 3$&$y\mapsto 3$&T\\
 $x\mapsto 3$&$y\mapsto 4$&T\\
  \end{tabular}
-\end{center}So under any way of extending our variable assignment of $x\mapsto 3$ by choosing an object for $y$ results in a variable assignment on which $Rxy$ true. This tells us that $\forall y Rxy$ is true under the variable assignment $x\mapsto 3$. And \emph{that} tells us that $\exists x\forall y Rxy$ is true: there's an assignment of the variable $x$ under which the constituent formula $\forall y Rxy$ is true.
+\end{center}So under every variable assignment that differs from $\alpha$ at most at $y$ (it assigns the same object as $\alpha$ to a variable except for $y$ to which it may assign a different object)  $Rxy$ true. This tells us that $\forall y Rxy$ is true under the variable assignment $\alpha$ for which $x\mapsto 3$. And \emph{that} tells us that $\exists x\forall y Rxy$ is true: there's an assignment of the variable $x$ under which the constituent formula $\forall y Rxy$ is true.
 
 What about $\exists x \exists y(Rxy \eand Ryx)$? To show that it is true we will want to choose an object that we can assign to $x$ under which $\exists y (Rxy\eand Ryx)$ is true. Let's consider $x\mapsto 3$ (again I'm using my forsight of what will come to choose carefully). Now is $\exists y (Rxy\eand Ryx)$  true under the variable assignment $x\mapsto 3$? We need to find an extension of this which chooses an object for $y$ under which $Rxy\eand Ryx$ is true. Consider $y\mapsto 3$. We now have a variable assignment $x\mapsto 3, y\mapsto 3$. They are different variables but there's nothing stopping them denoting the same object. And we can then consider whether $Rxy\eand Ryx$ is true under this interpretation. Well, $Rxy$ is true: 3 does have an arrow to 3. And $Ryx$ is also true: 3 does have an arrow to 3. So by our clause for $\eand$, $Rxy\eand Ryx$ is true under this variable assignment $x\mapsto 3, y\mapsto 3$. And so $\exists y(Rxy\eand Ryx)$ is true under the variable assignment $x\mapsto 3$. And so $\exists x\exists y(Rxy\eand Ryx)$ is true in this interpretation.
 
@@ -355,12 +358,12 @@ One final example: $\forall x\forall y Rxy$. To check this we will need to consi
  Now for our formal definition:
 \factoidbox{
 $\forall \metav\metaX$ is true under a variable assignment $\alpha$\\
-\textbf{iff} $\metaX$ is true under \emph{every} variable assignment that is the result of modifying/extending $\alpha$ with a choice of an object in our domain for $\metav$.
+\textbf{iff} $\metaX$ is true under \emph{every} variable assignment $\beta$ that differs from $\alpha$ at most in $\metav$.
 
 \bigskip
 
 $\exists \metav\metaX$ is true under a variable assignment $\alpha$\\
-\textbf{iff} $\metaX$ is true under \emph{some} variable assignment that is the result of modifying/extending $\alpha$ with a choice of an object in our domain for $\metav$.
+\textbf{iff} $\metaX$ is true under \emph{some} variable assignment $\beta$ that differs from $\alpha$ at most in $\metav$.
 }
 To be clear: all this is doing is formalizing the intuitive idea expressed in our examples. The result is a bit ugly, and the final definition might look a bit opaque. Hopefully, though, the \emph{spirit} of the idea is clear.
 

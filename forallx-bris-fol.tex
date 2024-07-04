@@ -722,7 +722,7 @@ It is not the case that \metaX&$\enot \metaX$\\
 \metaX and \metaY&$(\metaX\eand\metaY)$\\
 \metaX or \metaY&$(\metaX\eor\metaY)$\\
 If \metaX, then \metaY&$(\metaX\eif\metaY)$\\
-\metaX if and only if \metaY&$(\metaX\eiff\metaY)$\\
+%\metaX if and only if \metaY&$(\metaX\eiff\metaY)$\\
 \end{tabular}
 \end{center}
 \end{highlighted}
@@ -1955,10 +1955,11 @@ with subscripts, as needed $x_1, y_1, z_1, x_2,\ldots$. $u,v,w$ may also be used
 \section{Formulas}
 In \S\ref{s:TFLSentences}, we went straight from the statement of the vocabulary of TFL to the definition of a sentence of TFL. In FOL, we will have to go via an intermediary stage: via the notion of a \define{formula}. The intuitive idea is that a formula is any sentence, or anything which can be turned into a sentence by adding quantifiers out front. But this will take some unpacking.
 
-As we did for TFL, we will  present a recursive definition of a formula of FOL.
+As we did for TFL, we will  present a inductive definition of a formula of FOL.
 
 The starting point of this is the notion of an \emph{atomic formula}. In TFL we stared our definition with the notion of an atomic sentence, which were just given to us in our vocabulary. In FOL, the starting point of our definition is the notion of an atomic formula. Atomic formulas will be given by the following definition:
-\factoidbox{ If $\metaPredicate$ is an $n$-place predicate and $\metaterm_1,\ldots\metaterm_n$ are either variables or names, then $\metaPredicate\metaterm_1\ldots\metaterm_n$ is an \define{atomic formula}.}
+\factoidbox{ If $\metaPredicate$ is an $n$-place predicate and $\metaterm_1,\ldots\metaterm_n$ are either variables or names, then $\metaPredicate\metaterm_1\ldots\metaterm_n$ is an \define{atomic formula}.\footnotemark}
+\footnotetext{In FOL variables and names are both called (singular) terms. Notice that in the above definition $\metaPredicate$ and $\metaterm$ are metavariables ranging over names of predicates and names of terms respectively.}
 
 For example, if $D$ is a one-place predicate (we might have introduced it to symbolise `\gap{x} is a dog'), and $L$ is a two-place predicate (we might have introduced it to symbolise `\gap{x} loves \gap{y}'), then the following are atomic formulas:
 \begin{center}
@@ -1981,10 +1982,10 @@ We can now give the recursive definition of what it is to be a formula of FOL.
 		\item $(\metaX\eand\metaY)$ is a formula,
 		\item $(\metaX\eor\metaY)$ is a formula,
 		\item $(\metaX\eif\metaY)$ is a formula, and
-		\item $(\metaX\eiff\metaY)$ is a formula.
+		%\item $(\metaX\eiff\metaY)$ is a formula.
 		\end{enumerate}
 		\item\label{item:quantifiers}
-		 If $\metaX$ is a formula, $\metav$ is a variable and $\forall \metav$ and $\exists\metav$ do not already appear in $\metaX$, then \begin{enumerate}
+		 If $\metaX$ is a formula, $\metav$ is a variable , then \begin{enumerate}
 		 \item $\forall \metav\metaX$ is a formula
 		 \item $\exists\metav\metaX$ is a formula.
 		 \end{enumerate}
@@ -2153,7 +2154,7 @@ Identify which variables are bound and which are free.
 \item $\forall x Ax \eand Bx$
 \item $\forall x (Ax \eand Bx) \eand \forall y(Cx \eand Dy)$
 \item $\forall x\exists y[Rxy \eif (Jz \eand Kx)] \eor Ryx$
-\item $\forall x_1(Mx_2 \eiff Lx_2x_1) \eand \exists x_2 Lx_3x_2$
+\item $\forall x_1(Mx_2 \eif Lx_2x_1) \eand \exists x_2 Lx_3x_2$
 \end{earg}
 
 
