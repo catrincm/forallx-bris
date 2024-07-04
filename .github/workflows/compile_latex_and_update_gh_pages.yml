@@ -22,10 +22,9 @@ jobs:
           root_file: forallxbris.tex
           working_directory: ./main_repo
 
-      - name: Copy to ./site/ directory and create a renamed duplicate file
+      - name: Copy to ./site/ directory
         run: |
           cp ./main_repo/forallxbris.pdf ./main_repo/site/
-          cp ./main_repo/forallxbris.pdf ./main_repo/site/forallxbris-js.pdf
 
       - name: Compile forallxbris-accessible.tex
         uses: xu-cheng/latex-action@v3
