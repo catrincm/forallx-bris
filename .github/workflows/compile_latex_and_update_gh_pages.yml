@@ -25,24 +25,3 @@ jobs:
       - name: Copy forallxbris.pdf to site directory and rename
         run: |
           cp ./main_repo/forallxbris.pdf ./main_repo/site/
-
-      - name: Copy README to site directory
-        run: cp ./main_repo/README.md ./main_repo/site/index.md
-
-      - name: Checkout 'gh-pages' branch
-        uses: actions/checkout@v4
-        with:
-          ref: gh-pages
-          path: gh_pages_repo
-
-      - name: Copy ./site/ directory to gh-pages
-        run: |
-          cp -r ./main_repo/site/* ./gh_pages_repo/
-
-      - name: Push to 'gh-pages' branch
-        run: |
-          cd gh_pages_repo
-          git config user.name "GitHub Action"
-          git config user.email "action@github.com"
-          git add .
-          git diff --staged --quiet || (git commit -m "Update gh-pages branch" && git push origin gh-pages)
