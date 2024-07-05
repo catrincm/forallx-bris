@@ -559,22 +559,22 @@ When all the quantifiers occur at the beginning of a sentence, that sentence is 
 As in the case of TFL, we first introduced some rules for FOL as basic (in \S\ref{s:BasicFOL}), and then added some further rules for conversion of quantifiers (in \S\ref{s:CQ}). In fact, the CQ rules should be regarded as \emph{derived} rules, for they can be derived from the  \emph{basic} rules of \S\ref{s:BasicFOL}. (The point here is as in \S\ref{s:Derived}.) Here is a justification for the first CQ rule:
 
 \begin{pf}
-\hypo{1}{\forall x\neg Px}
+\hypo{1}{\forall x\enot Px}
 \open
 \hypo{2}{\exists x Px}
 \open
 \hypo{3}{Pb}
 \open
-\hypo{4}{Da\vee\neg Da}
-\have{5}{\neg Pb}\Ae{1}
+\hypo{4}{Da\eor\enot Da}
+\have{5}{\enot Pb}\Ae{1}
 \have{6}{Pb}\by{R}{3}
 \close
-\have{7}{\neg(Da\vee\neg Da)}\ni{4-6}
+\have{7}{\enot(Da\eor\enot Da)}\ni{4-6}
 \close
-\have{8}{\neg(Da\vee\neg Da)}\Ee{2,3-7}
-\have{9}{Da\vee\neg Da}\LEM
+\have{8}{\enot(Da\eor\enot Da)}\Ee{2,3-7}
+\have{9}{Da\eor\enot Da}\LEM
 \close
-\have{10}{\neg\exists x Px}\ni{2-9}
+\have{10}{\enot\exists x Px}\ni{2-9}
 \end{pf}
 
 
@@ -582,23 +582,23 @@ As in the case of TFL, we first introduced some rules for FOL as basic (in \S\re
 Here is a justification of the third CQ rule:
 
 \begin{pf}
-\hypo{1}{\exists x\neg Px}
+\hypo{1}{\exists x\enot Px}
 \open
 \hypo{1a}{\forall x Px}
 \open
-\hypo{2}{\neg Pb}
+\hypo{2}{\enot Pb}
 \open
-\hypo{3}{Da\vee\neg Da}
+\hypo{3}{Da\eor\enot Da}
 
 \have{4}{Pb}\Ae{1a}
-\have{5}{\neg Pb}\by{R}{2}
+\have{5}{\enot Pb}\by{R}{2}
 \close
-\have{6}{\neg(Da\vee\neg Da)}\ni{3-5}
+\have{6}{\enot(Da\eor\enot Da)}\ni{3-5}
 \close
-\have{7}{\neg(Da\vee\neg Da)}\Ee{1,2-6}
-\have{8}{Da\vee\neg Da}\LEM
+\have{7}{\enot(Da\eor\enot Da)}\Ee{1,2-6}
+\have{8}{Da\eor\enot Da}\LEM
 \close
-\have{9}{\neg\forall x Px}\ni{1a-9}
+\have{9}{\enot\forall x Px}\ni{1a-9}
 \end{pf}
 
 

@@ -522,7 +522,7 @@ Using a truth table to show this would have taken 128 lines.
 \section{Law of Excluded Middle}\label{sec:LEM}
 We will actually add another rule for how to introduce a disjunction. There are special kinds of disjunctions that don't need further justification: sentences of the form $\metaX\eor\enot\metaX$.
 In \S\ref{s:TautologiesAndContradictions} we saw that $A\eor\enot A$ is a tautology: it is true on all valuations. More generally, any sentence of the form $\metaX\eor\enot\metaX$ is a tautology.
-The rule \emph{Law of Excluded Middle} encodes this fact: it simply says that you are always allowed to write $\metaX\eor\neg\metaX$:
+The rule \emph{Law of Excluded Middle} encodes this fact: it simply says that you are always allowed to write $\metaX\eor\enot\metaX$:
 
 \factoidbox{
 	\begin{pf}
@@ -1160,11 +1160,11 @@ The following two `proofs' are \emph{incorrect}. Explain the mistakes they make.
 \open
 	\hypo{l}{L}
 	\open
-	\hypo{la}{\neg A}
+	\hypo{la}{\enot A}
 	\have{lr}{L}\by{R}{l}
-	\have{nlr}{\neg L}\by{R}{nl}
+	\have{nlr}{\enot L}\by{R}{nl}
 	\close
-	\have{a2}{A}\by{$\neg$E}{la-nlr}
+	\have{a2}{A}\by{$\enot$E}{la-nlr}
 \close
 \have{con}{A}\orE{lem,nl-a, l-a2}
 \end{pf}
@@ -1660,7 +1660,7 @@ You now want, on line $k$, to prove $\metaY$. You can do this with the rule of D
 		\open
 			\hypo[k]{a}{\metaX}
 			\open
-			\hypo{a1}{\neg\metaY}
+			\hypo{a1}{\enot\metaY}
 			\have{a2}{\metaX}\Reiteration{a}
 			\have{a3}{\enot\metaX}\Reiteration{na}
 			\close
