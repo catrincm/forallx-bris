@@ -2,7 +2,7 @@
 
 This is the formal logic textbook, _forall x: Bristol Remix_.
 
-Download links (tracking the `johannes` branch):
+Download links:
 
 -   [Textbook](https://catrincm.github.io/forallx-bris/forallxbris.pdf)
 -   [Accessible
