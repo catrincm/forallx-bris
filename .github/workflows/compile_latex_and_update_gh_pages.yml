@@ -3,7 +3,7 @@ name: compile_and_copy_latex
 on:
   push:
     branches:
-      - johannes
+      - johannes-2023
 
 jobs:
   compile_and_deploy:
@@ -13,7 +13,7 @@ jobs:
       - name: Checkout 'johannes' branch
         uses: actions/checkout@v4
         with:
-          ref: johannes
+          ref: johannes-2023
           path: main_repo
 
       - name: Compile forallxbris.tex
