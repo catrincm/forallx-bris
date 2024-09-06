@@ -2,6 +2,8 @@
 
 This is the formal logic textbook, _forall x: Bristol Remix_.
 
+[Site](https://catrincm.github.io/forallx-bris)
+
 Download links:
 
 -   [Textbook](https://catrincm.github.io/forallx-bris/forallxbris.pdf)
@@ -21,8 +23,8 @@ used under a CC BY-SA 3.0 license, which is based in turn on forallx, by
 P.D. Magnus
 University at Albany, State University of New York
 used under a CC BY-SA 3.0 license.
-then altered by
-Catrin Campbell-Moore
+Then altered by
+Catrin Campbell-Moore and Johannes Stern
 University of Bristol
 
 
@@ -30,4 +32,4 @@ University of Bristol
 
 This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).
 
-The LaTeX source code for this work is available on GitHub at [github.com/catrincm/forallx-bris](https://github.com/catrincm/forallx-bris).
+The LaTeX source code for this work is available on GitHub at [github.com/catrincm/forallx-bris](https://github.com/catrincm/forallx-bris), using johannes-2024 branch.
