@@ -6,19 +6,10 @@
 
 \chapter{Arguments}
 \label{s:Arguments}
-\section{Introduction}
-Much of philosophical practice is about argument and
-analysis.
-Arguing in support of or against some position, or understanding someone else's argument.
-Logic is the study of the practice of argument and
-analysis, abstracted from the specific details of a
-particular case.
+\section{Introduction and Overview}
+In philosophy we think, reason, and argue. We intellectually scrutinize theories and view points. We reflect on arguments in support or in opposition of some philosophical position. In other words arguments and argumentation take centerstage in philosophy. But what is an argument and what are good arguments? 
 
-
-
-In everyday language, we sometimes use the word `argument' to talk about belligerent shouting matches.  If you and a friend have an argument in this sense, things are not going well between the two of you. Logic is not concerned with such teeth-gnashing and hair-pulling. They are not arguments, in our sense; they are disagreements.
-
-An argument, as we will understand it, is something more like this:
+An argument, as we will understand it, is something like this:
 		\begin{ebullet}
 	\item If I acted of my own free will, then I could have acted otherwise.
 	\item I could not have acted otherwise.
@@ -26,32 +17,64 @@ An argument, as we will understand it, is something more like this:
 		\end{ebullet}\todo{add a reference to SEP compatibilism?}
 We here have a series of sentences which may either be true or false. The final sentence, ``I did not act of my own free will.'' expresses the \emph{conclusion} of the argument. The two sentences before that are the \emph{premises} of the argument. In a good argument, the conclusion follows from the premises. If you believe the premises then the argument should lead you to believing the conclusion.
 
-Logic provides the ideal model of good argument:
-rational argument without rhetoric.
-The logical study of an argument can show whether it
-supports its conclusion or is flawed.
-Logic focuses only on the statements presented and the
-relationships between them.
-Extraneous factors are set aside: unspoken assumptions,
-additional connotations of words, appeal to emotions.
+On the face of it, our sample argument appears to be a good argument, but can one develop a general theory of what a good argument is, that is, a theory that abstracts away from particular arguments and equips us with general tools for evaluating arguments? It turns out that one can and this general theory is what we call `logic'.
 
-Logical thinking can help us to work out the intended
-interpretation of a text, and to find alternative
-unintended interpretations.
-This can be helpful when reading someone else’s
-writing, and essential when we are trying to write
-unambiguously.
-Logical analysis can help us to find ambiguity and
-alternative interpretations, and to write in a precise and
-unambiguous way that can only be interpreted as we
-intend.
-These are vital skills used in all philosophy as well as in life more generally.
+In logic we want to abstract away from specific arguments and their particular content, and focus on specific structural features of arguments. To achieve this  logic is spelled out in its own particular language like, say, latin.  This means that learning logic amounts to learning a new language. As we want to make sure that there are no ambiguities or misunderstandings the language of logic happens to be a formal language. Now to learn a language one needs to
+\begin{itemize}
+\item[\textsc{Voc}:]\label{vocInt} learn its vocabulary (what are the basic expressions of language?);
+\item[\textsc{Gra}:]\label{graInt} learn its grammar (what is a well-formed sentence of the language?);
+\item[\textsc{Sem}:]\label{semInt} learn what the sentences of the new language say or mean;
+\item[\textsc{PT}:]\label{ptInt} learn how to use the new language and how to reason with it.
+\end{itemize}
+
+This course is about learning logic and thus learning the language of logic. Accordingly, we will work ourselves through the different items of the above list. But in addition we need to think about how this helps us with assessing philosophical arguments and reasoning, which is carried out in English or some other natural language. To this effect we discuss how one can symbolize (or formalize) English arguments in the language of logic, which will allow us to evaluate English arguments in the logical language.Summing up, the structure of the course will be as follows: we first introduce the \define{syntax} of the language, which subsumes both \textsc{Voc} and \textsc{Gra}, and then turn to its \define{semantics} (\textsc{Sem}), that is, the meaning of the sentences of the language. The semantics of the language will also allow us to spell out whether an argument is a good argument from the logical perspective. Such an argument is called a \emph{valid} argument.\todo{valid=good?}  We then explain how to symbolize English sentences in the logical language, which enables us to check whether an English argument is valid or not. Finally, we turn to PT and introduce a reasoning system for the logical language, that makes it possible for us to argue or reason within the logical language. In the context of our formal language, this means that we give a proof system, that is, we specify a number of rules that allows us to derive a sentence (the conclusion) from other sentences (the premises) in the same way that in natural language a good argument licenses us to infer the conclusion of the argument from its premises. Importantly, the rules will only allow us to produce valid argument. If we apply the rules correctly our reasoning cannot go wrong (this doesn't meant that our premises were true however).
+
+%Much of philosophical practice is about argument and
+%analysis.
+%Arguing in support of or against some position, or understanding someone else's argument.
+%Logic is the study of the practice of argument and
+%analysis, abstracted from the specific details of a
+%particular case. 
 
 
 
+%In everyday language, we sometimes use the word `argument' to talk about belligerent shouting matches.  If you and a friend have an argument in this sense, things are not going well between the two of you. Logic is not concerned with such teeth-gnashing and hair-pulling. They are not arguments, in our sense; they are disagreements.
+%
+%An argument, as we will understand it, is something more like this:
+%		\begin{ebullet}
+%	\item If I acted of my own free will, then I could have acted otherwise.
+%	\item I could not have acted otherwise.
+%	\item Therefore: I did not act of my own free will.
+%		\end{ebullet}\todo{add a reference to SEP compatibilism?}
+%We here have a series of sentences which may either be true or false. The final sentence, ``I did not act of my own free will.'' expresses the \emph{conclusion} of the argument. The two sentences before that are the \emph{premises} of the argument. In a good argument, the conclusion follows from the premises. If you believe the premises then the argument should lead you to believing the conclusion.
+%
+%Logic provides the ideal model of good argument:
+%rational argument without rhetoric.
+%The logical study of an argument can show whether it
+%supports its conclusion or is flawed.
+%Logic focuses only on the statements presented and the
+%relationships between them.
+%Extraneous factors are set aside: unspoken assumptions,
+%additional connotations of words, appeal to emotions.
+%
+%Logical thinking can help us to work out the intended
+%interpretation of a text, and to find alternative
+%unintended interpretations.
+%This can be helpful when reading someone else’s
+%writing, and essential when we are trying to write
+%unambiguously.
+%Logical analysis can help us to find ambiguity and
+%alternative interpretations, and to write in a precise and
+%unambiguous way that can only be interpreted as we
+%intend.
+%These are vital skills used in all philosophy as well as in life more generally.
+%
 
 
-This Part discusses arguments in natural languages like English. Throughout this textbook we will also consider arguments in formal languages and say what it is for those to be valid or invalid. We want formal validity, as defined in the formal language, to have at least some of the important features of natural-language validity.
+But we are getting ahead of ourselves and before we introduce the language of logic, we should first better understand what an argument is and which arguments are good ones. To this effect we discuss arguments in natural languages and more specifically arguments in English. As we mentioned at the beginning, understanding and evaluating arguments is a crucial aspect of philosophy. Reflecting and investigating arguments will thus help you to analyse some of the texts you are reading during your philosophy studies.
+
+
+%Throughout this textbook we will also consider arguments in formal languages and say what it is for those to be valid or invalid. We want formal validity, as defined in the formal language, to have at least some of the important features of natural-language validity.
 
 %some properties of argumentbasic logical notions that apply to arguments in a natural language like English. It is important to begin with a clear understanding of what arguments are and of what it means for an argument to be valid. Later we will translate arguments from English into a formal language. We want formal validity, as defined in the formal language, to have at least some of the important features of natural-language validity.
 
@@ -78,7 +101,7 @@ For	example
 	\conc I did not act of my own free will.
 	\end{earg}
 
-The three dots in this final line can be read ``therefore''. Really then we're duplicating things by also adding the word ``Therefore''. But we do this to really carefully highlight that this is the conclusion. If you are writing your answers up on the computer and cannot use this symbol, that's OK. But make sure it is very clear what the conclusion of the argument is.
+The three dots in this final line can be read ``therefore''. Really then we're duplicating things by also adding the word ``Therefore''. But we do this to really carefully highlight that this is the conclusion. %If you are writing your answers up on the computer and cannot use this symbol, that's OK. But make sure it is very clear what the conclusion of the argument is.
 %. Bu. It is our concise way to identify the conclusion of the argument. \todo{should I delete it throughout?}
 
 
@@ -225,7 +248,7 @@ But sometimes in the process of someone making an argument someone will make use
     \end{tikzpicture}
 \end{center}
 
-However, we say that an argument is only something of the first kind. So what do we say about the second kind of thing? We can consider it two ways. We might could consider it as an argument from premise 1, 2 and 3 to the conclusion. Or alternatively we can think of it as two arguments of the first kind chained together, one from premise 1 and 2 to the intermediate conclusion, and the second from the intermediate conclusion and premise 3 to the final conclusion.
+However, we say that an argument is only something of the first kind. So what do we say about the second kind of thing? We can consider it two ways. We could consider it as an argument from premise 1, 2 and 3 to the conclusion. Or alternatively we can think of it as two arguments of the first kind chained together, one from premise 1 and 2 to the intermediate conclusion, and the second from the intermediate conclusion and premise 3 to the final conclusion.
 
 %In order to better understand arguments, though, we focus on arguments which have the simple structure with a series of premises and a single conclusion. We will understand the latter structure as multiple arguments chained together and we analyse each argument individually.
 
@@ -259,9 +282,9 @@ Arguments are formed of \emph{declarative sentences} --- those sentences which c
 \begin{highlighted}An \define{argument} consists of a collection of declarative sentences of which one is marked as the conclusion of the argument.\end{highlighted}
 
 
-We typically drop the term `declarative' and simply call them sentences, but bear in mind that it is only these sorts of sentences that are relevant in this textbook.
+The unmarked declarative sentences are of course the premises of the argument. We typically drop the term `declarative' and simply call them sentences, but bear in mind that it is only these sorts of sentences that are relevant in this textbook.
 
-You should not confuse the idea of a sentence that can be true or false with the difference between fact and opinion. Often, sentences in logic will express things that would count as facts--- such as `spiders have eight legs' or `Kierkegaard liked almonds.' They can also express things that you might think of as matters of opinion---such as, `Almonds are tasty.' In other words, a sentence is not disqualified from being part of an argument because we don't know if it is true or false, or because its truth or falsity is a matter of opinion. All that matters is whether it is the sort of thing that could be true or false. If it is, it can play the role of premise or conclusion.
+You should not confuse the idea of a sentence that can be true or false with the difference between fact and opinion. Often, sentences in logic will express things that would count as facts--- such as `spiders have eight legs' or `Kierkegaard liked almonds.' They can also express things that you might think of as matters of opinion---such as, `Almonds are tasty.' In other words, a sentence is not disqualified from being part of an argument because we don't know if it is true or false, or because its truth or falsity seems to be a purely subjective matter. All that matters is whether what the sentence expresses it is the sort of thing that could be true or false. If it is, it can play the role of premise or conclusion.
 
 When you are reading a text and putting it in our standard form you should make sure that your premises and conclusions are declarative sentences.
 You should also make them as clear as possible. Each premise and the conclusion should be able to be read and understood independently. Any context from the original paragraph should be copied over to each of the premises and conclusions.
@@ -333,7 +356,7 @@ description={the last sentence in an \gls{argument}}
 
 At the end of some chapters, there are exercises that review and
 explore the material covered in the chapter.
-The problem sheet you need to complete is constructed from these exercises, but the book offers some additional practice if you want more.
+%The problem sheet you need to complete is constructed from these exercises, but the book offers some additional practice if you want more.
 There is no substitute for actually working through some problems. This course isn't about memorizing facts but about developing a way of thinking.
 
 %\bigskip
@@ -422,12 +445,12 @@ Write each of the following arguments in the standard form.
 
 In \S\ref{s:Arguments}, we talked about arguments, i.e., a collection of sentences (the premises), followed by a single sentence (the conclusion). We said that some words, such as ``therefore,'' indicate which sentence in is supposed to be the conclusion. ``Therefore,'' of course, suggests that there is a connection between the premises and the conclusion, namely that the conclusion \emph{follows from}, or \emph{is a consequence of}, the premises.
 
-This notion of consequence is one of the primary things logic is concerned with. One might even say that logic is the science of what follows from what.  Logic develops theories and tools that tell us when a sentence follows from some others.
+This notion of consequence is one of the primary things logic is concerned with and we will ultimately define a precise notion of consequence for our formal language. One might even say that logic is the science of what follows from what.  Logic develops a general account of and general tools that tell us when a sentence follows from some other sentences.
 
 What about the following argument:
 \begin{earg}
-	\prem Either the butler or the gardener did it.
-	\prem The butler didn't do it.
+	\prem The butler or the gardener did it.
+	\prem The butler did not do it.
 	\conc The gardener did it.
 \end{earg}
 We don't have any context for what the sentences in this argument refer to. Perhaps you suspect that ``did it'' here means ``was the perpetrator'' of some unspecified crime. You might imagine that the argument occurs in a mystery novel or TV show, perhaps spoken by a detective working through the evidence. But even without having any of this information, you probably agree that the argument is a good one in the sense that whatever the premises refer to, if they are both true, the conclusion is guaranteed to be true as well. If the first premise is true, i.e., it's true that ``the butler did it or the gardener did it,'' then at least one of them ``did it,'' whatever that means. And if the second premise is true, then the butler did not ``do it.'' That leaves only one option: ``the gardener did it'' must be true. Here, the conclusion follows from the premises. We call arguments that have this property \define{valid}.
@@ -440,13 +463,18 @@ By way of contrast, consider the following argument:
 \end{earg}
 We still have no idea what is being talked about here. But, again, you probably agree that this argument is different from the previous one in an important respect. If the premises are true, it is not guaranteed that the conclusion is also true. The premises of this argument do not rule out, by themselves, that someone other than the maid or the driver ``did it.'' In this second argument, the conclusion does not follow from the premises. If, like in this argument, the conclusion does not follow from the premises, we say it is \define{invalid}.
 
-
-\section{Logical Validity}\todo{consistency and logical truth}
-We said the first argument was valid because the truth of its premises guarantees the truth of the conclusion. In fact in this argument the premises guarantee the truth independently of whether we are talking about butlers, crocodiles, murderers or cake thieves. It is irrelevant for the validity of the argument what the premises and the conclusion are about. The argument is valid on all interpretations on which the  premises of the argument are true. To put it in less abstract terms an argument is valid if and only if no \define{counterexample} to the argument can be produced. In fact, such arguments are called \define{logically valid}.
+%\section{Logical Validity}\todo{consistency and logical truth}
+We said the first argument was valid because if the premises will be true, we are guaranteed  that the conclusion is true. In fact in this argument the premises guarantee the truth independently of whether we are talking about butlers, crocodiles, murderers or cake thieves:
+\begin{earg}\label{argMaidDriver}
+	\prem The crocodile or the kangaroo stole the cake.
+	\prem The crocodile did not steal the cake.
+	\conc The kangaroo did it.
+\end{earg}
+ It is irrelevant for the validity of the argument what the premises and the conclusion are about. The argument is valid on all ways of interpreting the premises as long as we understand the sentential connectives `or' and `not'. To put it in less abstract terms an argument is valid if and only if no \define{counterexample} to the argument can be produced. 
 
 \factoidbox{
-		An argument is \define{logically valid} if and only if there is no interpretation such that all the premises are true and the conclusion false. Otherwise the argument is \define{logically invalid}.
-	}
+		An argument is \define{valid} if and only if there is no interpretation such that all the premises are true and the conclusion false. Otherwise the argument is \define{invalid}.
+	}	
 
 \newglossaryentry{valid}
 {
@@ -460,17 +488,25 @@ name=invalid,
 description={A property of arguments that holds when the conclusion is not a consequence of the premises; the opposite of \gls{valid}}
 }
 
+We said that the following argument was invalid.	
+\begin{earg}\label{argMaidDriver}
+	\prem If the driver did it, the maid didn't do it.
+	\prem The maid didn't do it.
+	\conc The driver did it.
+\end{earg}	
+Can we find a counterexample to the argument? The answer is yes. For example, if we understand `did it' as `mowed the lawn', then the premises of the argument are both true, but the conclusion is false, as it was the gardener who mowed the lawn (at least on one interpretation/scenario).
+
 Earlier we introduced the idea that the conclusion of an argument is meant to follow from the premises; that it is a consequence of the premises. This motivates the following definition:
 
 \factoidbox{
 		A sentence \metaY is a \define{logical consequence} of sentences $\metaX_1$, \dots, $\metaX_n$ if and only if there is no interpretation such that $\metaX_1$, \dots, $\metaX_n$ are all true and \metaY is not true. (We then also say that \metaY \define{logically follows from} $\metaX_1$, \dots, $\metaX_n$.)
 	}% or that $\metaX_1$, \dots, $\metaX_n$ \define{entail}~\metaY
 
-Another way of saying that  \metaY is a logical consequence of sentences $\metaX_1$, \dots, $\metaX_n$ is to say that the argument with premises $\metaX_1$, \dots, $\metaX_n$ and conclusion \metaY is logically valid.
+Another way of saying that  \metaY is a logical consequence of sentences $\metaX_1$, \dots, $\metaX_n$ is to say that the argument with premises $\metaX_1$, \dots, $\metaX_n$ and conclusion \metaY is valid.
 
-Logically valid arguments are arguments for which there is no interpretation such that all premises are but the conclusion is not. It is irrelevant whether such an interpretation is ``reasonable'': no matter how unreasonable an interpretation is that can be used to give a counterexample to an argument, if there exists such an interpretation the argument will not be logically valid.
+Valid arguments are arguments for which there is no interpretation such that all premises are but the conclusion is not. It is irrelevant whether such an interpretation is ``reasonable'': no matter how unreasonable an interpretation is that can be used to give a counterexample to an argument, if there exists such an interpretation the argument will not be valid.
 
-Is there a straightforward way of telling whether an argument is logical valid? Is there some feature that sets apart all logically valid arguments from other (possibly convincing) arguments? We have already seen that logical validity should not depend on the content of the premises and conclusion. Rather it should only depend on their (logical) form. For instance, consider the logically valid argument
+Is there a straightforward way of telling whether an argument is logical valid? Is there some feature that sets apart all valid arguments from other (possibly convincing) arguments? We have already seen that validity should not depend on the content of the premises and conclusion. Rather it should only depend on their (logical) form. For instance, consider the valid argument
 \begin{earg}
 	\prem Either Priya is an ophthalmologist or a dentist.
 	\prem Priya isn't a dentist.
@@ -488,13 +524,13 @@ Here, $a$, $F$, and $G$ are placeholders for appropriate expressions that, when 
 	\prem Mei isn't a botanist.
 	\conc Mei is a mathematician.
 \end{earg}
-is an argument of the same form and it is also logically valid. However, the following argument is not of the same form:
+is an argument of the same form and it is also valid. However, the following argument is not of the same form:
 \begin{earg}
 	\prem Either Priya is an ophthalmologist or a dentist.
 	\prem Priya isn't a dentist.
 	\conc Priya is an eye doctor.
 \end{earg}
-we would have to replace $F$ by different expressions (once by ``ophthalmologist'' and once by ``eye doctor'') to obtain it from the pattern. This argument is not logically valid. To see that the conclusion follows from the premises we need the additional information that an ophthalmologist is indeed an eye doctor, that is, we need information that ``ophthalmologist'' and ``eye doctor'' mean the same thing.
+we would have to replace $F$ by different expressions (once by ``ophthalmologist'' and once by ``eye doctor'') to obtain it from the pattern. This argument is not valid. To see that the conclusion follows from the premises we need the additional information that an ophthalmologist is indeed an eye doctor, that is, we need information that ``ophthalmologist'' and ``eye doctor'' mean the same thing.
 
 To see more clearly that the latter argument cannot be deemed valid solely on the basis of its logical form let's consider \emph{its} form:
 \begin{earg}
@@ -508,13 +544,13 @@ In this pattern we can replace $F$ by ``ophthalmologist'' and $H$ by ``eye docto
 	\prem Mei isn't a botanist.
 	\conc Mei is an acrobat.
 \end{earg}
-This argument is clearly not logically valid. The conclusion does not follow from the premises of the argument.
+This argument is clearly not valid. The conclusion does not follow from the premises of the argument.
 
-In logically valid arguments the conclusion follows from the premises of the argument solely in virtue of its logical form, that is, the logical structure of the premises and the conclusion. This feature is an aspect of the so-called \define{formality} of logic. Much of the present logic course will be devoted to studying and determining valid argument forms and structures, and to make precise the idea of \emph{interpretation} we used in discussing the validity of arguments.
+In valid arguments the conclusion follows from the premises of the argument solely in virtue of its logical form, that is, the logical structure of the premises and the conclusion. This feature is an aspect of the so-called \define{formality} of logic. Much of the present logic course will be devoted to studying and determining valid argument forms and structures, and to make precise the idea of \emph{interpretation} we used in discussing the validity of arguments.
 
 \section{Sound arguments}
 
-Arguments in our sense, as conclusions which (supposedly) follow from premises, are of course used all the time in everyday reasoning, but also philosophical and scientific discourse. When they are, arguments are given to support or even prove their conclusions. Now, if an argument is logically valid, it will support its conclusion, but \emph{only if} its premises are all true. Logical validity rules out that the premises are true and the conclusion is not true. It does not, by itself, rule out that the conclusion is not true, period.  In other words, a logically valid argument may have a conclusion that is not true!
+Arguments in our sense, as conclusions which (supposedly) follow from premises, are of course used all the time in everyday reasoning, but also philosophical and scientific discourse. When they are, arguments are given to support or even prove their conclusions. Now, if an argument is valid, it will support its conclusion, but \emph{only if} its premises are all true: validity rules out that the premises are true and the conclusion false. It does not, by itself, rule out that the conclusion is false, as the premises can be false. An argument can be valid, but have false premises. In short, a  valid argument may have a conclusion that is not true!
 
 Consider this example:
 	\begin{earg}
@@ -522,66 +558,31 @@ Consider this example:
 		\prem Oranges are not fruit.
 		\conc Oranges are musical instruments.
 	\end{earg}
-The conclusion of this argument is ridiculous. Nevertheless, it logically follows from the premises due to the logical form of the argument. For what the argument is concerned, it is not relevant whether the oranges are musical instruments (of course, they are not!). What is relevant is that if according to a (weird) interpretation Oranges are either fruit or musical instruments, but not fruit, then oranges are musical instruments according to that interpretation: \emph{If} both premises are true, \emph{then} the conclusion just has to be true independently of the content of the premises and the conclusion. The argument is logically valid.
+The conclusion of this argument is ridiculous. Nevertheless, it logically follows from the premises due to the logical form of the argument. For what the argument is concerned, it is not relevant whether the oranges are musical instruments (of course, they are not!). What is relevant is that if according to a (weird) interpretation Oranges are either fruit or musical instruments, but not fruit, then oranges are musical instruments according to that interpretation: \emph{If} both premises are true, \emph{then} the conclusion just has to be true independently of the content of the premises and the conclusion. The argument is valid.
 
-Conversely, having true premises and a true conclusion is not enough to make an argument logically valid. Consider this example:
+Conversely, having true premises and a true conclusion does not guarantee that the argument is valid. Consider this example:
 	\begin{earg}
 		\prem London is in England.
 		\prem Beijing is in China.
 		\conc Paris is in France.
 	\end{earg}
-The premises and conclusion of this argument are, as a matter of fact, all true, but the argument is invalid. The logical form of premises and conclusion do not guarantee that the conclusion is true whenever the premises are true: on an interpretation on which Paris is not in France, perhaps because it declared independence from the rest of France,  the conclusion is not true, even though both of the premises would remain true. So the argument is invalid.
+The premises and conclusion of this argument are all true, but the argument is invalid. The logical form of premises and conclusion do not guarantee that the conclusion is true whenever the premises are true: on an interpretation on which  `France' is interpreted to mean Great Britain, the conclusion is not true, even though both of the premises would remain true. So the argument is invalid.
 
-The important thing to remember is that logical validity is not about the truth or falsity of the sentences in the argument. It is about whether conclusion follows from the premises of the argument in virtue of their logical form; about whether the conclusion is true whenever the premises are true, that is, whether for all interpretations on which all premises are true, the conclusion is true likewise. Nothing about the way things are---whether something is true or false---can by itself determine if an argument is logically valid. It is often said that logic doesn't care about feelings. Actually, it doesn't care about facts, either.
+The important thing to remember is that validity is not about the truth or falsity of the sentences in the argument. It is about whether the conclusion follows from the premises of the argument in virtue of their logical form; about whether the conclusion is true whenever the premises are true, that is, whether for all interpretations on which all premises are true, the conclusion is true likewise. Nothing about the way things are---whether something is true or false---can by itself determine if an argument is valid. It is often said that logic doesn't care about feelings. Actually, it doesn't care about facts, either.
 
-When we use an argument to prove that its conclusion \emph{is true}, then, we need two things. First, we need the argument to be logically valid, i.e., we need the conclusion to logically follow from the premises. But we also need the premises to be true. We will say that an argument is \define{sound} if and only if it is both logically valid and all of its premises are true.
+When we use an argument to prove that its conclusion \emph{is true}, then, we need two things. First, we need the argument to be valid, i.e., we need the conclusion to logically follow from the premises. But we also need the premises to be true. We will say that an argument is \define{sound} if and only if it is both valid and all of its premises are true.
 
 \newglossaryentry{sound}
 {
 name=sound,
-description={A property of arguments that holds if the argument is logically valid and has all true premises}
+description={A property of arguments that holds if the argument is valid and has all true premises}
 }
 
-The flip side of this is that when you want to rebut an argument, you have two options: you can show that (one or more of) the premises are not true, or you can show that the argument is not logically valid.  Logic, however, will only help you with the latter!
+The flip side of this is that when you want to rebut an argument, you have two options: you can show that (one or more of) the premises are not true, or you can show that the argument is not valid.  Logic, however, will only help you with the latter!
 
 
 
-\section{Beyond Logical Validity}
-\todo{Remove this!!!}
 
-Most arguments we make and evaluate in everyday reasoning are not logically valid. We are often interested in whether the conclusion follows from the premises given certain implicit or explicit background assumptions. Sometimes we simply leave out certain obvious premises (more below), but sometimes we are, more generally, interested in other forms of validity than logical validity. For example, in the discussion above we found the argument with the conclusion ``Priya is an eye doctor'' not to be logically valid: the conclusion did not follow from the premises simply because of its logical form. However, in some sense the argument seemed a good one, but the conclusion can only be deemed to follow from the premises once we acknowledge that ``ophthalmologist'' is just a fancy word for an eye doctor. We can find interpretations on which all premises are true and the conclusion false, but such interpretations violate the conceptual/meaning connection between these words. Arguments for which there is no interpretation that respects all conceptual/meaning connection between the various words of our language are called \define{conceptually validity}. For example, the arguments
-
-\begin{earg}
-		\prem Priya is an ophthalmologist.
-		\conc Priya is an eye doctor.
-	\end{earg}
-
-	\begin{earg}
-		\prem Jonas is a bachelor.
-		\conc Jonas is an unmarried man.
-	\end{earg}
-
-	are both conceptually valid but not logically valid. All logically valid arguments are also conceptually valid, but not the other way around.
-
-	There are further interesting categories of validity that can be distinguished from both logical and conceptual validity. Consider the following argument:
-	\begin{earg}
-		\prem The spaceship \emph{Rocinante} took six hours to reach Jupiter from Tycho space station.
-		\conc The distance between Tycho space station and Jupiter is less than 14~billion kilometers.
-	\end{earg}
-This argument is neither logically nor conceptually valid as the truth of the conclusion is not guaranteed by the truth of the premises in virtue of its logical form nor by specific conceptual or meaning connections between certain English words. However, an interpretation on which the premise is true, but the conclusion false violates the laws of physics: the interpretation would require \emph{Rocinante} to make a trip of over 14 billion kilometers in 6 hours, exceeding the speed of light. Indeed, if we consider only interpretations that respect the laws of nature, then the truth of the conclusion follows from the truth of the premise. Arguments of this kind, that is, arguments for which there is no interpretation that respects the laws of nature and such that all premises are true but the conclusion is false are called \define{nomologically valid}.
-
-We could list further categories of validity, but the point is that when we discuss whether an argument is valid or not we need to make sure that we agree on the category of validity we are interested in: in the natural sciences we might be interested in nomological validity. In logic we are interested in logical validity.
-
-%When we consider cases of various kinds in order to evaluate the validity of an argument, we will make a few assumptions. The first assumption is that every case makes every sentence true or false---at least, every sentence in the argument under consideration.
-%So imagined scenarios have to specify all relevant facts.
-%Any imagined scenario which leaves it undetermined if a sentence in our argument is true will not be considered as a potential counterexample.
-%For instance, a scenario where Priya is a dentist but not an ophthalmologist will count as a case to be considered in the first few arguments in this section, but not as a case to be considered in the last two: it doesn't tell us if Mei is a mathematician, a botanist, or an acrobat.
-%If a case doesn't make a sentence true, we say it makes it \define{false}. We'll thus assume that cases make sentences true or false but never both.\footnote{Even if these assumptions seem common-sensical to you, they are controversial among philosophers of logic. First of all, there are logicians who want to consider cases where sentences are neither true nor false, but have some kind of intermediate level of truth. More controversially, some philosophers think we should allow for the possibility of sentences to be both true and false at the same time. There are systems of logic in which sentences can be neither true nor false, or both, but we will not discuss them in this book.}
-
-%Depending on what kinds of cases we consider as potential counterexamples, then, we arrive at different notions of consequence and validity. We might call an argument \define{nomologically valid} if there are no counterexamples that don't violate the laws of nature, and an argument \define{conceptually valid} if there are no counterexamples that don't violate conceptual connections between words.
-%For both of these notions of validity, aspects of the world (e.g., what the laws of nature are) and aspects of the meaning of the sentences in the argument (e.g., that ``ophthalmologist'' just means a kind of eye doctor) figure into whether an argument is valid.
-
-%\section{Formal validity}
 
 \section{Missing premises}
 
@@ -591,7 +592,20 @@ We could list further categories of validity, but the point is that when we disc
 %When someone is using an argument, they often leave premises out, usually when the premise is thought to be
 %obvious and so doesn't need to be stated explicitly.
 
-We already highlighted that most arguments we encounter in daily life are not logically valid. Sometimes arguments turn out to be, e.g., conceptually or nomologically valid, but more often the interlocutor has failed to make explicit an underlying assumption or premise. If the missing premise is explicitly added, the argument may turn out to be logically valid after all. Sometimes it is not obvious to tell what kind of implicit underlying assumption are assumed in the formulation of an argument. If someone you disagree with makes an invalid
+Most arguments we make and evaluate in everyday reasoning are not valid simpliciter. We are often interested in whether the conclusion follows from the premises given certain implicit or explicit background assumptions which the interlocutor has failed to explicitly mention. If the missing background assumption is explicitly added as a premise, the argument may turn out to be valid after all. For example, we already discussed that the argument
+\todo{use the arguments above; not a new one}
+\begin{earg}
+	\prem Either Priya is an ophthalmologist or a dentist.
+	\prem Priya isn't a dentist.
+	\conc Priya is an eye doctor.
+\end{earg}
+is strictly speaking not a valid argument. Still it seems to be a good argument in the sense that the truth of the premises seems to guarantee the truth of the conclusion. One explanation for why we think it is a good argument, is that it can easily be turned into a valid argument by adding the (true) premise
+\begin{earg}
+\prem If Priya is an ophthalmologist, then Priya is an eye doctor.
+\end{earg}
+Arguably this premise is one we all implicitly assume, which explains why an interlocutor might not feel the need of mentioning it.
+
+Sometimes it is not obvious to tell what kind of implicit underlying assumption are assumed in the formulation of an argument. If someone you disagree with makes an invalid
 argument it’s often more useful (and more charitable) to consider
 whether there are missing premises rather than to simply dismiss the argument. Perhaps the author or interlocutor was assuming that an additional
 premise was so obvious that it didn’t need to be stated.
@@ -601,7 +615,7 @@ For example an author might make the following argument:
 \prem I could not have acted otherwise.
 \conc I did not act of my own free will.
 \end{earg}
-This argument is invalid. But, it can be made logically valid by addition of the premise:
+This argument is invalid. But, it can be made valid by addition of the premise:
 \begin{earg}
 \prem If I could not have acted otherwise, I did not act of my own free will.
 \end{earg}
@@ -724,10 +738,41 @@ rebuttal or criticism
 %Our formal language will make use of parentheses for the same purpose.
 %
 
+\section{Beyond Validity}
+As we mentioned, many arguments we make and evaluate in everyday reasoning are not strictly speaking valid. As discussed sometimes important implicit premises are not made explicit. However, the fact that implicit premises are not made explicit point to a more general phenomenon, namely, that in everyday reasoning we take certain conceptual or meaning relations for granted. Going back to the argument involving Priya, we found the the conclusion ``Priya is an eye doctor'' not to be a logical consequence of the premises despite the fact that intuitively one might be inclined to say the the conclusion follows from the premises of the argument. While the argument is not strictly speaking valid, the conclusion follows from the premises of the argument once we acknowledge that `ophthalmologist' is just a fancy word for an eye doctor. More generally, there is no interpretation that respects all conceptual relations between expressions of the language on which all premises are true but the conclusion false, that is, there is no counterexample to the argument involving Priya which acknowledges that `ophthalmologist' and `eye doctor' mean the same thing.
 
+Arguments for which there is no interpretation that respects all conceptual/meaning connection between the various words of our language are sometimes called \define{conceptually validity} and sometimes you'll find the term `validity' used in this sense in the literature . For example, the arguments
+
+\begin{earg}
+		\prem Priya is an ophthalmologist.
+		\conc Priya is an eye doctor.
+	\end{earg}
+
+	\begin{earg}
+		\prem Jonas is a bachelor.
+		\conc Jonas is an unmarried man.
+	\end{earg}
+
+	are both conceptually valid but not (logically) valid according to our definition of validity. All (logically) valid arguments are also conceptually valid, but not the other way around.
+
+Perhaps in everyday reasoning we are often judging arguments whether they are conceptually valid as opposed to valid simpliciter. However, while the cases of conceptual validity discussed have been reasonably clear, it is sometimes not that easy to make precise and agree on the exact underlying conceptual relations. Consequently, while, as we shall see, it is relatively straightforward to decide whether an argument is (logically), this becomes much more tricky turning to conceptual validity. For this reason it is preferable to focus on (logical) validity and focus on what additional premises are needed to turn an intuitively convincing argument into a valid argument. In a second step one can then ask whether the additional premises are conceptual truths. If the answer is yes, then we can deem the argument conceptually valid despite being invalid in the strict sense of validity.
+
+%We could list further categories of validity, but the point is that when we discuss whether an argument is valid or not we need to make sure that we agree on the category of validity we are interested in: in the natural sciences we might be interested in nomological validity. In logic we are interested in logical validity.
+
+%When we consider cases of various kinds in order to evaluate the validity of an argument, we will make a few assumptions. The first assumption is that every case makes every sentence true or false---at least, every sentence in the argument under consideration.
+%So imagined scenarios have to specify all relevant facts.
+%Any imagined scenario which leaves it undetermined if a sentence in our argument is true will not be considered as a potential counterexample.
+%For instance, a scenario where Priya is a dentist but not an ophthalmologist will count as a case to be considered in the first few arguments in this section, but not as a case to be considered in the last two: it doesn't tell us if Mei is a mathematician, a botanist, or an acrobat.
+%If a case doesn't make a sentence true, we say it makes it \define{false}. We'll thus assume that cases make sentences true or false but never both.\footnote{Even if these assumptions seem common-sensical to you, they are controversial among philosophers of logic. First of all, there are logicians who want to consider cases where sentences are neither true nor false, but have some kind of intermediate level of truth. More controversially, some philosophers think we should allow for the possibility of sentences to be both true and false at the same time. There are systems of logic in which sentences can be neither true nor false, or both, but we will not discuss them in this book.}
+
+%Depending on what kinds of cases we consider as potential counterexamples, then, we arrive at different notions of consequence and validity. We might call an argument \define{nomologically valid} if there are no counterexamples that don't violate the laws of nature, and an argument \define{conceptually valid} if there are no counterexamples that don't violate conceptual connections between words.
+%For both of these notions of validity, aspects of the world (e.g., what the laws of nature are) and aspects of the meaning of the sentences in the argument (e.g., that ``ophthalmologist'' just means a kind of eye doctor) figure into whether an argument is valid.
+
+%\section{Formal validity}
 \section{Ampliative Arguments}
-The type of arguments we have considered so far are called \define{deductive} arguments. In deductive arguments the truth of the premises is supposed to guarantee the truth of the conclusion. Not all good arguments are deductive and sometimes there are no plausible missing premises you could add to someone's argument to make it valid (be it logically valid or valid in some other sense).
-However, this doesn't necessarily mean that the author was wrong or mistaken.
+There is further reason why many arguments of everyday reasoning are not strictly speaking valid: not all arguments of everyday reasoning are so-called \define{deductive} arguments. In deductive arguments the truth of the premises is supposed to guarantee the truth of the conclusion. Not all good arguments are deductive and sometimes there are no plausible missing premises you could add to someone's argument to make it valid.
+
+However, this doesn't necessarily mean that the interlocutor was wrong or mistaken.
 Deductively valid arguments with plausible premises are good arguments, but they aren't the only good arguments there are. This is just as well, since many arguments we give in our everyday lives are not deductively valid, even after filling in plausible missing premises. Here's an example:
 	\begin{earg}
 		\prem In January 1997, it rained in London.
@@ -765,12 +810,12 @@ London: John Murray)
 \problempart
 \begin{enumerate}
 \item What kind of things are valid or invalid?
-\item When is an argument said to be logically valid?
+\item When is an argument said to be valid?
 \item When is an argument said to be sound?
 \end{enumerate}
 
 \problempart
-Are the following logically valid? If it is invalid, describe a counterexample.
+Are the following valid? If it is invalid, describe a counterexample.
 \begin{enumerate}
 \item[x.]
 \begin{earg}
@@ -815,7 +860,7 @@ Are the following logically valid? If it is invalid, describe a counterexample.
 
 
 \problempart
-Which of the following arguments is logically valid? Which is invalid?
+Which of the following arguments is valid? Which is invalid?
 
 \begin{earg}
 \item Socrates is a man.
@@ -860,11 +905,11 @@ Which of the following arguments is logically valid? Which is invalid?
 \label{pr.EnglishCombinations}
 Could there be:
 	\begin{earg}
-		\item A logically valid argument that has one false premise and one true premise? \hfill \myanswer{Yes. \\Example: the first argument, above.}
-		\item A logically valid argument that has only false premises? \hfill \myanswer{Yes.\\Example: Socrates is a frog, all frogs are excellent pianists, therefore Socrates is an excellent pianist.}
-		\item A logically valid argument with only false premises and a false conclusion? \hfill \myanswer{Yes. \\The same example will suffice.}
-		\item An invalid argument that can be made logically valid by the addition of a new premise? \hfill\myanswer{Yes.\\ Plenty of examples, but let me offer a more general observation. We can \emph{always} make an invalid argument valid, by adding a contradiction into the premises. For an argument is valid if and only if it is impossible for all the premises to be true and the conclusion false. If the premises are contradictory, then it is impossible for them all to be true (and the conclusion false).}
-		\item A logically valid argument that can be made invalid by the addition of a new premise? \hfill \myanswer{No.\\ An argument is valid if and only if it is impossible for all the premises to be true and the conclusion false. Adding another premise will only make it harder for the premises all to be true together.}
+		\item A valid argument that has one false premise and one true premise? \hfill \myanswer{Yes. \\Example: the first argument, above.}
+		\item A valid argument that has only false premises? \hfill \myanswer{Yes.\\Example: Socrates is a frog, all frogs are excellent pianists, therefore Socrates is an excellent pianist.}
+		\item A valid argument with only false premises and a false conclusion? \hfill \myanswer{Yes. \\The same example will suffice.}
+		\item An invalid argument that can be made valid by the addition of a new premise? \hfill\myanswer{Yes.\\ Plenty of examples, but let me offer a more general observation. We can \emph{always} make an invalid argument valid, by adding a contradiction into the premises. For an argument is valid if and only if it is impossible for all the premises to be true and the conclusion false. If the premises are contradictory, then it is impossible for them all to be true (and the conclusion false).}
+		\item A valid argument that can be made invalid by the addition of a new premise? \hfill \myanswer{No.\\ An argument is valid if and only if it is impossible for all the premises to be true and the conclusion false. Adding another premise will only make it harder for the premises all to be true together.}
 	\end{earg}
 In each case: if so, give an example; if not, explain why not.
 

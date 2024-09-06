@@ -4,7 +4,7 @@
 \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
 
 \chapter{A Prolegomenon to TFL}
-In this part the lecture notes we wish to commence our study of logical validity and logical consequence. From now on, whenever we now talk about validity and arguments being valid we mean \emph{logical} validity. \todo{Remove given the removal of other notions of validity??} In \S\ref{s:Valid} we already introduced the idea that logical validity is validity in virtue of (logical) form. To develop this idea more precisely we will look at arguments in a formal language. This will enable us to single out arguments that are valid in virtue of their form and eventually make sense of the notion of an interpretation we used in our definition of validity in \S\ref{s:Valid}. We can then give a rigorous formal definition of validity of arguments in the formal language we shall devise. This language will be the language of Truth-functional logic (TFL).
+In this part the lecture notes we start developing our theory of validity and logical consequence, that is, we start introducing the logical language. In \S\ref{s:Valid} we already introduced the idea that an argument is valid, if the truth premises of the guarantee the truth of the conclusion in virtue of the (logical) form of the premises and the conclusion. It is this idea that suggest to spell out an account of validity in a formal language, that is, to conceive of the logical language as a formal language. This will enable us to single out arguments that are valid in virtue of their form and eventually make sense of the notion of an interpretation we used in our definition of validity in \S\ref{s:Valid}. We can then give a rigorous formal definition of validity of arguments in the formal language we shall devise. This language will be the language of Truth-functional logic (TFL).
 
 Before we introduce the language of TFL, let us take a look at why a formal language may be helpful for capturing validity of arguments, i.e., the validity of arguments in virtue of their form.
 
@@ -61,7 +61,7 @@ as well as the form
 	\end{earg}
 lead to valid arguments independently of what expressions we substitute for `A' and `B': we can understand (interpret) `A' and `B' in whatever way we want, as long as we take them to be place holder for sentences the resulting arguments the resulting argument will be valid. These examples illustrate the important idea that the validity of the arguments just considered has nothing to do with the meanings of English expressions like `Jenny is miserable', `Dipan is an avid reader of Tolstoy', or any other sentence. If it has to do with meanings at all, it is with the meanings of conjunction-words like `and', `or', `not,' and `if\ldots, then\ldots'. The language of truth-functional logic is built to single out characteristic feature of these conjunction words and this will enable us to fruitfully study the idea of validity of an argument in virtue of its form.
 
-When one introduces a language there are (at least) two task: the first is to specify the vocabulary of the language and equip the language with a grammar, that is, one has to specify how well-formed sentences of the language look like. This aspect of the language is called its \define{syntax}. The second task is to specify the \define{semantics} of the language. The semantics specifies how we are to understand the expressions of the language, what the sentences of the language mean etc. Part \ref{ch.TFL} develops both the syntax and the semantics of the language of TFL. Once this has been established we can consider how TFL may be useful for thinking about arguments in English. This will lead to the idea of symbolizing arguments in TFL and will be picked up in Part \ref{ch.symb}.
+When one introduces a language there are (at least) two task: the first is to specify the vocabulary of the language and equip the language with a grammar, that is, one has to specify how well-formed sentences of the language look like. This aspect of the language is called its \define{syntax}. The second task is to specify the \define{semantics} of the language. The semantics specifies how we are to understand the expressions of the language, what the sentences of the language mean etc. Part \ref{ch.TFL} develops both the syntax and the semantics of the language of TFL. Once this has been established we can consider how TFL may be useful for thinking about arguments in English. This will lead to the idea of symbolizing arguments in TFL and will be picked up in Part \ref{ch.TFLsymb}.
 
 %In Parts \ref{ch.TFL}--\ref{ch.NDTFL}, we are going to develop a formal system which allows us to symbolize many arguments in such a way as to show that they are valid in virtue of their form. That language will be \emph{truth-functional logic}, or TFL. It will have sentences like $$(A\eand (B\eif\enot C)),$$ which we will read ``$A$ and if $B$, then it is not the case that $C$''.
 
@@ -195,7 +195,7 @@ The definition specifies rules according to which sentences of the language can 
 \begin{enumerate}
 \item[1.] Tells us that atomic sentences as discussed in \S\ref{sec:as} are sentence of TFL.
 \end{enumerate}
-Recall that any uppercase Roman letters $A$--$W$, or with subscripts, e.g., $A_1, B_3, A_{100}, J_{375}$, are atomic sentences of TFL. Notice $X$, $Y$, and $Z$ are not atomic sentences. They are so-called \define{metavariables} and used as place holders for sentences of TFL (see more on metavairables in \S\ref{um}).
+Recall that any uppercase Roman letters $A$--$W$, or with subscripts, e.g., $A_1, B_3, A_{100}, J_{375}$, are atomic sentences of TFL. Notice $X$, $Y$, and $Z$ are not atomic sentences. They are so-called \define{metavariables} and used as place holders for sentences of TFL (see more on metavairables in \S\ref{s:UseMention}).
 
 
 
@@ -459,9 +459,9 @@ But this is no good: `$\enot \metaX$' is not a TFL sentence, since `$\metaX$' is
 
 What we really want to say is something like this:
 	\begin{itemize}
-		\item[2$'''$.] If \metaX is a sentence, then the result of concatenating the symbol `$\enot$' with the sentence \metaX is a sentence.
+		\item[2$'''$.] If \metaX is a sentence, then the result of placing the symbol `$\enot$' in front of the sentence \metaX is a sentence.
 	\end{itemize}
-This is impeccable, but rather long-winded. %Quine introduced a convention that speeds things up here. In place of (2$''$), he suggested:
+	This is impeccable, but rather long-winded. %Quine introduced a convention that speeds things up here. In place of (2$''$), he suggested:
 %	\begin{numberlist}
 %		\item[2$'''$.] If \metaX and \metaY are sentences, then $\ulcorner (\metaX\eand\metaY)\urcorner$ is a sentence
 %	\end{numberlist}
@@ -469,13 +469,13 @@ This is impeccable, but rather long-winded. %Quine introduced a convention that 
 But we can avoid long-windedness by creating our own conventions. We can perfectly well stipulate that an expression like `$\enot \metaX$' should simply be read \emph{directly} in terms of rules for concatenation. So, \emph{officially}, the metalanguage expression `$\enot \metaX$'
 simply abbreviates:
 \begin{quote}
-	the result of concatenating the symbol `$\enot$' with the sentence \metaX
+	the result of placing the symbol `$\enot$' in front of the sentence \metaX
 \end{quote}
 and similarly, for expressions like `$(\metaX \eand \metaY)$', `$(\metaX \eor \metaY)$', etc.
 
 
 \section{Quotation conventions for arguments}
-One of our main purposes for using TFL is to study arguments, and that will be our concern in \S\ref{ch.TruthTables}. In English, the premises of an argument are often expressed by individual sentences, and the conclusion by a further sentence. Since we can symbolize English sentences, we can symbolize English arguments using TFL.
+One of our main purposes for using TFL is to study arguments, and that will be our concern in \S\ref{sec:tt}. In English, the premises of an argument are often expressed by individual sentences, and the conclusion by a further sentence. Since we can symbolize English sentences, we can symbolize English arguments using TFL.
 
 Or rather, we can use TFL to symbolize each of the \emph{sentences} used in an English argument. However, TFL itself has no way to flag some of them as the \emph{premises} and another as the \emph{conclusion} of an argument.  (Contrast this with natural English, which uses words like `so', `therefore', etc., to mark that a sentence is the \emph{conclusion} of an argument.)
 
@@ -493,6 +493,34 @@ Strictly, the symbol `$\therefore$' will not be a part of the object language, b
 $$A, A \eif B \therefore B$$
 \emph{without any quotation marks}, to indicate an argument whose premises are (symbolized by) `$A$' and `$A \eif B$' and whose conclusion is (symbolized by)~`$B$'.
 In this Part, we have talked a lot \emph{about} sentences. So we should pause to explain an important, and very general, point.
+
+
+\begin{practiceproblems}
+\problempart
+Add quotation marks to the following sentences where necessary:
+\begin{enumerate}
+\item $\enot,\eand,\eor$, and $\eif$ are the basic logical connectives of the language of TFL.
+\item In a well-formed sentence for every opening bracket `(' there must be a closing bracket ).
+\item The sentence snow is white is true if and only if snow is white. 
+\item Kevin is a lecturer, whereas Kevin names Kevin, which is an expression of the language and not a lecturer.
+\end{enumerate}
+
+\problempart
+Given our convention on metavariables what do the following expressions convey:
+\begin{enumerate}
+\item $\metaX\wedge\metaY$
+\item $\metaY\eif\metaZ$
+\item $\enot(\metaY\eor\metaZ)$
+\end{enumerate}
+
+\problempart
+Consider the sentence
+\begin{itemize}
+\item Sharky is so-called because of his teeth.
+\end{itemize}
+Is `Sharky' used or mentioned in the above sentence.
+\end{practiceproblems}
+
 
 \chapter{Semantics of TFL}
 \section{Truth tables}\label{sec:tt}
