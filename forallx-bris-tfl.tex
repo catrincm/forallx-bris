@@ -867,7 +867,40 @@ F & F && T
 \end{center}
 According to the truth table a sentence $X\eif Y$ is true on line 1, 3, and 4. Let's check whether the rule is correct: $X\eif Y$ has to be true, if and only if $X$ is false or $Y$ is true. If $X$ is false, we are either in line 3 or in line 4, but in both lines $X\eif Y$ turns out true. If $Y$ is true, we are either in line 1 or line 3 of the truth table and $X\eif Y$ is true in both lines. So rule 5 is correct.
 
-With the definition in place we can now determine whether an arbitrary sentence of TFL is true relative to a given valuation $v$. This requires giving the complete truth table for this sentence. For example, consider the sentence $A\eand(B\eor C)$. To give the complete truth table of this sentence we first need to give the truth table for $B\eor C$ and then combine it with the truth values for $A$ to produce the complete truth table. We get the following truthtable:
+With the definition in place we can now determine whether an arbitrary sentence of TFL is true relative to a given valuation $v$. This requires giving the \define{complete truth table} for this sentence. For example, consider the sentence $A\eand(B\eor C)$. This sentence has 3 atomic sentences which means that there are $2^3$ different ways to assign truth values to the three atomic sentences, which in turn means that there are $2^3$ valuation to consider in the complete truth table: 
+
+\begin{center}
+\begin{tabular}{ccc|c}
+$A$&$B$&$C$&\\\hline
+T& T &T&\\
+T & T & F&\\
+T & F & T& \\
+T & F &F&\\
+F & T &T&\\
+F& T & F & \\
+F & F & T &\\
+F & F & F& 
+\end{tabular}
+\end{center}
+
+
+To give the complete truth table of this sentence we first need to give the truth table for $B\eor C$ using the truth rule for disjunction:
+
+\begin{center}
+\begin{tabular}{ccc|c}
+$A$&$B$&$C$&$B\eor C$\\\hline
+T& T &T&T\\
+T & T & F&T\\
+T & F & T&T \\
+T & F &F&F\\
+F & T &T&T\\
+F& T & F & T\\
+F & F & T &T\\
+F & F & F& F
+\end{tabular}
+\end{center}
+
+The final step in the construction of the truth table is to combine the columns of $A$ and $B\eor C$ and to compute the truth values of $A\wedge (B\eor C)$. We get the following truthtable:
 
 \begin{center}
 \begin{tabular}{ccc|c||c}
@@ -883,10 +916,7 @@ F & F & F& F& F
 \end{tabular}
 \end{center}
 
-We discuss constructing complete truth tables for sentences of TFL in more detail in \S\ref{sec:ctt}. But inspecting the truth table we see that `$A\eand(B\eor C)$' is true relative relative to an interpretation $v$ if and only if `$A$' is true relative relative to v and at least one of `$B$' and `$C$' is also true relative to $v$. To this effect we only need to check the lines 1,2, and 3 of the truth table, as these are the only lines in which `$A\eand(B\eor C)$' is true.
-
-
-
+By inspecting the truth table we see that `$A\eand(B\eor C)$' is true relative relative to an interpretation $v$ if and only if `$A$' is true relative relative to v and at least one of `$B$' and `$C$' is also true relative to $v$. To this effect we only need to check the lines 1,2, and 3 of the truth table, as these are the only lines in which `$A\eand(B\eor C)$' is true. Using the above strategy we can construct truth tables for all sentences of TFL. Given a truth table for some sentence of TFL it is easy to check under which conditions (valuations) the sentence is true (false). In \S\ref{sec:ctt} we will provide and discuss a \emph{How to guide} for constructing complete truth tables.
 
  \section{Validity and other logical notions}
  In \S\ref{s:Valid} we said that an argument was valid, if and only if there is no interpretation such that all premises are true but the conclusion false. At that point the definition was suggestive, but we lacked a clear understanding of `interpretation' and when a sentence is true relative to an interpretation. But for the language of TFL we can now turn the informal definition in a precise and rigorous definition.
@@ -911,7 +941,16 @@ $v_4$&F & F & \textbf{T}& \textbf{T} & \textbf{T}
 
 In the truth table we have used the truth table for negation to compute the truth value of $\enot B$ ($\enot A$) from $B$ ($A$) and the truth value of the conditional to obtain the value of $A\eif B$ from the values of $A$ and $B$. By inspecting the truth table we see that only relative to valuation $v_4$ all the premises of the argument ($\enot B$ and $A\eif B$) are true. But relative to $v_4$ the conclusion $\enot A$ is true likewise. There is no valuation relative to which all premises are true, but the conclusion false. The argument is valid.
 
-Unfortunately, when we consider arguments that involve more atomic sentences we need to consider more valuations: for $n$ atomic sentences there are $2^n$ different options for assigning truth values to these atomic sentences, that is we need to consider $2^n$ different valuations. Hence, the more atomic sentences one needs to consider the longer the truth tables will be.
+Unfortunately, when we consider arguments that involve more atomic sentences we need to consider more valuations: for $n$ atomic sentences there are $2^n$ different options for assigning truth values to these atomic sentences, that is we need to consider $2^n$ different valuations. Hence, the more atomic sentences one needs to consider the longer the truth tables will be. Fortunately, there is a straightforward strategy that makes it easy to find all the different valuations.
+
+\subsection{How to find all valuations}
+\factoidbox{In order to fill in the columns of a complete truth table, begin
+with the right-most atomic sentence and \emph{alternate} between ‘T’ and
+‘F’. In the next column to the left, write \emph{two} ‘T’s, write two ‘F’s,
+and repeat. For the third atomic sentence letter, write \emph{four} ‘T’s followed
+by four ‘F’s. This would yields an eight line truth table. For a 16 line truth table, the next column of sentence
+letters should have \emph{eight} ‘T’s followed by eight ‘F’s. For a 32 line
+table, the next column would have \emph{16} ‘T’s followed by 16 ‘F’s, and so on}
 
 It is worth highlighting a peculiar feature of the definition of validity: there are valid arguments without a premise. Consider the argument
 $$\therefore A\eor\enot A.$$
@@ -926,9 +965,13 @@ $v_2$&F & T & \textbf{T}
 \end{center}
 
 $A\eor\enot A$ is true on both $v_1$ and $v_2$. The argument is valid. The conclusions of arguments with no premises are called \define{logical truths} or \define{tautologies}.
+
 \factoidbox{\label{logical truth}A TFL-sentence $X$ is called a \define{logical truth} or \define{tautology} if and only if the TFL-argument $\therefore X$ is valid.}\todo{add in the true on all valuations!}
-A logical truth is a TFL-sentence that is true relative to every valuation. Similarly, it follows from every other TFL-sentence (Exercise: explain why). A sentence $Y$ \define{follows from} the sentences $X_1,\ldots,X_n$, that is when $Y$ is a \define{logical consequence} of $X_1,\ldots,X_n$:
+
+A logical truth is a TFL-sentence that is true relative to every valuation. Alternatively, one can say that a TFL sentence is a logical truth if and only if it is a \define{logical consequence} of (\define{follows from}) any TFL sentence (Exercise: explain why).
+
 \factoidbox{\label{TFLcons}$Y$ is a \define{logical consequence} of $X_1,\ldots,X_n$ if and only if the argument $X_1,\ldots,X_n\therefore Y$ is valid.}
+
 Notice one important  difference between validity and consequence: the former is a property of TFL-arguments while the latter is a property of TFL-sentences!
 
 A logical truth follows from every sentence. In contrast, every sentence  follows from a \define{logical contradiction}.
@@ -939,7 +982,7 @@ We end this section by introducing three further important logical notions: \def
 \factoidbox{\label{TFLconsist}A collection of TFL-sentences $X_1,\ldots,X_n$ (with possibly $n=1$) is \define{consistent} iff there is a valuation relative to which $X_1,\ldots,X_n$ are true. Otherwise the collection is \define{inconsistent}.}
 
 \factoidbox{\label{TFLconting}A sentence of TFL  is called \define{contingent}. If it is part of a consistent collection and not a logical truth.}
-Any collection of sentences that contains a logical contradiction is inconsistent, and so a logical contradiction is not a contingent sentence. A contingent sentence is a sentence for which we can find a valuation relative to which it is true, but we can also find a valuation relative to which it is false.
+Any collection of sentences that contains a logical contradiction is inconsistent, and so a logical contradiction is not a contingent sentence. A contingent sentence is a sentence for which we can find a valuation relative to which it is true, but we can also find a valuation relative to which it is false. (Exercise: every sentence of TFL is either a logical truth, a logical contradiction, or a contingent sentence. Why?) 
 
 The final notion we introduce is that of logical equivalence.
 \factoidbox{\label{TFLequiv}$X$ and $Y$ are \define{logically equivalent} if and only if $X$ is a logical consequence of $Y$ and $Y$ a logical consequence of $X$.}
@@ -1069,7 +1112,7 @@ Valuation&$I$&$H$&$\enot I$&$(\enot I\eand H)$&$(\enot I\eand H)\eif H$\\\hline
 $v_1$&T&T&F&F&T\\
 $v_2$&T&F&F&F&T\\
 $v_3$&F&T&T&T&T\\
-$v_4$&F&F&T&F&Y
+$v_4$&F&F&T&F&T
 \end{tabular}
 \end{center}
 We worked these out by the following procedure:
