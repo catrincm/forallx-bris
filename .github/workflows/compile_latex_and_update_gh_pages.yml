@@ -37,12 +37,6 @@ jobs:
         run: |
           cp ./main_repo/forallxbris-accessible.pdf ./main_repo/site/
 
-      - name: Compile forallxbris-withanswers.tex
-        uses: xu-cheng/latex-action@v3
-        with:
-          root_file: forallxbris-withanswers.tex
-          working_directory: ./main_repo
-
       - name: Copy to ./site/ directory
         run: |
           cp ./main_repo/forallxbris-withanswers.pdf ./main_repo/site/
