@@ -37,10 +37,6 @@ jobs:
         run: |
           cp ./main_repo/forallxbris-accessible.pdf ./main_repo/site/
 
-      - name: Copy to ./site/ directory
-        run: |
-          cp ./main_repo/forallxbris-withanswers.pdf ./main_repo/site/
-
       - name: Copy README to ./site/ directory
         run: cp ./main_repo/README.md ./main_repo/site/index.md
 
