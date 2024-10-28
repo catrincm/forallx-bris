@@ -3,8 +3,8 @@
 \label{ch.FOL}
 \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
 \chapter{Building blocks of FOL}\label{s:FOLBuildingBlocks}
-\section{The need to decompose sentences}
-We have been studying arguments, and in particular their validity. In section \ref{sec:checking validity} we gave a strategy for checking the validity of an argument by using TFL. That was:
+%\section{The need to decompose sentences}
+We have been studying arguments, and in particular their validity. In Part \label{ch.TFLsymb} we gave a strategy for checking the validity of an argument by using TFL. That was:
 \begin{highlighted}\begin{enumerate}
 \item Find the structure of the argument. \\Identify the premises and conclusion.
 \item \label{itm:validity-symbolise}Symbolise the argument in TFL.
@@ -15,7 +15,7 @@ We have been studying arguments, and in particular their validity. In section \r
 \end{enumerate}
 \end{highlighted}
 
-However, this only allows you to conclude that the original English language argument is valid. But what if the best TFL symbolisation is invalid? Consider the following arguments:
+However, this allows you to conclude that the original English language argument is valid provided, if its best TFL-symbolization is. But what if the best TFL symbolisation is invalid? Consider the following arguments:
 \begin{enumerate}
 \item \begin{earg}
 \label{willard1}
@@ -50,21 +50,16 @@ using
 \item[R] There is at least one person who doesn't love Manchester United.
 \end{ekey}
 
-Both of these TFL arguments are invalid. But the original English arguments are themselves valid.
-
-
-
-The problem is not that we have made a mistake while symbolizing the argument. The problem lies with TFL itself.
+Both of these TFL arguments are invalid. But the original English arguments seem valid. Indeed, they seem valid independently of their subject matter, that is, independently of whether they are talking about Alice, logicians, funny hats or loving Manchester United. They seem to be valid in virtue of the argument form. And it is not that we have made a mistake while symbolizing the argument. The problem lies with TFL itself.
 %`All logicians wear funny hats' is about both logicians and hat-wearing. By not retaining this structure in our symbolization, we lose the connection between Willard's being a logician and Willard's wearing a hat.
-The expressive power of TFL is not rich enough to explain why these English arguments are valid.
-TFL can recognise arguments that are valid in virtue of the meanings of `and', `if' etc. But these arguments are valid in virtue of something else.
+The expressive power of TFL is not rich enough to explain why these English arguments are valid. TFL can recognise arguments that are valid because of their truth-functional structure, but these arguments are valid in virtue of something else. In particular, their validity seems to hinge on our understanding of `all', `everyone', and `there is'.
+
+
 %Arguments in TFL are valid in virtue of the meanings of the connectives $\enot, \eif,\eand, \eor$. These arguments, though are valid in virtue of something else.
 
-The first argument is valid in virtue of the meaning of `all' and the fact that `Alice' is a name. The second argument is valid in virtue of the meanings of `there is', `every' and `not'.
+%The first argument is valid in virtue of the meaning of `all' and the fact that `Alice' is a name. The second argument is valid in virtue of the meanings of `there is', `every' and `not'.
 
-We will introduce a new logical language which allows us to capture this. We will call this language \emph{first-order logic}, or \emph{FOL}.
-
-The details of FOL will be explained throughout this chapter.
+We will introduce a new logical language that will allow us to capture the validity of these arguments. We will call this language \emph{first-order logic}, or \emph{FOL}. The details of FOL will be explained throughout this chapter.
 
 %, but we will here give a sneak-preview by saying how the first argument will be symbolised in FOL to give you some ideas of how FOL works.
 %
@@ -448,7 +443,7 @@ This doesn't say of any specific individual that they wear a funny hat, but it s
 }
 
 
-We read $\forall$ as ``for all'' or ``for every''. In this case what do we want to say holds of all the people? We want to say that they wear a funny hat. In this sentence we used the ``they''. This doesn't refer to any particular person, Harry or Katie, instead it can refer to anyone. That is, we are using it as a variable.
+$\forall$ should be read as ``everything'' or ``everyone'' (although it is sometimes more convenient to merely read ``every'' or ``all'') . If we say that everyone wears a funny what do we want to say of \emph{all} people? We want to say that they wear a funny hat. In this sentence we used the ``they''. This doesn't refer to any particular person, Harry or Katie, instead it can refer to anyone. That is, we are using it as an \define{individual variable}.
 We might then paraphrase ``Everyone wears a funny hat'' more explicitly as:
 \begin{quotation}
 For everyone $_x$: $x$ wears a funny hat.
@@ -472,20 +467,24 @@ We can break this up:
 \end{equation*}
 So we can symbolise it as $$\forall x(Hx\eand Fx)$$
 
-We have here been using $\forall x$ to be read out-loud as ``for everyone''.
-But how the quantifier should be read depends on the \define{domain}. The domain is the collection of things that we are talking about. $\forall x$ should be read as ``for all objects in the domain $_x$''. If the domain also contains dogs, or landmarks, then it also says something about those dogs, or landmarks. We say that the quantifiers \emph{range over} the objects in the domain.
+We have here been using $\forall x$ to be read out-loud as ``everyone''.
+But when we usually say ``everyone'' (``everything'') do we always mean to talk about every person (every thing)? No! Suppose I say
+\begin{quotation}Everyone has done the problem sheet.\end{quotation}
+then I do not mean to say that every person in the world has done the problem sheet. Arguably, I rather want to say that every student of the logic course has done the problem sheet. This suggests that how a quantifier is to be understood depends on the \define{domain}. The domain is the collection of things that we are talking about. Ultimately, using the notion of a domain the quantifier $\forall x$ should be understood as ``for all objects in the domain $_x$''. If the domain also contains dogs, or landmarks, then it also says something about those dogs, or landmarks. We say that the quantifiers \emph{range over} the objects in the domain.
 
 If I give
 \begin{ekey}
 \item[Ex]\gap{x} is energetic
 \item[\text{domain}] dogs
 \end{ekey}
-Then $\forall x Ex$ symbolises ``All dogs are energetic''. If the domain is all dogs, then we'd then read $\forall x$ as ``For every dog $_x$ : \ldots".
+Then $\forall x Ex$ says that all dogs are energetic. More generally, in this case we read $\forall x$ as ``For every dog $_x$ : \ldots".
 
 If I have a domain consisting of landmarks, then $\forall x$ is read as ``For every landmark $_x$ : \ldots".
 
-Domains are useful even when we are just talking about people.
-When we use sentences like ``Everyone wears a funny hat'' in English, we usually do not mean everyone now alive on the Earth. We certainly do not mean everyone who was ever alive or who will ever live. We usually mean something more modest: everyone now in the building, everyone enrolled in the ballet class, or whatever.
+It should be immediate why it is important to highlight the domain when symbolizing arguments in FOL: depending on the choice of the domain a sentence like `Everyone has done the problem sheet.' may be true or false and thus the validity of an argument will be affected by the choice of the domain.
+
+%Domains are useful even when we are just talking about people.
+%When we use sentences like ``Everyone wears a funny hat'' in English, we usually do not mean everyone now alive on the Earth. We certainly do not mean everyone who was ever alive or who will ever live. We usually mean something more modest: everyone now in the building, everyone enrolled in the ballet class, or whatever.
 
 
 \newglossaryentry{domain}{
@@ -522,7 +521,7 @@ The domain can be chosen however you like, however, in FOL domains have to conta
 
 
 \section{Existential Quantifier}
-The Universal Quantifier, $\forall$, allows us to capture English notions like ``every'', ``for all'' and ``any''. The final component of FOL is the Existential Quantifier, $\exists$. This allows us to capture ``for some'', ``there exists''.
+The Universal Quantifier, $\forall$, allows us to capture English notions like ``everything''. The final component of FOL is the Existential Quantifier, $\exists$. This allows us to capture ``someone'' or``something''.
 
 To symbolise
 \begin{earg}
@@ -582,21 +581,303 @@ giving our symbolisation key:
 \end{ekey}
 
 
-As for the universal quantifier, how to read ``$\exists x$'' depends on the domain. We might talk not about people but about dogs. If our domain is dogs, then we read $\exists x$ as ``There is a dog $_x$ such that:``.
+As for the universal quantifier, how to read ``$\exists x$'' depends on the domain. We might talk not about people but about dogs. If our domain is dogs, then we understand $\exists x$ as ``There is a dog $_x$ such that:``. However, a more neutral way of understanding the existential quantifier, which anticipates the semantics for FOL is as `` there exists an object of the domain $_x$'', which also makes it obvious why $\exists $ is called the existential quantifier.  
 
-If we want to symbolise:
+%If we want to symbolise:
+%\begin{earg}
+%\item[\ex{q.dog}] Some dog is badly behaved.
+%\end{earg}
+%We can use
+%$$\underbrace{\underbrace{\text{There is a dog $_x$ such that}}_{\exists x}: \underbrace{\text{$x$ is badly behaved}}_{Bx}}_{\exists xBx}$$
+%giving our symbolisation key:
+%\begin{ekey}
+%\item[\text{domain}] dogs
+%\item[Bx]\gap{x} is badly behaved
+%\end{ekey}
+
+\chapter{Sentences of FOL}\label{s:FOLSentences}
+\todo[inline]{This section got moved above symbolising with one quantifier. But I actually think it might be better}
+We have now informally introduced the basic building blocks of sentences of FOL. We will now carefully introduce what it is to be a sentence of FOL.
+
+%This is important so that when we know what complex sentence of FOL can look like, and so when symbolising complex sentences of English how to do it.
+
+%We know how to represent English sentences in FOL. The time has finally come to define the notion of a \emph{sentence} of FOL.
+
+\section{Vocabulary of FOL}
+We'll start by summarising, a bit more formally, the vocabulary of FOL:
+
+\begin{description}
+\item[Predicates] $A,B,C,\ldots,W$,
+with subscripts, as needed: $A_1, Z_2,A_{25},J_{375},\ldots$.\footnote{Each predicate will have a number of places associated with it. We should thus really introduce:\begin{description}
+\item [Zero-Place Predicates = Atomic sentences of TFL]$A^0,B^0,\ldots,Z^0$,
+with subscripts, as needed: $A_1^0, Z_2^0,A_{25}^0,J_{375}^0,\ldots$
+\item [One-Place Predicates]$A^1,B^1,\ldots,Z^1$,
+with subscripts, as needed: $A_1^1, Z_2^1,A_{25}^1,J_{375}^1,\ldots$
+\item [Two-Place Predicates]$A^2,B^2,\ldots,Z^2$,
+with subscripts, as needed: $A_1^2, Z_2^2,A_{25}^2,J_{375}^2,\ldots$
+\item [Three-Place Predicates]$A^3,B^3,\ldots,Z^3$,
+with subscripts, as needed: $A_1^3, Z_2^3,A_{25}^3,J_{375}^3,\ldots$
+\item etc. We drop the superscripts for ease.
+\end{description}}
+\item[Names] $a,b,c,\ldots, s, t$, or
+with subscripts, as needed $a_1, b_{224}, h_7, m_{32},\ldots$
+\item[Variables] $x,y,z$, or
+with subscripts, as needed $x_1, y_1, z_1, x_2,\ldots$. $u,v,w$ may also be used.
+\item[Connectives]  $\enot,\eand,\eor,\eif$
+\item[Brackets] ( , )
+\item[Quantifiers]  $\forall, \exists$
+\end{description}
+%We define an \define{expression of FOL} as any string of symbols of FOL. Take any of the symbols of FOL and write them down, in any order, and you have an expression.
+
+%\section{Terms and formulas}
+%\label{s:TermsFormulas}
+%
+%In \S\ref{s:TFLSentences}, we went straight from the statement of the vocabulary of TFL to the definition of a sentence of TFL. In FOL, we will have to go via an intermediary stage: via the notion of a \define{formula}. The intuitive idea is that a formula is any sentence, or anything which can be turned into a sentence by adding quantifiers out front. But this will take some unpacking.
+%
+%We start by defining the notion of a term.
+%	\factoidbox{
+%		A \define{term} is any name or any variable. }
+%So, here are some terms:
+%	$$a, b, x, x_1 x_2, y, y_{254}, z$$
+%Next we need to define atomic formulas.
+%	\factoidbox{
+%		\begin{enumerate}
+%		\item If $\meta{R}$ is an $n$-place predicate and $\meta{t}_1, \meta{t}_2, \ldots, \meta{t_n}$ are terms, then $\meta{R t}_1 \meta{t}_2 \ldots \meta{t}_n$ is an atomic formula.
+%		\item If $\meta{t}_1$ and $\meta{t}_2$ are terms, then $\meta{t}_1 = \meta{t}_2$ is an atomic formula.
+%		\item Nothing else is an atomic formula.
+%		\end{enumerate}
+%	}
+%
+%\newglossaryentry{term}{
+%  name = term,
+%  description = {either a \gls{name} or a \gls{variable}}
+%}
+%
+%\newglossaryentry{formula}{
+%  name = formula,
+%  description = {an expression of FOL built according to the recursive rules in \S\ref{s:TermsFormulas}}
+%}
+%
+%
+%The use of script letters here follows the conventions laid down in \S\ref{s:UseMention}. So, $\meta{R}$ is not itself a predicate of FOL. Rather, it is a symbol of our metalanguage (augmented English) that we use to talk about any predicate of FOL. Similarly, $\meta{t}_1$ is not a term of FOL, but a symbol of the metalanguage that we can use to talk about any term of FOL. So, where $F$ is a one-place predicate, $G$ is a three-place predicate, and $S$ is a six-place predicate, here are some atomic formulas:
+%	\begin{center}
+%		$x = a$\\
+%		$a = b$\\
+%		$Fx$\\
+%		$Fa$\\
+%		$Gxay$\\
+%		$Gaaa$\\
+%		$Sx_1 x_2 a b y x_1$\\
+%		$Sby_{254} z a a z$
+%	\end{center}
+%Once we know what atomic formulas are, we can offer recursion clauses to define arbitrary formulas. The first few clauses are exactly the same as for TFL.
+
+\section{Formulas}
+In \S\ref{s:TFLSentences}, we went straight from the presentation of the vocabulary of TFL to the definition of a sentence of TFL. In FOL, we will have to go via an intermediary stage, that is, we first need to introduce \define{formulas} of FOL. The intuitive idea is that a formula is any sentence, or anything which can be turned into a sentence by adding quantifiers out front. But this will take some unpacking.
+
+As we did for TFL, we will  present a inductive definition of a formula of FOL. The starting point of this is the notion of an \emph{atomic formula}. In TFL we started our definition with the notion of an atomic sentence, which were just given to us in our vocabulary. In FOL, the starting point of our definition is the notion of an atomic formula. Atomic formulas will be given by the following definition:
+\factoidbox{ If $\metaPredicate$ is an $n$-place predicate and $\metaterm_1,\ldots\metaterm_n$ are either variables or names, then $\metaPredicate\metaterm_1\ldots\metaterm_n$ is an \define{atomic formula}.\footnotemark}
+\footnotetext{In FOL variables and names are both called (singular) terms. Notice that in the above definition $\metaPredicate$ and $\metaterm$ are metavariables ranging over names of predicates and names of terms respectively.}
+
+For example, if $D$ is a one-place predicate (we might have introduced it to symbolise `\gap{x} is a dog'), and $L$ is a two-place predicate (we might have introduced it to symbolise `\gap{x} loves \gap{y}'), then the following are atomic formulas:
+\begin{center}
+ $Db$,
+ $Dx$,
+ $Dy$,
+ $Lki$,
+ $Lkx$,
+ $Lyz$.
+\end{center}
+
+Formulas are constructed by starting with these and using either our TFL connectives or our quantifiers.
+
+We now give the inductive definition of what it is to be a formula of FOL.
+	\factoidbox{\label{FOLformula}
+	\begin{enumerate}
+		\item If $\metaPredicate$ is an $n$-place predicate and $\metaterm_1,\ldots\metaterm_n$ are either variables or names, then $\metaPredicate\metaterm_1\ldots\metaterm_n$ is a formula.\\These are called \define{atomic formulas}.
+		\item If \metaX is a formula, then $\enot\metaX$ is a formula.
+		\item If \metaX and \metaY are formulas, then \begin{enumerate}
+		\item $(\metaX\eand\metaY)$ is a formula,
+		\item $(\metaX\eor\metaY)$ is a formula,
+		\item $(\metaX\eif\metaY)$ is a formula, and
+		%\item $(\metaX\eiff\metaY)$ is a formula.
+		\end{enumerate}
+		\item\label{item:quantifiers}
+		 If $\metaX$ is a formula, $\metav$ is a variable , then \begin{enumerate}
+		 \item $\forall \metav\metaX$ is a formula
+		 \item $\exists\metav\metaX$ is a formula.
+		 \end{enumerate}
+		\item Nothing else is a formula.
+	\end{enumerate}
+	}
+	\newglossaryentry{formula}
+	{
+	name=formula of FOL,
+	description={A string of symbols in FOL that can be built up according to the recursive rules given on p.~\pageref{FOLformula}}
+	}
+	As for TFL, we start out with some formulas, such as $Dx$ or $Db$, and we can construct more complicated formulas with our connectives, e.g. \begin{center}
+	$(Dx\eand Db)$, \\
+	$\enot (Dx\eand Db)$\\
+	$(\enot(Dx\eand Db)\eif Lxy)$
+	\end{center}And we can display their construction using our formation trees, as in 	\ref{S:formationtree}.
+		\begin{center}
+		\begin{forest}
+			[$(\enot(Dx\eand Db)\eif Lxy)$
+				[$\enot (Dx\eand Db)$
+					[$(Dx\eand Db)$
+						[$Dx$]
+						[$Db$]
+					]
+				]
+				[$Lxy$]
+			]
+		\end{forest}
+		\end{center}This is exactly as in the case of TFL, the only difference is that the ``leaves'' of the tree have more structure to them: they're predicates applied to names or variables rather than simply the single atomic sentences that we had in TFL.
+
+		The new clauses here are in \ref{item:quantifiers}. This lets us put $\forall x$ in front of a formula, e.g.~$Bx$ to construct a formula $\forall xBx$. We can also add quantifiers when the formula was already more complicated, e.g., we can construct a formula $$\forall x(\enot(Dx\eand Db)\eif Lxy).$$ We could also have added an existential quantifier, $\exists$ to construct $$\exists x(\enot(Dx\eand Db)\eif Lxy).$$ We can also do it with other variables, e.g. $$\forall y(\enot(Dx\eand Db)\eif Lxy).$$ We can then add further quantifiers to \emph{these} new formula, to construct, e.g.~$$\exists y\forall x(\enot(Dx\eand Db)\eif Lxy).$$
+
+	We can again display the structure and construction of the sentence perspicuously by presenting a formation tree:
+
+			\begin{center}
+			\begin{forest}
+				[$\exists y\forall x(\enot(Dx\eand Db)\eif Lxy)$[$\forall x(\enot(Dx\eand Db)\eif Lxy)$[$(\enot(Dx\eand Db)\eif Lxy)$
+					[$\enot (Dx\eand Db)$
+						[$(Dx\eand Db)$
+							[$Dx$]
+							[$Db$]
+						]
+					]
+					[$Lxy$]
+				]]]
+			\end{forest}
+			\end{center}
+
+			One more example:
+
+	\begin{center}
+	\begin{forest}
+		[$\exists z\forall y (Ryz\eand \exists x Qx)$
+			[$\forall y (Ryz\eand\exists x Qx)$
+				[$(Ryz\eand \exists x Qx)$
+					[$Ryz$]
+					[$\exists x Qx$
+						[$Qx$]
+					]
+				]
+			]
+		]
+	\end{forest}
+	\end{center}
+	Moving up the formation tree is following one of the rules of the recursive specification of what it is to be a sentence.
+
+
+
+%Why in \ref{item:quantifiers} did we have the restriction that $\exists \metav$ or $\forall \metav$ is not already in $\metaX$? This is to ensure that variables only serve one master at any one time (see \S\ref{s:MultipleGenerality}).Otherwise we could see that $\forall x Rxx$ is a sentence and then conclude that $\exists x\forall x Rxx$, which is not a good sentence.  However, note that $\exists x Cx\;\eor\;\forall x Bx$ is a sentence. Here the variable $x$ is used in both quantifiers, but there's no ambiguity because the sentence was constructed by combing the two sentences $\exists x Cx$ and $\forall xBx$ with a connective, $\eor$. The \emph{scope} of $\exists x$ is just $\exists x Cx$; it doesn't look ``over'' the connective to where $\forall x$ is used. So the two uses of $x$ are kept separate and no problems arise. However, to avoid any potential worries it is generally a good idea to use different variables when symbolising sentences; in this case one could equally well give $\exists x Cx\;\eor\;\forall y By$ as a symbolisation.
+
+ The notions of scope and main logical operators that were given in \ref{s:TFLSentences} equally applies to FOL but now the main logical operator might be a quantifier. These were:
+% In fact, we can now give a formal definition of scope which incorporates the definition of the scope of a quantifier. Here we follow the case of TFL, though we note that a logical operator can be either a connective or a quantifier:
+	\factoidbox{
+		The \define{main logical operator} in a sentence is the operator that was introduced last when that sentence was constructed using the recursion rules.
+
+\bigskip
+
+		The \define{scope} of a logical operator in a sentence is the formula for which that operator is the main logical operator.
+	}\todo{formula is undefined}
+We can graphically illustrate scopes as follows:
+$$
+\overbrace{\exists z
+\underbrace{\forall y 
+(\overbrace{\exists x Qx}^{\text{scope of $\exists x$}}
+\eand Ryz)}_{\text{scope of $\forall y$}}
+}^{\text{scope of $\exists z$}}
+$$
+
+
+\newglossaryentry{main logical operator}{
+  name = main logical operator,
+  description = {the operator used last in the construction of a \gls{formula}}
+}
+
+\newglossaryentry{scope}{
+  name = scope,
+  description = {the subformula of a \gls{formula} of FOL for which the \gls{main logical operator} is the operator}
+}
+
+
+\section{Sentences}
+Recall that we are largely concerned in logic with assertoric sentences: sentences that can be either true or false. Many formulas are not sentences. Consider the following symbolization key:
+	\begin{ekey}
+		\item[\text{domain}] people
+		\item[Lxy] \gap{x} loves \gap{y}
+		\item[b] Boris
+	\end{ekey}
+Consider the atomic formula $Lzz$. Can it be true or false? You might think that it will be true just in case the person named by $z$ loves themself, in the same way that $Lbb$ is true just in case Boris (the person named by $b$) loves himself. \emph{However, $z$ is a variable, and does not name anyone or any thing.}
+
+Of course, if we put an existential quantifier out front, obtaining $\exists zLzz$, then this would be true iff someone loves herself. Equally, if we wrote $\forall z Lzz$, this would be true iff everyone loves themself. The point is that we need a quantifier to tell us how to deal with a variable.
+
+Let's make this idea precise.
+	\factoidbox{
+		A \define{bound variable} is an occurrence of the variable \metav that is within the scope of either $\forall\metav$ or $\exists\metav$.
+
+		\bigskip
+
+		A \define{free variable} is any variable that is not bound.
+	}
+
+\newglossaryentry{bound variable}{
+  name = bound variable,
+  description = {an occurrence of a variable in a \gls{formula} which is in the scope of a quantifier followed by the same variable}
+}
+
+\newglossaryentry{free variable}{
+  name = free variable,
+  description = {an occurrence of a variable in a \gls{formula} which is not a \gls{bound variable}}
+}
+
+
+For example, consider the formula
+	$$\forall x(Ex \eor Dy) \eif \exists z(Ex \eif Lzx)$$
+The scope of the universal quantifier $\forall x$ is $\forall x (Ex \eor Dy)$, so the first $x$ is bound by the universal quantifier. However, the second and third occurrence of $x$ are free. Equally, the $y$ is free. The scope of the existential quantifier $\exists z$ is $(Ex \eif Lzx)$, so $z$ is bound.
+
+Finally we can say what a sentence of FOL is
+	\factoidbox{
+		A \define{sentence} of FOL is any formula of FOL that contains no free variables.
+	}
+
+\newglossaryentry{sentence of FOL}{
+  name = sentence of FOL,
+  description = {a expression of FOL constructed according to the formation rules with no free variables. }
+}
+
+
+
+\section{Bracketing conventions}
+
+We will adopt the same notational conventions governing brackets that we did for TFL (see \S\ref{s:TFLSentences}):  we may omit the outermost brackets of a formula.
+
+%First, we may omit the outermost brackets of a formula.
+
+%Second, we may use square brackets, `[' and `]', in place of brackets to increase the readability of formulas.
+
+%Third, we may omit brackets between each pair of conjuncts when writing long series of conjunctions.
+
+%Fourth, we may omit brackets between each pair of disjuncts when writing long series of disjunctions.
+
+\begin{practiceproblems}
+\problempart
+\label{pr.freeFOL}
+Identify which variables are bound and which are free.
 \begin{earg}
-\item[\ex{q.dog}] Some dog is badly behaved.
+\item $\exists x Lxy \eand \forall y Lyx$
+\item $\forall x Ax \eand Bx$
+\item $\forall x (Ax \eand Bx) \eand \forall y(Cx \eand Dy)$
+\item $\forall x\exists y[Rxy \eif (Jz \eand Kx)] \eor Ryx$
+\item $\forall x_1(Mx_2 \eif Lx_2x_1) \eand \exists x_2 Lx_3x_2$
 \end{earg}
-We can use
-$$\underbrace{\underbrace{\text{There is a dog $_x$ such that}}_{\exists x}: \underbrace{\text{$x$ is badly behaved}}_{Bx}}_{\exists xBx}$$
-giving our symbolisation key:
-\begin{ekey}
-\item[\text{domain}] dogs
-\item[Bx]\gap{x} is badly behaved
-\end{ekey}
 
-Before going further with more symbolisations and symbolisations involving many-placed predicates
+
+\end{practiceproblems}
+
 
 
 
@@ -694,9 +975,9 @@ Before going further with more symbolisations and symbolisations involving many-
 %But we also have dogs in our domain because we also want to symbolise
 
 
-\section{Symbolisations}
+\chapter{FOL-Symbolisations}
 \label{s:SymbolisingComplexFOL}
-Before moving to symbolise more complex sentences, we explicitly summarise our strategy for symbolising complex sentences. This extends the strategy that we used for TFL in \S\ref{s:SymbolisingComplexTFL}:
+We have already seem the key idea of FOL symbolisation in Chapter \ref{s:FOLBuildingBlocks} applied to sentences with limited logical complexity. Before moving to symbolise more complex sentences, we explicitly summarise our strategy for symbolising complex sentences. This extends the strategy that we used for TFL in \S\ref{s:SymbolisingComplexTFL}:
 
 \begin{highlighted}
 \begin{enumerate}
@@ -734,8 +1015,7 @@ Also remember that there were various further tricks from \ref{ch.TFL}, such as 
 
 \section{Clarification on Domains}\label{s:Domain}
 
-In FOL, the domain must always include at least one thing. Moreover, in English we can infer `something is angry' from `Gregor is angry'. In FOL, then, we will want to be able to infer $\exists x Ax$ from $Ag$. So we will insist that each name must pick out exactly one thing in the domain. If we want to name people in places beside Chicago, then we need to include those people in the domain.
-	\factoidbox{
+In FOL, the domain must always include at least one thing. Moreover, in English we can infer `something is angry' from `Gregor is angry'. In FOL, then, we will want to be able to infer $\exists x Ax$ from $Ag$. So we will insist that each name must pick out exactly one thing in the domain.	\factoidbox{
 		A domain must have \emph{at least} one member. A name must pick out \emph{exactly} one member of the domain, but a member of the domain may be picked out by one name, many names, or none at all.
 	}
 
@@ -765,11 +1045,11 @@ We could then symbolize sentence \ref{chimera1} as $Ac$ and sentence \ref{chimer
 
 Problems will arise when we ask whether these sentences are true or false.
 
-One option is to say that sentence \ref{chimera1} is not true, because there is no chimera. If sentence \ref{chimera1} is false because it talks about a non-existent thing, then sentence \ref{chimera2} is false for the same reason. Yet this would mean that $Ac$ and $\enot Ac$ would both be false. Given the truth conditions for negation, this cannot be the case.
+One option is to say that sentence \ref{chimera1} is not true, because there is no chimera. If sentence \ref{chimera1} is false because it talks about a non-existent thing, then sentence \ref{chimera2} is false for the same reason. Yet this would mean that $Ac$ and $\enot Ac$ would both be false. Given the truth conditions for negation, this cannot be the case, and contradict the Law of Excluded Middle.
 
 Since we cannot say that they are both false, what should we do? Another option is to say that sentence \ref{chimera1} is \emph{meaningless} because it talks about a non-existent thing. So $Ac$ would be a meaningful expression in FOL for some interpretations but not for others. Yet this would make our formal language hostage to particular interpretations. Since we are interested in logical form, we want to consider the logical force of a sentence like $Ac$ apart from any particular interpretation. If $Ac$ were sometimes meaningful and sometimes meaningless, we could not do that.
 
-This is the \emph{problem of non-referring terms}, and we will return to it later (see p.~\pageref{subsec.defdesc}.) The important point for now is that each name of FOL \emph{must} refer to something in the domain, although the domain can contain any things we like. If we want to symbolize arguments about mythological creatures, then we must define a domain that includes them. This option is important if we want to consider the logic of stories. We can symbolize a sentence like `Sherlock Holmes lived at 221B Baker Street' by including fictional characters like Sherlock Holmes in our domain.
+This is the \emph{problem of non-referring terms} which is important problem in philosophical logic and the philosophy of language. For our purpose the important point is to appreciate that each name of FOL \emph{must} refer to something in the domain (although the domain can contain any things we like). If we want to symbolize arguments about mythological creatures, then we must define a domain that includes them. This option is important if we want to consider the logic of stories. We can symbolize a sentence like `Sherlock Holmes lived at 221B Baker Street' by including fictional characters like Sherlock Holmes in our domain.
 
 
 
@@ -783,7 +1063,7 @@ To symbolise
 \end{earg}
 We want to paraphrase it in one of our standard forms, which we do as:
 \begin{equation*}
-\underbrace{\text{For everyone $_x$}}_{\forall x}: \underbrace{\text{$x$ loves Alice.}}_{Lxa}
+\underbrace{\text{Everyone $_x$}}_{\forall x}: \underbrace{\text{$x$ loves Alice.}}_{Lxa}
 \end{equation*}
 So we give the symbolisation $$\forall x Lxa$$ with the symbolisation key:
 \begin{ekey}
@@ -797,7 +1077,7 @@ If we instead want to symbolise
 \end{earg}
 We paraphrase this as:
 \begin{equation*}
-\underbrace{\text{For everyone $_x$}}_{\forall x}: \underbrace{\text{Alice loves $x$.}}_{Lax}
+\underbrace{\text{Everyone $_x$}}_{\forall x}: \underbrace{\text{Alice loves $x$.}}_{Lax}
 \end{equation*}
 So we give the symbolisation $$\forall x Lax$$
 
@@ -807,29 +1087,27 @@ To symbolise
 \end{earg}
 We paraphrase this as:
 \begin{equation*}
-\underbrace{\text{For someone $_x$}}_{\exists x}: \underbrace{\text{$x$ loves $x$.}}_{Lxx}
+\underbrace{\text{Someone $_x$}}_{\exists x}: \underbrace{\text{$x$ loves $x$.}}_{Lxx}
 \end{equation*}
 So we give the symbolisation $$\exists x Lxx$$
-
-
 
 If we want to symbolise
 \begin{earg}
 	\item[\ex{lovesesomeonethemselves}] Some dog likes playing with Finley.
 \end{earg}
-We can do:
-\begin{equation*}
-\underbrace{\text{For some dog $_x$}}_{\exists x}: \underbrace{\text{$x$ likes playing with Finley.}}_{Pxf}
-\end{equation*}
-So we'd offer $\exists  x\, Pxf$ with the symbolisation key:
-\begin{ekey}
-\item[\text{domain}] dogs
-\item[Pxy]\gap{x} likes playing with \gap{y}
-\item[f] Finley
-\end{ekey}
-This symbolisation is only legitimate, though, if Finley is referring to a dog rather than, for example, a person. This is because, as we said in \ref{s:Domain}, names have to name members of the domain. If Finley is a person then we have to ensure that our domain contains people too. But then how do we symbolise ``for some dog''?
+%We can do:
+%\begin{equation*}
+%\underbrace{\text{For some dog $_x$}}_{\exists x}: \underbrace{\text{$x$ likes playing with Finley.}}_{Pxf}
+%\end{equation*}
+%So we'd offer $\exists  x\, Pxf$ with the symbolisation key:
+%\begin{ekey}
+%\item[\text{domain}] dogs
+%\item[Pxy]\gap{x} likes playing with \gap{y}
+%\item[f] Finley
+%\end{ekey}
+%This symbolisation is only legitimate, though, if Finley is referring to a dog rather than, for example, a person. This is because, as we said in \ref{s:Domain}, names have to name members of the domain. If Finley is a person then we have to ensure that our domain contains people too. But then how do we symbolise ``for some dog''?
 
-We can instead paraphrase it as:
+we should paraphrase this as:
 \begin{equation*}
 \underbrace{\underbrace{\text{For some thing $_x$}}_{\exists x}: \underbrace{
 	\underbrace{\text{$x$ is a dog}}_{Dx}
@@ -856,18 +1134,19 @@ We work as follows:
 		}
  	\text{ and }
 	\underbrace{\text{some dog is quiet. }}_{
-		\underbrace{\underbrace{\text{there is some dog $_x$ such that}}_{\exists x} \underbrace{\text{$x$ is quiet}}_{Qx}}_{\exists x Qx}
+		\underbrace{\underbrace{\text{there exists $_x$ }}_{\exists x} \underbrace{\text{$x$ is a dog}}_{(Dx}\underbrace{\text{ and }}_{\wedge}\underbrace{\text{$x$ is quiet}}_{Qx)}}_{\exists x(Dx\wedge Qx)}
 		}
-}_{(\enot Qf\eand \exists x Qx)}
+}_{(\enot Qf\eand \exists x(Dx\wedge Qx))}
 \end{equation*}
-So we symbolise this sentence as $$(\enot Qf\eand \exists x Qx)$$
+So we symbolise this sentence as $$(\enot Qf\eand \exists x(Dx\wedge Qx))$$
 giving the symbolisation key
 \begin{ekey}
-\item[\text{domain}]dogs
+\item[\text{domain}]animals
+\item[Dx]\gap{x} is a dog
 \item[Qx]\gap{x} is quiet
 \item[f] Finley
 \end{ekey}
-Note, that as per \ref{s:Domains}, this symbolisation is only legitimate assuming that Finley names a dog. Names have to name members of the domain.
+Note, that as per \ref{s:Domain}, this symbolisation is only legitimate assuming that Finley names an animal. Names have to name members of the domain.
 
 Consider:
 \begin{earg}
@@ -877,15 +1156,24 @@ Consider:
 We work as follows:
 \begin{equation*}
 \underbrace{
-	\underbrace{\text{It is not the case that}}_{\enot}: \underbrace{\text{every dog is quiet}}_{
-	\underbrace{\underbrace{\text{for every dog $_x$}}_{\forall x}
-		:\,
-		\underbrace{\text{$x$ is quiet}}_{Qx}
-		}_{\forall x Qx}
-	}
-}_{\enot \forall x Qx}
+	\underbrace{\text{It is not the case that}}_{\enot}:
+		\underbrace{\text{every dog is quiet}}_
+		{
+							\underbrace{\underbrace{\text{for every thing $_x$}}_{\forall x}
+									:\,
+					\underbrace{
+					\text{if }
+						\underbrace{\text{$x$ is a dog}}_{Dx},
+					\text{ then }
+						\underbrace{\text{$x$ is quiet}}_{Qx}
+					}
+					_{(Dx\eif Qx)}
+}				
+				_{\forall x(Dx\eif Qx)}}
+}
+_{\enot \forall x(Dx\eif Qx)}
 \end{equation*}
-So we symbolise this sentence as $$\enot \forall x Qx$$
+So we symbolise this sentence as $$\enot \forall x(Dx\eif Qx)$$
 
 
 
@@ -1069,17 +1357,21 @@ If you were actually dealing with the sentence `All refrigerators are monkeys', 
 The appropriate symbolization of an English language sentence in FOL will depend on the symbolization key. Choosing a key can be difficult. Suppose we want to symbolize the English sentence:
 	\begin{earg}
 		\item[\ex{pickdomainrose}] Every rose has a thorn.
-	\end{earg}
-We might offer this symbolization key:
+	\end{earg}	
+	We might offer this symbolization key:
 	\begin{ekey}
 		\item[Rx] \gap{x} is a rose
 		\item[Tx] \gap{x} has a thorn
 	\end{ekey}
-It is tempting to say that sentence \ref{pickdomainrose} should be symbolized as $\forall x(Rx \eif Tx)$, but we have not yet chosen a domain. If the domain contains all roses, this would be a good symbolization. Yet if the domain is merely \emph{things on my kitchen table}, then $\forall x(Rx \eif Tx)$ would only come close to covering the fact that every rose \emph{on my kitchen table} has a thorn. If there are no roses on my kitchen table, the sentence would be trivially true. This is not what we want. To symbolize sentence \ref{pickdomainrose} adequately, we need to include all the roses in the domain, but now we have two options.
+According to our symbolization guideline sentence \ref{pickdomainrose} should then be symbolized as $\forall x(Rx \eif Tx)$. However, it remains to specify a domain. Without specific contextual information we must assume that the sentence makes a claim about all roses, that is, we should assume that the domain contains all roses. Also, arguable by saying that all roses have thorns we contrast roses to other tings in the domain: for if every object in the domain were a rose, it would suffice to say `Everything has a thorne'.  So in the case of sentence \ref{pickdomainrose} taking the domain to consist of flowers would be a good, plausible choice and picking the domain to consist of roses only would not be satisfactory. 
 
-First, we can restrict the domain to include all roses but \emph{only} roses. Then sentence \ref{pickdomainrose} can, if we like, be symbolized with $\forall x Tx$. This is true iff everything in the domain has a thorn; since the domain is just the roses, this is true iff every rose has a thorn. By restricting the domain, we have been able to symbolize our English sentence with a very short sentence of FOL. So this approach can save us trouble, if every sentence that we want to deal with is about roses.
 
-Second, we can let the domain contain things besides roses: rhododendrons; rats; rifles; whatevers., and we will certainly need to include a more expansive domain if we simultaneously want to symbolize sentences like:
+
+% but we have not yet chosen a domain. If the domain contains all roses, this would be a good symbolization. Yet if the domain is merely \emph{things on my kitchen table}, then $\forall x(Rx \eif Tx)$ would only come close to covering the fact that every rose \emph{on my kitchen table} has a thorn. If there are no roses on my kitchen table, the sentence would be trivially true. This is not what we want. To symbolize sentence \ref{pickdomainrose} adequately, we need to include all the roses in the domain, but now we have two options.
+%
+%First, we can restrict the domain to include all roses but \emph{only} roses. Then sentence \ref{pickdomainrose} can, if we like, be symbolized with $\forall x Tx$. This is true iff everything in the domain has a thorn; since the domain is just the roses, this is true iff every rose has a thorn. By restricting the domain, we have been able to symbolize our English sentence with a very short sentence of FOL. So this approach can save us trouble, if every sentence that we want to deal with is about roses.
+
+More generally, in absence of specific contextual information about the domain, it is preferable to pick a domain that includes many things. that is, things besides roses: rhododendrons; rats; rifles; whatevers., and we will certainly need to include a more expansive domain if we simultaneously want to symbolize sentences like:
 	\begin{earg}
 		\item[\ex{pickdomaincowboy}] Every cowboy sings a sad, sad song.
 	\end{earg}
@@ -1458,7 +1750,7 @@ $\forall x (\atom{B}{x} \eif \atom{I}{x}), \forall x (\atom{I}{x} \eif \enot \at
 \end{practiceproblems}
 
 
-\chapter{Multiple quantifiers}\label{s:MultipleGenerality}
+\chapter{Symbolisation: Multiple quantifiers}\label{s:MultipleGenerality}
 %So far, we have only considered sentences that require one-place predicates and one quantifier. The full power of FOL really comes out when we start to use many-place predicates and multiple quantifiers. For this insight, we largely have Gottlob Frege (1879) to thank, but also C.S.~Peirce.
 
 
@@ -1546,11 +1838,17 @@ Sentence \ref{dog4} can be paraphrased as, `Everyone who is a friend of Geraldo 
 $$\forall x \bigl[Fxg \eif x \text{ is a dog owner}\bigr]$$
 Now the fragment that we have left to deal with, `$x$ is a dog owner', is structurally just like sentence \ref{dog2}. However, it would be a mistake for us simply to write
 $$\forall x \bigl[Fxg \eif \exists x(Dx \eand Oxx)\bigr]$$
-for we would here have a \emph{clash of variables}. The scope of the universal quantifier, $\forall x$, is the entire conditional, so the $x$ in $Dx$ should be governed by that, but $Dx$ also falls under the scope of the existential quantifier $\exists x$, so the $x$ in $Dx$ should be governed by that. Now confusion reigns: which $x$ are we talking about? Suddenly the sentence becomes ambiguous (if it is even meaningful at all), and logicians hate ambiguity. The broad moral is that a single variable cannot serve two quantifier-masters simultaneously.
+for we would here have a \emph{clash of variables}. While the scope of the universal quantifier, $\forall x$, is the entire conditional, the variable $x$ does not occur free in the consequent of the conditional : it is bound by the existential quantifier instead. This means that 
+$$\forall x \bigl[Fxg \eif \exists x(Dx \eand Oxx)\bigr]$$
+does not symbolize `Every friend of Gerald is a dog owner' but rather a rather something like:
+\begin{itemize}
+\item If everyone is a friend of Gerald, then there is a dog that owns itself.
+\end{itemize}
+That's clearly not what we wanted!
 
-To continue our symbolization, then, we must choose some different variable for our existential quantifier. What we want is something like:
+To make sure that we get the intended outcome we need to see to it that the universal quantifier binds the owner position in the consequent of the conditional. To continue our symbolization, then, we must choose some different variable for our existential quantifier. What we want is something like:
 $$\forall x\bigl[Fxg \eif\exists z(Dz \eand Oxz)\bigr]$$
-This adequately symbolizes sentence \ref{dog4}.
+This adequately symbolizes sentence \ref{dog4}, as the variable $x$ now occurs free in the consequent of the conditional and can be bound by the universal quatifier, which in turn guarantees that dog-owner must be friends of Gerald.
 
 Sentence \ref{dog5} can be paraphrased as `For any x that is a dog owner, there is a dog owner who x is a friend of'. Using our stepping-stone tactic, this becomes
 $$\forall x\bigl[\mbox{$x$ is a dog owner}\eif\exists y(\mbox{$y$ is a dog owner}\eand Fxy)\bigr]$$
@@ -1603,7 +1901,7 @@ And we are done!
 %\end{itemize}
 
 
-\section{Supressed quantifiers}
+\section{Suppressed quantifiers}
 
 Logic can often help to get clear on the meanings of English claims,
 especially where the quantifiers are left implicit or their order is
@@ -1682,7 +1980,7 @@ treason against the Queen!
 
 \begin{practiceproblems}
 \solutions
-Warning: some of these problems require you to use identity, which hasn't yet been introduced. See Chapter \ref{ch.identity}.
+%Warning: some of these problems require you to use identity, which hasn't yet been introduced. See Chapter \ref{ch.identity}.
 \problempart
 Using this symbolization key:
 \begin{ekey}
@@ -1876,293 +2174,293 @@ symbolize the following sentences in FOL:
 \end{practiceproblems}
 
 
-\chapter{Sentences of FOL}\label{s:FOLSentences}
-\todo[inline]{This section got moved above symbolising with one quantifier. But I actually think it might be better}
-We will now carefully introduce what it is to be a sentence of FOL.
-%This is important so that when we know what complex sentence of FOL can look like, and so when symbolising complex sentences of English how to do it.
-
-%We know how to represent English sentences in FOL. The time has finally come to define the notion of a \emph{sentence} of FOL.
-
-\section{Vocabulary of FOL}
-We'll start by summarising, a bit more formally, the vocabulary of FOL. What can sentences of FOL be built from.
-
-\begin{description}
-\item[Predicates] $A,B,C,\ldots,W$,
-with subscripts, as needed: $A_1, Z_2,A_{25},J_{375},\ldots$.\footnote{Each predicate will have a number of places associated with it. We should thus really introduce:\begin{description}
-\item [Zero-Place Predicates = Atomic sentences of TFL]$A^0,B^0,\ldots,Z^0$,
-with subscripts, as needed: $A_1^0, Z_2^0,A_{25}^0,J_{375}^0,\ldots$
-\item [One-Place Predicates]$A^1,B^1,\ldots,Z^1$,
-with subscripts, as needed: $A_1^1, Z_2^1,A_{25}^1,J_{375}^1,\ldots$
-\item [Two-Place Predicates]$A^2,B^2,\ldots,Z^2$,
-with subscripts, as needed: $A_1^2, Z_2^2,A_{25}^2,J_{375}^2,\ldots$
-\item [Three-Place Predicates]$A^3,B^3,\ldots,Z^3$,
-with subscripts, as needed: $A_1^3, Z_2^3,A_{25}^3,J_{375}^3,\ldots$
-\item etc. We drop the superscripts for ease.
-\end{description}}
-\item[Names] $a,b,c,\ldots, s, t$, or
-with subscripts, as needed $a_1, b_{224}, h_7, m_{32},\ldots$
-\item[Variables] $x,y,z$, or
-with subscripts, as needed $x_1, y_1, z_1, x_2,\ldots$. $u,v,w$ may also be used.
-\item[Connectives]  $\enot,\eand,\eor,\eif,\eiff$
-\item[Brackets] ( , )
-\item[Quantifiers]  $\forall, \exists$
-\end{description}
-%We define an \define{expression of FOL} as any string of symbols of FOL. Take any of the symbols of FOL and write them down, in any order, and you have an expression.
-
-%\section{Terms and formulas}
-%\label{s:TermsFormulas}
+%\chapter{Sentences of FOL}\label{s:FOLSentences}
+%\todo[inline]{This section got moved above symbolising with one quantifier. But I actually think it might be better}
+%We will now carefully introduce what it is to be a sentence of FOL.
+%%This is important so that when we know what complex sentence of FOL can look like, and so when symbolising complex sentences of English how to do it.
 %
+%%We know how to represent English sentences in FOL. The time has finally come to define the notion of a \emph{sentence} of FOL.
+%
+%\section{Vocabulary of FOL}
+%We'll start by summarising, a bit more formally, the vocabulary of FOL. What can sentences of FOL be built from.
+%
+%\begin{description}
+%\item[Predicates] $A,B,C,\ldots,W$,
+%with subscripts, as needed: $A_1, Z_2,A_{25},J_{375},\ldots$.\footnote{Each predicate will have a number of places associated with it. We should thus really introduce:\begin{description}
+%\item [Zero-Place Predicates = Atomic sentences of TFL]$A^0,B^0,\ldots,Z^0$,
+%with subscripts, as needed: $A_1^0, Z_2^0,A_{25}^0,J_{375}^0,\ldots$
+%\item [One-Place Predicates]$A^1,B^1,\ldots,Z^1$,
+%with subscripts, as needed: $A_1^1, Z_2^1,A_{25}^1,J_{375}^1,\ldots$
+%\item [Two-Place Predicates]$A^2,B^2,\ldots,Z^2$,
+%with subscripts, as needed: $A_1^2, Z_2^2,A_{25}^2,J_{375}^2,\ldots$
+%\item [Three-Place Predicates]$A^3,B^3,\ldots,Z^3$,
+%with subscripts, as needed: $A_1^3, Z_2^3,A_{25}^3,J_{375}^3,\ldots$
+%\item etc. We drop the superscripts for ease.
+%\end{description}}
+%\item[Names] $a,b,c,\ldots, s, t$, or
+%with subscripts, as needed $a_1, b_{224}, h_7, m_{32},\ldots$
+%\item[Variables] $x,y,z$, or
+%with subscripts, as needed $x_1, y_1, z_1, x_2,\ldots$. $u,v,w$ may also be used.
+%\item[Connectives]  $\enot,\eand,\eor,\eif,\eiff$
+%\item[Brackets] ( , )
+%\item[Quantifiers]  $\forall, \exists$
+%\end{description}
+%%We define an \define{expression of FOL} as any string of symbols of FOL. Take any of the symbols of FOL and write them down, in any order, and you have an expression.
+%
+%%\section{Terms and formulas}
+%%\label{s:TermsFormulas}
+%%
+%%In \S\ref{s:TFLSentences}, we went straight from the statement of the vocabulary of TFL to the definition of a sentence of TFL. In FOL, we will have to go via an intermediary stage: via the notion of a \define{formula}. The intuitive idea is that a formula is any sentence, or anything which can be turned into a sentence by adding quantifiers out front. But this will take some unpacking.
+%%
+%%We start by defining the notion of a term.
+%%	\factoidbox{
+%%		A \define{term} is any name or any variable. }
+%%So, here are some terms:
+%%	$$a, b, x, x_1 x_2, y, y_{254}, z$$
+%%Next we need to define atomic formulas.
+%%	\factoidbox{
+%%		\begin{enumerate}
+%%		\item If $\meta{R}$ is an $n$-place predicate and $\meta{t}_1, \meta{t}_2, \ldots, \meta{t_n}$ are terms, then $\meta{R t}_1 \meta{t}_2 \ldots \meta{t}_n$ is an atomic formula.
+%%		\item If $\meta{t}_1$ and $\meta{t}_2$ are terms, then $\meta{t}_1 = \meta{t}_2$ is an atomic formula.
+%%		\item Nothing else is an atomic formula.
+%%		\end{enumerate}
+%%	}
+%%
+%%\newglossaryentry{term}{
+%%  name = term,
+%%  description = {either a \gls{name} or a \gls{variable}}
+%%}
+%%
+%%\newglossaryentry{formula}{
+%%  name = formula,
+%%  description = {an expression of FOL built according to the recursive rules in \S\ref{s:TermsFormulas}}
+%%}
+%%
+%%
+%%The use of script letters here follows the conventions laid down in \S\ref{s:UseMention}. So, $\meta{R}$ is not itself a predicate of FOL. Rather, it is a symbol of our metalanguage (augmented English) that we use to talk about any predicate of FOL. Similarly, $\meta{t}_1$ is not a term of FOL, but a symbol of the metalanguage that we can use to talk about any term of FOL. So, where $F$ is a one-place predicate, $G$ is a three-place predicate, and $S$ is a six-place predicate, here are some atomic formulas:
+%%	\begin{center}
+%%		$x = a$\\
+%%		$a = b$\\
+%%		$Fx$\\
+%%		$Fa$\\
+%%		$Gxay$\\
+%%		$Gaaa$\\
+%%		$Sx_1 x_2 a b y x_1$\\
+%%		$Sby_{254} z a a z$
+%%	\end{center}
+%%Once we know what atomic formulas are, we can offer recursion clauses to define arbitrary formulas. The first few clauses are exactly the same as for TFL.
+%
+%\section{Formulas}
 %In \S\ref{s:TFLSentences}, we went straight from the statement of the vocabulary of TFL to the definition of a sentence of TFL. In FOL, we will have to go via an intermediary stage: via the notion of a \define{formula}. The intuitive idea is that a formula is any sentence, or anything which can be turned into a sentence by adding quantifiers out front. But this will take some unpacking.
 %
-%We start by defining the notion of a term.
-%	\factoidbox{
-%		A \define{term} is any name or any variable. }
-%So, here are some terms:
-%	$$a, b, x, x_1 x_2, y, y_{254}, z$$
-%Next we need to define atomic formulas.
-%	\factoidbox{
-%		\begin{enumerate}
-%		\item If $\meta{R}$ is an $n$-place predicate and $\meta{t}_1, \meta{t}_2, \ldots, \meta{t_n}$ are terms, then $\meta{R t}_1 \meta{t}_2 \ldots \meta{t}_n$ is an atomic formula.
-%		\item If $\meta{t}_1$ and $\meta{t}_2$ are terms, then $\meta{t}_1 = \meta{t}_2$ is an atomic formula.
-%		\item Nothing else is an atomic formula.
+%As we did for TFL, we will  present a inductive definition of a formula of FOL.
+%
+%The starting point of this is the notion of an \emph{atomic formula}. In TFL we stared our definition with the notion of an atomic sentence, which were just given to us in our vocabulary. In FOL, the starting point of our definition is the notion of an atomic formula. Atomic formulas will be given by the following definition:
+%\factoidbox{ If $\metaPredicate$ is an $n$-place predicate and $\metaterm_1,\ldots\metaterm_n$ are either variables or names, then $\metaPredicate\metaterm_1\ldots\metaterm_n$ is an \define{atomic formula}.\footnotemark}
+%\footnotetext{In FOL variables and names are both called (singular) terms. Notice that in the above definition $\metaPredicate$ and $\metaterm$ are metavariables ranging over names of predicates and names of terms respectively.}
+%
+%For example, if $D$ is a one-place predicate (we might have introduced it to symbolise `\gap{x} is a dog'), and $L$ is a two-place predicate (we might have introduced it to symbolise `\gap{x} loves \gap{y}'), then the following are atomic formulas:
+%\begin{center}
+% $Db$,
+% $Dx$,
+% $Dy$,
+% $Lki$,
+% $Lkx$,
+% $Lyz$
+%\end{center}
+%
+%Formulas are constructed by starting with these and using either our TFL connectives or our quantifiers.
+%
+%We can now give the recursive definition of what it is to be a formula of FOL.
+%	\factoidbox{\label{FOLformula}
+%	\begin{enumerate}
+%		\item If $\metaPredicate$ is an $n$-place predicate and $\metaterm_1,\ldots\metaterm_n$ are either variables or names, then $\metaPredicate\metaterm_1\ldots\metaterm_n$ is a formula.\\These are called \define{atomic formulas}.
+%		\item If \metaX is a formula, then $\enot\metaX$ is a formula.
+%		\item If \metaX and \metaY are formulas, then \begin{enumerate}
+%		\item $(\metaX\eand\metaY)$ is a formula,
+%		\item $(\metaX\eor\metaY)$ is a formula,
+%		\item $(\metaX\eif\metaY)$ is a formula, and
+%		%\item $(\metaX\eiff\metaY)$ is a formula.
 %		\end{enumerate}
+%		\item\label{item:quantifiers}
+%		 If $\metaX$ is a formula, $\metav$ is a variable , then \begin{enumerate}
+%		 \item $\forall \metav\metaX$ is a formula
+%		 \item $\exists\metav\metaX$ is a formula.
+%		 \end{enumerate}
+%		\item Nothing else is a formula.
+%	\end{enumerate}
+%	}
+%	\newglossaryentry{formula}
+%	{
+%	name=formula of FOL,
+%	description={A string of symbols in FOL that can be built up according to the recursive rules given on p.~\pageref{FOLformula}}
+%	}
+%	As for TFL, we start out with some formulas, such as $Dx$ or $Db$, and we can construct more complicated formulas with our connectives, e.g. \begin{center}
+%	$(Dx\eand Db)$, \\
+%	$\enot (Dx\eand Db)$\\
+%	$(\enot(Dx\eand Db)\eif Lxy)$
+%	\end{center}And we can display their construction using our formation trees, as in 	\ref{S:formationtree}.
+%		\begin{center}
+%		\begin{forest}
+%			[$(\enot(Dx\eand Db)\eif Lxy)$
+%				[$\enot (Dx\eand Db)$
+%					[$(Dx\eand Db)$
+%						[$Dx$]
+%						[$Db$]
+%					]
+%				]
+%				[$Lxy$]
+%			]
+%		\end{forest}
+%		\end{center}This is exactly as in the case of TFL, the only difference is that the ``leaves'' of the tree have more structure to them: they're predicates applied to names or variables rather than simply the single atomic sentences that we had in TFL.
+%
+%		The new clauses here are in \ref{item:quantifiers}. This lets us put $\forall x$ in front of a formula, e.g.~$Bx$ to construct a formula $\forall xBx$. We can also add quantifiers when the formula was already more complicated, e.g., we can construct a formula $$\forall x(\enot(Dx\eand Db)\eif Lxy).$$ We could also have added an existential quantifier, $\exists$ to construct $$\exists x(\enot(Dx\eand Db)\eif Lxy).$$ We can also do it with other variables, e.g. $$\forall y(\enot(Dx\eand Db)\eif Lxy).$$ We can then add further quantifiers to \emph{these} new formula, to construct, e.g.~$$\exists y\forall x(\enot(Dx\eand Db)\eif Lxy).$$
+%
+%	We can again display the structure and construction of the sentence perspicuously by presenting a formation tree:
+%
+%			\begin{center}
+%			\begin{forest}
+%				[$\exists y\forall x(\enot(Dx\eand Db)\eif Lxy)$[$\forall x(\enot(Dx\eand Db)\eif Lxy)$[$(\enot(Dx\eand Db)\eif Lxy)$
+%					[$\enot (Dx\eand Db)$
+%						[$(Dx\eand Db)$
+%							[$Dx$]
+%							[$Db$]
+%						]
+%					]
+%					[$Lxy$]
+%				]]]
+%			\end{forest}
+%			\end{center}
+%
+%			One more example:
+%
+%	\begin{center}
+%	\begin{forest}
+%		[$\exists z\forall y (Ryz\eand \exists x Qx)$
+%			[$\forall y (Ryz\eand\exists x Qx)$
+%				[$(Ryz\eand \exists x Qx)$
+%					[$Ryz$]
+%					[$\exists x Qx$
+%						[$Qx$]
+%					]
+%				]
+%			]
+%		]
+%	\end{forest}
+%	\end{center}
+%	Moving up the formation tree is following one of the rules of the recursive specification of what it is to be a sentence.
+%
+%
+%
+%Why in \ref{item:quantifiers} did we have the restriction that $\exists \metav$ or $\forall \metav$ is not already in $\metaX$? This is to ensure that variables only serve one master at any one time (see \S\ref{s:MultipleGenerality}).
+%Otherwise we could see that $\forall x Rxx$ is a sentence and then conclude that $\exists x\forall x Rxx$, which is not a good sentence.  However, note that $\exists x Cx\;\eor\;\forall x Bx$ is a sentence. Here the variable $x$ is used in both quantifiers, but there's no ambiguity because the sentence was constructed by combing the two sentences $\exists x Cx$ and $\forall xBx$ with a connective, $\eor$. The \emph{scope} of $\exists x$ is just $\exists x Cx$; it doesn't look ``over'' the connective to where $\forall x$ is used. So the two uses of $x$ are kept separate and no problems arise. However, to avoid any potential worries it is generally a good idea to use different variables when symbolising sentences; in this case one could equally well give $\exists x Cx\;\eor\;\forall y By$ as a symbolisation.
+%
+% The notions of scope and main logical operators that were given in \ref{s:TFLSentences} equally applies to FOL but now the main logical operator might be a quantifier. These were:
+%% In fact, we can now give a formal definition of scope which incorporates the definition of the scope of a quantifier. Here we follow the case of TFL, though we note that a logical operator can be either a connective or a quantifier:
+%	\factoidbox{
+%		The \define{main logical operator} in a sentence is the operator that was introduced last when that sentence was constructed using the recursion rules.
+%
+%\bigskip
+%
+%		The \define{scope} of a logical operator in a sentence is the formula for which that operator is the main logical operator.
+%	}\todo{formula is undefined}
+%We can graphically illustrate scopes as follows:
+%$$
+%\overbrace{
+%\exists z
+%\underbrace{\forall y (\overbrace{\exists x Qx}^{\text{scope of $\exists x$}}\eand Ryz)}_{\text{scope of $\forall y$}}
+%}^{\text{scope of $\exists z$}}
+%$$
+%
+%
+%\newglossaryentry{main logical operator}{
+%  name = main logical operator,
+%  description = {the operator used last in the construction of a \gls{formula}}
+%}
+%
+%\newglossaryentry{scope}{
+%  name = scope,
+%  description = {the subformula of a \gls{formula} of FOL for which the \gls{main logical operator} is the operator}
+%}
+%
+%
+%\section{Sentences}
+%Recall that we are largely concerned in logic with assertoric sentences: sentences that can be either true or false. Many formulas are not sentences. Consider the following symbolization key:
+%	\begin{ekey}
+%		\item[\text{domain}] people
+%		\item[Lxy] \gap{x} loves \gap{y}
+%		\item[b] Boris
+%	\end{ekey}
+%Consider the atomic formula $Lzz$. Can it be true or false? You might think that it will be true just in case the person named by $z$ loves themself, in the same way that $Lbb$ is true just in case Boris (the person named by $b$) loves himself. \emph{However, $z$ is a variable, and does not name anyone or any thing.}
+%
+%Of course, if we put an existential quantifier out front, obtaining $\exists zLzz$, then this would be true iff someone loves herself. Equally, if we wrote $\forall z Lzz$, this would be true iff everyone loves themself. The point is that we need a quantifier to tell us how to deal with a variable.
+%
+%Let's make this idea precise.
+%	\factoidbox{
+%		A \define{bound variable} is an occurrence of a variable \metav that is within the scope of either $\forall\metav$ or $\exists\metav$.
+%
+%		\bigskip
+%
+%		A \define{free variable} is any variable that is not bound.
 %	}
 %
-%\newglossaryentry{term}{
-%  name = term,
-%  description = {either a \gls{name} or a \gls{variable}}
+%\newglossaryentry{bound variable}{
+%  name = bound variable,
+%  description = {an occurrence of a variable in a \gls{formula} which is in the scope of a quantifier followed by the same variable}
 %}
 %
-%\newglossaryentry{formula}{
-%  name = formula,
-%  description = {an expression of FOL built according to the recursive rules in \S\ref{s:TermsFormulas}}
+%\newglossaryentry{free variable}{
+%  name = free variable,
+%  description = {an occurrence of a variable in a \gls{formula} which is not a \gls{bound variable}}
 %}
 %
 %
-%The use of script letters here follows the conventions laid down in \S\ref{s:UseMention}. So, $\meta{R}$ is not itself a predicate of FOL. Rather, it is a symbol of our metalanguage (augmented English) that we use to talk about any predicate of FOL. Similarly, $\meta{t}_1$ is not a term of FOL, but a symbol of the metalanguage that we can use to talk about any term of FOL. So, where $F$ is a one-place predicate, $G$ is a three-place predicate, and $S$ is a six-place predicate, here are some atomic formulas:
-%	\begin{center}
-%		$x = a$\\
-%		$a = b$\\
-%		$Fx$\\
-%		$Fa$\\
-%		$Gxay$\\
-%		$Gaaa$\\
-%		$Sx_1 x_2 a b y x_1$\\
-%		$Sby_{254} z a a z$
-%	\end{center}
-%Once we know what atomic formulas are, we can offer recursion clauses to define arbitrary formulas. The first few clauses are exactly the same as for TFL.
-
-\section{Formulas}
-In \S\ref{s:TFLSentences}, we went straight from the statement of the vocabulary of TFL to the definition of a sentence of TFL. In FOL, we will have to go via an intermediary stage: via the notion of a \define{formula}. The intuitive idea is that a formula is any sentence, or anything which can be turned into a sentence by adding quantifiers out front. But this will take some unpacking.
-
-As we did for TFL, we will  present a inductive definition of a formula of FOL.
-
-The starting point of this is the notion of an \emph{atomic formula}. In TFL we stared our definition with the notion of an atomic sentence, which were just given to us in our vocabulary. In FOL, the starting point of our definition is the notion of an atomic formula. Atomic formulas will be given by the following definition:
-\factoidbox{ If $\metaPredicate$ is an $n$-place predicate and $\metaterm_1,\ldots\metaterm_n$ are either variables or names, then $\metaPredicate\metaterm_1\ldots\metaterm_n$ is an \define{atomic formula}.\footnotemark}
-\footnotetext{In FOL variables and names are both called (singular) terms. Notice that in the above definition $\metaPredicate$ and $\metaterm$ are metavariables ranging over names of predicates and names of terms respectively.}
-
-For example, if $D$ is a one-place predicate (we might have introduced it to symbolise `\gap{x} is a dog'), and $L$ is a two-place predicate (we might have introduced it to symbolise `\gap{x} loves \gap{y}'), then the following are atomic formulas:
-\begin{center}
- $Db$,
- $Dx$,
- $Dy$,
- $Lki$,
- $Lkx$,
- $Lyz$
-\end{center}
-
-Formulas are constructed by starting with these and using either our TFL connectives or our quantifiers.
-
-We can now give the recursive definition of what it is to be a formula of FOL.
-	\factoidbox{\label{FOLformula}
-	\begin{enumerate}
-		\item If $\metaPredicate$ is an $n$-place predicate and $\metaterm_1,\ldots\metaterm_n$ are either variables or names, then $\metaPredicate\metaterm_1\ldots\metaterm_n$ is a formula.\\These are called \define{atomic formulas}.
-		\item If \metaX is a formula, then $\enot\metaX$ is a formula.
-		\item If \metaX and \metaY are formulas, then \begin{enumerate}
-		\item $(\metaX\eand\metaY)$ is a formula,
-		\item $(\metaX\eor\metaY)$ is a formula,
-		\item $(\metaX\eif\metaY)$ is a formula, and
-		%\item $(\metaX\eiff\metaY)$ is a formula.
-		\end{enumerate}
-		\item\label{item:quantifiers}
-		 If $\metaX$ is a formula, $\metav$ is a variable , then \begin{enumerate}
-		 \item $\forall \metav\metaX$ is a formula
-		 \item $\exists\metav\metaX$ is a formula.
-		 \end{enumerate}
-		\item Nothing else is a formula.
-	\end{enumerate}
-	}
-	\newglossaryentry{formula}
-	{
-	name=formula of FOL,
-	description={A string of symbols in FOL that can be built up according to the recursive rules given on p.~\pageref{FOLformula}}
-	}
-	As for TFL, we start out with some formulas, such as $Dx$ or $Db$, and we can construct more complicated formulas with our connectives, e.g. \begin{center}
-	$(Dx\eand Db)$, \\
-	$\enot (Dx\eand Db)$\\
-	$(\enot(Dx\eand Db)\eif Lxy)$
-	\end{center}And we can display their construction using our formation trees, as in 	\ref{S:formationtree}.
-		\begin{center}
-		\begin{forest}
-			[$(\enot(Dx\eand Db)\eif Lxy)$
-				[$\enot (Dx\eand Db)$
-					[$(Dx\eand Db)$
-						[$Dx$]
-						[$Db$]
-					]
-				]
-				[$Lxy$]
-			]
-		\end{forest}
-		\end{center}This is exactly as in the case of TFL, the only difference is that the ``leaves'' of the tree have more structure to them: they're predicates applied to names or variables rather than simply the single atomic sentences that we had in TFL.
-
-		The new clauses here are in \ref{item:quantifiers}. This lets us put $\forall x$ in front of a formula, e.g.~$Bx$ to construct a formula $\forall xBx$. We can also add quantifiers when the formula was already more complicated, e.g., we can construct a formula $$\forall x(\enot(Dx\eand Db)\eif Lxy).$$ We could also have added an existential quantifier, $\exists$ to construct $$\exists x(\enot(Dx\eand Db)\eif Lxy).$$ We can also do it with other variables, e.g. $$\forall y(\enot(Dx\eand Db)\eif Lxy).$$ We can then add further quantifiers to \emph{these} new formula, to construct, e.g.~$$\exists y\forall x(\enot(Dx\eand Db)\eif Lxy).$$
-
-	We can again display the structure and construction of the sentence perspicuously by presenting a formation tree:
-
-			\begin{center}
-			\begin{forest}
-				[$\exists y\forall x(\enot(Dx\eand Db)\eif Lxy)$[$\forall x(\enot(Dx\eand Db)\eif Lxy)$[$(\enot(Dx\eand Db)\eif Lxy)$
-					[$\enot (Dx\eand Db)$
-						[$(Dx\eand Db)$
-							[$Dx$]
-							[$Db$]
-						]
-					]
-					[$Lxy$]
-				]]]
-			\end{forest}
-			\end{center}
-
-			One more example:
-
-	\begin{center}
-	\begin{forest}
-		[$\exists z\forall y (Ryz\eand \exists x Qx)$
-			[$\forall y (Ryz\eand\exists x Qx)$
-				[$(Ryz\eand \exists x Qx)$
-					[$Ryz$]
-					[$\exists x Qx$
-						[$Qx$]
-					]
-				]
-			]
-		]
-	\end{forest}
-	\end{center}
-	Moving up the formation tree is following one of the rules of the recursive specification of what it is to be a sentence.
-
-
-
-Why in \ref{item:quantifiers} did we have the restriction that $\exists \metav$ or $\forall \metav$ is not already in $\metaX$? This is to ensure that variables only serve one master at any one time (see \S\ref{s:MultipleGenerality}).
-Otherwise we could see that $\forall x Rxx$ is a sentence and then conclude that $\exists x\forall x Rxx$, which is not a good sentence.  However, note that $\exists x Cx\;\eor\;\forall x Bx$ is a sentence. Here the variable $x$ is used in both quantifiers, but there's no ambiguity because the sentence was constructed by combing the two sentences $\exists x Cx$ and $\forall xBx$ with a connective, $\eor$. The \emph{scope} of $\exists x$ is just $\exists x Cx$; it doesn't look ``over'' the connective to where $\forall x$ is used. So the two uses of $x$ are kept separate and no problems arise. However, to avoid any potential worries it is generally a good idea to use different variables when symbolising sentences; in this case one could equally well give $\exists x Cx\;\eor\;\forall y By$ as a symbolisation.
-
- The notions of scope and main logical operators that were given in \ref{s:TFLSentences} equally applies to FOL but now the main logical operator might be a quantifier. These were:
-% In fact, we can now give a formal definition of scope which incorporates the definition of the scope of a quantifier. Here we follow the case of TFL, though we note that a logical operator can be either a connective or a quantifier:
-	\factoidbox{
-		The \define{main logical operator} in a sentence is the operator that was introduced last when that sentence was constructed using the recursion rules.
-
-\bigskip
-
-		The \define{scope} of a logical operator in a sentence is the formula for which that operator is the main logical operator.
-	}\todo{formula is undefined}
-We can graphically illustrate scopes as follows:
-$$
-\overbrace{
-\exists z
-\underbrace{\forall y (\overbrace{\exists x Qx}^{\text{scope of $\exists x$}}\eand Ryz)}_{\text{scope of $\forall y$}}
-}^{\text{scope of $\exists z$}}
-$$
-
-
-\newglossaryentry{main logical operator}{
-  name = main logical operator,
-  description = {the operator used last in the construction of a \gls{formula}}
-}
-
-\newglossaryentry{scope}{
-  name = scope,
-  description = {the subformula of a \gls{formula} of FOL for which the \gls{main logical operator} is the operator}
-}
-
-
-\section{Sentences}
-Recall that we are largely concerned in logic with assertoric sentences: sentences that can be either true or false. Many formulas are not sentences. Consider the following symbolization key:
-	\begin{ekey}
-		\item[\text{domain}] people
-		\item[Lxy] \gap{x} loves \gap{y}
-		\item[b] Boris
-	\end{ekey}
-Consider the atomic formula $Lzz$. Can it be true or false? You might think that it will be true just in case the person named by $z$ loves themself, in the same way that $Lbb$ is true just in case Boris (the person named by $b$) loves himself. \emph{However, $z$ is a variable, and does not name anyone or any thing.}
-
-Of course, if we put an existential quantifier out front, obtaining $\exists zLzz$, then this would be true iff someone loves herself. Equally, if we wrote $\forall z Lzz$, this would be true iff everyone loves themself. The point is that we need a quantifier to tell us how to deal with a variable.
-
-Let's make this idea precise.
-	\factoidbox{
-		A \define{bound variable} is an occurrence of a variable \metav that is within the scope of either $\forall\metav$ or $\exists\metav$.
-
-		\bigskip
-
-		A \define{free variable} is any variable that is not bound.
-	}
-
-\newglossaryentry{bound variable}{
-  name = bound variable,
-  description = {an occurrence of a variable in a \gls{formula} which is in the scope of a quantifier followed by the same variable}
-}
-
-\newglossaryentry{free variable}{
-  name = free variable,
-  description = {an occurrence of a variable in a \gls{formula} which is not a \gls{bound variable}}
-}
-
-
-For example, consider the formula
-	$$\forall x(Ex \eor Dy) \eif \exists z(Ex \eif Lzx)$$
-The scope of the universal quantifier $\forall x$ is $\forall x (Ex \eor Dy)$, so the first $x$ is bound by the universal quantifier. However, the second and third occurrence of $x$ are free. Equally, the $y$ is free. The scope of the existential quantifier $\exists z$ is $(Ex \eif Lzx)$, so $z$ is bound.
-
-Finally we can say the following.
-	\factoidbox{
-		A \define{sentence} of FOL is any formula of FOL that contains no free variables.
-	}
-
-\newglossaryentry{sentence of FOL}{
-  name = sentence of FOL,
-  description = {a expression of FOL constructed according to the recursive rules. }
-}
-
-
-
-\section{Bracketing conventions}
-
-We will adopt the same notational conventions governing brackets that we did for TFL (see \S\ref{s:TFLSentences} and \S\ref{s:MoreBracketingConventions}.):  we may omit the outermost brackets of a formula.
-
-%First, we may omit the outermost brackets of a formula.
-
-%Second, we may use square brackets, `[' and `]', in place of brackets to increase the readability of formulas.
-
-%Third, we may omit brackets between each pair of conjuncts when writing long series of conjunctions.
-
-%Fourth, we may omit brackets between each pair of disjuncts when writing long series of disjunctions.
-
-\begin{practiceproblems}
-\problempart
-\label{pr.freeFOL}
-Identify which variables are bound and which are free.
-\begin{earg}
-\item $\exists x Lxy \eand \forall y Lyx$
-\item $\forall x Ax \eand Bx$
-\item $\forall x (Ax \eand Bx) \eand \forall y(Cx \eand Dy)$
-\item $\forall x\exists y[Rxy \eif (Jz \eand Kx)] \eor Ryx$
-\item $\forall x_1(Mx_2 \eif Lx_2x_1) \eand \exists x_2 Lx_3x_2$
-\end{earg}
-
-
-\end{practiceproblems}
+%For example, consider the formula
+%	$$\forall x(Ex \eor Dy) \eif \exists z(Ex \eif Lzx)$$
+%The scope of the universal quantifier $\forall x$ is $\forall x (Ex \eor Dy)$, so the first $x$ is bound by the universal quantifier. However, the second and third occurrence of $x$ are free. Equally, the $y$ is free. The scope of the existential quantifier $\exists z$ is $(Ex \eif Lzx)$, so $z$ is bound.
+%
+%Finally we can say the following.
+%	\factoidbox{
+%		A \define{sentence} of FOL is any formula of FOL that contains no free variables.
+%	}
+%
+%\newglossaryentry{sentence of FOL}{
+%  name = sentence of FOL,
+%  description = {a expression of FOL constructed according to the recursive rules. }
+%}
+%
+%
+%
+%\section{Bracketing conventions}
+%
+%We will adopt the same notational conventions governing brackets that we did for TFL (see \S\ref{s:TFLSentences} and \S\ref{s:MoreBracketingConventions}.):  we may omit the outermost brackets of a formula.
+%
+%%First, we may omit the outermost brackets of a formula.
+%
+%%Second, we may use square brackets, `[' and `]', in place of brackets to increase the readability of formulas.
+%
+%%Third, we may omit brackets between each pair of conjuncts when writing long series of conjunctions.
+%
+%%Fourth, we may omit brackets between each pair of disjuncts when writing long series of disjunctions.
+%
+%\begin{practiceproblems}
+%\problempart
+%\label{pr.freeFOL}
+%Identify which variables are bound and which are free.
+%\begin{earg}
+%\item $\exists x Lxy \eand \forall y Lyx$
+%\item $\forall x Ax \eand Bx$
+%\item $\forall x (Ax \eand Bx) \eand \forall y(Cx \eand Dy)$
+%\item $\forall x\exists y[Rxy \eif (Jz \eand Kx)] \eor Ryx$
+%\item $\forall x_1(Mx_2 \eif Lx_2x_1) \eand \exists x_2 Lx_3x_2$
+%\end{earg}
+%
+%
+%\end{practiceproblems}
 
 \chapter{Ambiguity}
 
-In chapter~\ref{s:AbmbiguityTFL} we discussed the fact that sentences of English can be ambiguous, and pointed out that sentences of TFL are not. One important application of this fact is that the structural ambiguity of English sentences can often, and usefully, be straightened out using different symbolizations.  One common source of ambiguity is \emph{scope ambiguity}, where the English sentence does not make it clear which logical word is supposed to be in the scope of which other. Multiple interpretations are possible.  In FOL, every connective and quantifier has a well-determined scope, and so whether or not one of them occurs in the scope of another in a given sentence of FOL is always determined.
+In chapter~\ref{s:AmbiguityTFL} we discussed the fact that sentences of English can be ambiguous, and pointed out that sentences of TFL are not. One important application of this fact is that the structural ambiguity of English sentences can often, and usefully, be straightened out using different symbolizations.  One common source of ambiguity is \emph{scope ambiguity}, where the English sentence does not make it clear which logical word is supposed to be in the scope of which other. Multiple interpretations are possible.  In FOL, every connective and quantifier has a well-determined scope, and so whether or not one of them occurs in the scope of another in a given sentence of FOL is always determined.
 
 For instance, consider the English idiom,
 \begin{earg}
@@ -2185,7 +2483,7 @@ Of course we can alternatively symbolize the two readings using existential quan
 	\prem $\exists x(F{x} \eand \enot {G}{x})$
 \end{earg}
 
-In chapter~\ref{s:MoreMonadic} we discussed how to symbolize sentences involving `only'. Consider the sentence:
+In chapter~{s:SymbolisingSimpleFOL} we discussed how to symbolize sentences involving `only'. Consider the sentence:
 \begin{earg}
 	\item[\ex{onlyamb}] Only young cats are playful.
 \end{earg}
@@ -2203,11 +2501,11 @@ There is even a third reading! Suppose we're talking about young animals and the
 \end{earg}
 Each of the last two readings can be made salient in English by placing the stress appropriately. For instance, to suggest the last reading, you would say `Only young \emph{cats} are playful', and to get the other reading you would say `Only \emph{young} cats are playful'.  The very first reading can be indicate by stressing both `young' and `cats': `Only \emph{young cats} are playful' (but not old cats, or dogs of any age).
 
-In sections \ref{ss:OrderQuant} and \ref{ss:SuppQuant} we discussed the importance of the order of quantifiers.  This is relevant here because, in English, the order of quantifiers is sometimes not completely determined.  When both universal (`all') and existential (`some', `a') quantifiers are  involved, this can result in scope ambiguities. Consider:
+In chapter \ref{s:MultipleGenerality} we discussed the importance of the order of quantifiers.  This is relevant here because, in English, the order of quantifiers is sometimes not completely determined.  When both universal (`all') and existential (`some', `a') quantifiers are  involved, this can result in scope ambiguities. Consider:
 \begin{earg}
 	\item[\ex{everya}] Everyone went to see a movie.
 \end{earg}
-This sentence is ambiguous.  In one interpretatation, it means that there is a single movie that everyone went to see. In the  other, it means that everyone went to see some movie or other, but not necessarily the same one. The two readings can be symbolized, respectively, by
+This sentence is ambiguous.  In one interpretation, it means that there is a single movie that everyone went to see. In the  other, it means that everyone went to see some movie or other, but not necessarily the same one. The two readings can be symbolized, respectively, by
 \begin{earg}
 	\prem $\exists x({M}{x} \eand \forall y({P}{y} \eif {S}{y,x}))$
 	\prem $\forall y({P}{y} \eif \exists x({M}{x} \eand {S}{y,x}))$
@@ -2220,26 +2518,26 @@ We assume here that the domain contains (at least) people and movies, and the sy
 \end{ekey}
 In the first reading, we say that the existential quantifier has \emph{wide scope} (and its scope contains the universal quantifier, which has \emph{narrow scope}), and the other way round in the second.
 
-In chapter~\ref{subsec.defdesc}, we encountered another scope ambiguity, arising from definite descriptions interacting with negation.  Consider Russell's own example:
-\begin{earg}
-	\item[\ex{thenot}] The King of France is not bald.
-\end{earg}
-If the definite description has wide scope, and we are interpreting the `not' as an `inner' negation (as we said before), sentence~\ref{thenot} is interpreted to assert the existence of a single King of France, to whom we are ascribing non-baldness. In this reading, it is symbolized as `$\exists x\bigl[{K}{x} \eand \forall y({K}{y} \eif x=y)) \eand \enot {B}{x}\bigr]$'. In the other reading, the `not' denies the sentence `The King of France is bald', and we would symbolize it as: `$\enot\exists x\bigl[{K}{x} \eand \forall y({K}{y} \eif x=y)) \eand {B}{x}\bigr]$'. In the first case, we say that the definite description has wide scope and in the second that it has narrow scope.
-
+%In chapter~\ref{subsec.defdesc}, we encountered another scope ambiguity, arising from definite descriptions interacting with negation.  Consider Russell's own example:
+%\begin{earg}
+%	\item[\ex{thenot}] The King of France is not bald.
+%\end{earg}
+%If the definite description has wide scope, and we are interpreting the `not' as an `inner' negation (as we said before), sentence~\ref{thenot} is interpreted to assert the existence of a single King of France, to whom we are ascribing non-baldness. In this reading, it is symbolized as `$\exists x\bigl[{K}{x} \eand \forall y({K}{y} \eif x=y)) \eand \enot {B}{x}\bigr]$'. In the other reading, the `not' denies the sentence `The King of France is bald', and we would symbolize it as: `$\enot\exists x\bigl[{K}{x} \eand \forall y({K}{y} \eif x=y)) \eand {B}{x}\bigr]$'. In the first case, we say that the definite description has wide scope and in the second that it has narrow scope.
+%
 \begin{practiceproblems}
 \problempart
 Each of the following sentences is ambiguous. Provide a symbolization key for each, and symbolize all readings.
 \begin{earg}
 	\item Noone likes a quitter.
 	\item CSI found only red hair at the scene.
-	\item Smith's murderer hasn't been arrested.
+%	\item Smith's murderer hasn't been arrested.
 \end{earg}
 
-\problempart
-Russell gave the following example in his paper `On Denoting':
-\begin{quote}
-	I have heard of a touchy owner of a yacht to whom a guest, on first seeing it, remarked, `I thought your yacht was larger than it is'; and the owner replied, `No, my yacht is not larger than it is'.
-\end{quote}
-Explain what's going on.
+%\problempart
+%Russell gave the following example in his paper `On Denoting':
+%\begin{quote}
+%	I have heard of a touchy owner of a yacht to whom a guest, on first seeing it, remarked, `I thought your yacht was larger than it is'; and the owner replied, `No, my yacht is not larger than it is'.
+%\end{quote}
+%Explain what's going on.
 
 \end{practiceproblems}
