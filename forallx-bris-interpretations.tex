@@ -3,107 +3,219 @@
 \label{ch.semantics}
 \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
 
+\chapter{Sets and Relations}
+We have discussed the syntax of the language of first-order language and, using our intuitive understanding of the vocabulary of the language, proposed a guideline for symbolizing English sentences in the language of FOL. We now turn to the semantics, that is, we now want to spell out truth-conditions for sentences of the language. In TFL the basic building blocks of the language were atomic sentences that were declared true or false by a valuation. In FOL the basic building blocks are names and predicates, which cannot be true or false as they are not sentences. But if their \emph{semantic value} is not a truth value, what is it?
 
-\chapter{Extensionality}\label{s:Interpretations}
 
-Recall that TFL is a truth-functional language. Its connectives are all truth-functional, and \emph{all} that we can do with TFL is key sentences to particular truth values. We can do this \emph{directly}. For example, we might stipulate that the TFL sentence $P$ is to be true. Alternatively, we can do this \emph{indirectly}, offering a symbolization key, e.g.:
-	\begin{ekey}
-		\item[P] Big Ben is in London
-	\end{ekey}
-Now recall from \S\ref{s:TruthFunctionality} that this should be taken to mean:
+\section{Sets}
+In symbolizing English sentences in FOL we were required to specify a domain, that is, the collection of objects the quantifiers range over. For example, an adequate domain for symbolizing the sentence
+\begin{itemize}
+\item All philosophers are fashionable
+\end{itemize}
+might consist of people, e.g.,  the collection of all living people in the world. From now on we call a collection of objects (people, things, numbers,\ldots) a \define{set} and that is what we take domains to be: sets. The domain we just alluded to would thus be the set consisting of all living people.
+
+Any collection of objects form a set and the objects forming the set are the \define{members} or \define{elements} of the set. For example, we can form the set consisting of Poppy and Naomi, which we convey by writing
+$$\{\text{Poppy, Naomi}\}.$$
+The order in which we list the objects is irrelevant, that is, by writing
+$$\{\text{Naomi, Poppy}\}$$
+we denote the (same) set consisting of Poppy and Naomi. More generally, sets are identical if and only if they have the same members. So, in particular, as mentioned above we obtain:
+$$\{\text{Poppy, Naomi}\}=\{\text{Naomi, Poppy}\}.$$  
+When specifying a domain we often deal with many objects, and it would be cumbersome and often impossible to list them all in order to specify the corresponding set: we cannot list all the living people in the world\ldots
+
+In such a case we use an alternative method for denoting sets: we single out all objects that have a specific property.\footnote{One needs to spell this idea out with some care for otherwise Russell's paradox ensues} For example the set consisting of all living people will be denoted by:
+$$\{o\,|\,o\text{ is a living person}\}.$$
+Similarly, the set consisting of all students of the UoB is denoted by
+$$\{o\,|\,o\text{ is a student of the UoB}\},$$
+and the set consisting of all cats and dogs by
+$$\{o\,|\,o\text{ is a cat or }o\text{ is a dog}\}.$$
+Given this alternate way of denoting sets it is no longer immediate whether a given object is a member of a set. To convey that a given object $o$ is a member of a set $S$ we shall write
+$$o\in S.$$
+Recall that members of a set are also called the elements of the set. This may be helpful for remembering the meaning of $\in$. For example, since Tom is a cat we have
+$$\text{Tom}\in\{o\,|\,o\text{ is a cat or }o\text{ is a dog}\}.$$
+The latter just tells us that Tom is a member (element) of the set consisting of all cats and dogs. 
+
+It is important to remember that sets are identical if and only if they have the same members. It doesn't matter which property was used to single out the elements of a set. This means that 
+$$\{o\,|\,o\text{ is an animal with a heart}\}$$
+and $$\{o\,|\,o\text{ is an animal with kidneys}\}$$
+denote the same set, as---at least according to the original example---the animals that have a heart coincides with the animals that have kidneys, i.e.,
+$$\{o\,|\,o\text{ is an animal with a heart}\}=\{o\,|\,o\text{ is an animal with kidneys}\}$$
+This does not \emph{mean} that the two properties are identical, but that any possible difference between the two properties gets lost once we move to sets.
+
+As just discussed, sets are collections of objects, but weirdly there is also a set that has no members, i.e., a set with no elements. This set is called the \define{empty set} and denoted by $\emptyset$. There are many different ways to specify the empty set. For example,
+$$\{o\,|\,o\neq o\}=\emptyset.$$
+
+
+
+\section{Relations}
+Suppose we have specified as our domain $D$ the set of all animals, i.e.,
+$$D=\{o\,|\,o\text{ is an animal}\}.$$
+How are we to understand a predicate like `\gap{x}is a cat'? The predicate will pick out those animals from the domain that are cats, that is, the set of all cats. As we will see, the sentence `Tom is a cat' when symbolized in FOL will be true iff the object picked out by the name `Tom', that is, Tom is a member of the set
+$$\{o\,|\,o\in D\text{ and }o\text{ is a cat}\}.$$
+
+However, `\gap{x}is a cat' is a one-place predicate, what about a two-place predicate like `\gap{x}is bigger than\gap{y}'?  Presumably the predicate applies to Tom and Jerry, as Tom is bigger than Jerry. Importantly, however it is no longer sufficient to merely consider the objects the predicate applies to, but we also need to specify their order: `\gap{x}is bigger than\gap{y}' applies to Tom and Jerry \emph{in that order}; it does not apply to Tom and Jerry in the order Jerry, Tom---Jerry is not bigger than Tom. 
+
+Summing up, two place predicates such as `\gap{x}is bigger than\gap{y}' or `\gap{x}loves\gap{y}' apply to ordered pairs, that is, pairs of object in a specific order. For example, `\gap{x}is bigger than\gap{y}' applies to the ordered pair $\langle\text{Tom, Jerry}\rangle$. The \define{ordered pair} $\langle\text{Tom, Jerry}\rangle$ is different to the set $\{\text{Tom, Jerry}\}$, but also different to the ordered pair $\langle\text{Jerry, Tom}\rangle$. $\langle\text{Tom, Jerry}\rangle$ tells us that Tom is the first object and Jerry is the second object in contrast $\langle\text{Jerry, Tom}\rangle$ where it is the other way around and the set $\{\text{Tom, Jerry}\}$ for which the order does not matter (recall that $\{\text{Tom, Jerry}\}=\{\text{Jerry, Tom}\}$). 
+
+Now, that we know what an ordered pairs are we can form sets of ordered pairs and such thats, that is, sets that only have ordered pairs as their elements are called \define{binary relations}. While, as discussed the one-place predicate like `is a cat' picks out the set of all cats in the domain, the two place predicate picks out a binary relation. More precisely, it picks out the set
+$$\{\langle o_1,o_2\rangle\,|\,o_1\text{ is bigger than }o_2\}.$$
+where we always assume that both $o_1$ and $o_2$ members of the domain. To recap: one-place predicates pick out sets and two-place predicates pick out binary relations. For example, the set
+$${\tiny \{\langle\text{Oslo, Norway}\rangle,\langle\text{Stockholm, Sweden}\rangle,\langle\text{Helsinki, Finland}\rangle,\langle\text{Copenhague, Denmark}\rangle\}}$$
+is a binary relation picked out by the two-place predicate `\gap{x}is a capital of\gap{y}' with a domain, which, e.g., is a set that has Scandinavian cities and countries as its elements.
+
+In Part \ref{ch.TFLsymb} we learned that there are not only two-place predicates but also three-place predicates, four-place predicates and, indeed, at least in principle predicates for any number of argument places. What does a three place predicate pick out? It picks out a \define{ternary relation}. While a binary relation is a set of ordered pairs, a ternary relation is a set of ordered triples. An ordered triple such as $\langle\text{Pooh, Eeyore, The trampoline}\rangle$ consists of the three-objects Pooh, Eeyore, The trampoline \emph{in that particular order}. The three-place predicate `\gap{x}bounces with\gap{y}on\gap{z}' picks out the following ternary relation:
+$$\{\langle o_1,o_2,o_3\rangle\,|\,o_1\text{ bounces with }o_2\text{ on }o_3\}.$$
+So intuitively the sentence 
+\begin{itemize}
+\item Pooh bounces with Eeyore on the trampoline
+\end{itemize}
+is true if and only if
+$$\langle\text{Pooh, Eeyore, The trampoline}\rangle\in\{\langle o_1,o_2,o_3\rangle\,|\,o_1\text{ bounces with }o_2\text{ on }o_3\}.$$
+
+In the same way that a three-place predicate picks out a ternary relation, an $n$-place predicate picks out an \define{$n$-ary relation}, that is, a set of $n$-tuples $\langle o_1,o_2,\ldots,o_n\rangle$.
+
+
+%\chapter{Extensionality}\label{s:Interpretations}
+%
+%Recall that TFL is a truth-functional language. Its connectives are all truth-functional, and \emph{all} that we can do with TFL is key sentences to particular truth values. We can do this \emph{directly}. For example, we might stipulate that the TFL sentence $P$ is to be true. Alternatively, we can do this \emph{indirectly}, offering a symbolization key, e.g.:
+%	\begin{ekey}
+%		\item[P] Big Ben is in London
+%	\end{ekey}
+%Now recall from \S\ref{s:TruthFunctionality} that this should be taken to mean:
+%	\begin{ebullet}
+%		\item The TFL sentence $P$ is to take the same truth value as the English sentence `Big Ben is in London' (whatever that truth value may be)
+%	\end{ebullet}
+%The point that we emphasized is that TFL cannot handle differences in meaning that go beyond mere differences in truth value.
+%
+%
+%\section{Symbolizing versus translating}
+%FOL has some similar limitations, but it goes beyond mere truth values, since it enables us to split up sentences into terms, predicates and quantifier expressions. This enables us to consider what is \emph{true of} some particular object, or of some or all objects. But we can do no more than that.
+%
+%When we provide a symbolization key for some FOL predicates, such as:
+%	\begin{ekey}
+%		\item[Cx] \gap{x} teaches Logic III in Calgary
+%	\end{ekey}
+%we do not carry the \emph{meaning} of the English predicate across into our FOL predicate. We are simply stipulating something like the following:
+%	\begin{ebullet}
+%		\item $Cx$ and `\gap{x} teaches Logic III in Calgary' are to be \emph{true of} exactly the same things.
+%	\end{ebullet}
+%So, in particular:
+%	\begin{ebullet}
+%		\item $Cx$ is to be true of all and only those things which teach Logic III in Calgary (whatever those things might be).
+%	\end{ebullet}
+%This is an indirect stipulation. Alternatively, we can directly stipulate which objects a predicate should be true of. For example, we can stipulate that $Cx$ is to be true of Richard Zach, and Richard Zach alone. As it happens, this direct stipulation would have the same effect as the indirect stipulation. Note, however, that the English predicates `\blank\ is Richard Zach' and `\blank\ teaches Logic III in Calgary' have very different meanings!
+%
+%The point is that FOL does not give us any resources for dealing with nuances of meaning. When we interpret FOL, all we are considering is what the predicates are true of, regardless of whether we specify these things directly or indirectly. The things a predicate is true of are known as the \define{extension} of that predicate. We say that FOL is an \define{extensional language} because FOL does not represent differences of meaning between predicates that have the same extension.
+%
+%For this reason, we say only that FOL sentences \emph{symbolize} English sentences. It is doubtful that we are \emph{translating} English into FOL, as translations should preserve meanings, and not just extensions.
+%
+%\section{A word on extensions}
+%We can stipulate directly what predicates are to be true of, so it is worth noting that our stipulations can be as arbitrary as we like. For example, we could stipulate that $Hx$ should be true of, and only of, the following objects:
+%	\begin{center}
+%		Justin Trudeau\\
+%		the number $\pi$\\
+%		every top-F key on every piano ever made
+%	\end{center}
+%Now, the objects that we have listed have nothing particularly in common. But this doesn't matter. Logic doesn't care about what strikes us mere humans as `natural' or `similar'. Armed with this interpretation of $Hx$, suppose we now add to our symbolization key:
+%	\begin{ekey}
+%		\item[j] Justin Trudeau
+%		\item[r] Rachel Notley
+%		\item[p] the number $\pi$
+%	\end{ekey}
+%Then $Hj$ and $Hp$ will both be true, on this interpretation, but $Hr$ will be false, since Rachel Notley was not among the stipulated objects.
+%
+%
+%
+%\section{Many-place predicates}
+%All of this is quite easy to understand when it comes to one-place predicates, but it gets messier when we consider two-place predicates. Consider a symbolization key like:
+%	\begin{ekey}
+%		\item[Lxy] \gap{x} loves \gap{y}
+%	\end{ekey}
+%Given what we said above, this symbolization key should be read as saying:
+%	\begin{earg}
+%		\item[\textbullet] $Lxy$ and `\gap{x} loves \gap{y}' are to be true of exactly the same things
+%	\end{earg}
+%So, in particular:
+%	\begin{earg}
+%		\item[\textbullet] $Lxy$ is to be true of x and y (in that order) iff x loves y.
+%	\end{earg}
+%It is important that we insist upon the order here, since love---famously---is not always reciprocated. (Note that `x' and `y' here are symbols of augmented English, and that they are being \emph{used}. By contrast, $x$ and $y$ are symbols of FOL, and they are being \emph{mentioned}.)
+%
+%That is an indirect stipulation. What about a direct stipulation? This is slightly harder. If we \emph{simply} list objects that fall under $Lxy$, we will not know whether they are the lover or the beloved (or both). We have to find a way to include the order in our explicit stipulation.
+%
+%To do this, we can specify that two-place predicates are true of \emph{pairs} of objects, where the order of the pair is important. Thus we might stipulate that $Bxy$ is to be true of, and only of, the following pairs of objects:
+%	\begin{center}
+%		\ntuple{Lenin, Marx}\\
+%		\ntuple{Heidegger, Sartre}\\
+%		\ntuple{Sartre, Heidegger}
+%	\end{center}
+%Here the angle-brackets keep us informed concerning order. Suppose we now add the following stipulations:
+%	\begin{ekey}
+%		\item[l] Lenin
+%		\item[m] Marx
+%		\item[h] Heidegger
+%		\item[r] Sartre
+%	\end{ekey}
+%Then $Blm$ will be true, since \ntuple{Lenin, Marx} was in our explicit list, but $Bml$ will be false, since \ntuple{Marx, Lenin} was not in our list. However, both $Bhr$ and $Brh$ will be true, since both \ntuple{Heidegger, Sartre} and \ntuple{Sartre, Heidegger} are in our explicit list.
+%
+%To make these ideas more precise, we would need to develop some \emph{set theory}. That would give us some precise tools for dealing with extensions and with ordered pairs (and ordered triples, etc.). However, set theory is not covered in this book, so we will leave these ideas at an imprecise level. Nevertheless, the general idea should be clear.
+
+
+
+
+\section{Interpretation}\label{s:interpretation}
+We defined a \define{valuation} in TFL as any assignment of truth and falsity to atomic sentences. In FOL, we are going to define an \define{interpretation}. 
+\factoidbox{The role of an interpretation is threefold. An interpretation 
 	\begin{ebullet}
-		\item The TFL sentence $P$ is to take the same truth value as the English sentence `Big Ben is in London' (whatever that truth value may be)
-	\end{ebullet}
-The point that we emphasized is that TFL cannot handle differences in meaning that go beyond mere differences in truth value.
+		\item specifies a non-empty set as the domain $D$;
+		\item assigns exactly one object of the domain to every name ($\approx$ the referent of the name);
+		\item assigns an $n$-ary relation to every $n$-place predicate (the things the predicate is to be true of in the respective order). 
+		\begin{itemize}
+		\item an interpretation assigns a subset of the domain to a one-place predicate
+		\item an interpretation assigns a binary relation to a two-place predicate
+		\item an interpretation assigns a ternary relation to a three-place predicate 
+		\item \ldots
+		\end{itemize}
+		\end{ebullet}
+	The interpretation of a FOL-expression $\eta$ is denoted by $\|\eta\|$:
+		\begin{ebullet}
+		\item if $c$ is a FOL-name, $\|c\|$ denotes the object of the domain assigned to `$c$' by the interpretation and thus $\|c\|\in D$.
+		\item if $P$ is the $n$-place predicate, then we write $\|P\|$ to denote the $n$-ary relation assigned to $P$ by the interpretation.
+	\end{ebullet}}
+	
+An interpretation thus provides us with all the necessary information for interpreting/understanding the predicates and names, as well as, information about the range of the quantifiers. Importantly, we are not guaranteed that the interpretation of an $n$-place predicate is nonempty, i.e., it is possible that $\|P\|=\emptyset$. In general, a convenient way of specifying an interpretation is to supplement a given symbolization key (cf.~ Part~\ref{ch.FOL}) with the relevant interpretation of the names and predicates.
+
+Suppose we have just symbolized the sentence
+\begin{itemize}
+\item Pooh bounces with Eeyore on the trampoline
+\end{itemize}
+using the symbolization key;
+\begin{ekey}
+\item[domain]Animals and trampolines
+\item[p]Pooh
+\item[e]Eeyore
+\item[t]The trampoline
+\item[Bxyz]\gap{x}bounces with\gap{y}on\gap{z}
+\end{ekey}
+Taking the symbolization key as a guideline we can construct an appropriate interpretation as follows:
+\begin{ekey}
+\item[domain]$\{o\,|\,o\text{ is an animal or }o\text{ is trampolines}\}$
+\item[p]\emph{Pooh}
+\item[e]\emph{Eeyore}
+\item[t]\emph{The trampoline}
+\item[Bxyz]$\{\langle o_1,o_2,o_3\rangle\,|\,o_1\text{ bounces with }o_2\text{ on }o_3\}$
+\end{ekey}
+Symbolization key and interpretation look very similar. Indeed we will sometimes be lazy and simply assume the interpretation to be suitably specified by the symbolization key. However, symbolization key and interpretation are very different things: an interpretation of the vocabulary of FOL is related to objects, sets and relations while in the symblization key we specify which FOL-symbols are to stand for the English names and predicates of a sentence, e.g, which FOL-name is to stand for the name `Pooh'. In the interpretation we are saying that the FOL-name `$p$' picks out Pooh (the bear) or, in some different interpretation, a different object of the domain. 
+
+We may then ask whether the FOL-sentence $Bpet$ is true in the interpretation so specified. The answer is that it is true iff, indeed, Pooh bounces with Eeyore on the trampoline, that is, iff
+$${\small \langle \text{Pooh, Eeyore, The trampoline}\rangle\in\{\langle o_1,o_2,o_3\rangle\,|\,o_1\text{ bounces with }o_2\text{ on }o_3\}.}$$
+The interpretation we have given above is arguably the \emph{intended interpretation}, that is, the interpretation that fits the symbolization key and our understanding of the English sentence. But there are many alternative interpretations for the FOL-sentence $Bpet$, the only thing which we require is that the interpretation specifies a domain, that the FOL-name `$p$', `$e$', and `$t$' pick out objects from the domain, and that the three-place $B$ is assigned a ternary relation. As in the case TFL: once we move to the language of FOL we forget about the particular English sentences and their meaning.
 
 
-\section{Symbolizing versus translating}
-FOL has some similar limitations, but it goes beyond mere truth values, since it enables us to split up sentences into terms, predicates and quantifier expressions. This enables us to consider what is \emph{true of} some particular object, or of some or all objects. But we can do no more than that.
-
-When we provide a symbolization key for some FOL predicates, such as:
-	\begin{ekey}
-		\item[Cx] \gap{x} teaches Logic III in Calgary
-	\end{ekey}
-we do not carry the \emph{meaning} of the English predicate across into our FOL predicate. We are simply stipulating something like the following:
-	\begin{ebullet}
-		\item $Cx$ and `\gap{x} teaches Logic III in Calgary' are to be \emph{true of} exactly the same things.
-	\end{ebullet}
-So, in particular:
-	\begin{ebullet}
-		\item $Cx$ is to be true of all and only those things which teach Logic III in Calgary (whatever those things might be).
-	\end{ebullet}
-This is an indirect stipulation. Alternatively, we can directly stipulate which objects a predicate should be true of. For example, we can stipulate that $Cx$ is to be true of Richard Zach, and Richard Zach alone. As it happens, this direct stipulation would have the same effect as the indirect stipulation. Note, however, that the English predicates `\blank\ is Richard Zach' and `\blank\ teaches Logic III in Calgary' have very different meanings!
-
-The point is that FOL does not give us any resources for dealing with nuances of meaning. When we interpret FOL, all we are considering is what the predicates are true of, regardless of whether we specify these things directly or indirectly. The things a predicate is true of are known as the \define{extension} of that predicate. We say that FOL is an \define{extensional language} because FOL does not represent differences of meaning between predicates that have the same extension.
-
-For this reason, we say only that FOL sentences \emph{symbolize} English sentences. It is doubtful that we are \emph{translating} English into FOL, as translations should preserve meanings, and not just extensions.
-
-\section{A word on extensions}
-We can stipulate directly what predicates are to be true of, so it is worth noting that our stipulations can be as arbitrary as we like. For example, we could stipulate that $Hx$ should be true of, and only of, the following objects:
-	\begin{center}
-		Justin Trudeau\\
-		the number $\pi$\\
-		every top-F key on every piano ever made
-	\end{center}
-Now, the objects that we have listed have nothing particularly in common. But this doesn't matter. Logic doesn't care about what strikes us mere humans as `natural' or `similar'. Armed with this interpretation of $Hx$, suppose we now add to our symbolization key:
-	\begin{ekey}
-		\item[j] Justin Trudeau
-		\item[r] Rachel Notley
-		\item[p] the number $\pi$
-	\end{ekey}
-Then $Hj$ and $Hp$ will both be true, on this interpretation, but $Hr$ will be false, since Rachel Notley was not among the stipulated objects.
-
-
-
-\section{Many-place predicates}
-All of this is quite easy to understand when it comes to one-place predicates, but it gets messier when we consider two-place predicates. Consider a symbolization key like:
-	\begin{ekey}
-		\item[Lxy] \gap{x} loves \gap{y}
-	\end{ekey}
-Given what we said above, this symbolization key should be read as saying:
-	\begin{earg}
-		\item[\textbullet] $Lxy$ and `\gap{x} loves \gap{y}' are to be true of exactly the same things
-	\end{earg}
-So, in particular:
-	\begin{earg}
-		\item[\textbullet] $Lxy$ is to be true of x and y (in that order) iff x loves y.
-	\end{earg}
-It is important that we insist upon the order here, since love---famously---is not always reciprocated. (Note that `x' and `y' here are symbols of augmented English, and that they are being \emph{used}. By contrast, $x$ and $y$ are symbols of FOL, and they are being \emph{mentioned}.)
-
-That is an indirect stipulation. What about a direct stipulation? This is slightly harder. If we \emph{simply} list objects that fall under $Lxy$, we will not know whether they are the lover or the beloved (or both). We have to find a way to include the order in our explicit stipulation.
-
-To do this, we can specify that two-place predicates are true of \emph{pairs} of objects, where the order of the pair is important. Thus we might stipulate that $Bxy$ is to be true of, and only of, the following pairs of objects:
-	\begin{center}
-		\ntuple{Lenin, Marx}\\
-		\ntuple{Heidegger, Sartre}\\
-		\ntuple{Sartre, Heidegger}
-	\end{center}
-Here the angle-brackets keep us informed concerning order. Suppose we now add the following stipulations:
-	\begin{ekey}
-		\item[l] Lenin
-		\item[m] Marx
-		\item[h] Heidegger
-		\item[r] Sartre
-	\end{ekey}
-Then $Blm$ will be true, since \ntuple{Lenin, Marx} was in our explicit list, but $Bml$ will be false, since \ntuple{Marx, Lenin} was not in our list. However, both $Bhr$ and $Brh$ will be true, since both \ntuple{Heidegger, Sartre} and \ntuple{Sartre, Heidegger} are in our explicit list.
-
-To make these ideas more precise, we would need to develop some \emph{set theory}. That would give us some precise tools for dealing with extensions and with ordered pairs (and ordered triples, etc.). However, set theory is not covered in this book, so we will leave these ideas at an imprecise level. Nevertheless, the general idea should be clear.
-
-
-
-
-\section{Interpretation}
-We defined a \define{valuation} in TFL as any assignment of truth and falsity to atomic sentences. In FOL, we are going to define an \define{interpretation} as consisting of three things:
-	\begin{ebullet}
-		\item the specification of a domain
-		\item for each name that we care to consider, an assignment of exactly one object within the domain
-		\item for each predicate that we care to consider, a specification of what things (in what order) the predicate is to be true of
-	\end{ebullet}
-The symbolization keys that we considered in Part~\ref{ch.FOL} consequently give us one very convenient way to present an interpretation. We will continue to use them throughout this chapter. However, it is sometimes also convenient to present an interpretation \emph{diagrammatically}.
+To clearly distinguish symbolization key and interpretation it is convenient to present an interpretation \emph{diagrammatically}.
 
 \newglossaryentry{interpretation}{
   name = {interpretation},
-  description = {a specification of a \gls{domain} together with the objects the \glspl{name} pick out and which objects the \glspl{predicate} are true of}
+  description = {a specification of a \gls{domain} together with the objects the \glspl{names} pick out and the sets and relations assigned to the different \glspl{predicates}}
 }
 
 Suppose we want to consider just a single two-place predicate, $Rxy$. Then we can represent it just by drawing an arrow between two objects, and stipulate that $Rxy$ is to hold of x and y just in case there is an arrow running from x to y in our diagram. As an example, we might offer:
@@ -120,14 +232,14 @@ Suppose we want to consider just a single two-place predicate, $Rxy$. Then we ca
 \draw[->, thick] (atom1) -- (atom3);
 \end{tikzpicture}
 \end{center}
-This would be suitable to characterize an interpretation whose domain is the first four positive whole numbers, and which interprets $Rxy$ as being true of and only of:
-	\begin{center}
+This would be suitable to characterize an interpretation whose domain is the set $\{1,2,3,4\}$, and:
+	\begin{align*}\|R\|&=\{
 		\ntuple{1, 2},
 		\ntuple{2, 3},
 		\ntuple{3, 4},
 		\ntuple{4, 1},
-		\ntuple{1, 3}
-	\end{center}
+		\ntuple{1, 3}\}.
+	\end{align*}
 Equally we might offer:
 
 \begin{center}
@@ -142,23 +254,35 @@ Equally we might offer:
 \draw[<->, thick] (atom1) -- (atom3);
 \end{tikzpicture}
 \end{center}
-for an interpretation with the same domain, which interprets $Rxy$ as being true of and only of:
-	\begin{center}
+for an interpretation with the same domain but where
+	\begin{align*}\|R\|&=\{
 		\ntuple{1, 3},
 		\ntuple{3, 1},
 		\ntuple{3, 4},
 		\ntuple{1, 1},
-		\ntuple{3, 3}
-	\end{center}
-If we wanted, we could make our diagrams more complex. For example, we could add names as labels for particular objects. Equally, to symbolize the extension of a one-place predicate, we might simply draw a ring around some particular objects and stipulate that the thus encircled objects (and only them) are to fall under the predicate $Hx$, say.
+		\ntuple{3, 3}\}.
+	\end{align*}
+If we wanted, we could make our diagrams more complex. For example, we could add names as labels for particular objects. Equally, to symbolize the extension of a one-place predicate, we might simply draw a ring around some particular objects and stipulate that the set formed out of the encircled objects constitutes the interpretation of the predicate $Hx$, say.
 
 
 \chapter{Truth in FOL}\label{s:TruthFOL}
-We know what interpretations are. Since, among other things, they tell us which predicates are true of which objects, they will provide us with an account of the truth of atomic sentences. However, we must also present a detailed account of what it is for an arbitrary FOL sentence to be true or false in an interpretation.
+We know what interpretations are. Since, among other things, they tell us how we are to understand FOL-predicates and FOL-names, they will provide us with an account of the truth of atomic sentences. We already hinted at this account in the previous chapter. However, we must also present a detailed account of what it is for an arbitrary FOL sentence to be true or false in an interpretation.
 
-But we defined what a sentence was by first specifying what a formula is. Formulas like $Hx$ aren't the sorts of things that are true or false in interpretations. Only sentences are true or false. But if we provide extra information we can determine the truth of $Hx$: we need to specify what $x$ refers to. This is done by using a variable assignment: \factoidbox{A variable assignment specifies an object for each variable.}
+But we defined what a sentence was by first specifying what a formula is. Formulas like $Ex$ aren't the sorts of things that are true or false in interpretations. Only sentences are true or false. But if we provide extra information we can determine the truth of $Ex$: we need to specify what object $x$ stands for. This is done by using a variable assignment: 
+\factoidbox{A \define{variable assignment} assigns to each variable an object the variable stands for.}
 
-We define whether a formula is true or false \emph{under a variable assignment}.
+We often talk and compare different variable assignments so it's convenient to have names for them and we use greek letters $\alpha, \beta,\gamma$ for this purpose. 
+
+Now consider an interpretation where the domain $D$ is the set of natural number and the predicate $E$ picks out the even numbers:
+\begin{align*}&D=\{o\,|\, o\text{ is a natural number}\}\\
+&\|E\|=\{o\,|\,o\text{ is an even number}\}\end{align*}
+Then $Ex$ will be true in this interpretation under a variable assignment $\alpha$ that assigns, say, 4 to $x$---we write $\alpha(x)=4$---but false under a variable assignment $\beta$ that assigns 3 to $x$, i.e., $\beta(x)=3$.
+
+Before we give a general definition of whether a formula is true or false \emph{under a variable assignment} in a given interpretation, we need to introduce one further useful bit of terminology.
+\factoidbox{Let $\beta$ be a variable assignment and $\metav$ a variable. Then the variable assignment $\beta(\metav:o)$ is a variable assignment that assigns the same objects to the variables than $\beta$ except possibly to the variable $\metav$ to which it assigns $o$. $\beta(\metav:o)$ is called an \define{$\metav$-variant} of $\beta$.}
+
+Notice that $\metav$ is metavariable for variables of FOL and that a variant assignment can be formulated for every FOL-variable. Variants of variable assignments will be important for stating the truth conditions of quantified formulas.
+
 We know from \S\ref{s:FOLSentences} that there are three kinds of formulas in FOL:
 	\begin{ebullet}
 		\item atomic formulas
@@ -169,45 +293,54 @@ We need to explain truth for all three kinds of formula.
 
 We will provide a completely general explanation in this section. However, to try to keep the explanation comprehensible, we will, at several points, use the following interpretation:
 	\begin{ekey}
-		\item[\text{domain}] all people born before 2000\textsc{ce}
-		\item[a] Aristotle
-		\item[b] Beyonc\'e
-		\item[Px] \gap{x} is a philosopher
-		\item[Rxy] \gap{x} was born before \gap{y}
+		\item[\text{domain}]$\{o\,|\,o\text{ is a person born before before 2000\textsc{ce}}\}$)
+		\item[a] \emph{Aristotle}
+		\item[b] \emph{Beyonc\'e}
+		\item[Px] $\{o\,|\,o\text{ is a philosopher}\}$
+		\item[Rxy] $\{\langle o_1,o_2\rangle\,|\,o_1\text{ was born before }o_2\}$
 	\end{ekey}
 This will be our \emph{go-to example} in what follows.
-
-\section{Atomic formulas}
+%
+\section{Atomic formulas}\label{s:traf}
 Atomic formulas are things like $Px$, $Pb$ or $Rax$.
 
-An atomic sentence like $Pb$ is checked for truth just by consulting our interpretation: $Px$ is `\gap{x} is a philosopher', so if we're looking at $Pb$ we fill out the gap with  Beyonc\'e, and  Beyonc\'e is not a philosopher, so $Pb$ is false.
+To see whether an atomic sentence like `$Pb$' is true in an interpretation, we need to check whether the object that is picked out by the name `$b$' is a member of the set the interpretation assigns to `$P$'. Looking at our \emph{go-to example} this means that `$Pb$' is true in the interpretation iff $$\text{\emph{Beyonc\'e}}\in\{o\,|\,o\text{ is a philosopher}\}.$$
+Since Beyonc\'e is not a philosopher, i.e., 
+$$\text{\emph{Beyonc\'e}}\not\in\{o\,|\,o\text{ is a philosopher}\}$$
+`$Pb$' is false in that interpretation.
 
-What about $Px$? This reads something like `they are a philosopher'. The question is who `they' refers to, or in the logic terms: who $x$ is. This depends on a variable assignment. Our variable assignment needs to give an object in our domain for the variable $x$. For example, it might give Beyonc\'e, then since Beyonc\'e is not a philosopher, $Px$ would be false on this variable assignment. Our variable assignment doesn't need to specify one of the objects that are named, it can give us anyone in our domain, e.g.~Queen Elizabeth II. Under the variable assignment which assigns $x$ Queen Elizabeth II, $Px$ is false: Queen Elizabeth II is not a philosopher.
+
+What about $Px$? This reads something like `they are a philosopher'. The question is who `they' refers to, or in the logic terms: who $x$ is. This depends on a variable assignment. A variable assignment needs to give an object in our domain for the variable $x$. For example, a variable assignment $\alpha$  assign Beyonc\'e to $x$, i.e., $\alpha(x)$=Beyonc\'e and since Beyonc\'e is not in the interpretation of `$P$' `$Px$' is not true in the interpretation under the variable assignment $\alpha$. However, since Aristotle is a philosopher `$Px$ would be true in the interpretation under a variable assignment $\beta$, $$\beta(x)=\text{Aristotle}.$$
+A variable assignment doesn't need to specify one of the objects that are named, it can give us anyone in our domain, e.g.~Queen Elizabeth II. Under the variable assignment which assigns $x$ Queen Elizabeth II, `$Px$' is false: Queen Elizabeth II is not a philosopher.
 
 %The truth of atomic \emph{sentences} should be fairly straightforward. The sentence $Pa$ should be true just in case $Px$ is true of $a$. Given our go-to interpretation, this is true iff Aristotle is a philosopher. Aristotle is a philosopher. So the sentence is true. Equally, $Pb$ is false on our go-to interpretation.
 
 Likewise, on this interpretation, $Rab$ is true iff the object named by $a$ was born before the object named by $b$. Well, Aristotle was born before Beyonc\'e. So $Rab$ is true. Equally, $Raa$ is false: Aristotle was not born before Aristotle. How about $Rax$? Well what does our variable assignment specify for $x$? If we have a variable assignment where $x$ is Queen Elizabeth II, then $Rax$ is true: Aristotle was born before Queen Elizabeth II.
 
-Dealing with atomic sentences, then, is very intuitive. When \meta{R} is an $n$-place predicate and $\metaterm_1,\,\metaterm_2\ldots\metaterm_{n}$ are names or variables, then
+Dealing with atomic formulas, then, is very intuitive. The only thing to be attentive to is the difference between names or variables:
+\factoidbox{A \define{term} is either a name or a variable. If $t$ is a term then the \define{denotation of the term} in the interpretation under an variable assignment $\alpha$, $\|t\|^\alpha$ is the object pick out by the interpretation, if $t$ is a name and $\alpha(t)$ otherwise:
+\begin{align*}\|t\|^\alpha=\begin{cases}\|t\|,&\text{ if $t$ is name;}\\\alpha(t),&\text{  if $t$ is a variable.}\end{cases}\end{align*} }
+
+With this final bit of terminology out of way we can state the truth conditions for atomic formuals. Let \meta{R} be an $n$-place predicate and $\metaterm_1,\,\metaterm_2\ldots\metaterm_{n}$ terms. Then
 
 	\factoidbox{
-		$\meta{R}\metaterm_1\metaterm_2\ldots\metaterm_{n}$ is true in an interpretation under a variable assignment \textbf{iff}\\
-		$\meta{R}$ is true of the objects referred to by $\metaterm_{1}, \metaterm_{2}, \ldots, \metaterm_{n}$ in that interpretation under that variable assignment (considered in that order)
+		$\meta{R}\metaterm_1\metaterm_2\ldots\metaterm_{n}$ is true in an interpretation under a variable assignment $\alpha$ \textbf{iff}\\
+		$$\langle\|t_1\|^\alpha,\ldots,\|t_n\|^\alpha\rangle\in\|\meta{R}\|$$
 	}
 
-
+From this definition of the truth of atomic formulas we can tell that an assignment only plays an important role if one of the terms is a variable. If all terms are name then an atomic formula is true in an interpretation under a variable assignment \textbf{iff} it is true in the interpretation under \textbf{every} variable assignment. We will see that that is the case for sentences more generally: the choice of the variable assignment is only relevant to determine whether a formulas with free variables is true in an interpretation (under the chosen variable assignment). For this reason we sometimes do not mention the variable assignment when we talk about the truth of sentences. However, as we shall see the variable assignment will still have a role to play when we talk about the truth and falsity of quantified sentencesd.
 
 \section{Sentential connectives}
 We saw in \S\ref{s:FOLSentences} that FOL formulas can be built up from simpler ones using the truth-functional connectives that were familiar from TFL. The rules governing these truth-functional connectives are \emph{exactly} the same as they were when we considered TFL. Here they are:
 	\factoidbox{
-		$\metaX \eand \metaY$ is true in an interpretation under a variable assignment \textbf{iff}\\ both $\metaX$ and $\metaY$ is true in that interpretation under that variable assignment
+	$\enot \metaX$ is true in an interpretation under a variable assignment \textbf{iff} \\$\metaX$ is false in that interpretation under that variable assignment
+
+		\
+		\\$\metaX \eand \metaY$ is true in an interpretation under a variable assignment \textbf{iff}\\ both $\metaX$ and $\metaY$ is true in that interpretation under that variable assignment
 
 		\
 		\\
 		$\metaX \eor \metaY$ is true in an interpretation under a variable assignment \textbf{iff}\\ either $\metaX$ is true or $\metaY$ is true in that interpretation under that variable assignment
-
-		\
-		\\$\enot \metaX$ is true in an interpretation under a variable assignment \textbf{iff} \\$\metaX$ is false in that interpretation under that variable assignment
 
 		\
 		\\$\metaX \eif \metaY$ is true in an interpretation under a variable assignment \textbf{iff}\\ either $\metaX$ is false or $\metaY$ is true in that interpretation under that variable assignment
@@ -217,17 +350,17 @@ We saw in \S\ref{s:FOLSentences} that FOL formulas can be built up from simpler 
 	}
 This is just another presentation of the truth rules we gave for the connectives in TFL; it just does so in a slightly different way. Some examples will probably help to illustrate the idea. On our go-to interpretation:
 	\begin{earg}
-		\item[\textbullet] $ Pa$ is true
-		\item[\textbullet] $Rab \eand Pb$ is false because, although $Rab$ is true, $Pb$ is false
-		\item[\textbullet] $\enot Pa$ is false
-		\item[\textbullet] $Pa \eand \enot(Pb\eand Rab)$ is true, because $Pa$ is true and $Pb$ is false, so $Pb\eand Rab$ is false, thus $\enot (Pb\eand Rab)$ is also true.
+		\item[\textbullet] `$Pa$' is true
+		\item[\textbullet] `$Rab \eand Pb$' is false because, although `$Rab$' is true, `$Pb$' is false
+		\item[\textbullet] `$\enot Pa$' is false
+		\item[\textbullet] `$Pa \eand \enot(Pb\eand Rab)$' is true, because `$Pa$' is true and `$Pb$' is false, so `$Pb\eand Rab$' is false, thus `$\enot (Pb\eand Rab)$' is also true.
 	\end{earg}
 Make sure you understand these examples.
 
 We can also carry variable assignments around with us. Consider a variable assignment which assigns David Hume to $x$. Then \begin{ebullet}
-\item $Px$ is true under this variable assignment: David Hume was a philosopher
-\item $Bxa$ is false under this variable assignment: David Hume was born after Aristotle
-\item $Px\eif Bxa$ is false under this variable assignment: $Px$ is true and $Bxa$ is false, so by our rule for $\eif$, $Px\eif Bxa$ is false.
+\item `$Px$' is true under this variable assignment: David Hume was a philosopher
+\item `$Bxa$' is false under this variable assignment: David Hume was born after Aristotle
+\item `$Px\eif Bxa$' is false under this variable assignment: `$Px$' is true and `$Bxa$' is false, so by our rule for $\eif$, `$Px\eif Bxa$' is false.
 \end{ebullet}
 
 
@@ -243,37 +376,38 @@ Consider the following interpretation:
 \node[businessman,minimum size=1cm,skin=brown,below=.8cm of B] {Denny};
 \end{tikzpicture}
 
-\begin{ekey}\item[\text{domain}] People in above picture (Alice, Bob, Cathy and Denny)
-\item[Hx] \gap{x} has horns (Bob)
-\item[Sx] \gap{x} carrying a sword (Alice and Bob)
-\item[Cx]\gap{x} is looking at a computer (Alice and Cathy)
+\begin{ekey}\item[\text{domain}] $\{\text{\emph{Alice, Bob, Cathy, Denny}}\}$
+\item[Hx] $\{\text{\emph{Bob}}\}$
+\item[Sx] $\{\text{\emph{Alice, Bob}}\}$
+\item[Cx]$\{\text{\emph{Alice, Cathy}}\}$
 %\item[Gx] nothing
 \end{ekey}
 \end{center}
+(Hint: read $Hx$ as `\gap{x} has horns', $Sx$ as `\gap{x} has horns' and $CX$ as `\gap{x}has a computer')\\
 
-Is $\exists x Sx$ true? To check this we see if there is a choice of an object for $x$ which gives us a variable assignment under which $Sx$ is true. Consider assigning Alice to $x$, which we can as shorthand write by $x\mapsto \text{Alice}$. Under this variable assignment, $Sx$ is true: Alice does have a sword. So $\exists x Sx$ is true. There is a choice of an object in our domain for $x$ under which $Sx$ is true.
+\noindent Is `$\exists x Sx$' true in this interpretation under a variable assignment? Intuitively this should be true iff there is an object in the domain which has a sword and since $\|S\|=\{\text{\emph{Alice, Bob}}\}$ should indeed come out as true. We can directly spell out these intuitive truth conditions by using the notion of an  $x$-variant of the initial variable assignment:
+\begin{quote}
+`$\exists x Sx$' true in this interpretation under the variable assignment $\alpha$ \textbf{iff} there exists an object $o$ of the domain, i.e.~$o\in D$, such that `$Sx$' is true in the interpretation under the variable assignment $\alpha(x:o)$.
+\end{quote}
+Then, to show that `$\exists x Sx$' true in the interpretation under an arbitrary variable assignment it suffices to find an object in the domain, say, \emph{Alice} such that `$Sx$' is true under the variable assignment $\alpha(x:\text{\emph{Alice}})$  (we can also denote this variable assignment by $x\mapsto \text{Alice}$). Under this variable assignment, $Sx$ is true: Since Alice does have a sword, i.e., $\text{\emph{Alice}}\in\|S\|$, $Sx$ is indeed true under this assignment. This guaranteed the truth of `$\exists x Sx$': There is a choice of an object in our domain for $x$ under which $Sx$ is true.
 
-What about $\forall x Sx$? This is true iff $Sx$ is true under any choice of a person for $x$. Let's go through them. \begin{center}
-\begin{tabular}{l|c}
-&$Sx$\Bstrut\\\hline\Tstrut
-$x\mapsto\text{Alice}$&T\\
-$x\mapsto \text{Bob}$&T\\
-$x\mapsto \text{Cathy}$&F\\
-$x\mapsto \text{Denny}$&F
-\end{tabular}
-\end{center}So $\forall x Sx$ is false: it is not the case that $Sx$ is true under any choice of an object for $x$: when we have an assignment of Cathy to $x$, $Sx$ is false.
+What about $\forall x Sx$? Intuitively, this should be true iff every object in the domain which has a sword. Appealing to the $x$-variant of out initial variable assignment we can again spell out the truth conditions in a straightforward:
+\begin{quote}
+`$\forall x Sx$' true in this interpretation under the variable assignment $\alpha$ \textbf{iff} for every object $o$ of the domain `$Sx$' is true in the interpretation under the variable assignment $\alpha(x:o)$.
+\end{quote}
+ Since \emph{Denny} $\not\in\|S\|=\{\text{\emph{Alice, Bob}}\}$ `$\forall x Sx$' to comes out false in this interpretation: `$Sx$' is not true in the interpretation under the variable assignment $\alpha(x:\emph{Denny})$. 
 
-What about $\forall x(Sx\eif (Hx\eor Cx))$
+What about $\forall x(Sx\eif (Hx\eor Cx))$? To check whether it is true we need to check whether `$Sx\eif(Hx\eor Cx)$ is true for every choice of object that is assigned to $x$:
 \begin{center}
 \begin{tabular}{l|ccccc}
 &$Sx$&$Hx$&$Cx$&$Hx\eor Cx$&$Sx\eif (Hx\eor Cx)$\Bstrut\\\hline\Tstrut
-$x\mapsto\text{Alice}$&T&F&T&T&T\\
-$x\mapsto \text{Bob}$&T&T&F&T&T\\
-$x\mapsto \text{Cathy}$&F&F&T&T&T\\
-$x\mapsto \text{Denny}$&F&F&F&F&T
+$x\mapsto\text{\emph{Alice}}$&T&F&T&T&T\\
+$x\mapsto \text{\emph{Bob}}$&T&T&F&T&T\\
+$x\mapsto \text{\emph{Cathy}}$&F&F&T&T&T\\
+$x\mapsto \text{\emph{Denny}}$&F&F&F&F&T
 \end{tabular}
 \end{center}
-So $Sx\eif (Hx\eor Cx)$  is true under every assignment of an object to the variable $x$. And so $\forall x(Sx\eif (Hx\eor Cx))$ is true.
+So `$Sx\eif (Hx\eor Cx)$'  is true in the interpretation under every assignment $\alpha(x:o)$ for every object $o\in D$. And so $\forall x(Sx\eif (Hx\eor Cx))$ is true is true in the interpretation under every variable assignment..
 
 
 
@@ -294,49 +428,62 @@ Consider a new interpretation: \begin{center}
 \end{tikzpicture}
 
  \begin{ekey}
-\item[\text{domain}] Numbers 1, 2, 3 and 4.
-\item[Rxy] There is an arrow from \gap{x} to \gap{y} in the diagram.
-\item[Sx] There is a square around \gap{x} in the diagram.
+\item[\text{domain}] $\{1,2,3,4\}$
+\item[Rxy] $\{\langle o_1,o_2\rangle\,|\,\text{There is an arrow from $o_1$ to $o_2$ in the diagram}\}$.
+\item[Sx] $\{o\,|\,\text{There is a square around $o$ in the diagram}\}$.
 \end{ekey}
 \end{center}
 
- Is $\exists x\forall y Rxy$ true? We need to find some choice of an object for $x$ where $\forall y Rxy$ is true under that choice (``variable assignment''). Let's (with foresight) chose the number 3 for $x$ ($x\mapsto 3$). Let's call this particular variable assignment $\alpha$. $\alpha$ also assigns objects to all other variables of the language (we just don't care which ones) Is $\forall y Rxy$ true under the variable assignment $\alpha$? Intuitively, the answer is yes as there is an arrow from 3 to 1, 2, 3, and 4, that is, all objects of the domain.
+ Is $\exists x\forall y Rxy$ true? Intuitively, the sentence is true iff there is an object in the domain from which there is an arrow to all other arrows. Now, let's work through the example step by step and see whether we get the intuitive outcome.
+ \begin{enumerate}
+ \item  `$\exists x\forall y Rxy$' is true in the interpretation under an (arbitrary) variable assignment $\alpha$ iff there is a number $n\in\{1,2,3,4\}$ such `$\forall y Rxy$' is true in the interpretation under the variable assignment $\alpha(x:n)$. 
+ \begin{itemize}
+ \item We choose $n$ to be the number 3 (with some foresight)
+ \end{itemize}
+ \item `$\forall y Rxy$' is true in the interpretation under the variable assignment $\alpha(x:3)$ iff $Rxy$ is true in the interpretation under the variable assignment $\alpha(x:3)(y:m)$ for all $m\in\{1,2,3,4\}$.
+ \begin{itemize}
+ \item $\alpha(x:3)(y:m)$ looks very complicated; it is a $y$-variant of an $x$-variant\ldots But all it says is that the variable $y$ gets assigned the number $m$, i.e., $y\mapsto m$ and the variable $x$ gets assigned the number $3$, i.e., $x\mapsto 3$.
+ \end{itemize}
+ \item $Rxy$ is true in the interpretation under the variable assignment $\alpha(x:3)(y:m)$ for all $m\in\{1,2,3,4\}$ iff there is an arrow from $3$ to every number in the set $\{1,2,3,4\}$. In that case we have that `$Rxy$' is true in the interpretation under the variable assignment $\alpha(x:3)(y:1)$, the variable assignment $\alpha(x:3)(y:2)$, the variable assignment $\alpha(x:3)(y:3)$ and also $\alpha(x:3)(y:4)$.
+ \item Since there is an arrow from 3 to every number we can conclude that .`$\exists x\forall y Rxy$' is true in the interpretation
+ \end{enumerate}
  
-  %To check this we need to do something more with our variable assignment: we need to extend it with a choice of an object for $y$. 
- To evaluate the universal quantifier $\forall y$ we need to think about all ways of picking an object for $y$, not only the one of the particular variable assignment $\alpha$. Moreover, in doing so we need to keep the assignment of $3$ to $x$ fixed. This means we need to evaluate whether $Rxy$ is true under all assignments that differ from the assignment $\alpha$ at most in that they might assign a different object $y$ than $\alpha$. Since in this case our domain has four objects this means that there are only four different objects an assignment can assign to $x$ (whilst assigning $3$ to $x$). If $Rxy$ is true on all these options $\exists x\forall y Rxy$ is true:
-\begin{center}
- \begin{tabular}{cc|c}
-&&$Rxy$\Bstrut\\\hline\Tstrut
-$x\mapsto 3$&$y\mapsto 1$&T\\
-$x\mapsto 3$&$y\mapsto 2$&T\\
-$x\mapsto 3$&$y\mapsto 3$&T\\
-$x\mapsto 3$&$y\mapsto 4$&T\\
- \end{tabular}
-\end{center}So under every variable assignment that differs from $\alpha$ at most at $y$ (it assigns the same object as $\alpha$ to a variable except for $y$ to which it may assign a different object)  $Rxy$ true. This tells us that $\forall y Rxy$ is true under the variable assignment $\alpha$ for which $x\mapsto 3$. And \emph{that} tells us that $\exists x\forall y Rxy$ is true: there's an assignment of the variable $x$ under which the constituent formula $\forall y Rxy$ is true.
+% To check whether We need to find some number $n$ such that every number $m$: $\langle n,m\rangle\in\|R\|$, i.e., there is an arrow from $n$ to every number $m$. Let's chose the number 3 for $x$ ($x\mapsto 3$). Let's call this particular variable assignment $\alpha$. $\alpha$ also assigns objects to all other variables of the language (we just don't care which ones) Is $\forall y Rxy$ true under the variable assignment $\alpha$? Intuitively, the answer is yes as there is an arrow from 3 to 1, 2, 3, and 4, that is, all objects of the domain.
+% 
+%  %To check this we need to do something more with our variable assignment: we need to extend it with a choice of an object for $y$. 
+% To evaluate the universal quantifier $\forall y$ we need to think about all ways of picking an object for $y$, not only the one of the particular variable assignment $\alpha$. Moreover, in doing so we need to keep the assignment of $3$ to $x$ fixed. This means we need to evaluate whether $Rxy$ is true under all assignments that differ from the assignment $\alpha$ at most in that they might assign a different object $y$ than $\alpha$. Since in this case our domain has four objects this means that there are only four different objects an assignment can assign to $x$ (whilst assigning $3$ to $x$). If $Rxy$ is true on all these options $\exists x\forall y Rxy$ is true:
+%\begin{center}
+% \begin{tabular}{cc|c}
+%&&$Rxy$\Bstrut\\\hline\Tstrut
+%$x\mapsto 3$&$y\mapsto 1$&T\\
+%$x\mapsto 3$&$y\mapsto 2$&T\\
+%$x\mapsto 3$&$y\mapsto 3$&T\\
+%$x\mapsto 3$&$y\mapsto 4$&T\\
+% \end{tabular}
+%\end{center}So under every variable assignment that differs from $\alpha$ at most at $y$ (it assigns the same object as $\alpha$ to a variable except for $y$ to which it may assign a different object)  $Rxy$ true. This tells us that $\forall y Rxy$ is true under the variable assignment $\alpha$ for which $x\mapsto 3$. And \emph{that} tells us that $\exists x\forall y Rxy$ is true: there's an assignment of the variable $x$ under which the constituent formula $\forall y Rxy$ is true.
 
-What about $\exists x \exists y(Rxy \eand Ryx)$? To show that it is true we will want to choose an object that we can assign to $x$ under which $\exists y (Rxy\eand Ryx)$ is true. Let's consider $x\mapsto 3$ (again I'm using my forsight of what will come to choose carefully). Now is $\exists y (Rxy\eand Ryx)$  true under the variable assignment $x\mapsto 3$? We need to find an extension of this which chooses an object for $y$ under which $Rxy\eand Ryx$ is true. Consider $y\mapsto 3$. We now have a variable assignment $x\mapsto 3, y\mapsto 3$. They are different variables but there's nothing stopping them denoting the same object. And we can then consider whether $Rxy\eand Ryx$ is true under this interpretation. Well, $Rxy$ is true: 3 does have an arrow to 3. And $Ryx$ is also true: 3 does have an arrow to 3. So by our clause for $\eand$, $Rxy\eand Ryx$ is true under this variable assignment $x\mapsto 3, y\mapsto 3$. And so $\exists y(Rxy\eand Ryx)$ is true under the variable assignment $x\mapsto 3$. And so $\exists x\exists y(Rxy\eand Ryx)$ is true in this interpretation.
+What about `$\exists x \exists y(Rxy \eand Ryx)$'? To show that it is true we will want to choose an object $o$ that we can assign to $x$ such that `$\exists y (Rxy\eand Ryx)$' is true uunder the assignment $\alpha(x:o)$. Let's consider $x\mapsto 3$ (again I'm using my foresight of what will come to choose carefully). Now is `$\exists y (Rxy\eand Ryx)$'  true under the variable assignment $x\mapsto 3$ (i.e., $\alpha(x:3)$? We need to find $y$-variant of this assignment which chooses an object such that `$Rxy\eand Ryx$' is true. Consider $y\mapsto 3$. We now have a variable assignment $\alpha(x:3)(y:3)$. $x$ and $y$ are different variables but there's nothing stopping them being assigned the same object. And we can then consider whether $Rxy\eand Ryx$ is true under this interpretation. Well, `$Rxy$' is true: 3 does have an arrow to 3. And `$Ryx$' is also true: 3 does have an arrow to 3. So by our clause for $\eand$, `$Rxy\eand Ryx$' is true under the variable assignment $\alpha(x:3)(y:3)$. And so `$\exists y(Rxy\eand Ryx)$' is true under the variable assignment $\alpha(x:3)$. And so $\exists x\exists y(Rxy\eand Ryx)$ is true in this interpretation.
 
-One more example: $\forall x(Sx\eif \exists y Rxy)$? To check this is true we will need to go through each of our objects for $x$ and see that $Sx\eif \exists y Rxy$ is true under that interpretation. We can already see if $Sx$ is true under each variable assignment, and if we find that $Sx$ is false that's enough information to determine that $Sx\eif \exists y Rxy$ is true (check the definition of truth for $\eif$ to see this):
-\begin{center}
+One more example: $\forall x(Sx\eif \exists y Rxy)$? To check this is true we will need to check for every number $n$ whether `$Sx\eif \exists y Rxy$' is true under the variable assignment $\alpha(x:n)$: \begin{center}
 \begin{tabular}{c|ccc}
 &$Sx$&$\exists y Rxy$&$Sx\eif\exists y Rxy$\Bstrut\\\hline\Tstrut
 $x\mapsto 1$&T&?&?\\
-$x\mapsto 2$&F&?&T\\
+$x\mapsto 2$&F&&T\\
 $x\mapsto 3$&T&?&?\\
-$x\mapsto 4$&F&?&T
+$x\mapsto 4$&F&&T
 \end{tabular}
 \end{center}
 
-So we need to check  whether $\exists y Rxy$ is true under the variable assignments $x\mapsto 1$ and $x\mapsto 3$.
+So we need to check  whether $\exists y Rxy$ is true under the variable assignments $x\mapsto 1$ and $x\mapsto 3$. In the two other cases the conditional will be trivially true
 
-Consider $x\mapsto 1$. We can find an object for $y$ where $Rxy$ is true under that variable assignment: consider $y\mapsto 2$. Since there is an arrow from 1 to 2, $Rxy$ is true in the variable assignment $x\mapsto 1$ and $y\mapsto 2$. Thus $\exists y Rxy$ is true on the variable assignment $x\mapsto 1$. We're also able to do something similar for $x\mapsto 3$:
-\begin{center}
-\begin{tabular}{cc|c}
-&&$Rxy$\Bstrut\\\hline\Tstrut
-$x\mapsto 1$&$y\mapsto 2$&T\\
-$x\mapsto 3$&$y\mapsto 3$&T
- \end{tabular}
-\end{center}So we now have
+Consider $x\mapsto 1$. We can find an object for $y$ such that `$Rxy$' is true under that variable assignment, namely, $y\mapsto 2$. Since there is an arrow from 1 to 2, `$Rxy$' is true in the variable assignment $\alpha(x:1)(y:2)$. Thus `$\exists y Rxy$' is true under the variable assignment $\alpha(x:1)$. For $x\mapsto 3$ we can also find an assignment for $y$ such that `$Rxy$' is true (which one?) and thus  `$\exists y Rxy$' is also true under the variable assignment $\alpha(x:3)$.
+%\begin{center}
+%\begin{tabular}{cc|c}
+%&&$Rxy$\Bstrut\\\hline\Tstrut
+%$x\mapsto 1$&$y\mapsto 2$&T\\
+%$x\mapsto 3$&$y\mapsto 3$&T
+% \end{tabular}
+%\end{center}So we now have
 \begin{center}
 \begin{tabular}{c|ccc}
 &$Sx$&$\exists y Rxy$&$Sx\eif\exists y Rxy$\Bstrut\\\hline\Tstrut
@@ -347,25 +494,25 @@ $x\mapsto 4$&F&?&T
 \end{tabular}
 \end{center}So $\forall x(Sx\eif \exists y Rxy)$ is true. Informally we might say this as: for every number that has a square around it has an arrow going out of it.
 
-One final example: $\forall x\forall y Rxy$. To check this we will need to consider all choices for $x$ and all choices for $y$ and check $Rxy$ is true on all of them. There are 16 such choices. But we won't have to go through them all: it'll be false. Consider $x\mapsto 1$ and $y\mapsto 4$. $Rxy$ is false under this variable assignment: there is no arrow from 1 to 4. Thus $\forall yRxy$ is false on the variable assignment $x\mapsto 1$. And so $\forall x\forall y Rxy$ is false in the interpretation.
+One final example: $\forall x\forall y Rxy$. To check this we will need to consider all choices for $x$ and all choices for $y$ and check $Rxy$ is true on all of them. There are 16 such choices. But we won't have to go through them all: it'll be false. Consider $x\mapsto 1$ and $y\mapsto 4$. $Rxy$ is false under this variable assignment: there is no arrow from 1 to 4. Thus $\forall yRxy$ is false on the variable assignment $\alpha(x:1)$. And so $\forall x\forall y Rxy$ is false in the interpretation under the variable assignment $\alpha$. However, $\alpha$ itself played no role in the evaluation of $\forall x\forall y Rxy$. All that mattered was the objects that were assigned to $x$ and $y$, and for $x$ and $y$ we considered the $x$-variants/$y$-variants. So $\forall x\forall y Rxy$ is not only true under the variable assignment $\alpha$ in this interpretation but true under all variable assignments. This goes back to what we said at the end of Section \ref{s:traf}: the particular choice of an variable assignment is only relevant if we are evaluating the truth of formulas with free variables. $\forall x\forall y Rxy$ is a sentence, as it has no free variables.
 
- Let's now give a formal definition of the idea we've been using here. Quantified formulas like $\exists y Rxy$ still need to be given truth conditions \emph{relative to a variable assignment}, because we'll need to specify an assignment of an object for the free variable $x$. So we define when $\exists \metav\metaX$ is true under a variable assignment $\alpha$, which might be, e.g.~$x\mapsto 1$. To give a general definition, though we might also consider whether $\forall y Rxy$ is true under a variable assignment $x\mapsto 1, y\mapsto 4$. This is slightly odd: we're considering $\exists y Rxy$ but have been told who $y$ refers to already. However when we evaluate it we simply ignore whatever our given variable assignment tells us about $y$: we consider variable assignments that modify the assignment by changing what is assigned to $y$. And by modifying it to $x\mapsto 1, y\mapsto2$ we have a variable assignment under which $Rxy$ is true, so $\exists y Rxy$ is true under the original variable assignment $x\mapsto 1, y\mapsto 4$.
+% Let's now give a formal definition of the idea we've been using here. Quantified formulas like $\exists y Rxy$ still need to be given truth conditions \emph{relative to a variable assignment}, because we'll need to specify an assignment of an object for the free variable $x$. So we define when $\exists \metav\metaX$ is true under a variable assignment $\alpha$, which might be, e.g.~$x\mapsto 1$. To give a general definition, though we might also consider whether $\forall y Rxy$ is true under a variable assignment $x\mapsto 1, y\mapsto 4$. This is slightly odd: we're considering $\exists y Rxy$ but have been told who $y$ refers to already. However when we evaluate it we simply ignore whatever our given variable assignment tells us about $y$: we consider variable assignments that modify the assignment by changing what is assigned to $y$. And by modifying it to $x\mapsto 1, y\mapsto2$ we have a variable assignment under which $Rxy$ is true, so $\exists y Rxy$ is true under the original variable assignment $x\mapsto 1, y\mapsto 4$.
+%
+% Similarly consider $\exists x Sx$ under the variable assignment $x\mapsto 1$. To evaluate this we consider modification of this variable assignment which assign other objects to $x$. Under the variable assignment $x\mapsto 2$, $Sx$ is true.  So under our original variable assignment $\exists x Sx$ is true: it didn't matter what our original variable assignment was, we ignored this and considered variants to evaluate its truth.
 
- Similarly consider $\exists x Sx$ under the variable assignment $x\mapsto 1$. To evaluate this we consider modification of this variable assignment which assign other objects to $x$. Under the variable assignment $x\mapsto 2$, $Sx$ is true.  So under our original variable assignment $\exists x Sx$ is true: it didn't matter what our original variable assignment was, we ignored this and considered variants to evaluate its truth.
-
- This is a general feature: Sentences, which have all variables bound, have truth values independent of any variable assignment they're evaluated with: when we have a quantifier like $\exists x$ or $\forall x$ we ignore whatever our original variable assignment told us about $x$. So when all our variables are bound by quantifiers, all the original components of our variable assignment are ignored. To summarise: Sentences are simply true or false in interpretations, variable assignments don't matter.
+More generally, if we have a quantifier like $\exists x$ or $\forall x$ we ignore whatever our original variable assignment told us about $x$ but consider suitable $x$-variants. So when all our variables are bound by quantifiers, all the original components of our variable assignment are ignored. To summarise: Sentences are simply true or false in interpretations, variable assignments don't matter.
 
  Now for our formal definition:
 \factoidbox{
-$\forall \metav\metaX$ is true under a variable assignment $\alpha$\\
-\textbf{iff} $\metaX$ is true under \emph{every} variable assignment $\beta$ that differs from $\alpha$ at most in $\metav$.
+$\forall \metav\metaX$ is true in the interpretation under a variable assignment $\alpha$\\
+\textbf{iff} $\metaX$ is true in the interpretation under the variable assignment $\alpha(\metav:o)$ for every $o\in D$.
 
 \bigskip
 
-$\exists \metav\metaX$ is true under a variable assignment $\alpha$\\
-\textbf{iff} $\metaX$ is true under \emph{some} variable assignment $\beta$ that differs from $\alpha$ at most in $\metav$.
+$\exists \metav\metaX$ is true in the interpretation under a variable assignment $\alpha$\\
+\textbf{iff} $\metaX$ is true in the interpretation under the variable assignment $\alpha(\metav:o)$ for some $o\in D$.
 }
-To be clear: all this is doing is formalizing the intuitive idea expressed in our examples. The result is a bit ugly, and the final definition might look a bit opaque. Hopefully, though, the \emph{spirit} of the idea is clear.
+%To be clear: all this is doing is formalizing the intuitive idea expressed in our examples. The result is a bit ugly, and the final definition might look a bit opaque. Hopefully, though, the \emph{spirit} of the idea is clear.
 
 
 %\section{When the main logical operator is a quantifier}
@@ -570,45 +717,45 @@ description={A property held by \glspl{sentence of FOL} if and only if some \gls
 \label{sec.UsingModels}
 
 \section{Logical truths and contradictions}
-Suppose we want to show that $\exists xAxx \eif Bd$ is \emph{not} a logical truth. This requires showing that the sentence is not true in every interpretation; i.e.,\ that it is false in some interpretation. If we can provide just one interpretation in which the sentence is false, then we will have shown that the sentence is not a logical truth.
+Suppose we want to show that `$\exists xAxx \eif Bd$' is \emph{not} a logical truth. This requires showing that the sentence is not true in every interpretation; i.e.,\ that it is false in some interpretation. If we can provide just one interpretation in which the sentence is false, then we will have shown that the sentence is not a logical truth.
 
-In order for $\exists xAxx \eif Bd$ to be false, the antecedent ($\exists x Axx$) must be true, and the consequent ($Bd$) must be false. To construct such an interpretation, we start by specifying a domain. Keeping the domain small makes it easier to specify what the predicates will be true of, so we will start with a domain that has just one member. For concreteness, let's say it is the city of Paris.
+In order for `$\exists xAxx \eif Bd$' to be false, the antecedent ($\exists x Axx$) must be true, and the consequent ($Bd$) must be false. To construct such an interpretation, we start by specifying a domain. Keeping the domain small makes it easier to specify what the predicates will be true of, so we will start with a domain that has just one member. For concreteness, let's say it is the city of Paris.
 	\begin{ekey}
-		\item[\text{domain}] Paris
+		\item[\text{domain}] $\{\emph{Paris}\}$
 	\end{ekey}
 The name $d$ must refer to something in the domain, so we have no option but:
 	\begin{ekey}
-		\item[d] Paris
+		\item[d] \emph{Paris}
 	\end{ekey}
 Recall that we want $\exists x Axx$ to be true, so we want all members of the domain to be paired with themselves in the extension of $A$. We can just offer:
 	\begin{ekey}
-		\item[Axy] \gap{x} is identical with \gap{y}
+		\item[Axy] $\{o\,|\, o=o\}$
 	\end{ekey}
 Now $Add$ is true, so it is surely true that $\exists x Axx$. Next, we want $Bd$ to be false, so the referent of $d$ must not be in the extension of $B$. We might simply offer:
 	\begin{ekey}
-		\item[Bx] \gap{x} is in Germany
+		\item[Bx] $\{o\,|\,\text{$o$ is in Germany}\}$
 	\end{ekey}
-Now we have an interpretation where $\exists x Axx$ is true, but where $Bd$ is false. So there is an interpretation where $\exists x Axx \eif Bd$ is false. So $\exists x Axx \eif Bd$ is not a logical truth.
+Since Paris is not in Germany the set $\{o\,|\,\text{$o$ is in Germany}\}$ does no have any elements that are in the domain of the interpretation. This means that we have an interpretation where `$\exists x Axx$' is true, but where `$Bd$' is false. So there is an interpretation where $\exists x Axx \eif Bd$ is false. So $\exists x Axx \eif Bd$ is not a logical truth.
 
-We can just as easily show that $\exists xAxx \eif Bd$ is not a contradiction. We need only specify an interpretation in which $\exists xAxx \eif Bd$ is true; i.e., an interpretation in which either $\exists x Axx$ is false or $Bd$ is true. Here is one:
+We can just as easily show that `$\exists xAxx \eif Bd$' is not a contradiction. We need only specify an interpretation in which `$\exists xAxx \eif Bd$' is true; i.e., an interpretation in which either `$\exists x Axx$' is false or `$Bd$' is true. Here is one:
 	\begin{ekey}
-		\item[\text{domain}] Paris
-		\item[d] Paris
-		\item[Axy] \gap{x} is identical with \gap{y}
-		\item[Bx] \gap{x} is in France
+		\item[\text{domain}] $\{\emph{Paris}\}$
+		\item[d] \emph{Paris}
+		\item[Axy] $\{o\,|\,o=o\}$
+		\item[Bx] $\{o\,|\,\text{$o$ is in France}\}$
 	\end{ekey}
-This shows that there is an interpretation where $\exists xAxx \eif Bd$ is true. So $\exists x Axx \eif Bd$ is not a contradiction.
+This shows that there is an interpretation where `$\exists xAxx \eif Bd$' is true. So `$\exists x Axx \eif Bd$' is not a contradiction.
 
 \section{Logical equivalence}
 Suppose we want to show that $\forall x Sx$ and $\exists x Sx$ are not logically equivalent. We need to construct an interpretation in which the two sentences have different truth values; we want one of them to be true and the other to be false. We start by specifying a domain. Again, we make the domain small so that we can specify extensions easily. In this case, we will need at least two objects. (If we chose a domain with only one member, the two sentences would end up with the same truth value. In order to see why, try constructing some partial interpretations with one-member domains.) For concreteness, let's take:
 	\begin{ekey}
-		\item[\text{domain}] Ornette Coleman, Miles Davis
+		\item[\text{domain}] $\{\text{\emph{Ornette Coleman, Miles Davis}}\}$
 	\end{ekey}
 We can make $\exists x Sx$ true by including something in the extension of $S$, and we can make $\forall x Sx$ false by leaving something out of the extension of $S$. For concreteness we will offer:
 	\begin{ekey}
-		\item[Sx] \gap{x} plays saxophone
+		\item[Sx] $\{o\,|\,\text{$o$ plays saxophone}\}$
 	\end{ekey}
-Now $\exists x Sx$ is true, because $Sx$ is true of Ornette Coleman. Slightly more precisely, extend our interpretation by allowing $c$ to name Ornette Coleman.  $Sc$ is true in this extended interpretation, so $\exists x Sx$ was true in the original interpretation. Similarly, $\forall x Sx$ is false, because $Sx$ is false of Miles Davis. Slightly more precisely, extend our interpretation by allowing $d$ to name Miles Davis, and $Sd$ is false in this extended interpretation, so $\forall x Sx$ was false in the original interpretation. We have provided a counter-interpretation to the claim that $\forall x Sx$ and $\exists x Sx$ are logically equivalent.
+Now `$\exists x Sx$' is true, because $Sx$ is true of \emph{Ornette Coleman}. Slightly more precisely, extend our interpretation by allowing $c$ to name \emph{Ornette Coleman}.  `$Sc$' is true in this extended interpretation, so `$\exists x Sx$' was true in the original interpretation. Similarly, `$\forall x Sx$' is false, because \emph{Miles Davis}$\,\not\in\|S\|$. Slightly more precisely, extend our interpretation by allowing $d$ to name \emph{Miles Davis}. Then `$Sd$' is false in this extended interpretation, so `$\forall x Sx$' was false in the original interpretation. We have provided a counter-interpretation to the claim that `$\forall x Sx$' and `$\exists x Sx$' are logically equivalent.
 	\factoidbox{
 		To show that $\metaX$ is not a logical truth, it suffices to find an interpretation where $\metaX$ is false.
 
@@ -617,31 +764,31 @@ Now $\exists x Sx$ is true, because $Sx$ is true of Ornette Coleman. Slightly mo
 		To show that $\metaX$ and $\metaY$ are not logically equivalent, it suffices to find an interpretation where one is true and the other is false.
 	}
 
-\section{Validity, entailment and consistency}
-To test for validity, entailment, or consistency, we typically need to produce interpretations that determine the truth value of several sentences simultaneously.
+\section{Validity, logical consequence and consistency}
+To test for validity, logical consequence, or consistency, we typically need to produce interpretations that determine the truth value of several sentences simultaneously.
 
 Consider the following argument in FOL:
 $$\exists x(Gx \eif Ga) \therefore \exists x Gx \eif Ga$$
 To show that this is invalid, we must make the premise true and the conclusion false. The conclusion is a conditional, so to make it false, the antecedent must be true and the consequent must be false. Clearly, our domain must contain two objects. Let's try:
 	\begin{ekey}
-		\item[\text{domain}] Karl Marx, Ludwig von Mises
-		\item[Gx] \gap{x} hated communism
-		\item[a] Karl Marx
+		\item[\text{domain}] $\{\text{\emph{Karl Marx, Ludwig von Mises}}\}$
+		\item[Gx] \{o\,|\,o\text{ hated communism}\} (=$\{\emph{Ludwig von Mises}\}$)
+		\item[a] \emph{Karl Marx}
 	\end{ekey}
-Given that Marx wrote \emph{The Communist Manifesto}, $Ga$ is plainly false in this interpretation. But von Mises famously hated communism, so $\exists x Gx$ is true in this interpretation. Hence $\exists x Gx \eif Ga$ is false, as required.
+Given that Marx wrote \emph{The Communist Manifesto}, $Ga$ is plainly false in this interpretation. But von Mises famously hated communism, so $\exists x Gx$ is true in this interpretation. Hence `$\exists x Gx \eif Ga$' is false, as required.
 
-Does this interpretation make the premise true? Yes it does! Note that $Ga \eif Ga$ is true. (Indeed, it is a logical truth.) But then certainly $\exists x (Gx \eif Ga)$ is true, so the premise is true, and the conclusion is false, in this interpretation. The argument is therefore invalid.
+Does this interpretation make the premise true? Yes it does! Note that $Ga \eif Ga$ is true. (Indeed, it is a logical truth.) But then certainly `$\exists x (Gx \eif Ga)$' is true, so the premise is true, and the conclusion is false, in this interpretation. The argument is therefore invalid.
 
-In passing, note that we have also shown that $\exists x(Gx \eif Ga)$ does \emph{not} entail $\exists x Gx \eif Ga$. Equally, we have shown that the sentences $\exists x (Gx \eif Ga)$ and $\enot (\exists x Gx \eif Ga)$ are jointly consistent.
+In passing, note that we have also shown that $\exists x Gx \eif Ga$ is \emph{not} a logical consequence of $\exists x(Gx \eif Ga)$. Equally, we have shown that the sentences $\exists x (Gx \eif Ga)$ and $\enot (\exists x Gx \eif Ga)$ are jointly consistent.
 
 Let's consider a second example. Consider:
 	$$\forall x \exists y Lxy \therefore \exists y \forall x Lxy$$
 Again, we want to show that this is invalid. To do this, we must make the premises true and the conclusion false. Here is a suggestion:
 	\begin{ekey}
-		\item[\text{domain}] UK citizens currently in a civil partnership with another UK citizen
-		\item[Lxy] \gap{x} is in a civil partnership with \gap{y}
+		\item[\text{domain}] $\{o\,|,o\text{ UK citizens currently in a civil partnership with another UK citizen}\}$
+		\item[Lxy] $\{\langle o_1,o_2\rangle\,|\, o_1\text{ is in a civil partnership with }o_2\}$
 	\end{ekey}
-The premise is clearly true on this interpretation. Anyone in the domain is a UK citizen in a civil partnership with some other UK citizen. That other citizen will also, then, be in the domain. So for everyone in the domain, there will be someone (else) in the domain with whom they are in a civil partnership. Hence $\forall x \exists y Lxy$ is true. However, the conclusion is clearly false, for that would require that there is some single person who is in a civil partnership with everyone in the domain, and there is no such person, so the argument is invalid. We observe immediately that the sentences $\forall x \exists y Lxy$ and $\enot\exists y \forall x Lxy$ are jointly consistent and that $\forall x \exists y Lxy$ does not entail $\exists y \forall x Lxy$.
+The premise is clearly true on this interpretation. Anyone in the domain is a UK citizen in a civil partnership with some other UK citizen. That other citizen will also, then, be in the domain. So for everyone in the domain, there will be someone (else) in the domain with whom they are in a civil partnership. Hence `$\forall x \exists y Lxy$' is true. However, the conclusion is clearly false, for that would require that there is some single person who is in a civil partnership with everyone in the domain, and there is no such person, so the argument is invalid. We observe immediately that the sentences `$\forall x \exists y Lxy$ and $\enot\exists y \forall x Lxy$' are jointly consistent and that `$\exists y \forall x Lxy$, is not a logical consequence of `$\forall x \exists y Lxy$'.
 
 For our third example, we'll mix things up a bit. In \S\ref{s:Interpretations}, we described how we can present some interpretations using diagrams. For example:
 \begin{center}
@@ -655,7 +802,7 @@ For our third example, we'll mix things up a bit. In \S\ref{s:Interpretations}, 
 \draw[->, thick] (atom2) -- (atom3);
 \end{tikzpicture}
 \end{center}
-Using the conventions employed in \S\ref{s:Interpretations}, the domain of this interpretation is the first three positive whole numbers, and $Rxy$ is true of x and y just in case there is an arrow from x to y in our diagram. Here are some sentences that the interpretation makes true:
+Using the conventions employed in \S\ref{s:interpretation}, the domain of this interpretation is the first three positive whole numbers, and $Rxy$ is true of x and y just in case there is an arrow from x to y in our diagram. Here are some sentences that the interpretation makes true:
 	\begin{ebullet}
 		\item $\forall x \exists y Ryx$
 		\item $\exists x \forall y Rxy$ \hfill witness 1
@@ -866,18 +1013,18 @@ Show that the following arguments are invalid:
 \section{Logical truths and contradictions}
 We can show that a sentence is \emph{not} a logical truth just by providing one carefully specified interpretation: an interpretation in which the sentence is false. To show that something is a logical truth, on the other hand, it would not be enough to construct ten, one hundred, or even a thousand interpretations in which the sentence is true. A sentence is only a logical truth if it is true in \emph{every} interpretation, and there are infinitely many interpretations. We need to reason about all of them, and we cannot do this by dealing with them one by one!
 
-Sometimes, we can reason about all interpretations fairly easily. For example, we can offer a relatively simple argument that $Raa\eiff Raa$ is a logical truth:
+Sometimes, we can reason about all interpretations fairly easily. For example, we can offer a relatively simple argument that `$Raa\eif Raa$' is a logical truth:
 	\begin{quote}
 		\label{allmodels1}
-		Any relevant interpretation will give $Raa$ a truth value. If $Raa$ is true in an interpretation, then $Raa \eiff Raa$ is true in that interpretation. If $Raa$ is false in an interpretation, then $Raa \eiff Raa$ is true in that interpretation. These are the only alternatives. So $Raa \eiff Raa$ is true in every interpretation. Therefore, it is a logical truth.
+		Any relevant interpretation will give `$Raa$' a truth value. If `$Raa$' is true in an interpretation, then `$Raa \eif Raa$' is true in that interpretation. If $Raa$ is false in an interpretation, then $Raa \eif Raa$ is true in that interpretation. These are the only alternatives. So `$Raa \eiff Raa$' is true in every interpretation. Therefore, it is a logical truth.
 	\end{quote}
 This argument is valid, of course, and its conclusion is true. However, it is not an argument in FOL. Rather, it is an argument in English \emph{about} FOL: it is an argument in the metalanguage.
 
 Note another feature of the argument. Since the sentence in question contained no quantifiers, we did not need to think about how to interpret $a$ and $R$; the point was just that, however we interpreted them, $Raa$ would have some truth value or other. (We could ultimately have given the same argument concerning TFL sentences.)
 
-Here is another bit of reasoning. Consider the sentence $\forall x(Rxx\eiff Rxx)$. Again, it should obviously be a logical truth, but to say precisely why is quite a challenge. We cannot say that $Rxx \eiff Rxx$ is true in every interpretation, since $Rxx \eiff Rxx$ is not even a \emph{sentence} of FOL (remember that $x$ is a variable, not a name). So we have to be a bit cleverer.
+Here is another bit of reasoning. Consider the sentence $\forall x(Rxx\eif Rxx)$. Again, it should obviously be a logical truth, but to say precisely why is quite a challenge. We cannot say that $Rxx \eif Rxx$ is true in every interpretation, since $Rxx \eif Rxx$ is not even a \emph{sentence} of FOL (remember that $x$ is a variable, not a name). So we have to be a bit cleverer.
 	\begin{quote}
-		Consider some arbitrary interpretation. Consider some arbitrary member of the domain, which, for convenience, we will call \emph{obbie}, and suppose we extend our original interpretation by adding a new name, $c$, to name \emph{obbie}. Then either $Rcc$ will be true or it will be false. If $Rcc$ is true, then $Rcc \eiff Rcc$ is true. If $Rcc$ is false, then $Rcc \eiff Rcc$ will be true. So either way, $Rcc \eiff Rcc$ is true. Since there was nothing special about \emph{obbie}---we might have chosen any object---we see that no matter how we extend our original interpretation by allowing $c$ to name some new object, $Rcc \eiff Rcc$ will be true in the new interpretation. So $\forall x (Rxx \eiff Rxx)$ was true in the original interpretation. But we chose our interpretation arbitrarily, so $\forall x (Rxx \eiff Rxx)$ is true in every interpretation. It is therefore a logical truth.
+		Consider some arbitrary interpretation. Consider some arbitrary member of the domain, which, for convenience, we will call \emph{obbie}, and suppose we extend our original interpretation by adding a new name, $c$, to name \emph{obbie}. Then either $Rcc$ will be true or it will be false. If $Rcc$ is true, then $Rcc \eiff Rcc$ is true. If $Rcc$ is false, then $Rcc \eif Rcc$ will be true. So either way, $Rcc \eif Rcc$ is true. Since there was nothing special about \emph{obbie}---we might have chosen any object---we see that no matter how we extend our original interpretation by allowing $c$ to name some new object, $Rcc \eif Rcc$ will be true in the new interpretation. So $\forall x (Rxx \eif Rxx)$ was true in the original interpretation. But we chose our interpretation arbitrarily, so $\forall x (Rxx \eif Rxx)$ is true in every interpretation. It is therefore a logical truth.
 	\end{quote}
 This is quite longwinded, but, as things stand, there is no alternative. In order to show that a sentence is a logical truth, we must reason about \emph{all} interpretations.
 
