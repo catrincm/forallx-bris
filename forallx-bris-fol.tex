@@ -1265,23 +1265,23 @@ Since sentence \ref{quan1} is about coins that are both in my pocket \emph{and} 
 		If a sentence can be paraphrased in English as \begin{center}
 		\begin{tabular}{l}`every F is G',\\`all Fs are Gs', or\\ `any F is a G',
 		\end{tabular}
-		\end{center} it can be symbolised as can be symbolized as $$\forall x (\meta{F}x \eif \meta{G}x).$$
+		\end{center} it can be symbolised as $$\forall x (\meta{F}x \eif \meta{G}x).$$
 	}
 Sentence \ref{quan2} is most naturally symbolized using an existential quantifier. It can be paraphrased as `there is some coin which is both on the table and which is a dime'. So we can symbolize it as $\exists x(Tx \eand Dx)$.
 
 Notice that we needed to use a conditional with the universal quantifier, but we used a conjunction with the existential quantifier. Suppose we had instead written $\exists x(Tx \eif Dx)$. That would mean that there is some object in the domain of which $(Tx \eif Dx)$ is true. Recall that, in TFL, $\metaX \eif \metaY$ is logically equivalent (in TFL) to $\enot\metaX \eor \metaY$. This equivalence will also hold in FOL. So $\exists x(Tx \eif Dx)$ is true if there is some object in the domain, such that $(\enot Tx \eor Dx)$ is true of that object. That is, $\exists x (Tx \eif Dx)$ is true if some coin is \emph{either} not on the table \emph{or} is a dime. Of course there is a coin that is not on the table: there are coins lots of other places. So it is \emph{very easy} for $\exists x(Tx \eif Dx)$ to be true. A conditional will usually be the natural connective to use with a universal quantifier, but a conditional within the scope of an existential quantifier tends to say something very weak indeed. As a general rule of thumb, do not put conditionals in the scope of existential quantifiers unless you are sure that you need one.
 	\factoidbox{
 		If a sentence can be paraphrased in English as \begin{center}
-		\begin{tabular}{l}`some F is G',\\`there is some F that is G', \\`some F is G', or \\`there is at least on F that is a G'
+		\begin{tabular}{l}`some F is G',\\`there is some F that is G', \\`An F is G', or \\`there is at least one F that is a G'
 		\end{tabular}
-		\end{center} it can be symbolised as can be symbolized as $$\exists x (\meta{F}x \eand \meta{G}x).$$
+		\end{center} it can be symbolised as $$\exists x (\meta{F}x \eand \meta{G}x).$$
 	}
 
 Sentence \ref{quan3} can be paraphrased as, `It is not the case that every coin on the table is a dime'. So we can symbolize it by $\enot \forall x(Tx \eif Dx)$. You might look at sentence \ref{quan3} and paraphrase it instead as, `Some coin on the table is not a dime'. You would then symbolize it by $\exists x(Tx \eand \enot Dx)$. Although it is probably not immediately obvious yet, these two sentences are logically equivalent. (This is due to the logical equivalence between $\enot\forall x\metaX$ and $\exists x\enot\metaX$, mentioned in \S\ref{s:FOLBuildingBlocks}, along with the equivalence between $\enot(\metaX\eif\metaY)$ and $\metaX\eand\enot\metaY$.)
 	\factoidbox{
 		If a sentence can be paraphrased in English as \begin{center}
 		`not all Fs are Gs',
-		\end{center} it can be symbolised as can be symbolized as \begin{center}
+		\end{center} it can be symbolised as \begin{center}
 				\begin{tabular}{l}$\enot \forall x (\meta{F}x \eif \meta{G}x)$, or \\$\exists x(\meta{F}x\eand\enot \meta{G}x)$.
 				\end{tabular}
 				\end{center}
@@ -1291,7 +1291,7 @@ Sentence \ref{quan4} can be paraphrased as, `It is not the case that there is so
 	\factoidbox{
 		If a sentence can be paraphrased in English as \begin{center}
 		`no Fs are Gs',
-		\end{center} it can be symbolised as can be symbolized as \begin{center}
+		\end{center} it can be symbolised as  \begin{center}
 				\begin{tabular}{l}$\enot \exists x (\meta{F}x \eand \meta{G}x)$, or \\$\forall x(\meta{F}x\eif\enot \meta{G}x)$.
 				\end{tabular}
 				\end{center}
@@ -1307,7 +1307,7 @@ How should we symbolize this?  A good strategy is to consider when the sentence 
 \factoidbox{
 		If a sentence can be paraphrased in English as \begin{center}
 		`only $F$s are $G$s',
-		\end{center} it can be symbolised as can be symbolized as \begin{center}
+		\end{center} it can be symbolised as \begin{center}
 				\begin{tabular}{l}$\enot\exists x (\atom{\meta{G}}{x} \eand \enot\atom{\meta{F}}{x})$, or \\$\forall x (\atom{\meta{G}}{x} \eif \atom{\meta{F}}{x})$
 				\end{tabular}
 				\end{center}
