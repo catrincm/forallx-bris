@@ -301,9 +301,7 @@ Putting this together, we obtain the existential elimination rule ($\exists$E):
 	\close
 	\have[\ ]{d}{\metaY} \Ee{a,b-c}
 \end{pf}
-\meta{c} must not occur in any assumption undischarged before line $i$\\
-\meta{c} must not occur in $\exists \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)$ or in a premise\\
-\meta{c} must not occur in \metaY
+\meta{c} must be new to the proof: it does not occur in any line $< i$.
 }
 As with universal introduction, the constraints are extremely important. To see why, consider the following terrible argument:
 	\begin{quote}
