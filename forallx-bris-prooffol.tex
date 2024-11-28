@@ -40,9 +40,11 @@ We we symbolise this as:
 \prem $\forall x Opx$
 \conc $Opp$
 \end{earg}
-This is valid: the premise says \emph{everything} in the domain owes money to Pavel; and Pavel is something in the domain. So it implies that Pavel owes money to himself. A closely related sentence is: \begin{earg}
-\item Pavel owes money to everyone \emph{else}.
-\end{earg}and that will not be symbolised as $\forall x Oxx$; however, we do not yet have the resources to symbolise at. In \S\ref{ch.identity} we will introduce identity which will allow us to formalise it properly.
+This is valid: the premise says \emph{everything} in the domain owes money to Pavel; and Pavel is something in the domain. So it implies that Pavel owes money to himself.
+
+%A closely related sentence is: \begin{earg}
+%\item Pavel owes money to everyone \emph{else}.
+%\end{earg}and that will not be symbolised as $\forall x Oxx$; however, we do not yet have the resources to symbolise at. In \S\ref{ch.identity} we will introduce identity which will allow us to formalise it properly.
 
 This argument is also directly allowed by our rule $\forall$E:
 \begin{pf}
@@ -50,7 +52,7 @@ This argument is also directly allowed by our rule $\forall$E:
 	\have{c}{Opp} \Ae{a}
 \end{pf}
 
-We can now give our general rule using the notation from \S\ref{s:TruthFOL}: Whenever you have a sentence $\forall \meta{x}\metaX(\ldots \meta{x} \ldots\meta{x}\ldots)$, for example $\forall x Fx$, $\forall x (Cx\eif Sx)$, $\forall x Opx$; one can conclude that we have the sentence which is obtained by stripping of the quantifier and replacing the variable by a name, be it $a,b,c\ldots$. So we could derive $Fa$, $Cf\eif Sf$ or $Opp$.
+We can now give our general rule: whenever you have a sentence $\forall \meta{x}\metaX(\ldots \meta{x} \ldots\meta{x}\ldots)$, for example $\forall x Fx$, $\forall x (Cx\eif Sx)$, $\forall x Opx$; one can conclude that we have the sentence which is obtained by stripping of the quantifier and replacing every free occurrence of the variable by a name, be it $a,b,c\ldots$. So we could derive $Fa$, $Cf\eif Sf$ or $Opp$.
 
 %We obtained line 2 by dropping the universal quantifier and replacing every instance of `$x$' with `$a$'. Equally, the following should be allowed:
 %\begin{pf}
@@ -65,7 +67,7 @@ Here is the formal specification of the universal elimination rule ($\forall$E):
 	\have[m]{a}{\forall \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)}
 	\have[\ ]{c}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)} \Ae{a}
 \end{pf}}
-The point is that you can obtain any \emph{substitution instance} of a universally quantified formula: replace every instance of the quantified variable with any name you like.
+The point is that you can obtain any \emph{substitution instance} of a universally quantified formula: \textbf{replace every instance of the quantified variable with any name you like}. (Of course, you need to replace every free occurrence of $x$ in $X$ by the same name.)
 
 I should emphasize that (as with every elimination rule) you can only apply the $\forall$E rule when the universal quantifier is the main logical operator. Thus the following is outright banned:
 \begin{pf}
@@ -175,7 +177,7 @@ Consider the following example:
 	\have{c}{\exists x Lxn} \existsI{a}
 \end{pf} This shows us that we do not have to replace \emph{all} instances of the name with the variable. Though of course we can if we wish: we could also deduce there is someone who loves himself.
 
-To give our rule in general we need to introduce some new notation for this ability to replace just some of our instances of the name: If $\metaX$ is a sentence containing the name $\meta{c}$, we can emphasize this by writing `$\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$'. We will write `$\metaX(\ldots \meta{x} \ldots \meta{c}\ldots)$' to indicate any formula obtained by replacing \emph{some or all} of the instances of the name \meta{c} with the variable \meta{x}. Armed with this, our introduction rule is:
+To give our rule in general we need to introduce some new notation for this ability to replace just some of our instances of the name: If $\metaX$ is a sentence containing the name $\meta{c}$, we can emphasize this by writing `$\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$'. \textbf{We will write `$\metaX(\ldots \meta{x} \ldots \meta{c}\ldots)$' to indicate any formula obtained by replacing \emph{some or all} of the instances of the name \meta{c} with the variable \meta{x}}. Armed with this, our introduction rule is:
 \factoidbox{
 \begin{pf}
 	\have[m]{a}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}
@@ -239,11 +241,12 @@ The crucial thought here is that `$a$' was just some \emph{arbitrary} name. Ther
 	\have[m]{a}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}
 	\have[\ ]{c}{\forall \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)} \Ai{a}
 \end{pf}
-	\meta{c} must not occur in any undischarged assumption or premise.
+	\meta{c} must not occur in any undischarged assumption or premise.\\
 	\meta{x} must not occur in $\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$
 	}
-A crucial aspect of this rule, though, is bound up in the first constraint. This constraint ensures that we are always reasoning at a sufficiently general level.
+It is important to appreciate that to apply the rule correctly \textbf{we must replace every occurrence of the name $c$ by the variable $x$}. A crucial aspect of this rule, though, is bound up in the first constraint. This constraint ensures that we are always reasoning at a sufficiently general level (the second constraint guarantees that the variable $x$ is not already bound by a different quantifier in $X$ which would lead to unintended results.) 
 %\footnote{Recall from \S\ref{s:BasicTFL} that we are treating `$\ered$' as a canonical contradiction. But if it were the canonical contradiction as involving some \emph{constant}, it might interfere with the constraint mentioned here. To avoid such problems, we will treat `$\ered$' as a canonical contradiction \emph{that involves no particular names}.}
+
 To see the constraint in action, consider this terrible argument:
 	\begin{quote}
 		Everyone loves Kylie Minogue; therefore everyone loves themselves.
