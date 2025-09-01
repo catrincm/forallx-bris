@@ -5,19 +5,15 @@
 
 \chapter{The very idea of natural deduction}\label{s:NDVeryIdea}
 
-Way back in \S\ref{s:Valid}, we said that an argument is valid iff it is impossible to make all of the premises true and the conclusion false.
+Way back in \S\ref{s:Valid}, we said that an argument is valid iff it is impossible to make all of the premises true and the conclusion false. In the case of TFL, this led us to develop truth tables. Each line of a complete truth table corresponds to a valuation. So, when faced with a TFL argument, we have a very direct way of assessing whether it is possible to make all of the premises true and the conclusion false: just thrash through the truth table. However, using truth tables means that we are not reasoning or arguing within the language of TFL. Rather, we reasoning \emph{about} TFL-arguments rather than with them.
 
-In the case of TFL, this led us to develop truth tables. Each line of a complete truth table corresponds to a valuation. So, when faced with a TFL argument, we have a very direct way to assess whether it is possible to make all of the premises true and the conclusion false: just thrash through the truth table.
+When you actually use arguments, for example in philosophical essays, you typically instead will break down an argument into smaller compelling steps, which your interlocutor or reader is forced to accept. It is good that at the end we may check, using truth tables, that your argument was indeed valid, but that's not how reasoning and argumentation works. The goal of this section is to provide a ``reasoning system'' for TFL. This reasoning system should produce valid arguments only and, ideally, also enable us to produce, that is, \emph{prove} all valid arguments of TFL.
 
-However, providing a truth table is not how one will usually work with arguments. When you actually use arguments, for example in philosophical essays, you typically instead will break down an argument into smaller steps. If you are trying to show to your reader that a particular argument is valid, the truth table method says to check all possibilities. We will instead provide an alternative way of showing arguments are valid which matches natural ways of reasoning.
-
-The idea of natural deduction is how you might go about trying to convince an interlocutor that your argument is valid. You would generally do this by breaking your argument into smaller steps that are obviously valid and piecing these together.
-
-Suppose you're trying to convince someone that $$A\eif(B\eand C),A\therefore B$$ is valid, and they don't see it. You can help them by breaking it up into two steps: first see that $B\eand C$ follows and then note that $B$ follows from $B\eand C$.
+ The reasoning systems for TFL is called \define{natural deduction}. The idea of natural deduction is to indeed to break down an argument into smaller steps that are obviously valid and piecing these together, and thereby arriving at the intended conclusion. Suppose you're trying to convince someone that $$A\eif(B\eand C),A\therefore B$$ is valid, and they don't see it. You can help them by breaking it up into two steps: first see that $B\eand C$ follows and then note that $B$ follows from $B\eand C$.
 
 
 In more detail:
-Grant me that $A\eif (B\eand C)$ and $A$ are true. Then what else do we know to be true? Here's something: $B\eand C$. Why? Because in general Modus Ponens is an excellent argument pattern: any argument of the form $X,\;X\eif Y\;\therefore\;Y$ is valid: there are no valuations where $X$ and $X\eif Y$ are true but $Y$ is false. So if our premises  $A\eif (B\eand C)$ and $A$ are true, then $B\eand C$ must also be true: that's just Modus Ponens. So now from our supposition of $A\eif(B\eand C)$ and $A$, we now also know $B\eand C$. What else follows from these three statements? Here's something: $B$. Why? Well, $B\eand C$ is true; so certainly $B$ must be true. So we know that from $A\eif(B\eand C)$ and $A$ we can conclude $B$ by walking someone through these two steps. This will be enough to show that $A\eif(B\eand C),\,A\therefore B$ is valid.
+Grant me that $A\eif (B\eand C)$ and $A$ are true. Then what else do we know to be true? Here's something: $B\eand C$. Why? Because in general Modus Ponens is an excellent, compelling argument pattern: any argument of the form $X,\;X\eif Y\;\therefore\;Y$ is valid: there are no valuations where $X$ and $X\eif Y$ are true but $Y$ is false. So if our premises  $A\eif (B\eand C)$ and $A$ are true, then $B\eand C$ must also be true: that's just Modus Ponens. So now from our supposition of $A\eif(B\eand C)$ and $A$, we now also know $B\eand C$. What else follows from these three statements? Here's something: $B$. Why? Well, $B\eand C$ is true; so certainly $B$ must be true. So we know that from $A\eif(B\eand C)$ and $A$ we can conclude $B$ by walking someone through these two steps. This will be enough to show that $A\eif(B\eand C),\,A\therefore B$ is valid.
 
 To keep track of what assumptions have been made and steps of the argument we will give precise forms that this argument should be written:
 \begin{pf}
@@ -59,7 +55,7 @@ Instead, we will be describing various rules which we propose that have to be ac
  \have{r}{R}\by{From}{nqr,nq}
  \end{pf}
 
-The other thing we should do is to give a name for the steps that we use. Here we've just said `From 1,4', but someone might ask: \emph{how} does it follow from lines 1 and 4. We will give names for the various simple steps of reasoning we use and say: ``well, it follows from lines 1 and 4 by the rule ``\eif E''.''
+The other thing we should do is to give a name for the steps that we use. Here we've just said `From 1,4', but someone might ask: \emph{how} does it follow from lines 1 and 4. We will give names for the various simple steps of reasoning we use and say: ``well, it follows from lines 1 and 4 by the rule \emph{conditional elimination}, which we abbreviate by``\eif E''.''
  \begin{pf}
  \hypo{pqr}{P\eif (\enot Q\eif \enot R)}
  \hypo{pq}{P\eif\enot Q}
@@ -1862,9 +1858,7 @@ A TFL argument is valid if and only if it can be given a proof in this natural d
 \end{highlighted}
 In this chapter, we explain a bit more about how such an argument would go. Soundness is proved in more detail in \S\ref{ch:Soundness}.
 
-
-
-\section{Entails}
+\subsection{Logical Consequence}
 For this chapter we will make use of a further symbols:
 %\subsection{The double-turnstile}
 %We are going to use the notion of entailment rather a lot in this course. It will help us, then, to introduce a symbol that abbreviates it. Rather than saying that the TFL sentences $\metaX_1, \metaX_2, \ldots$ and $\metaX_n$ together entail $\metaY$, we will abbreviate this by:
@@ -1886,30 +1880,30 @@ For this chapter we will make use of a further symbols:
 %says that $\metaX$ is a contradiction.
 
 \label{doubleTurnstile}
-We use the symbol $\entails$ as shorthand for `entails'.
-Rather than saying that the TFL sentences $\metaX_1, \metaX_2, \ldots$ and $\metaX_n$ together entail $\metaY$, we will abbreviate this by:
+We use the symbol $\entails$ as shorthand for logical consequence, that is, instead of saying that the TFL-sentence $\metaY$.
+is a logical consequence of the TFL sentences $\metaX_1, \metaX_2, \ldots$ and $\metaX_n$, we will abbreviate this by:
 $$\metaX_1, \metaX_2, \ldots, \metaX_n \entails \metaY$$
 The symbol `$\entails$' is known as \emph{the double-turnstile}, since it looks like a turnstile with two horizontal beams.
 
-Let me be clear. `$\entails$' is not a symbol of TFL. Rather, it is a symbol of our metalanguage, augmented English (recall the difference between object language and metalanguage from \S\ref{s:UseMention}). So the metalanguage sentence:
+Let us be clear be clear. `$\entails$' is not a symbol of TFL. Rather, it is a symbol of our metalanguage, augmented English (recall the difference between object language and metalanguage from \S\ref{s:UseMention}). So the metalanguage sentence:
 \begin{ebullet}
 	\item $P, P \eif Q \entails Q$
 \end{ebullet}
-is just an abbreviation for the English sentence:
+is just an abbreviation of the sentence:
 \begin{ebullet}
-	\item The TFL sentences `$P$' and `$P \eif Q$' entail `$Q$'
+	\item The TFL sentences `$Q$' is a logical consequence of `$P$' and `$P \eif Q$'.
 \end{ebullet}
-Note that there is no limit on the number of TFL sentences that can be mentioned before the symbol `$\entails$'. Indeed, we can even consider the limiting case:
+Note that there is no limit on the number of TFL sentences that can be mentioned before the symbol `$\entails$'. Indeed, we can even consider the limiting case where there is no sentence (this should ring familiar from \S\ref{sec:valtt}):
 $$\entails \metaY$$
 
-\section{Proves}
+\subsection{Proof}
 The following expression:
 $$\metaX_1, \metaX_2, \ldots, \metaX_n \proves \metaY$$
 means that there is some proof which starts with assumptions among $\metaX_1, \metaX_2, \ldots, \metaX_n$ and ends with $\metaY$ (and contains no undischarged assumptions other than those we started with). Derivatively, we will write:
 $$\proves \metaX$$
 to mean that there is a proof of $\metaX$ with no assumptions.
 
-The symbol `$\proves$' is called the \emph{single turnstile}. We want to emphasize that this is not the {double turnstile} symbol (`$\entails$') that we introduced  to symbolize entailment. The single turnstile, `$\proves$', concerns the existence of proofs; the double turnstile, `$\entails$', concerns the existence of valuations (or interpretations, when used for FOL). \emph{They are very different notions.}
+The symbol `$\proves$' is called the \emph{single turnstile}. We want to emphasize that this is not the {double turnstile} symbol (`$\entails$') that we introduced  for `logical consequence'. The single turnstile, `$\proves$', concerns the existence of proofs; the double turnstile, `$\entails$', concerns the existence of valuations (or interpretations, when used for FOL). \emph{They are very different notions.}
 
 
 
@@ -1933,14 +1927,14 @@ description={A property held by logical systems if and only if $\proves $ implie
 }
 This argument from $\proves $ to $\entails $ is the problem of \define{\gls{soundness}}. \label{def:soundness} A proof system is \define{sound} if there are no derivations of arguments that can be shown invalid by truth tables. \label{def_Soundness} Demonstrating that the proof system is sound would require showing that \emph{any} possible proof is the proof of a valid argument. It would not be enough simply to succeed when trying to prove many valid arguments and to fail when trying to prove invalid ones.
 
-The proof that we will sketch depends on the fact that we initially defined a sentence of TFL using a recursive definition (see p.~\pageref{TFLsentences}). We could have also used recursive definitions to define a proper proof in TFL and a proper truth table. \nix{Later this will be a truth assignment}(Although we didn't.) If we had these definitions, we could then use a \emph{recursive proof} to show the soundness of TFL. A recursive proof works the same way as a recursive definition. With the recursive definition, we identified a group of base elements that were stipulated to be examples of the thing we were trying to define. In the case of a TFL sentence, the base class was the set of sentence letters $A$, $B$, $C$, \dots. We just announced that these were sentences. The second step of a recursive definition is to say that anything that is built up from your base class using certain rules also counts as an example of the thing you are defining. In the case of a definition of a sentence, the rules corresponded to the five sentential connectives (see p.~\pageref{TFLsentences}). Once you have established a recursive definition, you can use that definition to show that all the members of the class you have defined have a certain property. You simply prove that the property is true of the members of the base class, and then you prove that the rules for extending the base class don't change the property. This is what it means to give a recursive proof.
+The proof that we will sketch depends on the fact that we initially defined a sentence of TFL using a inductive definition (see p.~\pageref{TFLsentences}). We could have also used inductive definitions to define a proper proof in TFL and a proper truth table. \nix{Later this will be a truth assignment}(Although we didn't.) If we had these definitions, we could then use a \emph{inductive proof} to show the soundness of TFL. A inductive proof works the same way as a inductive definition. With the inductive definition, we identified a group of base elements that were stipulated to be examples of the thing we were trying to define. In the case of a TFL sentence, the base class was the set of sentence letters $A$, $B$, $C$, \dots. We just announced that these were sentences. The second step of a inductive definition is to say that anything that is built up from your base class using certain rules also counts as an example of the thing you are defining. In the case of a definition of a sentence, the rules corresponded to the five sentential connectives (see p.~\pageref{TFLsentences}). Once you have established a inductive definition, you can use that definition to show that all the members of the class you have defined have a certain property. You simply prove that the property is true of the members of the base class, and then you prove that the rules for extending the base class don't change the property. This is what it means to give a inductive proof.
 
-Even though we don't have a recursive definition of a proof in TFL, we can sketch how a recursive proof of the soundness of TFL would go. Imagine a base class of one-line proofs, one for each of our
+Even though we don't have a inductive definition of a proof in TFL, we can sketch how a inductive proof of the soundness of TFL would go. Imagine a base class of one-line proofs, one for each of our
 %eleven
 basic
 rules of inference. The members of this class would look like this $\metaX, \metaY \proves  \metaX \eand \metaY$; $\metaX \eand \metaY \proves \metaX$; $\metaX \eor \metaY, \enot\metaX \proves  \metaY$ \ldots{} etc. Since some rules have a couple different forms, we would have to have add some members to this base class, for instance $\metaX \eand \metaY \proves  \metaY$ Notice that these are all statements in the metalanguage. The proof that TFL is sound is not a part of TFL, because TFL does not have the power to talk about itself.
 
-You can use truth tables to prove to yourself that each of these one-line proofs in this base class is valid$_{\entails}$. For instance the proof $\metaX, \metaY \proves \metaX \eand \metaY$ corresponds to a truth table that shows $\metaX, \metaY \entails  \metaX \eand \metaY$ This establishes the first part of our recursive proof.
+You can use truth tables to prove to yourself that each of these one-line proofs in this base class is valid$_{\entails}$. For instance the proof $\metaX, \metaY \proves \metaX \eand \metaY$ corresponds to a truth table that shows $\metaX, \metaY \entails  \metaX \eand \metaY$ This establishes the first part of our inductive proof.
 
 The next step is to show that adding lines to any proof will never change a valid$_{\entails}$ proof into an invalid$_{\entails}$ one. We would need to do this for each of our
 %eleven
@@ -2105,7 +2099,7 @@ Validity 				& Derive the conclusion from the premises & Find no line in the tru
 
 
 \chapter{Proof-theoretic concepts}\label{s:ProofTheoreticConcepts}
-\nonexaminable
+%\nonexaminable
 
 
 Armed with our `$\proves$' symbol, we can introduce some new terminology.

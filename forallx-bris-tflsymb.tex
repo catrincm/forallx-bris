@@ -32,7 +32,7 @@ Now, let's look at the argument
 The form of the argument seems to be the following:
 \begin{earg}
 		\prem A
-		\prem  not A or
+		\prem  not A or B
 		\conc B
 	\end{earg}
 If we use the sentence letters `$A$' and `$B$' to stand for same declarative sentences as in the previous argument, the argument can be aptly symbolized in TFL by:
@@ -47,7 +47,7 @@ The starting point of symbolizing arguments in TFL was to identify (sub)sentence
 \item[A:]It's raining outside.
 \item[B:]Jenny is miserable.
 \end{itemize}
-Such an assignment of declarative sentences to sentence letters is called a \define{symbolization key}. Specifying a symbolization key is the first step in formalizing an argument in TFL. In doing this, we are not fixing this symbolization \emph{once and for all}. We are just saying that, for the time being, we will think of the atomic sentence of TFL, `$A$', as symbolizing the English sentence `It is raining outside', and the atomic sentence of TFL, `$B$', as symbolizing the English sentence `Jenny is miserable'. Later, when we are dealing with different sentences or different arguments, we can provide a new symbolization key; as it might be:
+Such an assignment of declarative sentences to atomic sentences is called a \define{symbolization key}. Specifying a symbolization key is the first step in formalizing an argument in TFL. In doing this, we are not fixing this symbolization \emph{once and for all}. We are just saying that, for the time being, we will think of the atomic sentence of TFL, `$A$', as symbolizing the English sentence `It is raining outside', and the atomic sentence of TFL, `$B$', as symbolizing the English sentence `Jenny is miserable'. Later, when we are dealing with different sentences or different arguments, we can provide a new symbolization key; as it might be:
 	\begin{ekey}
 		\item[A] Jenny is an anarcho-syndicalist
 		\item[B] Dipan is an avid reader of Tolstoy
@@ -57,7 +57,7 @@ It is important to understand that whatever structure an English sentence might 
 Once we have fixed a symbolization key, the next step is to symbolize the complex sentences of the argument, that is, the sentences that conjoin different sentences into a new more complex sentence via conjunction words. This requires a closer look at the relation between specific conjunction words and the connectives of TFL.
 
 \section{Conjunction-words and TFL-Connectives}\label{sec:symbcon}
-Certain conjunction words and expression motivated the semantics, that is, truth tables for the connectives of TFL. But there are further expressions in English that allow us to conjoin sentences together: some can be symbolized by one of the connectives of TFL we discussed, while others might need to be symbolized in different ways (still others, as we shall see, cannot be symbolized in TFL). Let's first have a look which conjunction words and expressions can be directly symbolized by one of the TFL-connectives.
+Certain conjunction words and expressions motivated the semantics, that is, the truth tables for the connectives of TFL. But there are further expressions in English that allow us to conjoin sentences together: some can be symbolized by one of the connectives of TFL we discussed, while others might need to be symbolized by appealing to a complex TFL-sentence (recall our discussion of the \emph{exclusive or} in \S\ref{sec:tt}). As we shall see, there are still others that cannot be symbolized in TFL. Let's first have a look which conjunction words and expressions can be directly symbolized by one of the TFL-connectives.
 
 \subsection{Negation}
 Let's start by recalling the guideline we proposed in Section \ref{sec:tt}.
@@ -75,9 +75,9 @@ Let us use the following representation key:
 	\begin{ekey}
 		\item[R] The information is retrievable.
 	\end{ekey}
-Sentence \ref{not4} can now be symbolized by $R$. Moving on to sentence \ref{not5}: saying the widget is irreplaceable means that it is not the case that the widget is replaceable. So even though sentence \ref{not5} does not contain the word `not', we will symbolize it as follows: $\enot R$.
+Sentence \ref{not4} can now be symbolized by $R$. Moving on to sentence \ref{not5}: saying that the information is irretrievable means that it is not the case that the information is retrievable. So even though sentence \ref{not5} does not contain the word `not', we will symbolize it as `$\enot R$'.
 
-Sentence \ref{not5b} can be paraphrased as `It is not the case that the widget is irreplaceable.' Which can again be paraphrased as `It is not the case that it is not the case that the widget is replaceable'. So we might symbolize this English sentence with the TFL sentence $\enot\enot R$. In other words, in English we can also express negation using prefixes such as `\emph{ir}' or `\emph{un}'. There are still further ways of expressing negation, for example, sometimes this may be done using  the prefix `\emph{dis}' as in honest/dishonest.
+Sentence \ref{not5b} can be paraphrased as `It is not the case that the information is irretrievable.' Which can again be paraphrased as `It is not the case that it is not the case that the information is retrievable'. So we might symbolize this English sentence with the TFL sentence `$\enot\enot R$'. In other words, in English we can also express negation using prefixes such as `\emph{ir}' or `\emph{un}'. There are still further ways of expressing negation, for example, sometimes this may be done using  the prefix `\emph{dis}' as in honest/dishonest.
 
 But some care is needed when handling negations. For example, one might think that sentences \ref{not6} and \ref{not7} negate each other and that if we symbolize sentence \ref{not6} with $G$, then we should symbolize sentence  \ref{not7} as $\enot G$.
 
@@ -86,7 +86,17 @@ But some care is needed when handling negations. For example, one might think th
 		\item[\ex{not7}] Stealing is bad.
 		\end{earg}
 
-There are two reasons why that would not be a good symbolization. For one, while we may all agree that stealing is not a good thing to do, we may think that it is perhaps not exactly bad, if someone who is on the verge of starvation steels some food. In other words, there may be things that are neither good nor bad. However,  in TFL if `$G$' is false, then `$\enot G$' is true and we would not have the option so say that something, e.g.~stealing, is neither good nor bad. If we symbolize sentence \ref{not7} using a new sentence letter, say `$B$', then we can allow for that option. For another, there is no syntactic marker such as a prefix, a word like `not', etc.~that suggests that the sentences \ref{not6} and \ref{not7} are negations of each other. If you wish to make the information that in the specific circumstances `bad' means that something is not good and vice versa available in TFL, it is preferable to add this as an additional premises when symbolizing the relevant argument in TFL. That, is if we think that \ref{not7} is the negation of \ref{not6} we should add the following premise (using truth tables check that the premise is true, if and only if, `$\enot G$' is true whenever `$B$' is true): $$(\enot G\eif B)\eand (B\eif \enot G).$$
+There are two reasons why that would not be a good symbolization. For one, while we may all agree that stealing is not a good thing to do, we may think that it is perhaps not exactly bad, if someone who is on the verge of starvation steels some food. In other words, there may be things that are neither good nor bad. However,  in TFL if `$G$' is false, then `$\enot G$' is true and we would not have the option so say that something, e.g.~stealing, is neither good nor bad. If we symbolize sentence \ref{not7} using a new sentence letter, say `$B$', then we can allow for that option. For another, there is no syntactic marker such as a prefix, a word like `not', etc.~that suggests that the sentences \ref{not6} and \ref{not7} are negations of each other. There is nothing in the structure of the two sentences that suggests that one negates the other.  But recall that one principal goal for symbolization is to check whether a given argument is valid and consider the argument:
+\begin{earg}
+\prem Steeling is good or donating for charity is good.
+\prem Steeling is bad.
+\conc Donating for charity is good.
+\end{earg}
+While this is a good argument and perhaps a conceptually valid argument it is not valid in the strict sense because it not valid in virtue of its form: it requires understanding `bad' as `not good'. So, if we were to symbolize \ref{not7} as `$\neg G$ we would stipulate some logical structure that the English sentence does not display and would wrongly deem the argument to be valid.
+
+\factoidbox{When symbolizing sentences do only introduce logical structure that is displayed by the English sentence}
+
+If you wish to make the information that in the specific circumstances `bad' means that something is not good and vice versa available in TFL, you can add this as an additional premises when symbolizing the relevant argument in TFL. That, is if we think that \ref{not7} is the negation of \ref{not6} we should add the following premise (using truth tables check that the premise is true, if and only if, `$\enot G$' is true whenever `$B$' is true): $$(\enot G\eif B)\eand (B\eif \enot G).$$ If this premise is added to the above argument, then the argument is valid and rightly so!
 
 Sometimes even in symbolizing sentences that very much look like they are negations of each other one needs to be careful. Consider:
 	\begin{earg}
@@ -202,24 +212,27 @@ Let us again recall the symbolization guideline that we introduced in Section \r
 
 \noindent Now consider the sentences
 \begin{earg}
-	\item[\ex{if1}] If Jean is in Paris, then she is in France.
-		\item[\ex{if3}] If Jean is in Paris, she's in France.
-		\item[\ex{if4}] Jean is in France if she is in Paris.
+	\item[\ex{if1}] If the number can be divided by 4, then it is an even number.
+		\item[\ex{if3}] If the number can be divided by 4, it is an even number.
+		\item[\ex{if4}] it is an even number, if the number can be divided by 4.
 \end{earg}
 
 and use the following symbolization key:
 	\begin{ekey}
-		\item[P] Jean is in Paris.
-		\item[F] Jean is in France
+		\item[P] The number can be divided by 4.
+		\item[F] The number is an even number.
 	\end{ekey}
 Sentence \ref{if3} and \ref{if4} are just a rephrasing of \ref{if1}. So we will again symbolise them as $(P\eif F)$.
 
 Now consider
 \begin{earg}
-		\item[\ex{if2}] Jean is in France only if she is in Paris.
+		\item[\ex{if2}] The number is an even number only if the number can be divided by 4.
 \end{earg}
 
-\ref{if2} is also a conditional. In \ref{if1}--\ref{if4} we took as an antecedent the part of sentence that immediately succeded the word `if'. It might then be tempting to do the same here and symbolize this as $(P\eif F)$. That would be a mistake. Your knowledge of geography tells you that sentence \ref{if1} is unproblematically true: there is no way for Jean to be in Paris that doesn't involve Jean being in France. But sentence \ref{if2} is not so straightforward: were  Jean in Dieppe, Lyons, or Toulouse, Jean would be in France without being in Paris, thereby rendering sentence \ref{if2} false. Since geography alone dictates the truth of sentence \ref{if1}, whereas travel plans (say) are needed to know the truth of sentence \ref{if2}, they must mean different things.
+\ref{if2} is also a conditional. But, intuitively, while \ref{if1}--\ref{if3} are true \ref{if4} is false, as, e.g., 6 is an even number but cannot be divided by 4. This suggest that \ref{if4} needs to be symbolized differently than \ref{if1}--\ref{if3}. Indeed, `only if' inverses the order of the conditional: whereas \ref{if1}--\ref{if3} are symbolized as $(P\eif F)$, \ref{if4} needs to be symbolized as $(F\eif P)$. Reflecting on the truth table of the conditional, $F\eif P$ says, assuming our symbolization key, that if $F$ is true, that if it is true that the number is even, then $P$ must be true for the conditional to be true, i.e., the number must be divisible by 4. That's of course not always the case, so the truth conditions for \ref{if2} fits with our intuitive judgement.
+
+
+% In \ref{if1}--\ref{if4} we took as an antecedent the part of sentence that immediately succeeded the word `if'. It might then be tempting to do the same here and symbolize this as $(P\eif F)$. That would be a mistake. Your knowledge of geography tells you that sentence \ref{if1} is unproblematically true: there is no way for Jean to be in Paris that doesn't involve Jean being in France. But sentence \ref{if2} is not so straightforward: were  Jean in Dieppe, Lyons, or Toulouse, Jean would be in France without being in Paris, thereby rendering sentence \ref{if2} false. Since geography alone dictates the truth of sentence \ref{if1}, whereas travel plans (say) are needed to know the truth of sentence \ref{if2}, they must mean different things.
 In fact, sentence \ref{if2} can be paraphrased as `If Jean is in France, then Jean is in Paris'. So we can symbolize it by $(F \eif P)$: the other way around to \ref{if1}.
 	\factoidbox{
 	 If a sentence can be paraphrased as \begin{itemize}
@@ -235,7 +248,7 @@ In fact, sentence \ref{if2} can be paraphrased as `If Jean is in France, then Je
 \subsection{Biconditional}
 In this textbook we have frequently used the English expression `\emph{if and only if}', as in: an atomic sentence $\metaX$ is true relative to a valuation $v$ \emph{if and only if} $v$ assigns the value T to $X$. `\emph{if and only if}' seems to be another conjunction word of English, that is, a way of composing two sentences into a new sentence. Is there a way to symbolize sentences of the form `\emph{\ldots if and only if\ldots}' in TFL?
 
-Consider these sentences:
+Consider the sentences:
 	\begin{earg}
 		\item[\ex{iff1}] Laika is a dog only if she is a mammal
 		\item[\ex{iff2}] Laika is a dog if she is a mammal
@@ -246,7 +259,7 @@ We will use the following symbolization key:
 		\item[D] Laika is a dog
 		\item[M] Laika is a mammal
 	\end{ekey}
-Sentence \ref{iff1}, for reasons discussed above, can be symbolized by `$D \eif M$'. in cotnrast Sentence \ref{iff2} can be paraphrased as, `If Laika is a mammal then Laika is a dog'. So it can be symbolized by `$M \eif D$'.
+Sentence \ref{iff1}, for reasons discussed above, can be symbolized by `$D \eif M$'. in contrast Sentence \ref{iff2} can be paraphrased as, `If Laika is a mammal then Laika is a dog'. So it can be symbolized by `$M \eif D$'.
 
 Sentence \ref{iff3} says something stronger than both \ref{iff1} and \ref{iff2}. It can be paraphrased as `Laika is a dog if Laika is a mammal, and Laika is a dog only if Laika is a mammal'. This is just the conjunction of sentences \ref{iff1} and \ref{iff2}. So we can symbolize it as `$((D \eif M) \eand (M \eif D))$'. We call this a \define{biconditional}, because it entails the conditional in both directions. This leads to the following symbolization guideline:
 
@@ -600,7 +613,7 @@ name=truth-functional connective,
 description={an operator that builds larger sentences out of smaller ones and fixes the \gls{truth value} of the resulting sentence based only on the truth value of the component sentences}
 }
 
-Every connective in TFL is truth-functional. We were able to give rules to determine what the truth value of a sentence $\enot\metaX$ is depending only on the truth value of $\metaX$. The truth value of $\metaX$ uniquely determines the truth value of $\enot \metaX$. The same was true for all the other connectives of TFL ($\eand,\eor,\eif$). This is what gives TFL its name: it is \emph{truth-functional logic}.
+Every connective in TFL is truth-functional. We were able to give rules to determine what the truth value of a sentence $\enot\metaX$ is depending only on the truth value of $\metaX$. The truth value of $\metaX$ uniquely determines the truth value of $\enot \metaX$. The same was true for all the other connectives of TFL ($\eand,\eor,\eif$), as is evidenced by the truth rules and truth tables we gave for these connectives. This is what gives TFL its name: it is \emph{truth-functional logic}.
 
 %The truth value of a negation is uniquely determined by the truth value of the unnegated sentence. The truth value of a conjunction is uniquely determined by the truth value of both conjuncts. The truth value of a disjunction is uniquely determined by the truth value of both disjuncts, and so on.
 
@@ -610,16 +623,16 @@ Every connective in TFL is truth-functional. We were able to give rules to deter
 %The truth value of a non-atomic sentence of TFL, such as $A\eand B$ depends on the truth values of $A$ and $B$. But once the truth values of $A$, $B$ and $C$ are provided, the truth value of $A\eand B$ is fixed. Indeed, this is the characteristic feature of \emph{truth functional logic}.
 
 
-In plenty of languages, e.g.~English, there are connectives that are not truth-functional. We here describe just two (Exercise: find further non-truth-function connectives of English):
+In plenty of languages, e.g.~English, there are connectives that are not truth-functional. We here describe just two (Exercise: find further non-truth-functional connectives of English):
 
 \subsection{Necessarily}
 
-In English, for example, we can form a new sentence from any simpler sentence by prefixing it with `It is necessarily the case that\ldots'. The truth value of this new sentence is not fixed solely by the truth value of the original sentence. For consider two true sentences:
+In English, for example, we can form a new sentence from any simpler sentence by prefixing it with `Necessarily, \ldots' or  `It is necessary that\ldots'. The truth value of this new sentence is not fixed solely by the truth value of the original sentence. For consider two true sentences:
 	\begin{earg}
 		\item[\ex{nec-math}] $2 + 2 = 4$
 		\item[\ex{nec-music}] Shostakovich wrote fifteen string quartets
 	\end{earg}
-Whereas it is necessarily the case that $2 + 2 = 4$, it is not \emph{necessarily} the case that Shostakovich wrote fifteen string quartets. If Shostakovich had died earlier, he would have failed to finish Quartet no.\ 15; if he had lived longer, he might have written a few more. So `It is necessarily the case that\ldots' is a connective of English, but it is not \emph{truth-functional}.
+Whereas it is necessary that $2 + 2 = 4$, it is not \emph{necessary} tthat Shostakovich wrote fifteen string quartets. If Shostakovich had died earlier, he would have failed to finish Quartet no.\ 15; if he had lived longer, he might have written a few more. So `It is necessary that\ldots' is a connective of English, but it is not \emph{truth-functional}.
 
 
 
@@ -633,9 +646,9 @@ Consider the two sentences:
 		\item[\ex{brownwins1}] If Mitt Romney had won the 2012 election, then he would have been the 45th President of the USA.
 		\item[\ex{brownwins2}] If Mitt Romney had won the 2012 election, then he would have turned into a helium-filled balloon and floated away into the night sky.
 	\end{earg}
-Sentence \ref{brownwins1} is true; sentence \ref{brownwins2} is false, but both have false antecedents and false consequents. So the truth value of the whole sentence is not uniquely determined by the truth value of the parts.
+Sentence \ref{brownwins1} is true; sentence \ref{brownwins2} is false, but both have false antecedents and false consequents. So the truth value of the whole sentence is not uniquely determined by the truth value of the constituent sentences.
 
-$\eif$ is the best that can be done at symbolising subjunctive conditionals of English in TFL. TFL just doesn't have the required resources as the subjunctive conditional is not truth-functional.
+However, $\eif$ is the best that can be done at symbolising subjunctive conditionals of English in TFL. TFL just doesn't have the required resources as the subjunctive conditional is not truth-functional.
 
 
 
@@ -726,28 +739,28 @@ The symbolization of sentence~\ref{scamb3} is `$(S \eand D) \eor T$' and that of
 
 
 
-\chapter{TFL vs English connectives }\label{s:ParadoxesOfMaterialConditional}
-\teachingnote{Not covered in this course. This is just a taster for students who are interested.\\}
-Consider the sentence:
-	\begin{earg}
-		\item[\ex{n:JanBald}] Jan is neither bald nor not-bald.
-	\end{earg}
-To symbolize this sentence in TFL, we would offer something like `$\enot J \eand \enot \enot J$'. This a contradiction (check this with a truth-table), but sentence \ref{n:JanBald} does not itself seem like a contradiction; for we might have happily go on to add `Jan is on the borderline of baldness'!
-
-Third, consider the following sentence:
-	\begin{earg}
-		\item[\ex{n:GodParadox}]	It's not the case that, if God exists, She answers malevolent prayers.
-%	Aaliyah wants to kill Zebedee. She knows that, if she puts chemical A into Zebedee's water bottle, Zebedee will drink the contaminated water and die. Equally, Bathsehba wants to kill Zebedee. She knows that, if she puts chemical B into Zebedee's water bottle, then Zebedee will drink the contaminated water and die. But chemicals A and B neutralize each other; so that if both are added to the water bottle, then Zebedee will not die.
-	\end{earg}
-        Symbolizing this in TFL, we would offer something like `$\enot (G \eif M)$'. Now, `$\enot (G \eif M)$' entails `$G$' (again, check this with a truth table). So if we symbolize sentence \ref{n:GodParadox} in TFL, it seems to entail that God exists. But that's strange: surely even an atheist can accept sentence \ref{n:GodParadox}, without contradicting herself!
-
-        One lesson of this is that the symbolization of \ref{n:GodParadox} as `$\enot(G \eif M)$' shows that \ref{n:GodParadox} does not express what we intend. Perhaps we should rephrase it as
-        	\begin{earg}
-                \item[\ex{n:GodParadox2}] If God exists, She does not answer malevolent prayers.
-  \end{earg}
-and symbolize \ref{n:GodParadox2} as `$G \eif \enot M$'.  Now, if atheists are right, and there is no God, then `$G$' is false and so `$G \eif \enot M$' is true, and the puzzle disappears. However, if `$G$' is false, `$G \eif M$', i.e.\ `If God exists, She answers malevolent prayers', is \emph{also} true!
-
-In different ways, these  examples highlight some of the limits of working with a language (like TFL) that can \emph{only} handle truth-functional connectives. Moreover, these limits give rise to some interesting questions in philosophical logic. The case of Jan's baldness (or otherwise) raises the general question of what logic we should use when dealing with \emph{vague} discourse. The case of the atheist raises the question of how to deal with the (so-called) \emph{paradoxes of the material conditional}. Part of the purpose of this course is to equip you with the tools to explore these questions of \emph{philosophical logic}. But we have to walk before we can run; we have to become proficient in using TFL, before we can adequately discuss its limits, and consider alternatives.
+%\chapter{TFL vs English connectives }\label{s:ParadoxesOfMaterialConditional}
+%\teachingnote{Not covered in this course. This is just a taster for students who are interested.\\}
+%Consider the sentence:
+%	\begin{earg}
+%		\item[\ex{n:JanBald}] Jan is neither bald nor not-bald.
+%	\end{earg}
+%To symbolize this sentence in TFL, we would offer something like `$\enot J \eand \enot \enot J$'. This a contradiction (check this with a truth-table), but sentence \ref{n:JanBald} does not itself seem like a contradiction; for we might have happily go on to add `Jan is on the borderline of baldness'!
+%
+%Third, consider the following sentence:
+%	\begin{earg}
+%		\item[\ex{n:GodParadox}]	It's not the case that, if God exists, She answers malevolent prayers.
+%%	Aaliyah wants to kill Zebedee. She knows that, if she puts chemical A into Zebedee's water bottle, Zebedee will drink the contaminated water and die. Equally, Bathsehba wants to kill Zebedee. She knows that, if she puts chemical B into Zebedee's water bottle, then Zebedee will drink the contaminated water and die. But chemicals A and B neutralize each other; so that if both are added to the water bottle, then Zebedee will not die.
+%	\end{earg}
+%        Symbolizing this in TFL, we would offer something like `$\enot (G \eif M)$'. Now, `$\enot (G \eif M)$' entails `$G$' (again, check this with a truth table). So if we symbolize sentence \ref{n:GodParadox} in TFL, it seems to entail that God exists. But that's strange: surely even an atheist can accept sentence \ref{n:GodParadox}, without contradicting herself!
+%
+%        One lesson of this is that the symbolization of \ref{n:GodParadox} as `$\enot(G \eif M)$' shows that \ref{n:GodParadox} does not express what we intend. Perhaps we should rephrase it as
+%        	\begin{earg}
+%                \item[\ex{n:GodParadox2}] If God exists, She does not answer malevolent prayers.
+%  \end{earg}
+%and symbolize \ref{n:GodParadox2} as `$G \eif \enot M$'.  Now, if atheists are right, and there is no God, then `$G$' is false and so `$G \eif \enot M$' is true, and the puzzle disappears. However, if `$G$' is false, `$G \eif M$', i.e.\ `If God exists, She answers malevolent prayers', is \emph{also} true!
+%
+%In different ways, these  examples highlight some of the limits of working with a language (like TFL) that can \emph{only} handle truth-functional connectives. Moreover, these limits give rise to some interesting questions in philosophical logic. The case of Jan's baldness (or otherwise) raises the general question of what logic we should use when dealing with \emph{vague} discourse. The case of the atheist raises the question of how to deal with the (so-called) \emph{paradoxes of the material conditional}. Part of the purpose of this course is to equip you with the tools to explore these questions of \emph{philosophical logic}. But we have to walk before we can run; we have to become proficient in using TFL, before we can adequately discuss its limits, and consider alternatives.
 
 \section{Limits of Symbolization in TFL}
 All of the connectives of TFL are truth-functional, but more than that: they really do nothing \emph{but} map us between truth values. When we symbolize a sentence or an argument in TFL, we ignore everything \emph{besides} the contribution that the truth values of a component might make to the truth value of the whole. There are subtleties to our ordinary claims that far outstrip their mere truth values. Sarcasm; poetry; snide implicature; emphasis; these are important parts of everyday discourse, but none of this is retained in TFL. As remarked in \S\ref{sec:symbcon}, TFL cannot capture the subtle differences between the following English sentences:
@@ -758,6 +771,6 @@ All of the connectives of TFL are truth-functional, but more than that: they rea
 		\item Dana is a nice person, but also a logician
 		\item Dana's being a logician notwithstanding, he is a nice person
 	\end{earg}
-All of the above sentences will be symbolized with the same TFL sentence, perhaps `$L \eand N$'.
+All of the above sentences will be symbolized with the same TFL sentence, perhaps `$L \eand N$'. This does not mean that there are no subtle differences between those sentences. It just means that from the perspective of TFL, they should be symbolized by the same TFL-sentence and that TFL is ignorant of these subtle differences.
 
-We keep saying that we use TFL sentences to \emph{symbolize} English sentences.
+%We keep saying that we use TFL sentences to \emph{symbolize} English sentences.
