@@ -193,8 +193,16 @@ But this would be wrong. Do not do this. The reason  is that `Buses' does not re
 In FOL we will also make use of all of the tools from TFL.
 We can symbolise
 \begin{earg}
-\item[\ex{foland}] $\underbrace{\underbrace{\text{Joe is happy}}_{Hj}\text{ and }\underbrace{\text{Katie is sad}}_{Sk}}_{(Hj\eand Sk)}$.
+	\item[\ex{foland}] Joe is happy and Katie is sad
 \end{earg}
+\begin{center}
+	\begin{forest}
+		[Joe is happy and Katie is sad\\Joe is happy \mainconnective{and} Katie is sad\\$Hj \mainconnective{\eand} Sk$
+		[Joe is happy\\$Hj$]
+		[Katie is sad\\$Sk$]
+		]
+	\end{forest}
+\end{center}
 as
 $$Hj\eand Sk$$
 with the symbolisation key:
@@ -221,7 +229,20 @@ we observe that it can be naturally paraphrased as
 
 We can also symbolise more complex sentences, for example:
 \begin{earg}
-\item[\ex{folcomplex}] If Joe is not happy then Katie or Billy is sad.$$\enot Hj\eif (Sk\eor Sb)$$
+\item[\ex{folcomplex}] If Joe is not happy then Katie or Billy is sad.
+\begin{center}
+	\begin{forest}
+		[If Joe is not happy then Katie or Billy is sad\\\mainconnective{If} Joe is not happy \mainconnective{then} Katie or Billy is sad.\\$\enot Hj \mainconnective{\eif} (Sk \eor Sb)$
+		[Joe is not happy\\\mainconnective{It is not the case that} Joe is happy\\$\mainconnective{\enot} Hj$
+		[Joe is happy\\$Hj$]
+		]
+		[Katie or Billy is sad\\Katie is sad \mainconnective{or} Billy is sad\\$Sk \mainconnective{\eor} Sb$
+		[Katie is sad\\$Sk$]
+		[Billy is sad\\$Sb$]
+		]
+		]
+	\end{forest}
+\end{center}
 %\item
 %\item[\ex{folcomplex}]  Katie and Billy is happy only if neither Joe nor Alice is sad.$$(Hk\eand Hb)\eif \enot (Sj\eor Sa)$$
 \end{earg}
@@ -452,7 +473,7 @@ For everyone $_x$: $x$ wears a funny hat.
 Here we have made explicit the variable as $x$. In FOL we can also use $y,z$, or also, for example, $x_{32}$ as variables. Quantifiers always have to be followed immediately by a variable.
 
 
-If we wanted to symbolise ``Alice wears a funny hat'' we would use $Fa$. To symbolise ``Everyone wears a funny hat'', we paraphrase it as ``For everyone $_x$: $x$ wears a funny hat.'' and then symbolise it as $\forall x Fx$.
+If we wanted to symbolise ``Alice wears a funny hat'' we would use $Fa$. To symbolise ``Everyone wears a funny hat'', we paraphrase it as ``For everyone : $x$ wears a funny hat.'' and then symbolise it as $\forall x Fx$.
 
 
 Whatever we wanted to say of an individual we can now say of everyone using this quantifier.  Consider
@@ -460,11 +481,16 @@ Whatever we wanted to say of an individual we can now say of everyone using this
 \item[\ex{q.hat}] Everyone is happy and wears a funny hat
 \end{earg}
 We can break this up:
-\begin{equation*}
-\underbrace{\underbrace{\text{For everyone $_x$}}_{\forall x}\ :\
- \underbrace{\underbrace{\text{$x$ is happy}}_{Hx}\text{ and }
- \underbrace{\text{$x$ wears a funny hat}}_{Fx}}_{(Hx\eand Fx)}}_{\forall x(Hx\eand Fx)}.
-\end{equation*}
+\begin{center}
+	\begin{forest}
+		[Everyone is happy and wears a funny hat\\\mainconnective{For everyone $_x$:} $x$ is happy and $x$ wears a funny hat\\$\mainconnective{\forall x}(Hx \eand Fx)$
+		[$x$ is happy \mainconnective{and} $x$ wears a funny hat\\$Hx \mainconnective{\eand} Fx$
+		[$x$ is happy\\$Hx$]
+		[$x$ wears a funny hat\\$Fx$]
+		]
+		]
+	\end{forest}
+\end{center}
 So we can symbolise it as $$\forall x(Hx\eand Fx)$$
 
 We have here been using $\forall x$ to be read out-loud as ``everyone''.
@@ -527,22 +553,42 @@ To symbolise
 \begin{earg}
 \item[\ex{q.e}] Someone is angry.
 \end{earg}
-We paraphrase it as:
-\begin{ebullet}
-\item $\underbrace{\text{There is someone $_x$ such that}}_{\exists x}$: $\underbrace{\text{$x$ is angry}}_{Ax}$.
-\end{ebullet}
-and symbolise it as $\exists x Ax$ giving the symbolisation key
+with the symbolisation key
 \begin{ekey}
-\item[\text{domain}] people
-\item[Ax]\gap{x} is angry
+	\item[\text{domain}] people
+	\item[Ax]\gap{x} is angry
 \end{ekey}
+We can paraphrase it as \begin{center}
+	There is someone $_x$ such that: $x$ is angry.
+\end{center}
+\begin{center}
+	\begin{forest}
+		[Someone is angry.\\\mainconnective{There is someone $_x$ such that:} $x$ is angry.\\$\mainconnective{\exists x}Ax$
+		[$x$ is angry\\$Ax$]
+		]
+	\end{forest}
+\end{center}
+%\begin{ebullet}
+%\item $\underbrace{\text{There is someone $_x$ such that}}_{\exists x}$: $\underbrace{\text{$x$ is angry}}_{Ax}$.
+%\end{ebullet}
+
 
 
 To symbolise
 \begin{earg}
 \item[\ex{q.e}] There is a logician who wears glasses
 \end{earg}
-$$\underbrace{\underbrace{\text{There is someone $_x$ such that}}_{\exists x}: \underbrace{\underbrace{\text{$x$ is a logician}}_{Lx}\text{ and }\underbrace{\text{$x$ wears glasses}}_{Gx}}_{(Lx\eand Gx)}.}_{\exists x(Lx\eand Gx)}$$
+%$$\underbrace{\underbrace{\text{There is someone $_x$ such that}}_{\exists x}: \underbrace{\underbrace{\text{$x$ is a logician}}_{Lx}\text{ and }\underbrace{\text{$x$ wears glasses}}_{Gx}}_{(Lx\eand Gx)}.}_{\exists x(Lx\eand Gx)}$$
+\begin{center}
+	\begin{forest}
+	[There is a logician who wears glasses\\\mainconnective{There is someone $_x$:} $x$ is a logician who wears glasses\\$\mainconnective{\exists x}(Lx\eand Gx)$
+	[$x$ is a logician who wears glasses\\$x$ is a logician \mainconnective{and} $x$ wears glasses\\$Lx\mainconnective{\eand} Gx$
+		[$x$ is a logician\\$Lx$]
+		[$x$ wears glasses\\$Gx$]
+	]
+	]
+\end{forest}
+\end{center}
 giving our symbolisation key:
 \begin{ekey}
 \item[\text{domain}] people
@@ -554,22 +600,37 @@ To symbolise
 \begin{earg}
 \item[\ex{q.e}] There is a Polish woman who won the Nobel Prize
 \end{earg}
-We break this up as:
-$$
-\underbrace{
-	\underbrace{\text{There is someone $_x$}}_{\exists x}:
-	\underbrace{
-		\underbrace{\text{$x$ is a Polish woman}}_{
-			\underbrace{(\underbrace{\text{$x$ is Polish}}_{Px}
-			\text{ and }
-			\underbrace{\text{$x$ is a woman}}_{Wx}
-			)}_{(Px\eand Wx)}
-			}
-		\text{ and }
-		\underbrace{\text{$x$ won the Nobel Prize}}_{Nx}
-	}_{((Px\eand Wx)\eand Nx)}
-}_{\exists x((Px\eand Wx)\eand Nx)}
-$$
+
+\begin{center}
+	\begin{forest}
+	[There is a Polish woman who won the Nobel Prize\\\mainconnective{There is someone $_x$:} $x$ is a Polish woman and $x$ won the Nobel Prize\\$\mainconnective{\exists x }((Px\eand Wx)\eand Nx)$
+		[$x$ is a Polish woman \mainconnective{and} $x$ won the Nobel Prize \\$(Px\eand Wx)\mainconnective{\eand} Nx$
+			[$x$ is a Polish woman\\$x$ is Polish \mainconnective{and} $x$ is a woman\\$Px\mainconnective{\eand} Wx$
+				[$x$ is Polish\\$Px$]
+				[$x$ is a woman\\$Wx$]
+			]
+			[$x$ won the Nobel Prize\\$Nx$]
+		]
+	]
+	\end{forest}
+\end{center}
+
+%We break this up as:
+%$$
+%\underbrace{
+%	\underbrace{\text{There is someone $_x$}}_{\exists x}:
+%	\underbrace{
+%		\underbrace{\text{$x$ is a Polish woman}}_{
+%			\underbrace{(\underbrace{\text{$x$ is Polish}}_{Px}
+%			\text{ and }
+%			\underbrace{\text{$x$ is a woman}}_{Wx}
+%			)}_{(Px\eand Wx)}
+%			}
+%		\text{ and }
+%		\underbrace{\text{$x$ won the Nobel Prize}}_{Nx}
+%	}_{((Px\eand Wx)\eand Nx)}
+%}_{\exists x((Px\eand Wx)\eand Nx)}
+%$$
 So we symbolise it as:
 $$\exists x((Px\eand Wx)\eand Nx)$$
 giving our symbolisation key:
@@ -738,29 +799,34 @@ We now give the inductive definition of what it is to be a formula of FOL.
 
 	We can again display the structure and construction of the sentence perspicuously by presenting a formation tree:
 
-			\begin{center}
-			\begin{forest}
-				[$\exists y\forall x(\enot(Dx\eand Db)\eif Lxy)$[$\forall x(\enot(Dx\eand Db)\eif Lxy)$[$(\enot(Dx\eand Db)\eif Lxy)$
-					[$\enot (Dx\eand Db)$
-						[$(Dx\eand Db)$
+\begin{center}
+	\begin{forest}
+		[$\mainconnective{\exists y}\forall x(\enot(Dx\eand Db)\eif Lxy)$
+			[$\mainconnective{\forall x}(\enot(Dx\eand Db)\eif Lxy)$
+				[$(\enot(Dx\eand Db)\mainconnective{\eif} Lxy)$
+					[$\mainconnective{\enot}(Dx\eand Db)$
+						[$(Dx \mainconnective{\eand} Db)$
 							[$Dx$]
 							[$Db$]
 						]
 					]
 					[$Lxy$]
-				]]]
-			\end{forest}
-			\end{center}
+				]
+			]
+		]
+	\end{forest}
+\end{center}
+
 
 			One more example:
 
 	\begin{center}
 	\begin{forest}
-		[$\exists z\forall y (Ryz\eand \exists x Qx)$
-			[$\forall y (Ryz\eand\exists x Qx)$
-				[$(Ryz\eand \exists x Qx)$
+		[$\mainconnective{\exists z}\forall y (Ryz\eand \exists x Qx)$
+			[$\mainconnective{\forall y }(Ryz\eand\exists x Qx)$
+				[$(Ryz\mainconnective{\eand} \exists x Qx)$
 					[$Ryz$]
-					[$\exists x Qx$
+					[$\mainconnective{\exists x} Qx$
 						[$Qx$]
 					]
 				]
@@ -1062,9 +1128,13 @@ To symbolise
 	\item[\ex{loveseveryone1}] Everyone loves Alice.
 \end{earg}
 We want to paraphrase it in one of our standard forms, which we do as:
-\begin{equation*}
-\underbrace{\text{Everyone $_x$}}_{\forall x}: \underbrace{\text{$x$ loves Alice.}}_{Lxa}
-\end{equation*}
+\begin{center}
+	\begin{forest}
+		[Everyone loves Alice\\\mainconnective{For everyone $_x$:} $x$ loves Alice\\$\mainconnective{\forall x}Lxa$
+		[$x$ loves Alice\\$Lxa$]
+		]
+	\end{forest}
+\end{center}
 So we give the symbolisation $$\forall x Lxa$$ with the symbolisation key:
 \begin{ekey}
 \item[\text{domain}] people
@@ -1076,9 +1146,13 @@ If we instead want to symbolise
 	\item[\ex{loveseveryone2}] Alice loves everyone.
 \end{earg}
 We paraphrase this as:
-\begin{equation*}
-\underbrace{\text{Everyone $_x$}}_{\forall x}: \underbrace{\text{Alice loves $x$.}}_{Lax}
-\end{equation*}
+\begin{center}
+	\begin{forest}
+		[Alice loves everyone\\\mainconnective{For everyone $_x$:} Alice loves $x$\\$\mainconnective{\forall x}Lax$
+		[Alice loves $x$\\$Lax$]
+		]
+	\end{forest}
+\end{center}
 So we give the symbolisation $$\forall x Lax$$
 
 To symbolise
@@ -1108,13 +1182,16 @@ If we want to symbolise
 %This symbolisation is only legitimate, though, if Finley is referring to a dog rather than, for example, a person. This is because, as we said in \ref{s:Domain}, names have to name members of the domain. If Finley is a person then we have to ensure that our domain contains people too. But then how do we symbolise ``for some dog''?
 
 we should paraphrase this as:
-\begin{equation*}
-\underbrace{\underbrace{\text{For some thing $_x$}}_{\exists x}: \underbrace{
-	\underbrace{\text{$x$ is a dog}}_{Dx}
-	\text{ and }
-	\underbrace{\text{$x$ likes playing with Finley.}}_{Pxf}
-}_{(Dx\eand Pxf)}}_{\exists x (Dx\eand Pxf)}
-\end{equation*}
+\begin{center}
+	\begin{forest}
+		[Some dog likes playing with Finley\\\mainconnective{There is some thing $x$:} $x$ is a dog who likes playing with Finley\\$\mainconnective{\exists x}(Dx \eand Pxf)$
+		[$x$ is a dog who likes playing with Finley\\ $x$ is a dog \mainconnective{and} $x$ likes playing with Finley\\$Dx \mainconnective{\eand} Pxf$
+		[$x$ is a dog\\$Dx$]
+		[$x$ likes playing with Finley\\$Pxf$]
+		]
+		]
+	\end{forest}
+\end{center}
 
 \section{Quantifiers inside a sentence}
 All the sentences we've considered so far have the quantifiers at the beginning of the sentence. But we can also use truth functional connectives to combine sentences of FOL.
@@ -1125,19 +1202,23 @@ All the sentences we've considered so far have the quantifiers at the beginning 
 \end{earg}
 
 We work as follows:
-\begin{equation*}
-\underbrace{
-	\underbrace{\text{Finley is not quiet}}_{
-		\underbrace{\text{it is not the case that}
-			\underbrace{\text{Finley is quiet}}_{Qf}
-		}_{\enot\,Wf}
-		}
- 	\text{ and }
-	\underbrace{\text{some dog is quiet. }}_{
-		\underbrace{\underbrace{\text{there exists $_x$ }}_{\exists x} \underbrace{\text{$x$ is a dog}}_{(Dx}\underbrace{\text{ and }}_{\wedge}\underbrace{\text{$x$ is quiet}}_{Qx)}}_{\exists x(Dx\wedge Qx)}
-		}
-}_{(\enot Qf\eand \exists x(Dx\wedge Qx))}
-\end{equation*}
+\begin{center}
+	\begin{forest}
+		[{
+		Finley is not quiet, but some dog is\\Finley is not quiet \mainconnective{and} some dog is quiet\\$(\enot Qf \mainconnective{\eand} \exists x(Dx \eand Qx))$}
+			[Finley is not quiet\\\mainconnective{It is not the case that} Finley is quiet\\$\mainconnective{\enot} Qf$
+				[Finley is quiet\\$Qf$]
+			]
+			[Some dog is quiet\\\mainconnective{There is some $x$:} $x$ is a dog and $x$ is quiet\\$\mainconnective{\exists x}(Dx \eand Qx)$
+				[$x$ is a dog \mainconnective{and} $x$ is quiet\\$Dx \mainconnective{\eand} Qx$
+					[$x$ is a dog\\$Dx$]
+					[$x$ is quiet\\$Qx$]
+				]
+			]
+		]
+	\end{forest}
+\end{center}
+
 So we symbolise this sentence as $$(\enot Qf\eand \exists x(Dx\wedge Qx))$$
 giving the symbolisation key
 \begin{ekey}
@@ -1148,51 +1229,50 @@ giving the symbolisation key
 \end{ekey}
 Note, that as per \ref{s:Domain}, this symbolisation is only legitimate assuming that Finley names an animal. Names have to name members of the domain.
 
+Consider also 
+\begin{earg}
+	\item[\ex{q.dog2}]Some dog is quiet but Finley is not
+\end{earg}
+
+\begin{center}
+	\begin{forest}
+		[Some dog is quiet but Finley is not\\Some dog is quiet \mainconnective{and} Finley is not quiet\\$(\exists x(Dx \eand Qx) \mainconnective{\eand} \enot Qf)$
+		[Some dog is quiet\\\mainconnective{There is some $x$:} $x$ is a dog and $x$ is quiet\\$\mainconnective{\exists x}(Dx \eand Qx)$
+		[$x$ is a dog \mainconnective{and} $x$ is quiet\\$Dx \mainconnective{\eand} Qx$
+		[$x$ is a dog\\$Dx$]
+		[$x$ is quiet\\$Qx$]
+		]
+		]
+		[Finley is not quiet\\\mainconnective{It is not the case that} Finley is quiet$\mainconnective{\enot} Qf$
+		[Finley is quiet\\$Qf$]
+		]
+		]
+	\end{forest}
+\end{center}
+
+
 Consider:
 \begin{earg}
 \item[\ex{q.notevery}]Not every dog is quiet
 \end{earg}
 
 We work as follows:
-\begin{equation*}
-\underbrace{
-	\underbrace{\text{It is not the case that}}_{\enot}:
-		\underbrace{\text{every dog is quiet}}_
-		{
-							\underbrace{\underbrace{\text{for every thing $_x$}}_{\forall x}
-									:\,
-					\underbrace{
-					\text{if }
-						\underbrace{\text{$x$ is a dog}}_{Dx},
-					\text{ then }
-						\underbrace{\text{$x$ is quiet}}_{Qx}
-					}
-					_{(Dx\eif Qx)}
-}				
-				_{\forall x(Dx\eif Qx)}}
-}
-_{\enot \forall x(Dx\eif Qx)}
-\end{equation*}
+\begin{center}
+	\begin{forest}
+		[Not every dog is quiet\\\mainconnective{It is not the case that} every dog is quiet\\$\mainconnective{\enot}\forall x(Dx \eif Qx)$
+		[Every dog is quiet\\\mainconnective{For all $x$:} if $x$ is a dog then $x$ is quiet\\$\mainconnective{\forall x}(Dx \eif Qx)$
+		[\mainconnective{If} $x$ is a dog \mainconnective{then} $x$ is quiet\\$Dx \mainconnective{\eif} Qx$
+		[$x$ is a dog\\$Dx$]
+		[$x$ is quiet\\$Qx$]
+		]
+		]
+		]
+	\end{forest}
+\end{center}
 So we symbolise this sentence as $$\enot \forall x(Dx\eif Qx)$$
 
 
 
-We now have the tools to symbolise our second argument from the introduction.
-
-\begin{earg}
-\prem Everyone who loves Manchester United hates Manchester City.
-\prem Manchester City is not hated by everyone.
-\conc there is at least one person who doesn't love Manchester United.
-\end{earg}
-
-%We start with
-%\begin{earg}
-%\item[\ex{q.mu1}] Everyone who loves Manchester United hates Manchester City.
-%\end{earg}
-%\begin{equation}
-%\underbrace{\text{For everyone $_x$ :}}_{\forall x}
-%\underbrace{\text{if $x$ loves Manchester United, then $x$ hates Manchester City. }}
-%\end{equation}
 
 
 %
@@ -1386,6 +1466,68 @@ Our domain must now include both all the roses (so that we can symbolize sentenc
 Now we will have to symbolize sentence \ref{pickdomainrose} with $\forall x (Rx \eif Tx)$, since $\forall x Tx$ would symbolize the sentence `every person or plant has a thorn'. Similarly, we will have to symbolize sentence \ref{pickdomaincowboy} with $\forall x (Cx \eif Sx)$.
 
 In general, the universal quantifier can be used to symbolize the English expression `everyone' if the domain only contains people. If there are people and other things in the domain, then `everyone' must be treated as `every person'.
+
+
+%If we wish to symbolise our earlier argument:
+%\begin{earg}
+%	\prem Everyone who loves Manchester United hates Manchester City.
+%	\prem Manchester City is not hated by everyone.
+%	\conc there is at least one person who doesn't love Manchester United.
+%\end{earg}
+%We need to choose a single symbolisation key. We might consider 
+%\begin{ekey}
+%	\item[\text{domain}] people
+%	\item [Hxy] \gap{y} hates \gap{y}
+%	\item[c] Manchester city
+%	\item[u] Manchester united
+%\end{ekey}
+%But this is not allowed. The names $c$ and $u$ now name objects which are not in the domain. We should include football clubs in the domain. 
+%\begin{ekey}
+%	\item[\text{domain}] people and football clubs
+%	\item [Hxy] \gap{y} hates \gap{y}
+%	\item[Px] \gap{x} is a person
+%	\item[c] Manchester city
+%	\item[u] Manchester united
+%\end{ekey}
+%\begin{center}
+%	\begin{forest}
+%		[Everyone who loves Manchester United hates Manchester City\\\mainconnective{For all $x$:} if $x$ is a person and $x$ loves Manchester United then $x$ hates Manchester City\\$\mainconnective{\forall x}((Px \eand Lxu)\eif Hxc)$
+%		[If $x$ is a person and $x$ loves Manchester United then $x$ hates Manchester City\\$(Px \eand Lxu) \mainconnective{\eif} Hxc$
+%		[$x$ is a person \mainconnective{and} $x$ loves Manchester United\\$Px \mainconnective{\eand} Lxu$
+%		[$x$ is a person\\$Px$]
+%		[$x$ loves Manchester United\\$Lxu$]
+%		]
+%		[$x$ hates Manchester City\\$Hxc$]
+%		]
+%		]
+%	\end{forest}
+%\end{center}
+%\begin{center}
+%	\begin{forest}
+%		[Manchester City is not hated by everyone\\\mainconnective{It is not the case that} everyone hates Manchester City\\$\mainconnective{\enot}\forall x(Px \eif Hxc)$
+%		[Everyone hates Manchester City\\\mainconnective{For all $x$:} if $x$ is a person then $x$ hates Manchester City\\$\mainconnective{\forall x}(Px \eif Hxc)$
+%		[If $x$ is a person then $x$ hates Manchester City\\$Px \mainconnective{\eif} Hxc$
+%		[$x$ is a person\\$Px$]
+%		[$x$ hates Manchester City\\$Hxc$]
+%		]
+%		]
+%		]
+%	\end{forest}
+%\end{center}
+%\begin{center}
+%	\begin{forest}
+%		[There is at least one person who doesn’t love Manchester United\\\mainconnective{There is some $x$:} $x$ is a person and $x$ does not love Manchester United\\$\mainconnective{\exists x}(Px \eand \enot Lxu)$
+%		[$x$ is a person \mainconnective{and} it is not the case that $x$ loves Manchester United\\$Px \mainconnective{\eand} \enot Lxu$
+%		[$x$ is a person\\$Px$]
+%		[It is not the case that $x$ loves Manchester United\\$\mainconnective{\enot} Lxu$
+%		[$x$ loves Manchester United\\$Lxu$]
+%		]
+%		]
+%		]
+%	\end{forest}
+%\end{center}
+
+
 %
 %\chapter{Symbolising complex sentences}
 %\label{s:SymbolisingComplexFOL}

@@ -59,7 +59,7 @@ Summing up, two place predicates such as `\gap{x}is bigger than\gap{y}' or `\gap
 Now, that we know what an ordered pairs are we can form sets of ordered pairs and such thats, that is, sets that only have ordered pairs as their elements are called \define{binary relations}. While, as discussed the one-place predicate like `is a cat' picks out the set of all cats in the domain, the two place predicate picks out a binary relation. More precisely, it picks out the set
 $$\{\langle o_1,o_2\rangle\,|\,o_1\text{ is bigger than }o_2\}.$$
 where we always assume that both $o_1$ and $o_2$ members of the domain. To recap: one-place predicates pick out sets and two-place predicates pick out binary relations. For example, the set
-$${\tiny \{\langle\text{Oslo, Norway}\rangle,\langle\text{Stockholm, Sweden}\rangle,\langle\text{Helsinki, Finland}\rangle,\langle\text{Copenhague, Denmark}\rangle\}}$$
+$${\small \{\langle\text{Oslo, Norway}\rangle,\langle\text{Stockholm, Sweden}\rangle,\langle\text{Helsinki, Finland}\rangle,\langle\text{Copenhague, Denmark}\rangle\}}$$
 is a binary relation picked out by the two-place predicate `\gap{x}is a capital of\gap{y}' with a domain, which, e.g., is a set that has Scandinavian cities and countries as its elements.
 
 In Part \ref{ch.TFLsymb} we learned that there are not only two-place predicates but also three-place predicates, four-place predicates and, indeed, at least in principle predicates for any number of argument places. What does a three place predicate pick out? It picks out a \define{ternary relation}. While a binary relation is a set of ordered pairs, a ternary relation is a set of ordered triples. An ordered triple such as $\langle\text{Pooh, Eeyore, The trampoline}\rangle$ consists of the three-objects Pooh, Eeyore, The trampoline \emph{in that particular order}. The three-place predicate `\gap{x}bounces with\gap{y}on\gap{z}' picks out the following ternary relation:
@@ -194,7 +194,7 @@ using the symbolization key;
 \item[p]Pooh
 \item[e]Eeyore
 \item[t]The trampoline
-\item[Bxyz]\gap{x}bounces with\gap{y}on\gap{z}
+\item[Bxyz]\gap{x} bounces with \gap{y} on \gap{z}
 \end{ekey}
 Taking the symbolization key as a guideline we can construct an appropriate interpretation as follows:
 \begin{ekey}
@@ -785,7 +785,7 @@ Let's consider a second example. Consider:
 	$$\forall x \exists y Lxy \therefore \exists y \forall x Lxy$$
 Again, we want to show that this is invalid. To do this, we must make the premises true and the conclusion false. Here is a suggestion:
 	\begin{ekey}
-		\item[\text{domain}] $\{o\,|,o\text{ UK citizens currently in a civil partnership with another UK citizen}\}$
+		\item[\text{domain}] $\{o\,|\,o\text{ is a UK citizen currently in a civil partnership with another UK citizen}\}$
 		\item[Lxy] $\{\langle o_1,o_2\rangle\,|\, o_1\text{ is in a civil partnership with }o_2\}$
 	\end{ekey}
 The premise is clearly true on this interpretation. Anyone in the domain is a UK citizen in a civil partnership with some other UK citizen. That other citizen will also, then, be in the domain. So for everyone in the domain, there will be someone (else) in the domain with whom they are in a civil partnership. Hence `$\forall x \exists y Lxy$' is true. However, the conclusion is clearly false, for that would require that there is some single person who is in a civil partnership with everyone in the domain, and there is no such person, so the argument is invalid. We observe immediately that the sentences `$\forall x \exists y Lxy$ and $\enot\exists y \forall x Lxy$' are jointly consistent and that `$\exists y \forall x Lxy$, is not a logical consequence of `$\forall x \exists y Lxy$'.

@@ -319,30 +319,66 @@ It's time to put all the pieces together and to start symbolizing complex senten
 \item\label{cpr} Symbolize the sentence in accordance with the symbolization guideline with the component sentences in the place of the metavariables. Make sure you don't forget the brackets! For each of the component sentences---moving from left to right---repeat the procedure, that is, go back to Step \ref{bpr}.
 \end{enumerate}
 \end{highlighted}
-
+\todo{add symbolisation tree}
 Let's go through an example to see how to apply the strategy. Consider:
 	\begin{earg}
-		\item[\ex{negcon1}] It's not the case that you will get both soup and salad.
+		\item[\ex{negcon1}] You won't get both soup and salad.
 		%\item[\ex{negcon2}] You will not get soup but you will get salad.
 	\end{earg}
-Sentence \ref{negcon1} can be paraphrased as `It is not the case that: you will get soup and you will get salad'. Let's start with the symbolization procedure.
+Let's start with the symbolization procedure.
+\begin{center}
+	\begin{forest}
+		[You won't get both soup and salad.\\\mainconnective{It's not the case that} you will get both soup and salad\\$\mainconnective{\enot}\ldots$
+			[You will get both soup and salad]
+		]
+	\end{forest}
+\end{center}
+Our next stage is to aim to symbolise `you will get both soup and salad'
+\begin{center}
+	\begin{forest}
+		[You won't get both soup and salad.\\\mainconnective{It's not the case that} you will get both soup and salad\\$\mainconnective{\enot}\ldots$
+				[You will get both soup and salad\\You will get soup \mainconnective{and} you will get salad\\$\ldots \mainconnective{\eand} \ldots$
+				[You will get soup]
+				[You will get salad]
+				]
+		]
+	\end{forest}
+\end{center}
+Both `You will get soup' and `You will get salad' cannot be paraphrased in any of our standard forms so we have to use an atomic TFL-sentence. As we haven't already introduced any atomic TFL-sentences, we need to introduce new ones. Let's say 
+\begin{ekey}
+	\item[S_1] You will get soup
+	\item[S_2] You will get salad
+\end{ekey}
+So we can replace these leaves of the symbolisation tree with the atomic sentences, and then work the way back up to determine the symbolisation of the original sentence. 
+\begin{center}
+	\begin{forest}
+		[You won't get both soup and salad.\\\mainconnective{It's not the case that} you will get both soup and salad\\$\mainconnective{\enot}(S_1 {\eand} S_2)$
+		[You will get both soup and salad\\You will get soup \mainconnective{and} you will get salad\\$S_1 \mainconnective{\eand} S_2$
+		[You will get soup\\$S_1$]
+		[You will get salad\\$S_2$]
+		]
+		]
+	\end{forest}
+\end{center}
 
-\begin{itemize}
-\item Per above we see that the sentence can be constructed from other sentences by means of conjunction words. We move to Step \ref{cpr}.
-\item Applying the instructions in Step \ref{cpr} we obtain:
-$$\enot\text{you will get soup and you will get salad}.$$
-\item Still per instruction of Step \ref{cpr}, we move to Step \ref{bpr} to start the symbolization procedure for the sentence  `you will get soup and you will get salad.'
-\item The sentence is clearly a conjunction so we move to Step \ref{cpr}. By following the symbolization guidelines and the constructions of Step \ref{cpr}, we obtain:
-$$\enot(\text{ you will get soup }\eand\text{ you will get salad}).$$
-\item Now per instruction of Step \ref{cpr} we need to start the symbolization procedure for both, the sentence `you will get soup' and the sentence `you will get salad' starting with the former one, and got to Step \ref{bpr}
-\item `you will get soup' cannot be paraphrased as being constructed from other sentences, so we are instructed to go to Step \ref{epr}.
-\item we choose the atomic sentence $S_1$ as the symbolization of `you will get soup', and obtain
-$$\enot(S_1\eand\text{ you will get salad}).$$
-\item Equally, the sentence `you will get salad' cannot be paraphrased as being constructed from other sentences, so we are instructed to go to Step \ref{epr}.
-\item we choose the atomic sentence $S_2$ as the symbolization of `you will get salad', and obtain
-$$\enot(S_1\eand S_2).$$
-\item The TFL-sentence `$\enot(S_1\eand S_2)$' is the symbolization of the English sentence `It's not the case that you will get both soup and salad'.
-\end{itemize}
+
+%
+%\begin{itemize}
+%\item Per above we see that the sentence can be constructed from other sentences by means of conjunction words. We move to Step \ref{cpr}.
+%\item Applying the instructions in Step \ref{cpr} we obtain:
+%$$\enot\text{you will get soup and you will get salad}.$$
+%\item Still per instruction of Step \ref{cpr}, we move to Step \ref{bpr} to start the symbolization procedure for the sentence  `you will get soup and you will get salad.'
+%\item The sentence is clearly a conjunction so we move to Step \ref{cpr}. By following the symbolization guidelines and the constructions of Step \ref{cpr}, we obtain:
+%$$\enot(\text{ you will get soup }\eand\text{ you will get salad}).$$
+%\item Now per instruction of Step \ref{cpr} we need to start the symbolization procedure for both, the sentence `you will get soup' and the sentence `you will get salad' starting with the former one, and got to Step \ref{bpr}
+%\item `you will get soup' cannot be paraphrased as being constructed from other sentences, so we are instructed to go to Step \ref{epr}.
+%\item we choose the atomic sentence $S_1$ as the symbolization of `you will get soup', and obtain
+%$$\enot(S_1\eand\text{ you will get salad}).$$
+%\item Equally, the sentence `you will get salad' cannot be paraphrased as being constructed from other sentences, so we are instructed to go to Step \ref{epr}.
+%\item we choose the atomic sentence $S_2$ as the symbolization of `you will get salad', and obtain
+%$$\enot(S_1\eand S_2).$$
+%\item The TFL-sentence `$\enot(S_1\eand S_2)$' is the symbolization of the English sentence `It's not the case that you will get both soup and salad'.
+%\end{itemize}
 
 This process may seem very tedious and, of course, very often we can determine a correct symbolization of an English sentence without sticking painstakingly to this step by step process. However, by sticking to the process we make sure not to move too quickly. So if you are unsure of how to symbolize a sentence, the process provides a safety net. Yet before starting with the symbolization process one should determine the precise sentential structure of the sentence under consideration. Consider a slight variant of Sentence \ref{negcon1}:
 \begin{itemize}
