@@ -467,7 +467,7 @@ This doesn't say of any specific individual that they wear a funny hat, but it s
 $\forall$ should be read as ``everything'' or ``everyone'' (although it is sometimes more convenient to merely read ``every'' or ``all'') . If we say that everyone wears a funny what do we want to say of \emph{all} people? We want to say that they wear a funny hat. In this sentence we used the ``they''. This doesn't refer to any particular person, Harry or Katie, instead it can refer to anyone. That is, we are using it as an \define{individual variable}.
 We might then paraphrase ``Everyone wears a funny hat'' more explicitly as:
 \begin{quotation}
-For everyone $_x$: $x$ wears a funny hat.
+For everyone, $x$: $x$ wears a funny hat.
 \end{quotation}
 
 Here we have made explicit the variable as $x$. In FOL we can also use $y,z$, or also, for example, $x_{32}$ as variables. Quantifiers always have to be followed immediately by a variable.
@@ -483,7 +483,7 @@ Whatever we wanted to say of an individual we can now say of everyone using this
 We can break this up:
 \begin{center}
 	\begin{forest}
-		[Everyone is happy and wears a funny hat\\\mainconnective{For everyone $_x$:} $x$ is happy and $x$ wears a funny hat\\$\mainconnective{\forall x}(Hx \eand Fx)$
+		[Everyone is happy and wears a funny hat\\\mainconnective{For everyone, $x$:} $x$ is happy and $x$ wears a funny hat\\$\mainconnective{\forall x}(Hx \eand Fx)$
 		[$x$ is happy \mainconnective{and} $x$ wears a funny hat\\$Hx \mainconnective{\eand} Fx$
 		[$x$ is happy\\$Hx$]
 		[$x$ wears a funny hat\\$Fx$]
@@ -496,16 +496,16 @@ So we can symbolise it as $$\forall x(Hx\eand Fx)$$
 We have here been using $\forall x$ to be read out-loud as ``everyone''.
 But when we usually say ``everyone'' (``everything'') do we always mean to talk about every person (every thing)? No! Suppose I say
 \begin{quotation}Everyone has done the problem sheet.\end{quotation}
-then I do not mean to say that every person in the world has done the problem sheet. Arguably, I rather want to say that every student of the logic course has done the problem sheet. This suggests that how a quantifier is to be understood depends on the \define{domain}. The domain is the collection of things that we are talking about. Ultimately, using the notion of a domain the quantifier $\forall x$ should be understood as ``for all objects in the domain $_x$''. If the domain also contains dogs, or landmarks, then it also says something about those dogs, or landmarks. We say that the quantifiers \emph{range over} the objects in the domain.
+then I do not mean to say that every person in the world has done the problem sheet. Arguably, I rather want to say that every student of the logic course has done the problem sheet. This suggests that how a quantifier is to be understood depends on the \define{domain}. The domain is the collection of things that we are talking about. Ultimately, using the notion of a domain the quantifier $\forall x$ should be understood as ``for all objects in the domain, $x$''. If the domain also contains dogs, or landmarks, then it also says something about those dogs, or landmarks. We say that the quantifiers \emph{range over} the objects in the domain.
 
 If I give
 \begin{ekey}
 \item[Ex]\gap{x} is energetic
 \item[\text{domain}] dogs
 \end{ekey}
-Then $\forall x Ex$ says that all dogs are energetic. More generally, in this case we read $\forall x$ as ``For every dog $_x$ : \ldots".
+Then $\forall x Ex$ says that all dogs are energetic. More generally, in this case we read $\forall x$ as ``For every dog, $x$: \ldots".
 
-If I have a domain consisting of landmarks, then $\forall x$ is read as ``For every landmark $_x$ : \ldots".
+If I have a domain consisting of landmarks, then $\forall x$ is read as ``For every landmark, $x$: \ldots".
 
 It should be immediate why it is important to highlight the domain when symbolizing arguments in FOL. The choice of the domain highlights the implicit assumptions we make when considering the sentence in the given situation. Depending on these implicit assumptions, i.e., the choice of the domain, a sentence like `Everyone has done the problem sheet.' may come out true or false.
 
@@ -559,17 +559,17 @@ with the symbolisation key
 	\item[Ax]\gap{x} is angry
 \end{ekey}
 We can paraphrase it as \begin{center}
-	There is someone $_x$ such that: $x$ is angry.
+	There is someone, $x$, such that: $x$ is angry.
 \end{center}
 \begin{center}
 	\begin{forest}
-		[Someone is angry.\\\mainconnective{There is someone $_x$ such that:} $x$ is angry.\\$\mainconnective{\exists x}Ax$
+		[Someone is angry.\\\mainconnective{There is someone, $x$, such that:} $x$ is angry.\\$\mainconnective{\exists x}Ax$
 		[$x$ is angry\\$Ax$]
 		]
 	\end{forest}
 \end{center}
 %\begin{ebullet}
-%\item $\underbrace{\text{There is someone $_x$ such that}}_{\exists x}$: $\underbrace{\text{$x$ is angry}}_{Ax}$.
+%\item $\underbrace{\text{There is someone, $x$, such that}}_{\exists x}$: $\underbrace{\text{$x$ is angry}}_{Ax}$.
 %\end{ebullet}
 
 
@@ -578,10 +578,10 @@ To symbolise
 \begin{earg}
 \item[\ex{q.e}] There is a logician who wears glasses
 \end{earg}
-%$$\underbrace{\underbrace{\text{There is someone $_x$ such that}}_{\exists x}: \underbrace{\underbrace{\text{$x$ is a logician}}_{Lx}\text{ and }\underbrace{\text{$x$ wears glasses}}_{Gx}}_{(Lx\eand Gx)}.}_{\exists x(Lx\eand Gx)}$$
+%$$\underbrace{\underbrace{\text{There is someone, $x$, such that}}_{\exists x}: \underbrace{\underbrace{\text{$x$ is a logician}}_{Lx}\text{ and }\underbrace{\text{$x$ wears glasses}}_{Gx}}_{(Lx\eand Gx)}.}_{\exists x(Lx\eand Gx)}$$
 \begin{center}
 	\begin{forest}
-	[There is a logician who wears glasses\\\mainconnective{There is someone $_x$:} $x$ is a logician who wears glasses\\$\mainconnective{\exists x}(Lx\eand Gx)$
+	[There is a logician who wears glasses\\\mainconnective{There is someone, $x$:} $x$ is a logician who wears glasses\\$\mainconnective{\exists x}(Lx\eand Gx)$
 	[$x$ is a logician who wears glasses\\$x$ is a logician \mainconnective{and} $x$ wears glasses\\$Lx\mainconnective{\eand} Gx$
 		[$x$ is a logician\\$Lx$]
 		[$x$ wears glasses\\$Gx$]
@@ -603,8 +603,8 @@ To symbolise
 
 \begin{center}
 	\begin{forest}
-	[There is a Polish woman who won the Nobel Prize\\\mainconnective{There is someone $_x$:} $x$ is a Polish woman and $x$ won the Nobel Prize\\$\mainconnective{\exists x }((Px\eand Wx)\eand Nx)$
-		[$x$ is a Polish woman \mainconnective{and} $x$ won the Nobel Prize \\$(Px\eand Wx)\mainconnective{\eand} Nx$
+	[There is a Polish woman who won the Nobel Prize\\\mainconnective{There is someone, $x$:} $x$ is a Polish woman who won the Nobel Prize\\$\mainconnective{\exists x }((Px\eand Wx)\eand Nx)$
+		[$x$ is a Polish woman who won the Nobel Prize\\$x$ is a Polish woman \mainconnective{and} $x$ won the Nobel Prize \\$(Px\eand Wx)\mainconnective{\eand} Nx$
 			[$x$ is a Polish woman\\$x$ is Polish \mainconnective{and} $x$ is a woman\\$Px\mainconnective{\eand} Wx$
 				[$x$ is Polish\\$Px$]
 				[$x$ is a woman\\$Wx$]
@@ -642,14 +642,14 @@ giving our symbolisation key:
 \end{ekey}
 
 
-As for the universal quantifier, how to read ``$\exists x$'' depends on the domain. We might talk not about people but about dogs. If our domain is dogs, then we understand $\exists x$ as ``There is a dog $_x$ such that:``. However, a more neutral way of understanding the existential quantifier, which anticipates the semantics for FOL is as `` there exists an object of the domain $_x$'', which also makes it obvious why $\exists $ is called the existential quantifier.  
+As for the universal quantifier, how to read ``$\exists x$'' depends on the domain. We might talk not about people but about dogs. If our domain is dogs, then we understand $\exists x$ as ``There is a dog, $x$, such that:``. However, a more neutral way of understanding the existential quantifier, which anticipates the semantics for FOL is as `` there exists an object of the domain $_x$'', which also makes it obvious why $\exists $ is called the existential quantifier.  
 
 %If we want to symbolise:
 %\begin{earg}
 %\item[\ex{q.dog}] Some dog is badly behaved.
 %\end{earg}
 %We can use
-%$$\underbrace{\underbrace{\text{There is a dog $_x$ such that}}_{\exists x}: \underbrace{\text{$x$ is badly behaved}}_{Bx}}_{\exists xBx}$$
+%$$\underbrace{\underbrace{\text{There is a dog, $x$, such that}}_{\exists x}: \underbrace{\text{$x$ is badly behaved}}_{Bx}}_{\exists xBx}$$
 %giving our symbolisation key:
 %\begin{ekey}
 %\item[\text{domain}] dogs
@@ -1063,8 +1063,8 @@ Our key forms are:
 \begin{tabular}{ll}
 \textbf{English paraphrase}&\textbf{Symbolisation}\\
 \hline
-Everything (in the domain) $_x$ is such that: &$\forall x \ldots$\\
-Something (in the domain) $_x$ is such that: &$\exists x \ldots$\\
+Everything (in the domain), $x$, is such that: &$\forall x \ldots$\\
+Something (in the domain), $x$, is such that: &$\exists x \ldots$\\
 It is not the case that \metaX&$\enot \metaX$\\
 \metaX and \metaY&$(\metaX\eand\metaY)$\\
 \metaX or \metaY&$(\metaX\eor\metaY)$\\
@@ -1130,7 +1130,7 @@ To symbolise
 We want to paraphrase it in one of our standard forms, which we do as:
 \begin{center}
 	\begin{forest}
-		[Everyone loves Alice\\\mainconnective{For everyone $_x$:} $x$ loves Alice\\$\mainconnective{\forall x}Lxa$
+		[Everyone loves Alice\\\mainconnective{For everyone, $x$:} $x$ loves Alice\\$\mainconnective{\forall x}Lxa$
 		[$x$ loves Alice\\$Lxa$]
 		]
 	\end{forest}
@@ -1148,7 +1148,7 @@ If we instead want to symbolise
 We paraphrase this as:
 \begin{center}
 	\begin{forest}
-		[Alice loves everyone\\\mainconnective{For everyone $_x$:} Alice loves $x$\\$\mainconnective{\forall x}Lax$
+		[Alice loves everyone\\\mainconnective{For everyone, $x$:} Alice loves $x$\\$\mainconnective{\forall x}Lax$
 		[Alice loves $x$\\$Lax$]
 		]
 	\end{forest}
@@ -1159,11 +1159,13 @@ To symbolise
 \begin{earg}
 	\item[\ex{lovesesomeonethemselves}] Someone loves themselves.
 \end{earg}
-We paraphrase this as:
-\begin{equation*}
-\underbrace{\text{Someone $_x$}}_{\exists x}: \underbrace{\text{$x$ loves $x$.}}_{Lxx}
-\end{equation*}
-So we give the symbolisation $$\exists x Lxx$$
+\begin{center}
+	\begin{forest}
+		[Someone loves themselves.\\\mainconnective{For someone, $x$:} $x$ loves themselves\\$\mainconnective{\exists x}Lxx$
+		[$x$ loves themselves\\$x$ loves $x$\\$Lxx$]
+		]
+	\end{forest}
+\end{center}
 
 If we want to symbolise
 \begin{earg}
