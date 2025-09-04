@@ -271,6 +271,9 @@ We know what interpretations are. Since, among other things, they tell us how we
 But we defined what a sentence was by first specifying what a formula is. Formulas like $Ex$ aren't the sorts of things that are true or false in interpretations. Only sentences are true or false. But if we provide extra information we can determine the truth of $Ex$: we need to specify what object $x$ stands for. This is done by using a variable assignment: 
 \factoidbox{A \define{variable assignment} assigns to each variable an object the variable stands for.}
 
+For example
+
+
 We often talk and compare different variable assignments so it's convenient to have names for them and we use greek letters $\alpha, \beta,\gamma$ for this purpose. 
 
 Now consider an interpretation where the domain $D$ is the set of natural number and the predicate $E$ picks out the even numbers:
@@ -279,7 +282,7 @@ Now consider an interpretation where the domain $D$ is the set of natural number
 Then $Ex$ will be true in this interpretation under a variable assignment $\alpha$ that assigns, say, 4 to $x$---we write $\alpha(x)=4$---but false under a variable assignment $\beta$ that assigns 3 to $x$, i.e., $\beta(x)=3$.
 
 Before we give a general definition of whether a formula is true or false \emph{under a variable assignment} in a given interpretation, we need to introduce one further useful bit of terminology.
-\factoidbox{Let $\beta$ be a variable assignment and $\metav$ a variable. Then the variable assignment $\beta(\metav:o)$ is a variable assignment that assigns the same objects to the variables than $\beta$ except possibly to the variable $\metav$ to which it assigns $o$. $\beta(\metav:o)$ is called an \define{$\metav$-variant} of $\beta$.}
+\factoidbox{Let $\beta$ be a variable assignment and $\metav$ a variable. Then the variable assignment $\varvariant{\beta}{\metav}{o}$ is a variable assignment that assigns the same objects to the variables than $\beta$ except possibly to the variable $\metav$ to which it assigns $o$. $\varvariant{\beta}{\metav}{o}$ is called an \define{$\metav$-variant} of $\beta$.}
 
 Notice that $\metav$ is metavariable for variables of FOL and that a variant assignment can be formulated for every FOL-variable. Variants of variable assignments will be important for stating the truth conditions of quantified formulas.
 
@@ -383,19 +386,19 @@ Consider the following interpretation:
 %\item[Gx] nothing
 \end{ekey}
 \end{center}
-(Hint: read $Hx$ as `\gap{x} has horns', $Sx$ as `\gap{x} has horns' and $CX$ as `\gap{x}has a computer')\\
+(Hint: read $Hx$ as `\gap{x} has horns', $Sx$ as `\gap{x} has horns' and $Cx$ as `\gap{x}has a computer')\\
 
 \noindent Is `$\exists x Sx$' true in this interpretation under a variable assignment? Intuitively this should be true iff there is an object in the domain which has a sword and since $\|S\|=\{\text{\emph{Alice, Bob}}\}$ should indeed come out as true. We can directly spell out these intuitive truth conditions by using the notion of an  $x$-variant of the initial variable assignment:
 \begin{quote}
-`$\exists x Sx$' true in this interpretation under the variable assignment $\alpha$ \textbf{iff} there exists an object $o$ of the domain, i.e.~$o\in D$, such that `$Sx$' is true in the interpretation under the variable assignment $\alpha(x:o)$.
+`$\exists x Sx$' true in this interpretation under the variable assignment $\alpha$ \textbf{iff} there exists an object $o$ of the domain, i.e.~$o\in D$, such that `$Sx$' is true in the interpretation under the variable assignment $\varvariant{\alpha}{x}{o}$.
 \end{quote}
-Then, to show that `$\exists x Sx$' true in the interpretation under an arbitrary variable assignment it suffices to find an object in the domain, say, \emph{Alice} such that `$Sx$' is true under the variable assignment $\alpha(x:\text{\emph{Alice}})$  (we can also denote this variable assignment by $x\mapsto \text{Alice}$). Under this variable assignment, $Sx$ is true: Since Alice does have a sword, i.e., $\text{\emph{Alice}}\in\|S\|$, $Sx$ is indeed true under this assignment. This guaranteed the truth of `$\exists x Sx$': There is a choice of an object in our domain for $x$ under which $Sx$ is true.
+Then, to show that `$\exists x Sx$' true in the interpretation under an arbitrary variable assignment it suffices to find an object in the domain, say, \emph{Alice} such that `$Sx$' is true under the variable assignment $\varvariant{\alpha}{x}{\text{\emph{Alice}}}$  (we can also denote this variable assignment by $x\mapsto \text{Alice}$). Under this variable assignment, $Sx$ is true: Since Alice does have a sword, i.e., $\text{\emph{Alice}}\in\|S\|$, $Sx$ is indeed true under this assignment. This guaranteed the truth of `$\exists x Sx$': There is a choice of an object in our domain for $x$ under which $Sx$ is true.
 
 What about $\forall x Sx$? Intuitively, this should be true iff every object in the domain which has a sword. Appealing to the $x$-variant of out initial variable assignment we can again spell out the truth conditions in a straightforward:
 \begin{quote}
-`$\forall x Sx$' true in this interpretation under the variable assignment $\alpha$ \textbf{iff} for every object $o$ of the domain `$Sx$' is true in the interpretation under the variable assignment $\alpha(x:o)$.
+`$\forall x Sx$' true in this interpretation under the variable assignment $\alpha$ \textbf{iff} for every object $o$ of the domain `$Sx$' is true in the interpretation under the variable assignment $\varvariant{\alpha}{x}{o}$.
 \end{quote}
- Since \emph{Denny} $\not\in\|S\|=\{\text{\emph{Alice, Bob}}\}$ `$\forall x Sx$' to comes out false in this interpretation: `$Sx$' is not true in the interpretation under the variable assignment $\alpha(x:\emph{Denny})$. 
+ Since \emph{Denny} $\not\in\|S\|=\{\text{\emph{Alice, Bob}}\}$ `$\forall x Sx$' to comes out false in this interpretation: `$Sx$' is not true in the interpretation under the variable assignment $\varvariant{\alpha}{x}{\emph{Denny}}$. 
 
 What about $\forall x(Sx\eif (Hx\eor Cx))$? To check whether it is true we need to check whether `$Sx\eif(Hx\eor Cx)$ is true for every choice of object that is assigned to $x$:
 \begin{center}
@@ -407,7 +410,7 @@ $x\mapsto \text{\emph{Cathy}}$&F&F&T&T&T\\
 $x\mapsto \text{\emph{Denny}}$&F&F&F&F&T
 \end{tabular}
 \end{center}
-So `$Sx\eif (Hx\eor Cx)$'  is true in the interpretation under every assignment $\alpha(x:o)$ for every object $o\in D$. And so $\forall x(Sx\eif (Hx\eor Cx))$ is true is true in the interpretation under every variable assignment..
+So `$Sx\eif (Hx\eor Cx)$'  is true in the interpretation under every assignment $\varvariant{\alpha}{x}{o}$ for every object $o\in D$. And so $\forall x(Sx\eif (Hx\eor Cx))$ is true is true in the interpretation under every variable assignment..
 
 
 
@@ -435,16 +438,18 @@ Consider a new interpretation: \begin{center}
 \end{center}
 
  Is $\exists x\forall y Rxy$ true? Intuitively, the sentence is true iff there is an object in the domain from which there is an arrow to all other arrows. Now, let's work through the example step by step and see whether we get the intuitive outcome.
+
+
  \begin{enumerate}
- \item  `$\exists x\forall y Rxy$' is true in the interpretation under an (arbitrary) variable assignment $\alpha$ iff there is a number $n\in\{1,2,3,4\}$ such `$\forall y Rxy$' is true in the interpretation under the variable assignment $\alpha(x:n)$. 
+ \item  `$\exists x\forall y Rxy$' is true in the interpretation under an (arbitrary) variable assignment $\alpha$ iff there is a number $n\in\{1,2,3,4\}$ such `$\forall y Rxy$' is true in the interpretation under the variable assignment $\varvariant{\alpha}{x}{n}$. 
  \begin{itemize}
  \item We choose $n$ to be the number 3 (with some foresight)
  \end{itemize}
- \item `$\forall y Rxy$' is true in the interpretation under the variable assignment $\alpha(x:3)$ iff $Rxy$ is true in the interpretation under the variable assignment $\alpha(x:3)(y:m)$ for all $m\in\{1,2,3,4\}$.
+ \item `$\forall y Rxy$' is true in the interpretation under the variable assignment $\varvariant{\alpha}{x}{3}$ iff $Rxy$ is true in the interpretation under the variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{m}$ for all $m\in\{1,2,3,4\}$.
  \begin{itemize}
- \item $\alpha(x:3)(y:m)$ looks very complicated; it is a $y$-variant of an $x$-variant\ldots But all it says is that the variable $y$ gets assigned the number $m$, i.e., $y\mapsto m$ and the variable $x$ gets assigned the number $3$, i.e., $x\mapsto 3$.
+ \item $\varvariant{\varvariant{\alpha}{x}{3}}{y}{m}$ looks very complicated; it is a $y$-variant of an $x$-variant\ldots But all it says is that the variable $y$ gets assigned the number $m$, i.e., $y\mapsto m$ and the variable $x$ gets assigned the number $3$, i.e., $x\mapsto 3$.
  \end{itemize}
- \item $Rxy$ is true in the interpretation under the variable assignment $\alpha(x:3)(y:m)$ for all $m\in\{1,2,3,4\}$ iff there is an arrow from $3$ to every number in the set $\{1,2,3,4\}$. In that case we have that `$Rxy$' is true in the interpretation under the variable assignment $\alpha(x:3)(y:1)$, the variable assignment $\alpha(x:3)(y:2)$, the variable assignment $\alpha(x:3)(y:3)$ and also $\alpha(x:3)(y:4)$.
+ \item $Rxy$ is true in the interpretation under the variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{m}$ for all $m\in\{1,2,3,4\}$ iff there is an arrow from $3$ to every number in the set $\{1,2,3,4\}$. In that case we have that `$Rxy$' is true in the interpretation under the variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{1}$, the variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{2}$, the variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{3}$ and also $\varvariant{\varvariant{\alpha}{x}{3}}{y}{4}$.
  \item Since there is an arrow from 3 to every number we can conclude that .`$\exists x\forall y Rxy$' is true in the interpretation
  \end{enumerate}
  
@@ -462,9 +467,9 @@ Consider a new interpretation: \begin{center}
 % \end{tabular}
 %\end{center}So under every variable assignment that differs from $\alpha$ at most at $y$ (it assigns the same object as $\alpha$ to a variable except for $y$ to which it may assign a different object)  $Rxy$ true. This tells us that $\forall y Rxy$ is true under the variable assignment $\alpha$ for which $x\mapsto 3$. And \emph{that} tells us that $\exists x\forall y Rxy$ is true: there's an assignment of the variable $x$ under which the constituent formula $\forall y Rxy$ is true.
 
-What about `$\exists x \exists y(Rxy \eand Ryx)$'? To show that it is true we will want to choose an object $o$ that we can assign to $x$ such that `$\exists y (Rxy\eand Ryx)$' is true uunder the assignment $\alpha(x:o)$. Let's consider $x\mapsto 3$ (again I'm using my foresight of what will come to choose carefully). Now is `$\exists y (Rxy\eand Ryx)$'  true under the variable assignment $x\mapsto 3$ (i.e., $\alpha(x:3)$? We need to find $y$-variant of this assignment which chooses an object such that `$Rxy\eand Ryx$' is true. Consider $y\mapsto 3$. We now have a variable assignment $\alpha(x:3)(y:3)$. $x$ and $y$ are different variables but there's nothing stopping them being assigned the same object. And we can then consider whether $Rxy\eand Ryx$ is true under this interpretation. Well, `$Rxy$' is true: 3 does have an arrow to 3. And `$Ryx$' is also true: 3 does have an arrow to 3. So by our clause for $\eand$, `$Rxy\eand Ryx$' is true under the variable assignment $\alpha(x:3)(y:3)$. And so `$\exists y(Rxy\eand Ryx)$' is true under the variable assignment $\alpha(x:3)$. And so $\exists x\exists y(Rxy\eand Ryx)$ is true in this interpretation.
+What about `$\exists x \exists y(Rxy \eand Ryx)$'? To show that it is true we will want to choose an object $o$ that we can assign to $x$ such that `$\exists y (Rxy\eand Ryx)$' is true uunder the assignment $\varvariant{\alpha}{x}{o}$. Let's consider $x\mapsto 3$ (again I'm using my foresight of what will come to choose carefully). Now is `$\exists y (Rxy\eand Ryx)$'  true under the variable assignment $x\mapsto 3$ (i.e., $\varvariant{\alpha}{x}{3}$? We need to find $y$-variant of this assignment which chooses an object such that `$Rxy\eand Ryx$' is true. Consider $y\mapsto 3$. We now have a variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{3}$. $x$ and $y$ are different variables but there's nothing stopping them being assigned the same object. And we can then consider whether $Rxy\eand Ryx$ is true under this interpretation. Well, `$Rxy$' is true: 3 does have an arrow to 3. And `$Ryx$' is also true: 3 does have an arrow to 3. So by our clause for $\eand$, `$Rxy\eand Ryx$' is true under the variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{3}$. And so `$\exists y(Rxy\eand Ryx)$' is true under the variable assignment $\varvariant{\alpha}{x}{3}$. And so $\exists x\exists y(Rxy\eand Ryx)$ is true in this interpretation.
 
-One more example: $\forall x(Sx\eif \exists y Rxy)$? To check this is true we will need to check for every number $n$ whether `$Sx\eif \exists y Rxy$' is true under the variable assignment $\alpha(x:n)$: \begin{center}
+One more example: $\forall x(Sx\eif \exists y Rxy)$? To check this is true we will need to check for every number $n$ whether `$Sx\eif \exists y Rxy$' is true under the variable assignment $\varvariant{\alpha}{x}{n}$: \begin{center}
 \begin{tabular}{c|ccc}
 &$Sx$&$\exists y Rxy$&$Sx\eif\exists y Rxy$\Bstrut\\\hline\Tstrut
 $x\mapsto 1$&T&?&?\\
@@ -476,7 +481,7 @@ $x\mapsto 4$&F&&T
 
 So we need to check  whether $\exists y Rxy$ is true under the variable assignments $x\mapsto 1$ and $x\mapsto 3$. In the two other cases the conditional will be trivially true
 
-Consider $x\mapsto 1$. We can find an object for $y$ such that `$Rxy$' is true under that variable assignment, namely, $y\mapsto 2$. Since there is an arrow from 1 to 2, `$Rxy$' is true in the variable assignment $\alpha(x:1)(y:2)$. Thus `$\exists y Rxy$' is true under the variable assignment $\alpha(x:1)$. For $x\mapsto 3$ we can also find an assignment for $y$ such that `$Rxy$' is true (which one?) and thus  `$\exists y Rxy$' is also true under the variable assignment $\alpha(x:3)$.
+Consider $x\mapsto 1$. We can find an object for $y$ such that `$Rxy$' is true under that variable assignment, namely, $y\mapsto 2$. Since there is an arrow from 1 to 2, `$Rxy$' is true in the variable assignment $\varvariant{\varvariant{\alpha}{x}{1}}{y}{2}$. Thus `$\exists y Rxy$' is true under the variable assignment $\varvariant{\alpha}{x}{1}$. For $x\mapsto 3$ we can also find an assignment for $y$ such that `$Rxy$' is true (which one?) and thus  `$\exists y Rxy$' is also true under the variable assignment $\varvariant{\alpha}{x}{3}$.
 %\begin{center}
 %\begin{tabular}{cc|c}
 %&&$Rxy$\Bstrut\\\hline\Tstrut
@@ -494,7 +499,7 @@ $x\mapsto 4$&F&?&T
 \end{tabular}
 \end{center}So $\forall x(Sx\eif \exists y Rxy)$ is true. Informally we might say this as: for every number that has a square around it has an arrow going out of it.
 
-One final example: $\forall x\forall y Rxy$. To check this we will need to consider all choices for $x$ and all choices for $y$ and check $Rxy$ is true on all of them. There are 16 such choices. But we won't have to go through them all: it'll be false. Consider $x\mapsto 1$ and $y\mapsto 4$. $Rxy$ is false under this variable assignment: there is no arrow from 1 to 4. Thus $\forall yRxy$ is false on the variable assignment $\alpha(x:1)$. And so $\forall x\forall y Rxy$ is false in the interpretation under the variable assignment $\alpha$. However, $\alpha$ itself played no role in the evaluation of $\forall x\forall y Rxy$. All that mattered was the objects that were assigned to $x$ and $y$, and for $x$ and $y$ we considered the $x$-variants/$y$-variants. So $\forall x\forall y Rxy$ is not only true under the variable assignment $\alpha$ in this interpretation but true under all variable assignments. This goes back to what we said at the end of Section \ref{s:traf}: the particular choice of an variable assignment is only relevant if we are evaluating the truth of formulas with free variables. $\forall x\forall y Rxy$ is a sentence, as it has no free variables.
+One final example: $\forall x\forall y Rxy$. To check this we will need to consider all choices for $x$ and all choices for $y$ and check $Rxy$ is true on all of them. There are 16 such choices. But we won't have to go through them all: it'll be false. Consider $x\mapsto 1$ and $y\mapsto 4$. $Rxy$ is false under this variable assignment: there is no arrow from 1 to 4. Thus $\forall yRxy$ is false on the variable assignment $\varvariant{\alpha}{x}{1}$. And so $\forall x\forall y Rxy$ is false in the interpretation under the variable assignment $\alpha$. However, $\alpha$ itself played no role in the evaluation of $\forall x\forall y Rxy$. All that mattered was the objects that were assigned to $x$ and $y$, and for $x$ and $y$ we considered the $x$-variants/$y$-variants. So $\forall x\forall y Rxy$ is not only true under the variable assignment $\alpha$ in this interpretation but true under all variable assignments. This goes back to what we said at the end of Section \ref{s:traf}: the particular choice of an variable assignment is only relevant if we are evaluating the truth of formulas with free variables. $\forall x\forall y Rxy$ is a sentence, as it has no free variables.
 
 % Let's now give a formal definition of the idea we've been using here. Quantified formulas like $\exists y Rxy$ still need to be given truth conditions \emph{relative to a variable assignment}, because we'll need to specify an assignment of an object for the free variable $x$. So we define when $\exists \metav\metaX$ is true under a variable assignment $\alpha$, which might be, e.g.~$x\mapsto 1$. To give a general definition, though we might also consider whether $\forall y Rxy$ is true under a variable assignment $x\mapsto 1, y\mapsto 4$. This is slightly odd: we're considering $\exists y Rxy$ but have been told who $y$ refers to already. However when we evaluate it we simply ignore whatever our given variable assignment tells us about $y$: we consider variable assignments that modify the assignment by changing what is assigned to $y$. And by modifying it to $x\mapsto 1, y\mapsto2$ we have a variable assignment under which $Rxy$ is true, so $\exists y Rxy$ is true under the original variable assignment $x\mapsto 1, y\mapsto 4$.
 %
@@ -505,12 +510,12 @@ More generally, if we have a quantifier like $\exists x$ or $\forall x$ we ignor
  Now for our formal definition:
 \factoidbox{
 $\forall \metav\metaX$ is true in the interpretation under a variable assignment $\alpha$\\
-\textbf{iff} $\metaX$ is true in the interpretation under the variable assignment $\alpha(\metav:o)$ for every $o\in D$.
+\textbf{iff} $\metaX$ is true in the interpretation under the variable assignment $\varvariant{\alpha}{\metav}{o}$ for every $o\in D$.
 
 \bigskip
 
 $\exists \metav\metaX$ is true in the interpretation under a variable assignment $\alpha$\\
-\textbf{iff} $\metaX$ is true in the interpretation under the variable assignment $\alpha(\metav:o)$ for some $o\in D$.
+\textbf{iff} $\metaX$ is true in the interpretation under the variable assignment $\varvariant{\alpha}{\metav}{o}$ for some $o\in D$.
 }
 %To be clear: all this is doing is formalizing the intuitive idea expressed in our examples. The result is a bit ugly, and the final definition might look a bit opaque. Hopefully, though, the \emph{spirit} of the idea is clear.
 
