@@ -515,17 +515,17 @@ What about `$\exists x \exists y(Rxy \eand Ryx)$'? To show that it is true we wi
 
 One more example: $\forall x(Sx\eif \exists y Rxy)$? To check this is true we will need to check for every number $n$ whether `$Sx\eif \exists y Rxy$' is true under the variable assignment $\varvariant{\alpha}{x}{n}$: \begin{center}
 \begin{tabular}{c|ccc}
-&$Sx$&$\exists y Rxy$&$Sx\eif\exists y Rxy$\Bstrut\\\hline\Tstrut
-$x\mapsto 1$&T&?&?\\
-$x\mapsto 2$&F&&T\\
-$x\mapsto 3$&T&?&?\\
-$x\mapsto 4$&F&&T
+$x$&$Sx$&$\exists y Rxy$&$Sx\eif\exists y Rxy$\Bstrut\\\hline\Tstrut
+$1$&T&?&?\\
+$2$&F&&T\\
+$3$&T&?&?\\
+$4$&F&&T
 \end{tabular}
 \end{center}
 
 So we need to check  whether $\exists y Rxy$ is true under the variable assignments $x\mapsto 1$ and $x\mapsto 3$. In the two other cases the conditional will be trivially true
 
-Consider $x\mapsto 1$. We can find an object for $y$ such that `$Rxy$' is true under that variable assignment, namely, $y\mapsto 2$. Since there is an arrow from 1 to 2, `$Rxy$' is true in the variable assignment $\varvariant{\varvariant{\alpha}{x}{1}}{y}{2}$. Thus `$\exists y Rxy$' is true under the variable assignment $\varvariant{\alpha}{x}{1}$. For $x\mapsto 3$ we can also find an assignment for $y$ such that `$Rxy$' is true (which one?) and thus  `$\exists y Rxy$' is also true under the variable assignment $\varvariant{\alpha}{x}{3}$.
+Consider a variable assignment where $x\mapsto 1$. We can find an object for $y$ such that `$Rxy$' is true under that variable assignment, namely, $y\mapsto 2$. Since there is an arrow from 1 to 2, `$Rxy$' is true in the variable assignment $\varvariant{\varvariant{\alpha}{x}{1}}{y}{2}$. Thus `$\exists y Rxy$' is true under the variable assignment $\varvariant{\alpha}{x}{1}$. For $x\mapsto 3$ we can also find an assignment for $y$ such that `$Rxy$' is true (which one?) and thus  `$\exists y Rxy$' is also true under the variable assignment $\varvariant{\alpha}{x}{3}$.
 %\begin{center}
 %\begin{tabular}{cc|c}
 %&&$Rxy$\Bstrut\\\hline\Tstrut
