@@ -172,6 +172,28 @@
 
 \RequirePackage{forest}
 
+% --- to centre node around a main (binary) connective ---
+\makeatletter
+\newlength{\mc@L}
+\newlength{\mc@R}
+\newcommand{\centrearoundmainconnective}[3]{%
+	\begingroup
+	\settowidth{\mc@L}{$#1$}%
+	\settowidth{\mc@R}{$#3$}%
+	\ifdim\mc@L>\mc@R
+	#1#2#3\hphantom{\makebox[\dimexpr\mc@L-\mc@R\relax]{$#3$}}%
+	\else
+	\hphantom{\makebox[\dimexpr\mc@R-\mc@L\relax]{$#1$}}#1#2#3%
+	\fi
+	\endgroup
+}
+\makeatother
+
+
+
+%\RequirePackage{tikzmark}
+
+
 
 %    ****************************************
 %    *          LIST  ENVIRONMENTS          *
@@ -216,7 +238,7 @@
 %\newcommand*{\TTon}{\hspace{1.5em}\extracolsep{-1em}}
 %\newcommand*{\TToff}{\extracolsep{-1em}\hspace{.3em}}
 
-\RequirePackage{multicol,array}
+\RequirePackage{multicol,array,multirow}
 
 % Moving to Memoir breaks Magnus's elegant macro
 % In the preceding column definition, I would offer instead:
@@ -799,7 +821,8 @@ for tree={
 \newcommand{\conc}{\item[\therefore] Therefore: }
 
 
-\newcommand{\mainconnective}[1]{\,\textcolor{leadbeater}{#1}\,}
+\newcommand{\mainconnective}[1]{\,\mainconnectivecolor{#1}\,}
+\newcommand{\mainconnectivecolor}[1]{\textcolor{leadbeater}{#1}}
 
 
 \def\pr{\ensuremath{p}}
