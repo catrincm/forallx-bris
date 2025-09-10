@@ -25,7 +25,6 @@ jobs:
       - name: Copy to ./site/ directory
         run: |
           cp ./main_repo/forallxbris.pdf ./main_repo/site/
-          cp ./main_repo/forallxbris.pdf
 
       - name: Compile forallxbris-accessible.tex
         uses: xu-cheng/latex-action@v3
