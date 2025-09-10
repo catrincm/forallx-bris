@@ -507,8 +507,8 @@ Add quotation marks to the following sentences where necessary:
 \problempart
 Given our convention on metavariables what do the following expressions convey:
 \begin{enumerate}
-\item $\metaX\wedge\metaY$\myanswer{\\the result of placing the symbol `$\eand$' between the two sentences \metaX and \metaY}
-\item $\metaY\eif\metaZ$\myanswer{\\the result of placing the symbol `$\eif$' between the two sentences \metaY and \metaZ}
+\item $\metaX\eand\metaY$\myanswer{\\the result of taking the sentence \metaY followed by `$\eand$' followed by \metaZ}
+\item $\metaY\eif\metaZ$\myanswer{\\the result of taking the sentence \metaY followed by `$\eif$' followed by \metaZ}
 \item $\enot(\metaY\eor\metaZ)$\myanswer{\\the result of placing `$\enot($' before the sentence \metaY, then adding `$\eor$', then \metaZ and finally `$)$'.}\todo{are these right???}
 \end{enumerate}
 
@@ -1016,10 +1016,10 @@ This will result in:
  \begin{center}
 	\begin{tabular}{rcc||c|c||c}
 		Valuation&$C$&$D$&$\enot D$&$C\eif D$&$\enot C$\\\hline
-		$v_1$&T & T & F & T & F\\
-		$v_2$&T & F & T & F & F\\
-		$v_3$&F & T & F & T & T\\
-		$v_4$&F & F & {T}& {T} & {T}
+		$v_1:$&T & T & F & T & F\\
+		$v_2:$&T & F & T & F & F\\
+		$v_3:$&F & T & F & T & T\\
+		$v_4:$&F & F & {T}& {T} & {T}
 	\end{tabular}
 \end{center}
 

@@ -492,7 +492,7 @@ Consider a new interpretation: \begin{center}
 
  \begin{interp}
 \item[\domain] $\Set{1,2,3,4}$
-\item[\denote{R}] $\Set{\langle o_1,o_2\rangle \given \text{There is an arrow from $o_1$ to $o_2$ in the diagram}}$.
+\item[\denote{R}] $\Set{\sequence{ o_1,o_2} \given \text{There is an arrow from $o_1$ to $o_2$ in the diagram}}$.
 \item[\denote{S}] $\Set{o \given \text{There is a square around $o$ in the diagram}}$.
 \end{interp}
 \end{center}
@@ -636,13 +636,13 @@ $\exists \metav\metaX$ is true in the interpretation under a variable assignment
 \problempart
 \label{pr.TorF1}
 Consider the following interpretation:
-	\begin{ebullet}
-		\item The domain comprises only Corwin and Benedict
-		\item `$\atom{A}{x}$' is to be true of both Corwin and Benedict
-		\item `$\atom{B}{x}$' is to be true of Benedict only
-		\item `$\atom{N}{x}$' is to be true of no one
-		\item `$c$' is to refer to Corwin
-	\end{ebullet}
+\begin{interp}
+	\item[\domain] $\Set{\emph{Corwin}, \emph{Benedict}}$
+	\item[\denote{A}] $\Set{\emph{Corwin}, \emph{Benedict}}$
+	\item[\denote{B}] $\Set{\emph{Benedict}}$
+	\item[\denote{N}] $\emptyset$
+	\item[\denote{c}] \emph{Corwin}
+\end{interp}
 Determine whether each of the following sentences is true or false in that interpretation:
 \begin{earg}
 \item $\atom{B}{c}$ \hfill \myanswer{False}
@@ -659,14 +659,14 @@ Determine whether each of the following sentences is true or false in that inter
 \problempart
 \label{pr.TorF2}
 Consider the following interpretation:	
-	\begin{ebullet}
-		\item The domain comprises only Lemmy, Courtney and Eddy
-		\item `$\atom{G}{x}$' is to be true of Lemmy, Courtney and Eddy.
-		\item `$\atom{H}{x}$' is to be true of and only of Courtney
-		\item `$\atom{M}{x}$' is to be true of and only of Lemmy and Eddy
-		\item `$c$' is to refer to Courtney
-		\item `$e$' is to refer to Eddy
-	\end{ebullet}
+\begin{interp}
+	\item[\domain]$\Set{\emph{Lemmy}, \emph{Courtney}, \emph{Eddy}}$
+\item[\denote{G}] $\Set{\emph{Lemmy}, \emph{Courtney}, \emph{Eddy}}$
+\item[\denote{H}] $\Set{\emph{Courtney}}$
+\item[\denote{M}] $\Set{\emph{Lemmy}, \emph{Eddy}}$
+\item[\denote{c}] \emph{Courtney}
+\item[\denote{e}] \emph{Eddy}
+\end{interp}
 Determine whether each of the following sentences is true or false in that interpretation:
 \begin{earg}
 \item $\atom{H}{c}$ \hfill \myanswer{True}
@@ -689,6 +689,10 @@ Determine whether each of the following sentences is true or false in that inter
 \problempart
 \label{pr.TorF3}
 Following the diagram conventions introduced at the end of \S23, consider the following interpretation:	
+\begin{interp}
+	\item[\domain] $\Set{1,2,3,4,5}$
+	\item[\denote{R}] $\Set{\sequence{o_1,o_2}\given\text{there is an arrow from $o_1$ to $o_2$ in the diagram}}$
+\end{interp}
 \begin{center}
 \begin{tikzpicture}
 \node (atom1) at (0,2) {1};
