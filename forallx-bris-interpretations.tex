@@ -165,7 +165,7 @@ In the same way that a three-place predicate picks out a ternary relation, an $n
 
 
 
-\section{Interpretation}\label{s:interpretation}
+\section{Interpretation}\label{s:interpretation}\todo{call it ``model''?}
 We defined a \define{valuation} in TFL as any assignment of truth and falsity to atomic sentences. In FOL, we are going to define an \define{interpretation}. 
 \factoidbox{An interpretation 
 has three constituent parts. It:	\begin{ebullet}
@@ -220,7 +220,7 @@ Taking the symbolization key as a guideline we can construct an appropriate inte
 \item[\denote{t}]\emph{The trampoline}
 \item[\denote{B}]$\Set{\langle o_1,o_2,o_3\rangle \given o_1\text{ bounces with }o_2\text{ on }o_3}$
 \end{interp}
-Symbolization key and interpretation look very similar. Indeed we will sometimes be lazy and simply assume the interpretation to be suitably specified by the symbolization key. However, symbolization key and interpretation are very different things: an interpretation of the vocabulary of FOL is related to objects, sets and relations while in the symblization key we specify which FOL-symbols are to stand for the English names and predicates of a sentence, e.g, which FOL-name is to stand for the name `Pooh'. In the interpretation we are saying that the FOL-name `$p$' picks out Pooh (the bear) or, in some different interpretation, a different object of the domain. 
+Symbolization key and interpretation have similar components. Indeed we will sometimes be lazy and simply assume the interpretation to be suitably specified by the symbolization key. However, symbolization key and interpretations are very different things: an interpretation of the vocabulary of FOL is related to objects, sets and relations while in the symblization key we specify which FOL-symbols are to stand for the English names and predicates of a sentence, e.g, which FOL-name is to stand for the name `Pooh'. In the interpretation we are saying that the FOL-name `$p$' picks out Pooh (the bear) or, in some different interpretation, a different object of the domain. 
 
 We may then ask whether the FOL-sentence $Bpet$ is true in the interpretation so specified. The answer is that it is true iff, indeed, Pooh bounces with Eeyore on the trampoline, that is, iff
 $${\small \langle \text{Pooh, Eeyore, The trampoline}\rangle\in\Set{\langle o_1,o_2,o_3\rangle \given o_1\text{ bounces with }o_2\text{ on }o_3}.}$$
@@ -304,22 +304,6 @@ Now consider an interpretation where the domain $\domain$ is the set of natural 
 &\denote{E}=\Set{o \given o\text{ is an even number}}\end{align*}
 Then $Ex$ will be true in this interpretation under a variable assignment $\alpha$ that assigns, say, 4 to $x$---we write $\alpha(x)=4$---but false under a variable assignment $\beta$ that assigns 3 to $x$, i.e., $\beta(x)=3$.
 
-Before we give a general definition of whether a formula is true or false \emph{under a variable assignment} in a given interpretation, we need to introduce one further useful bit of terminology.
-\factoidbox{Let $\beta$ be a variable assignment and $\metav$ a variable. Then the variable assignment $\varvariant{\beta}{\metav}{o}$ is a variable assignment that assigns the same objects to the variables than $\beta$ except possibly to the variable $\metav$ to which it assigns $o$. $\varvariant{\beta}{\metav}{o}$ is called an \define{$\metav$-variant} of $\beta$.}
-
-Notice that $\metav$ is metavariable for variables of FOL, so that it can be done for any variable. 
-\todo{is this the right formulation??}
-For example:
-\begin{center}
-	\begin{tabular}{r@{\,:\quad}cccccc}
-		\omit & $x$ & $y$ & $z$ & $x_1$ & \ldots \\ \hline
-		$\alpha$ & \emph{Pooh} & \emph{Eeyore} & \emph{Pooh} & \emph{Tigger} & \ldots \\
-		$\varvariant{\alpha}{y}{\emph{Tigger}}$ & \emph{Pooh} & \emph{Tigger} & \emph{Pooh} & \emph{Tigger} & \ldots
-	\end{tabular}
-\end{center}
-
-Variants of variable assignments will be important for stating the truth conditions of quantified formulas.
-
 
 
 
@@ -350,7 +334,7 @@ $$\text{\emph{Beyonc\'e}}\not\in\Set{o \given o\text{ is a philosopher}}$$
 `$Pb$' is false in that interpretation.
 
 
-What about $Px$? This reads something like `they are a philosopher'. The question is who `they' refers to, or in the logic terms: who $x$ is. This depends on a variable assignment. A variable assignment needs to give an object in our domain for the variable $x$. For example, a variable assignment $\alpha$  assign Beyonc\'e to $x$, i.e., $\alpha(x)$=Beyonc\'e and since Beyonc\'e is not in the interpretation of `$P$' `$Px$' is not true in the interpretation under the variable assignment $\alpha$. However, since Aristotle is a philosopher `$Px$ would be true in the interpretation under a variable assignment $\beta$, $$\beta(x)=\text{Aristotle}.$$
+What about $Px$? This reads something like `they are a philosopher'. The question is who `they' refers to, or in the logic terms: who $x$ is. This depends on a variable assignment. A variable assignment needs to give an object in our domain for the variable $x$. For example, a variable assignment $\alpha$  assign Beyonc\'e to $x$, i.e., $\alpha(x)$=Beyonc\'e and since Beyonc\'e is not in the interpretation of `$P$' `$Px$' is not true in the interpretation under the variable assignment $\alpha$. However, since Aristotle is a philosopher `$Px$ would be true in the interpretation under a variable assignment $\beta$, where $$\beta(x)=\text{Aristotle}.$$
 A variable assignment doesn't need to specify one of the objects that are named, it can give us anyone in our domain, e.g.~Queen Elizabeth II. Under the variable assignment which assigns $x$ Queen Elizabeth II, `$Px$' is false: Queen Elizabeth II is not a philosopher.
 
 %The truth of atomic \emph{sentences} should be fairly straightforward. The sentence $Pa$ should be true just in case $Px$ is true of $a$. Given our go-to interpretation, this is true iff Aristotle is a philosopher. Aristotle is a philosopher. So the sentence is true. Equally, $Pb$ is false on our go-to interpretation.
@@ -432,7 +416,25 @@ Consider the following interpretation:
 \end{center}
 (Hint: read $Hx$ as `\gap{x} has horns', $Sx$ as `\gap{x} has horns' and $Cx$ as `\gap{x}has a computer')\\
 
-\noindent Is `$\exists x Sx$' true in this interpretation under a variable assignment? Intuitively this should be true iff there is an object in the domain which has a sword and since $\denote{S}=\Set{\text{\emph{Alice, Bob}}}$ should indeed come out as true. We can directly spell out these intuitive truth conditions by using the notion of an  $x$-variant of the initial variable assignment:
+\noindent Is `$\exists x Sx$' true in this interpretation under a variable assignment? Intuitively this should be true iff there is an object in the domain which has a sword and since $\denote{S}=\Set{\text{\emph{Alice, Bob}}}$ should indeed come out as true. We can directly spell out these intuitive truth conditions by using the notion of an  $v$-variant of the initial variable assignment:
+
+Before we give a general definition of whether a formula is true or false \emph{under a variable assignment} in a given interpretation, we need to introduce one further useful bit of terminology.
+\factoidbox{Let $\beta$ be a variable assignment and $\metav$ a variable. Then the variable assignment $\varvariant{\beta}{\metav}{o}$ is a variable assignment that assigns the same objects to the variables than $\beta$ except possibly to the variable $\metav$ to which it assigns $o$. $\varvariant{\beta}{\metav}{o}$ is called an \define{$\metav$-variant} of $\beta$.}
+
+Notice that $\metav$ is metavariable for variables of FOL, so that it can be done for any variable. 
+\todo{is this the right formulation??}
+For example:
+\begin{center}
+	\begin{tabular}{r@{\,:\quad}cccccc}
+		\omit & $x$ & $y$ & $z$ & $x_1$ & \ldots \\ \hline
+		$\alpha$ & \emph{Pooh} & \emph{Eeyore} & \emph{Pooh} & \emph{Tigger} & \ldots \\
+		$\varvariant{\alpha}{y}{\emph{Tigger}}$ & \emph{Pooh} & \emph{Tigger} & \emph{Pooh} & \emph{Tigger} & \ldots
+	\end{tabular}
+\end{center}
+
+Variants of variable assignments will be important for stating the truth conditions of quantified formulas.
+
+We can then say:
 \begin{quote}
 `$\exists x Sx$' true in this interpretation under the variable assignment $\alpha$ \textbf{iff} there exists an object $o$ of the domain, i.e.~$o\in \domain$, such that `$Sx$' is true in the interpretation under the variable assignment $\varvariant{\alpha}{x}{o}$.
 \end{quote}
@@ -446,15 +448,29 @@ What about $\forall x Sx$? Intuitively, this should be true iff every object in 
 
 What about $\forall x(Sx\eif (Hx\eor Cx))$? To check whether it is true we need to check whether `$Sx\eif(Hx\eor Cx)$ is true for every choice of object that is assigned to $x$:
 \begin{center}
-\begin{tabular}{l|ccccc}
-&$Sx$&$Hx$&$Cx$&$Hx\eor Cx$&$Sx\eif (Hx\eor Cx)$\Bstrut\\\hline\Tstrut
-$x\mapsto\text{\emph{Alice}}$&T&F&T&T&T\\
-$x\mapsto \text{\emph{Bob}}$&T&T&F&T&T\\
-$x\mapsto \text{\emph{Cathy}}$&F&F&T&T&T\\
-$x\mapsto \text{\emph{Denny}}$&F&F&F&F&T
-\end{tabular}
+	\begin{tabular}{c| deeeeeeef}
+		$x$
+		& $\mainconnectivecolor{(}$ & $Sx$ & $\mainconnective{\eif}$ & $($ & $Hx$ & $\eor$ & $Cx$ & $)$ & $\mainconnectivecolor{)}$ \\[.3em]\hline
+		\textit{Alice} &
+		& \textcolor{gray}{T} & \TTbf{T} & & \textcolor{gray}{F} & T & \textcolor{gray}{T} & & \\
+		\textit{Bob} &
+		& \textcolor{gray}{T} & \TTbf{T} & & \textcolor{gray}{T} & T & \textcolor{gray}{F} & & \\
+		\textit{Cathy} &
+		& \textcolor{gray}{F} & \TTbf{T} & & \textcolor{gray}{F} & T & \textcolor{gray}{T} & & \\
+		\textit{Denny} &
+		& \textcolor{gray}{F} & \TTbf{T} & & \textcolor{gray}{F} & F & \textcolor{gray}{F} & & \\
+	\end{tabular}
 \end{center}
-So `$Sx\eif (Hx\eor Cx)$'  is true in the interpretation under every assignment $\varvariant{\alpha}{x}{o}$ for every object $o\in \domain$. And so $\forall x(Sx\eif (Hx\eor Cx))$ is true is true in the interpretation under every variable assignment..
+%\begin{center}
+%\begin{tabular}{l|ccccc}
+%$x$&$Sx$&$Hx$&$Cx$&$Hx\eor Cx$&$Sx\eif (Hx\eor Cx)$\Bstrut\\\hline\Tstrut
+%$\text{\emph{Alice}}$&T&F&T&T&T\\
+%$ \text{\emph{Bob}}$&T&T&F&T&T\\
+%$ \text{\emph{Cathy}}$&F&F&T&T&T\\
+%$ \text{\emph{Denny}}$&F&F&F&F&T
+%\end{tabular}
+%\end{center}
+So `$Sx\eif (Hx\eor Cx)$'  is true in the interpretation under every assignment $\varvariant{\alpha}{x}{o}$ for every object $o\in \domain$. And so $\forall x(Sx\eif (Hx\eor Cx))$ is true is true in the interpretation (under every variable assignment).
 
 
 
@@ -513,7 +529,8 @@ Consider a new interpretation: \begin{center}
 
 What about `$\exists x \exists y(Rxy \eand Ryx)$'? To show that it is true we will want to choose an object $o$ that we can assign to $x$ such that `$\exists y (Rxy\eand Ryx)$' is true uunder the assignment $\varvariant{\alpha}{x}{o}$. Let's consider $x\mapsto 3$ (again I'm using my foresight of what will come to choose carefully). Now is `$\exists y (Rxy\eand Ryx)$'  true under the variable assignment $x\mapsto 3$ (i.e., $\varvariant{\alpha}{x}{3}$? We need to find $y$-variant of this assignment which chooses an object such that `$Rxy\eand Ryx$' is true. Consider $y\mapsto 3$. We now have a variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{3}$. $x$ and $y$ are different variables but there's nothing stopping them being assigned the same object. And we can then consider whether $Rxy\eand Ryx$ is true under this interpretation. Well, `$Rxy$' is true: 3 does have an arrow to 3. And `$Ryx$' is also true: 3 does have an arrow to 3. So by our clause for $\eand$, `$Rxy\eand Ryx$' is true under the variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{3}$. And so `$\exists y(Rxy\eand Ryx)$' is true under the variable assignment $\varvariant{\alpha}{x}{3}$. And so $\exists x\exists y(Rxy\eand Ryx)$ is true in this interpretation.
 
-One more example: $\forall x(Sx\eif \exists y Rxy)$? To check this is true we will need to check for every number $n$ whether `$Sx\eif \exists y Rxy$' is true under the variable assignment $\varvariant{\alpha}{x}{n}$: \begin{center}
+One more example: $\forall x(Sx\eif \exists y Rxy)$? To check this is true we will need to check for every number $n$ whether `$Sx\eif \exists y Rxy$' is true under the variable assignment $\varvariant{\alpha}{x}{n}$: 
+\begin{center}
 \begin{tabular}{c|ccc}
 $x$&$Sx$&$\exists y Rxy$&$Sx\eif\exists y Rxy$\Bstrut\\\hline\Tstrut
 $1$&T&?&?\\

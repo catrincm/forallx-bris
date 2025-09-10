@@ -1145,32 +1145,56 @@ We have already shown how to do this on a particular valuation: one first writes
 The idea is that we work ourselves from \define{leaves} of the tree (the atomic sentence) to the \define{root} of the formation tree (the sentence that has been constructed). The truth rule for $\enot$ tells us how the truth value of $\enot I$ depends on the truth of $I$. Then the rule for $\eand$ tells us how the truth value of $\enot I\eand H$ depends on the truths of $\enot I$ and $H$; and finally, the rule for $\eif$ tells us how the truth value of $(\enot I\eand H)\eif H$ depends on those of $\enot I\eand H$ and $H$.
 
 
-%We will record the truth value of each subsentence underneath its main connective. 
-%
-%\begin{center}
-%	\begin{tabular}{c c c| d e e ee e e f}
-%\multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eor$ & $H$ & $)$ & $\mainconnective{\eif}$ & $H$ \\
-%	&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & $\mainconnective{\eor}$ & $H$ & $\mainconnectivecolor{)}$ & &$H$ \\
-%	&	& & & $\mainconnective{\enot}$ & $I$ & & $H$ & & &\\
-%	&	& & & & $I$ & & & & &  \\\hline 
-%	$v_1$&T&T&\\
-%	$v_2$&T&F&\\
-%	$v_3$&F&T\\
-%	$v_4$&F&F
-%	\end{tabular}
-%\end{center}
-
-So to work out the truth values of $(\enot I\eand H)\eif H$ we first need to work out the truth values of $\enot I$ and $\enot I\eand H$. We expand our truth table with columns for each of these.
+We will record the truth value of each subsentence underneath its main connective. 
+So we will somewhat recreate the formation tree in the header of the truth table. 
 \begin{center}
-	\begin{tabular}{ccc|c|c||c}
-		Valuation&$I$&$H$&$\enot I$&$(\enot I\eand H)$&$(\enot I\eand H)\eif H$\\\hline
-		$v_1$&T&T&&\\
-		$v_2$&T&F&&\\
-		$v_3$&F&T&&\\
-		$v_4$&F&F&&
+	\begin{tabular}{r c c| d e e ee e e f}
+\multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eand$ & $H$ & $)$ & $\mainconnective{\eif}$ & $H$ \\[.2em]
+	&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & $\mainconnective{\eor}$ & $H$ & $\mainconnectivecolor{)}$ & &$\mainconnectivecolor{H}$ \\[.2em]
+	&	& & & $\mainconnective{\enot}$ & $I$  & & $\mainconnectivecolor{H}$ & & &\\[.2em]
+	&	& & & & $\mainconnectivecolor{I}$& & & & &  \\\hline 
+	$v_1:$&T&T&\\
+	$v_2:$&T&F&\\
+	$v_3:$&F&T\\
+	$v_4:$&F&F
 	\end{tabular}
 \end{center}
-The first step is $\enot I$. We use the truth table (rule) for negation:
+
+We will work our way up the formation tree, as displayed in the header of the table. 
+In the bottom line we just have `$I$', whose truth value is just specified by the valuation. So we can fill that out
+
+\begin{center}
+	\begin{tabular}{r c c| d e e ee e e fc}
+		\multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eand$ & $H$ & $)$ & $\mainconnective{\eif}$ & $H$ \\[.2em]
+		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & $\mainconnective{\eor}$ & $H$ & $\mainconnectivecolor{)}$ & &$\mainconnectivecolor{H}$ \\[.2em]
+		&	& & & $\mainconnective{\enot}$ & $I$  & & $\mainconnectivecolor{H}$ & & &\\[.2em]
+		&	& & & & $\mainconnectivecolor{I}$& & & & & &$\star$ \\\hline 
+		$v_1:$&T&T& & &T& & & & &\\
+		$v_2:$&T&F& & &F& & & & &\\
+		$v_3:$&F&T& & &T& & & & &\\
+		$v_4:$&F&F& & &F& & & & &\\
+		&&&&&$\star$&&&&&&
+	\end{tabular}
+\end{center}
+
+The next line is to include the truth value for `$\enot I$' and the truth value for `$H$'. The truth value for `$H$' is just specified by the valuation so that can be copied across. 
+
+\begin{center}
+	\begin{tabular}{r c c| d e e ee e e f c}
+		\multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eand$ & $H$ & $)$ & $\mainconnective{\eif}$ & $H$ &  \\[.2em]
+		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & $\mainconnective{\eor}$ & $H$ & $\mainconnectivecolor{)}$ & &$\mainconnectivecolor{H}$ & \\[.2em]
+		&	& & & $\mainconnective{\enot}$ & $I$  & & $\mainconnectivecolor{H}$ & & & & $\star$ \\[.2em]
+		&	& & & & $\mainconnectivecolor{I}$& & & & &  & \\\hline 
+		$v_1:$&T&T& & &T& &T& & & &\\
+		$v_2:$&T&F& & &F& &T& & & &\\
+		$v_3:$&F&T& & &T& &F& & & &\\
+		$v_4:$&F&F& & &F& &F& & & &\\
+		&&&&&&&$\star$&&&&
+	\end{tabular}
+\end{center}
+
+
+The truth value for `$\enot I$' is determined using the truth rule for negation:
 \begin{center}
 	\begin{tabular}{ccc}
 		If \metaX is & & then $\enot X$ is\\
@@ -1178,26 +1202,31 @@ The first step is $\enot I$. We use the truth table (rule) for negation:
 		F&$\leadsto$&T
 	\end{tabular}
 \end{center}
-Now, we can fill out:
+So we take the truth value of `$I$' as recorded underneath that `$I$', and apply this rule to determine the truth value for `$\enot I$'. We record the answer underneath the main connective of `$\enot I$', the `$\enot$'. 
+This results in:
 
 \begin{center}
-	\begin{tabular}{ccc|c|c||c}
-		Valuation&$I$&$H$&$\enot I$&$(\enot I\eand H)$&$(\enot I\eand H)\eif H$\\\hline
-		$v_1$&T&T&F&\\
-		$v_2$&T&F&F&\\
-		$v_3$&F&T&T&\\
-		$v_4$&F&F&T&
+	\begin{tabular}{r c c| d e e ee e e fc}
+		\multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eand$ & $H$ & $)$ & $\mainconnective{\eif}$ & $H$ \\[.2em]
+		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & $\mainconnective{\eor}$ & $H$ & $\mainconnectivecolor{)}$ & &$\mainconnectivecolor{H}$ \\[.2em]
+		&	& & & $\mainconnective{\enot}$ & $I$  & & $\mainconnectivecolor{H}$ & & &&$\star$\\[.2em]
+		&	& & & & $\mainconnectivecolor{I}$& & & & &  \\\hline 
+		$v_1:$&T&T& &F&T& &T& & &\\
+		$v_2:$&T&F& &T&F& &T& & &\\
+		$v_3:$&F&T& &F&T& &F& & &\\
+		$v_4:$&F&F& &T&F& &F& & &\\
+		&&&&\tikzmarknode{negI}{$\star$}&\tikzmark{I}
 	\end{tabular}
 \end{center}
-We worked these out using the following instructions:
-\begin{itemize}
-	\item Go to the column for $I$ and for every valuation do the following:
-	\begin{itemize}
-		\item If the value of $I$ is T, then put F into the column of $\enot I$ at the line of the valuation.
-		\item If the value of $I$ is F, then put T into the column of $\enot I$ at the line of the valuation.
-	\end{itemize}
-\end{itemize}
-The next step is to consider $\enot I\eand H$. For this we will use the truth rule for $\eand$:
+
+\begin{tikzpicture}[remember picture,overlay]
+	\draw[-Stealth] (pic cs:I) to[bend left=35] (negI.south);
+\end{tikzpicture}
+
+
+
+The next line we need to add the truth value for `$H$' again, which is specified by the valuation, and the truth value for `$\enot I\eand H$'.
+For `$\enot I\eand H$' we will use the truth rule for $\eand$:
 \begin{center}
 	\begin{tabular}{ccccc}
 		If \metaX is&and \metaY is  && then $\metaX\eand \metaY$ is\\
@@ -1207,32 +1236,36 @@ The next step is to consider $\enot I\eand H$. For this we will use the truth ru
 		F&F&$\leadsto$&F
 	\end{tabular}
 \end{center}
-Now, we can fill out:
+
+So we take the truth value for `$\enot I$', as recorded underneath `$\enot$', and the truth value for `$H$', and apply this truth rule, writing the answer under its main connective, `$\eand$'. So we can fill out:
+
+
+
 \begin{center}
-	\begin{tabular}{ccc|c|c||c}
-		Valuation&$I$&$H$&$\enot I$&$(\enot I\eand H)$&$(\enot I\eand H)\eif H$\\\hline
-		$v_1$&T&T&F&F\\
-		$v_2$&T&F&F&F\\
-		$v_3$&F&T&T&T\\
-		$v_4$&F&F&T&F
+	\begin{tabular}{r c c| d e e ee e e f c}
+		\multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eand$ & $H$ & $)$ & $\mainconnective{\eif}$ & $H$ \\[.2em]
+		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & $\mainconnective{\eand}$ & $H$ & $\mainconnectivecolor{)}$ & &$\mainconnectivecolor{H}$&$\star$ \\[.2em]
+		&	& & & $\mainconnective{\enot}$ & $I$  & & $\mainconnectivecolor{H}$ & & &\\[.2em]
+		&	& & & & $\mainconnectivecolor{I}$& & & & &  \\\hline 
+		$v_1:$&T&T& &F&T&F&T& &&T\\
+		$v_2:$&T&F& &T&F&T&T& &&T\\
+		$v_3:$&F&T& &F&T&F&F& &&F\\
+		$v_4:$&F&F& &T&F&F&F& &&F\\
+&&&&\tikzmarknode{negI}{}&&\tikzmarknode{andStar}{$\star$}&\tikzmarknode{Hcol}{}&&
+
 	\end{tabular}
 \end{center}
-We worked these using the following instructions:
-\begin{itemize}
-	\item  For every valuation go to column $H$ and do the following:
-	\begin{itemize}
-		\item[$\dagger$]  If the value of $H$ is F, put F into column $(\enot I\eand H)$ at the line of the valuation.
-		\item If the value of $H$ is T, go to column of $\enot I$:
-		\begin{itemize}
-			\item if the value of $\enot I$ is T, put T into column $(\enot I\eand H)$ and at the line of the valuation.
-			\item if the value of $\enot I$ is F, put F into column $(\enot I\eand H)$ and at the line of the valuation.
-		\end{itemize}
-	\end{itemize}
-\end{itemize}
-The instruction $\dagger$ is justified by the truth rules of the conjunction: if one of the conjuncts has value F, the conjunction will also have value F.
 
-Now, finally, we need to look at $(\enot I\eand H)\eif H$, and will use the truth rule for $\eif$:
+	\begin{tikzpicture}[remember picture,overlay]
+	\draw[-Stealth] (negI) to[bend right=35] (andStar.south);
+	\draw[-Stealth] (Hcol.south) to[bend left=35] (andStar.south);
+\end{tikzpicture}
 
+
+
+Our final stage is to determine the truth value for `$(\enot I\eand H)\eif H$'
+
+So we take our truth value we have determined for `$(\enot I\eand H)$', which is recorded underneath the `$\eand$', and the truth value for `$H$', and apply the truth rule for `$\eif$'
 \begin{center}
 	\begin{tabular}{cccc}
 		If \metaX is&and \metaY is  && then $\metaX\eif \metaY$ is\\
@@ -1242,55 +1275,288 @@ Now, finally, we need to look at $(\enot I\eand H)\eif H$, and will use the trut
 		F&F&$\leadsto$&T
 	\end{tabular}
 \end{center}
-Now, we can fill out:
+recording the answer underneath `$\eif$'. As this is the final stage, we have determined the truth value for the target sentence, `$(\enot I\eand H)\eif H$', so we will boldface this answer to indicate that it is our final answer, the truth value for `$(\enot I\eand H)\eif H$'. 
+
+
 \begin{center}
-	\begin{tabular}{ccc|c|c||c}
-		Valuation&$I$&$H$&$\enot I$&$(\enot I\eand H)$&$(\enot I\eand H)\eif H$\\\hline
-		$v_1$&T&T&F&F&T\\
-		$v_2$&T&F&F&F&T\\
-		$v_3$&F&T&T&T&T\\
-		$v_4$&F&F&T&F&T
+	\begin{tabular}{r c c| d e e ee e e fc}
+		\multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eand$ & $H$ & $)$ & $\mainconnective{\eif}$ & $H$&$\star$ \\[.2em]
+		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & $\mainconnective{\eand}$ & $H$ & $\mainconnectivecolor{)}$ & &$\mainconnectivecolor{H}$ \\[.2em]
+		&	& & & $\mainconnective{\enot}$ & $I$  & & $\mainconnectivecolor{H}$ & & &\\[.2em]
+		&	& & & & $\mainconnectivecolor{I}$& & & & &  \\\hline 
+		$v_1:$&T&T& &F&T&F&T& &\TTbf{T}&T\\
+		$v_2:$&T&F& &T&F&T&T& &\TTbf{T}&T\\
+		$v_3:$&F&T& &F&T&F&F& &\TTbf{T}&F\\
+		$v_4:$&F&F& &T&F&F&F& &\TTbf{T}&F\\
+		&&&&&&\tikzmark{wedge}&&&\tikzmarknode{arrow}{$\star$}&\tikzmark{H2}&		
+		\end{tabular}
+	\end{center}
+
+\begin{tikzpicture}[remember picture,overlay]
+\draw[-Stealth] (pic cs:wedge) to[bend right=35] (arrow.south);
+\draw[-Stealth] (pic cs:H2) to[bend left=35] (arrow.south);
+\end{tikzpicture}
+
+
+%%%%% The below has separate columns for the different subsetnences. 
+%
+%So to work out the truth values of $(\enot I\eand H)\eif H$ we first need to work out the truth values of $\enot I$ and $\enot I\eand H$. We expand our truth table with columns for each of these.
+%\begin{center}
+%	\begin{tabular}{ccc|c|c||c}
+%		Valuation&$I$&$H$&$\enot I$&$(\enot I\eand H)$&$(\enot I\eand H)\eif H$\\\hline
+%		$v_1$&T&T&&\\
+%		$v_2$&T&F&&\\
+%		$v_3$&F&T&&\\
+%		$v_4$&F&F&&
+%	\end{tabular}
+%\end{center}
+%The first step is $\enot I$. We use the truth table (rule) for negation:
+%\begin{center}
+%	\begin{tabular}{ccc}
+%		If \metaX is & & then $\enot X$ is\\
+%		T&$\leadsto$&F\\
+%		F&$\leadsto$&T
+%	\end{tabular}
+%\end{center}
+%Now, we can fill out:
+%
+%\begin{center}
+%	\begin{tabular}{ccc|c|c||c}
+%		Valuation&$I$&$H$&$\enot I$&$(\enot I\eand H)$&$(\enot I\eand H)\eif H$\\\hline
+%		$v_1$&T&T&F&\\
+%		$v_2$&T&F&F&\\
+%		$v_3$&F&T&T&\\
+%		$v_4$&F&F&T&
+%	\end{tabular}
+%\end{center}
+%We worked these out using the following instructions:
+%\begin{itemize}
+%	\item Go to the column for $I$ and for every valuation do the following:
+%	\begin{itemize}
+%		\item If the value of $I$ is T, then put F into the column of $\enot I$ at the line of the valuation.
+%		\item If the value of $I$ is F, then put T into the column of $\enot I$ at the line of the valuation.
+%	\end{itemize}
+%\end{itemize}
+%The next step is to consider $\enot I\eand H$. For this we will use the truth rule for $\eand$:
+%\begin{center}
+%	\begin{tabular}{ccccc}
+%		If \metaX is&and \metaY is  && then $\metaX\eand \metaY$ is\\
+%		T&T&$\leadsto$&T\\
+%		T&F&$\leadsto$&F\\
+%		F&T&$\leadsto$&F\\
+%		F&F&$\leadsto$&F
+%	\end{tabular}
+%\end{center}
+%Now, we can fill out:
+%\begin{center}
+%	\begin{tabular}{ccc|c|c||c}
+%		Valuation&$I$&$H$&$\enot I$&$(\enot I\eand H)$&$(\enot I\eand H)\eif H$\\\hline
+%		$v_1$&T&T&F&F\\
+%		$v_2$&T&F&F&F\\
+%		$v_3$&F&T&T&T\\
+%		$v_4$&F&F&T&F
+%	\end{tabular}
+%\end{center}
+%We worked these using the following instructions:
+%\begin{itemize}
+%	\item  For every valuation go to column $H$ and do the following:
+%	\begin{itemize}
+%		\item[$\dagger$]  If the value of $H$ is F, put F into column $(\enot I\eand H)$ at the line of the valuation.
+%		\item If the value of $H$ is T, go to column of $\enot I$:
+%		\begin{itemize}
+%			\item if the value of $\enot I$ is T, put T into column $(\enot I\eand H)$ and at the line of the valuation.
+%			\item if the value of $\enot I$ is F, put F into column $(\enot I\eand H)$ and at the line of the valuation.
+%		\end{itemize}
+%	\end{itemize}
+%\end{itemize}
+%The instruction $\dagger$ is justified by the truth rules of the conjunction: if one of the conjuncts has value F, the conjunction will also have value F.
+%
+%Now, finally, we need to look at $(\enot I\eand H)\eif H$, and will use the truth rule for $\eif$:
+%
+%\begin{center}
+%	\begin{tabular}{cccc}
+%		If \metaX is&and \metaY is  && then $\metaX\eif \metaY$ is\\
+%		T&T&$\leadsto$&T\\
+%		T&F&$\leadsto$&F\\
+%		F&T&$\leadsto$&T\\
+%		F&F&$\leadsto$&T
+%	\end{tabular}
+%\end{center}
+%Now, we can fill out:
+%\begin{center}
+%	\begin{tabular}{ccc|c|c||c}
+%		Valuation&$I$&$H$&$\enot I$&$(\enot I\eand H)$&$(\enot I\eand H)\eif H$\\\hline
+%		$v_1$&T&T&F&F&T\\
+%		$v_2$&T&F&F&F&T\\
+%		$v_3$&F&T&T&T&T\\
+%		$v_4$&F&F&T&F&T
+%	\end{tabular}
+%\end{center}
+%We worked these out by the following procedure:
+%\begin{itemize}
+%	\item  For every valuation go to column $(\enot I\eand H)$ and do the following:
+%	\begin{itemize}
+%		\item[$\star$]  If the value of $(\enot I\eand H)$ is F, put T into column $(\enot I\eand H)\eif H$ at the line of the valuation.
+%		\item If the value of $(\enot I\eand H)$ is T go to column $H$ and:
+%		\begin{itemize}
+%			\item if the value of $H$ is T, put T into column $(\enot I\eand H)\eif H$ at the line of the valuation.
+%			\item if the value of $H$ is F, put F into column $(\enot I\eand H)\eif H$ at the line of the valuation.
+%		\end{itemize}
+%	\end{itemize}
+%\end{itemize}
+%The instruction $\star$ is justified by the truth rules of the conditional: if the antecedent of the conditional has value F, then the conditional will also value T.
+%%\subsection{How to do truth tables}
+%
+%With this example in mind let us try to give a general instruction for constructing a truth table for a sentence $X$.
+%
+%\factoidbox{
+%	\begin{enumerate}
+%		\item Write down the formation tree of $X$.
+%		\item Find all atomic sentences on the tree. These will be the leaves of the tree.
+%		\item If you have found all atomic sentences, you can start the truth table:
+%		\begin{itemize}
+%			\item You will need a column for every atomic sentence.
+%			\item If there are $n$ atomic sentences, you will need $2^n$ valuations, that is, $2^n$ horizontal lines.
+%			\item Make sure you have correctly written down all the different valuations!
+%		\end{itemize}
+%		\item From the atomic sentences (the leaves of the tree) move upwards to the root (the sentence $X$) and
+%		\begin{itemize}
+%			\item for each node (constituent sentence) create a column in the truth table;
+%			\item make sure you correctly identify the main connective of the sentence heading the column;
+%			\item the root, that is, the sentence $X$ should be the last column of the truth table
+%		\end{itemize}
+%		\item Moving from left to right compute the truth values of each column
+%		\begin{itemize}
+%			\item Make sure you use the truth rule associated with the main connective of the sentence heading the column.
+%			\item Stay in one and the same valuation (horizontal line) when you compute the truth value of the column.
+%			\item Compute the truth value for every valuation.
+%		\end{itemize}
+%		\item You are done when you have computed the truth values of the column of $X$ \emph{and} there are no gaps in the truth table.
+%\end{enumerate}}
+
+
+
+
+%\begin{center}
+%	\begin{tabular}{r c c c| d e e e e e e e e e e e  e e f}
+	%		\multirow{6}{*}{Valuation} & \multirow{6}{*}{$A$} & \multirow{6}{*}{$C$} & \multirow{6}{*}{$D$}
+	%		& $\mainconnective{\enot}$ & $( $ & $C$ & $\eor$ & $( $ & $D$ & $\eif$ & $( $ & $A$ & $\eor$ & $\enot$ & $D$ & $)$ & $)$ & $)$ \\[.2em]
+	%	& & & & 
+	%& $\mainconnectivecolor{(}$ & $C$ & $\mainconnective{\eor}$ & $( $ & $D$ & ${\eif}$ & $( $ & $A$ & $\eor$ & ${\enot}$ & $D$ & $)$ & ${)}$ & $\mainconnectivecolor{)}$ \\[.2em]
+	%		
+	%		& & & & 
+	%		& & $\mainconnectivecolor{C}$ & & $\mainconnectivecolor{( }$ & $D$ & $\mainconnective{\eif}$ & $( $ & $A$ & $\eor$ & ${\enot}$ & $D$ & $)$ & $\mainconnectivecolor{)}$ & \\[.2em]
+	%		
+	%		& & & & & & & & & $\mainconnectivecolor{D}$ & & & $A$ & $\mainconnective{\eor}$ & $\enot$& $D$ & & & \\[.2em]
+	%		
+	%				& & & & & & & & & & & & $\mainconnectivecolor{A}$& &$\mainconnective{\enot}$ & ${D}$ & & & \\[.2em]
+	%				
+	%		& & & & & & & & & & & & & & & $\mainconnectivecolor{D}$ & & & \\[.2em]\hline
+	%		
+	%		
+	%		$v_1:$ & T & T & T & \TTbf{F} & & T & T & & T & T & & T & T & F & T & & & \\
+	%		$v_2:$ & T & T & F & \TTbf{F} & & T & T & & F & T & & T & T & T & F & & & \\
+	%		$v_3:$ & T & F & T & \TTbf{F} & & F & T & & T & T & & T & T & F & T & & & \\
+	%		$v_4:$ & T & F & F & \TTbf{F} & & F & T & & F & T & & T & T & T & F & & & \\
+	%		$v_5:$ & F & T & T & \TTbf{F} & & T & T & & T & F & & F & F & F & T & & & \\
+	%		$v_6:$ & F & T & F & \TTbf{F} & & T & T & & F & T & & F & F & T & F & & & \\
+	%		$v_7:$ & F & F & T & \TTbf{T} & & F & F & & T & F & & F & F & F & T & & & \\
+	%		$v_8:$ & F & F & F & \TTbf{F} & & F & T & & F & T & & F & F & T & F & & & \\
+	%		
+	%	\end{tabular}
+%\end{center}
+
+
+Here's another example. 
+
+\begin{center}
+	\begin{tabular}{r c c c| d e e e e e e e e e e e  e e f}
+		\multirow{6}{*}{Valuation} & \multirow{6}{*}{$A$} & \multirow{6}{*}{$C$} & \multirow{6}{*}{$D$}
+		& \tikzmarknode{r1_outerneg}{$\mainconnective{\enot}$} & $( $ & $C$ & $\eor$ & $( $ & $D$ & $\eif$ & $( $ & $A$ & $\eor$ & $\enot$ & $D$ & $)$ & $)$ & $)$ \\[1em]
+		
+		% Row 2: parents of Row 3; child of Row 1
+		& & & &
+		& \tikzmarknode{r2_openBigOr}{\mainconnectivecolor{(}}
+		& $C$ & \tikzmarknode{r2_bigor}{$\mainconnective{\eor}$}
+		& $( $ & $D$ & \tikzmarknode{r2_implies}{$\mainconnective{\eif}$}
+		& $( $ & $A$ & \tikzmarknode{r2_inneror}{$\mainconnective{\eor}$}
+		& \tikzmarknode{r2_not}{$\mainconnective{\enot}$} & $D$
+		& $)$ & \tikzmarknode{r2_closeBigOr}{${)}$} & $\mainconnectivecolor{)}$ \\[1em]
+		
+		% Row 3: children of Row 2; parents of Row 4
+		& & & &
+		& & \tikzmarknode{r3_C}{$\mainconnectivecolor{C}$}
+		& &{\mainconnectivecolor{$($ }}
+		& $D$ & \tikzmarknode{r3_implies}{$\mainconnective{\eif}$}
+		& $( $ & $A$ & $\eor$ & ${\enot}$ & $D$
+		& $)$ & \tikzmarknode{r3_closeCond}{\mainconnectivecolor{)}} & \\[1em]
+		
+		% Row 4: children of Row 3; parents of Row 5
+		& & & & & & & & &
+		\tikzmarknode{r4_D}{$\mainconnectivecolor{D}$}
+		& & & $A$ & \tikzmarknode{r4_inneror}{$\mainconnective{\eor}$}
+		& $\enot$ & $D$ & & & \\[1em]
+		
+		% Row 5: children of Row 4; parent of Row 6
+		& & & & & & & & & & & &
+		\tikzmarknode{r5_A}{$\mainconnectivecolor{A}$}
+		& & \tikzmarknode{r5_not}{$\mainconnective{\enot}$}
+		& ${D}$ & & & \\[1em]
+		
+		% Row 6: child of Row 5
+		& & & & & & & & & & & & & & &
+		\tikzmarknode{r6_D}{$\mainconnectivecolor{D}$}
+		& & & \\[.2em]\hline
+		
+		$v_1:$ & T & T & T & \TTbf{F} & & T & T & & T & T & & T & T & F & T & & & \\
+		$v_2:$ & T & T & F & \TTbf{F} & & T & T & & F & T & & T & T & T & F & & & \\
+		$v_3:$ & T & F & T & \TTbf{F} & & F & T & & T & T & & T & T & F & T & & & \\
+		$v_4:$ & T & F & F & \TTbf{F} & & F & T & & F & T & & T & T & T & F & & & \\
+		$v_5:$ & F & T & T & \TTbf{F} & & T & T & & T & F & & F & F & F & T & & & \\
+		$v_6:$ & F & T & F & \TTbf{F} & & T & T & & F & T & & F & F & T & F & & & \\
+		$v_7:$ & F & F & T & \TTbf{T} & & F & F & & T & F & & F & F & F & T & & & \\
+		$v_8:$ & F & F & F & \TTbf{F} & & F & T & & F & T & & F & F & T & F & & & \\
 	\end{tabular}
+	\begin{tikzpicture}[remember picture,overlay]
+		\tikzset{arrowformationtree/.style={-{Stealth[length=2.2mm,width=1.6mm]},gray,opacity=0.6}}
+		
+		
+		% Row 2 -> Row 1
+		\draw[arrowformationtree] (r2_bigor) to[bend left=18] (r1_outerneg);
+		
+		% Row 3 -> Row 2
+		\draw[arrowformationtree] (r3_C)        to[bend left=18] (r2_bigor);     
+		\draw[arrowformationtree] (r3_implies) to[bend right=18] (r2_bigor);  
+		
+		% Row 4 -> Row 3
+		\draw[arrowformationtree] (r4_D)       to[bend left=18] (r3_implies);    
+		\draw[arrowformationtree] (r4_inneror) to[bend right=18] (r3_implies);   
+		
+		% Row 5 -> Row 4
+		\draw[arrowformationtree] (r5_A)   to[bend left=18] (r4_inneror);         
+		\draw[arrowformationtree] (r5_not) to[bend right=18] (r4_inneror);        
+		
+		% Row 6 -> Row 5
+		\draw[arrowformationtree] (r6_D) to[bend left=18] (r5_not);               
+	\end{tikzpicture}
 \end{center}
-We worked these out by the following procedure:
-\begin{itemize}
-	\item  For every valuation go to column $(\enot I\eand H)$ and do the following:
-	\begin{itemize}
-		\item[$\star$]  If the value of $(\enot I\eand H)$ is F, put T into column $(\enot I\eand H)\eif H$ at the line of the valuation.
-		\item If the value of $(\enot I\eand H)$ is T go to column $H$ and:
-		\begin{itemize}
-			\item if the value of $H$ is T, put T into column $(\enot I\eand H)\eif H$ at the line of the valuation.
-			\item if the value of $H$ is F, put F into column $(\enot I\eand H)\eif H$ at the line of the valuation.
-		\end{itemize}
-	\end{itemize}
-\end{itemize}
-The instruction $\star$ is justified by the truth rules of the conditional: if the antecedent of the conditional has value F, then the conditional will also value T.
+
+\subsection{How to do truth tables}
 
 With this example in mind let us try to give a general instruction for constructing a truth table for a sentence $X$.
-%\subsection{How to do truth tables}
+
+
 \factoidbox{
 	\begin{enumerate}
-		\item Write down the formation tree of $X$.
-		\item Find all atomic sentences on the tree. These will be the leaves of the tree.
-		\item If you have found all atomic sentences, you can start the truth table:
+		\item Write down the formation tree of $X$. Set up the header of the truth table with lines matching the formation tree. 
+		\item Consider any atomic sentences which appear in \metaX. If you are doing a truth table for multiple sentences, you'll need to also consider those appearing in the other sentences. Write all these atomic sentences in the header row, at the beginning of the table. 
+		\item We now need to determine all the valuations, the different ways of assigning truth values to all these atomic sentences. If there are $n$ atomic sentences, there will be $2^n$ such valuations. Write them as the rows of the truth table. 
+		\item Work up through the formation tree, which has now been written as lines in the header of the truth table to determine the truth value of the consituant sentences of \metaX. Record its truth value underneath the main connective of that sentence.
 		\begin{itemize}
-			\item You will need a column for every atomic sentence.
-			\item If there are $n$ atomic sentences, you will need $2^n$ valuations, that is, $2^n$ horizontal lines.
-			\item Make sure you have correctly written down all the different valuations!
+			\item If it is an atomic sentence, just copy the truth values from the valuation.
+			\item If it is a complex sentence, apply the relevant truth rule to its consituatnt parts, remembering that their truth values are written underneath their main connectives.
 		\end{itemize}
-		\item From the atomic sentences (the leaves of the tree) move upwards to the root (the sentence $X$) and
-		\begin{itemize}
-			\item for each node (constituent sentence) create a column in the truth table;
-			\item make sure you correctly identify the main connective of the sentence heading the column;
-			\item the root, that is, the sentence $X$ should be the last column of the truth table
-		\end{itemize}
-		\item Moving from left to right compute the truth values of each column
-		\begin{itemize}
-			\item Make sure you use the truth rule associated with the main connective of the sentence heading the column.
-			\item Stay in one and the same valuation (horizontal line) when you compute the truth value of the column.
-			\item Compute the truth value for every valuation.
-		\end{itemize}
-		\item You are done when you have computed the truth values of the column of $X$ \emph{and} there are no gaps in the truth table.
+		\item Highlight or boldface the column under the main connective of the overall sentence, which provides our final answer.
 \end{enumerate}}
 
 If you follow these outlines, you should be able to construct truth tables for arbitrary TFL sentences. Of course, the more complicated the sentences are, and the more atomic sentence letters they contain the longer and tedious the truth table---but the more important it becomes to painstakingly stick to the guidelines we have given.
@@ -1299,105 +1565,97 @@ If you follow these outlines, you should be able to construct truth tables for a
 
 
 
-
-When we do these in practice, our sentences can have many subsentences, consider, e.g.~$$\enot (B\eand(\enot B\eif \enot A)))$$ A tool for fitting our truth tables on a page is not to put all the subsentences out as separate entire columns to calculate, but to simply list the values underneath the main connective of the sentence. This is simply to keep the truth table more concise.
-
-We have a formation tree:
+You can provide your answer without explicitly providing the header row matching the formation tree, unless explicitly requested. 
 \begin{center}
-		\begin{forest}
-		[$\mainconnective{\enot}(B \eand (\enot B \eif \enot A))$
-		[$\centrearoundmainconnective{(B }{\mainconnective{\eand}}{(\enot B \eif \enot A))}$
-		[$B$]
-		[$(\enot B \mainconnective{\eif} \enot A)$
-		[$\mainconnective{\enot} B$
-		[$B$]
-		]
-		[$\mainconnective{\enot} A$
-		[$A$]
-		]
-		]
-		]
-		]
-	\end{forest}
-\end{center}
-Instead of having a separate column for each subsentence:
-\begin{center}
-\begin{tabular}{cc|c|c|c|c|c}
-	$A$ & $B$ & $\enot A$ & $\enot B$ & $(\enot B \mainconnective{\eif} \enot A)$ & $(B \mainconnective{\eand} (\enot B \eif \enot A))$ & $\mainconnective{\enot}(B \eand (\enot B \eif \enot A))$ \\\hline
-	T & T & F & F & T & T & \textbf{F} \\
-	T & F & F & T & F & F & \textbf{T} \\
-	F & T & T & F & T & T & \textbf{F} \\
-	F & F & T & T & T & F & \textbf{T} \\
-\end{tabular}
+	\begin{tabular}{r c c c| d e e e e e e e e e e e  e e f}
+	{Valuation} &{$A$} &{$C$} &{$D$}
+		& ${\enot}$ & $( $ & $C$ & $\eor$ & $( $ & $D$ & $\eif$ & $( $ & $A$ & $\eor$ & $\enot$ & $D$ & $)$ & $)$ & $)$  \\[.2em]\hline
+		
+		
+		$v_1:$ & T & T & T & \TTbf{F} & & T & T & & T & T & & T & T & F & T & & & \\
+		$v_2:$ & T & T & F & \TTbf{F} & & T & T & & F & T & & T & T & T & F & & & \\
+		$v_3:$ & T & F & T & \TTbf{F} & & F & T & & T & T & & T & T & F & T & & & \\
+		$v_4:$ & T & F & F & \TTbf{F} & & F & T & & F & T & & T & T & T & F & & & \\
+		$v_5:$ & F & T & T & \TTbf{F} & & T & T & & T & F & & F & F & F & T & & & \\
+		$v_6:$ & F & T & F & \TTbf{F} & & T & T & & F & T & & F & F & T & F & & & \\
+		$v_7:$ & F & F & T & \TTbf{T} & & F & F & & T & F & & F & F & F & T & & & \\
+		$v_8:$ & F & F & F & \TTbf{F} & & F & T & & F & T & & F & F & T & F & & & \\
+		
+	\end{tabular}
 \end{center}
 
-I could write it more concisely:
-
-
-
-
-\begin{center}
-	\begin{tabular}{c c | deeeeeeeeeef}
-		\multirow{5}{*}{$A$} & \multirow{5}{*}{$B$} & $\mainconnective{\enot}$ & $($ & $B$ & $\eand$ & $($ & $\enot$ & $B$ & $\eif$ & $\enot$ & $A$ & $)$ & $)$ \\[.2em]
-	&     &         & $\mainconnectivecolor{(}$ & $B$ & $\mainconnective{\eand}$ & $($ & $\enot$ & $B$ & $\eif$ & $\enot$ & $A$ & $)$ & $\mainconnectivecolor{)}$ \\[.2em]
-	&     &         &     & $\mainconnectivecolor{B}$ &          & $\mainconnectivecolor{(}$ & $\enot$ & $B$ & $\mainconnective{\eif}$ & $\enot$ & $A$ & $\mainconnectivecolor{)}$ &  \\[.2em]
-	&     &         &     &     &          &     & $\mainconnective{\enot}$ & $B$ &        & $\mainconnective{\enot}$ & $A$ &     &     \\[.2em]
-	&     &         &     &     &          &     &         & $\mainconnectivecolor{B}$ &        &         & $\mainconnectivecolor{A}$ &     &     \\[.2em]\hline
-	T & T & \TTbf{F }&   & \textcolor{gray!20}{T} & T &   & F & \textcolor{gray!20}{T} & T & F & \textcolor{gray!20}{T} &   &   \\
-	T & F & \TTbf{T} &   & \textcolor{gray!20}{F} & F &   & T & \textcolor{gray!20}{F} & F & F & \textcolor{gray!20}{T} &   &   \\
-	F & T & \TTbf{F} &   & \textcolor{gray!20}{T} & F &   & F & \textcolor{gray!20}{T} & T & T & \textcolor{gray!20}{F} &   &   \\
-	F & F & \TTbf{T} &   & \textcolor{gray!20}{F} & F &   & T & \textcolor{gray!20}{F} & T & T & \textcolor{gray!20}{F} &   &   \\
-\end{tabular}
-\end{center}
-
-
-One can also just do the header as a single line, but then make sure you also draw the formation tree, to keep track (and for the marker to see that you know what you're doing).
-
-\begin{center}
-	\begin{tabular}{c c | deeeeeeeeeef}
-	{$A$} & {$B$} & $\mainconnective{\enot}$ & $($ & $B$ & $\eand$ & $($ & $\enot$ & $B$ & $\eif$ & $\enot$ & $A$ & $)$ & $)$   \\\hline
-	T & T & \TTbf{F }&   & \textcolor{gray!20}{T} & T &   & F & \textcolor{gray!20}{T} & T & F & \textcolor{gray!20}{T} &   &   \\
-	T & F & \TTbf{T} &   & \textcolor{gray!20}{F} & F &   & T & \textcolor{gray!20}{F} & F & F & \textcolor{gray!20}{T} &   &   \\
-	F & T & \TTbf{F} &   & \textcolor{gray!20}{T} & F &   & F & \textcolor{gray!20}{T} & T & T & \textcolor{gray!20}{F} &   &   \\
-	F & F & \TTbf{T} &   & \textcolor{gray!20}{F} & F &   & T & \textcolor{gray!20}{F} & T & T & \textcolor{gray!20}{F} &   &   \\
-\end{tabular}
-\end{center}
 
 
 
 %
 %
+%When we do these in practice, our sentences can have many subsentences, consider, e.g.~$$\enot (B\eand(\enot B\eif \enot A)))$$ A tool for fitting our truth tables on a page is not to put all the subsentences out as separate entire columns to calculate, but to simply list the values underneath the main connective of the sentence. This is simply to keep the truth table more concise.
 %
-%I can write:
-%\begin{tabular}{cc|cccccccccc}
-%	$A$ & $B$ &
-%	\tikz[baseline]{\node(not){$\enot$};} & & & & & & & & & \\[.6em]
-%	& & & & \tikz[baseline]{\node(and){$\eand$};} & & & & & & & \\[.6em]
-%	& & & \tikz[baseline]{\node(Bleft){$B$};} & & & & & & & & \\[.6em]
-%	& & & & & & & \tikz[baseline]{\node(imp){$\eif$};} & & & & \\[.6em]
-%	& & & & & \tikz[baseline]{\node(nB){$\enot$};} & & & \tikz[baseline]{\node(nA){$\enot$};} & & & \\[.6em]
-%	& & & & & & \tikz[baseline]{\node(Bright){$B$};} & & & \tikz[baseline]{\node(A){$A$};} & & \\
+%We have a formation tree:
+%\begin{center}
+%		\begin{forest}
+%		[$\mainconnective{\enot}(B \eand (\enot B \eif \enot A))$
+%		[$\centrearoundmainconnective{(B }{\mainconnective{\eand}}{(\enot B \eif \enot A))}$
+%		[$B$]
+%		[$(\enot B \mainconnective{\eif} \enot A)$
+%		[$\mainconnective{\enot} B$
+%		[$B$]
+%		]
+%		[$\mainconnective{\enot} A$
+%		[$A$]
+%		]
+%		]
+%		]
+%		]
+%	\end{forest}
+%\end{center}
+%Instead of having a separate column for each subsentence:
+%\begin{center}
+%\begin{tabular}{cc|c|c|c|c|c}
+%	$A$ & $B$ & $\enot A$ & $\enot B$ & $(\enot B \mainconnective{\eif} \enot A)$ & $(B \mainconnective{\eand} (\enot B \eif \enot A))$ & $\mainconnective{\enot}(B \eand (\enot B \eif \enot A))$ \\\hline
+%	T & T & F & F & T & T & \textbf{F} \\
+%	T & F & F & T & F & F & \textbf{T} \\
+%	F & T & T & F & T & T & \textbf{F} \\
+%	F & F & T & T & T & F & \textbf{T} \\
 %\end{tabular}
+%\end{center}
 %
-%\begin{tikzpicture}[remember picture, overlay, line width=.5pt]
-%	% ¬ → ∧
-%	\draw (not.south) -- ++(0,-.3) -| (and.north);
-%	% ∧ → B
-%	\draw (and.south) -- ++(0,-.3) -| (Bleft.north);
-%	% ∧ → →
-%	\draw (and.south) -- ++(0,-.3) -| (imp.north);
-%	% → → ¬B
-%	\draw (imp.south) -- ++(0,-.3) -| (nB.north);
-%	% ¬B → B
-%	\draw (nB.south) -- ++(0,-.3) -| (Bright.north);
-%	% → → ¬A
-%	\draw (imp.south) -- ++(0,-.3) -| (nA.north);
-%	% ¬A → A
-%	\draw (nA.south) -- ++(0,-.3) -| (A.north);
-%\end{tikzpicture}
-
-
-One must always highlight the column under the main connective of the overall sentence, which provides our final answer. You should feel free to use whichever method you find easier.
+%I could write it more concisely:
+%
+%
+%
+%
+%\begin{center}
+%	\begin{tabular}{c c | deeeeeeeeeef}
+%		\multirow{5}{*}{$A$} & \multirow{5}{*}{$B$} & $\mainconnective{\enot}$ & $($ & $B$ & $\eand$ & $($ & $\enot$ & $B$ & $\eif$ & $\enot$ & $A$ & $)$ & $)$ \\[.2em]
+%	&     &         & $\mainconnectivecolor{(}$ & $B$ & $\mainconnective{\eand}$ & $($ & $\enot$ & $B$ & $\eif$ & $\enot$ & $A$ & $)$ & $\mainconnectivecolor{)}$ \\[.2em]
+%	&     &         &     & $\mainconnectivecolor{B}$ &          & $\mainconnectivecolor{(}$ & $\enot$ & $B$ & $\mainconnective{\eif}$ & $\enot$ & $A$ & $\mainconnectivecolor{)}$ &  \\[.2em]
+%	&     &         &     &     &          &     & $\mainconnective{\enot}$ & $B$ &        & $\mainconnective{\enot}$ & $A$ &     &     \\[.2em]
+%	&     &         &     &     &          &     &         & $\mainconnectivecolor{B}$ &        &         & $\mainconnectivecolor{A}$ &     &     \\[.2em]\hline
+%	T & T & \TTbf{F }&   & \textcolor{gray}{T} & T &   & F & \textcolor{gray}{T} & T & F & \textcolor{gray}{T} &   &   \\
+%	T & F & \TTbf{T} &   & \textcolor{gray}{F} & F &   & T & \textcolor{gray}{F} & F & F & \textcolor{gray}{T} &   &   \\
+%	F & T & \TTbf{F} &   & \textcolor{gray}{T} & F &   & F & \textcolor{gray}{T} & T & T & \textcolor{gray}{F} &   &   \\
+%	F & F & \TTbf{T} &   & \textcolor{gray}{F} & F &   & T & \textcolor{gray}{F} & T & T & \textcolor{gray}{F} &   &   \\
+%\end{tabular}
+%\end{center}
+%
+%
+%One can also just do the header as a single line, but then make sure you also draw the formation tree, to keep track (and for the marker to see that you know what you're doing).
+%
+%\begin{center}
+%	\begin{tabular}{c c | deeeeeeeeeef}
+%	{$A$} & {$B$} & $\mainconnective{\enot}$ & $($ & $B$ & $\eand$ & $($ & $\enot$ & $B$ & $\eif$ & $\enot$ & $A$ & $)$ & $)$   \\\hline
+%	T & T & \TTbf{F }&   & \textcolor{gray}{T} & T &   & F & \textcolor{gray}{T} & T & F & \textcolor{gray}{T} &   &   \\
+%	T & F & \TTbf{T} &   & \textcolor{gray}{F} & F &   & T & \textcolor{gray}{F} & F & F & \textcolor{gray}{T} &   &   \\
+%	F & T & \TTbf{F} &   & \textcolor{gray}{T} & F &   & F & \textcolor{gray}{T} & T & T & \textcolor{gray}{F} &   &   \\
+%	F & F & \TTbf{T} &   & \textcolor{gray}{F} & F &   & T & \textcolor{gray}{F} & T & T & \textcolor{gray}{F} &   &   \\
+%\end{tabular}
+%\end{center}
+%
+%
+%
+%
+%One must always highlight the column under the main connective of the overall sentence, which provides our final answer. You should feel free to use whichever method you find easier.
 
 There are tricks that mean you can miss out some of the gaps by using strategies such as: knowing that $\metaX$ is false is already enough to see that $\metaX\eand\metaY$ is false, so we don't need to continue to work out the truth value of $\metaY$. These ``shortcuts'' are discussed in \S\ref{s:PartialTruthTable}, but we won't read it in this course.
 
@@ -1437,7 +1695,7 @@ We will work up through the formation tree of each of our three sentences, start
 The result will be:
 
 \begin{center}
-	\begin{tabular}{c c c | d e e eeeeee f | d f | d eeee e f}
+	\begin{tabular}{r c c | d e e eeeeee f | d f | d eeee e f}
 		\multirow{3}{*}{Valuation} & \multirow{3}{*}{$J$} & \multirow{3}{*}{$L$} 
 		& $\mainconnectivecolor{(}$ & $\enot$ & $L$ & $\mainconnective{\eif}$ & $($ & $J$ & $\eor$ & $L$ & $)$ & $\mainconnectivecolor{)}$
 		& $\mainconnective{\enot}$ & $J$
@@ -1479,7 +1737,7 @@ $$\therefore A\eor\enot A.$$
 The argument is valid if there is no valuation such that all premises are true but the conclusion false, that is, if there is no valuation such that $A\eor\enot A$ is false. This can be quickly verified as there are only two valuations to consider:
 
 \begin{center}
-	\begin{tabular}{cc|deeef}
+	\begin{tabular}{rc|deeef}
 		Valuation&$A$&$\enot$&$ A$&$\eor$&$ A$\\\hline
 		$v_1$&T & F &&\textbf{T}\\
 		$v_2$&F & T& & \textbf{T}
