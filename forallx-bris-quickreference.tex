@@ -102,15 +102,15 @@ Definition of being a sentence of TFL:
 				F&F&T
 				\end{tabular}
 			\end{minipage}
-			\begin{minipage}{.35\textwidth}$\eiff$:\,
-				\begin{tabular}{c@{, }c@{ $\leadsto$ }c}
-%				$\metaX$&$\metaY$&$\metaX\eiff\metaY$\\\hline
-				T&T&T\\
-				T&F&F\\
-				F&T&F\\
-				F&F&T
-				\end{tabular}
-			\end{minipage}
+%			\begin{minipage}{.35\textwidth}$\eiff$:\,
+%				\begin{tabular}{c@{, }c@{ $\leadsto$ }c}
+%%				$\metaX$&$\metaY$&$\metaX\eiff\metaY$\\\hline
+%				T&T&T\\
+%				T&F&F\\
+%				F&T&F\\
+%				F&F&T
+%				\end{tabular}
+%			\end{minipage}
 	\end{center}
 
 
@@ -320,11 +320,12 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 \open
 	\hypo[m]{x}{\metaX}
 	\ellipsesline
-	\have[n]{y}{\metaY}
-	\ellipsesline
-	\have[k]{ny}{\enot\metaY}
+%	\have[n]{y}{\metaY}
+%	\ellipsesline
+%	\have[k]{ny}{\enot\metaY}
+	\have[k]{red}{\metaY\eand\enot\metaY}
 \close
-\have[\ ]{nx}{\enot\metaX}\notI{x-ny}
+\have[\ ]{nx}{\enot\metaX}\notI{x-red}
 \end{pf}
 
 \columnbreak
@@ -333,11 +334,12 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 \open
 	\hypo[m]{nx}{\enot\metaX}
 	\ellipsesline
-	\have[n]{y}{\metaY}
-	\ellipsesline
-	\have[k]{ny}{\enot\metaY}
+%	\have[n]{y}{\metaY}
+%	\ellipsesline
+%	\have[k]{ny}{\enot\metaY}
+	\have[k]{red}{\metaY\eand\enot\metaY}
 \close
-\have[\ ]{x}{\metaX}\notE{nx-ny}
+\have[\ ]{x}{\metaX}\notE{nx-red}
 \end{pf}
 \end{multicols}
 \separatepfs

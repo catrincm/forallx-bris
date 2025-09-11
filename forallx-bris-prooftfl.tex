@@ -942,10 +942,11 @@ This thought motivates the following rule:
 \open
 	\hypo[m]{a}{\metaX}
 	\ellipsesline
-	\have[n]{x}{\metaY}\ellipsesline
-	\have[k]{y}{\enot\metaY}
+%	\have[n]{x}{\metaY}\ellipsesline
+%	\have[k]{y}{\enot\metaY}
+	\have[k]{bot}{\metaY\eand\enot\metaY}
 \close
-\have[\ ]{na}{\enot\metaX}\ni{a-y}
+\have[\ ]{na}{\enot\metaX}\ni{a-bot}
 %\have[m]{axx}{\metaX \eif \ered}
 %\have[\ ]{na}{\enot\metaX}\ni{axx}
 \end{pf}}
@@ -958,12 +959,12 @@ To see this in practice, and interacting with negation, consider this proof:
 		\hypo{d}{D}
 		\open
 			\hypo{nd}{\enot D}
-			\have{d2}{D}\Reiteration{d}
-			\have{nd2}{\enot D}\Reiteration{nd}
-%			\have{ndr}{\ered}\ri{d, nd}
+%			\have{d2}{D}\Reiteration{d}
+%			\have{nd2}{\enot D}\Reiteration{nd}
+			\have{ndr}{D\eand\enot D}\andI{d, nd}
 		\close
 %		\have{ndxx}{\enot D \eif \ered}{\ci{nd-ndr}}
-		\have{con}{\enot\enot D}\notI{nd-nd2} %contradiction in d2,nd2
+		\have{con}{\enot\enot D}\notI{nd-ndr} %contradiction in d2,nd2
 %		\have{con}{\enot\enot D}\ni{ndxx}
 	\end{pf}
 
@@ -985,8 +986,9 @@ If assuming that something is false leads you to a contradiction, then that assu
 \open
 	\hypo[m]{a}{\enot\metaX}
 	\ellipsesline
-	\have[n]{x}{\metaY}\ellipsesline
-	\have[k]{y}{\enot\metaY}
+%	\have[n]{x}{\metaY}\ellipsesline
+%	\have[k]{y}{\enot\metaY}
+	\have[k]{y}{\metaY\eand\enot\metaY}
 \close
 \have[\ ]{na}{\metaX}\notE{a-y}
 %\have[m]{axx}{\metaX \eif \ered}
@@ -1009,11 +1011,12 @@ To see this rule in action, here is an example proof using it:
 		\hypo{d}{\enot\enot D}
 		\open
 			\hypo{nd}{\enot D}
-%			\have{ndr}{\ered}\ri{d, nd}
-			\have{nnd}{\enot\enot D}\Reiteration{d}
-			\have{nd2}{\enot D}\Reiteration{nd}
+			\have{red}{\enot D\eand\enot\enot D}\andI{d, nd}
+%			\have{nnd}{\enot\enot D}\Reiteration{d}
+%			\have{nd2}{\enot D}\Reiteration{nd}
+%			\have{red}{\enot D\eand\enot\enot D}\andI{nd2,nnd}
 		\close
-		\have{con}{D}\notE{nd2,nnd}
+		\have{con}{D}\notE{nd-red}
 	\end{pf}
 	Here $\metaX$ is $D$ and $\metaY$ is $\enot D$. 
 
@@ -1024,10 +1027,11 @@ This rule also allows us to prove that anything follows from a contradiction. Fo
 		\hypo{na}{\enot A}
 		\open
 			\hypo{nb}{\enot B}
-			\have{a2}{A}\Reiteration{a}
-			\have{na2}{\enot A}\Reiteration{na}
+%			\have{a2}{A}\Reiteration{a}
+%			\have{na2}{\enot A}\Reiteration{na}
+			\have{ana}{A\eand\enot A}\andI{a,na}
 		\close
-		\have{b}{B}\notE{nb-na2}
+		\have{b}{B}\notE{nb-ana}
 	\end{pf}
 	
 \section{Additional assumptions and subproofs}
@@ -1699,12 +1703,12 @@ Suppose in the course of you proof you already have $\metaX\eif\metaY$, say on l
 	\have[n]{nb}{\enot\metaY}
 		\open
 		\hypo[k]{a}{\metaX}
-		\have{nb2}{\enot\metaY}\Reiteration{nb}
+%		\have{nb2}{\enot\metaY}\Reiteration{nb}
 		\have{b}{\metaY}\ce{ab, a}
-%		\have{nb1}{\ered}\ri{b, nb}
+		\have{red}{\metaY\eand\enot\metaY}\andI{b,nb}
 		\close
 %\have{xtoxx}{X \eif \ered}{\ci{(a)-(nb1)}}
-	\have{no}{\enot\metaX}\notI{a-b} % contradiction in b,nb
+	\have{no}{\enot\metaX}\notI{a-red} % contradiction in b,nb
 \end{pf}
 Again, the rule of MT can be derived from the \emph{basic} rules of \S\ref{s:BasicTFL}.
 
@@ -1717,9 +1721,10 @@ Consider the following deduction schema:
 \have[m]{m}{\metaX}
 	\open
 	\hypo[j]{j}{\enot \metaX}
-	\have{l}{\metaX}\Reiteration{m}
-	\have{k}{\enot\metaX}\Reiteration{j}\close
-\have{con}{\enot\enot\metaX}\notI{j - k ()}
+%	\have{l}{\metaX}\Reiteration{m}
+	\have{k}{\metaX\eand\enot\metaX}\andI{m,j}
+	\close
+\have{con}{\enot\enot\metaX}\notI{j - k}
 \end{pf}
 and
 
@@ -1727,8 +1732,10 @@ and
 \have[m]{m}{\enot\enot\metaX}
 	\open
 	\hypo[j]{j}{\enot \metaX}
-	\have{l}{\enot\enot\metaX}\Reiteration{m}
-	\have{k}{\enot\metaX}\Reiteration{j}\close
+%	\have{l}{\enot\enot\metaX}\Reiteration{m}
+%	\have{k}{\enot\metaX}\Reiteration{j}
+	\have{k}{\enot\metaX\eand\enot\enot\metaX}\andI{m,j}
+	\close
 \have{con}{\metaX}\notE{j - k}
 \end{pf}
 So again,  we can derive the double negations rules from the \emph{basic} rules of \S\ref{s:BasicTFL}.
@@ -1781,10 +1788,11 @@ Here is a demonstration of how we could derive explosion using the basic rules:
 	\have[n]{nx}{\enot \metaX}
 		\open
 		\hypo{ny}{\enot \metaY}
-		\have{x2}{\metaX}\Reiteration{x}
-		\have{nx2}{\enot\metaX}\Reiteration{nx}
+%		\have{x2}{\metaX}\Reiteration{x}
+%		\have{nx2}{\enot\metaX}\Reiteration{nx}
+		\have{red}{\metaX\eand\enot\metaX}\andI{x,nx}
 		\close
-	\have[\ ]{y}{\metaY}\notE{ny-nx2}
+	\have[\ ]{y}{\metaY}\notE{ny-red}
 \end{pf}
 
 \section{Derivation of De Morgan rules}
@@ -1797,7 +1805,8 @@ Here is a demonstration of how we could derive the first De Morgan rule:
 			\open
 				\hypo{b}{\metaY}
 				\have{ab}{\metaX \eand \metaY}\ai{a,b}
-				\have{nab1}{\enot(\metaX \eand \metaY)}\Reiteration{nab}
+%				\have{nab1}{\enot(\metaX \eand \metaY)}\Reiteration{nab}
+				\have{nab1}{(\metaX \eand \metaY)\eand\enot(\metaX \eand \metaY)}\andI{ab,nab}
 			\close
 %		\have{ytoxx}{\metaY \eif \ered}{\ci{(b)-(nab1)}}
 			\have{nb}{\enot \metaY}\ni{b-nab1}%\ni{ytoxx}
@@ -1829,9 +1838,10 @@ Here is a demonstration of how we could derive the second De Morgan rule:
 			\open
 			\hypo[l]{rab1}{\metaX \eand \metaY}
 				\have{y1}{\metaY}\ae{ab}
-				\have{ny1}{\enot\metaY}\Reiteration{ny}
+%				\have{ny1}{\enot\metaY}\Reiteration{ny}
+				\have{red}{\metaY\eand\enot\metaY}\andI{y1,ny}
 			\close
-			\have{abc2}{\enot(\metaX \eand \metaY)}\notI{rab1 - ny1}
+			\have{abc2}{\enot(\metaX \eand \metaY)}\notI{rab1 - red}
 			\close
 			\have{abc}{\enot(\metaX \eand \metaY)}\orE{nab, nx-abc1,ny-abc2}
 \end{pf}
