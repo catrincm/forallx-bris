@@ -1,25 +1,22 @@
 ---
 layout: default
 title: Archived editions
-permalink: /editions/
+
 ---
 
 # Archived editions
 
-{% assign pdfs = site.static_files | where_exp: "f", "f.path contains '/editions/' and f.extname == '.pdf'" %}
-{% assign groups = pdfs | group_by_exp: "f", "f.path | split: '/' | slice: 2,1 | first" %}
-{% assign groups = groups | sort: "name" | reverse %}
+{% assign files = site.static_files | where: "extname", ".pdf" | sort: "path" %}
 
-{% if groups == empty %}
-_No editions have been published yet._
-{% else %}
-{% for g in groups %}
-## Edition {{ g.name }}
-<ul>
-  {% assign files = g.items | sort: "path" %}
-  {% for f in files %}
-  <li><a href="{{ f.path | relative_url }}">{{ f.name }}</a></li>
-  {% endfor %}
-</ul>
+{% assign current_year = "" %}
+{% for f in files %}
+  {% if f.path contains "/editions/" %}
+    {% assign parts = f.path | split: "/" %}
+    {% assign year = parts[2] %}
+    {% if year != current_year %}
+## {{ year }}
+{% assign current_year = year %}
+    {% endif %}
+- <a href="{{ f.path | relative_url }}">{{ f.name }}</a>
+  {% endif %}
 {% endfor %}
-{% endif %}
