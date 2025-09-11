@@ -4,7 +4,7 @@ This is the formal logic textbook, _forall x: Bristol Remix_.
 
 [Site](https://catrincm.github.io/forallx-bris)
 
-Download links:
+Download links for most recent version:
 
 -   [Textbook](https://catrincm.github.io/forallx-bris/forallxbris.pdf)
 -   [Accessible
@@ -12,6 +12,8 @@ Download links:
 -   [Solutions
     Book](https://catrincm.github.io/forallx-bris/forallxbris-withanswers.pdf)
 
+
+Downloads for previous editions can be found at https://catrincm.github.io/forallx-bris/editions
 
 This book is based on forallx: Calgary by
 Aaron Thomas-Bolduc & Richard Zach
