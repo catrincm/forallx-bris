@@ -16,15 +16,30 @@ jobs:
           ref: master
           path: main_repo
 
+      - name: Load academic year
+        working-directory: ./main_repo
+        run: |
+          set -euo pipefail
+          AY=$(cat setup/academic-year.txt)
+          echo "ACADEMIC_YEAR=$AY" >> "$GITHUB_ENV"
+
+      - name: Prepare site folders
+        run: |
+          set -euo pipefail
+          mkdir -p "./main_repo/site"
+          mkdir -p "./main_repo/site/editions/$ACADEMIC_YEAR"
+
       - name: Compile forallxbris.tex
         uses: xu-cheng/latex-action@v3
         with:
           root_file: forallxbris.tex
           working_directory: ./main_repo
 
-      - name: Copy to ./site/ directory
+      - name: Copy to ./site/ directory (forallxbris)
         run: |
-          cp ./main_repo/forallxbris.pdf ./main_repo/site/
+          set -euo pipefail
+          cp "./main_repo/forallxbris.pdf" "./main_repo/site/"
+          cp "./main_repo/forallxbris.pdf" "./main_repo/site/editions/$ACADEMIC_YEAR/forallxbris.pdf"
 
       - name: Compile forallxbris-accessible.tex
         uses: xu-cheng/latex-action@v3
@@ -32,9 +47,11 @@ jobs:
           root_file: forallxbris-accessible.tex
           working_directory: ./main_repo
 
-      - name: Copy to ./site/ directory
+      - name: Copy to ./site/ directory (accessible)
         run: |
-          cp ./main_repo/forallxbris-accessible.pdf ./main_repo/site/
+          set -euo pipefail
+          cp "./main_repo/forallxbris-accessible.pdf" "./main_repo/site/"
+          cp "./main_repo/forallxbris-accessible.pdf" "./main_repo/site/editions/$ACADEMIC_YEAR/forallxbris-accessible.pdf"
 
       - name: Compile forallxbris-withanswers.tex
         uses: xu-cheng/latex-action@v3
@@ -42,12 +59,16 @@ jobs:
           root_file: forallxbris-withanswers.tex
           working_directory: ./main_repo
 
-      - name: Copy to ./site/ directory
+      - name: Copy to ./site/ directory (withanswers)
         run: |
-          cp ./main_repo/forallxbris-withanswers.pdf ./main_repo/site/
+          set -euo pipefail
+          cp "./main_repo/forallxbris-withanswers.pdf" "./main_repo/site/"
+          cp "./main_repo/forallxbris-withanswers.pdf" "./main_repo/site/editions/$ACADEMIC_YEAR/forallxbris-withanswers.pdf"
 
       - name: Copy README to ./site/ directory
-        run: cp ./main_repo/README.md ./main_repo/site/index.md
+        run: |
+          set -euo pipefail
+          cp "./main_repo/README.md" "./main_repo/site/index.md" || true
 
       - name: Checkout 'gh-pages' branch
         uses: actions/checkout@v4
@@ -55,14 +76,16 @@ jobs:
           ref: gh-pages
           path: gh_pages_repo
 
-      - name: Copy ./site/ directory to 'gh-pages' branch
+      - name: Copy ./site/ directory to 'gh-pages' (non-destructive so that past years content remains there)
         run: |
-          cp -r ./main_repo/site/* ./gh_pages_repo/
+          set -euo pipefail
+          cp -r "./main_repo/site/"* "./gh_pages_repo/"
 
       - name: Push to 'gh-pages' branch
         run: |
+          set -euo pipefail
           cd gh_pages_repo
           git config user.name "GitHub Action"
           git config user.email "action@github.com"
           git add .
-          git diff --staged --quiet || (git commit -m "Update gh-pages branch" && git push origin gh-pages)
+          git diff --staged --quiet || (git commit -m "Update gh-pages branch ($ACADEMIC_YEAR)" && git push origin gh-pages)

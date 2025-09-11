@@ -1,0 +1,51 @@
+%!TEX root = ../forallxbris.tex
+
+
+% ---------- Yearly settings (edit once per year) ----------
+\newcommand{\AcademicYearText}{2025--26\xspace}  % for typeset text (en dash)
+\newcommand{\AcademicYearPath}{2025-26}   % for URLs/paths (hyphen)
+
+\newcommand{\Course}{PHIL10032 Logic and Critical Thinking}
+\newcommand{\University}{University of Bristol\xspace}
+\newcommand{\Teacher}{\href{mailto:catrin.campbell-moore@bristol.ac.uk}{Catrin Campbell-Moore}\xspace}
+
+
+\newcommand{\URL}{catrincm.github.io/forallx-bris}
+\newcommand{\URLforEditionVersions}{https://catrincm.github.io/forallx-bris/editions/\AcademicYearPath}
+
+
+
+% ---------- Status toggle ----------
+\newif\iffinalversion
+%\finalversiontrue       % set \finalversiontrue at year end
+
+
+
+% ---------- Derived text (no need to edit)----------
+
+
+% Full banner block used on the front matter
+\newcommand{\EditionBanner}{% 
+	 {\fontsize{12pt}{16pt}\selectfont
+	
+	\noindent For \Course\\\University
+	
+	\bigskip
+	
+	\noindent 	
+	\iffinalversion
+		\noindent Final version from \AcademicYearText
+	\else
+		\noindent In-progress version for \AcademicYearText \\
+		{\normalsize Last updated \@date. 
+		Please check for updates. }
+	\fi
+	
+	
+	\bigskip 
+	
+	\noindent Current maintainer: \Teacher
+	
+	}
+}
+
