@@ -16,36 +16,36 @@ In more detail:
 Grant me that $A\eif (B\eand C)$ and $A$ are true. Then what else do we know to be true? Here's something: $B\eand C$. Why? Because in general Modus Ponens is an excellent, compelling argument pattern: any argument of the form $X,\;X\eif Y\;\therefore\;Y$ is valid: there are no valuations where $X$ and $X\eif Y$ are true but $Y$ is false. So if our premises  $A\eif (B\eand C)$ and $A$ are true, then $B\eand C$ must also be true: that's just Modus Ponens. So now from our supposition of $A\eif(B\eand C)$ and $A$, we now also know $B\eand C$. What else follows from these three statements? Here's something: $B$. Why? Well, $B\eand C$ is true; so certainly $B$ must be true. So we know that from $A\eif(B\eand C)$ and $A$ we can conclude $B$ by walking someone through these two steps. This will be enough to show that $A\eif(B\eand C),\,A\therefore B$ is valid.
 
 To keep track of what assumptions have been made and steps of the argument we will give precise forms that this argument should be written:
-\begin{pf}
+\begin{fitchproof}
 \hypo{abc}{A\eif (B\eand C)}
 \hypo{a}{A}
 \have{bc}{B\eand C}\by{From}{abc, a}
 \have{b}{B}\by{From}{bc}
-\end{pf}
+\end{fitchproof}
 Our premises are written above the horizontal line. They have to be granted without justification. Then each new line follows from the previous lines. The vertical line is there to highlight that everything coming below is within the context of the premises that have been assumed; that we are looking for consequences of the premises.
 
 We can also use this presentation to be clear about arguments that we make in English:
-\begin{pf}
+\begin{fitchproof}
 \hypo{abc}{\text{If Alice came to the party, then Beth and Cath came}}
 \hypo{a}{\text{Alice came to the party}}
 \have{bc}{\text{Beth and Cath came to the party}}\by{From}{abc, a}
 \have{b}{\text{Beth came to the party}}\by{From}{bc}
-\end{pf}
+\end{fitchproof}
 
 You might think of it as a bag you're collecting things to be accepted in. You have to grant the premises, they go in the bag for free, then we give certain rules that allow us to add additional statements which must be true so long as the other things already in the bag are true.
 
 
 Suppose I provide you with the following argument:
-\begin{pf}
+\begin{fitchproof}
 \hypo{a}{P\eif (\enot Q\eif \enot R)}
 \hypo{c}{P\eif\enot Q}
 \hypo{b}{P\eand S}
 \have{d}{\enot R}\by{From}{a,c,b}
-\end{pf}
+\end{fitchproof}
 I concluded line 3 as a logical consequence of lines 1, 2 and 3. It does follow, i.e, the argument is valid; but this is not very helpful to someone who doesn't yet see that it's valid.
 
 Instead, we will be describing various rules which we propose that have to be accepted as valid reasoning steps, and all more complicated steps should be broken up into simpler ones. So we should break this argument up into the steps:
- \begin{pf}
+ \begin{fitchproof}
  \hypo{pqr}{P\eif (\enot Q\eif \enot R)}
  \hypo{pq}{P\eif\enot Q}
  \hypo{ps}{P\eand S}
@@ -53,10 +53,10 @@ Instead, we will be describing various rules which we propose that have to be ac
   \have{nqr}{\enot Q\eif R}\by{From}{pqr,p}
  \have{nq}{\enot Q}\by{From}{pq,p}
  \have{r}{R}\by{From}{nqr,nq}
- \end{pf}
+ \end{fitchproof}
 
 The other thing we should do is to give a name for the steps that we use. Here we've just said `From 1,4', but someone might ask: \emph{how} does it follow from lines 1 and 4. We will give names for the various simple steps of reasoning we use and say: ``well, it follows from lines 1 and 4 by the rule \emph{conditional elimination}, which we abbreviate by``\eif E''.''
- \begin{pf}
+ \begin{fitchproof}
  \hypo{pqr}{P\eif (\enot Q\eif \enot R)}
  \hypo{pq}{P\eif\enot Q}
  \hypo{ps}{P\eand S}
@@ -64,7 +64,7 @@ The other thing we should do is to give a name for the steps that we use. Here w
   \have{nqr}{\enot Q\eif R}\by{\eif E}{pqr,p}
  \have{nq}{\enot Q}\by{\eif E}{pq,p}
  \have{r}{R}\by{\eif E}{nqr,nq}
- \end{pf}
+ \end{fitchproof}
 
 We will provide various rules, and describe why they are acceptable. We should then break any other valid arguments should be broken up into these steps of reasoning.
 
@@ -155,29 +155,29 @@ Natural deduction selects a few basic rules of inference and natural forms of re
 %As an illustration, consider:
 %	$$\enot (A \eor B) \therefore \enot A \eand \enot B$$
 %We will start a proof by writing the premise:
-%\begin{pf}
+%\begin{fitchproof}
 %	\hypo{a1}{\enot (A \eor B)}
-%\end{pf}
+%\end{fitchproof}
 %Note that we have numbered the premise, since we will want to refer back to it. Indeed, every line on a proof is numbered, so that we can refer back to it.
 %
 %Note also that we have drawn a line underneath the premise. Everything written above the line is an \emph{assumption}. Everything written below the line will either be something which follows from the assumptions, or it will be some new assumption. We are hoping to conclude that `$\enot A \eand \enot B$'; so we are hoping ultimately to conclude our proof with
-%\begin{pf}
+%\begin{fitchproof}
 %	\have[n]{con}{\enot A \eand \enot B}
-%\end{pf}
+%\end{fitchproof}
 %for some number $n$. It doesn't matter which line we end on, but we would obviously prefer a short proof to a long one.
 %
 %Similarly, suppose we wanted to consider:
 %$$A\eor B, \enot (A\eand C), \enot (B \eand \enot D) \therefore \enot C\eor D$$
 %The argument has three premises, so we start by writing them all down, numbered, and drawing a line under them:
-%\begin{pf}
+%\begin{fitchproof}
 %	\hypo{a1}{A \eor B}
 %	\hypo{a2}{\enot (A\eand C)}
 %	\hypo{a3}{\enot (B \eand \enot D)}
-%\end{pf}
+%\end{fitchproof}
 %and we are hoping to conclude with some line:
-%\begin{pf}
+%\begin{fitchproof}
 %	\have[n]{con}{\enot C \eor D}
-%\end{pf}
+%\end{fitchproof}
 %
 %If we can find a sequence of lines, each of which follows from the earlier lines by one of our rules, then this is a proof that the argument is valid, or we more simply say it is a proof of the argument.
 %
@@ -198,31 +198,31 @@ The full list of the rules can be found in Appendix \ref{glossary:quick ref}.
 The very first rule is so breathtakingly obvious that it is surprising we bother with it at all.
 
 If you already have shown something in the course of a proof, the \emph{reiteration rule} allows you to repeat it on a new line. For example:
-\begin{pf}
+\begin{fitchproof}
 	\have[4]{a1}{A \eand B}
 	\have[$\vdots$]{}{\vdots}
 	\have[10]{a2}{A \eand B} \by{R}{a1}
-\end{pf}
+\end{fitchproof}
 This indicates that we have written `$A \eand B$' on line 4. Now, at some later line---line 10, for example---we have decided that we want to repeat this. So we write it down again. We also add a citation which justifies what we have written. In this case, we write `A', to indicate that we are using the reiteration rule, and we write `$4$', to indicate that we have applied it to line $4$.
 
 Here is a general expression of the rule:
 \begin{highlighted}
-\begin{pf}
+\begin{fitchproof}
 	\ellipsesline
 	\have[m]{a}{\metaX}
 	\ellipsesline
 	\have[\ ]{c}{\metaX} \by{R}{a}
-\end{pf}
+\end{fitchproof}
 \end{highlighted}
 The point is that, if any sentence $\metaX$ occurs on some line, then we can repeat $\metaX$ on later lines. Each line of our proof must be justified by some rule, and here we have `R $m$'. This means: Reiteration, applied to line $m$.
 
 Two things need emphasising. First `$\metaX$' is not a sentence of TFL. Rather, it a symbol in the metalanguage, which we use when we want to talk about any sentence of TFL (see \S\ref{s:UseMention}). Second, and similarly, `$m$' is not a numeral that will appear on a proof. Rather, it is a symbol in the metalanguage, which we use when we want to talk about any line number of a proof. In an actual proof, the lines are numbered `$1$', `$2$', `$3$', and so forth. But when we define the rule, we use variables to underscore the point that the rule may be applied at any point.
 
 Why might this be useful? For example, we can now show $A\,\therefore\,A$ is valid using the proof:
-\begin{pf}
+\begin{fitchproof}
 \hypo{a}{A}
 \have{a}{A}\Reiteration{a}
-\end{pf}
+\end{fitchproof}
 The rule really becomes useful, though, once we are dealing with subproofs, which we will see in the next chapter.
 
 \section{Modus Ponens}
@@ -237,11 +237,11 @@ called \emph{Modus Ponens}.
 We introduce a rule of Natural Deduction which allows us to make this reasoning step. We will call it the ``Conditional Elimination'' rule ($\eif$E). This choice of name is because we {start} with something including the connective $\eif$ and we derive something without the connective, that is we have \emph{eliminated} the $\eif$ connective. For each connective we will have introduction and elimination rules, however we will wait until the next chapter to see Conditional Introduction.
 
 In a simple use of this rule, we might just use it to derive from the premises $S\eif F$ and $S$ the conclusion $F$:
-\begin{pf}
+\begin{fitchproof}
 	\hypo{ab}{S\eif F}
 	\hypo{a}{S}
 	\have{b}{F} \ce{ab,a}
-\end{pf}
+\end{fitchproof}
 This would then be a natural deduction proof that
 $S\eif F,\, S\,\therefore \, F$ is valid.
 
@@ -249,7 +249,7 @@ Each line, except for the premsies which are taken as assumptions, has to be lab
 
 We can also apply the rule when our $\metaX\eif \metaY$ and $\metaX$ are not themselves premises but have themselves been derived in the course of the proof.
 
-\begin{pf}
+\begin{fitchproof}
 	\hypo{assn1}{\text{Premise 1}}
 	\hypo{assn2}{\text{Premise 2}}
 	\have[\ ]{dots}{\;\raise-.65ex\hbox{\vdots}}
@@ -258,35 +258,35 @@ We can also apply the rule when our $\metaX\eif \metaY$ and $\metaX$ are not the
 	\have[15]{a}{S}\by{another rule}{}
 	\have[\ ]{dots}{\;\raise-.65ex\hbox{\vdots}}
 	\have[23]{b}{F} \ce{ab,a}
-\end{pf}
+\end{fitchproof}
 
 It also can be that they appear in a different order, or that one appears in the premises, for example:
-\begin{pf}
+\begin{fitchproof}
 	\hypo{a}{S}
 	\ellipsesline
 	\have[8]{ab}{S\eif F}
 	\ellipsesline
 	\have[23]{b}{F} \ce{ab,a}
-\end{pf}
+\end{fitchproof}
 
 We write our general rule as:
 \factoidbox{
-\begin{pf}
+\begin{fitchproof}
 	\ellipsesline
 	\have[m]{ab}{\metaX\eif\metaY}
 	\ellipsesline
 	\have[n]{a}{\metaX}
 	\ellipsesline
 	\have[\ ]{b}{\metaY} \ce{ab,a}
-\end{pf}}
+\end{fitchproof}}
 
 We can apply it to any $\metaX$ and $\metaY$.
 For example,
-\begin{pf}
+\begin{fitchproof}
 	\hypo{ab}{(A\eor B)\eif \enot F}
 	\hypo{a}{(A\eor B)}
 	\have{b}{\enot F} \ce{ab,a}
-\end{pf}
+\end{fitchproof}
 In this, $\metaX$ is $(A\eor B)$, and $\metaY$ is $\enot F$.
 
 %This rule is also sometimes called \emph{modus ponens}. Again, this is an elimination rule, because it allows us to obtain a sentence that may not contain `$\eif$', having started with a sentence that did contain `$\eif$'. Note that the conditional and the antecedent can be separated from one another, and they can appear in any order.
@@ -304,29 +304,29 @@ Our natural deduction system will capture this thought straightforwardly. In the
 		\item[B] Beth came to the party
 	\end{ekey}
 Perhaps we are working through a proof, and we have obtained `$A$' on line 8 and `$B$' on line 15. Then on any subsequent line we can obtain `$A \eand B$'. For example our proof might contain the following lines:
-\begin{pf}
+\begin{fitchproof}
 	\have[8]{a}{A}\hspace*{1em}
 	\have[15]{b}{B}\hspace*{1em}
 	\have[23]{c}{A \eand B} \ai{a, b}\hspace*{1em}
-\end{pf}
+\end{fitchproof}
 Note that every line of our proof must either be an assumption, or must be justified by some rule. We cite `$\eand$I 8, 15' here to indicate that the line is obtained by the rule of conjunction introduction ($\eand$I) applied to lines 8 and 15.
 %We could equally well obtain:
-%\begin{pf}
+%\begin{fitchproof}
 %	\have[8]{a}{R}
 %	\have[15]{b}{B}
 %	\have[\ ]{c}{B \eand R} \ai{b, a}
-%\end{pf}
+%\end{fitchproof}
 %with the citation reverse, to reflect the order of the conjuncts.
 More generally, here is our conjunction introduction rule:
 \factoidbox{
-\begin{pf}
+\begin{fitchproof}
 	\ellipsesline
 	\have[m]{a}{\metaX}
 		\ellipsesline
 	\have[n]{b}{\metaY}
 		\ellipsesline
 	\have[\ ]{c}{\metaX\eand\metaY} \ai{a, b}
-\end{pf}
+\end{fitchproof}
 }
 
 
@@ -347,20 +347,20 @@ The rule is called `conjunction \emph{introduction}' because it introduces the s
 \section{Conjunction Elimination}
 Correspondingly, we have a rule that \emph{eliminates} that symbol.  Suppose you have shown that Alice and Beth both came to the party. You are entitled to conclude that Alice came to the party. Equally, you are entitled to conclude that Beth came to the party. Putting this together, we obtain our conjunction elimination rule(s):
 \factoidbox{
-\begin{pf}
+\begin{fitchproof}
 	\ellipsesline
 	\have[m]{ab}{\metaX\eand\metaY}
 	\ellipsesline
 	\have[\ ]{a}{\metaX} \ae{ab}
-\end{pf}}
+\end{fitchproof}}
 and equally:
 \factoidbox{
-\begin{pf}
+\begin{fitchproof}
 \ellipsesline
 	\have[m]{ab}{\metaX\eand\metaY}
 	\ellipsesline
 	\have[\ ]{b}{\metaY} \ae{ab}
-\end{pf}}
+\end{fitchproof}}
 The point is simply that, when you have a conjunction on some line of a proof, you can obtain either of the conjuncts by {\eand}E. (One point, might be worth emphasising: you can only apply this rule when conjunction is the main logical operator. So you cannot infer `$D$' just from `$C \eor (D \eand E)$'!)
 
 Even with just these two rules, we can start to see some of the power of our formal proof system. Consider:
@@ -369,41 +369,41 @@ Even with just these two rules, we can start to see some of the power of our for
 \conc $\enot(E\eor F) \eand [(A\eor B)\eif(C\eor D)]$
 \end{earg}
 The main logical operator in both the premise and conclusion of this argument is `$\eand$'. In order to provide a proof, we begin by writing down the premise, which is our assumption. We draw a line below this: everything after this line must follow from our assumptions by (repeated applications of) our rules of inference. So the beginning of the proof looks like this:
-\begin{pf}
+\begin{fitchproof}
 	\hypo{ab}{{[}(A\eor B)\eif(C\eor D){]} \eand \enot(E\eor F)}
-\end{pf}
+\end{fitchproof}
 From the premise, we can get each of the conjuncts by {\eand}E. The proof now looks like this:
-\begin{pf}
+\begin{fitchproof}
 	\hypo{ab}{{[}(A\eor B)\eif(C\eor D){]} \eand \enot(E\eor F)}
 	\have{a}{{[}(A\eor B)\eif(C\eor D){]}} \ae{ab}
 	\have{b}{\enot(E\eor F)} \ae{ab}
-\end{pf}
+\end{fitchproof}
 So by applying the {\eand}I rule to lines 3 and 2 (in that order), we arrive at the desired conclusion. The finished proof looks like this:
-\begin{pf}
+\begin{fitchproof}
 	\hypo{ab}{{[}(A\eor B)\eif(C\eor D){]} \eand \enot(E\eor F)}
 
 	\have{a}{{[}(A\eor B)\eif(C\eor D){]}} \ae{ab}
 	\have{b}{\enot(E\eor F)} \ae{ab}
 	\have{ba}{\enot(E\eor F) \eand {[}(A\eor B)\eif(C\eor D){]}} \ai{b,a}
-\end{pf}
+\end{fitchproof}
 This is a very simple proof, but it shows how we can chain rules of proof together into longer proofs. In passing, note that investigating this argument with a truth table would have required a staggering 256 lines; our formal proof required only four lines.
 
 It is worth giving another example. Way back in \S\ref{s:MoreBracketingConventions}, we noted that this argument is valid:
 	$$A \eand (B \eand C) \therefore (A \eand B) \eand C$$
 To provide a proof corresponding with this argument, we start by writing:
-\begin{pf}
+\begin{fitchproof}
 	\hypo{ab}{A \eand (B \eand C)}
-\end{pf}
+\end{fitchproof}
 From the premise, we can get each of the conjuncts by applying $\eand$E twice. We can then apply $\eand$E twice more, so our proof looks like:
-\begin{pf}
+\begin{fitchproof}
 	\hypo{ab}{A \eand (B \eand C)}
 	\have{a}{A} \ae{ab}
 	\have{bc}{B \eand C} \ae{ab}
 	\have{b}{B} \ae{bc}
 	\have{c}{C} \ae{bc}
-\end{pf}
+\end{fitchproof}
 But now we can merrily reintroduce conjunctions in the order we wanted them, so that our final proof is:
-\begin{pf}
+\begin{fitchproof}
 	\hypo{abc}{A \eand (B \eand C)}
 	\have{a}{A} \ae{abc}
 	\have{bc}{B \eand C} \ae{abc}
@@ -411,15 +411,15 @@ But now we can merrily reintroduce conjunctions in the order we wanted them, so 
 	\have{c}{C} \ae{bc}
 	\have{ab}{A \eand B}\ai{a, b}
 	\have{con}{(A \eand B) \eand C}\ai{ab, c}
-\end{pf}
+\end{fitchproof}
 Recall that our official definition of sentences in TFL only allowed conjunctions with two conjuncts. The proof just given suggests that we could drop inner brackets in all of our proofs. However, this is not standard, and we will not do this. Instead, we will maintain our more austere bracketing conventions. (Though we will still allow ourselves to drop outermost brackets, for legibility.)
 
 Let me offer one final illustration. When using the $\eand$I rule, there is no requirement that it is applied to two different sentences. So we can formally prove `$A$' from `$A$' as follows:
-\begin{pf}
+\begin{fitchproof}
 	\hypo{a}{A}
 	\have{aa}{A \eand A}\ai{a, a}
 	\have{a2}{A}\ae{aa}
-\end{pf}
+\end{fitchproof}
 Simple, but effective. In fact this shows that we didn't need to have the rule of Reiteration as we could always argue by $\eand$I then $\eand$E. But for ease we will allow Reiteration as a basic rule so you don't have to argue this way.
 
 
@@ -432,35 +432,35 @@ Simple, but effective. In fact this shows that we didn't need to have the rule o
 %The rules we give, then, are very closely related to the rules for conjunction:
 %Two elimination rules
 %\factoidbox{
-%\begin{pf}
+%\begin{fitchproof}
 %\ellipsesline
 %\have[m]{ab}{\metaX\eiff\metaY}
 %\ellipsesline
 %\have[\ ]{b}{\metaX\eif\metaY}\iffE{ab}
-%\end{pf}and
-%\begin{pf}
+%\end{fitchproof}and
+%\begin{fitchproof}
 %\ellipsesline
 %\have[m]{ab}{\metaX\eiff\metaY}
 %\ellipsesline
 %\have[\ ]{b}{\metaY\eif\metaX}\iffE{ab}
-%\end{pf}
+%\end{fitchproof}
 %}and an introduction rule:
 %\factoidbox{
-%\begin{pf}
+%\begin{fitchproof}
 %\ellipsesline
 %\have[m]{a}{\metaX\eif\metaY}
 %\ellipsesline
 %\have[n]{b}{\metaY\eif\metaX}
 %\ellipsesline
 %\have[\ ]{ab}{\metaX\eiff\metaY}\iffI{a,b}
-%\end{pf}
+%\end{fitchproof}
 %}
 
 %The rules for the biconditional will be like double-barrelled versions of the rules for the conditional.
 %
 %In order to prove `$W \eiff X$', for instance, you must be able to prove `$X$' on the assumption `$W$' \emph{and} prove `$W$' on the assumption `$X$'. The biconditional introduction rule ({\eiff}I) therefore requires two subproofs. Schematically, the rule works like this:
 %\factoidbox{
-%\begin{pf}
+%\begin{fitchproof}
 %	\open
 %		\hypo[i]{a1}{\metaX}
 %		\have[j]{b1}{\metaY}
@@ -470,22 +470,22 @@ Simple, but effective. In fact this shows that we didn't need to have the rule o
 %		\have[l]{a2}{\metaX}
 %	\close
 %	\have[\ ]{ab}{\metaX\eiff\metaY}\bi{a1-b1,b2-a2}
-%\end{pf}}
+%\end{fitchproof}}
 %There can be as many lines as you like between $i$ and $j$, and as many lines as you like between $k$ and $l$. Moreover, the subproofs can come in any order, and the second subproof does not need to come immediately after the first.
 %
 %The biconditional elimination rule ({\eiff}E) lets you do a bit more than the conditional rule. If you have the left-hand subsentence of the biconditional, you can obtain the right-hand subsentence. If you have the right-hand subsentence, you can obtain the left-hand subsentence. So we allow:
 %\factoidbox{
-%\begin{pf}
+%\begin{fitchproof}
 %	\have[m]{ab}{\metaX\eiff\metaY}
 %	\have[n]{a}{\metaX}
 %	\have[\ ]{b}{\metaY} \be{ab,a}
-%\end{pf}}
+%\end{fitchproof}}
 %and equally:
-%\factoidbox{\begin{pf}
+%\factoidbox{\begin{fitchproof}
 %	\have[m]{ab}{\metaX\eiff\metaY}
 %	\have[n]{a}{\metaY}
 %	\have[\ ]{b}{\metaX} \be{ab,a}
-%\end{pf}}
+%\end{fitchproof}}
 %Note that the biconditional, and the right or left half, can be separated from one another, and they can appear in any order. However, in the citation for $\eiff$E, we always cite the biconditional first.
 
 \section{Disjunction Introduction}
@@ -494,24 +494,24 @@ Suppose Alice came to the party. Then Alice or Beth came to the party. After all
 Let me emphasize this point. Suppose Alice came to the party. It follows that Alice came to the party \emph{or} I am the Queen of England. Equally, it follows that Alice or the Queen came to the party.  Equally, it follows that Alice came to the party \emph{or} that God is dead. Many of these are strange inferences to draw, but there is nothing \emph{logically} wrong with them (even if they maybe violate all sorts of implicit conversational norms).
 
 Armed with all this, we present the disjunction introduction rule(s):
-\factoidbox{\begin{pf}
+\factoidbox{\begin{fitchproof}
 \ellipsesline
 	\have[m]{a}{\metaX}
 	\ellipsesline
 	\have[\ ]{ab}{\metaX\eor\metaY}\oi{a}
-\end{pf}
+\end{fitchproof}
 and
-\begin{pf}
+\begin{fitchproof}
 \ellipsesline
 	\have[m]{a}{\metaX}
 	\ellipsesline
 	\have[\ ]{ba}{\metaY\eor\metaX}\oi{a}
-\end{pf}}
+\end{fitchproof}}
 Notice that \metaY can be \emph{any} sentence whatsoever, so the following is a perfectly acceptable proof:
-\begin{pf}
+\begin{fitchproof}
 	\hypo{m}{M}
 	\have{mmm}{M \eor ([(A\eiff B) \eif (C \eand D)] \eiff [E \eand F])}\oi{m}
-\end{pf}
+\end{fitchproof}
 Using a truth table to show this would have taken 128 lines.
 
 
@@ -521,10 +521,10 @@ In \S\ref{s:TautologiesAndContradictions} we saw that $A\eor\enot A$ is a tautol
 The rule \emph{Law of Excluded Middle} encodes this fact: it simply says that you are always allowed to write $\metaX\eor\enot\metaX$:
 
 \factoidbox{
-	\begin{pf}
+	\begin{fitchproof}
 	\ellipsesline
 	\have[\ ]{lem}{\metaX\eor\enot\metaX}\LEM
-	\end{pf}
+	\end{fitchproof}
 }
 
 As always, $\metaX$ can be whatever you want, e.g.~$(A\eand(B\eif C))$. Then the rule tells us, e.g.~that you can write $(A\eand(B\eif C))\eor\enot(A\eand(B\eif C))$ on any line of the proof.
@@ -533,12 +533,12 @@ As always, $\metaX$ can be whatever you want, e.g.~$(A\eand(B\eif C))$. Then the
 %To see the rule in action, consider:
 %$$A\eif B,\enot A\eif B\;\therefore B$$
 %We can give the following proof to show this is valid:
-%\begin{pf}
+%\begin{fitchproof}
 %	\hypo{a}{A\eif B}
 %	\hypo{b}{\enot A\eif B}
 %	\have{lem}{A\eor\enot A}\LEM
 %	\have{conc}{B}\orE{a,b,lem}
-%\end{pf}
+%\end{fitchproof}
 The law of Excluded Middle is often used in combination with Disjunction Elimination. 
 However, we will not yet introduce Disjunction Elimination. It will be introduced in \S\ref{s:orE}. That's when we'll see the full power of the LEM rule. 
 
@@ -551,7 +551,7 @@ However, we will not yet introduce Disjunction Elimination. It will be introduce
 %Suppose that we can show that if it's sunny outside, then Bill will have brought an umbrella (for fear of burning). Suppose we can also show that, if it's not sunny outside, then Bill will have brought an umbrella (for fear of rain). Well, there is no third way for the weather to be. So, \emph{whatever the weather}, Bill will have brought an umbrella.
 %
 %This line of thinking motivates the following rule:
-%\factoidbox{\begin{pf}
+%\factoidbox{\begin{fitchproof}
 %		\open
 %			\hypo[i]{a}{\metaX}
 %			\have[j]{c1}{\metaY}
@@ -561,7 +561,7 @@ However, we will not yet introduce Disjunction Elimination. It will be introduce
 %			\have[l]{c2}{\metaY}
 %		\close
 %		\have[\ ]{ab}{\metaY}\tnd{a-c1,b-c2}
-%	\end{pf}}
+%	\end{fitchproof}}
 %The rule is sometimes called \emph{tertium non datur}, which means `no third way'. There can be as many lines as you like between $i$ and $j$, and as many lines as you like between $k$ and $l$. Moreover, the subproofs can come in any order, and the second subproof does not need to come immediately after the first.
 
 
@@ -572,25 +572,25 @@ However, we will not yet introduce Disjunction Elimination. It will be introduce
 %\subsection{Contradiction Introduction}
 %An effective form of argument is to argue your opponent into contradicting themselves. At that point, you have them on the ropes. They have to give up at least one of their assumptions. We are going to make use of this idea in our proof system, by adding a new symbol, `$\ered$', to our proofs. This should be read as something like `contradiction!'\ or `reductio!'\ or `but that's absurd!'  The rule for introducing this symbol is that we can use it whenever we explicitly contradict ourselves, i.e.\ whenever we find both a sentence and its negation appearing in our proof:
 %\factoidbox{
-%\begin{pf}
+%\begin{fitchproof}
 %\ellipsesline
 %\have[m]{a}{\metaX}
 %\ellipsesline
 %\have[n]{na}{\enot\metaX}
 %\ellipsesline
 %\have[ ]{bot}{\ered}\ri{a, na}
-%\end{pf}}
+%\end{fitchproof}}
 %It does not matter what order the sentence and its negation appear in, and they do not need to appear on adjacent lines.
 %
 %%This rule is also called Negation Elimination as it eliminates the $\enot$.
 %
 %\subsection{Contradiction Elimination}
 %Our elimination rule for `$\ered$' is known as \emph{ex falso quod libet}, or \emph{explosion}. This means `anything follows from a contradiction', and the idea is precisely that: if we obtained a contradiction, symbolized by `$\ered$', then we can infer whatever we like. How can this be motivated, as a rule of argumentation? Well, consider the English rhetorical device `\ldots and if \emph{that's} true, I'll eat my hat'. Since contradictions simply cannot be true, if one \emph{i}s true then not only will I eat my hat, I'll have it too.\footnote{Thanks to Adam Caulton for this.} Here is the formal rule:
-%\factoidbox{\begin{pf}
+%\factoidbox{\begin{fitchproof}
 %\ellipsesline
 %\have[m]{bot}{\ered}
 %\have[ ]{}{\metaX}\re{bot}
-%\end{pf}}
+%\end{fitchproof}}
 %Note that \metaX can be \emph{any} sentence whatsoever.
 %
 %A final remark. We have said that `$\ered$' should be read as something like `contradiction!' but this does not tell us much about the symbol. There are, roughly, three ways to approach the symbol.
@@ -625,25 +625,25 @@ Sometimes, though, this won't yet be possible. For that, we need to finish off o
 \problempart
 The following  `proofs' are \emph{incorrect}. Explain the mistakes they make.
 
-\begin{pf}
+\begin{fitchproof}
 \hypo{abc}{A \eand (B \eand C)}
 \hypo{bcd}{(B \eor C) \eif D}
 \have{b}{B}\ae{abc}
 \have{bc}{B \eor C}\oi{b}
 \have{d}{D}\ce{bc, bcd}
-\end{pf}
+\end{fitchproof}
 
 \problempart
 The following proofs are missing their citations (rule and line numbers). Add them, to turn them into \emph{bona fide} proofs. Additionally, write down the argument that corresponds to each proof.
 
-\begin{pf}
+\begin{fitchproof}
 \hypo{ps}{P \eand S}
 \hypo{nsor}{S \eif R}
 %\have{p}{P}%\ae{ps}
 \have{s}{S}%\ae{ps}
 \have{r}{R}%\ce{nsor, s}
 \have{re}{A \eor E}%\oi{r}
-\end{pf}
+\end{fitchproof}
 
 \solutions
 \problempart
@@ -651,7 +651,18 @@ The following proofs are missing their citations (rule and line numbers). Add th
 Give a proof corresponding to each of the following arguments:
 \begin{enumerate}
 \item $A\eand (B\eor C)\,\therefore\,(B\eor C)\eand A$
+\begin{fitchproof}
+	\have[p]{prem}{A \eand (B \eor C)}
+	\have[a]{A}{A} \andE{prem}
+	\have[bc]{BorC}{B \eor C} \andE{prem}
+	\have[]{goal}{(B \eor C) \eand A} \andI{bc,a}
+\end{fitchproof}
 \item $(A\eor\enot A)\eif B\,\therefore\, B$
+\begin{fitchproof}
+	\have[c]{cond}{(A \eor \enot A) \eif B}
+	\have[l]{lem}{A \eor \enot A} \LEM
+	\have[]{Bres}{B} \ifE{cond,lem}
+\end{fitchproof}
 \end{enumerate}
 
 
@@ -673,71 +684,71 @@ If someone doubted that this was valid, we might try to convince them otherwise 
 	\end{quote}
 
 We might write this in a form that is closer to our natural deduction format:
-\begin{pf}
+\begin{fitchproof}
 	\hypo{r}{\text{Alice came to the party}}
 	\open
 		\hypo{l}{\text{Beth came to the party}}
 		\have{rl}{\text{Both Alice and Beth came to the party}}\ai{r, l}
 		\close
 	\have{con}{\parbox[t]{.8\textwidth}{Thus, \emph{if} Beth came to the party, both Alice and Beth came.}}\ci{l-rl}
-\end{pf}\medskip
+\end{fitchproof}\medskip
 The natural deduction format of lines and indentations is there to replace the words and context like ``suppose that''. The ``suppose that'' used on line 2 is represented in the formal system by the indentation and additional line. And like the premises, this line does not need to be justified, it is taken as an assumption, and a line underneath it is drawn. What comes underneath this, on line 3, is still indented, and is within the context of the supposition that Beth came to the party. But once we move to line 4, the additional assumption is no longer in place. It has been \emph{discharged}.
 
 Now let's present this again a little more formally: We started with one premise, `Alice came to the party', thus:
-	\begin{pf}
+	\begin{fitchproof}
 		\hypo{r}{A}
-	\end{pf}
+	\end{fitchproof}
 The next thing we did is to make an \emph{additional} assumption (`Beth came to the party'), for the sake of argument. To indicate that we are no longer dealing \emph{merely} with our original assumption (`$A$'), but with some additional assumption, we continue our proof as follows:
-	\begin{pf}
+	\begin{fitchproof}
 	\hypo{r}{A}
 		\open
 			\hypo{l}{B}
-	\end{pf}
+	\end{fitchproof}
 Note that we are \emph{not} claiming, on line 2, to have proved `$B$' from line 1, so we do not need to write in any justification for the additional assumption on line 2. We do, however, need to mark that it is an additional assumption. We do this by drawing a line under it (to indicate that it is an assumption) and by indenting it with a further vertical line (to indicate that it is additional).
 
 With this extra assumption in place, we are in a position to use $\eand$I. So we can continue our proof:
-	\begin{pf}
+	\begin{fitchproof}
 		\hypo{r}{A}
 		\open
 			\hypo{l}{B}
 			\have{rl}{A \eand B}\ai{r, l}
-	\end{pf}
+	\end{fitchproof}
 So we have now shown that, on the additional assumption, `$B$', we can obtain `$A \eand B$'. We can therefore conclude that, if `$B$' obtains, then so does `$A \eand B$'. Or, to put it more briefly, we can conclude `$B \eif (A \eand B)$':
-	\begin{pf}
+	\begin{fitchproof}
 		\hypo{r}{A}
 		\open
 			\hypo{l}{B}
 			\have{rl}{A \eand B}\ai{r, l}
 			\close
 		\have{con}{B\eif(A\eand B)}\ci{l-rl}
-	\end{pf}
+	\end{fitchproof}
 Observe that we have dropped back to using one vertical line.  We have \emph{discharged} the additional assumption, `$B$', since the conditional itself follows just from our original assumption, `$A$'.
 
 The general pattern at work here is the following. We first make an additional assumption, \metaX; and from that additional assumption, we prove \metaY. In that case, we know the following: If \metaX, then \metaY. This is wrapped up in the rule for conditional introduction:
 \factoidbox{
-	\begin{pf}
+	\begin{fitchproof}
 	\open
 		\hypo[m]{a}{\metaX}
 		\ellipsesline
 		\have[n]{b}{\metaY}
 	\close
 	\have[\ ]{ab}{\metaX\eif\metaY}\ci{a-b}
-	\end{pf}}
+	\end{fitchproof}}
 There can be as many or as few lines as you like between lines $m$ and $n$.
 
 It will help to offer a second  illustration of $\eif$I in action. Suppose we want to consider the following:
 	$$P \eif Q, Q \eif R \therefore P \eif R$$
 We start by listing \emph{both} of our premises. Then, since we want to arrive at a conditional (namely, `$P \eif R$'), we additionally assume the antecedent to that conditional. Thus our main proof starts:
-\begin{pf}
+\begin{fitchproof}
 	\hypo{pq}{P \eif Q}
 	\hypo{qr}{Q \eif R}
 	\open
 		\hypo{p}{P}
 	\close
-\end{pf}
+\end{fitchproof}
 Note that we have made `$P$' available, by treating it as an additional assumption, but now, we can use {\eif}E on the first premise. This will yield `$Q$'. We can then use {\eif}E on the second premise. So, by assuming `$P$' we were able to prove `$R$', so we apply the {\eif}I rule---discharging `$P$'---and finish the proof. Putting all this together, we have:
 \label{HSproof}
-\begin{pf}
+\begin{fitchproof}
 	\hypo{pq}{P \eif Q}
 	\hypo{qr}{Q \eif R}
 	\open
@@ -746,10 +757,10 @@ Note that we have made `$P$' available, by treating it as an additional assumpti
 		\have{r}{R}\ce{qr,q}
 	\close
 	\have{pr}{P \eif R}\ci{p-r}
-\end{pf}
+\end{fitchproof}
 
 The subproof also doesn't need to start immediately. For example:
-\begin{pf}
+\begin{fitchproof}
 	\hypo{pqo}{(P \eif Q)\eand O}
 	\hypo{qr}{Q\eif R}
 	\have{pq}{P\eif Q}\andE{pqo}
@@ -759,23 +770,23 @@ The subproof also doesn't need to start immediately. For example:
 		\have{r}{R}\ce{qr,q}
 	\close
 	\have{pr}{P \eif R}\ci{p-r}
-\end{pf}
+\end{fitchproof}
 %\section{Reiteration}\label{s:Reiteration}
 %When using subproofs, as we did for Conditional Introduction, we introduce one more rule which will be useful.
 %
 %If you already have shown something in the course of a proof, the \emph{reiteration rule} allows you to repeat it on a new line. For example:
-%\begin{pf}
+%\begin{fitchproof}
 %	\have[4]{a1}{A \eand B}
 %	\have[$\vdots$]{}{\vdots}
 %	\have[10]{a2}{A \eand B} \by{R}{a1}
-%\end{pf}
+%\end{fitchproof}
 %This indicates that we have written `$A \eand B$' on line 4. Now, at some later line---line 10, for example---we have decided that we want to repeat this. So we write it down again. We also add a citation which justifies what we have written. In this case, we write `R', to indicate that we are using the reiteration rule, and we write `$4$', to indicate that we have applied it to line $4$.
 %
 %Here is a general expression of the rule:
-%\begin{pf}
+%\begin{fitchproof}
 %	\have[m]{a}{\metaX}
 %	\have[\ ]{c}{\metaX} \by{R}{a}
-%\end{pf}
+%\end{fitchproof}
 %The point is that, if any sentence $\metaX$ occurs on some line, then we can repeat $\metaX$ on later lines. Each line of our proof must be justified by some rule, and here we have `R $m$'. This means: Reiteration, applied to line $m$.
 %
 %Two things need emphasising. First `$\metaX$' is not a sentence of TFL. Rather, it a symbol in the metalanguage, which we use when we want to talk about any sentence of TFL (see \S\ref{s:UseMention}). Second, and similarly, `$m$' is not a numeral that will appear on a proof. Rather, it is a symbol in the metalanguage, which we use when we want to talk about any line number of a proof. In an actual proof, the lines are numbered `$1$', `$2$', `$3$', and so forth. But when we define the rule, we use variables to underscore the point that the rule may be applied at any point.
@@ -789,7 +800,7 @@ Suppose that  Alice came to the party or Beth came to the party. What can you co
 
 But suppose that we could somehow show both of the following: first, that Alice coming to the party entails that it was fun: second, that Beth coming to the party entails that it was fun. Then if we know that Alice or Beth came to the party, then we know that either way, it was fun. This insight can be expressed in the following rule, which is our disjunction elimination ($\eor$E) rule:
 \factoidbox{
-	\begin{pf}
+	\begin{fitchproof}
 		\have[m]{ab}{\metaX\eor\metaY}
 %		\have[i]{i}{\metaX\to\metaZ}
 %		\have[j]{j}{\metaY\to\metaZ}
@@ -805,7 +816,7 @@ But suppose that we could somehow show both of the following: first, that Alice 
 			\have[l]{c2}{\metaZ}
 		\close
 		\have[\ ]{c}{\metaZ} \orE{ab,a-c1,b-c2}
-	\end{pf}}
+	\end{fitchproof}}
 This is obviously a bit clunkier to write down than our previous rules, but the point is fairly simple. Suppose we have some disjunction, $\metaX \eor \metaY$. Suppose we have two
 subproofs,
 showing us that $\metaZ$ follows from
@@ -822,7 +833,7 @@ can come in any order, and do not have to be adjacent.
 Some examples might help illustrate this. Consider this argument:
 $$(P \eand Q) \eor (P \eand R) \therefore P$$
 A proof corresponding to this argument is:
-	\begin{pf}
+	\begin{fitchproof}
 		\hypo{prem}{(P \eand Q) \eor (P \eand R) }
 			\open
 				\hypo{pq}{P \eand Q}
@@ -836,7 +847,7 @@ A proof corresponding to this argument is:
 %			\have{prp}{(P \eand R) \eif P} {\ci{pr-p2}}
 		\have{con}{P}\oe{prem, pq-p1, pr-p2}
 %		\have{con}{P}\oe{prem, pq-p1, pr-p2}
-	\end{pf}
+	\end{fitchproof}
 
 
 
@@ -860,7 +871,7 @@ A proof corresponding to this argument is:
 	}
 
 
-	\begin{pf}
+	\begin{fitchproof}
 		\have{lem}{\text{{Bob is either happy or he's not happy}}}%\LEM
 		\open
 		\hypo{b}{\text{{Suppose Bob is happy}}}
@@ -875,7 +886,7 @@ A proof corresponding to this argument is:
 		\close
 	%\have{babc}{\parbox{.8\textwidth}{{If Bob is not happy then someone who is happy is looking at someone who is not happy}}}\vspace*{1em}
 		\have{con}{\text{Therefore, someone who is happy is looking at someone who is not.}}%\orE{lem,b-abc,b2-abc2}
-	\end{pf}
+	\end{fitchproof}
 
 	Are you convinced now that someone who is happy is looking at someone who is not happy? If not, find a friend and work through it together. Sometimes it can really help to try walking through the argument together.
 
@@ -886,7 +897,7 @@ A proof corresponding to this argument is:
 %Here is a slightly harder example. Consider:
 %	$$ A \eand (B \eor C) \therefore (A \eand B) \eor (A \eand C)$$
 %Here is a proof corresponding to this argument:
-%	\begin{pf}
+%	\begin{fitchproof}
 %		\hypo{aboc}{A \eand (B \eor C)}
 %		\have{a}{A}\ae{aboc}
 %		\have{boc}{B \eor C}\ae{aboc}
@@ -904,7 +915,7 @@ A proof corresponding to this argument is:
 %%	\have{cconc}{C \eif ((A \eand B) \eor (A \eand C))}{\ci{c-aco}}
 %\have{con}{(A \eand B) \eor (A \eand C)}\oe{boc, b-abo, c-aco}
 %%\have{con}{(A \eand B) \eor (A \eand C)}\oe{boc, bconc, cconc}
-%	\end{pf}
+%	\end{fitchproof}
 %Don't be alarmed if you think that you wouldn't have been able to come up with this proof yourself. The ability to come up with novel proofs will come with practice. The key question at this stage is whether, looking at the proof, you can see that it conforms with the rules that we have laid down. That just involves checking every line, and making sure that it is justified in accordance with the rules we have laid down.
 
 
@@ -916,7 +927,7 @@ A proof corresponding to this argument is:
 One more example:
 $$P \therefore (P \eand D) \eor (P \eand \enot D)$$
 Here is a proof corresponding with the argument:
-\begin{pf}
+\begin{fitchproof}
 	\hypo{a}{P}
 	\have{lem}{D\eor\enot D}\LEM
 	\open
@@ -932,13 +943,13 @@ Here is a proof corresponding with the argument:
 	\close
 %\have{ndconc}{\enot D \eif ((P \eand D) \eor (P \eand \enot D))}{\ci{b-abo}}
 	\have{con}{(P \eand D) \eor (P \eand \enot D)}\orE{lem,b-abo,nb-anbo}
-\end{pf}
+\end{fitchproof}
 \section{Negation}
 \subsection{Negation Introduction}
 If assuming something leads you to a contradiction, then the assumption must be wrong. 
 %We have a contradiction when we both have $\metaY$ and $\enot\metaY$ for some sentence $\metaY$. So if assuming $\metaX$ leads to both $\metaY$ and $\enot\metaY$, then $\metaX$ must be false.  
 This thought motivates the following rule:
-\factoidbox{\begin{pf}
+\factoidbox{\begin{fitchproof}
 \open
 	\hypo[m]{a}{\metaX}
 	\ellipsesline
@@ -949,13 +960,13 @@ This thought motivates the following rule:
 \have[\ ]{na}{\enot\metaX}\ni{a-bot}
 %\have[m]{axx}{\metaX \eif \ered}
 %\have[\ ]{na}{\enot\metaX}\ni{axx}
-\end{pf}}
+\end{fitchproof}}
 %There can be as many lines between $i$ and $j$ as you like.
 It does not matter whether in the subproof you first derive $\metaY$ and then derive $\enot\metaY$ or whether you first derive $\enot\metaY$ and the derive $\metaY$. It is only important that in the subproof you derive both $\metaY$ and $\enot\metaY$.
 
 To see this in practice, and interacting with negation, consider this proof:
 
-	\begin{pf}
+	\begin{fitchproof}
 		\hypo{d}{D}
 		\open
 			\hypo{nd}{\enot D}
@@ -966,7 +977,7 @@ To see this in practice, and interacting with negation, consider this proof:
 %		\have{ndxx}{\enot D \eif \ered}{\ci{nd-ndr}}
 		\have{con}{\enot\enot D}\notI{nd-ndr} %contradiction in d2,nd2
 %		\have{con}{\enot\enot D}\ni{ndxx}
-	\end{pf}
+	\end{fitchproof}
 
 \subsection{Negation Elimination} \todo[inline]{CCM Nov 23: 
 Should definitely ahve this instead of LEM as students always accidently use it anyway.
@@ -982,7 +993,7 @@ The negation elimination rule is quite similar.
 %
 We motivate the rule by the following thought:
 If assuming that something is false leads you to a contradiction, then that assumption must be wrong --- and so that `something' must in fact be true. In other words, if we assume $\enot\metaX$ and derive a contradiction, then we can conclude $\metaX$: we eliminate the negation.
-\factoidbox{\begin{pf}
+\factoidbox{\begin{fitchproof}
 \open
 	\hypo[m]{a}{\enot\metaX}
 	\ellipsesline
@@ -993,7 +1004,7 @@ If assuming that something is false leads you to a contradiction, then that assu
 \have[\ ]{na}{\metaX}\notE{a-y}
 %\have[m]{axx}{\metaX \eif \ered}
 %\have[\ ]{na}{\enot\metaX}\ni{axx}
-\end{pf}}
+\end{fitchproof}}
 Formally, the rule is very similar to $\enot$I, but they are different.\footnote{There are logicians who accept $\enot$I but reject $\enot$E. They are called ``intuitionists.'' Intuitionists reject the law of excluded middle. They don't buy our basic assumption that every sentence has one of two truth values, true or false. For intuitionists, $\metaX$ and $\enot\enot\metaX$ are not equivalent. 
 %To get the system of intuitionist logic, we reject $\enot$E and LEM. We then need to add the rule of explosion as a basic rule. This rule is derivable in our system.
 } They switch $\metaX$ and $\enot\metaX$. 
@@ -1007,7 +1018,7 @@ For example it is used to show there are infinitely many prime numbers. We assum
 
 
 To see this rule in action, here is an example proof using it:
-	\begin{pf}
+	\begin{fitchproof}
 		\hypo{d}{\enot\enot D}
 		\open
 			\hypo{nd}{\enot D}
@@ -1017,12 +1028,12 @@ To see this rule in action, here is an example proof using it:
 %			\have{red}{\enot D\eand\enot\enot D}\andI{nd2,nnd}
 		\close
 		\have{con}{D}\notE{nd-red}
-	\end{pf}
+	\end{fitchproof}
 	Here $\metaX$ is $D$ and $\metaY$ is $\enot D$. 
 
 
 This rule also allows us to prove that anything follows from a contradiction. For example:
-	\begin{pf}
+	\begin{fitchproof}
 		\hypo{a}{A}
 		\hypo{na}{\enot A}
 		\open
@@ -1032,13 +1043,13 @@ This rule also allows us to prove that anything follows from a contradiction. Fo
 			\have{ana}{A\eand\enot A}\andI{a,na}
 		\close
 		\have{b}{B}\notE{nb-ana}
-	\end{pf}
+	\end{fitchproof}
 	
 \section{Additional assumptions and subproofs}
 The rules we have just seen involve the idea of making additional assumptions. These need to be handled with some care.
 
 Consider this proof:
-\begin{pf}
+\begin{fitchproof}
 	\hypo{a}{A}
 	\open
 		\hypo{b1}{B}
@@ -1046,11 +1057,11 @@ Consider this proof:
 		\have{b2}{B} \Reiteration{b1}
 	\close
 	\have{con}{B \eif B}\ci{b1-b2}
-\end{pf}
+\end{fitchproof}
 This is perfectly in keeping with the rules we have laid down already, and it should not seem particularly strange. Since `$B \eif B$' is a tautology, no particular premises should be required to prove it.
 
 But suppose we now tried to continue the proof as follows:
-\begin{pf}
+\begin{fitchproof}
 	\hypo{a}{A}
 	\open
 		\hypo{b1}{B}
@@ -1059,7 +1070,7 @@ But suppose we now tried to continue the proof as follows:
 	\close
 	\have{con}{B \eif B}\ci{b1-b2}
 	\have{b}{B}\by{naughty attempt to invoke $\eif$E}{con, b2}
-\end{pf}
+\end{fitchproof}
 If we were allowed to do this, it would be a disaster. It would allow us to prove any atomic sentence letter from any other atomic sentence letter. However, if you tell me that Anne is fast (symbolized by `$A$'), we shouldn't be able to conclude that Queen Boudica stood twenty-feet tall (symbolized by `$B$')! We must be prohibited from doing this, but how are we to implement the prohibition?
 
 We can describe the process of making an additional assumption as one of performing a \emph{subproof}: a subsidiary proof within the main proof. When we start a subproof, we draw another vertical line to indicate that we are no longer in the main proof. Then we write in the assumption upon which the subproof will be based. A subproof can be thought of as essentially posing this question: \emph{what could we show, if we also make this additional assumption?}
@@ -1075,7 +1086,7 @@ This stipulation rules out the disastrous attempted proof above. The rule of $\e
 Subproofs, then, allow us to think about what we could show, if we made additional assumptions. The point to take away from this is not surprising---in the course of a proof, we have to keep very careful track of what assumptions we are making, at any given moment. Our proof system does this very graphically. (Indeed, that's precisely why we have chosen to use \emph{this} proof system.)
 
 Once we have started thinking about what we can show by making additional assumptions, nothing stops us from posing the question of what we could show if we were to make \emph{even more} assumptions. This might motivate us to introduce a subproof within a subproof. Here is an example which only uses the rules of proof that we have considered so far:
-\begin{pf}
+\begin{fitchproof}
 \hypo{a}{A}
 \open
 	\hypo{b}{B}
@@ -1086,11 +1097,11 @@ Once we have started thinking about what we can show by making additional assump
 	\have{cab}{C \eif (A \eand B)}\ci{c-ab}
 \close
 \have{bcab}{B \eif (C \eif (A \eand B))}\ci{b-cab}
-\end{pf}
+\end{fitchproof}
 Notice that the citation on line 4 refers back to the initial assumption (on line 1) and an assumption of a subproof (on line 2). This is perfectly in order, since neither assumption has been discharged at the time (i.e.\ by line 4).
 
 Again, though, we need to keep careful track of what we are assuming at any given moment. Suppose we tried to continue the proof as follows:
-\begin{pf}
+\begin{fitchproof}
 \hypo{a}{A}
 \open
 	\hypo{b}{B}
@@ -1102,7 +1113,7 @@ Again, though, we need to keep careful track of what we are assuming at any give
 \close
 \have{bcab}{B \eif(C \eif (A \eand B))}\ci{b-cab}
 \have{bcab}{C \eif (A \eand B)}\by{naughty attempt to invoke $\eif$I}{c-ab}
-\end{pf}
+\end{fitchproof}
 This would be awful. If we tell you that Anne is smart, you should not be able to infer that, if Cath is smart (symbolized by `$C$') then \emph{both} Anne is smart and Queen Boudica stood 20-feet tall! But this is just what such a proof would suggest, if it were permissible.
 
 The essential problem is that the subproof that began with the assumption `$C$' depended crucially on the fact that we had assumed `$B$' on line 2. By line 6, we have \emph{discharged} the assumption `$B$': we have stopped asking ourselves what we could show, if we also assumed `$B$'. So it is simply cheating, to try to help ourselves (on line 7) to the subproof that began with the assumption `$C$'. Thus we stipulate, much as before:
@@ -1150,7 +1161,7 @@ If the argument is actually valid (which is defined using truth-tables) there wi
 
 \problempart
 The following two `proofs' are \emph{incorrect}. Explain the mistakes they make.
-\begin{pf}
+\begin{fitchproof}
 \hypo{abc}{\enot L \eif (A \eand L)}
 \have{lem}{L\eor\enot L}\LEM
 \open
@@ -1167,29 +1178,29 @@ The following two `proofs' are \emph{incorrect}. Explain the mistakes they make.
 	\have{a2}{A}\by{$\enot$E}{la-nlr}
 \close
 \have{con}{A}\orE{lem,nl-a, l-a2}
-\end{pf}
+\end{fitchproof}
 
-\begin{pf}
+\begin{fitchproof}
 \hypo{abc}{A \eand (B \eand C)}
 \hypo{bcd}{(B \eor C) \eif D}
 \have{b}{B}\ae{abc}
 \have{bc}{B \eor C}\oi{b}
 \have{d}{D}\ce{bc, bcd}
-\end{pf}
+\end{fitchproof}
 \newpage
 \problempart
 The following three proofs are missing their citations (rule and line numbers). Add them, to turn them into \emph{bona fide} proofs. Additionally, write down the argument that corresponds to each proof.
 \begin{multicols}{2}
-\begin{pf}
+\begin{fitchproof}
 \hypo{ps}{P \eand S}
 \hypo{nsor}{S \eif R}
 %\have{p}{P}%\ae{ps}
 \have{s}{S}%\ae{ps}
 \have{r}{R}%\ce{nsor, s}
 \have{re}{R \eor E}%\oi{r}
-\end{pf}
+\end{fitchproof}
 
-\begin{pf}
+\begin{fitchproof}
 \hypo{ad}{A \eif D}
 \open
 	\hypo{ab}{A \eand B}
@@ -1198,9 +1209,9 @@ The following three proofs are missing their citations (rule and line numbers). 
 	\have{de}{D \eor E}%\oi{d}
 \close
 \have{conc}{(A \eand B) \eif (D \eor E)}%\ci{ab-de}
-\end{pf}
+\end{fitchproof}
 
-\begin{pf}
+\begin{fitchproof}
 \hypo{nlcjol}{\enot L \eif (J \eor L)}
 \hypo{nl}{\enot L}
 \have{jol}{J \eor L}%\ce{nlcjol, nl}
@@ -1219,7 +1230,7 @@ The following three proofs are missing their citations (rule and line numbers). 
 \have{ltoj}{L \eif J}%{\ci{l-j3}}
 %\have{conc}{J}%\oe{jol, j-j2, l-j3}
 \have{conc}{J}%\oe{jol, jtoj, ltoj}
-\end{pf}
+\end{fitchproof}
 \end{multicols}
 
 \solutions
@@ -1234,17 +1245,17 @@ The system of rules we have set up is not just a game. It helps us understand th
 An argument
 $\metaX_1, \metaX_2, \ldots, \metaX_n\,\therefore\, \metaY$
 may have a proof in the system of natural deduction. Such a proof may look something like:
-\begin{pf}
+\begin{fitchproof}
 	\hypo{1}{\metaX_1}
 	\hypo{2}{\metaX_2}
 %		\hypoellipsesline
 	\hypo[n]{n}{\metaX_n}
 	\ellipsesline
 	\have[\ ]{y}{\metaY}
-\end{pf}
+\end{fitchproof}
 That is, it will start with the premises as assumptions, and proceed following the rules we have given and finishing with the conclusion.
 It might also have subproofs along the way, something like:
-\begin{pf}
+\begin{fitchproof}
 	\hypo{1}{\metaX_1}
 	\hypo{2}{\metaX_2}
 %		\hypoellipsesline
@@ -1261,25 +1272,25 @@ It might also have subproofs along the way, something like:
 	\close
 	\ellipsesline
 	\have[\ ]{y}{\metaY}
-\end{pf}
+\end{fitchproof}
 But any subproofs need to have been closed by the time we get to $\metaY$.
 So, for example if we gave
-\begin{pf}
+\begin{fitchproof}
 	\hypo{1}{A}
 	\open
 		\hypo{b}{B}
 		\have{b2}{B}\Reiteration{b}
 		\close
-\end{pf}
+\end{fitchproof}
 this does not count as a proof corresponding to the argument $A\,\therefore\,B$.
-But \begin{pf}
+But \begin{fitchproof}
 	\hypo{1}{A}
 	\open
 		\hypo{b}{B}
 		\have{b2}{B}\Reiteration{b}
 		\close
 		\have{bb}{B\eif B}\ifI{b-b2}
-\end{pf}
+\end{fitchproof}
 counts as a proof corresponding to $A\therefore B\eif B$ as the subproof has been closed on line 4.
 
 So we have now said when we have a proof in our natural deduction system that corresponds to a particular argument. If we can find a proof then we know that the argument is valid.
@@ -1288,14 +1299,14 @@ If there is a proof in natural deduction corresponding to the argument $\metaX_1
 \end{highlighted}
 This property of our proof system is called \define{soundness}. It holds because we only chose rules that matched valid reasoning steps.
 Recall that $A\eif B, B\,\therefore\, A$ is invalid. Had we added a rule such as
-	\begin{pf}
+	\begin{fitchproof}
 	\ellipsesline
 	\have[n]{ab}{\metaX\eif\metaY}
 	\ellipsesline
 	\have[m]{a}{\metaY}
 	\ellipsesline
 	\have[\ ]{b}{\metaX}\by{Do not do this. Does not follow from}{ab,a}
-	\end{pf}
+	\end{fitchproof}
 
 	we would then have been able to construct a proof corresponding to the invalid argument $A\eif B, B\,\therefore\, A$.
 We do not have such a rule in our system. All the rules we gave in our system will result in proofs of valid arguments.
@@ -1345,12 +1356,12 @@ In \S\ref{s:BasicTFL}, we introduced the basic rules of our proof system for TFL
 
 %\section{Reiteration}\label{sec:reiteration}
 %The first additional rule is \emph{reiteration} (R). This just allows us to repeat ourselves:
-%\factoidbox{\begin{pf}
+%\factoidbox{\begin{fitchproof}
 %	\have[m]{a}{\metaX}
 %	\have[\ ]{b}{\metaX} \by{R}{a}
-%\end{pf}}
+%\end{fitchproof}}
 %Such a rule is obviously legitimate; but one might well wonder how such a rule could ever be useful. Well, consider:
-%\begin{pf}
+%\begin{fitchproof}
 %	\hypo{nna}{\enot\enot A}
 %	\have{lem}{A\eor\enot A}\LEM
 %	\open
@@ -1363,9 +1374,9 @@ In \S\ref{s:BasicTFL}, we introduced the basic rules of our proof system for TFL
 %		\have{a3}{A}\redE{bot}
 %	\close
 %	\have{a4}{A}\orE{lem,a-a2, na-a3}
-%\end{pf}
+%\end{fitchproof}
 %
-%%\begin{pf}
+%%\begin{fitchproof}
 %%	\hypo{ana}{A \eif \enot A}
 %%	\open
 %%		\hypo{a}{A}
@@ -1376,7 +1387,7 @@ In \S\ref{s:BasicTFL}, we introduced the basic rules of our proof system for TFL
 %%		\have{na2}{\enot A}\by{R}{na1}
 %%	\close
 %%	\have{na3}{\enot A}\tnd{a-na, na1-na2}
-%%\end{pf}
+%%\end{fitchproof}
 %This is a fairly typical use of the R rule.
 
 \section{Disjunctive syllogism}
@@ -1385,17 +1396,17 @@ Here is a very natural argument form.
 		Elizabeth is in Massachusetts or in DC. She is not in DC. So, she is in Massachusetts.
 	\end{quote}
 This inference pattern is called \emph{disjunctive syllogism}. We add it to our proof system as follows:
-\factoidbox{\begin{pf}
+\factoidbox{\begin{fitchproof}
 	\have[m]{ab}{\metaX \eor \metaY}
 	\have[n]{nb}{\enot \metaX}
 	\have[\ ]{con}{\metaY}\by{DS}{ab, nb}
-\end{pf}}
+\end{fitchproof}}
 and
-\factoidbox{\begin{pf}
+\factoidbox{\begin{fitchproof}
 	\have[m]{ab}{\metaX \eor \metaY}
 	\have[n]{nb}{\enot \metaY}
 	\have[\ ]{con}{\metaX}\by{DS}{ab, nb}
-\end{pf}}
+\end{fitchproof}}
 As usual, the disjunction and the negation of one disjunct may occur in either order and need not be adjacent.
 %However, we always cite the disjunction first.
 
@@ -1405,11 +1416,11 @@ Another useful pattern of inference is embodied in the following argument:
 		If Mitt has won the election, then he is in the White House. He is not in the White House. So he has not won the election.
 	\end{quote}
 This inference pattern is called \emph{modus tollens}. The corresponding rule is:
-\factoidbox{\begin{pf}
+\factoidbox{\begin{fitchproof}
 	\have[m]{ab}{\metaX\eif\metaY}
 	\have[n]{a}{\enot\metaY}
 	\have[\ ]{b}{\enot\metaX}\mt{ab,a}
-\end{pf}}
+\end{fitchproof}}
 As usual, the premises may occur in either order.
 %, but we always cite the conditional first.
 
@@ -1423,23 +1434,23 @@ As usual, the premises may occur in either order.
 A sentence $\enot\enot \metaX$ is always logically equivalent to $\metaX$.
 We can add rules to our system that encode this idea: allowing us to immediately eliminate or introduce double negations:
 \begin{highlighted}
-\begin{pf}
+\begin{fitchproof}
 	\have[m]{dna}{\enot \enot \metaX}
 	\have[ ]{a}{\metaX}\dne{dna}
-\end{pf}
+\end{fitchproof}
 \end{highlighted}
 \begin{highlighted}
-\begin{pf}
+\begin{fitchproof}
 	\have[m]{a}{ \metaX}
 	\have[ ]{dna}{\enot \enot \metaX}\by{DNI}{a}
-\end{pf}
+\end{fitchproof}
 \end{highlighted}
 %
 %Another useful rule is \emph{double-negation elimination}. This rule does exactly what it says on the tin:
-%\factoidbox{\begin{pf}
+%\factoidbox{\begin{fitchproof}
 %		\have[m]{dna}{\enot \enot \metaX}
 %		\have[ ]{a}{\metaX}\dne{dna}
-%	\end{pf}}
+%	\end{fitchproof}}
 %
 
 %%The justification for this is that, in natural language, double-negations tend to cancel out.
@@ -1448,7 +1459,7 @@ We can add rules to our system that encode this idea: allowing us to immediately
 %So for any sentence $A$, exactly one of $A$ or $\enot A$ must be true.
 %So if $\enot A$ isn't true (which is what $\enot \enot A$ says) then $A$ must be true.  We can present this argument more formally as follows:
 %
-%\begin{pf}
+%\begin{fitchproof}
 %\hypo{nna}{\enot\enot A}
 %\have{lem}{A\eor\enot A}\LEM
 %\open
@@ -1464,7 +1475,7 @@ We can add rules to our system that encode this idea: allowing us to immediately
 %\have{natoa}{\enot A \eif A}{\ci{na-a3}}
 %%\have{a4}{A}\orE{lem,a-a2, na-a3}
 %\have{a4}{A}\orE{lem,atoa,natoa}
-%\end{pf}
+%\end{fitchproof}
 
 That said, you should be aware that
 in ordinary language we can sometimes speak in a way that is similar to, but not quite, a double negation.
@@ -1485,48 +1496,48 @@ From a contradiction anything follows. This is called the rule of explosion. It 
 
 %Our elimination rule for `$\ered$' is known as \emph{ex falso quod libet}, or \emph{explosion}. This means `anything follows from a contradiction', and the idea is precisely that: if we obtained a contradiction, symbolized by `$\ered$', then we can infer whatever we like. How can this be motivated, as a rule of argumentation? Well, consider the English rhetorical device `\ldots and if \emph{that's} true, I'll eat my hat'. Since contradictions simply cannot be true, if one \emph{i}s true then not only will I eat my hat, I'll have it too.\footnote{Thanks to Adam Caulton for this.} Here is the formal rule:
 
-\factoidbox{\begin{pf}
+\factoidbox{\begin{fitchproof}
 	\have[m]{x}{\metaX}
 	\have[n]{nx}{\enot \metaX}
 	\have[\ ]{y}{\metaY}\by{Explosion}{x,nx}
-\end{pf}}
+\end{fitchproof}}
 
 %
 %%\subsection{Proof by contradiction}
 %%A further rule is very closely related to $\enot$I. This is \emph{proof by contradiction}, also sometimes called \emph{indirect proof}. It allows us to prove something by assuming its negation and showing that it leads to contradiction. This technique is incredibly common in mathematics, for example it is used to show that $\sqrt{2}$ is irrational.
 %%
-%%\factoidbox{\begin{pf}
+%%\factoidbox{\begin{fitchproof}
 %%\open
 %%\hypo[m]{na}{\enot \metaX}
 %%\have[n]{red}{\ered}
 %%\close
 %%\have[ ]{a}{\metaX}\ProofbyContradiction{na-red}
-%%\end{pf}
+%%\end{fitchproof}
 %%}
 %%
 \section{De Morgan Rules}
 Our final additional rules are called De Morgan's Laws. (These are named after Augustus De Morgan.) The shape of the rules should be familiar from truth tables.
 
 The first De Morgan rule is:
-\factoidbox{\begin{pf}
+\factoidbox{\begin{fitchproof}
 	\have[m]{ab}{\enot (\metaX \eand \metaY)}
 	\have[\ ]{dm}{\enot \metaX \eor \enot \metaY}\dem{ab}
-\end{pf}}
+\end{fitchproof}}
 The second De Morgan is the reverse of the first:
-\factoidbox{\begin{pf}
+\factoidbox{\begin{fitchproof}
 	\have[m]{ab}{\enot \metaX \eor \enot \metaY}
 	\have[\ ]{dm}{\enot (\metaX \eand \metaY)}\dem{ab}
-\end{pf}}
+\end{fitchproof}}
 The third De Morgan rule is the \emph{dual} of the first:
-\factoidbox{\begin{pf}
+\factoidbox{\begin{fitchproof}
 	\have[m]{ab}{\enot (\metaX \eor \metaY)}
 	\have[\ ]{dm}{\enot \metaX \eand \enot \metaY}\dem{ab}
-\end{pf}}
+\end{fitchproof}}
 And the fourth is the reverse of the third:
-\factoidbox{\begin{pf}
+\factoidbox{\begin{fitchproof}
 	\have[m]{ab}{\enot \metaX \eand \enot \metaY}
 	\have[\ ]{dm}{\enot (\metaX \eor \metaY)}\dem{ab}
-\end{pf}}
+\end{fitchproof}}
 \bigskip
 
 
@@ -1539,7 +1550,7 @@ And the fourth is the reverse of the third:
 \label{pr.justifyTFLproof}
 The following proofs are missing their citations (rule and line numbers). Add them wherever they are required:
 \begin{multicols}{2}
-\begin{pf}
+\begin{fitchproof}
 \hypo{1}{W \eif \enot B}
 \hypo{2}{A \eand W}
 \hypo{2b}{B \eor (J \eand K)}
@@ -1547,11 +1558,11 @@ The following proofs are missing their citations (rule and line numbers). Add th
 \have{4}{\enot B} {}
 \have{5}{J \eand K} {}
 \have{6}{K}{}
-\end{pf}
+\end{fitchproof}
 %
 \vfill
 %
-\begin{pf}
+\begin{fitchproof}
 %\hypo{1}{L \eiff \enot O}
 \hypo{1}{\enot O \eif L}
 \hypo{2}{L \eor \enot O}
@@ -1564,11 +1575,11 @@ The following proofs are missing their citations (rule and line numbers). Add th
 %\have{nlxx}{\enot L \eif \ered}
 \have{3b}{\enot\enot L}{}
 \have{3}{L}{}
-\end{pf}
+\end{fitchproof}
 %
 \columnbreak
 %
-%\begin{pf}
+%\begin{fitchproof}
 %\hypo{1}{Z \eif (C \eand \enot N)}
 %\hypo{2}{\enot Z \eif (N \eand \enot C)}
 %\open
@@ -1589,8 +1600,8 @@ The following proofs are missing their citations (rule and line numbers). Add th
 %\close
 %\have{3b}{\enot\enot(N \eor C)}{}
 %\have{3}{N \eor C}{}
-%\end{pf}
-\begin{pf}
+%\end{fitchproof}
+\begin{fitchproof}
 \hypo{1}{Z \eif (C \eand \enot N)}
 \hypo{2}{\enot Z \eif (N \eand \enot C)}
 \have{lem}{Z \eor \enot Z}
@@ -1609,7 +1620,7 @@ The following proofs are missing their citations (rule and line numbers). Add th
 \close
 \have{nznc}{\enot Z \eif (N \eor C)}
 \have{3}{N \eor C}%{\oe{lem,znc,nznc}}
-\end{pf}
+\end{fitchproof}
 \end{multicols}
 
 \problempart
@@ -1633,15 +1644,15 @@ In this section, we will see why we introduced the rules of our proof system in 
 %We actually start by talking about the derivation of the rule of reiteration. We actually took this as a basic rule of the system. But we didn't need to. We could have instead had it as a derived rule.
 %
 %Suppose you have some sentence on some line of your deduction:
-%\begin{pf}
+%\begin{fitchproof}
 %	\have[m]{a}{\metaX}
-%\end{pf}
+%\end{fitchproof}
 %You now want to repeat yourself, on some line $k$. You could just invoke the rule R, introduced in \S\ref{s:Further}. But equally well, you can do this with the \emph{basic} rules of \S\ref{s:BasicTFL}:
-%\begin{pf}
+%\begin{fitchproof}
 %	\have[m]{a}{\metaX}
 %	\have[k]{aa}{\metaX \eand \metaX}\ai{a, a}
 %	\have{a2}{\metaX}\ae{aa}
-%\end{pf}
+%\end{fitchproof}
 %To be clear: this is not a proof. Rather, it is a proof  \emph{scheme}. After all, it uses a variable, `$\metaX$', rather than a sentence of TFL, but the point is simple: Whatever sentences of TFL we plugged in for `$\metaX$', and whatever lines we were working on, we could produce a bona fide proof. So you can think of this as a recipe for producing proofs.
 %
 %Indeed, it is a recipe which shows us that, anything we can prove using the rule R, we can prove (with one more line) using just the other rules of \S\ref{s:BasicTFL}. So we did not actually need to introduce it as a \emph{basic} rule in our system; we could have introduced it as a \emph{derived} rule. However, for ease, we have allowed it in as a basic rule.
@@ -1649,12 +1660,12 @@ In this section, we will see why we introduced the rules of our proof system in 
 
 \section{Derivation of Disjunctive syllogism}
 Suppose that you are in a proof, and you have something of this form:
-\begin{pf}
+\begin{fitchproof}
 	\have[m]{ab}{\metaX\eor\metaY}
 	\have[n]{na}{\enot \metaX}
-\end{pf}
+\end{fitchproof}
 You now want, on line $k$, to prove $\metaY$. You can do this with the rule of DS, introduced in \S\ref{s:Further}, but equally well, you can do this with the \emph{basic} rules of \S\ref{s:BasicTFL}:
-	\begin{pf}
+	\begin{fitchproof}
 		\have[m]{ab}{\metaX\eor\metaY}
 		\have[n]{na}{\enot \metaX}
 		\open
@@ -1674,7 +1685,7 @@ You now want, on line $k$, to prove $\metaY$. You can do this with the rule of D
 %	\have{ytoy}{\metaY\eif\metaY}{\ci{(b)-(b2)}}
 	\have{con}{\metaY}\oe{ab, a-b1, b-b2}
 %	\have{con}{\metaY}\oe{ab, xtoy, ytoy}
-\end{pf}
+\end{fitchproof}
 
 To be clear: this is not a proof. Rather, it is a proof \emph{scheme}.
 (This is why we use letters like $m$ and $k$ to label the lines of the proof rather than numbers.)
@@ -1689,16 +1700,16 @@ Indeed, it is a recipe which shows us that, anything we can prove using the rule
 
 \section{Derivation of Modus Tollens}
 Suppose in the course of you proof you already have $\metaX\eif\metaY$, say on line $m$, and $\enot\metaY$ on line $n$. At some later line, $k$, you want to get $\enot\metaX$.
-%\begin{pf}
+%\begin{fitchproof}
 %	\have[m]{ab}{\metaX\eif\metaY}
 %	\have[n]{a}{\enot\metaY}
-%\end{pf}
+%\end{fitchproof}
 %You now want
 %%, on line $k$,
 %to prove $\enot \metaX$.
  You can do this with the rule of Modus Tollens (MT), introduced in \S\ref{s:Further}. But you could also do this with the \emph{basic} rules of \S\ref{s:BasicTFL}:
 
-\begin{pf}
+\begin{fitchproof}
 	\have[m]{ab}{\metaX\eif\metaY}
 	\have[n]{nb}{\enot\metaY}
 		\open
@@ -1709,7 +1720,7 @@ Suppose in the course of you proof you already have $\metaX\eif\metaY$, say on l
 		\close
 %\have{xtoxx}{X \eif \ered}{\ci{(a)-(nb1)}}
 	\have{no}{\enot\metaX}\notI{a-red} % contradiction in b,nb
-\end{pf}
+\end{fitchproof}
 Again, the rule of MT can be derived from the \emph{basic} rules of \S\ref{s:BasicTFL}.
 
 
@@ -1717,7 +1728,7 @@ Again, the rule of MT can be derived from the \emph{basic} rules of \S\ref{s:Bas
 \section{Derivation of Double-negation rules}
 Consider the following deduction schema:
 
-\begin{pf}
+\begin{fitchproof}
 \have[m]{m}{\metaX}
 	\open
 	\hypo[j]{j}{\enot \metaX}
@@ -1725,10 +1736,10 @@ Consider the following deduction schema:
 	\have{k}{\metaX\eand\enot\metaX}\andI{m,j}
 	\close
 \have{con}{\enot\enot\metaX}\notI{j - k}
-\end{pf}
+\end{fitchproof}
 and
 
-\begin{pf}
+\begin{fitchproof}
 \have[m]{m}{\enot\enot\metaX}
 	\open
 	\hypo[j]{j}{\enot \metaX}
@@ -1737,7 +1748,7 @@ and
 	\have{k}{\enot\metaX\eand\enot\enot\metaX}\andI{m,j}
 	\close
 \have{con}{\metaX}\notE{j - k}
-\end{pf}
+\end{fitchproof}
 So again,  we can derive the double negations rules from the \emph{basic} rules of \S\ref{s:BasicTFL}.
 
 
@@ -1745,7 +1756,7 @@ So again,  we can derive the double negations rules from the \emph{basic} rules 
 
 %\section{Derivation of Double-negation elimination}
 %Consider the following deduction scheme:
-%	\begin{pf}
+%	\begin{fitchproof}
 %	\have[m]{m}{\enot \enot \metaX}
 %	\have[j]{lem}{\metaX\eor\enot\metaX}\LEM
 %	\open
@@ -1761,7 +1772,7 @@ So again,  we can derive the double negations rules from the \emph{basic} rules 
 %\have{nxtox}{\enot\metaX\eif\metaX}{\ci{(na)-(a2)}}
 %%\have{con}{\metaX}\orE{lem,a-a1, na-a2}
 %\have{con}{\metaX}\orE{lem,xtox,nxtox}
-%\end{pf}
+%\end{fitchproof}
 %Again,  we can derive the DNE rule from the \emph{basic} rules of \S\ref{s:BasicTFL}.
 %
 %
@@ -1769,21 +1780,21 @@ So again,  we can derive the double negations rules from the \emph{basic} rules 
 %
 %%\section{Derivation of Proof by Contradiction}
 %%Once we have DNE, proof by contradiction is a very quick consequence of $\enot$I:
-%%\begin{pf}
+%%\begin{fitchproof}
 %%\open
 %%\hypo[m]{na}{\enot \metaX}
 %%\have[n]{red}{\ered}
 %%\close
 %%\have[k]{nna}{\enot\enot \metaX}\notI{na-red}
 %%\have[ ]{a}{\metaX}\dne{nna}
-%%\end{pf}
+%%\end{fitchproof}
 %%
 %\newpage
 
 \section{Derivation of Explosion}
 
 Here is a demonstration of how we could derive explosion using the basic rules:
-\begin{pf}
+\begin{fitchproof}
 	\have[m]{x}{\metaX}
 	\have[n]{nx}{\enot \metaX}
 		\open
@@ -1793,11 +1804,11 @@ Here is a demonstration of how we could derive explosion using the basic rules:
 		\have{red}{\metaX\eand\enot\metaX}\andI{x,nx}
 		\close
 	\have[\ ]{y}{\metaY}\notE{ny-red}
-\end{pf}
+\end{fitchproof}
 
 \section{Derivation of De Morgan rules}
 Here is a demonstration of how we could derive the first De Morgan rule:
- 	\begin{pf}
+ 	\begin{fitchproof}
 		\have[m]{nab}{\enot (\metaX \eand \metaY)}
 		\have[j]{lem}{\metaX\eor\enot\metaX}\LEM
 		\open
@@ -1820,9 +1831,9 @@ Here is a demonstration of how we could derive the first De Morgan rule:
 %\have{nxtocon}{\enot\metaX \eif (\enot \metaX \eor \enot \metaY)}{\ci{(na1)-(dis1)}}
 		\have{con}{\enot \metaX \eor \enot \metaY}\orE{lem,a-dis, na1-dis1}
 %\have{con}{\enot \metaX \eor \enot \metaY}\orE{lem,xtocon,nxtocon}
-	\end{pf}
+	\end{fitchproof}
 Here is a demonstration of how we could derive the second De Morgan rule:
- 	\begin{pf}
+ 	\begin{fitchproof}
 		\have[m]{nab}{\enot \metaX \eor \enot \metaY}
 		\open
 		\hypo{nx}{\enot\metaX}
@@ -1844,7 +1855,7 @@ Here is a demonstration of how we could derive the second De Morgan rule:
 			\have{abc2}{\enot(\metaX \eand \metaY)}\notI{rab1 - red}
 			\close
 			\have{abc}{\enot(\metaX \eand \metaY)}\orE{nab, nx-abc1,ny-abc2}
-\end{pf}
+\end{fitchproof}
 Similar demonstrations can be offered explaining how we could derive the third and fourth De Morgan rules. These are left as exercises.
 
 \begin{practiceproblems}
@@ -2123,7 +2134,7 @@ description={A sentence that can be proved without any premises}
 }
 
         To illustrate this, suppose we want to prove that `$\enot (A \eand \enot A)$' is a theorem. So we must start our proof without \emph{any} assumptions. However, since we want to prove a sentence whose main logical operator is a negation, we will want to  immediately begin a subproof, with the additional assumption `$A \eand \enot A$', and show that this leads to contradiction. All told, then, the proof looks like this:
-	\begin{pf}
+	\begin{fitchproof}
 		\open
 			\hypo{con}{A \eand \enot A}
 			\have{a}{A}\ae{con}
@@ -2131,7 +2142,7 @@ description={A sentence that can be proved without any premises}
 %			\have{red}{\ered}\ri{a, na}
 		\close
 		\have{lnc}{\enot (A \eand \enot A)}\ni{con-na}% 
-	\end{pf}
+	\end{fitchproof}
 We have therefore proved `$\enot (A \eand \enot A)$' on no (undischarged) assumptions. This particular theorem is an instance of what is sometimes called \emph{the Law of Non-Contradiction}.
 
 To show that something is a theorem, you just have to find a suitable proof. It is typically much harder to show that something is \emph{not} a theorem. To do this, you would have to demonstrate, not just that certain proof strategies fail, but that \emph{no} proof is possible. Even if you fail in trying to prove a sentence in a thousand different ways, perhaps the proof is just too long and complex for you to make out. Perhaps you just didn't try hard enough.

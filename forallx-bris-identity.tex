@@ -514,17 +514,17 @@ If two names refer to the same object, then swapping one name for another will n
 	\end{align*}
 
 We capture this idea in our elimination rule. If you have established `$a\eid b$', then anything that is true of the object named by `$a$' must also be true of the object named by `$b$'. For any sentence with `$a$' in it, you can replace some or all of the occurrences of `$a$' with `$b$' and produce an equivalent sentence. For example, from `$Raa$' and `$a \eid  b$', you are justified in inferring `$Rab$', `$Rba$' or `$Rbb$'. More generally:
-\factoidbox{\begin{pf}
+\factoidbox{\begin{fitchproof}
 	\have[m]{e}{\meta{a}\eid \meta{b}}
 	\have[n]{a}{\metaX(\ldots \meta{a} \ldots \meta{a}\ldots)}
 	\have[\ ]{ea1}{\metaX(\ldots \meta{b} \ldots \meta{a}\ldots)} \by{\eid E}{e,a}
-\end{pf}}
+\end{fitchproof}}
 The notation here is as for $\exists$I. So $\metaX(\ldots \meta{a} \ldots \meta{a}\ldots)$ is a formula containing the name $\meta{a}$, and $\metaX(\ldots \meta{b} \ldots \meta{a}\ldots)$ is a formula obtained by replacing one or more instances of the name $\meta{a}$ with the name $\meta{b}$. Lines $m$ and $n$ can occur in either order, and do not need to be adjacent, but we always cite the statement of identity first. Symmetrically, we allow:
-\factoidbox{\begin{pf}
+\factoidbox{\begin{fitchproof}
 	\have[m]{e}{\meta{a}\eid \meta{b}}
 	\have[n]{a}{\metaX(\ldots \meta{b} \ldots \meta{b}\ldots)}
 	\have[\ ]{ea2}{\metaX(\ldots \meta{a} \ldots \meta{b}\ldots)} \by{\eid E}{e,a}
-\end{pf}}
+\end{fitchproof}}
 This rule is sometimes called \emph{Leibniz's Law}, after Gottfried Leibniz.
 
 Some philosophers have believed the reverse of this claim. That is, they have believed that when exactly the same sentences (not containing `$\eid $') are true of two objects, then they are really just one and the same object after all. This is a highly controversial philosophical claim (sometimes called the \emph{identity of indiscernibles}) and our logic will not subscribe to it; we allow that exactly the same things might be true of two \emph{distinct} objects.
@@ -544,14 +544,14 @@ The consequence of this, for our proof system, is that there are no sentences th
 
 However, every object is identical to itself. No premises, then, are required in order to conclude that something is identical to itself. So this will be the identity introduction rule:
 \factoidbox{
-\begin{pf}
+\begin{fitchproof}
 	\have[\ \,\,\,]{x}{\meta{c}\eid \meta{c}} \by{\eid I}{}
-\end{pf}}
+\end{fitchproof}}
 Notice that like the Law of Excluded Middle, this rule does not require referring to any prior lines of the proof. For any name \meta{c}, you can write $\meta{c}\eid \meta{c}$ on any point, with only the {\eid }I rule as justification.
 
 
 To see the rules in action, we will prove some quick results. First, we will prove that identity is \emph{symmetric}:
-\begin{pf}
+\begin{fitchproof}
 	\open
 		\hypo{ab}{a \eid  b}
 		\have{aa}{a \eid  a}\by{\eid I}{}
@@ -560,11 +560,11 @@ To see the rules in action, we will prove some quick results. First, we will pro
 	\have{abba}{a \eid  b \eif b \eid a}\ci{ab-ba}
 	\have{ayya}{\forall y (a \eid y \eif y \eid a)}\Ai{abba}
 	\have{xyyx}{\forall x \forall y (x \eid y \eif y \eid x)}\Ai{ayya}
-\end{pf}
+\end{fitchproof}
 We obtain line 3 by replacing one instance of `$a$' in line 2 with an instance of `$b$'; this is justified given `$a\eid  b$'.
 
 Second, we will prove that identity is \emph{transitive}:
-\begin{pf}
+\begin{fitchproof}
 	\open
 		\hypo{abc}{a \eid  b \eand b \eid  c}
 		\have{ab}{a \eid  b}\ae{abc}
@@ -575,7 +575,7 @@ Second, we will prove that identity is \emph{transitive}:
 	\have{conz}{\forall z((a \eid b \eand b \eid z) \eif a \eid z)}\Ai{con}
 	\have{cony}{\forall y\forall z((a \eid y \eand y \eid z) \eif a \eid z)}\Ai{conz}
 	\have{conx}{\forall x \forall y \forall z((x \eid y \eand y \eid z) \eif x \eid z)}\Ai{cony}
-\end{pf}
+\end{fitchproof}
 We obtain line 4 by replacing `$b$' in line 3 with `$a$'; this is justified given `$a\eid  b$'.
 
 \begin{practiceproblems}

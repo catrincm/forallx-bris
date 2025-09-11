@@ -222,7 +222,7 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 \label{ProofRules}
 \newpage
 \section{Basic deduction rules for TFL}\label{glossary:basic rules TFL}
-\renewenvironment{pf}
+\renewenvironment{fitchproof}
 	{\noindent\par\noindent\small$\begin{nd}}
 	{\end{nd}$\noindent\normalsize\ignorespacesafterend}
 	
@@ -233,24 +233,24 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 \begin{multicols}{2}
 \subsubsection*{Conjunction}
 
-\begin{pf}
+\begin{fitchproof}
 	\have[m]{x}{\metaX}
 	\have[n]{y}{\metaY}
 	\have[\ ]{xy}{\metaX \eand \metaY} \andI{x,y}
-\end{pf}
+\end{fitchproof}
 
 \vfill\null
 \columnbreak
 
-\begin{pf}
+\begin{fitchproof}
 	\have[m]{xy}{\metaX \eand \metaY}
 	\have[\ ]{x}{\metaX} \andE{xy}
-\end{pf}
+\end{fitchproof}
 \smallskip
-\begin{pf}
+\begin{fitchproof}
 	\have[m]{xy}{\metaX \eand \metaY}
 	\have[\ ]{y}{\metaY} \andE{xy}
-\end{pf}
+\end{fitchproof}
 \end{multicols}
 
 \separatepfs
@@ -258,20 +258,20 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 \begin{multicols}{2}
 \subsubsection*{Disjunction}
 
-\begin{pf}
+\begin{fitchproof}
 	\have[m]{x}{\metaX}
 	\have[\ ]{xy}{\metaX \eor \metaY}\orI{x}
-\end{pf}
+\end{fitchproof}
 \smallskip
-\begin{pf}
+\begin{fitchproof}
 	\have[m]{x}{\metaX}
 	\have[\ ]{xy}{\metaY \eor \metaX}\orI{x}
-\end{pf}
+\end{fitchproof}
 
 \vfill\null
 \columnbreak
 
-\begin{pf}
+\begin{fitchproof}
 	\have[m]{xy}{\metaX \eor \metaY}
 	\open
 		\hypo[i]{x}{\metaX}
@@ -284,7 +284,7 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 		\have[l]{z2}{\metaZ}
 	\close
 	\have[\ ]{z}{\metaZ} \orE{xy,x-z1,y-z2}
-\end{pf}
+\end{fitchproof}
 \end{multicols}
 
 \separatepfs
@@ -292,23 +292,23 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 \begin{multicols}{2}
 \subsubsection*{Conditional}
 
-\begin{pf}
+\begin{fitchproof}
 	\open
 		\hypo[m]{x}{\metaX}
 		\ellipsesline
 		\have[n]{y}{\metaY}
 	\close
 	\have[\ ]{xy}{\metaX \eif \metaY}\ifI{x-y}
-\end{pf}
+\end{fitchproof}
 
 \vfill\null
 \columnbreak
 
-\begin{pf}
+\begin{fitchproof}
 	\have[m]{xy}{\metaX \eif \metaY}
 	\have[n]{x}{\metaX}
 	\have[\ ]{y}{\metaY} \ifE{xy,x}
-\end{pf}
+\end{fitchproof}
 \end{multicols}
 
 \separatepfs
@@ -316,7 +316,7 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 \begin{multicols}{2}
 \subsubsection*{Negation}
 
-\begin{pf}
+\begin{fitchproof}
 \open
 	\hypo[m]{x}{\metaX}
 	\ellipsesline
@@ -326,11 +326,11 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 	\have[k]{red}{\metaY\eand\enot\metaY}
 \close
 \have[\ ]{nx}{\enot\metaX}\notI{x-red}
-\end{pf}
+\end{fitchproof}
 
 \columnbreak
 
-\begin{pf}
+\begin{fitchproof}
 \open
 	\hypo[m]{nx}{\enot\metaX}
 	\ellipsesline
@@ -340,22 +340,22 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 	\have[k]{red}{\metaY\eand\enot\metaY}
 \close
 \have[\ ]{x}{\metaX}\notE{nx-red}
-\end{pf}
+\end{fitchproof}
 \end{multicols}
 \separatepfs
 % Reiteration and Law of Excluded Middle section with two-column layout
 \begin{multicols}{2}
 \subsubsection*{Reiteration}
 
-\begin{pf}
+\begin{fitchproof}
 	\have[m]{x}{\metaX}
 	\have[\ ]{x2}{\metaX} \Reiteration{x}
-\end{pf}
+\end{fitchproof}
 
 \subsubsection*{Law of Excluded Middle}
-\begin{pf}
+\begin{fitchproof}
 	\have[\ ]{lem}{\metaX \eor \enot\metaX}\LEM
-\end{pf}
+\end{fitchproof}
 \end{multicols}
 
 
@@ -364,7 +364,7 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 \section{Derived rules for TFL}
 \begin{multicols}{2}
 \subsubsection*{Disjunctive syllogism}
-\begin{pf}
+\begin{fitchproof}
 	\have[m]{ab}{\metaX \eor \metaY}
 	\have[n]{nb}{\enot \metaX}
 	\have[\ ]{con}{\metaY}\by{DS}{ab, nb}
@@ -372,61 +372,61 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 	\have[m]{ab}{\metaX \eor \metaY}
 \\	\have[n]{nb}{\enot \metaY}
 	\have[\ ]{con}{\metaX}\by{DS}{ab, nb}
-\end{pf}
+\end{fitchproof}
 
 %\subsubsection*{Reiteration}
 %
-%\begin{pf}
+%\begin{fitchproof}
 %	\have[m]{a}{\metaX}
 %	\have[\ ]{c}{\metaX} \by{R}{a}
-%\end{pf}
+%\end{fitchproof}
 
 \subsubsection*{Modus Tollens}
 
-\begin{pf}
+\begin{fitchproof}
 	\have[m]{ab}{\metaX\eif\metaY}
 	\have[n]{a}{\enot\metaY}
 	\have[\ ]{b}{\enot\metaX} \by{MT}{ab,a}
-\end{pf}
+\end{fitchproof}
 
 \subsubsection*{Double-negation elimination}
-	\begin{pf}
+	\begin{fitchproof}
 		\have[m]{dna}{\enot \enot \metaX}
 		\have[ ]{a}{\metaX}\dne{dna}
-	\end{pf}
+	\end{fitchproof}
 
 
 %\subsubsection*{Proof by Contradiction}
-%	\begin{pf}
+%	\begin{fitchproof}
 %		\open
 %			\hypo[m]{na}{\enot\metaX}
 %			\ellipsesline
 %			\have[n]{red}{\ered}
 %		\close
 %		\have[ ]{a}{\metaX}\by{IP}{na-red}
-%	\end{pf}
+%	\end{fitchproof}
 
 
 
 \subsubsection*{Explosion}
-	\begin{pf}
+	\begin{fitchproof}
 	\have[m]{ab}{\metaX}
 	\have[n]{a}{\enot\metaX}
 	\have[\ ]{b}{\metaY} \by{Explosion}{ab,a}
-	\end{pf}
+	\end{fitchproof}
 
 
 %
 %\subsubsection*{Hypothetical Syllogism}
 %
-%\begin{pf}
+%\begin{fitchproof}
 %	\have[m]{ab}{\metaX\eif\metaY}
 %	\have[n]{bc}{\metaY\eif\metaZ}
 %	\have[\ ]{ac}{\metaX\eif\metaZ}\by{HS}{ab,bc}
-%\end{pf}
+%\end{fitchproof}
 
 \subsubsection*{De Morgan Rules}
-\begin{pf}
+\begin{fitchproof}
 	\have[m]{ab}{\enot (\metaX \eor \metaY)}
 	\have[\ ]{dm}{\enot \metaX \eand \enot \metaY}\dem{ab}
 
@@ -438,7 +438,7 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 
 	\have[m]{ab}{\enot \metaX \eor \enot \metaY}
 \\	\have[\ ]{dm}{\enot (\metaX \eand \metaY)}\dem{ab}
-\end{pf}
+\end{fitchproof}
 \end{multicols}
 
 \newpage
@@ -448,17 +448,17 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 \begin{multicols}{2}
 \subsubsection*{Universal elimination}
 
-\begin{pf}
+\begin{fitchproof}
 	\have[m]{a}{\forall \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)}
 	\have[\ ]{c}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)} \Ae{a}
-\end{pf}
+\end{fitchproof}
 
 \subsubsection*{Universal introduction}
 
-\begin{pf}
+\begin{fitchproof}
 	\have[m]{a}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}
 	\have[\ ]{c}{\forall \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)} \Ai{a}
-\end{pf}
+\end{fitchproof}
 
 \noindent 	\meta{c} must not occur in any undischarged assumption\\ 
 \meta{x} must not occur in $\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$
@@ -467,17 +467,17 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 
 \subsubsection*{Existential introduction}
 
-\begin{pf}
+\begin{fitchproof}
 	\have[m]{a}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}
 	\have[\ ]{c}{\exists \meta{x}\metaX(\ldots \meta{x} \ldots \meta{c}\ldots)} \Ei{a}
-\end{pf}
+\end{fitchproof}
 
 \noindent \meta{x} must not occur in $\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$
 %\noindent You can replace one or more instance of \meta{c} with \meta{x}.
 
 \subsubsection*{Existential elimination}
 
-\begin{pf}
+\begin{fitchproof}
 	\have[m]{a}{\exists \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)}
 	\open	
 		\hypo[i]{b}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}
@@ -485,7 +485,7 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 		\have[j]{c}{\metaY}
 	\close
 	\have[\ ]{d}{\metaY} \Ee{a,b-c}
-\end{pf}
+\end{fitchproof}
 
 \noindent \meta{c} must not occur in \\any undischarged assumption, \\in $\exists \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)$, \\or in \metaY
 %\vfill\columnbreak
@@ -495,43 +495,43 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 
 \subsubsection*{Identity introduction}
 
-\begin{pf}
+\begin{fitchproof}
 	\have[\ \,\,\,]{x}{\meta{c}\eid \meta{c}} \by{= I}{}
-\end{pf}
+\end{fitchproof}
 
 
 \subsubsection*{Identity elimination}
 
 \begin{multicols}{2}
-\begin{pf}
+\begin{fitchproof}
 	\have[m]{e}{\meta{a}\eid \meta{b}}
 	\have[n]{a}{\metaX(\ldots \meta{a} \ldots \meta{a}\ldots)}
 	\have[\ ]{ea1}{\metaX(\ldots \meta{b} \ldots \meta{a}\ldots)} \by{= E}{e,a}
-\end{pf}
-\begin{pf}
+\end{fitchproof}
+\begin{fitchproof}
 	\have[m]{e}{\meta{a}\eid \meta{b}}
 	\have[n]{a}{\metaX(\ldots \meta{b} \ldots \meta{b}\ldots)}
 	\have[\ ]{ea2}{\metaX(\ldots \meta{a} \ldots \meta{b}\ldots)} \by{= E}{e,a}
-\end{pf}
+\end{fitchproof}
 \end{multicols}
 
 
 \bigskip 
 \section{Derived rules for FOL}
 \begin{multicols}{2}
-\begin{pf}
+\begin{fitchproof}
 	\have[m]{ab}{\forall \meta{x}\enot \metaX}
 	\have[\ ]{ac}{\enot \exists \meta{x} \metaX}\cq{ab}
 
 	\have[m]{ab}{\enot \exists \meta{x}  \metaX}
 \\	\have[\ ]{ac}{\forall \meta{x}\enot\metaX}\cq{ab}
-\end{pf}
-\begin{pf}
+\end{fitchproof}
+\begin{fitchproof}
 	\have[m]{ab}{\exists \meta{x}\enot\metaX}
 	\have[\ ]{ac}{\enot \forall \meta{x} \metaX}\cq{ab}
 
 	\have[m]{ab}{\enot \forall \meta{x}  \metaX}
 \\	\have[\ ]{ac}{\exists \meta{x}\enot \metaX}\cq{ab}
-\end{pf}
+\end{fitchproof}
 \end{multicols}
 

@@ -14,10 +14,10 @@ FOL makes use of all of the connectives of TFL. So proofs in FOL will use all of
 \prem Everyone is happy
 \conc Catrin is happy.
 \end{earg} This is a valid argument. Generally, then, from the claim that everything is F, you can infer that any particular thing is F. You name it; it's F. So the following should be fine:
-\begin{pf}
+\begin{fitchproof}
 	\hypo{a}{\forall xFx}
 	\have{c}{Fa} \Ae{a}
-\end{pf}
+\end{fitchproof}
 We obtained line 2 by dropping the universal quantifier and replacing `$x$' with `$a$'.
 
 This isn't restricted to simple properties. Consider the following argument:
@@ -26,10 +26,10 @@ This isn't restricted to simple properties. Consider the following argument:
 \conc If Fluffy is a cat, then she is sleeping.
 \end{earg}
 This is a valid argument. And it will be allowed by our rule $\forall$E:
-\begin{pf}
+\begin{fitchproof}
 	\hypo{a}{\forall x(Cx\eif Sx)}
 	\have{c}{Cf\eif Sf} \Ae{a}
-\end{pf}
+\end{fitchproof}
 Note here that we have to replace two instances of `$x$' with our name: `$f$' or Fluffy. Indeed it would have been fine to do with any name. We can even do it with names we already have. Consider the following:
 \begin{earg}
 \prem Pavel owes everyone money.
@@ -47,33 +47,33 @@ This is valid: the premise says \emph{everything} in the domain owes money to Pa
 %\end{earg}and that will not be symbolised as $\forall x Oxx$; however, we do not yet have the resources to symbolise at. In \S\ref{ch.identity} we will introduce identity which will allow us to formalise it properly.
 
 This argument is also directly allowed by our rule $\forall$E:
-\begin{pf}
+\begin{fitchproof}
 	\hypo{a}{\forall xOpx}
 	\have{c}{Opp} \Ae{a}
-\end{pf}
+\end{fitchproof}
 
 We can now give our general rule: whenever you have a sentence $\forall \meta{x}\metaX(\ldots \meta{x} \ldots\meta{x}\ldots)$, for example $\forall x Fx$, $\forall x (Cx\eif Sx)$, $\forall x Opx$; one can conclude that we have the sentence which is obtained by stripping of the quantifier and replacing every free occurrence of the variable by a name, be it $a,b,c\ldots$. So we could derive $Fa$, $Cf\eif Sf$ or $Opp$.
 
 %We obtained line 2 by dropping the universal quantifier and replacing every instance of `$x$' with `$a$'. Equally, the following should be allowed:
-%\begin{pf}
+%\begin{fitchproof}
 %	\hypo{a}{\forall xRxxd}
 %	\have{c}{Rddd} \Ae{a}
-%\end{pf}
+%\end{fitchproof}
 %We obtained line 2 here by dropping the universal quantifier and replacing every instance of `$x$' with `$d$'. We could have done the same with any other name we wanted.
 
 Here is the formal specification of the universal elimination rule ($\forall$E):
 \factoidbox{
-\begin{pf}
+\begin{fitchproof}
 	\have[m]{a}{\forall \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)}
 	\have[\ ]{c}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)} \Ae{a}
-\end{pf}}
+\end{fitchproof}}
 The point is that you can obtain any \emph{substitution instance} of a universally quantified formula: \textbf{replace every instance of the quantified variable with any name you like}. (Of course, you need to replace every free occurrence of $x$ in $X$ by the same name.)
 
 I should emphasize that (as with every elimination rule) you can only apply the $\forall$E rule when the universal quantifier is the main logical operator. Thus the following is outright banned:
-\begin{pf}
+\begin{fitchproof}
 	\hypo{a}{\forall x Bx \eif Bk}
 	\have{c}{Bb \eif Bk}\by{naughtily attempting to invoke $\forall$E}{a}
-\end{pf}
+\end{fitchproof}
 This is illegitimate, since `$\forall x$' is not the main logical operator in line 1. (If you need a reminder as to why this sort of inference should be banned, reread \S\ref{s:MoreMonadic}.)
 
 \section{Existential introduction}
@@ -84,10 +84,10 @@ The following argument is valid:
 \end{earg}
 
 This is the idea of our existential introduction rule: from the claim that some particular thing is F, you can infer that something is F:
-\begin{pf}
+\begin{fitchproof}
 	\hypo{a}{Fa}
 	\have{c}{\exists x Fx} \existsI{a}
-\end{pf}
+\end{fitchproof}
 We obtained line 2 by replacing the name `$a$' with the variable `$x$' and adding $\exists x$ in front of the sentence. This will be permissible by our rule of $\exists$I.
 
 This isn't restricted to simple properties.
@@ -95,20 +95,20 @@ This isn't restricted to simple properties.
 \prem Bob is a money and knows sign language.
 \conc There is a monkey who knows sign language.
 \end{earg}
-\begin{pf}
+\begin{fitchproof}
 	\hypo{a}{Mb\eand Sb}
 	\have{c}{\exists x (Mx\eand Sx)} \existsI{a}
-\end{pf}
+\end{fitchproof}
 
 Or even
 \begin{earg}
 \prem Catrin is friends with someone who is friends with everyone.
 \conc Someone is friends with someone who is friends with everyone.
 \end{earg}
-\begin{pf}
+\begin{fitchproof}
 	\hypo{a}{\exists x (Fcx\eand\forall y Fxy)}
 	\have{c}{\exists z\exists x(Fzx\eand \forall y Fxy)} \existsI{a}
-\end{pf}We replaced the name, `$c$' with the variable `$z$' and added $\exists z$ at the beginning of the sentence.
+\end{fitchproof}We replaced the name, `$c$' with the variable `$z$' and added $\exists z$ at the beginning of the sentence.
 
 
 This rule will now allow us to carefully work through our brain teaser from \S\ref{s:orE}
@@ -127,7 +127,7 @@ Alice is happy. Charlie is not happy. Is there someone who is happy who is looki
 \end{quote}  Answer: Yes.
 
 We can formalise this argument as: $$Lab,\;Lbc,\;Ha,\;\enot Hc\;\therefore\;\exists x\exists y(Hx\eand (Lxy\eand\enot Hx)).$$ And we can show it is valid. In \S\ref{s:orE} we wrote this in a pseudo-formal style.
-\begin{pf}
+\begin{fitchproof}
 	\have{lem}{\text{Bob is either happy or he's not happy}}\LEM
 	\open
 	\hypo{b}{\text{Suppose Bob is happy}}
@@ -140,10 +140,10 @@ We can formalise this argument as: $$Lab,\;Lbc,\;Ha,\;\enot Hc\;\therefore\;\exi
 	\have{abc2}{\text{So someone who is happy is looking at someone who is not happy.}}
 	\close
 	\have{con}{\text{Therefore, someone who is happy is looking at someone who is not happy.}}\orE{lem,b-abc,b2-abc2}
-\end{pf}
+\end{fitchproof}
 
 We can now fill out the details of this to see that it's a formal proof:
-\begin{pf}
+\begin{fitchproof}
 \hypo{1}{Lab}
 \hypo{2}{Lbc}
 \hypo{3}{Ha}
@@ -164,7 +164,7 @@ We can now fill out the details of this to see that it's a formal proof:
 		\have{abc2}{\exists x\exists y(Hx\eand (Lxy\eand\enot Hx))}\existsI{ab22}
 	\close
 			\have{con}{\exists x\exists y(Hx\eand Lxy\eand\enot Hx)}\orE{lem,b-abc,b2-abc2}
-\end{pf}
+\end{fitchproof}
 
 \bigskip
 Consider the following example:
@@ -172,34 +172,34 @@ Consider the following example:
 \prem Narcissus loves himeself.
 \conc There is someone who loves Narcissus.
 \end{earg}This is a valid argument. The formalised version, which will be allowed by our rule is:
-\begin{pf}
+\begin{fitchproof}
 	\hypo{a}{Lnn}
 	\have{c}{\exists x Lxn} \existsI{a}
-\end{pf} This shows us that we do not have to replace \emph{all} instances of the name with the variable. Though of course we can if we wish: we could also deduce there is someone who loves himself.
+\end{fitchproof} This shows us that we do not have to replace \emph{all} instances of the name with the variable. Though of course we can if we wish: we could also deduce there is someone who loves himself.
 
 To give our rule in general we need to introduce some new notation for this ability to replace just some of our instances of the name: If $\metaX$ is a sentence containing the name $\meta{c}$, we can emphasize this by writing `$\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$'. \textbf{We will write `$\metaX(\ldots \meta{x} \ldots \meta{c}\ldots)$' to indicate any formula obtained by replacing \emph{some or all} of the instances of the name \meta{c} with the variable \meta{x}}. Armed with this, our introduction rule is:
 \factoidbox{
-\begin{pf}
+\begin{fitchproof}
 	\have[m]{a}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}
 	\have[\ ]{c}{\exists \meta{x}\metaX(\ldots \meta{x} \ldots \meta{c}\ldots)} \Ei{a}
-\end{pf}
+\end{fitchproof}
 \meta{x} must not occur in $\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$
 }All the cases we've seen in this section follow this rule.
 
 You might have noticed the additional constraint that's added to the rule. It is {part} of the rule; so if you are asked to write the rule $\exists$I  you {must} include this constraint. However, you will not need to worry about it in practice. It's simply there to guarantee that applications of the rule yield sentences of FOL. If the rule were not there we would be allowed to argue as follows:
-\begin{pf}
+\begin{fitchproof}
 	\hypo{a}{\exists xLnx}
 	\have{e}{\exists x \exists x Lxx}\by{naughtily attempting to invoke $\exists$I}{a}
-\end{pf}But this expression on line 2 contains clashing variables. It will not count as a sentence of FOL.
+\end{fitchproof}But this expression on line 2 contains clashing variables. It will not count as a sentence of FOL.
 
 
 \section{Empty domains}
 The following proof combines our two new rules for quantifiers:
-	\begin{pf}
+	\begin{fitchproof}
 		\hypo{a}{\forall x Fx}
 		\have{in}{Fa}\Ae{a}
 		\have{e}{\exists x Fx}\Ei{in}
-	\end{pf}
+	\end{fitchproof}
 Could this be a bad proof? If anything exists at all, then certainly we can infer that something is F, from the fact that everything is F. But what if \emph{nothing} exists at all? Then it is surely vacuously true that everything is F; however, it does not following that something is F, for there is nothing to \emph{be} F. So if we claim that, as a matter of logic alone, `$\exists x Fx$' follows from `$\forall x Fx$', then we are claiming that, as a matter of \emph{logic alone}, there is something rather than nothing. This might strike us as a bit odd.
 
 Actually, we are already committed to this oddity. In \S\ref{s:FOLBuildingBlocks}, we stipulated that domains in FOL must have at least one member. We then defined a logical truth (of FOL) as a sentence which is true in every interpretation. Since `$\exists x(Ax\eor\enot Ax)$' will be true in every interpretation, this \emph{also} had the effect of stipulating that it is a matter of logic that there is something rather than nothing.
@@ -225,22 +225,22 @@ Unfortunately, that rule would be utterly unusable. To establish each and every 
 Our cunning thought will be inspired by considering:
 $$\forall x Fx \therefore\ \forall y Fy$$
 This argument should \emph{obviously} be valid. After all, alphabetical variation ought to be a matter of taste, and of no logical consequence. But how might our proof system reflect this? Suppose we begin a proof thus:
-\begin{pf}
+\begin{fitchproof}
 	\hypo{x}{\forall x Fx}
 	\have{a}{Fa} \Ae{x}
-\end{pf}
+\end{fitchproof}
 We have proved `$Fa$'. And, of course, nothing stops us from using the same justification to prove `$Fb$', `$Fc$', $\ldots$, `$Fj_2$', $\ldots$, `$Fr_{79002}, \ldots$, and so on until we run out of space, time, or patience. But reflecting on this, we see that there is a way to prove $F\meta{c}$, for any name \meta{c}. And if we can do it for \emph{any} thing, we should surely be able to say that `$F$' is true of \emph{everything}. This therefore justifies us in inferring `$\forall y Fy$', thus:
-\begin{pf}
+\begin{fitchproof}
 	\hypo{x}{\forall x Fx}
 	\have{a}{Fa} \Ae{x}
 	\have{y}{\forall y Fy} \Ai{a}
-\end{pf}
+\end{fitchproof}
 The crucial thought here is that `$a$' was just some \emph{arbitrary} name. There was nothing special about it---we might have chosen any other name---and still the proof would be fine. And this crucial thought motivates the universal introduction rule ($\forall$I):
 \factoidbox{
-\begin{pf}
+\begin{fitchproof}
 	\have[m]{a}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}
 	\have[\ ]{c}{\forall \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)} \Ai{a}
-\end{pf}
+\end{fitchproof}
 	\meta{c} must not occur in any undischarged assumption or premise.\\
 	\meta{x} must not occur in $\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$
 	}
@@ -254,22 +254,22 @@ To see the constraint in action, consider this terrible argument:
 We might symbolize this obviously invalid inference pattern as:
 $$\forall x Lxk \therefore \forall x Lxx$$
 Now, suppose we tried to offer a proof that vindicates this argument:
-\begin{pf}
+\begin{fitchproof}
 	\hypo{x}{\forall x Lxk}
 	\have{a}{Lkk} \Ae{x}
 	\have{y}{\forall x Lxx} \by{naughtily attempting to invoke $\forall$I}{a}
-\end{pf}\noindent
+\end{fitchproof}\noindent
 This is not allowed, because `$k$' occurred already in an undischarged assumption, namely, on line 1. The crucial point is that, if we have made any assumptions about the object we are working with, then we are not reasoning generally enough to license $\forall$I.
 
 Although the name may not occur in any \emph{undischarged} assumption, it may occur as a discharged assumption. That is, it may occur in a subproof that we have already closed. For example:
-\begin{pf}
+\begin{fitchproof}
 	\open
 		\hypo{f1}{Gd}
 		\have{f2}{Gd}\by{R}{f1}
 	\close
 	\have{ff}{Gd \eif Gd}\ci{f1-f2}
 	\have{zz}{\forall z(Gz \eif Gz)}\Ai{ff}
-\end{pf}
+\end{fitchproof}
 This tells us that `$\forall z (Gz \eif Gz)$' is a \emph{theorem}. And that is as it should be.
 
 \section{Existential elimination}
@@ -280,7 +280,7 @@ Suppose we know that something is F, and that everything which is F is G. In (al
 		Since something is F, there is some particular thing which is an F. We do not know anything about it, other than that it's an F, but for convenience, let's call it `obbie'. So: obbie is F. Since everything which is F is G, it follows that obbie is G. But since obbie is G, it follows that something is G. And nothing depended on which object, exactly, obbie was. So, something is G.
 	\end{quote}
 We might try to capture this reasoning pattern in a proof as follows:
-\begin{pf}
+\begin{fitchproof}
 	\hypo{es}{\exists x Fx}
 	\hypo{ast}{\forall x(Fx \eif Gx)}
 	\open
@@ -290,12 +290,12 @@ We might try to capture this reasoning pattern in a proof as follows:
 		\have{et1}{\exists x Gx}\Ei{t}
 	\close
 	\have{et2}{\exists x Gx}\Ee{es,s-et1}
-\end{pf}\noindent
+\end{fitchproof}\noindent
 Breaking this down: we started by writing down our assumptions. At line 3, we made an additional assumption: `$Fo$'. This was just a substitution instance of `$\exists x Fx$'. On this assumption, we established `$\exists x Gx$'. Note that we had made no \emph{special} assumptions about the object named by `$o$'; we had \emph{only} assumed that it satisfies `$Fx$'. So nothing depends upon which object it is. And line 1 told us that \emph{something} satisfies `$Fx$', so our reasoning pattern was perfectly general. We can discharge the specific assumption `$Fo$', and simply infer `$\exists x Gx$' on its own.
 
 Putting this together, we obtain the existential elimination rule ($\exists$E):
 \factoidbox{
-\begin{pf}
+\begin{fitchproof}
 	\have[m]{a}{\exists \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)}
 	\open
 		\hypo[i]{b}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}
@@ -303,7 +303,7 @@ Putting this together, we obtain the existential elimination rule ($\exists$E):
 		\have[j]{c}{\metaY}
 	\close
 	\have[\ ]{d}{\metaY} \Ee{a,b-c}
-\end{pf}
+\end{fitchproof}
 \meta{c} must be new to the proof: it does not occur in any line $< i$;\\
 \meta{c} must not occur in \metaY.
 }
@@ -314,7 +314,7 @@ As with universal introduction, the constraints are extremely important. To see 
 We might symbolize this obviously invalid inference pattern as follows:
 $$Lb, \exists x \enot Lx \therefore Lb \eand \enot Lb$$
 Now, suppose we tried to offer a proof that vindicates this argument:
-\begin{pf}
+\begin{fitchproof}
 	\hypo{f}{Lb}
 	\hypo{nf}{\exists x \enot Lx}
 	\open
@@ -322,9 +322,9 @@ Now, suppose we tried to offer a proof that vindicates this argument:
 		\have{con}{Lb \eand \enot Lb}\ai{f, na}
 	\close
 	\have{econ1}{Lb \eand \enot Lb}\by{naughtily attempting to invoke $\exists$E }{nf, na-con}
-\end{pf}
+\end{fitchproof}
 The last line of the proof is not allowed. The name that we used in our substitution instance for `$\exists x \enot Lx$' on line 3, namely `$b$', occurs in line 4. The following proof would be no better:
-\begin{pf}
+\begin{fitchproof}
 	\hypo{f}{Lb}
 	\hypo{nf}{\exists x \enot Lx}
 	\open
@@ -333,7 +333,7 @@ The last line of the proof is not allowed. The name that we used in our substitu
 		\have{con1}{\exists x (Lx \eand \enot Lx)}\Ei{con}
 	\close
 	\have{econ1}{\exists x (Lx \eand \enot Lx)}\by{naughtily attempting to invoke $\exists$E }{nf, na-con1}
-\end{pf}
+\end{fitchproof}
 The last line of the proof would still not be allowed. For the name that we used in our substitution instance for `$\exists x \enot Lx$', namely `$b$', occurs in an undischarged assumption, namely line 1.
 
 The moral of the story is this. \emph{If you want to squeeze information out of an existential quantifier, choose a new name for your substitution instance.} That way, you can guarantee that you meet all the constraints on the rule for $\exists$E.
@@ -342,13 +342,13 @@ The moral of the story is this. \emph{If you want to squeeze information out of 
 \problempart
 The following two `proofs' are \emph{incorrect}. Explain why both are incorrect. Also, provide interpretations which would invalidate the fallacious argument forms the `proofs' enshrine:
 \begin{multicols}{2}
-	\begin{pf}
+	\begin{fitchproof}
 		\hypo{Rxx}{\forall x Rxx}
 		\have{Raa}{Raa}\Ae{Rxx}
 		\have{Ray}{\forall y Ray}\Ai{Raa}
 		\have{Rxy}{\forall x \forall y Rxy}\Ai{Ray}
-	\end{pf}
-	\begin{pf}
+	\end{fitchproof}
+	\begin{fitchproof}
 		\hypo{AE}{\forall x \exists y Rxy}
 		\have{E}{\exists y Ray}\Ae{AE}
 		\open
@@ -356,13 +356,13 @@ The following two `proofs' are \emph{incorrect}. Explain why both are incorrect.
 			\have{Ex}{\exists x Rxx}\Ei{ass}
 		\close
 		\have{con}{\exists x Rxx}\Ee{E, ass-Ex}
-	\end{pf}
+	\end{fitchproof}
 \end{multicols}
 
 \problempart
 \label{pr.justifyFOLproof}
 The following three proofs are missing their citations (rule and line numbers). Add them, to turn them into bona fide proofs.
-\begin{pf}
+\begin{fitchproof}
 \hypo{p1}{\forall x\exists y(Rxy \eor Ryx)}
 \hypo{p2}{\forall x\enot Rmx}
 \have{3}{\exists y(Rmy \eor Rym)}{}
@@ -373,9 +373,9 @@ The following three proofs are missing their citations (rule and line numbers). 
 		\have{a4}{\exists x Rxm}{}
 	\close
 \have{n}{\exists x Rxm} {}
-\end{pf}
+\end{fitchproof}
 \begin{multicols}{2}
-\begin{pf}
+\begin{fitchproof}
 \hypo{1}{\forall x(\exists yLxy \eif \forall zLzx)}
 \hypo{2}{Lab}
 \have{3}{\exists y Lay \eif \forall zLza}{}
@@ -387,8 +387,8 @@ The following three proofs are missing their citations (rule and line numbers). 
 \have{9}{\forall z Lzc}{}
 \have{10}{Lcc}{}
 \have{11}{\forall x Lxx}{}
-\end{pf}
-\begin{pf}
+\end{fitchproof}
+\begin{fitchproof}
 \hypo{a}{\forall x(Jx \eif Kx)}
 \hypo{b}{\exists x\forall y Lxy}
 \hypo{c}{\forall x Jx}
@@ -402,7 +402,7 @@ The following three proofs are missing their citations (rule and line numbers). 
 	\have{5}{\exists x(Kx \eand Lxx)}{}
 \close
 \have{j}{\exists x(Kx \eand Lxx)}{}
-\end{pf}
+\end{fitchproof}
 \end{multicols}
 
 
@@ -498,28 +498,28 @@ In this section, we will add some additional rules to the basic rules of the pre
 
 In \S\ref{s:FOLBuildingBlocks}, we noted that $\enot\exists x\metaX$ is logically equivalent to $\forall x \enot\metaX$. We will add some rules to our proof system that govern this. In particular, we add:
 	\factoidbox{
-	\begin{pf}
+	\begin{fitchproof}
 		\have[m]{a}{\forall \meta{x} \enot\metaX}
 		\have[\ ]{con}{\enot \exists \meta{x} \metaX}\cq{a}
-	\end{pf}}
+	\end{fitchproof}}
 and
 \factoidbox{
-	\begin{pf}
+	\begin{fitchproof}
 		\have[m]{a}{ \enot \exists \meta{x} \metaX}
 		\have[\ ]{con}{\forall  \meta{x} \enot \metaX}\cq{a}
-	\end{pf}}
+	\end{fitchproof}}
 Equally, we add:
 \factoidbox{
-	\begin{pf}
+	\begin{fitchproof}
 		\have[m]{a}{\exists \meta{x}\enot \metaX}
 		\have[\ ]{con}{\enot \forall \meta{x} \metaX}\cq{a}
-	\end{pf}}
+	\end{fitchproof}}
 and
 \factoidbox{
-	\begin{pf}
+	\begin{fitchproof}
 		\have[m]{a}{\enot \forall \meta{x} \metaX}
 		\have[\ ]{con}{\exists \meta{x} \enot \metaX}\cq{a}
-	\end{pf}}
+	\end{fitchproof}}
 
 \begin{practiceproblems}
 \problempart
@@ -560,7 +560,7 @@ When all the quantifiers occur at the beginning of a sentence, that sentence is 
 \chapter{Derived rules}\label{s:DerivedFOL}
 As in the case of TFL, we first introduced some rules for FOL as basic (in \S\ref{s:BasicFOL}), and then added some further rules for conversion of quantifiers (in \S\ref{s:CQ}). In fact, the CQ rules should be regarded as \emph{derived} rules, for they can be derived from the  \emph{basic} rules of \S\ref{s:BasicFOL}. (The point here is as in \S\ref{s:Derived}.) Here is a justification for the first CQ rule:
 
-\begin{pf}
+\begin{fitchproof}
 \hypo{1}{\forall x\enot Px}
 \open
 \hypo{2}{\exists x Px}
@@ -577,13 +577,13 @@ As in the case of TFL, we first introduced some rules for FOL as basic (in \S\re
 \have{9}{Da\eor\enot Da}\LEM
 \close
 \have{10}{\enot\exists x Px}\ni{2-9}
-\end{pf}
+\end{fitchproof}
 
 
 %You will note that on line 3 I have written `for $\exists$E'. This is not technically a part of the proof. It is just a reminder---to me and to you---of why I have bothered to introduce `$\enot Ac$' out of the blue. You might find it helpful to add similar annotations to assumptions when performing proofs. But do not add annotations on lines other than assumptions: the proof requires its own citation, and your annotations will clutter it.
 Here is a justification of the third CQ rule:
 
-\begin{pf}
+\begin{fitchproof}
 \hypo{1}{\exists x\enot Px}
 \open
 \hypo{1a}{\forall x Px}
@@ -601,10 +601,10 @@ Here is a justification of the third CQ rule:
 \have{8}{Da\eor\enot Da}\LEM
 \close
 \have{9}{\enot\forall x Px}\ni{1a-9}
-\end{pf}
+\end{fitchproof}
 
 
-%\begin{pf}
+%\begin{fitchproof}
 %	\hypo{nEna}{\exists x  \enot Ax}
 %	\open
 %		\hypo{Aa}{\forall x Ax}
@@ -616,7 +616,7 @@ Here is a justification of the third CQ rule:
 %		\have{con1}{\ered}\Ee{nEna, nac-con}
 %	\close
 %	\have{dada}{\enot \forall x Ax}\ni{Aa-con1}
-%\end{pf}
+%\end{fitchproof}
 This explains why the CQ rules can be treated as derived. Similar justifications can be offered for the other two CQ rules.
 
 \begin{practiceproblems}

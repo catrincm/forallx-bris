@@ -6,7 +6,7 @@ In formulating our natural deduction system, we treated certain rules of natural
 
 \section{Alternative disjunction elimination}
 Some systems take DS as their basic rule for disjunction elimination. Such systems can then treat the $\eor$E rule as a derived rule. For they might offer the following proof scheme: 
-	\begin{pf}
+	\begin{fitchproof}
 		\have[m]{ab}{\metaX\eor\metaY}
 		\open
 			\hypo[i]{a}{\metaX} {}
@@ -37,30 +37,30 @@ Some systems take DS as their basic rule for disjunction elimination. Such syste
 		\have{c3}{\meta{C}}\ce{bic, b}
 	\close
 	\have{con}{\meta{C}}\orE{lem,c-c1, nc-c3}
-\end{pf}
+\end{fitchproof}
 So why did we choose to take $\eor$E as basic, rather than DS?\footnote{P.D.\ Magnus's original version of this book went the other way.} Our reasoning is that DS involves the use of `$\enot$' in the statement of the rule. It is in some sense `cleaner' for our disjunction elimination rule to avoid mentioning \emph{other} connectives. 
 The rule $\eor$E we use is also closely connected to the rule $\exists$E. Whereas there is no such analogy with DS. 
 
 
 \section{Alternative negation rules}
 Some systems take the following rule as their basic negation introduction rule:
-\begin{pf}
+\begin{fitchproof}
 	\open
 		\hypo[m]{a}{\metaX}
 		\have[n-1]{b}{\metaY}
 		\have[n]{nb}{\enot\metaY}
 	\close
 	\have[\ ]{}{\enot\metaX}\by{$\enot$I*}{a-nb}
-\end{pf}
+\end{fitchproof}
 and the following as their basic negation elimination rule:
-\begin{pf}
+\begin{fitchproof}
 	\open
 		\hypo[m]{na}{\enot\metaX}
 		\have[n][-1]{b}{\metaY}
 		\have{nb}{\enot\metaY}
 	\close
 	\have[\ ]{a}{\metaX}\by{$\enot$E*}{na-nb}
-\end{pf}
+\end{fitchproof}
 Using these two rules, we could have derived all of the rules governing negation and contradiction that we have taken as basic (i.e.\ $\ered$I, $\ered$E, $\enot$I and LEM). Indeed, we could have avoided all use of the symbol `$\ered$' altogether. Negation would have had a single introduction and elimination rule, and would have behaved much more like the other connectives.
 
 The resulting system would have had fewer rules than ours. So why did we chose to separate out contradiction, and to use an explicit rule LEM?\footnote{Again, P.D.\ Magnus's original version of this book went the other way.}
@@ -75,12 +75,12 @@ Our second reason is that a lot of fascinating philosophical discussion has focu
 An alternative approach to the quantifiers is to take as basic the rules for $\forall$I and $\forall$E from \S\ref{s:BasicFOL}, and also two CQ rule which allow us to move from $\forall \meta{x} \enot \metaX$ to $\enot \exists \meta{x} \metaX$ and vice versa.\footnote{Warren Goldfarb follows this line in \emph{Deductive Logic}, 2003, Hackett Publishing Co.}  
 
 Taking only these rules as basic, we could have derived the  $\exists$I and $\exists$E rules provided in \S\ref{s:BasicFOL}. To derive the $\exists$I rule is fairly simple. Suppose $\metaX$ contains the name $\meta{c}$, and contains no instances of the variable $\meta{x}$, and that we want to do the following:
-\begin{pf}
+\begin{fitchproof}
 	\have[m]{a}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}
 	\have[k]{c}{\exists \meta{x} \metaX(\ldots \meta{x} \ldots \meta{c}\ldots)}
-\end{pf}
+\end{fitchproof}
 This is not yet permitted, since in this new system, we do not have the $\exists$I rule. We can, however, offer the following:
-\begin{pf}
+\begin{fitchproof}
 	\hypo[m]{a}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}
 	\open
 		\hypo{nEna}{\enot \exists \meta{x} \metaX(\ldots \meta{x} \ldots \meta{c}\ldots)}
@@ -90,19 +90,19 @@ This is not yet permitted, since in this new system, we do not have the $\exists
 	\close
 	\have{nnEa}{\enot \enot \exists \meta{x} \metaX(\ldots \meta{x} \ldots \meta{c}\ldots)}\ni{nEna-red}
 	\have{end}{\exists\meta{x} \metaX(\ldots \meta{x} \ldots \meta{c}\ldots)}\dne{nnEa}
-\end{pf}\noindent
+\end{fitchproof}\noindent
 To derive the $\exists$E rule is rather more subtle. This is because the $\exists$E rule has an important constraint (as, indeed, does the $\forall$I rule), and we need to make sure that we are respecting it. So, suppose we are in a situation where we \emph{want} to do the following:
-\begin{pf}
+\begin{fitchproof}
 	\have[m]{ExA}{\exists \meta{x} \metaX(\ldots \meta{x} \ldots \meta{x}\ldots)}
 	\open
 		\hypo[i]{Ac}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}
 		\have[j]{B}{\metaY}
 	\close
 	\have[k]{end}{\metaY}
-\end{pf}\noindent
+\end{fitchproof}\noindent
  where $\meta{c}$ does not occur in any undischarged assumptions, or in $\metaY$, or in $\exists \meta{x} \metaX(\ldots \meta{x} \ldots \meta{x}\ldots)$. Ordinarily, we would be allowed to use the $\exists$E rule; but we are not here assuming that we have access to this rule as a basic rule. Nevertheless, we could offer the following, more complicated derivation:
  
-\begin{pf}
+\begin{fitchproof}
 	\have[m]{ExA}{\exists \meta{x} \metaX(\ldots \meta{x} \ldots \meta{x}\ldots)}
 	\open
 		\hypo[i]{Ac}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}
@@ -118,7 +118,7 @@ To derive the $\exists$E rule is rather more subtle. This is because the $\exist
 	\close
 	\have{nnB}{\enot\enot\metaY}\ni{nB-red2}
 	\have{end}{\metaY}\dne{nnB}
-\end{pf}\noindent
+\end{fitchproof}\noindent
 We are permitted to use $\forall$I on line $k+3$ because $\meta{c}$ does not occur in any  undischarged assumptions or in $\metaY$. The entries on lines $k+4$ and $k+1$ contradict each other, because $\meta{c}$ does not occur in $\exists \meta{x} \metaX(\ldots \meta{x} \ldots \meta{x} \ldots)$.
 
 Armed with these derived rules, we could now go on to derive the two remaining CQ rules, exactly as in \S\ref{s:DerivedFOL}.
