@@ -13,7 +13,7 @@ Download links for most recent version:
     Book](https://catrincm.github.io/forallx-bris/forallxbris-withanswers.pdf)
 
 
-Downloads for previous editions can be found at https://catrincm.github.io/forallx-bris/editions.
+Downloads for previous editions can be found at [/editions](https://github.com/catrincm/forallx-bris/editions).
 
 
 This book is based on forallx: Calgary by
