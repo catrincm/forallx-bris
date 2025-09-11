@@ -240,7 +240,7 @@ In a simple use of this rule, we might just use it to derive from the premises $
 \begin{fitchproof}
 	\hypo{ab}{S\eif F}
 	\hypo{a}{S}
-	\have{b}{F} \ce{ab,a}
+	\have{b}{F} \ifE{ab,a}
 \end{fitchproof}
 This would then be a natural deduction proof that
 $S\eif F,\, S\,\therefore \, F$ is valid.
@@ -257,7 +257,7 @@ We can also apply the rule when our $\metaX\eif \metaY$ and $\metaX$ are not the
 	\have[\ ]{dots}{\;\raise-.65ex\hbox{\vdots}}
 	\have[15]{a}{S}\by{another rule}{}
 	\have[\ ]{dots}{\;\raise-.65ex\hbox{\vdots}}
-	\have[23]{b}{F} \ce{ab,a}
+	\have[23]{b}{F} \ifE{ab,a}
 \end{fitchproof}
 
 It also can be that they appear in a different order, or that one appears in the premises, for example:
@@ -266,7 +266,7 @@ It also can be that they appear in a different order, or that one appears in the
 	\ellipsesline
 	\have[8]{ab}{S\eif F}
 	\ellipsesline
-	\have[23]{b}{F} \ce{ab,a}
+	\have[23]{b}{F} \ifE{ab,a}
 \end{fitchproof}
 
 We write our general rule as:
@@ -277,7 +277,7 @@ We write our general rule as:
 	\ellipsesline
 	\have[n]{a}{\metaX}
 	\ellipsesline
-	\have[\ ]{b}{\metaY} \ce{ab,a}
+	\have[\ ]{b}{\metaY} \ifE{ab,a}
 \end{fitchproof}}
 
 We can apply it to any $\metaX$ and $\metaY$.
@@ -285,7 +285,7 @@ For example,
 \begin{fitchproof}
 	\hypo{ab}{(A\eor B)\eif \enot F}
 	\hypo{a}{(A\eor B)}
-	\have{b}{\enot F} \ce{ab,a}
+	\have{b}{\enot F} \ifE{ab,a}
 \end{fitchproof}
 In this, $\metaX$ is $(A\eor B)$, and $\metaY$ is $\enot F$.
 
@@ -307,14 +307,14 @@ Perhaps we are working through a proof, and we have obtained `$A$' on line 8 and
 \begin{fitchproof}
 	\have[8]{a}{A}\hspace*{1em}
 	\have[15]{b}{B}\hspace*{1em}
-	\have[23]{c}{A \eand B} \ai{a, b}\hspace*{1em}
+	\have[23]{c}{A \eand B} \andI{a, b}\hspace*{1em}
 \end{fitchproof}
 Note that every line of our proof must either be an assumption, or must be justified by some rule. We cite `$\eand$I 8, 15' here to indicate that the line is obtained by the rule of conjunction introduction ($\eand$I) applied to lines 8 and 15.
 %We could equally well obtain:
 %\begin{fitchproof}
 %	\have[8]{a}{R}
 %	\have[15]{b}{B}
-%	\have[\ ]{c}{B \eand R} \ai{b, a}
+%	\have[\ ]{c}{B \eand R} \andI{b, a}
 %\end{fitchproof}
 %with the citation reverse, to reflect the order of the conjuncts.
 More generally, here is our conjunction introduction rule:
@@ -325,7 +325,7 @@ More generally, here is our conjunction introduction rule:
 		\ellipsesline
 	\have[n]{b}{\metaY}
 		\ellipsesline
-	\have[\ ]{c}{\metaX\eand\metaY} \ai{a, b}
+	\have[\ ]{c}{\metaX\eand\metaY} \andI{a, b}
 \end{fitchproof}
 }
 
@@ -351,7 +351,7 @@ Correspondingly, we have a rule that \emph{eliminates} that symbol.  Suppose you
 	\ellipsesline
 	\have[m]{ab}{\metaX\eand\metaY}
 	\ellipsesline
-	\have[\ ]{a}{\metaX} \ae{ab}
+	\have[\ ]{a}{\metaX} \andE{ab}
 \end{fitchproof}}
 and equally:
 \factoidbox{
@@ -359,7 +359,7 @@ and equally:
 \ellipsesline
 	\have[m]{ab}{\metaX\eand\metaY}
 	\ellipsesline
-	\have[\ ]{b}{\metaY} \ae{ab}
+	\have[\ ]{b}{\metaY} \andE{ab}
 \end{fitchproof}}
 The point is simply that, when you have a conjunction on some line of a proof, you can obtain either of the conjuncts by {\eand}E. (One point, might be worth emphasising: you can only apply this rule when conjunction is the main logical operator. So you cannot infer `$D$' just from `$C \eor (D \eand E)$'!)
 
@@ -375,16 +375,16 @@ The main logical operator in both the premise and conclusion of this argument is
 From the premise, we can get each of the conjuncts by {\eand}E. The proof now looks like this:
 \begin{fitchproof}
 	\hypo{ab}{{[}(A\eor B)\eif(C\eor D){]} \eand \enot(E\eor F)}
-	\have{a}{{[}(A\eor B)\eif(C\eor D){]}} \ae{ab}
-	\have{b}{\enot(E\eor F)} \ae{ab}
+	\have{a}{{[}(A\eor B)\eif(C\eor D){]}} \andE{ab}
+	\have{b}{\enot(E\eor F)} \andE{ab}
 \end{fitchproof}
 So by applying the {\eand}I rule to lines 3 and 2 (in that order), we arrive at the desired conclusion. The finished proof looks like this:
 \begin{fitchproof}
 	\hypo{ab}{{[}(A\eor B)\eif(C\eor D){]} \eand \enot(E\eor F)}
 
-	\have{a}{{[}(A\eor B)\eif(C\eor D){]}} \ae{ab}
-	\have{b}{\enot(E\eor F)} \ae{ab}
-	\have{ba}{\enot(E\eor F) \eand {[}(A\eor B)\eif(C\eor D){]}} \ai{b,a}
+	\have{a}{{[}(A\eor B)\eif(C\eor D){]}} \andE{ab}
+	\have{b}{\enot(E\eor F)} \andE{ab}
+	\have{ba}{\enot(E\eor F) \eand {[}(A\eor B)\eif(C\eor D){]}} \andI{b,a}
 \end{fitchproof}
 This is a very simple proof, but it shows how we can chain rules of proof together into longer proofs. In passing, note that investigating this argument with a truth table would have required a staggering 256 lines; our formal proof required only four lines.
 
@@ -397,28 +397,28 @@ To provide a proof corresponding with this argument, we start by writing:
 From the premise, we can get each of the conjuncts by applying $\eand$E twice. We can then apply $\eand$E twice more, so our proof looks like:
 \begin{fitchproof}
 	\hypo{ab}{A \eand (B \eand C)}
-	\have{a}{A} \ae{ab}
-	\have{bc}{B \eand C} \ae{ab}
-	\have{b}{B} \ae{bc}
-	\have{c}{C} \ae{bc}
+	\have{a}{A} \andE{ab}
+	\have{bc}{B \eand C} \andE{ab}
+	\have{b}{B} \andE{bc}
+	\have{c}{C} \andE{bc}
 \end{fitchproof}
 But now we can merrily reintroduce conjunctions in the order we wanted them, so that our final proof is:
 \begin{fitchproof}
 	\hypo{abc}{A \eand (B \eand C)}
-	\have{a}{A} \ae{abc}
-	\have{bc}{B \eand C} \ae{abc}
-	\have{b}{B} \ae{bc}
-	\have{c}{C} \ae{bc}
-	\have{ab}{A \eand B}\ai{a, b}
-	\have{con}{(A \eand B) \eand C}\ai{ab, c}
+	\have{a}{A} \andE{abc}
+	\have{bc}{B \eand C} \andE{abc}
+	\have{b}{B} \andE{bc}
+	\have{c}{C} \andE{bc}
+	\have{ab}{A \eand B}\andI{a, b}
+	\have{con}{(A \eand B) \eand C}\andI{ab, c}
 \end{fitchproof}
 Recall that our official definition of sentences in TFL only allowed conjunctions with two conjuncts. The proof just given suggests that we could drop inner brackets in all of our proofs. However, this is not standard, and we will not do this. Instead, we will maintain our more austere bracketing conventions. (Though we will still allow ourselves to drop outermost brackets, for legibility.)
 
 Let me offer one final illustration. When using the $\eand$I rule, there is no requirement that it is applied to two different sentences. So we can formally prove `$A$' from `$A$' as follows:
 \begin{fitchproof}
 	\hypo{a}{A}
-	\have{aa}{A \eand A}\ai{a, a}
-	\have{a2}{A}\ae{aa}
+	\have{aa}{A \eand A}\andI{a, a}
+	\have{a2}{A}\andE{aa}
 \end{fitchproof}
 Simple, but effective. In fact this shows that we didn't need to have the rule of Reiteration as we could always argue by $\eand$I then $\eand$E. But for ease we will allow Reiteration as a basic rule so you don't have to argue this way.
 
@@ -469,7 +469,7 @@ Simple, but effective. In fact this shows that we didn't need to have the rule o
 %		\hypo[k]{b2}{\metaY}
 %		\have[l]{a2}{\metaX}
 %	\close
-%	\have[\ ]{ab}{\metaX\eiff\metaY}\bi{a1-b1,b2-a2}
+%	\have[\ ]{ab}{\metaX\eiff\metaY}\iffI{a1-b1,b2-a2}
 %\end{fitchproof}}
 %There can be as many lines as you like between $i$ and $j$, and as many lines as you like between $k$ and $l$. Moreover, the subproofs can come in any order, and the second subproof does not need to come immediately after the first.
 %
@@ -478,13 +478,13 @@ Simple, but effective. In fact this shows that we didn't need to have the rule o
 %\begin{fitchproof}
 %	\have[m]{ab}{\metaX\eiff\metaY}
 %	\have[n]{a}{\metaX}
-%	\have[\ ]{b}{\metaY} \be{ab,a}
+%	\have[\ ]{b}{\metaY} \iffE{ab,a}
 %\end{fitchproof}}
 %and equally:
 %\factoidbox{\begin{fitchproof}
 %	\have[m]{ab}{\metaX\eiff\metaY}
 %	\have[n]{a}{\metaY}
-%	\have[\ ]{b}{\metaX} \be{ab,a}
+%	\have[\ ]{b}{\metaX} \iffE{ab,a}
 %\end{fitchproof}}
 %Note that the biconditional, and the right or left half, can be separated from one another, and they can appear in any order. However, in the citation for $\eiff$E, we always cite the biconditional first.
 
@@ -498,19 +498,19 @@ Armed with all this, we present the disjunction introduction rule(s):
 \ellipsesline
 	\have[m]{a}{\metaX}
 	\ellipsesline
-	\have[\ ]{ab}{\metaX\eor\metaY}\oi{a}
+	\have[\ ]{ab}{\metaX\eor\metaY}\orI{a}
 \end{fitchproof}
 and
 \begin{fitchproof}
 \ellipsesline
 	\have[m]{a}{\metaX}
 	\ellipsesline
-	\have[\ ]{ba}{\metaY\eor\metaX}\oi{a}
+	\have[\ ]{ba}{\metaY\eor\metaX}\orI{a}
 \end{fitchproof}}
 Notice that \metaY can be \emph{any} sentence whatsoever, so the following is a perfectly acceptable proof:
 \begin{fitchproof}
 	\hypo{m}{M}
-	\have{mmm}{M \eor ([(A\eiff B) \eif (C \eand D)] \eiff [E \eand F])}\oi{m}
+	\have{mmm}{M \eor ([(A\eiff B) \eif (C \eand D)] \eiff [E \eand F])}\orI{m}
 \end{fitchproof}
 Using a truth table to show this would have taken 128 lines.
 
@@ -628,9 +628,9 @@ The following  `proofs' are \emph{incorrect}. Explain the mistakes they make.
 \begin{fitchproof}
 \hypo{abc}{A \eand (B \eand C)}
 \hypo{bcd}{(B \eor C) \eif D}
-\have{b}{B}\ae{abc}
-\have{bc}{B \eor C}\oi{b}
-\have{d}{D}\ce{bc, bcd}
+\have{b}{B}\andE{abc}
+\have{bc}{B \eor C}\orI{b}
+\have{d}{D}\ifE{bc, bcd}
 \end{fitchproof}
 
 \problempart
@@ -639,10 +639,10 @@ The following proofs are missing their citations (rule and line numbers). Add th
 \begin{fitchproof}
 \hypo{ps}{P \eand S}
 \hypo{nsor}{S \eif R}
-%\have{p}{P}%\ae{ps}
-\have{s}{S}%\ae{ps}
-\have{r}{R}%\ce{nsor, s}
-\have{re}{A \eor E}%\oi{r}
+%\have{p}{P}%\andE{ps}
+\have{s}{S}%\andE{ps}
+\have{r}{R}%\ifE{nsor, s}
+\have{re}{A \eor E}%\orI{r}
 \end{fitchproof}
 
 \solutions
@@ -688,9 +688,9 @@ We might write this in a form that is closer to our natural deduction format:
 	\hypo{r}{\text{Alice came to the party}}
 	\open
 		\hypo{l}{\text{Beth came to the party}}
-		\have{rl}{\text{Both Alice and Beth came to the party}}\ai{r, l}
+		\have{rl}{\text{Both Alice and Beth came to the party}}\andI{r, l}
 		\close
-	\have{con}{\parbox[t]{.8\textwidth}{Thus, \emph{if} Beth came to the party, both Alice and Beth came.}}\ci{l-rl}
+	\have{con}{\parbox[t]{.8\textwidth}{Thus, \emph{if} Beth came to the party, both Alice and Beth came.}}\ifI{l-rl}
 \end{fitchproof}\medskip
 The natural deduction format of lines and indentations is there to replace the words and context like ``suppose that''. The ``suppose that'' used on line 2 is represented in the formal system by the indentation and additional line. And like the premises, this line does not need to be justified, it is taken as an assumption, and a line underneath it is drawn. What comes underneath this, on line 3, is still indented, and is within the context of the supposition that Beth came to the party. But once we move to line 4, the additional assumption is no longer in place. It has been \emph{discharged}.
 
@@ -711,16 +711,16 @@ With this extra assumption in place, we are in a position to use $\eand$I. So we
 		\hypo{r}{A}
 		\open
 			\hypo{l}{B}
-			\have{rl}{A \eand B}\ai{r, l}
+			\have{rl}{A \eand B}\andI{r, l}
 	\end{fitchproof}
 So we have now shown that, on the additional assumption, `$B$', we can obtain `$A \eand B$'. We can therefore conclude that, if `$B$' obtains, then so does `$A \eand B$'. Or, to put it more briefly, we can conclude `$B \eif (A \eand B)$':
 	\begin{fitchproof}
 		\hypo{r}{A}
 		\open
 			\hypo{l}{B}
-			\have{rl}{A \eand B}\ai{r, l}
+			\have{rl}{A \eand B}\andI{r, l}
 			\close
-		\have{con}{B\eif(A\eand B)}\ci{l-rl}
+		\have{con}{B\eif(A\eand B)}\ifI{l-rl}
 	\end{fitchproof}
 Observe that we have dropped back to using one vertical line.  We have \emph{discharged} the additional assumption, `$B$', since the conditional itself follows just from our original assumption, `$A$'.
 
@@ -732,7 +732,7 @@ The general pattern at work here is the following. We first make an additional a
 		\ellipsesline
 		\have[n]{b}{\metaY}
 	\close
-	\have[\ ]{ab}{\metaX\eif\metaY}\ci{a-b}
+	\have[\ ]{ab}{\metaX\eif\metaY}\ifI{a-b}
 	\end{fitchproof}}
 There can be as many or as few lines as you like between lines $m$ and $n$.
 
@@ -753,10 +753,10 @@ Note that we have made `$P$' available, by treating it as an additional assumpti
 	\hypo{qr}{Q \eif R}
 	\open
 		\hypo{p}{P}
-		\have{q}{Q}\ce{pq,p}
-		\have{r}{R}\ce{qr,q}
+		\have{q}{Q}\ifE{pq,p}
+		\have{r}{R}\ifE{qr,q}
 	\close
-	\have{pr}{P \eif R}\ci{p-r}
+	\have{pr}{P \eif R}\ifI{p-r}
 \end{fitchproof}
 
 The subproof also doesn't need to start immediately. For example:
@@ -766,10 +766,10 @@ The subproof also doesn't need to start immediately. For example:
 	\have{pq}{P\eif Q}\andE{pqo}
 	\open
 		\hypo{p}{P}
-		\have{q}{Q}\ce{pq,p}
-		\have{r}{R}\ce{qr,q}
+		\have{q}{Q}\ifE{pq,p}
+		\have{r}{R}\ifE{qr,q}
 	\close
-	\have{pr}{P \eif R}\ci{p-r}
+	\have{pr}{P \eif R}\ifI{p-r}
 \end{fitchproof}
 %\section{Reiteration}\label{s:Reiteration}
 %When using subproofs, as we did for Conditional Introduction, we introduce one more rule which will be useful.
@@ -804,7 +804,7 @@ But suppose that we could somehow show both of the following: first, that Alice 
 		\have[m]{ab}{\metaX\eor\metaY}
 %		\have[i]{i}{\metaX\to\metaZ}
 %		\have[j]{j}{\metaY\to\metaZ}
-%		\have[\ ]{c}{\metaZ} \oe{ab,i,j}
+%		\have[\ ]{c}{\metaZ} \orE{ab,i,j}
 	\\	\open
 			\hypo[i]{a}{\metaX}
 			\ellipsesline
@@ -837,16 +837,16 @@ A proof corresponding to this argument is:
 		\hypo{prem}{(P \eand Q) \eor (P \eand R) }
 			\open
 				\hypo{pq}{P \eand Q}
-				\have{p1}{P}\ae{pq}
+				\have{p1}{P}\andE{pq}
 			\close
-%			\have{pqp}{(P \eand Q) \eif P} {\ci{pq-p1}}
+%			\have{pqp}{(P \eand Q) \eif P} {\ifI{pq-p1}}
 			\open
 				\hypo{pr}{P \eand R}
-				\have{p2}{P}\ae{pr}
+				\have{p2}{P}\andE{pr}
 			\close
-%			\have{prp}{(P \eand R) \eif P} {\ci{pr-p2}}
-		\have{con}{P}\oe{prem, pq-p1, pr-p2}
-%		\have{con}{P}\oe{prem, pq-p1, pr-p2}
+%			\have{prp}{(P \eand R) \eif P} {\ifI{pr-p2}}
+		\have{con}{P}\orE{prem, pq-p1, pr-p2}
+%		\have{con}{P}\orE{prem, pq-p1, pr-p2}
 	\end{fitchproof}
 
 
@@ -899,22 +899,22 @@ A proof corresponding to this argument is:
 %Here is a proof corresponding to this argument:
 %	\begin{fitchproof}
 %		\hypo{aboc}{A \eand (B \eor C)}
-%		\have{a}{A}\ae{aboc}
-%		\have{boc}{B \eor C}\ae{aboc}
+%		\have{a}{A}\andE{aboc}
+%		\have{boc}{B \eor C}\andE{aboc}
 %		\open
 %			\hypo{b}{B}
-%			\have{ab}{A \eand B}\ai{a,b}
-%			\have{abo}{(A \eand B) \eor (A \eand C)}\oi{ab}
+%			\have{ab}{A \eand B}\andI{a,b}
+%			\have{abo}{(A \eand B) \eor (A \eand C)}\orI{ab}
 %		\close
-%%		\have{bconc}{B \eif ((A \eand B) \eor (A \eand C))}{\ci{b-abo}}
+%%		\have{bconc}{B \eif ((A \eand B) \eor (A \eand C))}{\ifI{b-abo}}
 %		\open
 %			\hypo{c}{C}
-%			\have{ac}{A \eand C}\ai{a,c}
-%			\have{aco}{(A \eand B) \eor (A \eand C)}\oi{ac}
+%			\have{ac}{A \eand C}\andI{a,c}
+%			\have{aco}{(A \eand B) \eor (A \eand C)}\orI{ac}
 %		\close
-%%	\have{cconc}{C \eif ((A \eand B) \eor (A \eand C))}{\ci{c-aco}}
-%\have{con}{(A \eand B) \eor (A \eand C)}\oe{boc, b-abo, c-aco}
-%%\have{con}{(A \eand B) \eor (A \eand C)}\oe{boc, bconc, cconc}
+%%	\have{cconc}{C \eif ((A \eand B) \eor (A \eand C))}{\ifI{c-aco}}
+%\have{con}{(A \eand B) \eor (A \eand C)}\orE{boc, b-abo, c-aco}
+%%\have{con}{(A \eand B) \eor (A \eand C)}\orE{boc, bconc, cconc}
 %	\end{fitchproof}
 %Don't be alarmed if you think that you wouldn't have been able to come up with this proof yourself. The ability to come up with novel proofs will come with practice. The key question at this stage is whether, looking at the proof, you can see that it conforms with the rules that we have laid down. That just involves checking every line, and making sure that it is justified in accordance with the rules we have laid down.
 
@@ -932,16 +932,16 @@ Here is a proof corresponding with the argument:
 	\have{lem}{D\eor\enot D}\LEM
 	\open
 	\hypo{b}{D}
-	\have{ab}{P \eand D}\ai{a, b}
-	\have{abo}{(P \eand D) \eor (P \eand \enot D)}\oi{ab}
+	\have{ab}{P \eand D}\andI{a, b}
+	\have{abo}{(P \eand D) \eor (P \eand \enot D)}\orI{ab}
 	\close
-%\have{dconc}{D \eif ((P \eand D) \eor (P \eand \enot D))}{\ci{b-abo}}
+%\have{dconc}{D \eif ((P \eand D) \eor (P \eand \enot D))}{\ifI{b-abo}}
 	\open
 	\hypo{nb}{\enot D}
-	\have{anb}{P \eand \enot D}\ai{a, nb}
-	\have{anbo}{(P \eand D) \eor (P \eand \enot D)}\oi{anb}
+	\have{anb}{P \eand \enot D}\andI{a, nb}
+	\have{anbo}{(P \eand D) \eor (P \eand \enot D)}\orI{anb}
 	\close
-%\have{ndconc}{\enot D \eif ((P \eand D) \eor (P \eand \enot D))}{\ci{b-abo}}
+%\have{ndconc}{\enot D \eif ((P \eand D) \eor (P \eand \enot D))}{\ifI{b-abo}}
 	\have{con}{(P \eand D) \eor (P \eand \enot D)}\orE{lem,b-abo,nb-anbo}
 \end{fitchproof}
 \section{Negation}
@@ -957,9 +957,9 @@ This thought motivates the following rule:
 %	\have[k]{y}{\enot\metaY}
 	\have[k]{bot}{\metaY\eand\enot\metaY}
 \close
-\have[\ ]{na}{\enot\metaX}\ni{a-bot}
+\have[\ ]{na}{\enot\metaX}\notI{a-bot}
 %\have[m]{axx}{\metaX \eif \ered}
-%\have[\ ]{na}{\enot\metaX}\ni{axx}
+%\have[\ ]{na}{\enot\metaX}\notI{axx}
 \end{fitchproof}}
 %There can be as many lines between $i$ and $j$ as you like.
 It does not matter whether in the subproof you first derive $\metaY$ and then derive $\enot\metaY$ or whether you first derive $\enot\metaY$ and the derive $\metaY$. It is only important that in the subproof you derive both $\metaY$ and $\enot\metaY$.
@@ -974,9 +974,9 @@ To see this in practice, and interacting with negation, consider this proof:
 %			\have{nd2}{\enot D}\Reiteration{nd}
 			\have{ndr}{D\eand\enot D}\andI{d, nd}
 		\close
-%		\have{ndxx}{\enot D \eif \ered}{\ci{nd-ndr}}
+%		\have{ndxx}{\enot D \eif \ered}{\ifI{nd-ndr}}
 		\have{con}{\enot\enot D}\notI{nd-ndr} %contradiction in d2,nd2
-%		\have{con}{\enot\enot D}\ni{ndxx}
+%		\have{con}{\enot\enot D}\notI{ndxx}
 	\end{fitchproof}
 
 \subsection{Negation Elimination} \todo[inline]{CCM Nov 23: 
@@ -1003,7 +1003,7 @@ If assuming that something is false leads you to a contradiction, then that assu
 \close
 \have[\ ]{na}{\metaX}\notE{a-y}
 %\have[m]{axx}{\metaX \eif \ered}
-%\have[\ ]{na}{\enot\metaX}\ni{axx}
+%\have[\ ]{na}{\enot\metaX}\notI{axx}
 \end{fitchproof}}
 Formally, the rule is very similar to $\enot$I, but they are different.\footnote{There are logicians who accept $\enot$I but reject $\enot$E. They are called ``intuitionists.'' Intuitionists reject the law of excluded middle. They don't buy our basic assumption that every sentence has one of two truth values, true or false. For intuitionists, $\metaX$ and $\enot\enot\metaX$ are not equivalent. 
 %To get the system of intuitionist logic, we reject $\enot$E and LEM. We then need to add the rule of explosion as a basic rule. This rule is derivable in our system.
@@ -1053,10 +1053,10 @@ Consider this proof:
 	\hypo{a}{A}
 	\open
 		\hypo{b1}{B}
-%		\have{bb}{B \eand B}\ai{b1, b1}
+%		\have{bb}{B \eand B}\andI{b1, b1}
 		\have{b2}{B} \Reiteration{b1}
 	\close
-	\have{con}{B \eif B}\ci{b1-b2}
+	\have{con}{B \eif B}\ifI{b1-b2}
 \end{fitchproof}
 This is perfectly in keeping with the rules we have laid down already, and it should not seem particularly strange. Since `$B \eif B$' is a tautology, no particular premises should be required to prove it.
 
@@ -1065,10 +1065,10 @@ But suppose we now tried to continue the proof as follows:
 	\hypo{a}{A}
 	\open
 		\hypo{b1}{B}
-%		\have{bb}{B \eand B}\ai{b1, b1}
+%		\have{bb}{B \eand B}\andI{b1, b1}
 		\have{b2}{B} \Reiteration{b1}
 	\close
-	\have{con}{B \eif B}\ci{b1-b2}
+	\have{con}{B \eif B}\ifI{b1-b2}
 	\have{b}{B}\by{naughty attempt to invoke $\eif$E}{con, b2}
 \end{fitchproof}
 If we were allowed to do this, it would be a disaster. It would allow us to prove any atomic sentence letter from any other atomic sentence letter. However, if you tell me that Anne is fast (symbolized by `$A$'), we shouldn't be able to conclude that Queen Boudica stood twenty-feet tall (symbolized by `$B$')! We must be prohibited from doing this, but how are we to implement the prohibition?
@@ -1092,11 +1092,11 @@ Once we have started thinking about what we can show by making additional assump
 	\hypo{b}{B}
 	\open
 		\hypo{c}{C}
-		\have{ab}{A \eand B}\ai{a,b}
+		\have{ab}{A \eand B}\andI{a,b}
 	\close
-	\have{cab}{C \eif (A \eand B)}\ci{c-ab}
+	\have{cab}{C \eif (A \eand B)}\ifI{c-ab}
 \close
-\have{bcab}{B \eif (C \eif (A \eand B))}\ci{b-cab}
+\have{bcab}{B \eif (C \eif (A \eand B))}\ifI{b-cab}
 \end{fitchproof}
 Notice that the citation on line 4 refers back to the initial assumption (on line 1) and an assumption of a subproof (on line 2). This is perfectly in order, since neither assumption has been discharged at the time (i.e.\ by line 4).
 
@@ -1107,11 +1107,11 @@ Again, though, we need to keep careful track of what we are assuming at any give
 	\hypo{b}{B}
 	\open
 		\hypo{c}{C}
-		\have{ab}{A \eand B}\ai{a,b}
+		\have{ab}{A \eand B}\andI{a,b}
 	\close
-	\have{cab}{C \eif (A \eand B)}\ci{c-ab}
+	\have{cab}{C \eif (A \eand B)}\ifI{c-ab}
 \close
-\have{bcab}{B \eif(C \eif (A \eand B))}\ci{b-cab}
+\have{bcab}{B \eif(C \eif (A \eand B))}\ifI{b-cab}
 \have{bcab}{C \eif (A \eand B)}\by{naughty attempt to invoke $\eif$I}{c-ab}
 \end{fitchproof}
 This would be awful. If we tell you that Anne is smart, you should not be able to infer that, if Cath is smart (symbolized by `$C$') then \emph{both} Anne is smart and Queen Boudica stood 20-feet tall! But this is just what such a proof would suggest, if it were permissible.
@@ -1166,7 +1166,7 @@ The following two `proofs' are \emph{incorrect}. Explain the mistakes they make.
 \have{lem}{L\eor\enot L}\LEM
 \open
 	\hypo{nl}{\enot L}
-	\have{a}{A}\ce{abc, nl}
+	\have{a}{A}\ifE{abc, nl}
 \close
 \open
 	\hypo{l}{L}
@@ -1183,9 +1183,9 @@ The following two `proofs' are \emph{incorrect}. Explain the mistakes they make.
 \begin{fitchproof}
 \hypo{abc}{A \eand (B \eand C)}
 \hypo{bcd}{(B \eor C) \eif D}
-\have{b}{B}\ae{abc}
-\have{bc}{B \eor C}\oi{b}
-\have{d}{D}\ce{bc, bcd}
+\have{b}{B}\andE{abc}
+\have{bc}{B \eor C}\orI{b}
+\have{d}{D}\ifE{bc, bcd}
 \end{fitchproof}
 \newpage
 \problempart
@@ -1194,42 +1194,42 @@ The following three proofs are missing their citations (rule and line numbers). 
 \begin{fitchproof}
 \hypo{ps}{P \eand S}
 \hypo{nsor}{S \eif R}
-%\have{p}{P}%\ae{ps}
-\have{s}{S}%\ae{ps}
-\have{r}{R}%\ce{nsor, s}
-\have{re}{R \eor E}%\oi{r}
+%\have{p}{P}%\andE{ps}
+\have{s}{S}%\andE{ps}
+\have{r}{R}%\ifE{nsor, s}
+\have{re}{R \eor E}%\orI{r}
 \end{fitchproof}
 
 \begin{fitchproof}
 \hypo{ad}{A \eif D}
 \open
 	\hypo{ab}{A \eand B}
-	\have{a}{A}%\ae{ab}
-	\have{d}{D}%\ce{ad, a}
-	\have{de}{D \eor E}%\oi{d}
+	\have{a}{A}%\andE{ab}
+	\have{d}{D}%\ifE{ad, a}
+	\have{de}{D \eor E}%\orI{d}
 \close
-\have{conc}{(A \eand B) \eif (D \eor E)}%\ci{ab-de}
+\have{conc}{(A \eand B) \eif (D \eor E)}%\ifI{ab-de}
 \end{fitchproof}
 
 \begin{fitchproof}
 \hypo{nlcjol}{\enot L \eif (J \eor L)}
 \hypo{nl}{\enot L}
-\have{jol}{J \eor L}%\ce{nlcjol, nl}
+\have{jol}{J \eor L}%\ifE{nlcjol, nl}
 \open
 	\hypo{j}{J}
-%	\have{jj}{J \eand J}%\ai{j}
-%	\have{j2}{J}%\ae{jj}
-	\have{j2}{J}%\r{j}
+%	\have{jj}{J \eand J}%\andI{j}
+%	\have{j2}{J}%\andE{jj}
+	\have{j2}{J}%\Reiteration{j}
 \close
-\have{jtoj}{J \eif J}%{\ci{j-j2}}
+\have{jtoj}{J \eif J}%{\ifI{j-j2}}
 \open
 	\hypo{l}{L}
 	\have{red}{\ered}%\ri{l, nl}
 	\have{j3}{J}%\re{red}
 \close
-\have{ltoj}{L \eif J}%{\ci{l-j3}}
-%\have{conc}{J}%\oe{jol, j-j2, l-j3}
-\have{conc}{J}%\oe{jol, jtoj, ltoj}
+\have{ltoj}{L \eif J}%{\ifI{l-j3}}
+%\have{conc}{J}%\orE{jol, j-j2, l-j3}
+\have{conc}{J}%\orE{jol, jtoj, ltoj}
 \end{fitchproof}
 \end{multicols}
 
@@ -1380,7 +1380,7 @@ In \S\ref{s:BasicTFL}, we introduced the basic rules of our proof system for TFL
 %%	\hypo{ana}{A \eif \enot A}
 %%	\open
 %%		\hypo{a}{A}
-%%		\have{na}{\enot A}\ce{ana, a}
+%%		\have{na}{\enot A}\ifE{ana, a}
 %%	\close
 %%	\open
 %%		\hypo{na1}{\enot A}
@@ -1466,13 +1466,13 @@ We can add rules to our system that encode this idea: allowing us to immediately
 %	\hypo{a}{A}
 %	\have{a2}{A}\by{R}{a}
 %\close
-%\have{atoa}{A \eif A}{\ci{a-a2}}
+%\have{atoa}{A \eif A}{\ifI{a-a2}}
 %\open
 %	\hypo{na}{\enot A}
 %	\have{bot}{\ered}\redI{na,nna}
 %	\have{a3}{A}\redE{bot}
 %\close
-%\have{natoa}{\enot A \eif A}{\ci{na-a3}}
+%\have{natoa}{\enot A \eif A}{\ifI{na-a3}}
 %%\have{a4}{A}\orE{lem,a-a2, na-a3}
 %\have{a4}{A}\orE{lem,atoa,natoa}
 %\end{fitchproof}
@@ -1619,7 +1619,7 @@ The following proofs are missing their citations (rule and line numbers). Add th
 	\have{nc2}{N \eor C}
 \close
 \have{nznc}{\enot Z \eif (N \eor C)}
-\have{3}{N \eor C}%{\oe{lem,znc,nznc}}
+\have{3}{N \eor C}%{\orE{lem,znc,nznc}}
 \end{fitchproof}
 \end{multicols}
 
@@ -1650,8 +1650,8 @@ In this section, we will see why we introduced the rules of our proof system in 
 %You now want to repeat yourself, on some line $k$. You could just invoke the rule R, introduced in \S\ref{s:Further}. But equally well, you can do this with the \emph{basic} rules of \S\ref{s:BasicTFL}:
 %\begin{fitchproof}
 %	\have[m]{a}{\metaX}
-%	\have[k]{aa}{\metaX \eand \metaX}\ai{a, a}
-%	\have{a2}{\metaX}\ae{aa}
+%	\have[k]{aa}{\metaX \eand \metaX}\andI{a, a}
+%	\have{a2}{\metaX}\andE{aa}
 %\end{fitchproof}
 %To be clear: this is not a proof. Rather, it is a proof  \emph{scheme}. After all, it uses a variable, `$\metaX$', rather than a sentence of TFL, but the point is simple: Whatever sentences of TFL we plugged in for `$\metaX$', and whatever lines we were working on, we could produce a bona fide proof. So you can think of this as a recipe for producing proofs.
 %
@@ -1677,14 +1677,14 @@ You now want, on line $k$, to prove $\metaY$. You can do this with the rule of D
 			\close
 			\have{b1}{\metaY}\pbc{a1-a3}
 		\close
-%	\have{xtoy}{\metaX\eif\metaY}{\ci{(a)-(b1)}}
+%	\have{xtoy}{\metaX\eif\metaY}{\ifI{(a)-(b1)}}
 		\open
 			\hypo{b}{\metaY}
 			\have{b2}{\metaY}\by{R}{b}
 		\close
-%	\have{ytoy}{\metaY\eif\metaY}{\ci{(b)-(b2)}}
-	\have{con}{\metaY}\oe{ab, a-b1, b-b2}
-%	\have{con}{\metaY}\oe{ab, xtoy, ytoy}
+%	\have{ytoy}{\metaY\eif\metaY}{\ifI{(b)-(b2)}}
+	\have{con}{\metaY}\orE{ab, a-b1, b-b2}
+%	\have{con}{\metaY}\orE{ab, xtoy, ytoy}
 \end{fitchproof}
 
 To be clear: this is not a proof. Rather, it is a proof \emph{scheme}.
@@ -1715,10 +1715,10 @@ Suppose in the course of you proof you already have $\metaX\eif\metaY$, say on l
 		\open
 		\hypo[k]{a}{\metaX}
 %		\have{nb2}{\enot\metaY}\Reiteration{nb}
-		\have{b}{\metaY}\ce{ab, a}
+		\have{b}{\metaY}\ifE{ab, a}
 		\have{red}{\metaY\eand\enot\metaY}\andI{b,nb}
 		\close
-%\have{xtoxx}{X \eif \ered}{\ci{(a)-(nb1)}}
+%\have{xtoxx}{X \eif \ered}{\ifI{(a)-(nb1)}}
 	\have{no}{\enot\metaX}\notI{a-red} % contradiction in b,nb
 \end{fitchproof}
 Again, the rule of MT can be derived from the \emph{basic} rules of \S\ref{s:BasicTFL}.
@@ -1763,13 +1763,13 @@ So again,  we can derive the double negations rules from the \emph{basic} rules 
 %		\hypo[k]{a}{\metaX}
 %		\have{a1}{\metaX}\by{R}{a}
 %	\close
-%\have{xtox}{\metaX\eif\metaX}{\ci{(a)-(a1)}}
+%\have{xtox}{\metaX\eif\metaX}{\ifI{(a)-(a1)}}
 %	\open
 %		\hypo{na}{\enot \metaX}
 %		\have{red}{\ered}\ri{na, m}
 %		\have{a2}{\metaX}\re{red}
 %	\close
-%\have{nxtox}{\enot\metaX\eif\metaX}{\ci{(na)-(a2)}}
+%\have{nxtox}{\enot\metaX\eif\metaX}{\ifI{(na)-(a2)}}
 %%\have{con}{\metaX}\orE{lem,a-a1, na-a2}
 %\have{con}{\metaX}\orE{lem,xtox,nxtox}
 %\end{fitchproof}
@@ -1815,20 +1815,20 @@ Here is a demonstration of how we could derive the first De Morgan rule:
 			\hypo[k]{a}{\metaX}
 			\open
 				\hypo{b}{\metaY}
-				\have{ab}{\metaX \eand \metaY}\ai{a,b}
+				\have{ab}{\metaX \eand \metaY}\andI{a,b}
 %				\have{nab1}{\enot(\metaX \eand \metaY)}\Reiteration{nab}
 				\have{nab1}{(\metaX \eand \metaY)\eand\enot(\metaX \eand \metaY)}\andI{ab,nab}
 			\close
-%		\have{ytoxx}{\metaY \eif \ered}{\ci{(b)-(nab1)}}
-			\have{nb}{\enot \metaY}\ni{b-nab1}%\ni{ytoxx}
-			\have{dis}{\enot\metaX \eor \enot \metaY}\oi{nb}
+%		\have{ytoxx}{\metaY \eif \ered}{\ifI{(b)-(nab1)}}
+			\have{nb}{\enot \metaY}\notI{b-nab1}%\notI{ytoxx}
+			\have{dis}{\enot\metaX \eor \enot \metaY}\orI{nb}
 		\close
-%\have{xtocon}{\metaX \eif (\enot \metaX \eor \enot \metaY)}{\ci{(a)-(dis)}}
+%\have{xtocon}{\metaX \eif (\enot \metaX \eor \enot \metaY)}{\ifI{(a)-(dis)}}
 			\open
 			\hypo{na1}{\enot \metaX}
-			\have{dis1}{\enot\metaX \eor \enot \metaY}\oi{na1}
+			\have{dis1}{\enot\metaX \eor \enot \metaY}\orI{na1}
 		\close
-%\have{nxtocon}{\enot\metaX \eif (\enot \metaX \eor \enot \metaY)}{\ci{(na1)-(dis1)}}
+%\have{nxtocon}{\enot\metaX \eif (\enot \metaX \eor \enot \metaY)}{\ifI{(na1)-(dis1)}}
 		\have{con}{\enot \metaX \eor \enot \metaY}\orE{lem,a-dis, na1-dis1}
 %\have{con}{\enot \metaX \eor \enot \metaY}\orE{lem,xtocon,nxtocon}
 	\end{fitchproof}
@@ -1842,13 +1842,13 @@ Here is a demonstration of how we could derive the second De Morgan rule:
 				\have{x1}{\metaX}\andE{ab}
 				\have{nx1}{\enot\metaX}\Reiteration{nx}
 			\close
-			\have{abc1}{\enot(\metaX \eand \metaY)}\ni{ab - nx1}
+			\have{abc1}{\enot(\metaX \eand \metaY)}\notI{ab - nx1}
 			\close
 			\open
 			\hypo{ny}{\enot\metaY}
 			\open
 			\hypo[l]{rab1}{\metaX \eand \metaY}
-				\have{y1}{\metaY}\ae{ab}
+				\have{y1}{\metaY}\andE{ab}
 %				\have{ny1}{\enot\metaY}\Reiteration{ny}
 				\have{red}{\metaY\eand\enot\metaY}\andI{y1,ny}
 			\close
@@ -2137,11 +2137,11 @@ description={A sentence that can be proved without any premises}
 	\begin{fitchproof}
 		\open
 			\hypo{con}{A \eand \enot A}
-			\have{a}{A}\ae{con}
-			\have{na}{\enot A}\ae{con}
+			\have{a}{A}\andE{con}
+			\have{na}{\enot A}\andE{con}
 %			\have{red}{\ered}\ri{a, na}
 		\close
-		\have{lnc}{\enot (A \eand \enot A)}\ni{con-na}% 
+		\have{lnc}{\enot (A \eand \enot A)}\notI{con-na}% 
 	\end{fitchproof}
 We have therefore proved `$\enot (A \eand \enot A)$' on no (undischarged) assumptions. This particular theorem is an instance of what is sometimes called \emph{the Law of Non-Contradiction}.
 

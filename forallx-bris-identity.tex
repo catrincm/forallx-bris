@@ -557,7 +557,7 @@ To see the rules in action, we will prove some quick results. First, we will pro
 		\have{aa}{a \eid  a}\by{\eid I}{}
 		\have{ba}{b \eid  a}\by{\eid E}{ab, aa}
 	\close
-	\have{abba}{a \eid  b \eif b \eid a}\ci{ab-ba}
+	\have{abba}{a \eid  b \eif b \eid a}\ifI{ab-ba}
 	\have{ayya}{\forall y (a \eid y \eif y \eid a)}\Ai{abba}
 	\have{xyyx}{\forall x \forall y (x \eid y \eif y \eid x)}\Ai{ayya}
 \end{fitchproof}
@@ -567,11 +567,11 @@ Second, we will prove that identity is \emph{transitive}:
 \begin{fitchproof}
 	\open
 		\hypo{abc}{a \eid  b \eand b \eid  c}
-		\have{ab}{a \eid  b}\ae{abc}
-		\have{bc}{b \eid  c}\ae{abc}
+		\have{ab}{a \eid  b}\andE{abc}
+		\have{bc}{b \eid  c}\andE{abc}
 		\have{ac}{a \eid  c}\by{\eid E}{ab, bc}
 	\close
-	\have{con}{(a \eid b \eand b \eid c) \eif a \eid  c}\ci{abc-ac}
+	\have{con}{(a \eid b \eand b \eid c) \eif a \eid  c}\ifI{abc-ac}
 	\have{conz}{\forall z((a \eid b \eand b \eid z) \eif a \eid z)}\Ai{con}
 	\have{cony}{\forall y\forall z((a \eid y \eand y \eid z) \eif a \eid z)}\Ai{conz}
 	\have{conx}{\forall x \forall y \forall z((x \eid y \eand y \eid z) \eif x \eid z)}\Ai{cony}

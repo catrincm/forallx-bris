@@ -450,7 +450,7 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 
 \begin{fitchproof}
 	\have[m]{a}{\forall \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)}
-	\have[\ ]{c}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)} \Ae{a}
+	\have[\ ]{c}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)} \forallE{a}
 \end{fitchproof}
 
 \subsubsection*{Universal introduction}
@@ -469,7 +469,7 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 
 \begin{fitchproof}
 	\have[m]{a}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}
-	\have[\ ]{c}{\exists \meta{x}\metaX(\ldots \meta{x} \ldots \meta{c}\ldots)} \Ei{a}
+	\have[\ ]{c}{\exists \meta{x}\metaX(\ldots \meta{x} \ldots \meta{c}\ldots)} \existsI{a}
 \end{fitchproof}
 
 \noindent \meta{x} must not occur in $\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$
@@ -484,7 +484,7 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 		\ellipsesline
 		\have[j]{c}{\metaY}
 	\close
-	\have[\ ]{d}{\metaY} \Ee{a,b-c}
+	\have[\ ]{d}{\metaY} \existsE{a,b-c}
 \end{fitchproof}
 
 \noindent \meta{c} must not occur in \\any undischarged assumption, \\in $\exists \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)$, \\or in \metaY

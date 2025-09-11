@@ -18,8 +18,8 @@ Some systems take DS as their basic rule for disjunction elimination. Such syste
 			\ellipsesline
 			\have[l]{c2}{\meta{C}}
 		\close
-		\have[n]{aic}{\metaX \eif \meta{C}}\ci{a-c1}
-		\have{bic}{\metaY \eif \meta{C}}\ci{b-c2}
+		\have[n]{aic}{\metaX \eif \meta{C}}\ifI{a-c1}
+		\have{bic}{\metaY \eif \meta{C}}\ifI{b-c2}
 		\have{lem}{\meta{C}\eor\enot\meta{C}}\LEM
 		\open
 			\hypo{c}{\meta{C}}
@@ -29,12 +29,12 @@ Some systems take DS as their basic rule for disjunction elimination. Such syste
 		\hypo{nc}{\enot \meta{C}}
 		\open
 			\hypo{a1}{\metaX}
-			\have{c2}{\meta{C}}\ce{aic, a1}
+			\have{c2}{\meta{C}}\ifE{aic, a1}
 			\have{nc1}{\ered}\ri{c2, nc}
 		\close
-		\have{na}{\enot\metaX}\ni{a1-nc1}
+		\have{na}{\enot\metaX}\notI{a1-nc1}
 		\have{b}{\metaY}\ds{ab, na}
-		\have{c3}{\meta{C}}\ce{bic, b}
+		\have{c3}{\meta{C}}\ifE{bic, b}
 	\close
 	\have{con}{\meta{C}}\orE{lem,c-c1, nc-c3}
 \end{fitchproof}
@@ -85,10 +85,10 @@ This is not yet permitted, since in this new system, we do not have the $\exists
 	\open
 		\hypo{nEna}{\enot \exists \meta{x} \metaX(\ldots \meta{x} \ldots \meta{c}\ldots)}
 		\have{Ana}{\forall \meta{x} \enot \metaX(\ldots \meta{x} \ldots \meta{c}\ldots)}\cq{nEna}
-		\have{nAc}{\enot\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}\Ae{Ana}
+		\have{nAc}{\enot\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}\forallE{Ana}
 		\have{red}{\ered}\ri{a, nAc}
 	\close
-	\have{nnEa}{\enot \enot \exists \meta{x} \metaX(\ldots \meta{x} \ldots \meta{c}\ldots)}\ni{nEna-red}
+	\have{nnEa}{\enot \enot \exists \meta{x} \metaX(\ldots \meta{x} \ldots \meta{c}\ldots)}\notI{nEna-red}
 	\have{end}{\exists\meta{x} \metaX(\ldots \meta{x} \ldots \meta{c}\ldots)}\dne{nnEa}
 \end{fitchproof}\noindent
 To derive the $\exists$E rule is rather more subtle. This is because the $\exists$E rule has an important constraint (as, indeed, does the $\forall$I rule), and we need to make sure that we are respecting it. So, suppose we are in a situation where we \emph{want} to do the following:
@@ -108,7 +108,7 @@ To derive the $\exists$E rule is rather more subtle. This is because the $\exist
 		\hypo[i]{Ac}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}
 		\have[j]{B}{\metaY}
 	\close
-	\have[k]{condi}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots) \eif \metaY}\ci{Ac-B}
+	\have[k]{condi}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots) \eif \metaY}\ifI{Ac-B}
 	\open
 		\hypo{nB}{\enot \metaY}
 		\have{nAc}{\enot \metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}\mt{condi, nB}
@@ -116,7 +116,7 @@ To derive the $\exists$E rule is rather more subtle. This is because the $\exist
 		\have{nEA}{\enot \exists \meta{x} \metaX(\ldots \meta{x} \ldots \meta{x}\ldots)}\cq{AxnA}
 		\have{red2}{\ered}\ri{ExA, nEA}
 	\close
-	\have{nnB}{\enot\enot\metaY}\ni{nB-red2}
+	\have{nnB}{\enot\enot\metaY}\notI{nB-red2}
 	\have{end}{\metaY}\dne{nnB}
 \end{fitchproof}\noindent
 We are permitted to use $\forall$I on line $k+3$ because $\meta{c}$ does not occur in any  undischarged assumptions or in $\metaY$. The entries on lines $k+4$ and $k+1$ contradict each other, because $\meta{c}$ does not occur in $\exists \meta{x} \metaX(\ldots \meta{x} \ldots \meta{x} \ldots)$.
