@@ -622,16 +622,16 @@ Sometimes, though, this won't yet be possible. For that, we need to finish off o
 %\newpage
 \begin{practiceproblems}
 
-\problempart
-The following  `proofs' are \emph{incorrect}. Explain the mistakes they make.
-
-\begin{fitchproof}
-\hypo{abc}{A \eand (B \eand C)}
-\hypo{bcd}{(B \eor C) \eif D}
-\have{b}{B}\andE{abc}
-\have{bc}{B \eor C}\orI{b}
-\have{d}{D}\ifE{bc, bcd}
-\end{fitchproof}
+%\problempart
+%The following  `proofs' are \emph{incorrect}. Explain the mistakes they make.
+%
+%\begin{fitchproof}
+%\hypo{abc}{A \eand (B \eand C)}
+%\hypo{bcd}{(B \eor C) \eif D}
+%\have{b}{B}\andE{abc}
+%\have{bc}{B \eor C}\orI{b}
+%\have{d}{D}\ifE{bc, bcd}
+%\end{fitchproof}
 
 \problempart
 The following proofs are missing their citations (rule and line numbers). Add them, to turn them into \emph{bona fide} proofs. Additionally, write down the argument that corresponds to each proof.
@@ -639,10 +639,9 @@ The following proofs are missing their citations (rule and line numbers). Add th
 \begin{fitchproof}
 \hypo{ps}{P \eand S}
 \hypo{nsor}{S \eif R}
-%\have{p}{P}%\andE{ps}
-\have{s}{S}%\andE{ps}
-\have{r}{R}%\ifE{nsor, s}
-\have{re}{A \eor E}%\orI{r}
+\have{s}{S}\myanswer{\andE{ps}}
+\have{r}{R}\myanswer{\ifE{nsor, s}}
+\have{re}{A \eor E}\myanswer{\orI{r}}
 \end{fitchproof}
 
 \solutions
@@ -651,19 +650,21 @@ The following proofs are missing their citations (rule and line numbers). Add th
 Give a proof corresponding to each of the following arguments:
 \begin{enumerate}
 \item $A\eand (B\eor C)\,\therefore\,(B\eor C)\eand A$
-\begin{fitchproof}
-	\have[p]{prem}{A \eand (B \eor C)}
-	\have[a]{A}{A} \andE{prem}
-	\have[bc]{BorC}{B \eor C} \andE{prem}
-	\have[]{goal}{(B \eor C) \eand A} \andI{bc,a}
-\end{fitchproof}
+\myanswer{
+	\begin{fitchproof}
+		\hypo{prem}{A \eand (B \eor C)}
+		\have{a}{A}\andE{prem}
+		\have{bc}{B \eor C}\andE{prem}
+		\have{conj}{(B \eor C) \eand A}\andI{bc,a}
+\end{fitchproof}}
 \item $(A\eor\enot A)\eif B\,\therefore\, B$
-\begin{fitchproof}
-	\have[c]{cond}{(A \eor \enot A) \eif B}
-	\have[l]{lem}{A \eor \enot A} \LEM
-	\have[]{Bres}{B} \ifE{cond,lem}
-\end{fitchproof}
+\myanswer{\begin{fitchproof}
+		\hypo{cond}{(A \eor \enot A) \eif B}
+		\have{lem}{A \eor \enot A}\LEM
+		\have{b}{B}\ifE{cond,lem}
+\end{fitchproof}}
 \end{enumerate}
+
 
 
 \end{practiceproblems}
@@ -1159,78 +1160,74 @@ If the argument is actually valid (which is defined using truth-tables) there wi
 
 \begin{practiceproblems}
 
-\problempart
-The following two `proofs' are \emph{incorrect}. Explain the mistakes they make.
-\begin{fitchproof}
-\hypo{abc}{\enot L \eif (A \eand L)}
-\have{lem}{L\eor\enot L}\LEM
-\open
-	\hypo{nl}{\enot L}
-	\have{a}{A}\ifE{abc, nl}
-\close
-\open
-	\hypo{l}{L}
-	\open
-	\hypo{la}{\enot A}
-	\have{lr}{L}\by{R}{l}
-	\have{nlr}{\enot L}\by{R}{nl}
-	\close
-	\have{a2}{A}\by{$\enot$E}{la-nlr}
-\close
-\have{con}{A}\orE{lem,nl-a, l-a2}
-\end{fitchproof}
-
-\begin{fitchproof}
-\hypo{abc}{A \eand (B \eand C)}
-\hypo{bcd}{(B \eor C) \eif D}
-\have{b}{B}\andE{abc}
-\have{bc}{B \eor C}\orI{b}
-\have{d}{D}\ifE{bc, bcd}
-\end{fitchproof}
-\newpage
+%\problempart
+%The following two `proofs' are \emph{incorrect}. Explain the mistakes they make.
+%\begin{fitchproof}
+%\hypo{abc}{\enot L \eif (A \eand L)}
+%\have{lem}{L\eor\enot L}\LEM
+%\open
+%	\hypo{nl}{\enot L}
+%	\have{al}{A\eand L}\ifE{nl,abc}
+%	\have{a}{A}\andE{al}
+%\close
+%\open
+%	\hypo{l}{L}
+%	\open
+%	\hypo{la}{\enot A}
+%	\have{lnl}{L\eand\enot L}\andI{l,nl}
+%	\close
+%	\have{a2}{A}\notE{la-lnl}
+%\close
+%\have{con}{A}\orE{lem,nl-a, l-a2}
+%\end{fitchproof}
+%\myanswer{Line 4 cannot go straight to $A$. }
+%\begin{fitchproof}
+%\hypo{abc}{A \eand (B \eand C)}
+%\hypo{bcd}{(B \eor C) \eif D}
+%\have{b}{B}\andE{abc}
+%\have{bc}{B \eor C}\orI{b}
+%\have{d}{D}\ifE{bc, bcd}
+%\end{fitchproof}
+%\newpage
 \problempart
 The following three proofs are missing their citations (rule and line numbers). Add them, to turn them into \emph{bona fide} proofs. Additionally, write down the argument that corresponds to each proof.
 \begin{multicols}{2}
 \begin{fitchproof}
 \hypo{ps}{P \eand S}
 \hypo{nsor}{S \eif R}
-%\have{p}{P}%\andE{ps}
-\have{s}{S}%\andE{ps}
-\have{r}{R}%\ifE{nsor, s}
-\have{re}{R \eor E}%\orI{r}
+\have{s}{S}\myanswer{\andE{ps}}
+\have{r}{R}\myanswer{\ifE{nsor, s}}
+\have{re}{R \eor E}\myanswer{\orI{r}}
 \end{fitchproof}
 
 \begin{fitchproof}
 \hypo{ad}{A \eif D}
 \open
 	\hypo{ab}{A \eand B}
-	\have{a}{A}%\andE{ab}
-	\have{d}{D}%\ifE{ad, a}
-	\have{de}{D \eor E}%\orI{d}
+	\have{a}{A}\myanswer{\andE{ab}}
+	\have{d}{D}\myanswer{\ifE{ad, a}}
+	\have{de}{D \eor E}\myanswer{\orI{d}}
 \close
-\have{conc}{(A \eand B) \eif (D \eor E)}%\ifI{ab-de}
+\have{conc}{(A \eand B) \eif (D \eor E)}\myanswer{\ifI{ab-de}}
 \end{fitchproof}
 
-\begin{fitchproof}
-\hypo{nlcjol}{\enot L \eif (J \eor L)}
-\hypo{nl}{\enot L}
-\have{jol}{J \eor L}%\ifE{nlcjol, nl}
-\open
-	\hypo{j}{J}
-%	\have{jj}{J \eand J}%\andI{j}
-%	\have{j2}{J}%\andE{jj}
-	\have{j2}{J}%\Reiteration{j}
-\close
-\have{jtoj}{J \eif J}%{\ifI{j-j2}}
-\open
-	\hypo{l}{L}
-	\have{red}{\ered}%\ri{l, nl}
-	\have{j3}{J}%\re{red}
-\close
-\have{ltoj}{L \eif J}%{\ifI{l-j3}}
-%\have{conc}{J}%\orE{jol, j-j2, l-j3}
-\have{conc}{J}%\orE{jol, jtoj, ltoj}
-\end{fitchproof}
+%\begin{fitchproof}
+%\hypo{nlcjol}{\enot L \eif (J \eor L)}
+%\hypo{nl}{\enot L}
+%\have{jol}{J \eor L}\myanswer{\ifE{nlcjol, nl}}
+%\open
+%	\hypo{j}{J}
+%	\have{j2}{J}\myanswer{\Reiteration{j}}
+%\close
+%\have{jtoj}{J \eif J}\myanswer{{\ifI{j-j2}}}
+%\open
+%	\hypo{l}{L}
+%	\have{red}{\ered}\myanswer{\ri{l, nl}}
+%	\have{j3}{J}\myanswer{\re{red}}
+%\close
+%\have{ltoj}{L \eif J}\myanswer{{\ifI{l-j3}}}
+%\have{conc}{J}\myanswer{\orE{jol, jtoj, ltoj}}
+%\end{fitchproof}
 \end{multicols}
 
 \solutions
@@ -1332,17 +1329,141 @@ So for every valid argument there will be some proof. This doesn't mean it is al
 Show that each of the following arguments are valid using natural deduction:
 \begin{earg}
 \item $J\eif\enot J \therefore \enot J$
+\myanswer{\begin{fitchproof}
+		\hypo{jimpnotj}{J \eif \enot J}
+	\open
+	\hypo{j}{J}
+	\have{notj}{\enot J} \ifE{jimpnotj, j}
+	\have{contradiction}{J \eand \enot J} \andI{j, notj}
+	\close
+	\have{notjfinal}{\enot J} \notI{j-contradiction}
+	\end{fitchproof}
+}
 \item $Q\eif(Q\eand\enot Q) \therefore \enot Q$
+\myanswer{\begin{fitchproof}
+	\hypo{qimpcontradiction}{Q \eif (Q \eand \enot Q)}
+	\open
+	\hypo{q}{Q}
+	\have{qandnotq}{Q \eand \enot Q} \ifE{qimpcontradiction, q}
+	\have{notq}{\enot Q} \andE{qandnotq}
+	\have{contradiction}{Q \eand \enot Q} \andI{q, notq}
+	\close
+	\have{notqfinal}{\enot Q} \notI{q-contradiction}
+\end{fitchproof}}
 \item $A\eif (B\eif C) \therefore (A\eand B)\eif C$
-\item $K\eand L \therefore K\eiff L$
-\item $(C\eand D)\eor E \therefore E\eor D$
+\myanswer{\begin{fitchproof}
+		\hypo{aimpbic}{A \eif (B \eif C)}
+		\open
+		\hypo{aandb}{A \eand B}
+		\have{a}{A} \andE{aandb}
+		\have{b}{B} \andE{aandb}
+		\have{bic}{B \eif C} \ifE{aimpbic, a}
+		\have{c}{C} \ifE{bic, b}
+		\close
+		\have{aimpliesc}{(A \eand B) \eif C} \ifI{aandb-c}
+\end{fitchproof}}
+%\item $K\eand L \therefore K\eiff L$
+\item $(C\eand D)\eor E \therefore E\eor D$\myanswer{\begin{fitchproof}
+		\hypo{prem}{(C \eand D) \eor E}
+		\open
+		\hypo{cd}{C \eand D}
+		\have{d}{D}\andE{cd}
+		\have{eord1}{E \eor D}\orI{d}
+		\close
+		\open
+		\hypo{e}{E}
+		\have{eord2}{E \eor D}\orI{e}
+		\close
+		\have{goal}{E \eor D}\orE{prem,cd-eord1,e-eord2}
+\end{fitchproof}}
 %\item $A\eiff B, B\eiff C \therefore A\eiff C$
 \item $\enot F\eif G, F\eif H \therefore G\eor H$
+\myanswer{\begin{fitchproof}
+		\hypo{nfig}{\enot F \eif G}
+		\hypo{fih}{F \eif H}
+		\have{lem}{F \eor \enot F}\LEM
+		\open
+		\hypo{f}{F}
+		\have{h}{H}\ifE{fih,f}
+		\have{gh1}{G \eor H}\orI{h}
+		\close
+		\open
+		\hypo{nf}{\enot F}
+		\have{g}{G}\ifE{nfig,nf}
+		\have{gh2}{G \eor H}\orI{g}
+		\close
+		\have{goal}{G \eor H}\orE{lem,f-gh1,nf-gh2}
+\end{fitchproof}}
 \item $(Z\eand K) \eor (K\eand M), K \eif D \therefore D$
+\myanswer{\begin{fitchproof}
+		\hypo{disj}{(Z \eand K) \eor (K \eand M)}
+		\hypo{kid}{K \eif D}
+		\open
+		\hypo{zk}{Z \eand K}
+		\have{k1}{K}\andE{zk}
+		\have{d1}{D}\ifE{kid,k1}
+		\close
+		\open
+		\hypo{km}{K \eand M}
+		\have{k2}{K}\andE{km}
+		\have{d2}{D}\ifE{kid,k2}
+		\close
+		\have{D}{D}\orE{disj,zk-d1,km-d2}
+\end{fitchproof}}
 \item $P \eand (Q\eor R), P\eif \enot R \therefore Q\eor E$
+\myanswer{\begin{fitchproof}
+		\hypo{prem}{P \eand (Q \eor R)}
+		\hypo{p2nr}{P \eif \enot R}
+		\have{p}{P}\andE{prem}
+		\have{qorr}{Q \eor R}\andE{prem}
+		\open
+		\hypo{q}{Q}
+		\have{qe1}{Q \eor E}\orI{q}
+		\close
+		\open
+		\hypo{r}{R}
+		\have{nr}{\enot R}\ifE{p2nr,p}
+		\open
+		\hypo{nqe}{\enot(Q \eor E)}
+		\have{red}{R \eand \enot R}\andI{r,nr}
+		\close
+		\have{qe2}{Q \eor E}\notE{nqe-red}
+		\close
+		\have{goal}{Q \eor E}\orE{qorr,q-qe1,r-qe2}
+\end{fitchproof}}
 %\item $S\eiff T \therefore S\eiff (T\eor S)$
 \item $\enot (P \eif Q) \therefore \enot Q$
+\myanswer{\begin{fitchproof}
+		\hypo{nimp}{\enot (P \eif Q)}
+		\open
+		\hypo{q}{Q}
+		\open
+		\hypo{p}{P}
+		\have{q2}{Q}\Reiteration{q}
+		\close
+		\have{imp}{P \eif Q}\ifI{p-q2}
+		\have{red}{(P \eif Q)\eand\enot(P \eif Q)}\andI{imp,nimp}
+		\close
+		\have{nq}{\enot Q}\notI{q-red}
+\end{fitchproof}}
 \item $\enot (P \eif Q) \therefore P$
+\myanswer{\begin{fitchproof}
+		\hypo{nimp2}{\enot (P \eif Q)}
+		\open
+		\hypo{np}{\enot P}
+		\open
+		\hypo{p}{P}
+		\open
+		\hypo{nq}{\enot Q}
+		\have{contr}{P \eand \enot P}\andI{p,np}
+		\close
+		\have{q}{Q}\notE{nq-contr}
+		\close
+		\have{imp}{P \eif Q}\ifI{p-q}
+		\have{red}{(P \eif Q)\eand\enot(P \eif Q)}\andI{imp,nimp2}
+		\close
+		\have{P}{P}\notE{np-red}
+\end{fitchproof}}
 \end{earg}
 
 

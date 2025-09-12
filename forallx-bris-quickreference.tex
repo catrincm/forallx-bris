@@ -320,9 +320,6 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 \open
 	\hypo[m]{x}{\metaX}
 	\ellipsesline
-%	\have[n]{y}{\metaY}
-%	\ellipsesline
-%	\have[k]{ny}{\enot\metaY}
 	\have[k]{red}{\metaY\eand\enot\metaY}
 \close
 \have[\ ]{nx}{\enot\metaX}\notI{x-red}
@@ -334,9 +331,6 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 \open
 	\hypo[m]{nx}{\enot\metaX}
 	\ellipsesline
-%	\have[n]{y}{\metaY}
-%	\ellipsesline
-%	\have[k]{ny}{\enot\metaY}
 	\have[k]{red}{\metaY\eand\enot\metaY}
 \close
 \have[\ ]{x}{\metaX}\notE{nx-red}
@@ -457,7 +451,7 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 
 \begin{fitchproof}
 	\have[m]{a}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}
-	\have[\ ]{c}{\forall \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)} \Ai{a}
+	\have[\ ]{c}{\forall \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)} \forallI{a}
 \end{fitchproof}
 
 \noindent 	\meta{c} must not occur in any undischarged assumption\\ 
@@ -469,7 +463,7 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 
 \begin{fitchproof}
 	\have[m]{a}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}
-	\have[\ ]{c}{\exists \meta{x}\metaX(\ldots \meta{x} \ldots \meta{c}\ldots)} \existsI{a}
+	\have[\ ]{c}{\exists \meta{x}\metaX(\ldots \meta{x} \ldots \meta{c}\ldots)} \Ei{a}
 \end{fitchproof}
 
 \noindent \meta{x} must not occur in $\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$
@@ -484,7 +478,7 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 		\ellipsesline
 		\have[j]{c}{\metaY}
 	\close
-	\have[\ ]{d}{\metaY} \existsE{a,b-c}
+	\have[\ ]{d}{\metaY} \Ee{a,b-c}
 \end{fitchproof}
 
 \noindent \meta{c} must not occur in \\any undischarged assumption, \\in $\exists \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)$, \\or in \metaY
