@@ -88,7 +88,7 @@ In the same way that a three-place predicate picks out a ternary relation, an $n
 %		\item The TFL sentence $P$ is to take the same truth value as the English sentence `Big Ben is in London' (whatever that truth value may be)
 %	\end{ebullet}
 %The point that we emphasized is that TFL cannot handle differences in meaning that go beyond mere differences in truth value.
-%
+
 %
 %\section{Symbolizing versus translating}
 %FOL has some similar limitations, but it goes beyond mere truth values, since it enables us to split up sentences into terms, predicates and quantifier expressions. This enables us to consider what is \emph{true of} some particular object, or of some or all objects. But we can do no more than that.
@@ -165,38 +165,45 @@ In the same way that a three-place predicate picks out a ternary relation, an $n
 
 
 
-\section{Interpretation}\label{s:interpretation}\todo{call it ``model''?}
-We defined a \define{valuation} in TFL as any assignment of truth and falsity to atomic sentences. In FOL, we are going to define an \define{interpretation}. 
-\factoidbox{An interpretation 
-has three constituent parts. It:	\begin{ebullet}
+\section{Models}\label{s:model}\todo{call it ``model''?}
+We defined a \define{valuation} in TFL as any assignment of truth and falsity to atomic sentences. In FOL, we are going to define an \define{model}. Sentences of FOL will be true or false \emph{on a model}.
+\factoidbox{A model 
+has three constituent parts. It:	\begin{itemize}
 		\item specifies a non-empty set as the domain $\domain$;
-		\item assigns exactly one object of the domain to every name ($\approx$ the referent of the name);
-		\item assigns an $n$-ary relation to every $n$-place predicate (the things the predicate is to be true of in the respective order). 
+		\item specifies the denotation of the names and predicates as objects and relations on the domain
 		\begin{itemize}
-		\item an interpretation assigns a subset of the domain to a one-place predicate
-		\item an interpretation assigns a binary relation to a two-place predicate
-		\item an interpretation assigns a ternary relation to a three-place predicate 
+		\item assigns exactly one object of the domain to every name ($\approx$ the referent of the name);
+		\item assigns a subset of the domain to any one-placed predicate.
+		\item assigns a binary relation on the domain to every two-placed predicate.
+		\item assigns a ternary relation on the domain to every three-placed preciate.
 		\item \ldots
+%		\item assigns an $n$-ary relation to every $n$-place predicate (the things the predicate is to be true of in the respective order). 
+%		\begin{itemize}
+%		\item a model assigns a subset of the domain to a one-place predicate
+%		\item a model assigns a binary relation to a two-place predicate
+%		\item a model assigns a ternary relation to a three-place predicate 
+%		\item \ldots
+%		\end{itemize}
 		\end{itemize}
-		\end{ebullet}}
+		\end{itemize}}
 	
-	\factoidbox{For an interpretation, $\model$, we denote its assignment to $\eta$ as $\denote{\eta}_\model$. 
+	\factoidbox{For a model, $\model$, we denote its assignment to $\eta$ as $\denote{\eta}_\model$. 
 		
-		We will often drop the explicit reference to $\model$ and simply describe an interpretation by providing a domain and $\denote{\eta}$ for each name and predicate.}
+		We will often drop the explicit reference to $\model$ and simply describe a model by providing a domain and $\denote{\eta}$ for each name and predicate.}
 	
-%	For an interpretation, $\model$, we will often describe 
-%	For an interpretation, $\model$, and a FOL-expression, $\eta$, we will use $\denote{\eta}_\model$ to denote the interpretation of $\eta$ given by $\model$. For example, if $c$ is a FOL-name, then $\denote{\eta}_\model$ is the object assigned to $c$ by $\model$, and 
+%	For a model, $\model$, we will often describe 
+%	For a model, $\model$, and a FOL-expression, $\eta$, we will use $\denote{\eta}_\model$ to denote the model of $\eta$ given by $\model$. For example, if $c$ is a FOL-name, then $\denote{\eta}_\model$ is the object assigned to $c$ by $\model$, and 
 %	
-%	we will use $\denote{\cdot}_\model$ to denote the interpretation of $P$ given by $\model$, for example, $\denote{P}_\model=
+%	we will use $\denote{\cdot}_\model$ to denote the model of $P$ given by $\model$, for example, $\denote{P}_\model=
 %	
 %	\factoidbox{
-%	For an interpretation, $\mathcal{A}$, The interpretation of a FOL-expression $\eta$ is denoted by $\denote{\eta}$: $\llbracket \eta\rrbracket$
+%	For a model, $\mathcal{A}$, The model of a FOL-expression $\eta$ is denoted by $\denote{\eta}$: $\llbracket \eta\rrbracket$
 %		\begin{ebullet}
-%		\item if $c$ is a FOL-name, $\denote{c}$ denotes the object of the domain assigned to `$c$' by the interpretation and thus $\denote{c}\in \domain$.
-%		\item if $P$ is the $n$-place predicate, then we write $\denote{P}$ to denote the $n$-ary relation assigned to $P$ by the interpretation.
+%		\item if $c$ is a FOL-name, $\denote{c}$ denotes the object of the domain assigned to `$c$' by the model and thus $\denote{c}\in \domain$.
+%		\item if $P$ is the $n$-place predicate, then we write $\denote{P}$ to denote the $n$-ary relation assigned to $P$ by the model.
 %	\end{ebullet}}
 	
-An interpretation thus provides us with all the necessary information for interpreting/understanding the predicates and names, as well as, information about the range of the quantifiers. Importantly, we are not guaranteed that the interpretation of an $n$-place predicate is nonempty, i.e., it is possible that $\emptyset$ is assigned to a predicate. In general, a convenient way of specifying an interpretation is to supplement a given symbolization key (cf.~ Part~\ref{ch.FOL}) with the relevant interpretation of the names and predicates.
+A model thus provides us with all the necessary information for interpreting the predicates and names, as well as, information about the range of the quantifiers. Importantly, we are not guaranteed that the denotation of an $n$-place predicate is nonempty, i.e., it is possible that $\emptyset$ is assigned to a predicate. In general, a convenient way of specifying a model is to supplement a given symbolization key (cf.~ Part~\ref{ch.FOL}) with the relevant model of the names and predicates.
 
 Suppose we have just symbolized the sentence
 \begin{itemize}
@@ -212,7 +219,7 @@ using the symbolization key;
 \end{ekey}
 
 
-Taking the symbolization key as a guideline we can construct an appropriate interpretation as follows:
+Taking the symbolization key as a guideline we can construct an appropriate model as follows:
 \begin{interp}
 \item[\domain]$\Set{o \given o\text{ is an animal or }o\text{ is trampolines}}$
 \item[\denote{p}]\emph{Pooh}
@@ -220,21 +227,53 @@ Taking the symbolization key as a guideline we can construct an appropriate inte
 \item[\denote{t}]\emph{The trampoline}
 \item[\denote{B}]$\Set{\langle o_1,o_2,o_3\rangle \given o_1\text{ bounces with }o_2\text{ on }o_3}$
 \end{interp}
-Symbolization key and interpretation have similar components. Indeed we will sometimes be lazy and simply assume the interpretation to be suitably specified by the symbolization key. However, symbolization key and interpretations are very different things: an interpretation of the vocabulary of FOL is related to objects, sets and relations while in the symblization key we specify which FOL-symbols are to stand for the English names and predicates of a sentence, e.g, which FOL-name is to stand for the name `Pooh'. In the interpretation we are saying that the FOL-name `$p$' picks out Pooh (the bear) or, in some different interpretation, a different object of the domain. 
+Symbolization keys and models have similar components. Indeed we will sometimes be lazy and simply assume the model to be suitably specified by the symbolization key. However, symbolization keys and models are very different things: a model of the vocabulary of FOL inolves specifying objects, sets and relations while in the symblization key we specify which FOL-symbols are to stand for the English names and predicates of a sentence, e.g, which FOL-name is to stand for the name `Pooh'. In the model we are saying that the FOL-name `$p$' picks out Pooh (the bear) or, in some different model, a different object of the domain. 
 
-We may then ask whether the FOL-sentence $Bpet$ is true in the interpretation so specified. The answer is that it is true iff, indeed, Pooh bounces with Eeyore on the trampoline, that is, iff
+We may then ask whether the FOL-sentence $Bpet$ is true in the model so specified. The answer is that it is true iff, indeed, Pooh bounces with Eeyore on the trampoline, that is, iff
 $${\small \langle \text{Pooh, Eeyore, The trampoline}\rangle\in\Set{\langle o_1,o_2,o_3\rangle \given o_1\text{ bounces with }o_2\text{ on }o_3}.}$$
-The interpretation we have given above is arguably the \emph{intended interpretation}, that is, the interpretation that fits the symbolization key and our understanding of the English sentence. But there are many alternative interpretations for the FOL-sentence $Bpet$, the only thing which we require is that the interpretation specifies a domain, that the FOL-name `$p$', `$e$', and `$t$' pick out objects from the domain, and that the three-place $B$ is assigned a ternary relation. As in the case TFL: once we move to the language of FOL we forget about the particular English sentences and their meaning.
+The model we have given above is arguably the \emph{intended model}, that is, the model that fits the symbolization key and our understanding of the English sentence. But there are many alternative models for the FOL-sentence $Bpet$, the only thing which we require is that the model specifies a domain, that the FOL-name `$p$', `$e$', and `$t$' pick out objects from the domain, and that the three-place $B$ is assigned a ternary relation. 
+
+Here are two other models that could be provided.
+\begin{interp}
+	\item[\domain]$\Set{\emph{Alice},\emph{Bob}, \emph{Carly}}$
+	\item[\denote{p}]$\emph{Alice}$
+	\item[\denote{e}]$\emph{Bob}$
+	\item[\denote{t}]$\emph{Carly}$
+	\item[\denote{B}]$\Set{\sequence{\emph{Alice},\emph{Bob},\emph{Carly}}}$
+\end{interp}
+or
+\begin{interp}
+	\item[\domain]$\Set{1,2,3,4}$
+	\item[\denote{p}]$1$
+	\item[\denote{e}]$2$
+	\item[\denote{t}]$1$
+	\item[\denote{B}]$\Set{\sequence{1,2,3},\sequence{3,2,1}}$
+\end{interp}
+As in the case TFL: once we move to the language of FOL we forget about the particular English sentences and their meaning.
 
 
-To clearly distinguish symbolization key and interpretation it is convenient to present an interpretation \emph{diagrammatically}.
+It is often convenient to present a model \emph{diagrammatically}.
 
-\newglossaryentry{interpretation}{
-  name = {interpretation},
+\newglossaryentry{model}{
+  name = {model},
   description = {a specification of a \gls{domain} together with the objects the \glspl{names} pick out and the sets and relations assigned to the different \glspl{predicates}}
 }
 
-Suppose we want to consider just a single two-place predicate, $Rxy$. Then we can represent it just by drawing an arrow between two objects, and stipulate that $Rxy$ is to hold of x and y just in case there is an arrow running from x to y in our diagram. As an example, we might offer:
+Suppose we want to consider just a single two-place predicate, $Rxy$. 
+And we wish to consider the following model:
+\begin{interp}
+	\item[\domain]$\Set{1,2,3,4}$
+	\item[\denote{R}]$\Set{
+		\ntuple{1, 1}
+		\ntuple{1, 2},
+		\ntuple{2, 3},
+		\ntuple{3, 4},
+		\ntuple{4, 1},
+		\ntuple{1, 3}}
+		$
+\end{interp}
+
+Then we can represent it just by drawing an arrow between two objects, and stipulate that $Rxy$ is to hold of $x$ and $y$ just in case there is an arrow running from $x$ to $y$ in our diagram. As an example, we might offer:
 \begin{center}
 \begin{tikzpicture}
 \node (atom1) at (0,2) {1};
@@ -246,45 +285,45 @@ Suppose we want to consider just a single two-place predicate, $Rxy$. Then we ca
 \draw[->, thick] (atom3)--(atom4);
 \draw[->, thick] (atom4)--(atom1);
 \draw[->, thick] (atom1) -- (atom3);
-\end{tikzpicture}
-\end{center}
-This would be suitable to characterize an interpretation whose domain is the set $\Set{1,2,3,4}$, and:
-	\begin{align*}\denote{R}&=\Set{
-		\ntuple{1, 2},
-		\ntuple{2, 3},
-		\ntuple{3, 4},
-		\ntuple{4, 1},
-		\ntuple{1, 3}}.
-	\end{align*}
-Equally we might offer:
-
-\begin{center}
-\begin{tikzpicture}
-\node (atom1) at (0,2) {1};
-\node (atom2) at (2,2) {2};
-\node (atom3) at (2,0) {3};
-\node (atom4) at (0,0) {4};
-\draw[->, thick] (atom3)--(atom4);
 \draw[->, thick] (atom1)+(-0.15,0.15) arc (-330:-30:.3);
-\draw[->, thick] (atom3)+(0.15,-0.15) arc (-150:150:.3);
-\draw[<->, thick] (atom1) -- (atom3);
 \end{tikzpicture}
 \end{center}
-for an interpretation with the same domain but where
-	\begin{align*}\denote{R}&=\Set{
-		\ntuple{1, 3},
-		\ntuple{3, 1},
-		\ntuple{3, 4},
-		\ntuple{1, 1},
-		\ntuple{3, 3}}.
-	\end{align*}
-If we wanted, we could make our diagrams more complex. For example, we could add names as labels for particular objects. Equally, to symbolize the extension of a one-place predicate, we might simply draw a ring around some particular objects and stipulate that the set formed out of the encircled objects constitutes the interpretation of the predicate $Hx$, say.
+With this context, we can then instead describe this same model as
+\begin{interp}
+	\item[\domain]$\Set{x\given x \text{ is a number in the above diagram}}$
+	\item[\denote{R}]$\Set{\sequence{x,y}\given \text{ there is an arrow from $x$ to $y$ in the above diagram}}$
+\end{interp}
+
+What is important about a model is that it fully specifies what this is true of. This is only appropriate when it is abundantly clear. 
+
+%
+%\begin{center}
+%\begin{tikzpicture}
+%\node (atom1) at (0,2) {1};
+%\node (atom2) at (2,2) {2};
+%\node (atom3) at (2,0) {3};
+%\node (atom4) at (0,0) {4};
+%\draw[->, thick] (atom3)--(atom4);
+%\draw[->, thick] (atom1)+(-0.15,0.15) arc (-330:-30:.3);
+%\draw[->, thick] (atom3)+(0.15,-0.15) arc (-150:150:.3);
+%\draw[<->, thick] (atom1) -- (atom3);
+%\end{tikzpicture}
+%\end{center}
+%for a model with the same domain but where
+%	\begin{align*}\denote{R}&=\Set{
+%		\ntuple{1, 3},
+%		\ntuple{3, 1},
+%		\ntuple{3, 4},
+%		\ntuple{1, 1},
+%		\ntuple{3, 3}}.
+%	\end{align*}
+If we wanted, we could make our diagrams more complex. For example, we could add names as labels for particular objects. Equally, to symbolize the extension of a one-place predicate, we might simply draw a ring around some particular objects and stipulate that the set formed out of the encircled objects constitutes the model of a one-place predicate $H$, say.
 
 
 \chapter{Truth in FOL}\label{s:TruthFOL}
-We know what interpretations are. Since, among other things, they tell us how we are to understand FOL-predicates and FOL-names, they will provide us with an account of the truth of atomic sentences. We already hinted at this account in the previous chapter. However, we must also present a detailed account of what it is for an arbitrary FOL sentence to be true or false in an interpretation.
+We know what models are. Since, among other things, they tell us how we are to understand FOL-predicates and FOL-names, they will provide us with an account of the truth of atomic sentences. We already hinted at this account in the previous chapter. However, we must also present a detailed account of what it is for an arbitrary FOL sentence to be true or false in a model.
 
-But we defined what a sentence was by first specifying what a formula is. Formulas like $Ex$ aren't the sorts of things that are true or false in interpretations. Only sentences are true or false. But if we provide extra information we can determine the truth of $Ex$: we need to specify what object $x$ stands for. This is done by using a variable assignment: 
+But we defined what a sentence was by first specifying what a formula is. Formulas like $Ex$ aren't the sorts of things that are true or false i models. Only sentences are true or false. But if we provide extra information we can determine the truth of $Ex$: we need to specify what object $x$ stands for. This is done by using a variable assignment: 
 \factoidbox{A \define{variable assignment} assigns to each variable an object of the domain.}
 
 For example, if our domain is the set of characters in Winnie the Pooh, a variable assignment $\alpha$ might be:
@@ -299,10 +338,10 @@ For example, if our domain is the set of characters in Winnie the Pooh, a variab
 
 We often talk and compare different variable assignments so it's convenient to have names for them and we use Greek letters $\alpha, \beta,\gamma$ for this purpose. 
 
-Now consider an interpretation where the domain $\domain$ is the set of natural number and the predicate $E$ picks out the even numbers:
+Now consider a model where the domain $\domain$ is the set of natural number and the predicate $E$ picks out the even numbers:
 \begin{align*}&\domain=\Set{o \given  o\text{ is a natural number}}\\
 &\denote{E}=\Set{o \given o\text{ is an even number}}\end{align*}
-Then $Ex$ will be true in this interpretation under a variable assignment $\alpha$ that assigns, say, 4 to $x$---we write $\alpha(x)=4$---but false under a variable assignment $\beta$ that assigns 3 to $x$, i.e., $\beta(x)=3$.
+Then $Ex$ will be true in this model under a variable assignment $\alpha$ that assigns, say, 4 to $x$---we write $\alpha(x)=4$---but false under a variable assignment $\beta$ that assigns 3 to $x$, i.e., $\beta(x)=3$.
 
 
 
@@ -315,7 +354,7 @@ We know from \S\ref{s:FOLSentences} that there are three kinds of formulas in FO
 	\end{ebullet}
 We need to explain truth for all three kinds of formula.
 
-We will provide a completely general explanation in this section. However, to try to keep the explanation comprehensible, we will, at several points, use the following interpretation:
+We will provide a completely general explanation in this section. However, to try to keep the explanation comprehensible, we will, at several points, use the following model:
 	\begin{interp}
 		\item[\domain]$\Set{o \given o\text{ is a person born before before 2000\textsc{ce}}}$)
 		\item[\denote{a}] \emph{Aristotle}
@@ -328,58 +367,58 @@ This will be our \emph{go-to example} in what follows.
 \section{Atomic formulas}\label{s:traf}
 Atomic formulas are things like $Px$, $Pb$ or $Rax$.
 
-To see whether an atomic sentence like `$Pb$' is true in an interpretation, we need to check whether the object that is picked out by the name `$b$' is a member of the set the interpretation assigns to `$P$'. Looking at our \emph{go-to example} this means that `$Pb$' is true in the interpretation iff $$\text{\emph{Beyonc\'e}}\in\Set{o \given o\text{ is a philosopher}}.$$
+To see whether an atomic sentence like `$Pb$' is true in a model, we need to check whether the object that is picked out by the name `$b$' is a member of the set the model assigns to `$P$'. Looking at our \emph{go-to example} this means that `$Pb$' is true in the model iff $$\text{\emph{Beyonc\'e}}\in\Set{o \given o\text{ is a philosopher}}.$$
 Since Beyonc\'e is not a philosopher, i.e., 
 $$\text{\emph{Beyonc\'e}}\not\in\Set{o \given o\text{ is a philosopher}}$$
-`$Pb$' is false in that interpretation.
+`$Pb$' is false in that model.
 
 
-What about $Px$? This reads something like `they are a philosopher'. The question is who `they' refers to, or in the logic terms: who $x$ is. This depends on a variable assignment. A variable assignment needs to give an object in our domain for the variable $x$. For example, a variable assignment $\alpha$  assign Beyonc\'e to $x$, i.e., $\alpha(x)$=Beyonc\'e and since Beyonc\'e is not in the interpretation of `$P$' `$Px$' is not true in the interpretation under the variable assignment $\alpha$. However, since Aristotle is a philosopher `$Px$ would be true in the interpretation under a variable assignment $\beta$, where $$\beta(x)=\text{Aristotle}.$$
+What about $Px$? This reads something like `they are a philosopher'. The question is who `they' refers to, or in the logic terms: who $x$ is. This depends on a variable assignment. A variable assignment needs to give an object in our domain for the variable $x$. For example, a variable assignment $\alpha$  assign Beyonc\'e to $x$, i.e., $\alpha(x)$=Beyonc\'e and since Beyonc\'e is not in the model of `$P$' `$Px$' is not true in the model under the variable assignment $\alpha$. However, since Aristotle is a philosopher `$Px$ would be true in the model under a variable assignment $\beta$, where $$\beta(x)=\text{Aristotle}.$$
 A variable assignment doesn't need to specify one of the objects that are named, it can give us anyone in our domain, e.g.~Queen Elizabeth II. Under the variable assignment which assigns $x$ Queen Elizabeth II, `$Px$' is false: Queen Elizabeth II is not a philosopher.
 
-%The truth of atomic \emph{sentences} should be fairly straightforward. The sentence $Pa$ should be true just in case $Px$ is true of $a$. Given our go-to interpretation, this is true iff Aristotle is a philosopher. Aristotle is a philosopher. So the sentence is true. Equally, $Pb$ is false on our go-to interpretation.
+%The truth of atomic \emph{sentences} should be fairly straightforward. The sentence $Pa$ should be true just in case $Px$ is true of $a$. Given our go-to model, this is true iff Aristotle is a philosopher. Aristotle is a philosopher. So the sentence is true. Equally, $Pb$ is false on our go-to model.
 
-Likewise, on this interpretation, $Rab$ is true iff the object named by $a$ was born before the object named by $b$. Well, Aristotle was born before Beyonc\'e. So $Rab$ is true. Equally, $Raa$ is false: Aristotle was not born before Aristotle. How about $Rax$? Well what does our variable assignment specify for $x$? If we have a variable assignment where $x$ is Queen Elizabeth II, then $Rax$ is true: Aristotle was born before Queen Elizabeth II.
+Likewise, on this model, $Rab$ is true iff the object named by $a$ was born before the object named by $b$. Well, Aristotle was born before Beyonc\'e. So $Rab$ is true. Equally, $Raa$ is false: Aristotle was not born before Aristotle. How about $Rax$? Well what does our variable assignment specify for $x$? If we have a variable assignment where $x$ is Queen Elizabeth II, then $Rax$ is true: Aristotle was born before Queen Elizabeth II.
 
 Dealing with atomic formulas, then, is very intuitive. The only thing to be attentive to is the difference between names or variables:
 \factoidbox{A \define{term} is either a name or a variable. 
 	%CCM rewrote from JS. check.
 	\begin{itemize}
-		\item If $t$ is a name, then $\denote{t}^\alpha$ is just $\denote{t}$, the object of the domain assigned to the FOL-name $t$ by the interpretation.
+		\item If $t$ is a name, then $\denote{t}^\alpha$ is just $\denote{t}$, the object of the domain assigned to the FOL-name $t$ by the model.
 		\item If $t$ is a variable, then $\denote{t}^\alpha$ the object of the domain assigned to the variable $t$ by the variable assignment; that is, it is $\alpha(t)$.
 	\end{itemize}
-%	If $t$ is a term then the \define{denotation of the term} in the interpretation under an variable assignment $\alpha$, $\denote{t}^\alpha$ is the object pick out by the interpretation, if $t$ is a name and $\alpha(t)$ otherwise:
+%	If $t$ is a term then the \define{denotation of the term} in the model under an variable assignment $\alpha$, $\denote{t}^\alpha$ is the object pick out by the model, if $t$ is a name and $\alpha(t)$ otherwise:
 %\begin{align*}\denote{t}^\alpha=\begin{cases}\denote{t},&\text{ if $t$ is name;}\\\alpha(t),&\text{  if $t$ is a variable.}\end{cases}\end{align*} 
 }
 
 With this final bit of terminology out of way we can state the truth conditions for atomic formuals. Let \meta{R} be an $n$-place predicate and $\metaterm_1,\,\metaterm_2\ldots\metaterm_{n}$ terms. Then
 
 	\factoidbox{
-		$\meta{R}\metaterm_1\metaterm_2\ldots\metaterm_{n}$ is true in an interpretation under a variable assignment $\alpha$ \textbf{iff}\\
+		$\meta{R}\metaterm_1\metaterm_2\ldots\metaterm_{n}$ is true in a model under a variable assignment $\alpha$ \textbf{iff}\\
 		$$\langle\denote{t_1}^\alpha,\ldots,\denote{t_n}^\alpha\rangle\in\denote{\meta{R}}$$
 	}
 
-From this definition of the truth of atomic formulas we can tell that an assignment only plays an important role if one of the terms is a variable. If all terms are name then an atomic formula is true in an interpretation under a variable assignment \textbf{iff} it is true in the interpretation under \textbf{every} variable assignment. We will see that that is the case for sentences more generally: the choice of the variable assignment is only relevant to determine whether a formulas with free variables is true in an interpretation (under the chosen variable assignment). For this reason we sometimes do not mention the variable assignment when we talk about the truth of sentences. However, as we shall see the variable assignment will still have a role to play when we talk about the truth and falsity of quantified sentencesd.
+From this definition of the truth of atomic formulas we can tell that an assignment only plays an important role if one of the terms is a variable. If all terms are name then an atomic formula is true in a model under a variable assignment \textbf{iff} it is true in the model under \textbf{every} variable assignment. We will see that that is the case for sentences more generally: the choice of the variable assignment is only relevant to determine whether a formulas with free variables is true in a model (under the chosen variable assignment). For this reason we sometimes do not mention the variable assignment when we talk about the truth of sentences. However, as we shall see the variable assignment will still have a role to play when we talk about the truth and falsity of quantified sentencesd.
 
 \section{Sentential connectives}
 We saw in \S\ref{s:FOLSentences} that FOL formulas can be built up from simpler ones using the truth-functional connectives that were familiar from TFL. The rules governing these truth-functional connectives are \emph{exactly} the same as they were when we considered TFL. Here they are:
 	\factoidbox{
-	$\enot \metaX$ is true in an interpretation under a variable assignment \textbf{iff} \\$\metaX$ is false in that interpretation under that variable assignment
+	$\enot \metaX$ is true in a model under a variable assignment \textbf{iff} \\$\metaX$ is false in that model under that variable assignment
 
 		\
-		\\$\metaX \eand \metaY$ is true in an interpretation under a variable assignment \textbf{iff}\\ both $\metaX$ and $\metaY$ is true in that interpretation under that variable assignment
+		\\$(\metaX \eand \metaY)$ is true in a model under a variable assignment \textbf{iff}\\ both $\metaX$ and $\metaY$ is true in that model under that variable assignment
 
 		\
 		\\
-		$\metaX \eor \metaY$ is true in an interpretation under a variable assignment \textbf{iff}\\ either $\metaX$ is true or $\metaY$ is true in that interpretation under that variable assignment
+		$(\metaX \eor \metaY)$ is true in a model under a variable assignment \textbf{iff}\\ either $\metaX$ is true or $\metaY$ is true in that model under that variable assignment
 
 		\
-		\\$\metaX \eif \metaY$ is true in an interpretation under a variable assignment \textbf{iff}\\ either $\metaX$ is false or $\metaY$ is true in that interpretation under that variable assignment
+		\\$(\metaX \eif \metaY)$ is true in a model under a variable assignment \textbf{iff}\\ either $\metaX$ is false or $\metaY$ is true in that model under that variable assignment
 
 		%\
-		%\\$\metaX \eiff \metaY$ is true in an interpretation under a variable assignment \textbf{iff} \\$\metaX$ has the same truth value as $\metaY$ in that interpretation under that variable assignment
+		%\\$\metaX \eiff \metaY$ is true in a model under a variable assignment \textbf{iff} \\$\metaX$ has the same truth value as $\metaY$ in that model under that variable assignment
 	}
-This is just another presentation of the truth rules we gave for the connectives in TFL; it just does so in a slightly different way. Some examples will probably help to illustrate the idea. On our go-to interpretation:
+This is just another presentation of the truth rules we gave for the connectives in TFL; it just does so in a slightly different way. Some examples will probably help to illustrate the idea. On our go-to model:
 	\begin{earg}
 		\item[\textbullet] `$Pa$' is true
 		\item[\textbullet] `$Rab \eand Pb$' is false because, although `$Rab$' is true, `$Pb$' is false
@@ -398,7 +437,7 @@ We can also carry variable assignments around with us. Consider a variable assig
 \section{When the main logical operator is a quantifier}
 The exciting innovation in FOL, though, is the use of \emph{quantifiers}.
 
-Consider the following interpretation:
+Consider the following model:
 \begin{center}
 \begin{tikzpicture}
 \node (A) [alice,monitor,sword,minimum size=1cm] {Alice};
@@ -416,9 +455,9 @@ Consider the following interpretation:
 \end{center}
 (Hint: read $Hx$ as `\gap{x} has horns', $Sx$ as `\gap{x} has horns' and $Cx$ as `\gap{x}has a computer')\\
 
-\noindent Is `$\exists x Sx$' true in this interpretation under a variable assignment? Intuitively this should be true iff there is an object in the domain which has a sword and since $\denote{S}=\Set{\text{\emph{Alice, Bob}}}$ should indeed come out as true. We can directly spell out these intuitive truth conditions by using the notion of an  $v$-variant of the initial variable assignment:
+\noindent Is `$\exists x Sx$' true in this model under a variable assignment? Intuitively this should be true iff there is an object in the domain which has a sword and since $\denote{S}=\Set{\text{\emph{Alice, Bob}}}$ should indeed come out as true. We can directly spell out these intuitive truth conditions by using the notion of an  $v$-variant of the initial variable assignment:
 
-Before we give a general definition of whether a formula is true or false \emph{under a variable assignment} in a given interpretation, we need to introduce one further useful bit of terminology.
+Before we give a general definition of whether a formula is true or false \emph{under a variable assignment} in a give model, we need to introduce one further useful bit of terminology.
 \factoidbox{Let $\beta$ be a variable assignment and $\metav$ a variable. Then the variable assignment $\varvariant{\beta}{\metav}{o}$ is a variable assignment that assigns the same objects to the variables than $\beta$ except possibly to the variable $\metav$ to which it assigns $o$. $\varvariant{\beta}{\metav}{o}$ is called an \define{$\metav$-variant} of $\beta$.}
 
 Notice that $\metav$ is metavariable for variables of FOL, so that it can be done for any variable. 
@@ -436,15 +475,15 @@ Variants of variable assignments will be important for stating the truth conditi
 
 We can then say:
 \begin{quote}
-`$\exists x Sx$' true in this interpretation under the variable assignment $\alpha$ \textbf{iff} there exists an object $o$ of the domain, i.e.~$o\in \domain$, such that `$Sx$' is true in the interpretation under the variable assignment $\varvariant{\alpha}{x}{o}$.
+`$\exists x Sx$' true in this model under the variable assignment $\alpha$ \textbf{iff} there exists an object $o$ of the domain, i.e.~$o\in \domain$, such that `$Sx$' is true in the model under the variable assignment $\varvariant{\alpha}{x}{o}$.
 \end{quote}
-Then, to show that `$\exists x Sx$' true in the interpretation under an arbitrary variable assignment it suffices to find an object in the domain, say, \emph{Alice} such that `$Sx$' is true under the variable assignment $\varvariant{\alpha}{x}{\text{\emph{Alice}}}$  (we can also denote this variable assignment by $x\mapsto \text{Alice}$). Under this variable assignment, $Sx$ is true: Since Alice does have a sword, i.e., $\text{\emph{Alice}}\in\denote{S}$, $Sx$ is indeed true under this assignment. This guaranteed the truth of `$\exists x Sx$': There is a choice of an object in our domain for $x$ under which $Sx$ is true.
+Then, to show that `$\exists x Sx$' true in the model under an arbitrary variable assignment it suffices to find an object in the domain, say, \emph{Alice} such that `$Sx$' is true under the variable assignment $\varvariant{\alpha}{x}{\text{\emph{Alice}}}$  (we can also denote this variable assignment by $x\mapsto \text{Alice}$). Under this variable assignment, $Sx$ is true: Since Alice does have a sword, i.e., $\text{\emph{Alice}}\in\denote{S}$, $Sx$ is indeed true under this assignment. This guaranteed the truth of `$\exists x Sx$': There is a choice of an object in our domain for $x$ under which $Sx$ is true.
 
 What about $\forall x Sx$? Intuitively, this should be true iff every object in the domain which has a sword. Appealing to the $x$-variant of out initial variable assignment we can again spell out the truth conditions in a straightforward:
 \begin{quote}
-`$\forall x Sx$' true in this interpretation under the variable assignment $\alpha$ \textbf{iff} for every object $o$ of the domain `$Sx$' is true in the interpretation under the variable assignment $\varvariant{\alpha}{x}{o}$.
+`$\forall x Sx$' true in this model under the variable assignment $\alpha$ \textbf{iff} for every object $o$ of the domain `$Sx$' is true in the model under the variable assignment $\varvariant{\alpha}{x}{o}$.
 \end{quote}
- Since \emph{Denny} $\not\in\denote{S}=\Set{\text{\emph{Alice, Bob}}}$ `$\forall x Sx$' to comes out false in this interpretation: `$Sx$' is not true in the interpretation under the variable assignment $\varvariant{\alpha}{x}{\emph{Denny}}$. 
+ Since \emph{Denny} $\not\in\denote{S}=\Set{\text{\emph{Alice, Bob}}}$ `$\forall x Sx$' to comes out false in this model: `$Sx$' is not true in the model under the variable assignment $\varvariant{\alpha}{x}{\emph{Denny}}$. 
 
 What about $\forall x(Sx\eif (Hx\eor Cx))$? To check whether it is true we need to check whether `$Sx\eif(Hx\eor Cx)$ is true for every choice of object that is assigned to $x$:
 \begin{center}
@@ -470,13 +509,13 @@ What about $\forall x(Sx\eif (Hx\eor Cx))$? To check whether it is true we need 
 %$ \text{\emph{Denny}}$&F&F&F&F&T
 %\end{tabular}
 %\end{center}
-So `$Sx\eif (Hx\eor Cx)$'  is true in the interpretation under every assignment $\varvariant{\alpha}{x}{o}$ for every object $o\in \domain$. And so $\forall x(Sx\eif (Hx\eor Cx))$ is true is true in the interpretation (under every variable assignment).
+So `$Sx\eif (Hx\eor Cx)$'  is true in the model under every assignment $\varvariant{\alpha}{x}{o}$ for every object $o\in \domain$. And so $\forall x(Sx\eif (Hx\eor Cx))$ is true is true in the model (under every variable assignment).
 
 
 
 We have to tread more carefully once we start having multiple quantifiers. Let's walk through some cases.
 
-Consider a new interpretation: \begin{center}
+Consider a new model: \begin{center}
 \begin{tikzpicture}
 \node (atom1) [draw] at (0,2) {1};
 \node (atom2) at (2,2) {2};
@@ -501,16 +540,16 @@ Consider a new interpretation: \begin{center}
 
 
  \begin{enumerate}
- \item  `$\exists x\forall y Rxy$' is true in the interpretation under an (arbitrary) variable assignment $\alpha$ iff there is a number $n\in\Set{1,2,3,4}$ such `$\forall y Rxy$' is true in the interpretation under the variable assignment $\varvariant{\alpha}{x}{n}$. 
+ \item  `$\exists x\forall y Rxy$' is true in the model under an (arbitrary) variable assignment $\alpha$ iff there is a number $n\in\Set{1,2,3,4}$ such `$\forall y Rxy$' is true in the model under the variable assignment $\varvariant{\alpha}{x}{n}$. 
  \begin{itemize}
  \item We choose $n$ to be the number 3 (with some foresight)
  \end{itemize}
- \item `$\forall y Rxy$' is true in the interpretation under the variable assignment $\varvariant{\alpha}{x}{3}$ iff $Rxy$ is true in the interpretation under the variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{m}$ for all $m\in\Set{1,2,3,4}$.
+ \item `$\forall y Rxy$' is true in the model under the variable assignment $\varvariant{\alpha}{x}{3}$ iff $Rxy$ is true in the model under the variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{m}$ for all $m\in\Set{1,2,3,4}$.
  \begin{itemize}
  \item $\varvariant{\varvariant{\alpha}{x}{3}}{y}{m}$ looks very complicated; it is a $y$-variant of an $x$-variant\ldots But all it says is that the variable $y$ gets assigned the number $m$, i.e., $y\mapsto m$ and the variable $x$ gets assigned the number $3$, i.e., $x\mapsto 3$.
  \end{itemize}
- \item `$Rxy$' is true in the interpretation under the variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{m}$ for all $m\in\Set{1,2,3,4}$ iff there is an arrow from $3$ to every number in the set $\Set{1,2,3,4}$. In that case we have that `$Rxy$' is true in the interpretation under the variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{1}$, the variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{2}$, the variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{3}$ and also $\varvariant{\varvariant{\alpha}{x}{3}}{y}{4}$.
- \item Since there is an arrow from 3 to every number we can conclude that `$\exists x\forall y Rxy$' is true in the interpretation
+ \item `$Rxy$' is true in the model under the variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{m}$ for all $m\in\Set{1,2,3,4}$ iff there is an arrow from $3$ to every number in the set $\Set{1,2,3,4}$. In that case we have that `$Rxy$' is true in the model under the variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{1}$, the variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{2}$, the variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{3}$ and also $\varvariant{\varvariant{\alpha}{x}{3}}{y}{4}$.
+ \item Since there is an arrow from 3 to every number we can conclude that `$\exists x\forall y Rxy$' is true in the model
  \end{enumerate}
  
 % To check whether We need to find some number $n$ such that every number $m$: $\langle n,m\rangle\in\denote{R}$, i.e., there is an arrow from $n$ to every number $m$. Let's chose the number 3 for $x$ ($x\mapsto 3$). Let's call this particular variable assignment $\alpha$. $\alpha$ also assigns objects to all other variables of the language (we just don't care which ones) Is $\forall y Rxy$ true under the variable assignment $\alpha$? Intuitively, the answer is yes as there is an arrow from 3 to 1, 2, 3, and 4, that is, all objects of the domain.
@@ -527,7 +566,7 @@ Consider a new interpretation: \begin{center}
 % \end{tabular}
 %\end{center}So under every variable assignment that differs from $\alpha$ at most at $y$ (it assigns the same object as $\alpha$ to a variable except for $y$ to which it may assign a different object)  $Rxy$ true. This tells us that $\forall y Rxy$ is true under the variable assignment $\alpha$ for which $x\mapsto 3$. And \emph{that} tells us that $\exists x\forall y Rxy$ is true: there's an assignment of the variable $x$ under which the constituent formula $\forall y Rxy$ is true.
 
-What about `$\exists x \exists y(Rxy \eand Ryx)$'? To show that it is true we will want to choose an object $o$ that we can assign to $x$ such that `$\exists y (Rxy\eand Ryx)$' is true uunder the assignment $\varvariant{\alpha}{x}{o}$. Let's consider $x\mapsto 3$ (again I'm using my foresight of what will come to choose carefully). Now is `$\exists y (Rxy\eand Ryx)$'  true under the variable assignment $x\mapsto 3$ (i.e., $\varvariant{\alpha}{x}{3}$? We need to find $y$-variant of this assignment which chooses an object such that `$Rxy\eand Ryx$' is true. Consider $y\mapsto 3$. We now have a variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{3}$. $x$ and $y$ are different variables but there's nothing stopping them being assigned the same object. And we can then consider whether $Rxy\eand Ryx$ is true under this interpretation. Well, `$Rxy$' is true: 3 does have an arrow to 3. And `$Ryx$' is also true: 3 does have an arrow to 3. So by our clause for $\eand$, `$Rxy\eand Ryx$' is true under the variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{3}$. And so `$\exists y(Rxy\eand Ryx)$' is true under the variable assignment $\varvariant{\alpha}{x}{3}$. And so $\exists x\exists y(Rxy\eand Ryx)$ is true in this interpretation.
+What about `$\exists x \exists y(Rxy \eand Ryx)$'? To show that it is true we will want to choose an object $o$ that we can assign to $x$ such that `$\exists y (Rxy\eand Ryx)$' is true uunder the assignment $\varvariant{\alpha}{x}{o}$. Let's consider $x\mapsto 3$ (again I'm using my foresight of what will come to choose carefully). Now is `$\exists y (Rxy\eand Ryx)$'  true under the variable assignment $x\mapsto 3$ (i.e., $\varvariant{\alpha}{x}{3}$? We need to find $y$-variant of this assignment which chooses an object such that `$Rxy\eand Ryx$' is true. Consider $y\mapsto 3$. We now have a variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{3}$. $x$ and $y$ are different variables but there's nothing stopping them being assigned the same object. And we can then consider whether $Rxy\eand Ryx$ is true under this model. Well, `$Rxy$' is true: 3 does have an arrow to 3. And `$Ryx$' is also true: 3 does have an arrow to 3. So by our clause for $\eand$, `$Rxy\eand Ryx$' is true under the variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{3}$. And so `$\exists y(Rxy\eand Ryx)$' is true under the variable assignment $\varvariant{\alpha}{x}{3}$. And so $\exists x\exists y(Rxy\eand Ryx)$ is true in this model.
 
 One more example: $\forall x(Sx\eif \exists y Rxy)$? To check this is true we will need to check for every number $n$ whether `$Sx\eif \exists y Rxy$' is true under the variable assignment $\varvariant{\alpha}{x}{n}$: 
 \begin{center}
@@ -560,47 +599,47 @@ $x\mapsto 4$&F&?&T
 \end{tabular}
 \end{center}So $\forall x(Sx\eif \exists y Rxy)$ is true. Informally we might say this as: for every number that has a square around it has an arrow going out of it.
 
-One final example: $\forall x\forall y Rxy$. To check this we will need to consider all choices for $x$ and all choices for $y$ and check $Rxy$ is true on all of them. There are 16 such choices. But we won't have to go through them all: it'll be false. Consider $x\mapsto 1$ and $y\mapsto 4$. $Rxy$ is false under this variable assignment: there is no arrow from 1 to 4. Thus $\forall yRxy$ is false on the variable assignment $\varvariant{\alpha}{x}{1}$. And so $\forall x\forall y Rxy$ is false in the interpretation under the variable assignment $\alpha$. However, $\alpha$ itself played no role in the evaluation of $\forall x\forall y Rxy$. All that mattered was the objects that were assigned to $x$ and $y$, and for $x$ and $y$ we considered the $x$-variants/$y$-variants. So $\forall x\forall y Rxy$ is not only true under the variable assignment $\alpha$ in this interpretation but true under all variable assignments. This goes back to what we said at the end of Section \ref{s:traf}: the particular choice of an variable assignment is only relevant if we are evaluating the truth of formulas with free variables. $\forall x\forall y Rxy$ is a sentence, as it has no free variables.
+One final example: $\forall x\forall y Rxy$. To check this we will need to consider all choices for $x$ and all choices for $y$ and check $Rxy$ is true on all of them. There are 16 such choices. But we won't have to go through them all: it'll be false. Consider $x\mapsto 1$ and $y\mapsto 4$. $Rxy$ is false under this variable assignment: there is no arrow from 1 to 4. Thus $\forall yRxy$ is false on the variable assignment $\varvariant{\alpha}{x}{1}$. And so $\forall x\forall y Rxy$ is false in the model under the variable assignment $\alpha$. However, $\alpha$ itself played no role in the evaluation of $\forall x\forall y Rxy$. All that mattered was the objects that were assigned to $x$ and $y$, and for $x$ and $y$ we considered the $x$-variants/$y$-variants. So $\forall x\forall y Rxy$ is not only true under the variable assignment $\alpha$ in this model but true under all variable assignments. This goes back to what we said at the end of Section \ref{s:traf}: the particular choice of an variable assignment is only relevant if we are evaluating the truth of formulas with free variables. $\forall x\forall y Rxy$ is a sentence, as it has no free variables.
 
 % Let's now give a formal definition of the idea we've been using here. Quantified formulas like $\exists y Rxy$ still need to be given truth conditions \emph{relative to a variable assignment}, because we'll need to specify an assignment of an object for the free variable $x$. So we define when $\exists \metav\metaX$ is true under a variable assignment $\alpha$, which might be, e.g.~$x\mapsto 1$. To give a general definition, though we might also consider whether $\forall y Rxy$ is true under a variable assignment $x\mapsto 1, y\mapsto 4$. This is slightly odd: we're considering $\exists y Rxy$ but have been told who $y$ refers to already. However when we evaluate it we simply ignore whatever our given variable assignment tells us about $y$: we consider variable assignments that modify the assignment by changing what is assigned to $y$. And by modifying it to $x\mapsto 1, y\mapsto2$ we have a variable assignment under which $Rxy$ is true, so $\exists y Rxy$ is true under the original variable assignment $x\mapsto 1, y\mapsto 4$.
 %
 % Similarly consider $\exists x Sx$ under the variable assignment $x\mapsto 1$. To evaluate this we consider modification of this variable assignment which assign other objects to $x$. Under the variable assignment $x\mapsto 2$, $Sx$ is true.  So under our original variable assignment $\exists x Sx$ is true: it didn't matter what our original variable assignment was, we ignored this and considered variants to evaluate its truth.
 
-More generally, if we have a quantifier like $\exists x$ or $\forall x$ we ignore whatever our original variable assignment told us about $x$ but consider suitable $x$-variants. So when all our variables are bound by quantifiers, all the original components of our variable assignment are ignored. To summarise: Sentences are simply true or false in interpretations, variable assignments don't matter.
+More generally, if we have a quantifier like $\exists x$ or $\forall x$ we ignore whatever our original variable assignment told us about $x$ but consider suitable $x$-variants. So when all our variables are bound by quantifiers, all the original components of our variable assignment are ignored. To summarise: Sentences are simply true or false i models, variable assignments don't matter.
 
  Now for our formal definition:
 \factoidbox{
-$\forall \metav\metaX$ is true in the interpretation under a variable assignment $\alpha$\\
-\textbf{iff} $\metaX$ is true in the interpretation under the variable assignment $\varvariant{\alpha}{\metav}{o}$ for every $o\in \domain$.
+$\forall \metav\metaX$ is true in the model under a variable assignment $\alpha$\\
+\textbf{iff} $\metaX$ is true in the model under the variable assignment $\varvariant{\alpha}{\metav}{o}$ for every $o\in \domain$.
 
 \bigskip
 
-$\exists \metav\metaX$ is true in the interpretation under a variable assignment $\alpha$\\
-\textbf{iff} $\metaX$ is true in the interpretation under the variable assignment $\varvariant{\alpha}{\metav}{o}$ for some $o\in \domain$.
+$\exists \metav\metaX$ is true in the model under a variable assignment $\alpha$\\
+\textbf{iff} $\metaX$ is true in the model under the variable assignment $\varvariant{\alpha}{\metav}{o}$ for some $o\in \domain$.
 }
 %To be clear: all this is doing is formalizing the intuitive idea expressed in our examples. The result is a bit ugly, and the final definition might look a bit opaque. Hopefully, though, the \emph{spirit} of the idea is clear.
 
 
 %\section{When the main logical operator is a quantifier}
 %The exciting innovation in FOL, though, is the use of \emph{quantifiers}.
-%%When is $\forall x Px$ true? The thought is: we introduce a new name: $d$, and we check if $Pd$ is true in the various interpretations where $d$ names the different objects.
+%%When is $\forall x Px$ true? The thought is: we introduce a new name: $d$, and we check if $Pd$ is true in the various models where $d$ names the different objects.
 %But expressing the truth conditions for quantified sentences is a bit more fiddly than one might first expect.
 %
-%Here is a na\"{i}ve first thought. We want to say that $\forall x Fx$ is true iff $Fx$ is true of everything in the domain. This should not be too problematic: our interpretation will specify directly what $Fx$ is true of.
+%Here is a na\"{i}ve first thought. We want to say that $\forall x Fx$ is true iff $Fx$ is true of everything in the domain. This should not be too problematic: our model will specify directly what $Fx$ is true of.
 %
-%Unfortunately, this na\"{i}ve thought is not general enough. For example, we want to be able to say that $\forall x \exists y Lxy$ is true just in case $\exists y Lxy$ is true of everything in the domain. This is problematic, since our interpretation does not directly specify what $\exists y Lxy$ is to be true of. Instead, whether or not this is true of something should follow just from the interpretation of $Lxy$, the domain, and the meanings of the quantifiers.
+%Unfortunately, this na\"{i}ve thought is not general enough. For example, we want to be able to say that $\forall x \exists y Lxy$ is true just in case $\exists y Lxy$ is true of everything in the domain. This is problematic, since our model does not directly specify what $\exists y Lxy$ is to be true of. Instead, whether or not this is true of something should follow just from the model of $Lxy$, the domain, and the meanings of the quantifiers.
 %
-%So here is a second na\"{i}ve thought. We might try to say that $\forall x \exists y Lxy$ is to be true in an interpretation iff $\exists y L\meta{a}y$ is true for \emph{every} name \meta{a} that we have included in our interpretation. Similarly, we might try to say that $\exists y L\meta{a}y$ is true just in case $L\meta{a}\meta{b}$ is true for \emph{some} name \meta{b} that we have included in our interpretation.
+%So here is a second na\"{i}ve thought. We might try to say that $\forall x \exists y Lxy$ is to be true in a model iff $\exists y L\meta{a}y$ is true for \emph{every} name \meta{a} that we have included in our model. Similarly, we might try to say that $\exists y L\meta{a}y$ is true just in case $L\meta{a}\meta{b}$ is true for \emph{some} name \meta{b} that we have included in our model.
 %
-%Unfortunately, this is not right either. To see this, observe that in our go-to interpretation, we have only given interpretations for \emph{two} names, $a$ and $b$, but the domain---all people born before the year 2000\textsc{ce}---contains many more than two people. We have no intention of trying to name \emph{all} of them!
+%Unfortunately, this is not right either. To see this, observe that in our go-to model, we have only give models for \emph{two} names, $a$ and $b$, but the domain---all people born before the year 2000\textsc{ce}---contains many more than two people. We have no intention of trying to name \emph{all} of them!
 %
-%So here is a third thought. (And this thought is not na\"{i}ve, but correct.) Although it is not the case that we have named \emph{everyone}, each person \emph{could} have been given a name. So we should focus on this possibility of extending an interpretation, by adding a new name. We will offer a few examples of how this might work, centring on our go-to interpretation, and we will then present the formal definition.
+%So here is a third thought. (And this thought is not na\"{i}ve, but correct.) Although it is not the case that we have named \emph{everyone}, each person \emph{could} have been given a name. So we should focus on this possibility of extending a model, by adding a new name. We will offer a few examples of how this might work, centring on our go-to model, and we will then present the formal definition.
 %
-%In our go-to interpretation, $\exists x Rbx$ should be true. After all, in the domain, there is certainly someone who was born after Beyonc\'e. Lady Gaga is one of those people. Indeed, if we were to extend our go-to interpretation---temporarily, mind---by adding the name $c$ to refer to Lady Gaga, then $Rbc$ would be true on this extended interpretation. This, surely, should suffice to make $\exists x Rbx$ true on the original go-to interpretation.
+%In our go-to model, $\exists x Rbx$ should be true. After all, in the domain, there is certainly someone who was born after Beyonc\'e. Lady Gaga is one of those people. Indeed, if we were to extend our go-to model---temporarily, mind---by adding the name $c$ to refer to Lady Gaga, then $Rbc$ would be true on this extended model. This, surely, should suffice to make $\exists x Rbx$ true on the original go-to model.
 %
-%In our go-to interpretation, $\exists x (Px \eand Rxa)$ should also be true. After all, in the domain, there is certainly someone who was both a philosopher and born before Aristotle. Socrates is one such person. Indeed, if we were to extend our go-to interpretation by letting a new name, $c$, denote Socrates, then $Wc \eand Rca$ would be true on this extended interpretation. Again, this should surely suffice to make $\exists x (Px \eand Rxa)$ true on the original go-to interpretation.
+%In our go-to model, $\exists x (Px \eand Rxa)$ should also be true. After all, in the domain, there is certainly someone who was both a philosopher and born before Aristotle. Socrates is one such person. Indeed, if we were to extend our go-to model by letting a new name, $c$, denote Socrates, then $Wc \eand Rca$ would be true on this extended model. Again, this should surely suffice to make $\exists x (Px \eand Rxa)$ true on the original go-to model.
 %
-%In our go-to interpretation, $\forall x \exists y Rxy$ should be false. After all, consider the last person born in the year 1999. We don't know who that was, but if we were to extend our go-to interpretation by letting a new name, $d$, denote that person, then we would not be able to find anyone else in the domain to denote with some further new name, perhaps $e$, in such a way that $Rde$ would be true. Indeed, no matter \emph{whom} we named with $e$, $Rde$ would be false. This observation is surely sufficient to make $\exists y Rdy$ \emph{false} in our extended interpretation, which in turn is surely sufficient to make $\forall x \exists y Rxy$ false on the original go-to interpretation.
+%In our go-to model, $\forall x \exists y Rxy$ should be false. After all, consider the last person born in the year 1999. We don't know who that was, but if we were to extend our go-to model by letting a new name, $d$, denote that person, then we would not be able to find anyone else in the domain to denote with some further new name, perhaps $e$, in such a way that $Rde$ would be true. Indeed, no matter \emph{whom} we named with $e$, $Rde$ would be false. This observation is surely sufficient to make $\exists y Rdy$ \emph{false} in our extended model, which in turn is surely sufficient to make $\forall x \exists y Rxy$ false on the original go-to model.
 %
 %If you have understood these three examples, good. That's what matters. Strictly speaking, though, we still need to give a precise definition of the truth conditions for quantified sentences. The result, sadly, is a bit ugly, and requires a few new definitions. Brace yourself!
 %
@@ -621,13 +660,13 @@ $\exists \metav\metaX$ is true in the interpretation under a variable assignment
 %
 %Armed with this notation, the rough idea is as follows. The sentence $\forall \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x} \ldots)$ will be true iff $\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$ is true no matter what object (in the domain) we name with $\meta{c}$. Similarly, the sentence $\exists \meta{x}\metaX$ will be true iff there is \emph{some} way to assign the name $\meta{c}$ to an object that makes $\metaX(\ldots \meta{c} \ldots \meta{c} \ldots)$ true. More precisely, we stipulate:
 %	\factoidbox{
-%		$\forall \meta{x}\metaX(\ldots \meta{x}\ldots\meta{x}\ldots)$ is true in an interpretation \textbf{iff}\\
-%		$\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$ is true in \emph{every} interpretation that extends the original interpretation by assigning an object to any name $\meta{c}$ (without changing the interpretation in any other way).
+%		$\forall \meta{x}\metaX(\ldots \meta{x}\ldots\meta{x}\ldots)$ is true in a model \textbf{iff}\\
+%		$\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$ is true in \emph{every} model that extends the original model by assigning an object to any name $\meta{c}$ (without changing the model in any other way).
 %
 %		\
 %		\\
-%		$\exists \meta{x}\metaX(\ldots \meta{x}\ldots\meta{x}\ldots)$ is true in an interpretation \textbf{iff}\\
-%		$\metaX(\ldots \meta{c}\ldots\meta{c}\ldots)$ is true in \emph{some} interpretation that extends the original interpretation by assigning an object to some name $\meta{c}$ (without changing the interpretation in any other way).
+%		$\exists \meta{x}\metaX(\ldots \meta{x}\ldots\meta{x}\ldots)$ is true in a model \textbf{iff}\\
+%		$\metaX(\ldots \meta{c}\ldots\meta{c}\ldots)$ is true in \emph{some} model that extends the original model by assigning an object to some name $\meta{c}$ (without changing the model in any other way).
 %	}
 %To be clear: all this is doing is formalizing (very pedantically) the intuitive idea expressed on the previous page. The result is a bit ugly, and the final definition might look a bit opaque. Hopefully, though, the \emph{spirit} of the idea is clear.
 
@@ -635,7 +674,7 @@ $\exists \metav\metaX$ is true in the interpretation under a variable assignment
 \begin{practiceproblems}
 \problempart
 \label{pr.TorF1}
-Consider the following interpretation:
+Consider the following model:
 \begin{interp}
 	\item[\domain] $\Set{\emph{Corwin}, \emph{Benedict}}$
 	\item[\denote{A}] $\Set{\emph{Corwin}, \emph{Benedict}}$
@@ -643,7 +682,7 @@ Consider the following interpretation:
 	\item[\denote{N}] $\emptyset$
 	\item[\denote{c}] \emph{Corwin}
 \end{interp}
-Determine whether each of the following sentences is true or false in that interpretation:
+Determine whether each of the following sentences is true or false in that model:
 \begin{earg}
 \item $\atom{B}{c}$ \hfill \myanswer{False}
 \item $\atom{A}{c} \eiff \enot \atom{N}{c}$ \hfill \myanswer{True}
@@ -658,7 +697,7 @@ Determine whether each of the following sentences is true or false in that inter
 
 \problempart
 \label{pr.TorF2}
-Consider the following interpretation:	
+Consider the following model:	
 \begin{interp}
 	\item[\domain]$\Set{\emph{Lemmy}, \emph{Courtney}, \emph{Eddy}}$
 \item[\denote{G}] $\Set{\emph{Lemmy}, \emph{Courtney}, \emph{Eddy}}$
@@ -667,7 +706,7 @@ Consider the following interpretation:
 \item[\denote{c}] \emph{Courtney}
 \item[\denote{e}] \emph{Eddy}
 \end{interp}
-Determine whether each of the following sentences is true or false in that interpretation:
+Determine whether each of the following sentences is true or false in that model:
 \begin{earg}
 \item $\atom{H}{c}$ \hfill \myanswer{True}
 \item $\atom{H}{e}$\hfill \myanswer{False}
@@ -688,7 +727,7 @@ Determine whether each of the following sentences is true or false in that inter
 
 \problempart
 \label{pr.TorF3}
-Following the diagram conventions introduced at the end of \S23, consider the following interpretation:	
+Following the diagram conventions introduced at the end of \S23, consider the following model:	
 \begin{interp}
 	\item[\domain] $\Set{1,2,3,4,5}$
 	\item[\denote{R}] $\Set{\sequence{o_1,o_2}\given\text{there is an arrow from $o_1$ to $o_2$ in the diagram}}$
@@ -709,7 +748,7 @@ Following the diagram conventions introduced at the end of \S23, consider the fo
 \draw[->, thick] (atom2) -- (atom6);
 \end{tikzpicture}
 \end{center}
-Determine whether each of the following sentences is true or false in that interpretation:
+Determine whether each of the following sentences is true or false in that model:
 \begin{earg}
 \item $\exists x\,\atom{R}{x x}$ \hfill \myanswer{True}
 \item $\forall x\,\atom{R}{x x}$ \hfill \myanswer{False}
@@ -728,68 +767,68 @@ Determine whether each of the following sentences is true or false in that inter
 
 \chapter{Semantic concepts}
 
-Offering a precise definition of truth in FOL was more than a little fiddly, but now that we are done, we can define various central logical notions. These will look very similar to the definitions we offered for TFL. However, remember that they concern \emph{interpretations}, rather than valuations.
+Offering a precise definition of truth in FOL was more than a little fiddly, but now that we are done, we can define various central logical notions. These will look very similar to the definitions we offered for TFL. However, remember that they concern \emph{models}, rather than valuations.
 
 %We will use the symbol $\entails$ for FOL much as we did for TFL. So:
 \factoidbox{
 	$$\metaX_1, \metaX_2, \ldots, \metaX_n \therefore\metaZ$$ is \define{valid}
-iff there is no interpretation in which all of $\metaX_1, \metaX_2, \ldots, \metaX_n$ are true and in which \metaZ is false. }
+iff there is no model in which all of $\metaX_1, \metaX_2, \ldots, \metaX_n$ are true and in which \metaZ is false. }
 %Derivatively,
 %	$$\entails\metaX$$
-%means that \metaX is true in every interpretation.
+%means that \metaX is true in every model.
 
 The other logical notions also have corresponding definitions in FOL:
 \factoidbox{
 \begin{itemize}
-\item An FOL sentence $\metaX$ is a \define{logical truth} iff $\metaX$ is true in every interpretation.%; i.e.,  $\entails\metaX$.
+\item An FOL sentence $\metaX$ is a \define{logical truth} iff $\metaX$ is true in every model.%; i.e.,  $\entails\metaX$.
 \newglossaryentry{logical truth}
 {
 name=logical truth,
-description={A \gls{sentence of FOL} that is true in every \gls{interpretation}. Note that the equivalent notion for TFL is `tautology'}
+description={A \gls{sentence of FOL} that is true in every \gls{model}. Note that the equivalent notion for TFL is `tautology'}
 }
 
-\item $\metaX$ is a \define{contradiction} iff $\metaX$ is false in every interpretation.%; i.e., $\entails\enot\metaX$.
+\item $\metaX$ is a \define{contradiction} iff $\metaX$ is false in every model.%; i.e., $\entails\enot\metaX$.
 \newglossaryentry{contradiction of FOL}
 {
   name=contradiction (of FOL),
   text=contradiction,
-description={A \gls{sentence of FOL} that is false in every \gls{interpretation}}
+description={A \gls{sentence of FOL} that is false in every \gls{model}}
 }
 
-%\item $\metaX_1, \metaX_2, \ldots \metaX_n \therefore \metaZ$ is \define{valid in FOL} iff there is no interpretation in which all of the premises are true and the conclusion is false; i.e., $\metaX_1,\metaX_2,\ldots \metaX_n \entails\metaZ$. It is \define{invalid in FOL} otherwise.
+%\item $\metaX_1, \metaX_2, \ldots \metaX_n \therefore \metaZ$ is \define{valid in FOL} iff there is no model in which all of the premises are true and the conclusion is false; i.e., $\metaX_1,\metaX_2,\ldots \metaX_n \entails\metaZ$. It is \define{invalid in FOL} otherwise.
 %\newglossaryentry{logically valid in FOL}
 %{
 %  name=logical validity (in FOL),
 %  text = logically valid,
-%description={A property held by arguments if and only if no \gls{interpretation} makes all premises true and the conclusion false}
+%description={A property held by arguments if and only if no \gls{model} makes all premises true and the conclusion false}
 %}
 
-\item Two FOL sentences \metaX and \metaY are \define{logically equivalent} iff they are true in exactly the same interpretations as each other.%r; i.e., both $\metaX\entails\metaY$ and $\metaY\entails\metaX$.
+\item Two FOL sentences \metaX and \metaY are \define{logically equivalent} iff they are true in exactly the same models as each other.%r; i.e., both $\metaX\entails\metaY$ and $\metaY\entails\metaX$.
 
 \newglossaryentry{logically equivalent in FOL}
 {
   name=logical equivalence (in FOL),
   text = logically equivalent,
-description={A property held by pairs of \glspl{sentence of FOL} if and only if the sentences have the same truth value in every \gls{interpretation}.}
+description={A property held by pairs of \glspl{sentence of FOL} if and only if the sentences have the same truth value in every \gls{model}.}
 }
 
-\item The FOL sentences $\metaX_1,\metaX_2,\ldots, \metaX_n$ are \define{jointly logically consistent} iff there is some interpretation in which all of the sentences are true. They are \define{jointly logically inconsistent} iff there is no such interpretation.
+\item The FOL sentences $\metaX_1,\metaX_2,\ldots, \metaX_n$ are \define{jointly logically consistent} iff there is some model in which all of the sentences are true. They are \define{jointly logically inconsistent} iff there is no such model.
 \newglossaryentry{logically consistent in FOL}
 {
   name=logical consistency (in FOL),
   text=jointly consistent,
-description={A property held by \glspl{sentence of FOL} if and only if some \gls{interpretation} makes all the sentences true}
+description={A property held by \glspl{sentence of FOL} if and only if some \gls{model} makes all the sentences true}
 }
 \end{itemize}
 }
 
-\chapter{Using interpretations}
+\chapter{Using models}
 \label{sec.UsingModels}
 
 \section{Logical truths and contradictions}
-Suppose we want to show that `$\exists xAxx \eif Bd$' is \emph{not} a logical truth. This requires showing that the sentence is not true in every interpretation; i.e.,\ that it is false in some interpretation. If we can provide just one interpretation in which the sentence is false, then we will have shown that the sentence is not a logical truth.
+Suppose we want to show that `$\exists xAxx \eif Bd$' is \emph{not} a logical truth. This requires showing that the sentence is not true in every model; i.e.,\ that it is false in some model. If we can provide just one model in which the sentence is false, then we will have shown that the sentence is not a logical truth.
 
-In order for `$\exists xAxx \eif Bd$' to be false, the antecedent ($\exists x Axx$) must be true, and the consequent ($Bd$) must be false. To construct such an interpretation, we start by specifying a domain. Keeping the domain small makes it easier to specify what the predicates will be true of, so we will start with a domain that has just one member. For concreteness, let's say it is the city of Paris.
+In order for `$\exists xAxx \eif Bd$' to be false, the antecedent ($\exists x Axx$) must be true, and the consequent ($Bd$) must be false. To construct such a model, we start by specifying a domain. Keeping the domain small makes it easier to specify what the predicates will be true of, so we will start with a domain that has just one member. For concreteness, let's say it is the city of Paris.
 	\begin{interp}
 		\item[\domain] $\Set{\emph{Paris}}$
 	\end{interp}
@@ -805,19 +844,19 @@ Now $Add$ is true, so it is surely true that $\exists x Axx$. Next, we want $Bd$
 	\begin{interp}
 		\item[\denote{B}] $\Set{o \given \text{$o$ is in Germany}}$
 	\end{interp}
-Since Paris is not in Germany the set $\Set{o \given \text{$o$ is in Germany}}$ does no have any elements that are in the domain of the interpretation. This means that we have an interpretation where `$\exists x Axx$' is true, but where `$Bd$' is false. So there is an interpretation where $\exists x Axx \eif Bd$ is false. So $\exists x Axx \eif Bd$ is not a logical truth.
+Since Paris is not in Germany the set $\Set{o \given \text{$o$ is in Germany}}$ does no have any elements that are in the domain of the model. This means that we have a model where `$\exists x Axx$' is true, but where `$Bd$' is false. So there is a model where $\exists x Axx \eif Bd$ is false. So $\exists x Axx \eif Bd$ is not a logical truth.
 
-We can just as easily show that `$\exists xAxx \eif Bd$' is not a contradiction. We need only specify an interpretation in which `$\exists xAxx \eif Bd$' is true; i.e., an interpretation in which either `$\exists x Axx$' is false or `$Bd$' is true. Here is one:
+We can just as easily show that `$\exists xAxx \eif Bd$' is not a contradiction. We need only specify a model in which `$\exists xAxx \eif Bd$' is true; i.e., a model in which either `$\exists x Axx$' is false or `$Bd$' is true. Here is one:
 	\begin{interp}
 		\item[\domain] $\Set{\emph{Paris}}$
 		\item[\denote{d}] \emph{Paris}
 		\item[\denote{A}] $\Set{o \given o=o}$
 		\item[\denote{B}] $\Set{o \given \text{$o$ is in France}}$
 	\end{interp}
-This shows that there is an interpretation where `$\exists xAxx \eif Bd$' is true. So `$\exists x Axx \eif Bd$' is not a contradiction.
+This shows that there is a model where `$\exists xAxx \eif Bd$' is true. So `$\exists x Axx \eif Bd$' is not a contradiction.
 
 \section{Logical equivalence}
-Suppose we want to show that $\forall x Sx$ and $\exists x Sx$ are not logically equivalent. We need to construct an interpretation in which the two sentences have different truth values; we want one of them to be true and the other to be false. We start by specifying a domain. Again, we make the domain small so that we can specify extensions easily. In this case, we will need at least two objects. (If we chose a domain with only one member, the two sentences would end up with the same truth value. In order to see why, try constructing some partial interpretations with one-member domains.) For concreteness, let's take:
+Suppose we want to show that $\forall x Sx$ and $\exists x Sx$ are not logically equivalent. We need to construct a model in which the two sentences have different truth values; we want one of them to be true and the other to be false. We start by specifying a domain. Again, we make the domain small so that we can specify extensions easily. In this case, we will need at least two objects. (If we chose a domain with only one member, the two sentences would end up with the same truth value. In order to see why, try constructing some partial models with one-member domains.) For concreteness, let's take:
 	\begin{interp}
 		\item[\domain] $\Set{\text{\emph{Ornette Coleman, Miles Davis}}}$
 	\end{interp}
@@ -825,17 +864,17 @@ We can make $\exists x Sx$ true by including something in the extension of $S$, 
 	\begin{interp}
 		\item[\denote{S}] $\Set{o \given \text{$o$ plays saxophone}}$
 	\end{interp}
-Now `$\exists x Sx$' is true, because $Sx$ is true of \emph{Ornette Coleman}. Slightly more precisely, extend our interpretation by allowing $c$ to name \emph{Ornette Coleman}.  `$Sc$' is true in this extended interpretation, so `$\exists x Sx$' was true in the original interpretation. Similarly, `$\forall x Sx$' is false, because \emph{Miles Davis}$\,\not\in\denote{S}$. Slightly more precisely, extend our interpretation by allowing $d$ to name \emph{Miles Davis}. Then `$Sd$' is false in this extended interpretation, so `$\forall x Sx$' was false in the original interpretation. We have provided a counter-interpretation to the claim that `$\forall x Sx$' and `$\exists x Sx$' are logically equivalent.
+Now `$\exists x Sx$' is true, because $Sx$ is true of \emph{Ornette Coleman}. Slightly more precisely, extend our model by allowing $c$ to name \emph{Ornette Coleman}.  `$Sc$' is true in this extended model, so `$\exists x Sx$' was true in the original model. Similarly, `$\forall x Sx$' is false, because \emph{Miles Davis}$\,\not\in\denote{S}$. Slightly more precisely, extend our model by allowing $d$ to name \emph{Miles Davis}. Then `$Sd$' is false in this extended model, so `$\forall x Sx$' was false in the original model. We have provided a counter-model to the claim that `$\forall x Sx$' and `$\exists x Sx$' are logically equivalent.
 	\factoidbox{
-		To show that $\metaX$ is not a logical truth, it suffices to find an interpretation where $\metaX$ is false.
+		To show that $\metaX$ is not a logical truth, it suffices to find a model where $\metaX$ is false.
 
-		To show that $\metaX$ is not a contradiction, it suffices to find an interpretation where $\metaX$ is true.
+		To show that $\metaX$ is not a contradiction, it suffices to find a model where $\metaX$ is true.
 
-		To show that $\metaX$ and $\metaY$ are not logically equivalent, it suffices to find an interpretation where one is true and the other is false.
+		To show that $\metaX$ and $\metaY$ are not logically equivalent, it suffices to find a model where one is true and the other is false.
 	}
 
 \section{Validity, logical consequence and consistency}
-To test for validity, logical consequence, or consistency, we typically need to produce interpretations that determine the truth value of several sentences simultaneously.
+To test for validity, logical consequence, or consistency, we typically need to produce models that determine the truth value of several sentences simultaneously.
 
 Consider the following argument in FOL:
 $$\exists x(Gx \eif Ga) \therefore \exists x Gx \eif Ga$$
@@ -845,9 +884,9 @@ To show that this is invalid, we must make the premise true and the conclusion f
 		\item[\denote{G}] $\Set{o \given o\text{ hated communism}}$ (=$\Set{\emph{Ludwig von Mises}}$)
 		\item[\denote{a}] \emph{Karl Marx}
 	\end{interp}
-Given that Marx wrote \emph{The Communist Manifesto}, $Ga$ is plainly false in this interpretation. But von Mises famously hated communism, so $\exists x Gx$ is true in this interpretation. Hence `$\exists x Gx \eif Ga$' is false, as required.
+Given that Marx wrote \emph{The Communist Manifesto}, $Ga$ is plainly false in this model. But von Mises famously hated communism, so $\exists x Gx$ is true in this model. Hence `$\exists x Gx \eif Ga$' is false, as required.
 
-Does this interpretation make the premise true? Yes it does! Note that $Ga \eif Ga$ is true. (Indeed, it is a logical truth.) But then certainly `$\exists x (Gx \eif Ga)$' is true, so the premise is true, and the conclusion is false, in this interpretation. The argument is therefore invalid.
+Does this model make the premise true? Yes it does! Note that $Ga \eif Ga$ is true. (Indeed, it is a logical truth.) But then certainly `$\exists x (Gx \eif Ga)$' is true, so the premise is true, and the conclusion is false, in this model. The argument is therefore invalid.
 
 In passing, note that we have also shown that $\exists x Gx \eif Ga$ is \emph{not} a logical consequence of $\exists x(Gx \eif Ga)$. Equally, we have shown that the sentences $\exists x (Gx \eif Ga)$ and $\enot (\exists x Gx \eif Ga)$ are jointly consistent.
 
@@ -858,9 +897,9 @@ Again, we want to show that this is invalid. To do this, we must make the premis
 		\item[\domain] $\Set{o \given o\text{ is a UK citizen currently in a civil partnership with another UK citizen}}$
 		\item[\denote{L}] $\Set{\langle o_1,o_2\rangle \given  o_1\text{ is in a civil partnership with }o_2}$
 	\end{interp}
-The premise is clearly true on this interpretation. Anyone in the domain is a UK citizen in a civil partnership with some other UK citizen. That other citizen will also, then, be in the domain. So for everyone in the domain, there will be someone (else) in the domain with whom they are in a civil partnership. Hence `$\forall x \exists y Lxy$' is true. However, the conclusion is clearly false, for that would require that there is some single person who is in a civil partnership with everyone in the domain, and there is no such person, so the argument is invalid. We observe immediately that the sentences `$\forall x \exists y Lxy$ and $\enot\exists y \forall x Lxy$' are jointly consistent and that `$\exists y \forall x Lxy$, is not a logical consequence of `$\forall x \exists y Lxy$'.
+The premise is clearly true on this model. Anyone in the domain is a UK citizen in a civil partnership with some other UK citizen. That other citizen will also, then, be in the domain. So for everyone in the domain, there will be someone (else) in the domain with whom they are in a civil partnership. Hence `$\forall x \exists y Lxy$' is true. However, the conclusion is clearly false, for that would require that there is some single person who is in a civil partnership with everyone in the domain, and there is no such person, so the argument is invalid. We observe immediately that the sentences `$\forall x \exists y Lxy$ and $\enot\exists y \forall x Lxy$' are jointly consistent and that `$\exists y \forall x Lxy$, is not a logical consequence of `$\forall x \exists y Lxy$'.
 
-For our third example, we'll mix things up a bit. In \S\ref{s:interpretation}, we described how we can present some interpretations using diagrams. For example:
+For our third example, we'll mix things up a bit. In \S\ref{s:model}, we described how we can present some models using diagrams. For example:
 \begin{center}
 \begin{tikzpicture}
 \node (atom1) at (0,2) {1};
@@ -872,7 +911,7 @@ For our third example, we'll mix things up a bit. In \S\ref{s:interpretation}, w
 \draw[->, thick] (atom2) -- (atom3);
 \end{tikzpicture}
 \end{center}
-Using the conventions employed in \S\ref{s:interpretation}, the domain of this interpretation is the first three positive whole numbers, and $Rxy$ is true of x and y just in case there is an arrow from x to y in our diagram. Here are some sentences that the interpretation makes true:
+Using the conventions employed in \S\ref{s:model}, the domain of this model is the first three positive whole numbers, and $Rxy$ is true of x and y just in case there is an arrow from x to y in our diagram. Here are some sentences that the model makes true:
 	\begin{ebullet}
 		\item $\forall x \exists y Ryx$
 		\item $\exists x \forall y Rxy$ \hfill witness 1
@@ -889,12 +928,12 @@ This immediately shows that all of the preceding six sentences are jointly consi
 and many more besides.
 
 	\factoidbox{
-	To show that $\metaX_1, \metaX_2, \ldots, \metaX_n \therefore \metaZ$ is invalid, it suffices to find an interpretation where all of $\metaX_1, \metaX_2, \ldots, \metaX_n$ are true and where $\metaZ$ is false.
+	To show that $\metaX_1, \metaX_2, \ldots, \metaX_n \therefore \metaZ$ is invalid, it suffices to find a model where all of $\metaX_1, \metaX_2, \ldots, \metaX_n$ are true and where $\metaZ$ is false.
 
-	That same interpretation will show that $\metaX_1, \metaX_2, \ldots, \metaX_n$ do not entail $\metaZ$.
+	That same model will show that $\metaX_1, \metaX_2, \ldots, \metaX_n$ do not entail $\metaZ$.
 
 	It will also show that $\metaX_1, \metaX_2, \ldots, \metaX_n, \enot \metaZ$ are jointly consistent.}
-When you provide an interpretation to refute a claim---to logical truth, say, or to entailment---this is sometimes called providing a \emph{counter-interpretation} (or providing a \emph{counter-model}).
+When you provide a model to refute a claim---to logical truth, say, or to entailment---this is sometimes called providing a \emph{counter-model} (or providing a \emph{counter-model}).
 
 \begin{practiceproblems}
 \problempart
@@ -1046,7 +1085,7 @@ Show that the following sentences are jointly satisfiable:
 \item $\enot \exists x \forall y\,\atom{R}{x,y}, \forall x \exists y\,\atom{R}{x,y}$
 \item $\enot \atom{R}{a,a}$, $\forall x (x=a \eor \atom{R}{x,a})$
 
-\myanswer{The sentences are both true in this interpretation:
+\myanswer{The sentences are both true in this model:
 \begin{interp}
 	\item[\domain] Harry, Sally
 	\item[R(x,y)]\ntuple{Sally, Harry}
@@ -1078,44 +1117,44 @@ Show that the following arguments are invalid:
 \end{practiceproblems}
 
 
-\chapter{Reasoning about all interpretations}
+\chapter{Reasoning about all models}
 
 \section{Logical truths and contradictions}
-We can show that a sentence is \emph{not} a logical truth just by providing one carefully specified interpretation: an interpretation in which the sentence is false. To show that something is a logical truth, on the other hand, it would not be enough to construct ten, one hundred, or even a thousand interpretations in which the sentence is true. A sentence is only a logical truth if it is true in \emph{every} interpretation, and there are infinitely many interpretations. We need to reason about all of them, and we cannot do this by dealing with them one by one!
+We can show that a sentence is \emph{not} a logical truth just by providing one carefully specified model: a model in which the sentence is false. To show that something is a logical truth, on the other hand, it would not be enough to construct ten, one hundred, or even a thousand models in which the sentence is true. A sentence is only a logical truth if it is true in \emph{every} model, and there are infinitely many models. We need to reason about all of them, and we cannot do this by dealing with them one by one!
 
-Sometimes, we can reason about all interpretations fairly easily. For example, we can offer a relatively simple argument that `$Raa\eif Raa$' is a logical truth:
+Sometimes, we can reason about all models fairly easily. For example, we can offer a relatively simple argument that `$Raa\eif Raa$' is a logical truth:
 	\begin{quote}
 		\label{allmodels1}
-		Any relevant interpretation will give `$Raa$' a truth value. If `$Raa$' is true in an interpretation, then `$Raa \eif Raa$' is true in that interpretation. If $Raa$ is false in an interpretation, then $Raa \eif Raa$ is true in that interpretation. These are the only alternatives. So `$Raa \eiff Raa$' is true in every interpretation. Therefore, it is a logical truth.
+		Any relevant model will give `$Raa$' a truth value. If `$Raa$' is true in a model, then `$Raa \eif Raa$' is true in that model. If $Raa$ is false in a model, then $Raa \eif Raa$ is true in that model. These are the only alternatives. So `$Raa \eiff Raa$' is true in every model. Therefore, it is a logical truth.
 	\end{quote}
 This argument is valid, of course, and its conclusion is true. However, it is not an argument in FOL. Rather, it is an argument in English \emph{about} FOL: it is an argument in the metalanguage.
 
 Note another feature of the argument. Since the sentence in question contained no quantifiers, we did not need to think about how to interpret $a$ and $R$; the point was just that, however we interpreted them, $Raa$ would have some truth value or other. (We could ultimately have given the same argument concerning TFL sentences.)
 
-Here is another bit of reasoning. Consider the sentence $\forall x(Rxx\eif Rxx)$. Again, it should obviously be a logical truth, but to say precisely why is quite a challenge. We cannot say that $Rxx \eif Rxx$ is true in every interpretation, since $Rxx \eif Rxx$ is not even a \emph{sentence} of FOL (remember that $x$ is a variable, not a name). So we have to be a bit cleverer.
+Here is another bit of reasoning. Consider the sentence $\forall x(Rxx\eif Rxx)$. Again, it should obviously be a logical truth, but to say precisely why is quite a challenge. We cannot say that $Rxx \eif Rxx$ is true in every model, since $Rxx \eif Rxx$ is not even a \emph{sentence} of FOL (remember that $x$ is a variable, not a name). So we have to be a bit cleverer.
 	\begin{quote}
-		Consider some arbitrary interpretation. Consider some arbitrary member of the domain, which, for convenience, we will call \emph{obbie}, and suppose we extend our original interpretation by adding a new name, $c$, to name \emph{obbie}. Then either $Rcc$ will be true or it will be false. If $Rcc$ is true, then $Rcc \eiff Rcc$ is true. If $Rcc$ is false, then $Rcc \eif Rcc$ will be true. So either way, $Rcc \eif Rcc$ is true. Since there was nothing special about \emph{obbie}---we might have chosen any object---we see that no matter how we extend our original interpretation by allowing $c$ to name some new object, $Rcc \eif Rcc$ will be true in the new interpretation. So $\forall x (Rxx \eif Rxx)$ was true in the original interpretation. But we chose our interpretation arbitrarily, so $\forall x (Rxx \eif Rxx)$ is true in every interpretation. It is therefore a logical truth.
+		Consider some arbitrary model. Consider some arbitrary member of the domain, which, for convenience, we will call \emph{obbie}, and suppose we extend our original model by adding a new name, $c$, to name \emph{obbie}. Then either $Rcc$ will be true or it will be false. If $Rcc$ is true, then $Rcc \eiff Rcc$ is true. If $Rcc$ is false, then $Rcc \eif Rcc$ will be true. So either way, $Rcc \eif Rcc$ is true. Since there was nothing special about \emph{obbie}---we might have chosen any object---we see that no matter how we extend our original model by allowing $c$ to name some new object, $Rcc \eif Rcc$ will be true in the new model. So $\forall x (Rxx \eif Rxx)$ was true in the original model. But we chose our model arbitrarily, so $\forall x (Rxx \eif Rxx)$ is true in every model. It is therefore a logical truth.
 	\end{quote}
-This is quite longwinded, but, as things stand, there is no alternative. In order to show that a sentence is a logical truth, we must reason about \emph{all} interpretations.
+This is quite longwinded, but, as things stand, there is no alternative. In order to show that a sentence is a logical truth, we must reason about \emph{all} models.
 
 \section{Other cases}
-Similar points hold of other cases too. Thus, we must reason about all interpretations if we want to show:
+Similar points hold of other cases too. Thus, we must reason about all models if we want to show:
 	\begin{ebullet}
-		\item that a sentence is a contradiction; for this requires that it is false in \emph{every} interpretation.
-		\item that two sentences are logically equivalent; for this requires that they have the same truth value in \emph{every} interpretation.
-		\item that some sentences are jointly inconsistent; for this requires that there is no interpretation in which all of those sentences are true together; i.e.\ that, in \emph{every} interpretation, at  least one of those sentences is false.
-		\item that an argument is valid; for this requires that the conclusion is true in \emph{every} interpretation where the premises are true.
+		\item that a sentence is a contradiction; for this requires that it is false in \emph{every} model.
+		\item that two sentences are logically equivalent; for this requires that they have the same truth value in \emph{every} model.
+		\item that some sentences are jointly inconsistent; for this requires that there is no model in which all of those sentences are true together; i.e.\ that, in \emph{every} model, at  least one of those sentences is false.
+		\item that an argument is valid; for this requires that the conclusion is true in \emph{every} model where the premises are true.
 		\item that some sentences entail another sentence.
 	\end{ebullet}
-The problem is that, with the tools available to you so far, reasoning about all interpretations is a serious challenge! Let's take just one more example. Here is an argument which is obviously valid:
+The problem is that, with the tools available to you so far, reasoning about all models is a serious challenge! Let's take just one more example. Here is an argument which is obviously valid:
 	$$\forall x(Hx \eand Jx) \therefore \forall x Hx$$
-After all, if everything is both H and J, then everything is H. But we can only show that the argument is valid by considering what must be true in every interpretation in which the premise is true. To show this, we would have to reason as follows:
+After all, if everything is both H and J, then everything is H. But we can only show that the argument is valid by considering what must be true in every model in which the premise is true. To show this, we would have to reason as follows:
 	\begin{quote}
-		Consider an arbitrary interpretation in which the premise $\forall x(Hx \eand Jx)$ is true. It follows that, however we expand the interpretation with a new name, for example $c$, $Hc \eand Jc$ will be true in this new interpretation. $Hc$ will, then, also be true in this new interpretation. But since this held for \emph{any} way of expanding the interpretation, it must be that $\forall x Hx$ is true in the old interpretation. We've assumed nothing about the interpretation except that it was one in which $\forall x(Hx \eand Jx)$  is true, so any interpretation in which $\forall x(Hx \eand Jx)$ is true is one in which $\forall x Hx$ is true. The argument is valid!
+		Consider an arbitrary model in which the premise $\forall x(Hx \eand Jx)$ is true. It follows that, however we expand the model with a new name, for example $c$, $Hc \eand Jc$ will be true in this new model. $Hc$ will, then, also be true in this new model. But since this held for \emph{any} way of expanding the model, it must be that $\forall x Hx$ is true in the old model. We've assumed nothing about the model except that it was one in which $\forall x(Hx \eand Jx)$  is true, so any model in which $\forall x(Hx \eand Jx)$ is true is one in which $\forall x Hx$ is true. The argument is valid!
 \end{quote}
 Even for a simple argument like this one, the reasoning is somewhat complicated. For longer arguments, the reasoning can be extremely torturous.
 
-The following table summarises whether a single (counter-)interpretation suffices, or whether we must reason about all interpretations.
+The following table summarises whether a single (counter-)model suffices, or whether we must reason about all models.
 
 
 \begin{center}
@@ -1124,14 +1163,14 @@ The following table summarises whether a single (counter-)interpretation suffice
  & \textbf{Yes} & \textbf{No}\\
  \hline
 %\cline{2-3}
-logical truth? & all interpretations & one counter-interpretation\\
-contradiction? &  all interpretations  & one counter-interpretation\\
-equivalent? & all interpretations & one counter-interpretation\\
-consistent? & one interpretation & all interpretations\\
-valid? & all interpretations & one counter-interpretation\\
-entailment? & all interpretations & one counter-interpretation\\
+logical truth? & all models & one counter-model\\
+contradiction? &  all models  & one counter-model\\
+equivalent? & all models & one counter-model\\
+consistent? & one model & all models\\
+valid? & all models & one counter-model\\
+entailment? & all models & one counter-model\\
 \end{tabular}
 \end{center}
 \label{table.ModelOrArgument}
 
-This might usefully be compared with the table at the end of \S\ref{s:PartialTruthTable}. The key difference resides in the fact that TFL concerns truth tables, whereas FOL concerns interpretations. This difference is deeply important, since each truth-table only ever has finitely many lines, so that a complete truth table is a relatively tractable object. By contrast, there are infinitely many interpretations for any given sentence(s), so that reasoning about all interpretations can be a deeply tricky business.
+This might usefully be compared with the table at the end of \S\ref{s:PartialTruthTable}. The key difference resides in the fact that TFL concerns truth tables, whereas FOL concerns models. This difference is deeply important, since each truth-table only ever has finitely many lines, so that a complete truth table is a relatively tractable object. By contrast, there are infinitely many models for any given sentence(s), so that reasoning about all models can be a deeply tricky business.

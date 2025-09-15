@@ -427,7 +427,7 @@ Sometimes you might come across cases where you might feel tempted to write some
 
 \section{Semantics for identity}
 
-%In \S\ref{ch.semantics} we described when sentences of FOL were true or false. Whereas for TFL sentences were true or false \emph{on a valuation}, in FOL sentences were true or false \emph{on an interpretation}. For FOL with identity we will also use interpretations, for example: 	\begin{ekey}
+%In \S\ref{ch.semantics} we described when sentences of FOL were true or false. Whereas for TFL sentences were true or false \emph{on a valuation}, in FOL sentences were true or false \emph{on a model}. For FOL with identity we will also use models, for example: 	\begin{ekey}
 %		\item[\text{domain}] all people born before 2000\textsc{ce}
 %		\item[a] Aristotle
 %		\item[b] Beyonc\'e
@@ -435,16 +435,16 @@ Sometimes you might come across cases where you might feel tempted to write some
 %		\item[Rxy] \gap{x} was born before \gap{y}
 %	\end{ekey}
 %
-%$\eid $ will stand for identity, so in our given interpretation $a\eid b$ is false. If we extended this interpretation with
+%$\eid $ will stand for identity, so in our give model $a\eid b$ is false. If we extended this model with
 %\begin{ekey}
 %\item[c] Aristotle
 %\end{ekey} then a sentence $a\eid c$ is true.
 
 Now that we have added the identity symbol to FOL, we simply need to expand our notion of truth from Part \ref{ch.semantics} to also account for atomic sentences like $a\eid b$. Our clause that we add is:
 \factoidbox{
-$\meta{a}\eid\meta{b}$ is true \textbf{iff} $\meta{a}$ and $\meta{b}$ name the same object in that interpretation.
+$\meta{a}\eid\meta{b}$ is true \textbf{iff} $\meta{a}$ and $\meta{b}$ name the same object in that model.
 }
-So on our go-to interpretation from Part \ref{ch.semantics},
+So on our go-to model from Part \ref{ch.semantics},
 \begin{ekey}
 		\item[\text{domain}] all people born before 2000\textsc{ce}
 		\item[a] Aristotle
@@ -453,12 +453,12 @@ So on our go-to interpretation from Part \ref{ch.semantics},
 		\item[Rxy] \gap{x} was born before \gap{y}
 	\end{ekey} we have that $a\eid b$ is false: Aristotle and Beyonc\'e are different people, so `$a$' and `$b$' name different objects.
 
-Consider the following interpretation
+Consider the following model
 \begin{ekey}
 \item[\text{domain}] All celestial bodies
 \item[e] The evening star
 \item[m] The morning star
-\end{ekey} It turns out that The Morning Star is \emph{the same object as} The Evening Star: they are names for Venus. So here we have two names for the same object. We thus have $e\eid m$ is true on this interpretation.
+\end{ekey} It turns out that The Morning Star is \emph{the same object as} The Evening Star: they are names for Venus. So here we have two names for the same object. We thus have $e\eid m$ is true on this model.
 
 Identity becomes particularly useful when we have quantifiers. Suppose we have
 \begin{ekey}
@@ -467,13 +467,13 @@ Identity becomes particularly useful when we have quantifiers. Suppose we have
 \item[b] Billy
 \item[c] Carys
 \end{ekey}
-Remember, to check if $\exists x\metaX(\ldots x\ldots x\ldots)$ is true we first add a new name, let's use $d$, and we see if there is some way of extending the domain so that $\metaX(\ldots d\ldots d\ldots)$ is true. So, let's see if $\exists x \,x\eid a$ is true: we add a new name $d$ and consider the extended interpretation with
+Remember, to check if $\exists x\metaX(\ldots x\ldots x\ldots)$ is true we first add a new name, let's use $d$, and we see if there is some way of extending the domain so that $\metaX(\ldots d\ldots d\ldots)$ is true. So, let's see if $\exists x \,x\eid a$ is true: we add a new name $d$ and consider the extended model with
 \begin{ekey}
 \item[d] Alfred
 \end{ekey}
-Then $d\eid a$ is true on this interpretation. So there is some way of interpreting `$d$' where $d\eid a$ is true; and thus $\exists x \, x\eid a$ is true.
+Then $d\eid a$ is true on this model. So there is some way of interpreting `$d$' where $d\eid a$ is true; and thus $\exists x \, x\eid a$ is true.
 
-On this interpretation we can also see that $\forall x(x\eid a\eor x\eid b\eor x\eid c)$ is true. Why? We add a new name `$d$'. There are three ways we can extend our original interpretation:\begin{enumerate}
+On this model we can also see that $\forall x(x\eid a\eor x\eid b\eor x\eid c)$ is true. Why? We add a new name `$d$'. There are three ways we can extend our original model:\begin{enumerate}
 \item
 \begin{ekey}
 \item[d] Alfred
@@ -487,20 +487,20 @@ On this interpretation we can also see that $\forall x(x\eid a\eor x\eid b\eor x
 \item[d] Carys
 \end{ekey}
 \end{enumerate}
-On the first of these, $d\eid a$ is true, on the second $d\eid b$ is true, and on the third $d\eid c$ is true. So on each of these interpretations, $d\eid a\eor d\eid b\eor d\eid c$ is true, and thus $\forall x(x\eid a\eor x\eid b\eor x\eid c)$.
+On the first of these, $d\eid a$ is true, on the second $d\eid b$ is true, and on the third $d\eid c$ is true. So on each of these models, $d\eid a\eor d\eid b\eor d\eid c$ is true, and thus $\forall x(x\eid a\eor x\eid b\eor x\eid c)$.
 
 
 
-%Identity is a special predicate of FOL. We write it a bit differently than other two-place predicates: `$x\eid y$' instead of `$Ixy$' (for example). More important, though, its interpretation is fixed, once and for all.
+%Identity is a special predicate of FOL. We write it a bit differently than other two-place predicates: `$x\eid y$' instead of `$Ixy$' (for example). More important, though, its model is fixed, once and for all.
 %
 
 
 %Where \meta{a} and \meta{b} are any names,
 %	\factoidbox{
-%		$\meta{a} \eid  \meta{b}$ is true in an interpretation \textbf{iff}\\
-%		 \meta{a} and \meta{b} name the very same object in that interpretation
+%		$\meta{a} \eid  \meta{b}$ is true in a model \textbf{iff}\\
+%		 \meta{a} and \meta{b} name the very same object in that model
 %	}
-%So in our go-to interpretation, `$a \eid  b$' is false, since Aristotle is distinct from Beyonc\'e.
+%So in our go-to model, `$a \eid  b$' is false, since Aristotle is distinct from Beyonc\'e.
 
 \chapter{Rules for identity}
 If two names refer to the same object, then swapping one name for another will not change the truth value of any sentence. So, in particular, if `$a$' and `$b$' name the same object, then all of the following will be valid:\label{model.nonidentity}
@@ -529,7 +529,7 @@ This rule is sometimes called \emph{Leibniz's Law}, after Gottfried Leibniz.
 
 Some philosophers have believed the reverse of this claim. That is, they have believed that when exactly the same sentences (not containing `$\eid $') are true of two objects, then they are really just one and the same object after all. This is a highly controversial philosophical claim (sometimes called the \emph{identity of indiscernibles}) and our logic will not subscribe to it; we allow that exactly the same things might be true of two \emph{distinct} objects.
 
-To bring this out, consider the following interpretation:
+To bring this out, consider the following model:
 	\begin{ebullet}
 		\item[\text{domain}:] P.D.\ Magnus, Tim Button
 		\item[$a$:] P.D.\ Magnus

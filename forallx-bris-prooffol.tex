@@ -202,7 +202,7 @@ The following proof combines our two new rules for quantifiers:
 	\end{fitchproof}
 Could this be a bad proof? If anything exists at all, then certainly we can infer that something is F, from the fact that everything is F. But what if \emph{nothing} exists at all? Then it is surely vacuously true that everything is F; however, it does not following that something is F, for there is nothing to \emph{be} F. So if we claim that, as a matter of logic alone, `$\exists x Fx$' follows from `$\forall x Fx$', then we are claiming that, as a matter of \emph{logic alone}, there is something rather than nothing. This might strike us as a bit odd.
 
-Actually, we are already committed to this oddity. In \S\ref{s:FOLBuildingBlocks}, we stipulated that domains in FOL must have at least one member. We then defined a logical truth (of FOL) as a sentence which is true in every interpretation. Since `$\exists x(Ax\eor\enot Ax)$' will be true in every interpretation, this \emph{also} had the effect of stipulating that it is a matter of logic that there is something rather than nothing.
+Actually, we are already committed to this oddity. In \S\ref{s:FOLBuildingBlocks}, we stipulated that domains in FOL must have at least one member. We then defined a logical truth (of FOL) as a sentence which is true in every model. Since `$\exists x(Ax\eor\enot Ax)$' will be true in every model, this \emph{also} had the effect of stipulating that it is a matter of logic that there is something rather than nothing.
 
 Since it is far from clear that logic should tell us that there must be something rather than nothing, we might well be cheating a bit here.
 
@@ -340,7 +340,7 @@ The moral of the story is this. \emph{If you want to squeeze information out of 
 
 \begin{practiceproblems}
 \problempart
-The following two `proofs' are \emph{incorrect}. Explain why both are incorrect. Also, provide interpretations which would invalidate the fallacious argument forms the `proofs' enshrine:
+The following two `proofs' are \emph{incorrect}. Explain why both are incorrect. Also, provide models which would invalidate the fallacious argument forms the `proofs' enshrine:
 \begin{multicols}{2}
 	\begin{fitchproof}
 		\hypo{Rxx}{\forall x Rxx}
@@ -463,7 +463,7 @@ Show that each pair of sentences is provably equivalent.
 \solutions
 \problempart
 \label{pr.FOLequivornot}
-For each of the following pairs of sentences: If they are provably equivalent, give proofs to show this. If they are not, construct an interpretation to show that they are not logically equivalent.
+For each of the following pairs of sentences: If they are provably equivalent, give proofs to show this. If they are not, construct a model to show that they are not logically equivalent.
 \begin{earg}
 \item $\forall x Px \eif Qc, \forall x (Px \eif Qc)$
 \item $\forall x\forall y \forall z Bxyz, \forall x Bxxx$
@@ -475,7 +475,7 @@ For each of the following pairs of sentences: If they are provably equivalent, g
 \solutions
 \problempart
 \label{pr.FOLvalidornot}
-For each of the following arguments: If it is valid in FOL, give a proof. If it is invalid, construct an interpretation to show that it is invalid.
+For each of the following arguments: If it is valid in FOL, give a proof. If it is invalid, construct a model to show that it is invalid.
 \begin{earg}
 \item $\exists y\forall x Rxy \therefore \forall x\exists y Rxy$
 \item $\forall x\exists y Rxy \therefore  \exists y\forall x Rxy$
@@ -634,7 +634,7 @@ means that there is some proof which starts with assumptions $\metaX_1, \metaX_2
 
 By contrast, this:
 $$\metaX_1, \metaX_2, \ldots, \metaX_n \entails \metaY$$
-means that there is no valuation (or interpretation) which makes all of $\metaX_1, \metaX_2, \ldots, \metaX_n$ true and makes $\metaY$ false. This concerns assignments of truth and falsity to sentences. It is a \emph{semantic notion}.
+means that there is no valuation (or model) which makes all of $\metaX_1, \metaX_2, \ldots, \metaX_n$ true and makes $\metaY$ false. This concerns assignments of truth and falsity to sentences. It is a \emph{semantic notion}.
 
 It cannot be emphasized enough that these are different notions. But we can emphasize it a bit more: \emph{They are different notions.}
 
@@ -642,11 +642,11 @@ Once you have internalised this point, continue reading.
 
 Although our semantic and proof-theoretic notions are different, there is a deep connection between them. To explain this connection,we will start by considering the relationship between logical truths and theorems.
 
-To show that a sentence is a theorem, you need only produce a proof. Granted, it may be hard to produce a twenty line proof, but it is not so hard to check each line of the proof and confirm that it is legitimate; and if each line of the proof individually is legitimate, then the whole proof is legitimate. Showing that a sentence is a logical truth, though, requires reasoning about all possible interpretations. Given a choice between showing that a sentence is a theorem and showing that it is a logical truth, it would be easier to show that it is a theorem.
+To show that a sentence is a theorem, you need only produce a proof. Granted, it may be hard to produce a twenty line proof, but it is not so hard to check each line of the proof and confirm that it is legitimate; and if each line of the proof individually is legitimate, then the whole proof is legitimate. Showing that a sentence is a logical truth, though, requires reasoning about all possible models. Given a choice between showing that a sentence is a theorem and showing that it is a logical truth, it would be easier to show that it is a theorem.
 
-Contrawise, to show that a sentence is \emph{not} a theorem is hard. We would need to reason about all (possible) proofs. That is very difficult. However, to show that a sentence is not a logical truth, you need only construct an interpretation in which the sentence is false. Granted, it may be hard to come up with the interpretation; but once you have done so, it is relatively straightforward to check what truth value it assigns to a sentence. Given a choice between showing that a sentence is not a theorem and showing that it is not a logical truth, it would be easier to show that it is not a logical truth.
+Contrawise, to show that a sentence is \emph{not} a theorem is hard. We would need to reason about all (possible) proofs. That is very difficult. However, to show that a sentence is not a logical truth, you need only construct a model in which the sentence is false. Granted, it may be hard to come up with the model; but once you have done so, it is relatively straightforward to check what truth value it assigns to a sentence. Given a choice between showing that a sentence is not a theorem and showing that it is not a logical truth, it would be easier to show that it is not a logical truth.
 
-Fortunately, \emph{a sentence is a theorem if and only if it is a logical truth}. As a result, if we provide a proof of $\metaX$ on no assumptions, and thus show that $\metaX$ is a theorem, we can legitimately infer that $\metaX$ is a logical truth; i.e., $\entails\metaX$. Similarly, if we construct an interpretation in which \metaX is false and thus show that it is not a logical truth, it follows that \metaX is not a theorem.
+Fortunately, \emph{a sentence is a theorem if and only if it is a logical truth}. As a result, if we provide a proof of $\metaX$ on no assumptions, and thus show that $\metaX$ is a theorem, we can legitimately infer that $\metaX$ is a logical truth; i.e., $\entails\metaX$. Similarly, if we construct a model in which \metaX is false and thus show that it is not a logical truth, it follows that \metaX is not a theorem.
 
 More generally, we have the following powerful result:
 $$\metaX_1, \metaX_2, \ldots, \metaX_n \proves\metaY \textbf{ iff }\metaX_1, \metaX_2, \ldots, \metaX_n \entails\metaY$$
@@ -656,7 +656,7 @@ This shows that, whilst provability and entailment are \emph{different} notions,
 		\item Two sentences are \emph{logically equivalent} iff they are \emph{provably equivalent}.
 		\item Sentences are \emph{provably consistent} iff they are \emph{not provably inconsistent}.
 	\end{ebullet}
-For this reason, you can pick and choose when to think in terms of proofs and when to think in terms of valuations/interpretations, doing whichever is easier for a given task. The table on the next page summarises which is (usually) easier.
+For this reason, you can pick and choose when to think in terms of proofs and when to think in terms of valuations/models, doing whichever is easier for a given task. The table on the next page summarises which is (usually) easier.
 
 It is intuitive that provability and semantic entailment should agree. But---let us repeat this---do not be fooled by the similarity of the symbols `$\entails$' and `$\proves$'. These two symbols have very different meanings. The fact that provability and semantic entailment agree is not an easy result to come by.
 
@@ -669,26 +669,26 @@ In fact, demonstrating that provability and semantic entailment agree is, very d
 \\
 Is \metaX a \textbf{logical truth}?
 & give a proof which shows $\proves\metaX$
-& give an interpretation in which \metaX is false\\
+& give a model in which \metaX is false\\
 \\
 Is \metaX a \textbf{contradiction}? &
 give a proof which shows $\proves\enot\metaX$ &
-give an interpretation in which \metaX is true\\
+give a model in which \metaX is true\\
 \\
 %Is \metaX contingent? &
-%give two interpretations, one in which \metaX is true and another in which \metaX is false & give a proof which either shows $\proves\metaX$ or $\proves\enot\metaX$\\
+%give two models, one in which \metaX is true and another in which \metaX is false & give a proof which either shows $\proves\metaX$ or $\proves\enot\metaX$\\
 %\\
 Are \metaX and \metaY \textbf{equivalent}? &
 give two proofs, one for $\metaX\proves\metaY$ and one for $\metaY\proves\metaX$
-& give an interpretation in which \metaX and \metaY have different truth values\\
+& give a model in which \metaX and \metaY have different truth values\\
 \\
 Are $\metaX_1, \metaX_2, \ldots, \metaX_n$ \textbf{jointly consistent}?
-& give an interpretation in which all of $\metaX_1, \metaX_2, \ldots, \metaX_n$ are true
+& give a model in which all of $\metaX_1, \metaX_2, \ldots, \metaX_n$ are true
 & prove a contradiction from assumptions $\metaX_1, \metaX_2, \ldots, \metaX_n$\\
 \\
 Is $\metaX_1, \metaX_2, \ldots, \metaX_n \therefore \meta{C}$ \textbf{valid}?
 & give a proof with assumptions $\metaX_1, \metaX_2, \ldots, \metaX_n$ and concluding with \meta{C}
-& give an interpretation in which each of $\metaX_1, \metaX_2, \ldots, \metaX_n$ is true and \meta{C} is false\\
+& give a model in which each of $\metaX_1, \metaX_2, \ldots, \metaX_n$ is true and \meta{C} is false\\
 \end{tabular*}
 \end{center}
 \end{sidewaystable}
