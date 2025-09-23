@@ -4,7 +4,7 @@
 \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
 
 \chapter{A Prolegomenon to TFL}
-In this part the lecture notes we start developing our theory of validity and logical consequence, that is, we start introducing the logical language. In \S\ref{s:Valid} we already introduced the idea that an argument is valid, if the truth premises of the guarantee the truth of the conclusion in virtue of the (logical) form of the premises and the conclusion. It is this idea that suggest to spell out an account of validity in a formal language, that is, to conceive of the logical language as a formal language. This will enable us to single out arguments that are valid in virtue of their form and eventually make sense of the notion of an interpretation we used in our definition of validity in \S\ref{s:Valid}. We can then give a rigorous formal definition of validity of arguments in the formal language we shall devise. This language will be the language of Truth-functional logic (TFL).
+In this part the lecture notes we start developing our theory of validity and logical consequence, that is, we start introducing the logical language. In \S\ref{s:Valid} we already introduced the idea that an argument is valid if and only if the truth of the premises guarantees the truth of the conclusion in virtue of their logical form. It is this idea that suggest to spell out an account of validity in a formal language, that is, to conceive of the logical language as a formal language. This will enable us to single out arguments that are valid in virtue of their form and eventually make sense of the notion of an interpretation we used in our definition of validity in \S\ref{s:Valid}. We can then give a rigorous formal definition of validity of arguments in the formal language we shall devise. This language will be the language of Truth-functional logic (TFL).
 
 Before we introduce the language of TFL, let us take a look at why a formal language may be helpful for capturing validity of arguments, i.e., the validity of arguments in virtue of their form.
 
@@ -49,17 +49,17 @@ But most arguments of this form are invalid.
 There a lot more valid argument forms. For example the
 argument form
 	\begin{earg}
-		\prem A or B
-		\prem not-A
-		\conc B
+		\prem $A$ or $B$
+		\prem not-$A$
+		\conc $B$
 	\end{earg}
 as well as the form
 	\begin{earg}
-		\prem not-(A and B)
-		\prem A
-		\conc not-B
+		\prem not-($A$ and $B$)
+		\prem $A$
+		\conc not-$B$
 	\end{earg}
-lead to valid arguments independently of what expressions we substitute for `A' and `B': we can understand (interpret) `A' and `B' in whatever way we want, as long as we take them to be place holder for sentences the resulting arguments the resulting argument will be valid. These examples illustrate the important idea that the validity of the arguments just considered has nothing to do with the meanings of English expressions like `Jenny is miserable', `Dipan is an avid reader of Tolstoy', or any other sentence. If it has to do with meanings at all, it is with the meanings of conjunction-words like `and', `or', `not,' and `if\ldots, then\ldots'. The language of truth-functional logic is built to single out characteristic feature of these conjunction words and this will enable us to fruitfully study the idea of validity of an argument in virtue of its form.
+lead to valid arguments independently of what expressions we substitute for `$A$' and `$B$': we can understand (interpret) `$A$' and `$B$' in whatever way we want, as long as we take them to be place holder for sentences the resulting argument will be valid. These examples illustrate the important idea that the validity of the arguments just considered has nothing to do with the meanings of English expressions like `Jenny is miserable', `Dipan is an avid reader of Tolstoy', or any other sentence. If it has to do with meanings at all, it is with the meanings of conjunction-words like `and', `or', `not,' and `if\ldots, then\ldots'. The language of truth-functional logic is built to single out characteristic feature of these conjunction words and this will enable us to fruitfully study the idea of validity of an argument in virtue of its form.
 
 When one introduces a language there are (at least) two task: the first is to specify the vocabulary of the language and equip the language with a grammar, that is, one has to specify how well-formed sentences of the language look like. This aspect of the language is called its \define{syntax}. The second task is to specify the \define{semantics} of the language. The semantics specifies how we are to understand the expressions of the language, what the sentences of the language mean etc. Part \ref{ch.TFL} develops both the syntax and the semantics of the language of TFL. Once this has been established we can consider how TFL may be useful for thinking about arguments in English. This will lead to the idea of symbolizing arguments in TFL and will be picked up in Part \ref{ch.TFLsymb}.
 
@@ -85,7 +85,7 @@ description={A sentence used to represent a basic sentence; a single letter in T
 \section{Connectives}
 \label{s:TFLConnectives}
 
-In the previous section, we introduced the atomic sentences of TFL.  In TFL we have counterparts to the conjunction-words that play an important role for spelling out arguments in English, that is, in TFL we have expression that play a similar role to the role expressions like `and', `or' and `not' play in English. These are the \emph{connectives}---they can be used to form new sentences out of old ones. In TFL, we will make use of logical connectives to build complex sentences from atomic components. There are five logical connectives in TFL. This table summarises them, and they are explained throughout this section.
+In the previous section, we introduced the atomic sentences of TFL.  In TFL we have counterparts to the conjunction-words that play an important role for spelling out arguments in English, that is, in TFL we have expression that play a similar role to the role expressions like `and', `or' and `not' play in English. These are the \emph{connectives}---they can be used to form new sentences out of old ones. In TFL, we will make use of logical connectives to build complex sentences from atomic components. There are four logical connectives in TFL. This table summarises them, and they are explained throughout this section.
 
 \newglossaryentry{connective}
 {
@@ -128,7 +128,7 @@ Similarly, on this understanding we get the following readings:
  \end{itemize}
  We shall go back to studying the connection between the connectives of truth-functional logic and various conjunction-words of English in \S\ref{sec:tt}, when we discuss the precise meaning of the connectives in truth-functional logic. For now we focus on completing the description of the formal language of truth-functional logic.
 
- To conclude our discussion of the connectives we focused on the application of the connectives to atomic sentences, but connectives can be applied to all sorts of sentences not only atomic sentences. For example, as $\enot A$ is a TFL sentence we can use `$\eand$' to conjoin it the sentence `$C$' to form the new sentence `$(\enot A\eand C)$'. Connectives can be applied to all TFL sentences, not only atomic sentences. It is time to say precisely what TFL sentences are.
+ To conclude our discussion of the connectives we focused on the application of the connectives to atomic sentences, but connectives can be applied to all sorts of sentences not only atomic sentences. For example, as `$\enot A$' is a TFL sentence we can use `$\eand$' to conjoin it the sentence `$C$' to form the new sentence `$(\enot A\eand C)$'. Connectives can be applied to all TFL sentences, not only atomic sentences. It is time to say precisely what TFL sentences are.
 
 \section{Sentences}\label{s:TFLSentences}
 \todo{This went through a major rewrite. Check it!!!}
@@ -137,14 +137,16 @@ We have introduced the basic building blocks of truth-functional logic, the atom
 What is still missing is to equip the language with a \define{grammar}. The purpose of the grammar is to distinguish wellformed sentences from nonsense, but also to avoid ambiguity.
 
 We wish to have rules that guarantee that
-$$(A\eor (B\eand C))$$ $$\enot (A\eand B)$$
+$$(A\eor (B\eand C))$$ and $$\enot (A\eand B)$$
 are wellformed sentences of the language of truth-functional logic, while
-$$A\eand\eor B\eif$$
-is not. The latter expression is nonsense just as in English the sequence of words
-\begin{center}
-The and dog brown or is.
-\end{center}
-is nonsense and not a sentence of English.
+$$\enot))A\eand()\enot\eor B\eif$$
+is not. It is merely a sequence of symbols of TFL --- an \emph{expression} but not a \emph{sentence}. It is gibberish. 
+In this respect it is like the following sequence of English words:
+\begin{ebullet}
+\item Green quickly the without ran ideas.
+\item Not; John is happy and, not or Sue is tall only if
+\end{ebullet}
+These are nonsense: a string of meaningful words, but not a grammatical English sentence.
 
 
 
@@ -204,12 +206,12 @@ Our second rule says:
 \item[2.]
 If $\metaX$ is a sentence of TFL, then so is $\enot \metaX$.
 \end{enumerate}
-By rule 1, we know that $A$ is a sentence. Rule 2 then allows us to conclude that $\enot A$ is also a sentence. We could then apply it again and conclude that $\enot\enot A$ is also a sentence. More generally, if, by whatever rule we have a constructed a sentence X, Rule 2 tells us that $\enot X$ will also be a sentence of TFL.
+By rule 1, we know that $A$ is a sentence. Rule 2 then allows us to conclude that $\enot A$ is also a sentence. We could then apply it again and conclude that $\enot\enot A$ is also a sentence. More generally, if, by whatever rule we have constructed a sentence \metaX, Rule 2 tells us that $\enot X$ will also be a sentence of TFL.
 
 \define{Formation trees} help us keep track of this process. For the case of $\enot\enot A$ this would be:
 \begin{center}
 \begin{forest}
-	[$\mainconnective{\enot}\, \enot A$
+	[$\mainconnective{\enot}\enot A$
 		[$\mainconnective{\enot}A$
 			[$A$]
 		]
@@ -224,7 +226,7 @@ Our third rule says:
 By rule 1, $B_1$ and $D$ are both sentences. So rule 3 allows us to conclude that $(B_1\eand D)$ is a sentence. We might then apply rule 2 to conclude that $\enot(B_1\eand D)$ is also a sentence.
 \begin{center}
 \begin{forest}
-	[$\mainconnective{\enot}\,  (B_1 \eand D)$
+	[$\mainconnective{\enot} (B_1 \eand D)$
 		[$(B_1\mainconnective{\eand} D)$
 			[$B_1$]
 			[$D$]
