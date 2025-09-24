@@ -633,59 +633,6 @@ For each argument, write a symbolization key and translate the argument as well 
 
 
 
-\chapter{On Truth-functional connectives}
-\label{s:TruthFunctionality}
-In this chapter, we reflect on truth-functional logic and the connectives we've used.
-\section{Non truth-functional connectives}
-
-%%%%because???
-Let's introduce an important idea.
-	\factoidbox{
-		A connective is \define{truth-functional} iff the truth value of a sentence with that connective as its main connective is uniquely determined by the truth value(s) of the constituent sentence(s).
-	}
-\newglossaryentry{truth-functional connective}
-{
-name=truth-functional connective,
-description={an operator that builds larger sentences out of smaller ones and fixes the \gls{truth value} of the resulting sentence based only on the truth value of the component sentences}
-}
-
-Every connective in TFL is truth-functional. We were able to give rules to determine what the truth value of a sentence $\enot\metaX$ is depending only on the truth value of $\metaX$. The truth value of $\metaX$ uniquely determines the truth value of $\enot \metaX$. The same was true for all the other connectives of TFL ($\eand,\eor,\eif$), as is evidenced by the truth rules and truth tables we gave for these connectives. This is what gives TFL its name: it is \emph{truth-functional logic}.
-
-%The truth value of a negation is uniquely determined by the truth value of the unnegated sentence. The truth value of a conjunction is uniquely determined by the truth value of both conjuncts. The truth value of a disjunction is uniquely determined by the truth value of both disjuncts, and so on.
-
-%This then means that to determine the truth value of any TFL sentence, we only need to know the truth value of the atomic sentences it includes. We will see exactly how to do this in \S\ref{s:CompleteTruthTables}.
-
-
-%The truth value of a non-atomic sentence of TFL, such as $A\eand B$ depends on the truth values of $A$ and $B$. But once the truth values of $A$, $B$ and $C$ are provided, the truth value of $A\eand B$ is fixed. Indeed, this is the characteristic feature of \emph{truth functional logic}.
-
-
-In plenty of languages, e.g.~English, there are connectives that are not truth-functional. We here describe just two (Exercise: find further non-truth-functional connectives of English):
-
-\subsection{Necessarily}
-
-In English, for example, we can form a new sentence from any simpler sentence by prefixing it with `Necessarily, \ldots' or  `It is necessary that\ldots'. The truth value of this new sentence is not fixed solely by the truth value of the original sentence. For consider two true sentences:
-	\begin{earg}
-		\item[\ex{nec-math}] $2 + 2 = 4$
-		\item[\ex{nec-music}] Shostakovich wrote fifteen string quartets
-	\end{earg}
-Whereas it is necessary that $2 + 2 = 4$, it is not \emph{necessary} tthat Shostakovich wrote fifteen string quartets. If Shostakovich had died earlier, he would have failed to finish Quartet no.\ 15; if he had lived longer, he might have written a few more. So `It is necessary that\ldots' is a connective of English, but it is not \emph{truth-functional}.
-
-
-
-\subsection{Subjunctive conditionals}\label{s:IndicativeSubjunctive}
-
-
-
-We said that $\eif$ was pretty bad at capturing \emph{subjunctive conditionals} of English. The problem is that a subjunctive conditional is not truth functional.
-Consider the two sentences:
-	\begin{earg}
-		\item[\ex{brownwins1}] If Mitt Romney had won the 2012 election, then he would have been the 45th President of the USA.
-		\item[\ex{brownwins2}] If Mitt Romney had won the 2012 election, then he would have turned into a helium-filled balloon and floated away into the night sky.
-	\end{earg}
-Sentence \ref{brownwins1} is true; sentence \ref{brownwins2} is false, but both have false antecedents and false consequents. So the truth value of the whole sentence is not uniquely determined by the truth value of the constituent sentences.
-
-However, $\eif$ is the best that can be done at symbolising subjunctive conditionals of English in TFL. TFL just doesn't have the required resources as the subjunctive conditional is not truth-functional.
-
 
 
 \chapter{Ambiguity}\label{s:AmbiguityTFL}

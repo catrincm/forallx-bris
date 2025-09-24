@@ -523,20 +523,23 @@ Is `Sharky' used or mentioned in the above sentence? Discuss.
 \end{practiceproblems}
 
 
-\chapter{Semantics of TFL}
-\section{Truth rules for the connectives}\label{sec:tt}
-We have completed introducing the syntax of the language of TFL. It is now time to turn to the semantics of TFL. The idea underlying the semantics is to specify conditions under which sentences of TFL are true. In \S\ref{ch:syntfl} we introduced the idea that an argument is lvalid if there is no interpretation on which all premises of the argument are true but the conclusion false. Accordingly, if we wish to make a start on making this idea more precise, we need to say when a sentence of TFL is true according to an interpretation and when it is false. The target of this chapter is to give precise rules to this effect. The important feature of truth functional logic is that the truth value of a complex sentence, such as `$A\eor(B\eand C)$' is fully determined by the truths of is component parts, that is `$A$', `$B$' and `$C$'. If we're told whether `$A$', `$B$' and $C$ are true or false, then we will be able to say whether `$A\eor(B\eand C)$' is true or false.
+
+
+
+\chapter{Truth rules for the connectives}\label{sec:tt}
+
+We have completed introducing the syntax of the language of TFL. It is now time to turn to the semantics of TFL. The idea underlying the semantics is to specify conditions under which sentences of TFL are true. In \S\ref{ch:syntfl} we introduced the idea that an argument is valid if there is no interpretation on which all premises of the argument are true but the conclusion false. Accordingly, if we wish to make a start on making this idea more precise, we need to say when a sentence of TFL is true according to an interpretation and when it is false. The target of this chapter is to give precise rules to this effect. The important feature of truth functional logic is that the truth value of a complex sentence, such as `$A\eor(B\eand C)$' is fully determined by the truths of is component parts, that is `$A$', `$B$' and `$C$'. If we're told whether `$A$', `$B$' and $C$ are true or false, then we will be able to say whether `$A\eor(B\eand C)$' is true or false.
 
 To spell out this idea, we need to describe how the truth values of different sentences (e.g., `$A$', `$B$', and `$C$') are to be combined to obtain the truth value of a sentence  that has been obtained via the formation rules 2-5 (e.g., `$A\eor(B\eand C)$'). To do this we work through each of our connectives describing the rules governing it.
 
 \newglossaryentry{truth value}
-                 {
-                   name = truth value,
-                   description = {One of the two logical values sentences can have: True and False}
-                   }
+{
+	name = truth value,
+	description = {One of the two logical values sentences can have: True and False}
+}
 
 
-\subsection{Negation}
+\section{Negation}
 The `$\enot$'-connective is called negation. When we introduced the `$\enot$'-connective we said it should roughly be understood as `it is not the case' or, perhaps, simply `not'. Let's make that official:
 \factoidbox{
 If a sentence can be paraphrased as `it is not the case that \ldots'\\ it can be symbolised as $\enot\metaX$.
@@ -576,7 +579,7 @@ description={The symbol \enot, used to represent words and phrases that function
 
 
 
-\subsection{Conjunction}
+\section{Conjunction}
 \label{s:ConnectiveConjunction}
 The $\eand$-connective, called conjunction, is meant to be understood of the English word `and':
 \factoidbox{
@@ -627,7 +630,7 @@ description={A sentence joined to another by a \gls{conjunction}}
 }
 
 
-\subsection{Disjunction}
+\section{Disjunction}
 The `$\eor$'-connective is called disjunction and is meant to be understood in terms of the English `or'.
 \newglossaryentry{disjunction}
 {
@@ -707,8 +710,26 @@ F & F &$\leadsto$& F
 \end{highlighted}
 Like conjunction, disjunction is symmetrical.
 
-\subsection{Conditional}\todo{Say more about ``only if''! Students thought it was $\eiff$}
-The `$\eif$'-connective is called the conditional-connective and it is meant to be related to our understanding of \emph{if\ldots, then\ldots} sentences. Here, $P$ is called the \define{antecedent} of the conditional $(P \eif Q)$, and $Q$ is called the \define{consequent}.
+\section{Conditional}\todo{Say more about ``only if''! Students thought it was $\eiff$}
+The `$\eif$'-connective is called the conditional-connective and it is meant to be related to our understanding of \emph{if\ldots, then\ldots} sentences. 
+Unlike conjunction and disjunction, the conditional is asymmetric, it matters which order the sentences come in, and $(\metaX\eif\metaY)$ will be different to $(\metaY\eif\metaX)$. It is thus valuable to give a name to indicate which part goes where:
+\begin{highlighted}
+	In $\metaX\eif\metaY$, \metaX is called the \define{antecedent}, and \metaY is called the \define{consequent}.
+\end{highlighted}
+
+\newglossaryentry{antecedent}
+{
+	name=antecedent,
+	description={The  \define{antecedent} of a conditional $\metaX\eif\metaY$ is \metaX.}
+}
+\newglossaryentry{consequent}
+{
+	name=consequent,
+	description={The  \define{consequent} of a conditional $\metaX\eif\metaY$ is \metaY.}
+}
+
+As we will discuss in 
+
 	\factoidbox{
 	 If a sentence can be paraphrased as \\`If \ldots, then \ldots' it can be symbolised as $(\metaX\eif\metaY)$.
 	}
@@ -759,9 +780,8 @@ F & F &$\leadsto$& T
 \end{highlighted}
 In this case, it's very important to remember which way around it goes. The TF-line is different to the FT-line.
 
-This is why the terms `antecedent' and `consequent' are so useful.  \begin{highlighted}
+This is why the terms `antecedent' and `consequent' are so useful.  
 In $\metaX\eif\metaY$, \metaX is called the \define{antecedent}, and \metaY the \define{consequent}.
-\end{highlighted}
 Using the antecedent/consequent terminology we can summarize the truth rule as follows:
 If the antecedent is true and the consequent false, then the conditional sentence is false, otherwise it is true.
 \newglossaryentry{antecedent}
@@ -781,10 +801,64 @@ The TFL connective $\eif$ is \emph{stipulated} to be governed by these rules. Th
 \begin{earg}
 \item[\ex{kangaroo}] If Kangaroos had no tails, they would topple over.
 \end{earg}
-We will discuss conditional-sentences of this kind in \S\ref{s:IndicativeSubjunctive} and will look at some problems arising due to understanding $\eif$ in terms of material conditional in \S\ref{s:ParadoxesOfMaterialConditional}. However, for our purposes $\eif$-connective will be understood in terms of truth rules given in this section.
+%We will discuss conditional-sentences of this kind in \S\ref{s:IndicativeSubjunctive} and will look at some problems arising due to understanding $\eif$ in terms of material conditional in \S\ref{s:ParadoxesOfMaterialConditional}.
+%
+For our purposes $\eif$-connective will be understood in terms of truth rules given in this section.
+
+\section{On Truth-functional connectives}
+\label{s:TruthFunctionality}
+%We now reflect on truth-functional logic and the connectives we've used.
+%\section{Non truth-functional connectives}
+
+%%%%because???
+Let's introduce an important idea.
+\factoidbox{
+	A connective is \define{truth-functional} iff the truth value of a sentence with that connective as its main connective is uniquely determined by the truth value(s) of the constituent sentence(s).
+}
+\newglossaryentry{truth-functional connective}
+{
+	name=truth-functional connective,
+	description={an operator that builds larger sentences out of smaller ones and fixes the \gls{truth value} of the resulting sentence based only on the truth value of the component sentences}
+}
+
+Every connective in TFL is truth-functional. We were able to give rules to determine what the truth value of a sentence $\enot\metaX$ is depending only on the truth value of $\metaX$. The truth value of $\metaX$ uniquely determines the truth value of $\enot \metaX$. The same was true for all the other connectives of TFL ($\eand,\eor,\eif$), as is evidenced by the truth rules and truth tables we gave for these connectives. This is what gives TFL its name: it is \emph{truth-functional logic}.
+
+%The truth value of a negation is uniquely determined by the truth value of the unnegated sentence. The truth value of a conjunction is uniquely determined by the truth value of both conjuncts. The truth value of a disjunction is uniquely determined by the truth value of both disjuncts, and so on.
+
+%This then means that to determine the truth value of any TFL sentence, we only need to know the truth value of the atomic sentences it includes. We will see exactly how to do this in \S\ref{s:CompleteTruthTables}.
 
 
-\section{Truth on a valuation}
+%The truth value of a non-atomic sentence of TFL, such as $A\eand B$ depends on the truth values of $A$ and $B$. But once the truth values of $A$, $B$ and $C$ are provided, the truth value of $A\eand B$ is fixed. Indeed, this is the characteristic feature of \emph{truth functional logic}.
+
+
+In plenty of languages, e.g.~English, there are connectives that are not truth-functional. We here describe just two (Exercise: find further non-truth-functional connectives of English):
+
+\subsection{Necessarily}
+
+In English, for example, we can form a new sentence from any simpler sentence by prefixing it with `Necessarily, \ldots' or  `It is necessary that\ldots'. The truth value of this new sentence is not fixed solely by the truth value of the original sentence. For consider two true sentences:
+\begin{earg}
+	\item[\ex{nec-math}] $2 + 2 = 4$
+	\item[\ex{nec-music}] Shostakovich wrote fifteen string quartets
+\end{earg}
+Whereas it is necessary that $2 + 2 = 4$, it is not \emph{necessary} tthat Shostakovich wrote fifteen string quartets. If Shostakovich had died earlier, he would have failed to finish Quartet no.\ 15; if he had lived longer, he might have written a few more. So `It is necessary that\ldots' is a connective of English, but it is not \emph{truth-functional}.
+
+
+
+\subsection{Subjunctive conditionals}\label{s:IndicativeSubjunctive}
+
+
+
+We said that $\eif$ was pretty bad at capturing some uses of `if\ldots, then\ldots' in Englihs. In particular, it is bad at capturing use of \emph{subjunctive conditionals} of English. The problem is that a subjunctive conditional is not truth functional.
+Consider the two sentences:
+\begin{earg}
+	\item[\ex{brownwins1}] If Mitt Romney had won the 2012 election, then he would have been the 45th President of the USA.
+	\item[\ex{brownwins2}] If Mitt Romney had won the 2012 election, then he would have turned into a helium-filled balloon and floated away into the night sky.
+\end{earg}
+Sentence \ref{brownwins1} is true; sentence \ref{brownwins2} is false, but both have false antecedents and false consequents. So the truth value of the whole sentence is not uniquely determined by the truth value of the constituent sentences.
+
+However, the material conditional, which is what we specify $\eif$ to be is the best that can be done at symbolising subjunctive conditionals of English in TFL. TFL just doesn't have the required resources as the subjunctive conditional is not truth-functional.
+
+\chapter{Truth on a Valuation}
 In the previous section we have learned how truth values of constituent sentences determine the truth value of complex sentences. This means that if we are presented with the truth value of the relevant atomic sentences that appear in a complex sentence, we can determine whether that sentence is true or false.
 
 But how do we determine whether a given atomic sentence is true? This is where the notion of an \emph{interpretation} comes into the picture. An interpretation will stipulate (assign) truth values of particular atomic sentences. Let `$B$' stand for the English sentence `Ben is happy'. Then there is one interpretation according to which this is true, that is, $B$ will be assigned the value ``True'' on this interpretation. There is another interpretation according to which Ben is not happy, that is, $B$ is assigned the value ``False'' on this interpretation. In TFL an interpretation of the atomic sentences is called a \define{valuation}:
@@ -983,7 +1057,7 @@ Finally, the rule for $\eif$ tells us how the truth value of $(\enot I\eand H)\e
 \end{center}
 
 
-
+\chapter{Truth Tables}
 \section{Validity and truth tables, the idea}\label{sec:valtt}
 In \S\ref{s:Valid} we said that an argument was valid, if and only if there is no interpretation such that all premises are true but the conclusion false. At that point the definition was suggestive, but we lacked a clear understanding of `interpretation' and when a sentence is true relative to an interpretation. But for the language of TFL we can now turn the informal definition in a precise and rigorous definition as, for TFL, interpretations are given by valuations, assignments of truth values to the atomic sentences. 
 
