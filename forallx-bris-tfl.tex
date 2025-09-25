@@ -900,6 +900,8 @@ However, the material conditional, which is what we specify $\eif$ to be is the 
 
 \end{practiceproblems}
 
+
+
 \chapter{Truth on a Valuation}
 In the previous section we have learned how truth values of constituent sentences determine the truth value of complex sentences. This means that if we are presented with the truth value of the relevant atomic sentences that appear in a complex sentence, we can determine whether that sentence is true or false.
 
@@ -977,6 +979,40 @@ The valuation determines the truth values of the atomic sentences, and complex s
 	\end{enumerate}
 }
 
+Consider 
+`$(\enot I\eand H)\eif H$'. We will determine whether it is true or false on the valuation given. 
+The idea is that we draw the formation tree and then work our way up the formation tree to, in stages, determine the value of our complex sentence.
+This is similar to as one might do in mathematics to determine the value of a complex equation in stages starting from the bottom of the tree:
+\begin{center}
+	\begin{forest}
+		[{$7\mainconnective{+}(5\times\sqrt{}4)$}, label=right:{\scriptsize $=17$}
+		[{$7$}]
+		[{$(5\mainconnective{\times} \sqrt{}4)$}, label=right:{\scriptsize $=10$}
+		[{$5$}]
+		[{$\mainconnective{\sqrt{}}{4}$}, label=right:{\scriptsize $=2$}
+		[{$4$}]
+		]
+		]
+		]
+	\end{forest}
+\end{center}
+
+Or, it might be more similar to this maths question: Setting $x=7$, $y=5$ and $z=4$,  determine the value of $x+(y\times\sqrt{}z)$. 
+\begin{center}
+	\begin{forest}
+		[{$x+(y\times\sqrt{}z)$}, label=right:{\scriptsize $=17$}
+		[$x$, label=left:{\scriptsize $7=$}]
+		[{$y\times\sqrt{}z$}, label=right:{\scriptsize $=10$}
+		[$y$, label=left:{\scriptsize $5=$}]
+		[{$\sqrt{}z$}, label=right:{\scriptsize $=2$}
+		[$z$, label=right:{\scriptsize $=4$}]
+		]
+		]
+		]
+	\end{forest}
+\end{center}
+
+Similarly for TFL, we use the valuation to set the values for our atomic sentences and then determine the values of our complex sentences by applying our truth rules. 
 
 Let us see an example. Consider 
 `$(\enot I\eand H)\eif H$'. 
@@ -994,7 +1030,7 @@ The formation tree will help us know what to do (see \S\ref{TFLsentences}):
 		]
 	\end{forest}
 \end{center}
-The idea is that we work ourselves up through the tree.
+
 %Now, we will start by a slight reformatting of the formation tree. 
 %
 %\begin{center}
@@ -1014,14 +1050,15 @@ The idea is that we work ourselves up through the tree.
 %	\end{tabular}
 %\end{center}
 
-On this valuation:
+
+
+The lowest point on the tree is $I$. For the truth of this, we just consult the valuation. On this valuation:
 \begin{center}
 	\begin{tabular}{rccccccc}
 		&	$A$&$H$&$I$&$B$&$C_{35}$&\ldots\\\hline
 		$v$:&	F & T &F&F&F&T&\ldots
 	\end{tabular}
 \end{center}
-The lowest point on the tree is $I$. For the truth of this, we just consult the valuation. 
 \begin{center}
 	\begin{forest}
 	[$(\enot I\eand H)\mainconnective{\eif} H$
@@ -1068,7 +1105,7 @@ Since $I$ is false on valuation $v$, by consulting the truth rule for $\neg$ we 
 	\end{forest}
 \end{center}
 
-Then the rule for $\eand$ tells us how the truth value of $\enot I\eand H$ depends on the truths of $\enot I$ and $H$: as $\enot I$ is true and $H$ is true, then $\enot I \eand H$ is also true on the valuation $v$.
+Then the rule for $\eand$ tells us how the truth value of $\enot I\eand H$ depends on the truths of $\enot I$ and $H$: as $\enot I$ is true (which we determined) and $H$ is true (consult the valuation), then $\enot I \eand H$ is also true on the valuation $v$.
 \begin{center}
 	\begin{forest}
 		[$(\enot I\eand H)\mainconnective{\eif} H$\\
