@@ -340,6 +340,23 @@ The scope of each connective is now much easier to pick out.
 \begin{practiceproblems}
 
 \solutions
+
+\problempart 
+Add brackets to form a sentence of TFL, strictly speaking (i.e., no dropped brackets), which satisfies the given condition. 
+\begin{center}
+	\begin{tabular}{>{\centering}p{1em}>{\centering}p{1em}>{\centering}p{1em}>{\centering}p{1em}>{\centering}p{1em}>{\centering}p{1em}>{\centering}p{1em}>{\centering}p{1em}>{\centering}p{1em}}
+		\enot &$P$&\eor &$Q$&\eif &\enot &$P_2$&\eand &$R$
+	\end{tabular}
+\end{center}
+
+\begin{earg}
+	\item Where the `$\eif$' is the main connective
+	\item Where the `$\eor$' is the main connective.
+	\item Where the left `$\enot$' is the main connective. 
+	\item Can it be done so that the right `$\enot$' is the main connective?
+\end{earg}
+
+
 \problempart
 \label{pr.wiffTFL}
 For each of the following: (a) Is it a sentence of TFL, strictly speaking? (b) Is it a sentence of TFL, allowing for our relaxed bracketing conventions? (c) If the answer to (b) is yes, write down the formation tree of each sentence and determin the main connective at each node (if there is one). Is there a main connective for every node of the formation tree of a sentence.
@@ -354,9 +371,21 @@ For each of the following: (a) Is it a sentence of TFL, strictly speaking? (b) I
 \item $(F \eif \enot D \eif J) \eor (C \eand D)$\hfill \myanswer{(a) no (b) no}
 \end{earg}
 
+
 \problempart
-Are there any sentences of TFL that contain no atomic sentences? Explain your answer.
-\\\myanswer{No. Atomic sentences contain atomic sentences (trivially). And every more complicated sentence is built up out of less complicated sentences, that were in turn built out of less complicated sentences, \ldots, that were ultimately built out of atomic sentences.}
+\begin{earg}
+	\item  Does $\enot A\eor B$ have the form $\metaX\eor\metaY$?
+	\item Does $\enot(A\eor B)$ have the form $\metaX\eor \metaY$?
+	\item Does $(A\eor B)\eor C$ have the form $\metaX\eor\metaY$?
+\end{earg}
+\problempart
+\begin{enumerate}
+	\item Can there be a sentence of TFL of the form $(\metaX\eand\metaY)$ that includes three different connectives (the connectives are $\enot,\eand,\eor,\eif$)? If so, give an example, if not explain why not.
+	\myanswer{\\ yes, for example $(\enot A\eand(B\eor C))$}
+	\item Are there any sentences of TFL that contain no atomic sentences? Explain your answer.
+	\\\myanswer{No. Atomic sentences contain atomic sentences (trivially). And every more complicated sentence is built up out of less complicated sentences, that were in turn built out of less complicated sentences, \ldots, that were ultimately built out of atomic sentences.}
+			\item Are there sentences of TFL that don't have a main connective? Explain your answer.\myanswer{Yes, atomic sentences don't have a main connective.}
+\end{enumerate}
 
 \end{practiceproblems}
 
@@ -858,6 +887,19 @@ Sentence \ref{brownwins1} is true; sentence \ref{brownwins2} is false, but both 
 
 However, the material conditional, which is what we specify $\eif$ to be is the best that can be done at symbolising subjunctive conditionals of English in TFL. TFL just doesn't have the required resources as the subjunctive conditional is not truth-functional.
 
+
+
+\begin{practiceproblems}
+	
+	
+	\problempart 
+\begin{enumerate}
+	\item Suppose $\metaX$ is true, what can you say about $\metaX\eor\metaY$?
+\item Suppose $\metaX$ is false, what can you say about $\metaX\eif \metaY$?
+\end{enumerate}
+
+\end{practiceproblems}
+
 \chapter{Truth on a Valuation}
 In the previous section we have learned how truth values of constituent sentences determine the truth value of complex sentences. This means that if we are presented with the truth value of the relevant atomic sentences that appear in a complex sentence, we can determine whether that sentence is true or false.
 
@@ -1056,6 +1098,34 @@ Finally, the rule for $\eif$ tells us how the truth value of $(\enot I\eand H)\e
 	\end{forest}
 \end{center}
 
+\begin{practiceproblems}
+
+
+\problempart Determine the truth values for these sentences on this valuation:
+
+\begin{center}
+	\begin{tabular}{rccccccccc}
+		& $A$ & $B$ & $C$ & $D$ & $E$ & $H$ & $I$ & $J$ & $C_{35}$\\\hline
+		$v$: & F & F & F & T & F & T & F & T & F
+	\end{tabular}
+\end{center}
+
+\begin{earg}
+	\item $\,\enot A \eor (B \eif \enot (C \eor A))\,$
+	\item $\, (A \eand H) \eor (I \eand \enot B)\,$
+	\item $\, H \eif (A \eor C)\,$
+	\item $\, \enot (D \eand E)\,$
+	\item $\, (B \eif J) \eand (J \eif H)\,$
+	\item $\, (C \eor C_{35}) \eif H\,$
+	\item $\, \enot\enot A \eor \enot I\,$
+	\item $\, (A \eif B) \eif ((H \eand D) \eor \enot E)\,$
+	\item $\, ((J \eand \enot C )\eif D) \eand \enot (J \eand E)\,$
+	\item $\, (A \eor B) \eand (\enot A \eor \enot B)$
+	\item $\, (H \eif D) \eor (I \eif A)\,$
+\end{earg}
+
+	
+	\end{practiceproblems}
 
 \chapter{Truth Tables}
 \section{Validity and truth tables, the idea}\label{sec:valtt}
