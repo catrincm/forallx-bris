@@ -994,8 +994,7 @@ The formation tree will help us know what to do (see \S\ref{TFLsentences}):
 		]
 	\end{forest}
 \end{center}
-The idea is that we work ourselves from \define{leaves} of the tree (the atomic sentences) to the \define{root} of the formation tree (the sentence that has been constructed). 
-
+The idea is that we work ourselves up through the tree.
 %Now, we will start by a slight reformatting of the formation tree. 
 %
 %\begin{center}
@@ -1022,7 +1021,7 @@ On this valuation:
 		$v$:&	F & T &F&F&F&T&\ldots
 	\end{tabular}
 \end{center}
-$H$ is true and $I$ is false. So we can fill out 
+The lowest point on the tree is $I$. For the truth of this, we just consult the valuation. 
 \begin{center}
 	\begin{forest}
 	[$(\enot I\eand H)\mainconnective{\eif} H$
@@ -1030,9 +1029,9 @@ $H$ is true and $I$ is false. So we can fill out
 	[$\mainconnective{\enot} I$
 	[$I$\\False on $v$]
 	]
-	[$H$\\True on $v$]
+	[$H$]
 	]
-	[$H$\\True on $v$]
+	[$H$]
 	]
 \end{forest}
 \end{center}
@@ -1064,7 +1063,7 @@ Since $I$ is false on valuation $v$, by consulting the truth rule for $\neg$ we 
 		]
 		[$H$\\True on $v$]
 		]
-		[$H$\\True on $v$]
+		[$H$]
 		]
 	\end{forest}
 \end{center}
