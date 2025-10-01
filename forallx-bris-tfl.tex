@@ -1134,6 +1134,136 @@ Finally, the rule for $\eif$ tells us how the truth value of $(\enot I\eand H)\e
 	\end{forest}
 \end{center}
 
+
+To keep track of the answer, we will present it on the truth table. 
+
+\begin{center}
+	\begin{tabular}{r c c| c c c c c c c c c}
+		&&
+		
+		& \mainconnectivecolor{(} & {\enot} & I & {\eand} & H & \mainconnectivecolor{)} & \tikzmarknode{r1_imp}{$\mainconnective{\eif}$}& H  \\[.2em]
+		
+		% Row 2: children of Row 1
+		&& &
+		\mainconnectivecolor{(}
+		& {\enot} & I & \tikzmarknode{r2_and}{$\mainconnective{\eand}$} & H
+		& \mainconnectivecolor{)} & &
+		\tikzmarknode{r2_Hr}{$\mainconnective{H}$} & \\[.2em]
+		
+		% Row 3: children of Row 2 (left side)
+		&& & & \tikzmarknode{r3_not}{$\mainconnective{\enot}$} & I & & \tikzmarknode{r3_Hl}{$\mainconnective{H}$} & & & \\[.2em]
+		
+		% Row 4: child of Row 3 (for the negation)
+		Valuation & I & H & & & \tikzmarknode{r4_I}{$\mainconnective{I}$} & & & && & \\[.2em]\hline
+		
+% % v1: I=T, H=T
+%$v_1:$ & T & T & & F & T & F & T & & \TTbf{T} & T \\
+%
+%% v2: I=T, H=F
+%$v_2:$ & T & F & & F & T & F & F & & \TTbf{T} & F \\
+
+% v3: I=F, H=T
+$v:$ & F & T & & T & F & T & T & & \TTbf{T} & T \\
+
+% v4: I=F, H=F
+%$v_4:$ & F & F & & T & F & F & F & & \TTbf{T} & F \\
+
+	\end{tabular}
+	
+	\begin{tikzpicture}[remember picture,overlay]
+		\tikzset{arrowformationtree/.style={-{Stealth[length=2.2mm,width=1.6mm]},gray,opacity=0.6}}
+		
+		% Row 2 -> Row 1
+		\draw[arrowformationtree] (r2_and) to[bend left=18] (r1_imp);
+		\draw[arrowformationtree] (r2_Hr)  to[bend right=18] (r1_imp);
+		
+		% Row 3 -> Row 2
+		\draw[arrowformationtree] (r3_not) to[bend left=18] (r2_and);
+		\draw[arrowformationtree] (r3_Hl)  to[bend right=18] (r2_and);
+		
+		% Row 4 -> Row 3
+		\draw[arrowformationtree] (r4_I) to[bend left=18] (r3_not);
+	\end{tikzpicture}
+\end{center}
+
+
+
+We do this because when we consider multiple valuations, we'll need to track where their answers are. 
+For example:
+
+
+\begin{center}
+	\begin{tabular}{r c c c| d e e e e e e e e e e e  e e f}
+		&&&
+		& \tikzmarknode{r1_outerneg}{$\mainconnective{\enot}$} & $( $ & $C$ & $\eor$ & $( $ & $D$ & $\eif$ & $( $ & $A$ & $\eor$ & $\enot$ & $D$ & $)$ & $)$ & $)$ \\[1em]
+		
+		% Row 2: parents of Row 3; child of Row 1
+		& & & &
+		& \mainconnectivecolor{(}
+		& $C$ & \tikzmarknode{r2_bigor}{$\mainconnective{\eor}$}
+		& $( $ & $D$ & ${\eif}$
+		& $( $ & $A$ & ${\eor}$
+		& ${\enot}$ & $D$
+		& $)$ & ${)}$& $\mainconnectivecolor{)}$ \\[1em]
+		
+		% Row 3: children of Row 2; parents of Row 4
+		& & & &
+		& & \tikzmarknode{r3_C}{$\mainconnective{C}$}
+		& &{\mainconnectivecolor{$($ }}
+		& $D$ & \tikzmarknode{r3_implies}{$\mainconnective{\eif}$}
+		& $( $ & $A$ & $\eor$ & ${\enot}$ & $D$
+		& $)$ & \tikzmarknode{r3_closeCond}{\mainconnectivecolor{)}} & \\[1em]
+		
+		% Row 4: children of Row 3; parents of Row 5
+		& & & & & & & & &
+		\tikzmarknode{r4_D}{$\mainconnective{D}$}
+		& & & $A$ & \tikzmarknode{r4_inneror}{$\mainconnective{\eor}$}
+		& $\enot$ & $D$ & & & \\[1em]
+		
+		% Row 5: children of Row 4; parent of Row 6
+		& & & & & & & & & & & &
+		\tikzmarknode{r5_A}{$\mainconnective{A}$}
+		& & \tikzmarknode{r5_not}{$\mainconnective{\enot}$}
+		& ${D}$ & & & \\[1em]
+		
+		% Row 6: child of Row 5
+		Valuation&$A$ &$C$ &$D$ & & & & & & & & & & & &
+		\tikzmarknode{r6_D}{$\mainconnective{D}$}
+		& & & \\[.2em]\hline
+		
+%		$v_1:$ & T & T & T & \TTbf{F} & & T & T & & T & T & & T & T & F & T & & & \\
+%		$v_2:$ & T & T & F & \TTbf{F} & & T & T & & F & T & & T & T & T & F & & & \\
+%		$v_3:$ & T & F & T & \TTbf{F} & & F & T & & T & T & & T & T & F & T & & & \\
+		$v_1:$ & T & F & F & \TTbf{F} & & F & T & & F & T & & T & T & T & F & & & \\
+		$v_2:$ & F & T & T & \TTbf{F} & & T & T & & T & F & & F & F & F & T & & & \\
+%		$v_6:$ & F & T & F & \TTbf{F} & & T & T & & F & T & & F & F & T & F & & & \\
+%		$v_7:$ & F & F & T & \TTbf{T} & & F & F & & T & F & & F & F & F & T & & & \\
+%		$v_8:$ & F & F & F & \TTbf{F} & & F & T & & F & T & & F & F & T & F & & & \\
+	\end{tabular}
+	\begin{tikzpicture}[remember picture,overlay]
+		\tikzset{arrowformationtree/.style={-{Stealth[length=2.2mm,width=1.6mm]},gray,opacity=0.6}}
+		
+		
+		% Row 2 -> Row 1
+		\draw[arrowformationtree] (r2_bigor) to[bend left=18] (r1_outerneg);
+		
+		% Row 3 -> Row 2
+		\draw[arrowformationtree] (r3_C)        to[bend left=18] (r2_bigor);     
+		\draw[arrowformationtree] (r3_implies) to[bend right=18] (r2_bigor);  
+		
+		% Row 4 -> Row 3
+		\draw[arrowformationtree] (r4_D)       to[bend left=18] (r3_implies);    
+		\draw[arrowformationtree] (r4_inneror) to[bend right=18] (r3_implies);   
+		
+		% Row 5 -> Row 4
+		\draw[arrowformationtree] (r5_A)   to[bend left=18] (r4_inneror);         
+		\draw[arrowformationtree] (r5_not) to[bend right=18] (r4_inneror);        
+		
+		% Row 6 -> Row 5
+		\draw[arrowformationtree] (r6_D) to[bend left=18] (r5_not);               
+	\end{tikzpicture}
+\end{center}
+
 \begin{practiceproblems}
 
 
@@ -1293,7 +1423,11 @@ Here's one strategy that some people find useful for listing all the valuations.
 	
 \section{Complete truth tables for a sentence}
 
-A complete truth table for a sentence has a line for each valuation for the atomic sentences appearing in the sentence, and displays the truth value of the sentence on each of the valuations. 
+
+
+\begin{highlighted}
+	A \define{complete truth table} for a sentence has a line for each valuation for the atomic sentences appearing in the sentence, and displays the truth value of the sentence on each of the valuations. 
+\end{highlighted}
 
 
 Consider the sentence `$(\enot I\eand H)\eif H$'. We will give a \emph{truth table} which lists all the valuations and says whether this sentence is true or false on each of them.
@@ -1660,9 +1794,9 @@ Here's another example.
 		& & & &
 		& \tikzmarknode{r2_openBigOr}{\mainconnectivecolor{(}}
 		& $C$ & \tikzmarknode{r2_bigor}{$\mainconnective{\eor}$}
-		& $( $ & $D$ & \tikzmarknode{r2_implies}{$\mainconnective{\eif}$}
-		& $( $ & $A$ & \tikzmarknode{r2_inneror}{$\mainconnective{\eor}$}
-		& \tikzmarknode{r2_not}{$\mainconnective{\enot}$} & $D$
+		& $( $ & $D$ & \tikzmarknode{r2_implies}{${\eif}$}
+		& $( $ & $A$ & \tikzmarknode{r2_inneror}{${\eor}$}
+		& \tikzmarknode{r2_not}{${\enot}$} & $D$
 		& $)$ & \tikzmarknode{r2_closeBigOr}{${)}$} & $\mainconnectivecolor{)}$ \\[1em]
 		
 		% Row 3: children of Row 2; parents of Row 4

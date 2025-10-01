@@ -172,22 +172,7 @@
 
 \RequirePackage{forest}
 
-% --- to centre node around a main (binary) connective ---
-\makeatletter
-\newlength{\mc@L}
-\newlength{\mc@R}
-\newcommand{\centrearoundmainconnective}[3]{%
-	\begingroup
-	\settowidth{\mc@L}{$#1$}%
-	\settowidth{\mc@R}{$#3$}%
-	\ifdim\mc@L>\mc@R
-	#1#2#3\hphantom{\makebox[\dimexpr\mc@L-\mc@R\relax]{$#3$}}%
-	\else
-	\hphantom{\makebox[\dimexpr\mc@R-\mc@L\relax]{$#1$}}#1#2#3%
-	\fi
-	\endgroup
-}
-\makeatother
+
 
 
 
@@ -247,7 +232,7 @@
 \newcolumntype{d}{ c@{\extracolsep{0.1em}}}
 \newcolumntype{e}{@{\extracolsep{0.1em}}c@{\extracolsep{0.1em}}}
 \newcolumntype{f}{@{\extracolsep{0.1em}}c }
-\newcommand*{\TTbf}[1]{\textbf{#1}}
+\newcommand*{\TTbf}[1]{\mainconnective{#1}}
 
 %    ****************************************
 %    *                PROOFS                *
@@ -400,9 +385,18 @@ for tree={
 \newcommand{\conc}{\item[$\therefore$] Therefore: }
 
 
-\newcommand{\mainconnective}[1]{\,\mainconnectivecolor{#1}\,}
+%\newcommand{\mainconnective}[1]{\,\mainconnectivecolor{#1}\,}
 \newcommand{\mainconnectivecolor}[1]{\textcolor{leadbeater}{#1}}
 
+\newcommand{\mainconnective}[1]{%
+	\begingroup
+	\ifmmode
+	\colorbox{yellow!50}{\textcolor{leadbeater}{\ensuremath{#1}}}%
+	\else
+	\colorbox{yellow!50}{\textcolor{leadbeater}{#1}}%
+	\fi
+	\endgroup
+}
 
 \def\pr{\ensuremath{p}}
 
