@@ -1153,20 +1153,20 @@ To keep track of the answer, we will present it on the truth table.
 	\begin{tabular}{r c c| c c c c c c c c c}
 		&&
 		
-		& \mainconnectivecolor{(} & {\enot} & I & {\eand} & H & \mainconnectivecolor{)} & \tikzmarknode{r1_imp}{$\mainconnective{\eif}$}& H  \\[.2em]
+		& \mainconnectivecolor{(} & {\enot} & $I$ & {\eand} & $H$ & \mainconnectivecolor{)} & \tikzmarknode{r1_imp}{$\mainconnective{\eif}$}& $H$  \\[.2em]
 		
 		% Row 2: children of Row 1
 		&& &
 		\mainconnectivecolor{(}
-		& {\enot} & I & \tikzmarknode{r2_and}{$\mainconnective{\eand}$} & H
+		& {\enot} & $I$ & \tikzmarknode{r2_and}{$\mainconnective{\eand}$} & $H$
 		& \mainconnectivecolor{)} & &
-		\tikzmarknode{r2_Hr}{$\mainconnective{H}$} & \\[.2em]
+		\tikzmarknode{r2_Hr}{$\atomicstage{H}$} & \\[.2em]
 		
 		% Row 3: children of Row 2 (left side)
-		&& & & \tikzmarknode{r3_not}{$\mainconnective{\enot}$} & I & & \tikzmarknode{r3_Hl}{$\mainconnective{H}$} & & & \\[.2em]
+		&& & & \tikzmarknode{r3_not}{$\mainconnective{\enot}$} & $I$ & & \tikzmarknode{r3_Hl}{$\atomicstage{H}$} & & & \\[.2em]
 		
 		% Row 4: child of Row 3 (for the negation)
-		Valuation & I & H & & & \tikzmarknode{r4_I}{$\mainconnective{I}$} & & & && & \\[.2em]\hline
+		Valuation & $I$ & $H$ & & & \tikzmarknode{r4_I}{$\atomicstage{I}$} & & & && & \\[.2em]\hline
 		
 % % v1: I=T, H=T
 %$v_1:$ & T & T & & F & T & F & T & & \TTbf{T} & T \\
@@ -1220,7 +1220,7 @@ For example:
 		
 		% Row 3: children of Row 2; parents of Row 4
 		& & & &
-		& & \tikzmarknode{r3_C}{$\mainconnective{C}$}
+		& & \tikzmarknode{r3_C}{$\atomicstage{C}$}
 		& &{\mainconnectivecolor{$($ }}
 		& $D$ & \tikzmarknode{r3_implies}{$\mainconnective{\eif}$}
 		& $( $ & $A$ & $\eor$ & ${\enot}$ & $D$
@@ -1228,19 +1228,19 @@ For example:
 		
 		% Row 4: children of Row 3; parents of Row 5
 		& & & & & & & & &
-		\tikzmarknode{r4_D}{$\mainconnective{D}$}
+		\tikzmarknode{r4_D}{$\atomicstage{D}$}
 		& & & $A$ & \tikzmarknode{r4_inneror}{$\mainconnective{\eor}$}
 		& $\enot$ & $D$ & & & \\[1em]
 		
 		% Row 5: children of Row 4; parent of Row 6
 		& & & & & & & & & & & &
-		\tikzmarknode{r5_A}{$\mainconnective{A}$}
+		\tikzmarknode{r5_A}{$\atomicstage{A}$}
 		& & \tikzmarknode{r5_not}{$\mainconnective{\enot}$}
 		& ${D}$ & & & \\[1em]
 		
 		% Row 6: child of Row 5
 		Valuation&$A$ &$C$ &$D$ & & & & & & & & & & & &
-		\tikzmarknode{r6_D}{$\mainconnective{D}$}
+		\tikzmarknode{r6_D}{$\atomicstage{D}$}
 		& & & \\[.2em]\hline
 		
 %		$v_1:$ & T & T & T & \TTbf{F} & & T & T & & T & T & & T & T & F & T & & & \\
