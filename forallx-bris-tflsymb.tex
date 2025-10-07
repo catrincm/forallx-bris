@@ -42,6 +42,7 @@ Recall that we introduced the negation connective in terms of `not' or `it is no
 Our informal procedure for symbolizing English arguments can be summarized as follows: identify the form of the argument; identify the English (sub)sentence appearing in the argument with sentence letters, that is, atomic sentences of TFL and symbolize the conjunction words by the matching connective. But what precisely is the matching connective? The answer to this question might have been straightforward in the arguments above, but that's not always the case. It is worth tackling the idea of symbolization more systematically. %\textcolor{red}{First, however, we need to address the problem of ambiguity in English.}
 
 \chapter{Symbolizing Arguments}
+\section{Atomic sentences}
 The starting point of symbolizing arguments in TFL was to identify (sub)sentences that were the \emph{building blocks} of the argument and to symbolize them in TFL using certain sentence letters, e.g. in the previous chapter we used:
 \begin{itemize}
 \item[A:]It's raining outside.
@@ -56,10 +57,124 @@ It is important to understand that whatever structure an English sentence might 
 
 Once we have fixed a symbolization key, the next step is to symbolize the complex sentences of the argument, that is, the sentences that conjoin different sentences into a new more complex sentence via conjunction words. This requires a closer look at the relation between specific conjunction words and the connectives of TFL.
 
-\section{Conjunction-words and TFL-Connectives}\label{sec:symbcon}
+
+\section{Symbolizing Complex Sentences}\label{s:SymbolisingComplexTFL}
+We introduced our connectives giving their rough English meaning. This gives us some tools to know how to symbolise English sentences. As a general instruction:
+\factoidbox{
+	\begin{itemize}
+		\item If a sentence can be paraphrased as `it is not the case that \ldots'\\ it can be symbolised as $\enot\metaX$.
+		\item If a sentence can be paraphrased as `\ldots and \ldots'\\ it can be symbolised as $\metaX\eand \metaY$.
+		\item If a sentence can be paraphrased as `\ldots or \ldots'\\ it can be symbolised as $\metaX\eor \metaY$.
+		\item If a sentence can be paraphrased as `if \ldots, then \ldots'\\ it can be symbolised as $\metaX\eif \metaY$.
+	\end{itemize}
+}
+
+Usually, this process needs to be applied a number of times.
+Let's go through an example to see how to apply the strategy. Consider:
+\begin{earg}
+	\item[\ex{negcon1}] You won't get both soup and salad.
+	%\item[\ex{negcon2}] You will not get soup but you will get salad.
+\end{earg}
+Let's start with the symbolization procedure.
+\begin{center}
+	\begin{forest}
+		[You won't get both soup and salad.\\\mainconnective{It's not the case that} you will get both soup and salad\\$\mainconnective{\enot}\ldots$
+		[You will get both soup and salad]
+		]
+	\end{forest}
+\end{center}
+Our next stage is to aim to symbolise `you will get both soup and salad'
+\begin{center}
+	\begin{forest}
+		[You won't get both soup and salad.\\\mainconnective{It's not the case that} you will get both soup and salad\\$\mainconnective{\enot}\ldots$
+		[You will get both soup and salad\\You will get soup \mainconnective{and} you will get salad\\$\ldots \mainconnective{\eand} \ldots$
+		[You will get soup]
+		[You will get salad]
+		]
+		]
+	\end{forest}
+\end{center}
+Both `You will get soup' and `You will get salad' cannot be paraphrased in any of our standard forms so we have to use an atomic TFL-sentence. As we haven't already introduced any atomic TFL-sentences, we need to introduce new ones. Let's say 
+\begin{ekey}
+	\item[S_1] You will get soup
+	\item[S_2] You will get salad
+\end{ekey}
+So we can replace these leaves of the symbolisation tree with the atomic sentences, and then work the way back up to determine the symbolisation of the original sentence. 
+\begin{center}
+	\begin{forest}
+		[You won't get both soup and salad.\\\mainconnective{It's not the case that} you will get both soup and salad\\$\mainconnective{\enot}(S_1 {\eand} S_2)$
+		[You will get both soup and salad\\You will get soup \mainconnective{and} you will get salad\\$S_1 \mainconnective{\eand} S_2$
+		[You will get soup\\$S_1$]
+		[You will get salad\\$S_2$]
+		]
+		]
+	\end{forest}
+\end{center}
+
+More generally, here's our strategy:
+\begin{highlighted}
+	\begin{enumerate}
+		\item\label{bpr} Check whether the sentence can be paraphrased as sentences in one of our standard forms. If the answer is no, go to Step \ref{epr}. If the answer is yes, go to Step \ref{cpr}.
+		\item\label{epr} Check the symbolization key:
+		\begin{itemize}
+			\item If we have already chosen an atomic TFL-sentence to symbolize the sentence, replace the English sentence by that atomic TFL-sentence.
+			\item Otherwise, choose a new atomic TFL-sentence to symbolize the sentence, extend the symbolization key accordingly and replace the English sentence by the atomic TFL sentence.
+		\end{itemize}
+		\item\label{cpr} Symbolize the sentence in accordance with the symbolization guideline with the component sentences in the place of the metavariables. Make sure you don't forget the brackets! For each of the component sentences---moving from left to right---repeat the procedure, that is, go back to Step \ref{bpr}.
+	\end{enumerate}
+\end{highlighted}
+\todo{add symbolisation tree}
+
+%
+%\begin{itemize}
+%\item Per above we see that the sentence can be constructed from other sentences by means of conjunction words. We move to Step \ref{cpr}.
+%\item Applying the instructions in Step \ref{cpr} we obtain:
+%$$\enot\text{you will get soup and you will get salad}.$$
+%\item Still per instruction of Step \ref{cpr}, we move to Step \ref{bpr} to start the symbolization procedure for the sentence  `you will get soup and you will get salad.'
+%\item The sentence is clearly a conjunction so we move to Step \ref{cpr}. By following the symbolization guidelines and the constructions of Step \ref{cpr}, we obtain:
+%$$\enot(\text{ you will get soup }\eand\text{ you will get salad}).$$
+%\item Now per instruction of Step \ref{cpr} we need to start the symbolization procedure for both, the sentence `you will get soup' and the sentence `you will get salad' starting with the former one, and got to Step \ref{bpr}
+%\item `you will get soup' cannot be paraphrased as being constructed from other sentences, so we are instructed to go to Step \ref{epr}.
+%\item we choose the atomic sentence $S_1$ as the symbolization of `you will get soup', and obtain
+%$$\enot(S_1\eand\text{ you will get salad}).$$
+%\item Equally, the sentence `you will get salad' cannot be paraphrased as being constructed from other sentences, so we are instructed to go to Step \ref{epr}.
+%\item we choose the atomic sentence $S_2$ as the symbolization of `you will get salad', and obtain
+%$$\enot(S_1\eand S_2).$$
+%\item The TFL-sentence `$\enot(S_1\eand S_2)$' is the symbolization of the English sentence `It's not the case that you will get both soup and salad'.
+%\end{itemize}
+
+This process may seem very tedious and, of course, very often we can determine a correct symbolization of an English sentence without sticking painstakingly to this step by step process. However, by sticking to the process we make sure not to move too quickly. So if you are unsure of how to symbolize a sentence, the process provides a safety net. Yet before starting with the symbolization process one should determine the precise sentential structure of the sentence under consideration. Consider a slight variant of Sentence \ref{negcon1}:
+\begin{itemize}
+	\item It is not the case that you will get soup and you will get salad.
+\end{itemize}
+In this form the sentence displays a potential ambiguity between:
+\begin{itemize}
+	\item It is not the case that: you will get soup and you will get salad.
+	\item It is not the case that you will get soup, and you will get salad.
+\end{itemize}
+As we have seen the first reading gets symbolized as $\enot(S_1\eand S_2)$, while the second reading should be symbolized as $(\enot S_1\eand S_2)$ (Exercise: check that this is the correct symbolization). These two symbolizations are of course very different and, thus, at the beginning of the symbolization process it is important to determine the precise structure of the sentence one wishes to symbolize. We discuss this issue some more in Chapter \ref{s:AmbiguityTFL}.
+
+\section{Symbolizing Arguments}
+We have learned how to symbolize English sentences in TFL. But how does one symbolize arguments in TFL? The answer should not be to surprising: one simply needs to symbolize the premises and conclusion in TFL with the caveat that one must use one and the same symbolization key in this symbolization process. Let's look at a simple example (notice that the argument may not be sound):
+
+\begin{earg}
+	\prem Rishi Sunak will make Great Britain great again or he will loose the election.
+	\prem Rishi Sunak will not make Great Britain great again.
+	\conc Rishi Sunak will loose the election.
+\end{earg}
+
+with the following symbolization key:
+\begin{ekey}
+	\item[R] Rishi Sunak will make Great Britain great again.
+	\item[L] Rishi Sunak will loose the election.
+\end{ekey}
+
+Using our symbolization procedure we then obtain the following TFL-argument $$R\eor L,\enot R\therefore L$$ which can be checked for logical validity (Check!).
+
+\chapter{Conjunction-words and TFL-Connectives}\label{sec:symbcon}
 Certain conjunction words and expressions motivated the semantics, that is, the truth tables for the connectives of TFL. But there are further expressions in English that allow us to conjoin sentences together: some can be symbolized by one of the connectives of TFL we discussed, while others might need to be symbolized by appealing to a complex TFL-sentence (recall our discussion of the \emph{exclusive or} in \S\ref{sec:tt}). As we shall see, there are still others that cannot be symbolized in TFL. Let's first have a look which conjunction words and expressions can be directly symbolized by one of the TFL-connectives.
 
-\subsection{Negation}
+\section{Negation}
 Let's start by recalling the guideline we proposed in Section \ref{sec:tt}.
 \factoidbox{
 If a sentence can be paraphrased as `it is not the case that \ldots'\\ it can be symbolised as $\enot\metaX$.
@@ -105,7 +220,7 @@ Sometimes even in symbolizing sentences that very much look like they are negati
 	\end{earg}
 To some it may feel like Jane can be neither happy nor unhappy, and this may even be assumed in some argument. Jane is without emotions and in a state of blank indifference: she does not feel happy nor does she feel unhappy. If we were to symbolize \ref{not8} by `$H$' and then \ref{not9} by `$\enot H$', then we would rule out the possibility of Jane being neither happy nor unhappy. If we try to remain faithful to the idea that Jane can be neither happy nor unhappy then we need to symbolize \ref{not9} using a new atomic sentence of TFL.
 
-\subsection{Conjunction}
+\section{Conjunction}
 \label{s:ConnectiveConjunction}
 
 The symbolization guideline for conjunction we introduced Section \ref{sec:tt} was:.
@@ -152,7 +267,7 @@ We can add these to our toolbox for symbolisation:
 		\end{itemize} it can be symbolised as $\metaX\eand\metaY$.
 	}
 
-\subsection{Disjunction}
+\section{Disjunction}
 In Section \ref{sec:tt} proposed that:
 \factoidbox{
 If a sentence can be paraphrased as `\ldots or \ldots' \\it can be symbolised as $(\metaX\eor\metaY)$.
@@ -203,7 +318,7 @@ If a sentence can be paraphrased in English as\\`\emph{neither \ldots nor \ldots
 
 
 
-\subsection{Conditional}
+\section{Conditional}
 Let us again recall the symbolization guideline that we introduced in Section \ref{sec:tt}:
 	\factoidbox{
 	 If a sentence can be paraphrased as \\`\emph{If \ldots, then \ldots}' it can be symbolised as $(\metaX\eif\metaY)$.
@@ -245,7 +360,7 @@ In fact, sentence \ref{if2} can be paraphrased as `If Jean is in France, then Je
 
 \noindent At this point, a word of warning about the connective `\eif'  seems required: while the connectives like `\eand' and `\eor' arguable closely track our understanding of `\emph{and}' and `\emph{or}' in natural language, the situation is slightly more complicated with respect to `\eif' and `\emph{if\ldots, then\ldots}'. We will return to this in \S\ref{s:IndicativeSubjunctive} and \ref{s:ParadoxesOfMaterialConditional}.
 
-\subsection{Biconditional}
+\section{Biconditional}
 In this textbook we have frequently used the English expression `\emph{if and only if}', as in: an atomic sentence $\metaX$ is true relative to a valuation $v$ \emph{if and only if} $v$ assigns the value T to $X$. `\emph{if and only if}' seems to be another conjunction word of English, that is, a way of composing two sentences into a new sentence. Is there a way to symbolize sentences of the form `\emph{\ldots if and only if\ldots}' in TFL?
 
 Consider the sentences:
@@ -276,7 +391,7 @@ The expression `if and only if' occurs a lot especially in philosophy, mathemati
 
 \textbf{A word of caution.} Ordinary speakers of English often use `if \ldots, then\ldots' when they really mean to use something more like `\ldots if and only if \ldots'. Perhaps your parents told you, when you were a child: `if you don't eat your greens, you won't get any dessert'. Suppose you ate your greens, but that your parents refused to give you any dessert, on the grounds that they were only committed to the \emph{conditional} (roughly `if you get dessert, then you will have eaten your greens'), rather than the biconditional (roughly, `you get dessert iff you eat your greens'). Well, a tantrum would rightly ensue. So, be aware of this when interpreting people; but in your own writing, make sure you use the biconditional iff you mean to.
 
-\subsection{Unless}
+\section{Unless}
 A difficult case is when we use the conjunction word `unless':
 
 \begin{earg}
@@ -303,110 +418,9 @@ All three are correct symbolizations. Indeed, in you may wish to check that all 
 	}
 Again, though, there is a little complication. `Unless' can be symbolized as a conditional; but as we said above, people often use the conditional (on its own) when they mean to use the biconditional. Equally, `unless' can be symbolized as a disjunction; but there are two kinds of disjunction (exclusive and inclusive). So it will not surprise you to discover that ordinary speakers of English often use `unless' to mean something more like the biconditional, or like exclusive disjunction. Suppose someone says: `I will go running unless it rains'. They probably mean something like `I will go running iff it does not rain' (i.e.\ the biconditional), or  `either I will go running or it will rain, but not both' (i.e.\ exclusive disjunction). Again: be aware of this when interpreting what other people have said, but be precise in your writing.
 
-\subsection{More on Connectives in English}
+\section{More on Connectives in English}
 We have discussed several conjunction-words and sentence constructions that can be aptly symbolized in TFL. However, there are of course many more conjunction-words in English and some of them can be adequately symbolized in TFL. However, there are also many conjunction words that cannot be adequately symbolized in TFL. We shall discuss some examples in Chapter \ref{s:TruthFunctionality}.
 
-\section{Symbolizing Complex Sentences}\label{s:SymbolisingComplexTFL}
-It's time to put all the pieces together and to start symbolizing complex sentence of English. Here is our general symbolization strategy for an English sentence:
-\begin{highlighted}
-\begin{enumerate}
-\item\label{bpr} Check whether the sentence can be paraphrased as sentences constructed from other sentences by means of conjunction-words. If the answer is no, go to Step \ref{epr}. If the answer is yes, go to Step \ref{cpr}.
-\item\label{epr} Check the symbolization key:
-\begin{itemize}
-\item If we have already chosen an atomic TFL-sentence to symbolize the sentence, replace the English sentence by that atomic TFL-sentence.
-\item Otherwise, choose a new atomic TFL-sentence to symbolize the sentence, extend the symbolization key accordingly and replace the English sentence by the atomic TFL sentence.
-\end{itemize}
-\item\label{cpr} Symbolize the sentence in accordance with the symbolization guideline with the component sentences in the place of the metavariables. Make sure you don't forget the brackets! For each of the component sentences---moving from left to right---repeat the procedure, that is, go back to Step \ref{bpr}.
-\end{enumerate}
-\end{highlighted}
-\todo{add symbolisation tree}
-Let's go through an example to see how to apply the strategy. Consider:
-	\begin{earg}
-		\item[\ex{negcon1}] You won't get both soup and salad.
-		%\item[\ex{negcon2}] You will not get soup but you will get salad.
-	\end{earg}
-Let's start with the symbolization procedure.
-\begin{center}
-	\begin{forest}
-		[You won't get both soup and salad.\\\mainconnective{It's not the case that} you will get both soup and salad\\$\mainconnective{\enot}\ldots$
-			[You will get both soup and salad]
-		]
-	\end{forest}
-\end{center}
-Our next stage is to aim to symbolise `you will get both soup and salad'
-\begin{center}
-	\begin{forest}
-		[You won't get both soup and salad.\\\mainconnective{It's not the case that} you will get both soup and salad\\$\mainconnective{\enot}\ldots$
-				[You will get both soup and salad\\You will get soup \mainconnective{and} you will get salad\\$\ldots \mainconnective{\eand} \ldots$
-				[You will get soup]
-				[You will get salad]
-				]
-		]
-	\end{forest}
-\end{center}
-Both `You will get soup' and `You will get salad' cannot be paraphrased in any of our standard forms so we have to use an atomic TFL-sentence. As we haven't already introduced any atomic TFL-sentences, we need to introduce new ones. Let's say 
-\begin{ekey}
-	\item[S_1] You will get soup
-	\item[S_2] You will get salad
-\end{ekey}
-So we can replace these leaves of the symbolisation tree with the atomic sentences, and then work the way back up to determine the symbolisation of the original sentence. 
-\begin{center}
-	\begin{forest}
-		[You won't get both soup and salad.\\\mainconnective{It's not the case that} you will get both soup and salad\\$\mainconnective{\enot}(S_1 {\eand} S_2)$
-		[You will get both soup and salad\\You will get soup \mainconnective{and} you will get salad\\$S_1 \mainconnective{\eand} S_2$
-		[You will get soup\\$S_1$]
-		[You will get salad\\$S_2$]
-		]
-		]
-	\end{forest}
-\end{center}
-
-
-%
-%\begin{itemize}
-%\item Per above we see that the sentence can be constructed from other sentences by means of conjunction words. We move to Step \ref{cpr}.
-%\item Applying the instructions in Step \ref{cpr} we obtain:
-%$$\enot\text{you will get soup and you will get salad}.$$
-%\item Still per instruction of Step \ref{cpr}, we move to Step \ref{bpr} to start the symbolization procedure for the sentence  `you will get soup and you will get salad.'
-%\item The sentence is clearly a conjunction so we move to Step \ref{cpr}. By following the symbolization guidelines and the constructions of Step \ref{cpr}, we obtain:
-%$$\enot(\text{ you will get soup }\eand\text{ you will get salad}).$$
-%\item Now per instruction of Step \ref{cpr} we need to start the symbolization procedure for both, the sentence `you will get soup' and the sentence `you will get salad' starting with the former one, and got to Step \ref{bpr}
-%\item `you will get soup' cannot be paraphrased as being constructed from other sentences, so we are instructed to go to Step \ref{epr}.
-%\item we choose the atomic sentence $S_1$ as the symbolization of `you will get soup', and obtain
-%$$\enot(S_1\eand\text{ you will get salad}).$$
-%\item Equally, the sentence `you will get salad' cannot be paraphrased as being constructed from other sentences, so we are instructed to go to Step \ref{epr}.
-%\item we choose the atomic sentence $S_2$ as the symbolization of `you will get salad', and obtain
-%$$\enot(S_1\eand S_2).$$
-%\item The TFL-sentence `$\enot(S_1\eand S_2)$' is the symbolization of the English sentence `It's not the case that you will get both soup and salad'.
-%\end{itemize}
-
-This process may seem very tedious and, of course, very often we can determine a correct symbolization of an English sentence without sticking painstakingly to this step by step process. However, by sticking to the process we make sure not to move too quickly. So if you are unsure of how to symbolize a sentence, the process provides a safety net. Yet before starting with the symbolization process one should determine the precise sentential structure of the sentence under consideration. Consider a slight variant of Sentence \ref{negcon1}:
-\begin{itemize}
-\item It is not the case that you will get soup and you will get salad.
-\end{itemize}
-In this form the sentence displays a potential ambiguity between:
-\begin{itemize}
-\item It is not the case that: you will get soup and you will get salad.
-\item It is not the case that you will get soup, and you will get salad.
-\end{itemize}
-As we have seen the first reading gets symbolized as $\enot(S_1\eand S_2)$, while the second reading should be symbolized as $(\enot S_1\eand S_2)$ (Exercise: check that this is the correct symbolization). These two symbolizations are of course very different and, thus, at the beginning of the symbolization process it is important to determine the precise structure of the sentence one wishes to symbolize. We discuss this issue some more in Chapter \ref{s:AmbiguityTFL}.
-
-\section{Symbolizing Arguments}
-We have learned how to symbolize English sentences in TFL. But how does one symbolize arguments in TFL? The answer should not be to surprising: one simply needs to symbolize the premises and conclusion in TFL with the caveat that one must use one and the same symbolization key in this symbolization process. Let's look at a simple example (notice that the argument may not be sound):
-
-\begin{earg}
-\prem Rishi Sunak will make Great Britain great again or he will loose the election.
-\prem Rishi Sunak will not make Great Britain great again.
-\conc Rishi Sunak will loose the election.
-\end{earg}
-
-with the following symbolization key:
-\begin{ekey}
-		\item[R] Rishi Sunak will make Great Britain great again.
-		\item[L] Rishi Sunak will loose the election.
-\end{ekey}
-
-Using our symbolization procedure we then obtain the following TFL-argument $$R\eor L,\enot R\therefore L$$ which can be checked for logical validity (Check!).
 
 
 \begin{practiceproblems}
