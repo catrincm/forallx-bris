@@ -191,23 +191,23 @@ Consider these sentences:
 \begin{earg}
 	\item \mainconnective{Although} Alice will come to the party, Beth will not.  
 	\item Alice will come to the party, \mainconnective{but} Beth will not.  
-	\item \mainconnective{Either} Alice \mainconnective{or} Beth will come to the party \emph{(and not both)}.  
+	\item \mainconnective{Either} Alice \mainconnective{or} Beth will come to the party \mainconnective{\emph{(and not both)}}.  
 	\item \mainconnective{Unless} Alice will come to the party, Beth will not.  
 	\item \mainconnective{Neither} Alice \mainconnective{nor} Beth will come to the party.  
-	\item Alice will come to the party \mainconnective{only if} Beth will.  
-	\item Alice will come to the party \mainconnective{if} Beth will not.  
+	\item Alice will come to the party \mainconnective{only if} Beth will too.
+	\item Alice will come to the party \mainconnective{if} Beth will too.
 	\item Alice will come to the party \mainconnective{if and only if} Beth will. 
 \end{earg}
 
-In this chapter we will discuss how they should be symbolised in TFL.  The feature of TFL is that it can capture any \emph{truth functional} connective (recall \ref{s:TruthFunctionality}), possibly by a more complex structure. 
+In this chapter we will discuss how they should be symbolised in TFL.  The feature of TFL is that it can capture any \emph{truth functional} connective (recall \ref{s:TruthFunctionality}), possibly by a more complex sentence. 
 
-We will also discuss in more detail when it is appropriate to paraphrase in the cannonical ways. 
+We will also discuss in more detail when it is appropriate to paraphrase in the cannonical ways and when it is not.
 
 
 %Certain conjunction words and expressions motivated the semantics, that is, the truth tables for the connectives of TFL. But there are further expressions in English that allow us to conjoin sentences together: some can be symbolized by one of the connectives of TFL we discussed, while others might need to be symbolized by appealing to a complex TFL-sentence (recall our discussion of the \emph{exclusive or} in \S\ref{sec:tt}). 
 %As we shall see, there are still others that cannot be symbolized in TFL. 
 
-Let's first have a look which conjunction words and expressions can be directly symbolized by one of the TFL-connectives.
+%Let's first have a look which conjunction words and expressions can be directly symbolized by one of the TFL-connectives.
 
 \section{Negation}
 Let's start by recalling the guideline we proposed in Section \ref{sec:tt}.
@@ -388,12 +388,20 @@ In fact, sentence \ref{if2} can be paraphrased as `If Jean is in France, then Je
 	 If a sentence can be paraphrased as \begin{itemize}
 	 \item `If $\ldots_{X}$, then $\ldots_{Y}$'
 	 \item `If $\ldots_{X}$, $\ldots_{Y}$'
-	 \item `$\ldots_{X}$, if $\ldots_{Y}$'
+	 \item `$\ldots_{Y}$, if $\ldots_{X}$'
 	 \item `$\ldots_{X}$ only if $\ldots_{Y}$'
 	 \end{itemize} it can be symbolized as $(\metaX\eif\metaY)$ such that $X$ assumes the position of $\ldots_X$ and $Y$ that of $\ldots_Y$.
 	}
+	
+	
+	Following this guidance, we symbolise all the following as `$A\eif B$':
+	\begin{earg}
+		\item[\ex{ifthen1}] \mainconnective{If} Alice will is on shift \mainconnective{then} Beth is on shift.
+		\item[\ex{ifthen2}]  Beth is on shift \mainconnective{if} Alice is.
+		\item[\ex{ifthen3}]  Alice is on shift \mainconnective{only if} Beth is.
+	\end{earg}
 
-\noindent At this point, a word of warning about the connective `\eif'  seems required: while the connectives like `\eand' and `\eor' arguable closely track our understanding of `\emph{and}' and `\emph{or}' in natural language, the situation is slightly more complicated with respect to `\eif' and `\emph{if\ldots, then\ldots}'. We will return to this in \S\ref{s:IndicativeSubjunctive} and \ref{s:ParadoxesOfMaterialConditional}.
+\noindent At this point, a word of warning about the connective `\eif'  seems required: while the connectives like `\eand' and `\eor' arguable closely track our understanding of `\emph{and}' and `\emph{or}' in natural language, the situation is slightly more complicated with respect to `\eif' and `\emph{if\ldots, then\ldots}' as we discussed in \S\ref{s:IndicativeSubjunctive}.\todo{ and \ref{s:ParadoxesOfMaterialConditional}.}
 
 \section{Biconditional}
 In this textbook we have frequently used the English expression `\emph{if and only if}', as in: an atomic sentence $\metaX$ is true relative to a valuation $v$ \emph{if and only if} $v$ assigns the value T to $X$. `\emph{if and only if}' seems to be another conjunction word of English, that is, a way of composing two sentences into a new sentence. Is there a way to symbolize sentences of the form `\emph{\ldots if and only if\ldots}' in TFL?
@@ -423,6 +431,10 @@ description={The symbol \eiff, used to represent words and phrases that function
 If a sentence can be paraphrased as `$\ldots_x$ if and only if $\ldots_y$'\\ it can be symbolised as $((\metaX\eif\metaY)\eand(\metaY\eif\metaX))$.
 	}
 The expression `if and only if' occurs a lot especially in philosophy, mathematics, and logic. For brevity, we can abbreviate it with the snappier word `iff'. We will follow this practice. So `if' with only \emph{one} `f' is the English conditional. But `iff' with \emph{two} `f's is the English biconditional. Because the biconditional occurs so often, we will sometimes abbreviate the lengthy `$(\metaX\eif\metaY)\eand(\metaY\eif\metaX)$' and write $\metaX\eiff\metaY$ instead. However, officially the symbol `\eiff' is not a symbol of the language of TFL. It is merely used as a convenient way to state a biconditional and it is good to keep that in mind.
+
+\begin{highlighted}
+	$(\metaX\eiff\metaY)$ is an abbreviation for $((\metaX\eif\metaY)\eand(\metaY\eif\metaX))$.
+\end{highlighted}
 
 \textbf{A word of caution.} Ordinary speakers of English often use `if \ldots, then\ldots' when they really mean to use something more like `\ldots if and only if \ldots'. Perhaps your parents told you, when you were a child: `if you don't eat your greens, you won't get any dessert'. Suppose you ate your greens, but that your parents refused to give you any dessert, on the grounds that they were only committed to the \emph{conditional} (roughly `if you get dessert, then you will have eaten your greens'), rather than the biconditional (roughly, `you get dessert iff you eat your greens'). Well, a tantrum would rightly ensue. So, be aware of this when interpreting people; but in your own writing, make sure you use the biconditional iff you mean to.
 
