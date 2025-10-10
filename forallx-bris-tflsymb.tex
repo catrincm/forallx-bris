@@ -114,13 +114,24 @@ So we can replace these leaves of the symbolisation tree with the atomic sentenc
 More generally, here's our strategy:
 \begin{highlighted}
 	\begin{enumerate}
-		\item\label{bpr} Check whether the sentence can be paraphrased as sentences in one of our standard forms. If the answer is no, go to Step \ref{epr}. If the answer is yes, go to Step \ref{cpr}.
-		\item\label{epr} Check the symbolization key:
-		\begin{itemize}
-			\item If we have already chosen an atomic TFL-sentence to symbolize the sentence, replace the English sentence by that atomic TFL-sentence.
-			\item Otherwise, choose a new atomic TFL-sentence to symbolize the sentence, extend the symbolization key accordingly and replace the English sentence by the atomic TFL sentence.
-		\end{itemize}
-		\item\label{cpr} Symbolize the sentence in accordance with the symbolization guideline with the component sentences in the place of the metavariables. Make sure you don't forget the brackets! For each of the component sentences---moving from left to right---repeat the procedure, that is, go back to Step \ref{bpr}.
+		\item\label{bpr} Consider whether the sentence can be paraphrased as sentences in one of our standard forms. 
+			\begin{center}
+			\begin{tabular}{l l}
+				\textbf{paraphrased as} & \textbf{symbolised as}\\[.2em]
+				\hline
+				`It is not the case that \ldots' & $\enot\metaX$\\
+				`\ldots and\ldots' & $(\metaX\eand\metaY)$\\
+				`\ldots or\ldots' & $(\metaX\eand\metaY)$\\
+				`If $\ldots_X$ then $\ldots_Y$' & $(\metaX\eif\metaY)$
+			\end{tabular}
+		\end{center} 
+		If the answer is no, go to Step \ref{epr}. If the answer is yes, go to Step \ref{cpr}.
+		\item\label{cpr} Symbolize the sentence in accordance with the symbolization guideline with the component sentences in the place of the metavariables. For each of the component sentences, repeat the procedure, that is, go back to Step \ref{bpr}.
+		\item\label{epr} Check the symbolization key to see if we already have already chosen an atomic TFL-sentence to symbolise that English sentence. 
+			\begin{itemize}
+				\item If so, replace the English sentence by that atomic TFL-sentence.
+				\item Otherwise, choose a new atomic TFL-sentence to symbolize the sentence, extend the symbolization key accordingly and replace the English sentence by the atomic TFL sentence.
+			\end{itemize}
 	\end{enumerate}
 \end{highlighted}
 \todo{add symbolisation tree}
@@ -171,8 +182,32 @@ with the following symbolization key:
 
 Using our symbolization procedure we then obtain the following TFL-argument $$R\eor L,\enot R\therefore L$$ which can be checked for logical validity (Check!).
 
+
+
 \chapter{Conjunction-words and TFL-Connectives}\label{sec:symbcon}
-Certain conjunction words and expressions motivated the semantics, that is, the truth tables for the connectives of TFL. But there are further expressions in English that allow us to conjoin sentences together: some can be symbolized by one of the connectives of TFL we discussed, while others might need to be symbolized by appealing to a complex TFL-sentence (recall our discussion of the \emph{exclusive or} in \S\ref{sec:tt}). As we shall see, there are still others that cannot be symbolized in TFL. Let's first have a look which conjunction words and expressions can be directly symbolized by one of the TFL-connectives.
+
+
+Consider these sentences:
+\begin{earg}
+	\item \mainconnective{Although} Alice will come to the party, Beth will not.  
+	\item Alice will come to the party, \mainconnective{but} Beth will not.  
+	\item \mainconnective{Either} Alice \mainconnective{or} Beth will come to the party \emph{(and not both)}.  
+	\item \mainconnective{Unless} Alice will come to the party, Beth will not.  
+	\item \mainconnective{Neither} Alice \mainconnective{nor} Beth will come to the party.  
+	\item Alice will come to the party \mainconnective{only if} Beth will.  
+	\item Alice will come to the party \mainconnective{if} Beth will not.  
+	\item Alice will come to the party \mainconnective{if and only if} Beth will. 
+\end{earg}
+
+In this chapter we will discuss how they should be symbolised in TFL.  The feature of TFL is that it can capture any \emph{truth functional} connective (recall \ref{s:TruthFunctionality}), possibly by a more complex structure. 
+
+We will also discuss in more detail when it is appropriate to paraphrase in the cannonical ways. 
+
+
+%Certain conjunction words and expressions motivated the semantics, that is, the truth tables for the connectives of TFL. But there are further expressions in English that allow us to conjoin sentences together: some can be symbolized by one of the connectives of TFL we discussed, while others might need to be symbolized by appealing to a complex TFL-sentence (recall our discussion of the \emph{exclusive or} in \S\ref{sec:tt}). 
+%As we shall see, there are still others that cannot be symbolized in TFL. 
+
+Let's first have a look which conjunction words and expressions can be directly symbolized by one of the TFL-connectives.
 
 \section{Negation}
 Let's start by recalling the guideline we proposed in Section \ref{sec:tt}.
