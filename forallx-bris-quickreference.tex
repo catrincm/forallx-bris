@@ -115,7 +115,7 @@ Definition of being a sentence of TFL:
 
 
 \vspace*{2cm}
-\section{Symbolization}
+\section{Symbolization in TFL}
 \subsubsection*{Rough Meaning of the TFL Connectives}
 		\begin{tabular}{cll}
 		\textbf{symbol}&\textbf{name}&\textbf{rough meaning}\\
@@ -130,94 +130,56 @@ Definition of being a sentence of TFL:
 		
 
 \label{app.symbolization}
-\subsubsection*{Sentential Connectives}
-\begin{center}\begin{tabular*}{\textwidth}{ll}
-It is not the case that P & $\enot P$\\
-P or Q & $(P \eor Q)$\\
-P and Q & $(P \eand Q)$\\
-If P, then Q & $(P \eif Q)$\\
-P if and only if Q & $(P \eiff Q)$\\
-\end{tabular*}\end{center}Further symbolisation help:\begin{center}
-\begin{tabular*}{\textwidth}{ll}
-Neither P nor Q & $\enot(P \eor Q)$\ or \ $(\enot P \eand \enot Q)$\\
-P but Q & $(P \eand Q)$\\
-P unless Q & $(P \eor Q)$\\
-P only if Q & $(P \eif Q)$
-\end{tabular*}
-\end{center}
-\subsubsection*{Predicates}
-\begin{center}
-\begin{tabular*}{\textwidth}{ll}\label{SymbolizingPredicates}
-All Fs are Gs & $\forall x(Fx \eif Gx)$\\
-Some Fs are Gs & $\exists x(Fx \eand Gx)$\\
-Not all Fs are Gs & $\enot\forall x(Fx \eif Gx)$\ or\ $\exists x(Fx \eand \enot Gx)$\\
-No Fs are Gs & $\forall x(Fx \eif\enot Gx)$\ or\ $\enot\exists x(Fx \eand Gx)$\\
-\end{tabular*}
-\end{center}
-\subsubsection*{Identity}
-\begin{center}
-\begin{tabular*}{\textwidth}{ll}
-Only c is G & $\forall x(Gx \eif x\eid c)$ or perhaps $\eiff$.  \\
-Everything besides c is G & $\forall x(\enot \,x \eid  c \eif Gx)$\\
-%$j$ is more $R$ than anyone else. & $\forall x(xotEeq j \eif Rjx)$\\
-The F is G & $\exists x(Fx \eand \forall y(Fy \eif x\eid y) \eand Gx)$\\
-It is not the case that the F is G & $\enot\exists x(Fx \eand \forall y(Fy \eif x\eid y) \eand Gx)$\\
-The F is non-G & $\exists x(Fx \eand \forall y(Fy \eif x\eid y) \eand \enot Gx)$
-\end{tabular*}
-\end{center}
+
+\subsubsection*{Symbolisation strategy}
+
+\begin{itemize}
+	\item Can it be paraphrased in accordance with out symbolisation guide?
+	Make sure that the `$\ldots$' are declarative sentences. True/false?
+	\item If so, do that and then move to consider how to symbolise the constituant sentences, the `$\ldots$'.
+	\item If not, we need to use an atomic sentence.  
+	\begin{itemize}
+		\item If you already have an appropriate atomic sentence in your symbolisation key, use it.
+		\item If not, choose a new atomic TFL sentence. 
+	\end{itemize}
+\end{itemize}
 
 
+\subsubsection*{Symbolisation guide}
 
+\begin{tabular}{c|l}
+	\textbf{Paraphrased as} & \textbf{Symbolised as}\\[.5em]
+	\hline
+	It is not the case that \ldots & $\enot\metaX$\\[.4em]
+	\ldots and \ldots & $\metaX \eand \metaY$\\[.4em]
+%	Both \ldots and \ldots & $\metaX \eand \metaY$\\[.4em]
+	Although \ldots, \ldots & $\metaX \eand \metaY$\\[.4em]
+	\ldots but \ldots & $\metaX \eand \metaY$\\[.4em]
+	\ldots or \ldots & $\metaX \eor \metaY$\\[.4em]
+	Either \ldots or \ldots (and not both) & $(\metaX \eor \metaY) \eand \enot(\metaX \eand \metaY)$\\[.4em]
+	Neither \ldots nor \ldots & $\enot(\metaX \eor \metaY)$ or $\enot\metaX \eand \enot\metaY$\\[.4em]
+	If $\ldots_{\metaX}$, then $\ldots_{\metaY}$ & $\metaX \eif \metaY$\\[.4em]
+	$\ldots_{\metaY}$ if $\ldots_{\metaX}$ & $\metaX \eif \metaY$\\[.4em]
+	$\ldots_{\metaX}$ only if $\ldots_{\metaY}$ & $\metaX \eif \metaY$\\[.4em]
+	$\ldots_{\metaX}$ if and only if $\ldots_{\metaY}$ & $(\metaX \eif \metaY)\eand(\metaY\eif \metaX)$\\&\quad \emph{(can be shortened to $\metaX\eiff\metaY$)}\\[.4em]
+	Unless $\ldots_{\metaX}$, $\ldots_{\metaY}$ & $\metaX \eor \metaY$\\&\quad\emph{($\enot X\eif Y$ is also allowed)}\\
+\end{tabular}
 
-
-
-% BEGIN: symbolizing cardinality
-
-\section{Using identity to symbolize quantities}
-
-\subsection*{There are at least \blank\ Fs.}
-\label{summary.atleast}
-
-\begin{ekey}
-\item[\text{one}] $\exists xFx$
-\item[\text{two}] $\exists x_1\exists x_2(Fx_1 \eand Fx_2 \eand \enot x_1  \eid  x_2)$
-\item[\text{three}] $\exists x_1\exists x_2\exists x_3(Fx_1 \eand Fx_2 \eand Fx_3 \eand \enot x_1 \eid  x_2 \eand\enot x_1 \eid  x_3 \eand \enot x_2 \eid  x_3)$
-\item[\text{four}] $\exists x_1\exists x_2\exists x_3\exists x_4 (Fx_1 \eand Fx_2 \eand Fx_3 \eand Fx_4 \eand \phantom{x}$\\
-\phantom{$\exists x_1\exists x_2$}$\enot x_1 \eid  x_2 \eand \enot x_1 \eid  x_3 \eand \enot x_1 \eid  x_4 \eand \enot x_2 \eid  x_3 \eand \enot x_2 \eid  x_4 \eand \enot x_3 \eid  x_4)$
-\item[n] $\exists x_1\ldots\exists x_n(Fx_1 \eand\ldots\eand Fx_n \eand \enot x_1 \eid  x_2 \eand\ldots\eand \enot x_{n-1} \eid  x_n)$ 
-\end{ekey}
-
-\subsubsection*{There are at most \blank\ Fs.}
-\label{summary.atmost}
-
-One way to say `there are at most $n$ Fs' is to put a negation sign in front of the symbolization for `there are at least $n+1$ Fs'. Equivalently, we can offer:
-\begin{ekey}
-\item[\text{one}] $\forall x_1\forall x_2\bigl[(Fx_1 \eand Fx_2) \eif x_1\eid x_2\bigr]$
-\item[\text{two}] $\forall x_1\forall x_2\forall x_3\bigl[(Fx_1 \eand Fx_2 \eand Fx_3) \eif (x_1\eid x_2 \eor x_1\eid x_3 \eor x_2\eid x_3)\bigr]$
-\item[\text{three}] $\forall x_1\forall x_2\forall x_3\forall x_4\bigl[(Fx_1 \eand Fx_2 \eand Fx_3 \eand Fx_4) \eif \phantom{.}$\\
-\phantom{$\exists x_1 \exists x_2$}$(x_1\eid x_2 \eor x_1\eid x_3 \eor x_1\eid x_4 \eor x_2\eid x_3 \eor x_2\eid x_4 \eor x_3\eid x_4)\bigr]$
-\item[n]$\forall x_1\ldots\forall x_{n+1}
-\bigl[(Fx_1\eand \ldots \eand Fx_{n+1}) \eif (x_1\eid x_2 \eor \ldots \eor x_n\eid x_{n+1})\bigr]$ 
-\end{ekey}
-
-\subsubsection*{There are exactly \blank\ Fs.}
-\label{summary.exactly}
-
-One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolizations above and say `there are at least $n$ Fs and there are at most $n$ Fs.' The following equivalent formulae are shorter:
-\begin{ekey}
-\item[\text{zero}] $\forall x\enot Fx$
-\item[\text{one}] $\exists x\bigl[Fx \eand \forall y(Fy \eif x\eid  y)\bigr]$
-\item[\text{two}] $\exists x_1\exists x_2\bigl[Fx_1 \eand Fx_2 \eand \enot x_1 \eid  x_2 \eand \forall y\bigl(Fy \eif (y\eid  x_1 \eor y \eid  x_2)\bigr) \bigr]$
-\item[\text{three}] $\exists x_1\exists x_2\exists x_3\bigl[Fx_1 \eand Fx_2 \eand Fx_3 \eand \enot x_1 \eid   x_2 \eand \enot  x_1 \eid  x_3 \eand \enot x_2 \eid  x_3 \eand \phantom{.}$\\
-\phantom{$\exists x_1 \exists x_2$}$\forall y\bigl(Fy \eif (y \eid  x_1 \eor y \eid  x_2 \eor y \eid   x_3)\bigr) \bigr]$
-\item[n] $\exists x_1\ldots\exists x_n\bigl[Fx_1 \eand\ldots\eand Fx_n  \eand \enot x_1 \eid  x_2 \eand\ldots\eand \enot x_{n-1}\eid  x_n \eand \phantom{.}$\\
-\phantom{$\exists x_1\exists x_2$}$\forall y\bigl(Fy \eif (y\eid  x_1 \eor \ldots \eor y\eid  x_n)\bigr)\bigr]$ 
-%\item[one] $\exists x\forall y\bigl[Fx \eand (Fy \eif y \eid  x)\bigr]$
-%\item[two] $\exists x\exists y\forall z\Bigl(Fx \eand Fy \eand \bigl[Fz \eif (z\eid x \eor z\eid y)\bigr] \eand x \neq y\Bigr)$
-%\item[three] $\exists x_1\exists x_2\exists x_3\forall y\Bigl(Fx_1 \eand Fx_2 \eand Fx_3 \eand [Fy \eif (y\eid x_1 \eor y\eid x_2 \eor y\eid x_3)] \eand x_1 \neq x_2 \eand x_1 \neq x_3 \eand x_2 \neq x_3\Bigr)$
-%\item[n] $\exists x_1\cdots\exists x_n\forall y\Bigl(Fx_1 \eand\cdots\eand Fx_n \eand \bigl[Fy \eif (y\eid x_1 \eor \cdots \eor y\eid x_n)\bigr] \eand x_1 \neq x_2 \eand\cdots\eand x_{n-1}\neq x_n\Bigr)$ 
-\end{ekey}
-
+%\subsubsection*{Sentential Connectives}
+%\begin{center}\begin{tabular*}{\textwidth}{ll}
+%It is not the case that P & $\enot P$\\
+%P or Q & $(P \eor Q)$\\
+%P and Q & $(P \eand Q)$\\
+%If P, then Q & $(P \eif Q)$\\
+%P if and only if Q & $(P \eiff Q)$\\
+%\end{tabular*}\end{center}Further symbolisation help:\begin{center}
+%\begin{tabular*}{\textwidth}{ll}
+%Neither P nor Q & $\enot(P \eor Q)$\ or \ $(\enot P \eand \enot Q)$\\
+%P but Q & $(P \eand Q)$\\
+%P unless Q & $(P \eor Q)$\\
+%P only if Q & $(P \eif Q)$
+%\end{tabular*}
+%\end{center}
 
 \label{ProofRules}
 \newpage
@@ -437,6 +399,21 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 
 \newpage
 
+
+
+
+\vspace*{2cm}
+\section{Symbolization in FOL}
+\subsubsection*{Predicates}
+\begin{center}
+	\begin{tabular*}{\textwidth}{ll}\label{SymbolizingPredicates}
+		All Fs are Gs & $\forall x(Fx \eif Gx)$\\
+		Some Fs are Gs & $\exists x(Fx \eand Gx)$\\
+		Not all Fs are Gs & $\enot\forall x(Fx \eif Gx)$\ or\ $\exists x(Fx \eand \enot Gx)$\\
+		No Fs are Gs & $\forall x(Fx \eif\enot Gx)$\ or\ $\enot\exists x(Fx \eand Gx)$\\
+	\end{tabular*}
+\end{center}
+
 \section{Basic deduction rules for FOL}
 
 \begin{multicols}{2}
@@ -485,29 +462,6 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 %\vfill\columnbreak
 \end{multicols}
 
-\bigskip 
-
-\subsubsection*{Identity introduction}
-
-\begin{fitchproof}
-	\have[\ \,\,\,]{x}{\meta{c}\eid \meta{c}} \by{= I}{}
-\end{fitchproof}
-
-
-\subsubsection*{Identity elimination}
-
-\begin{multicols}{2}
-\begin{fitchproof}
-	\have[m]{e}{\meta{a}\eid \meta{b}}
-	\have[n]{a}{\metaX(\ldots \meta{a} \ldots \meta{a}\ldots)}
-	\have[\ ]{ea1}{\metaX(\ldots \meta{b} \ldots \meta{a}\ldots)} \by{= E}{e,a}
-\end{fitchproof}
-\begin{fitchproof}
-	\have[m]{e}{\meta{a}\eid \meta{b}}
-	\have[n]{a}{\metaX(\ldots \meta{b} \ldots \meta{b}\ldots)}
-	\have[\ ]{ea2}{\metaX(\ldots \meta{a} \ldots \meta{b}\ldots)} \by{= E}{e,a}
-\end{fitchproof}
-\end{multicols}
 
 
 \bigskip 
@@ -527,5 +481,93 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 	\have[m]{ab}{\enot \forall \meta{x}  \metaX}
 \\	\have[\ ]{ac}{\exists \meta{x}\enot \metaX}\cq{ab}
 \end{fitchproof}
+\end{multicols}
+
+
+\section{FOL with identity}
+
+\subsection{Symbolisation in FOL with identity}
+\subsubsection*{Identity}
+\begin{center}
+	\begin{tabular*}{\textwidth}{ll}
+		Only c is G & $\forall x(Gx \eif x\eid c)$ or perhaps $\eiff$.  \\
+		Everything besides c is G & $\forall x(\enot \,x \eid  c \eif Gx)$\\
+		%$j$ is more $R$ than anyone else. & $\forall x(xotEeq j \eif Rjx)$\\
+		The F is G & $\exists x(Fx \eand \forall y(Fy \eif x\eid y) \eand Gx)$\\
+		It is not the case that the F is G & $\enot\exists x(Fx \eand \forall y(Fy \eif x\eid y) \eand Gx)$\\
+		The F is non-G & $\exists x(Fx \eand \forall y(Fy \eif x\eid y) \eand \enot Gx)$
+	\end{tabular*}
+\end{center}
+
+
+
+\subsection*{There are at least \blank\ Fs.}
+\label{summary.atleast}
+
+\begin{ekey}
+	\item[\text{one}] $\exists xFx$
+	\item[\text{two}] $\exists x_1\exists x_2(Fx_1 \eand Fx_2 \eand \enot x_1  \eid  x_2)$
+	\item[\text{three}] $\exists x_1\exists x_2\exists x_3(Fx_1 \eand Fx_2 \eand Fx_3 \eand \enot x_1 \eid  x_2 \eand\enot x_1 \eid  x_3 \eand \enot x_2 \eid  x_3)$
+	\item[\text{four}] $\exists x_1\exists x_2\exists x_3\exists x_4 (Fx_1 \eand Fx_2 \eand Fx_3 \eand Fx_4 \eand \phantom{x}$\\
+	\phantom{$\exists x_1\exists x_2$}$\enot x_1 \eid  x_2 \eand \enot x_1 \eid  x_3 \eand \enot x_1 \eid  x_4 \eand \enot x_2 \eid  x_3 \eand \enot x_2 \eid  x_4 \eand \enot x_3 \eid  x_4)$
+	\item[n] $\exists x_1\ldots\exists x_n(Fx_1 \eand\ldots\eand Fx_n \eand \enot x_1 \eid  x_2 \eand\ldots\eand \enot x_{n-1} \eid  x_n)$ 
+\end{ekey}
+
+\subsubsection*{There are at most \blank\ Fs.}
+\label{summary.atmost}
+
+One way to say `there are at most $n$ Fs' is to put a negation sign in front of the symbolization for `there are at least $n+1$ Fs'. Equivalently, we can offer:
+\begin{ekey}
+	\item[\text{one}] $\forall x_1\forall x_2\bigl[(Fx_1 \eand Fx_2) \eif x_1\eid x_2\bigr]$
+	\item[\text{two}] $\forall x_1\forall x_2\forall x_3\bigl[(Fx_1 \eand Fx_2 \eand Fx_3) \eif (x_1\eid x_2 \eor x_1\eid x_3 \eor x_2\eid x_3)\bigr]$
+	\item[\text{three}] $\forall x_1\forall x_2\forall x_3\forall x_4\bigl[(Fx_1 \eand Fx_2 \eand Fx_3 \eand Fx_4) \eif \phantom{.}$\\
+	\phantom{$\exists x_1 \exists x_2$}$(x_1\eid x_2 \eor x_1\eid x_3 \eor x_1\eid x_4 \eor x_2\eid x_3 \eor x_2\eid x_4 \eor x_3\eid x_4)\bigr]$
+	\item[n]$\forall x_1\ldots\forall x_{n+1}
+	\bigl[(Fx_1\eand \ldots \eand Fx_{n+1}) \eif (x_1\eid x_2 \eor \ldots \eor x_n\eid x_{n+1})\bigr]$ 
+\end{ekey}
+
+\subsubsection*{There are exactly \blank\ Fs.}
+\label{summary.exactly}
+
+One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolizations above and say `there are at least $n$ Fs and there are at most $n$ Fs.' The following equivalent formulae are shorter:
+\begin{ekey}
+	\item[\text{zero}] $\forall x\enot Fx$
+	\item[\text{one}] $\exists x\bigl[Fx \eand \forall y(Fy \eif x\eid  y)\bigr]$
+	\item[\text{two}] $\exists x_1\exists x_2\bigl[Fx_1 \eand Fx_2 \eand \enot x_1 \eid  x_2 \eand \forall y\bigl(Fy \eif (y\eid  x_1 \eor y \eid  x_2)\bigr) \bigr]$
+	\item[\text{three}] $\exists x_1\exists x_2\exists x_3\bigl[Fx_1 \eand Fx_2 \eand Fx_3 \eand \enot x_1 \eid   x_2 \eand \enot  x_1 \eid  x_3 \eand \enot x_2 \eid  x_3 \eand \phantom{.}$\\
+	\phantom{$\exists x_1 \exists x_2$}$\forall y\bigl(Fy \eif (y \eid  x_1 \eor y \eid  x_2 \eor y \eid   x_3)\bigr) \bigr]$
+	\item[n] $\exists x_1\ldots\exists x_n\bigl[Fx_1 \eand\ldots\eand Fx_n  \eand \enot x_1 \eid  x_2 \eand\ldots\eand \enot x_{n-1}\eid  x_n \eand \phantom{.}$\\
+	\phantom{$\exists x_1\exists x_2$}$\forall y\bigl(Fy \eif (y\eid  x_1 \eor \ldots \eor y\eid  x_n)\bigr)\bigr]$ 
+	%\item[one] $\exists x\forall y\bigl[Fx \eand (Fy \eif y \eid  x)\bigr]$
+	%\item[two] $\exists x\exists y\forall z\Bigl(Fx \eand Fy \eand \bigl[Fz \eif (z\eid x \eor z\eid y)\bigr] \eand x \neq y\Bigr)$
+	%\item[three] $\exists x_1\exists x_2\exists x_3\forall y\Bigl(Fx_1 \eand Fx_2 \eand Fx_3 \eand [Fy \eif (y\eid x_1 \eor y\eid x_2 \eor y\eid x_3)] \eand x_1 \neq x_2 \eand x_1 \neq x_3 \eand x_2 \neq x_3\Bigr)$
+	%\item[n] $\exists x_1\cdots\exists x_n\forall y\Bigl(Fx_1 \eand\cdots\eand Fx_n \eand \bigl[Fy \eif (y\eid x_1 \eor \cdots \eor y\eid x_n)\bigr] \eand x_1 \neq x_2 \eand\cdots\eand x_{n-1}\neq x_n\Bigr)$ 
+\end{ekey}
+
+
+
+\subsection{Proofs} 
+
+
+\subsubsection*{Identity introduction}
+
+\begin{fitchproof}
+	\have[\ \,\,\,]{x}{\meta{c}\eid \meta{c}} \by{= I}{}
+\end{fitchproof}
+
+
+\subsubsection*{Identity elimination}
+
+\begin{multicols}{2}
+	\begin{fitchproof}
+		\have[m]{e}{\meta{a}\eid \meta{b}}
+		\have[n]{a}{\metaX(\ldots \meta{a} \ldots \meta{a}\ldots)}
+		\have[\ ]{ea1}{\metaX(\ldots \meta{b} \ldots \meta{a}\ldots)} \by{= E}{e,a}
+	\end{fitchproof}
+	\begin{fitchproof}
+		\have[m]{e}{\meta{a}\eid \meta{b}}
+		\have[n]{a}{\metaX(\ldots \meta{b} \ldots \meta{b}\ldots)}
+		\have[\ ]{ea2}{\metaX(\ldots \meta{a} \ldots \meta{b}\ldots)} \by{= E}{e,a}
+	\end{fitchproof}
 \end{multicols}
 
