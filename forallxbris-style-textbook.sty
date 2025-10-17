@@ -95,8 +95,20 @@
 
 % Used in conjunction with {earg}, this handles the numbering and
 % references to example sentences:
+
+\RequirePackage{enumitem}
 \newcounter{Example}[chapter]
 \newcommand*{\ex}[1]{\refstepcounter{Example}\arabic{Example}.\label{#1}}
+
+
+\newenvironment{samplesent}
+{\begin{earg}%
+	}%
+	{\end{earg}}
+
+
+
+
 % Used in specifying partial models, this keeps the lines justified so
 % so that the = signs all line up. For example:
 %	\begin{partialmodel}
@@ -221,3 +233,7 @@
 
 \newcommand{\teachingnote}[1]{\textcolor{gray}{#1}}
 \newcommand{\nonexaminable}[1]{\textcolor{gray}{ (Non-examinable)}}
+
+
+
+

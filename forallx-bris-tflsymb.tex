@@ -337,21 +337,71 @@ How do we symbolize the exclusive `or' in TFL? Understood exclusively Sentence \
 \end{itemize}
 Using our symbolization key we can symbolize the first part of sentence, that is, the part up to the comma as `$F\eor O$'. Since by our previous discussion we know  that `but' should be symbolized by a conjunction it remains to see how to symbolize `not both of them will play videogames'. Going back to our discussion of negation and conjunction we see that the latter sentence is appropriately symbolized by the sentence $\enot(F\eand O)$. Putting everything together Sentence \ref{eor2} should be symbolized by the sentence $$(F\eor O)\eand\enot(F\eand O).$$
 
+This has the truth table
+\begin{center}
+	\begin{tabular}{cc|deeeeeef}
+		$F$ & $O$ & $(F$ & $\eor$ & $O)$ & $\eand$ & $\enot$ & $(F$ & $\eand$ & $O)$\\\hline
+		T & T &   & T &   & \TTbf{F} & F &   & T &  \\
+		T & F &   & T &   & \TTbf{T} & T &   & F &  \\
+		F & T &   & T &   & \TTbf{T} & T &   & F &  \\
+		F & F &   & F &   &\TTbf{F} & T &   & F &  \\
+	\end{tabular}
+\end{center}
+
+So it is true just when exactly one of Fatima or Oma play video games. It captures an exclusive disjunction. 
+
+
 \factoidbox{
 If a sentence can be paraphrased in English as `\emph{either \ldots or \ldots}', \\it can be symbolised as $((\metaX\eor\metaY)\eand\enot(\metaX\eand\metaY))$.
 	}
 
-Finally notice that in English `\emph{neither\ldots nor\ldots}' is used to negate a disjunction, that is, using our symbolization key the sentences
-\begin{itemize}
-\item Neither Fatima nor Omar will play videogames.
-\item Neither Fatima will play videogames nor Omar will play videogames.
-\item  Neither Fatima will play videogames nor will Omar.
-\end{itemize}
-should all be symbolized by the TFL sentence `$\enot(F\eor O)$'.
+
+
+\section{Neither-nor}
+Consider these sentences, which are all paraphrases of one another. Their main (in fact, only) English connective is `\emph{neither\ldots nor\ldots}'. 
+\begin{samplesent}
+	\item Neither Fatima nor Omar will play videogames.
+	\item Neither Fatima will play videogames nor Omar will play videogames.
+	\item  Neither Fatima will play videogames nor will Omar.
+\end{samplesent}
+
+`\emph{neither\ldots nor\ldots}'.  is also a truth-functional English connective, whose truth depends just on the truth of the components. But it is not directly captured with one of our TFL connectives. Instead we need to use a more complex sentence of TFL. 
+
+We can paraphrase this as
+\begin{samplesent}
+	\item It is not the case that Fatima or Omar will play videogames.
+\end{samplesent}
+and thus symbolise it as $$\enot(F\eor O)$$
+
+For `neither-nor', we will also permit another symbolization 
+\begin{samplesent}
+ 	\item It is not the case that Fatima will play video games, and it is not the case that Omar will play video games. 
+\end{samplesent}
+and symbolise it as $$\enot F\eand\enot O$$
+
+We can check that these are logically equivalent and match the intended reading of `neither-nor'. 
+
+\begin{center}
+	\begin{tabular}{cc|deef|deeeef}
+	$F$ & $O$ & $\enot$ & $(F$ & $\eor $&$O)$ & $\enot F$ & $\eand$ & $\enot O$ & \\ \hline
+	T & T & \TTbf{F} &  & T &  &    F &  \TTbf{F} & F \\
+	T & F & \TTbf{F} &  & T &  &   F &  \TTbf{F} & T\\
+	F & T &  \TTbf{F}&  & T &  &   T &  \TTbf{F} & F \\
+	F & F &  \TTbf{T} &  & F & &   T &  \TTbf{T} & T \\
+\end{tabular}
+\end{center}
+
+Whilst in general we do \emph{not} replace one symbolisation with another simply because they are logically equivalent, for `neither--nor' this alternative symbolization is allowed. 
+
+Symbolisation in TFL aims to capture the \emph{structure} of an English sentence, not merely its truth conditions. Two sentences can be logically equivalent yet represent different logical constructions in English, so normally we do not treat them as interchangeable.
+
+%However, in the case of `neither--nor', English itself allows these two natural paraphrases. 
+%Both accurately reflect the meaning of the English connective and the intended truth conditions. Since the two forms directly correspond to permissible English paraphrases, either symbolisation is allowed.
+
+Whilst in general you are not allowed to substitute in any logically equivalent sentence, for neither-nor this alternative way of capturing the logical form is permitted. 
+
 \factoidbox{
-If a sentence can be paraphrased in English as\\`\emph{neither \ldots nor \ldots}', it can be symbolised as $\enot(\metaX\eor\metaY)$.}
-
-
+	If a sentence can be paraphrased in English as\\`\emph{neither \ldots nor \ldots}', it can be symbolised as $\enot(\metaX\eor\metaY)$ or $\enot \metaX\eand\enot \metaY$.}
 
 \section{Conditional}
 Let us again recall the symbolization guideline that we introduced in Section \ref{sec:tt}:
