@@ -139,7 +139,7 @@ The modern development of natural deduction dates from simultaneous and unrelate
 
 Natural deduction selects a few basic rules of inference and natural forms of reasoning and encodes these into a proof system. We will now see natural deduction for TFL. This system will form the basis also for natural deduction for FOL, which will also add rules for the quantifiers.
 
-\chapter{The First Basic Rules for TFL: the basic rules without subproofs}\label{s:BasicTFL}
+\chapter{The Basic Rules for TFL Part 1}\label{s:BasicTFL}
 
 
 %
@@ -424,9 +424,9 @@ Simple, but effective. In fact this shows that we didn't need to have the rule o
 
 
 
-%\section{Biconditional}
-%
-%For the biconditional we encode the idea that $\metaX\eiff\metaY$ is equivalent to $(\metaX\eif\metaY)\eand(\metaY\eif\metaX)$.
+
+
+%For the biconditional we encode the idea that
 %% instead of $\metaX\eiff\metaY$. We thus introduce the rules allowing you to move between these formulations:
 %
 %The rules we give, then, are very closely related to the rules for conjunction:
@@ -455,7 +455,7 @@ Simple, but effective. In fact this shows that we didn't need to have the rule o
 %\have[\ ]{ab}{\metaX\eiff\metaY}\iffI{a,b}
 %\end{fitchproof}
 %}
-
+%
 %The rules for the biconditional will be like double-barrelled versions of the rules for the conditional.
 %
 %In order to prove `$W \eiff X$', for instance, you must be able to prove `$X$' on the assumption `$W$' \emph{and} prove `$W$' on the assumption `$X$'. The biconditional introduction rule ({\eiff}I) therefore requires two subproofs. Schematically, the rule works like this:
@@ -515,56 +515,26 @@ Notice that \metaY can be \emph{any} sentence whatsoever, so the following is a 
 Using a truth table to show this would have taken 128 lines.
 
 
-\section{Law of Excluded Middle}\label{sec:LEM}
-We will actually add another rule for how to introduce a disjunction. There are special kinds of disjunctions that don't need further justification: sentences of the form $\metaX\eor\enot\metaX$.
-In \S\ref{s:TautologiesAndContradictions} we saw that $A\eor\enot A$ is a tautology: it is true on all valuations. More generally, any sentence of the form $\metaX\eor\enot\metaX$ is a tautology.
-The rule \emph{Law of Excluded Middle} encodes this fact: it simply says that you are always allowed to write $\metaX\eor\enot\metaX$:
+\section{Biconditional}
+
+We strictly speaking have not got the biconditional `$\eiff$' in our language of TFL. We have, however, let you use it in symbolizations. We said in \ref{s:SymbolisingTFL:bicond} that  $\metaX\eiff\metaY$ is an abbreviation for  $(\metaX\eif\metaY)\eand(\metaY\eif\metaX)$.
+
+We then have rules in our natural deduction system that let you exchange $\metaX\eiff\metaY$ for its explicit form. 
 
 \factoidbox{
 	\begin{fitchproof}
-	\ellipsesline
-	\have[\ ]{lem}{\metaX\eor\enot\metaX}\LEM
+		\ellipsesline
+		\have[m]{ab}{\metaX\eiff\metaY}
+		\ellipsesline
+		\have[\ ]{b}{(\metaX\eif\metaY)\eand(\metaY\eiff\metaX)}\iffE{ab}
+	\end{fitchproof}
+	\begin{fitchproof}
+		\ellipsesline
+		\have[m]{a}{(\metaX\eif\metaY)\eand (\metaY\eif\metaX)}
+		\ellipsesline
+		\have[\ ]{ab}{\metaX\eiff\metaY}\iffI{a}
 	\end{fitchproof}
 }
-
-As always, $\metaX$ can be whatever you want, e.g.~$(A\eand(B\eif C))$. Then the rule tells us, e.g.~that you can write $(A\eand(B\eif C))\eor\enot(A\eand(B\eif C))$ on any line of the proof.
-
-
-%To see the rule in action, consider:
-%$$A\eif B,\enot A\eif B\;\therefore B$$
-%We can give the following proof to show this is valid:
-%\begin{fitchproof}
-%	\hypo{a}{A\eif B}
-%	\hypo{b}{\enot A\eif B}
-%	\have{lem}{A\eor\enot A}\LEM
-%	\have{conc}{B}\orE{a,b,lem}
-%\end{fitchproof}
-The law of Excluded Middle is often used in combination with Disjunction Elimination. 
-However, we will not yet introduce Disjunction Elimination. It will be introduced in \S\ref{s:orE}. That's when we'll see the full power of the LEM rule. 
-
-
-%
-%
-%
-% It is much like the rule used in disjunction elimination, and it requires a little motivation.
-%
-%Suppose that we can show that if it's sunny outside, then Bill will have brought an umbrella (for fear of burning). Suppose we can also show that, if it's not sunny outside, then Bill will have brought an umbrella (for fear of rain). Well, there is no third way for the weather to be. So, \emph{whatever the weather}, Bill will have brought an umbrella.
-%
-%This line of thinking motivates the following rule:
-%\factoidbox{\begin{fitchproof}
-%		\open
-%			\hypo[i]{a}{\metaX}
-%			\have[j]{c1}{\metaY}
-%		\close
-%		\open
-%			\hypo[k]{b}{\enot\metaX}
-%			\have[l]{c2}{\metaY}
-%		\close
-%		\have[\ ]{ab}{\metaY}\tnd{a-c1,b-c2}
-%	\end{fitchproof}}
-%The rule is sometimes called \emph{tertium non datur}, which means `no third way'. There can be as many lines as you like between $i$ and $j$, and as many lines as you like between $k$ and $l$. Moreover, the subproofs can come in any order, and the second subproof does not need to come immediately after the first.
-
-
 
 %\section{Contradiction}
 %Instead of tackling negation directly, we will first think about \emph{contradiction}. \todo[inline]{Why? maybe we should simply do Explosion and }
@@ -670,7 +640,7 @@ Give a proof corresponding to each of the following arguments:
 \end{practiceproblems}
 
 
-\chapter{More Basic Rules for TFL: the basic rules with subproofs}
+\chapter{More Basic Rules for TFL: part 2: the first basic rules with subproofs}
 
 To introduce a conditional we need to introduce another kind of thing: a sub-proof.
 
@@ -852,133 +822,124 @@ A proof corresponding to this argument is:
 
 
 
-	Consider the following brain teaser:\footnote{Originally by Hector Levesque.}
-	\begin{quote}
-	Three people are standing in a row looking at each other.
-	\begin{center}
-	\begin{tikzpicture}[people/.style={minimum width=1.5cm}]
-	\node[people, alice] (alice) {Alice};
-	\node[people, bob, right=of alice] (bob) {Bob};
-	\node[people, charlie, right=of bob] (charlie) {Charlie};
-	\end{tikzpicture}
-	\end{center}
-	Alice is happy. Charlie is not happy. Is there someone who is happy who is looking at someone who is not happy?
-	\end{quote} \ldots Think about it! \\\ldots Answer: Yes.
-	Our Disjunction Elimination rule along with the Law of Excluded Middle allow us to show this.
-	%They write up
-	We can demonstrate this in the following argument, which we present in a pseudo-formal style.%
-	\footnote{
-	Though, actually, this is most naturally formulated as a validity claim of First Order Logic. We'll walk through the formal proof as formulated in First Order Logic in  \S\ref{s:ExistsE}.
-	}
+\section{Additional assumptions and subproofs}
+The rules we have just seen involve the idea of making additional assumptions. These need to be handled with some care.
 
-
-	\begin{fitchproof}
-		\have{lem}{\text{{Bob is either happy or he's not happy}}}%\LEM
-		\open
-		\hypo{b}{\text{{Suppose Bob is happy}}}
-		\have{ab}{{\text{Then happy Bob is looking at not-happy Charlie}}}
-		\have{abc}{{\text{So someone who is happy is looking at someone who is not}}}%\vspace*{1em}
-		\close
-	%\have{babc}{\parbox{.8\textwidth}{{If Bob is happy then someone who is happy is looking at someone who is not happy}}}\vspace*{1em}
-		\open
-		\hypo{b2}{\text{Suppose Bob is not happy}}
-		\have{ab2}{\text{Then happy Alice is looking at not-happy Bob}}
-		\have{abc}{\text{{So someone who is happy is looking at someone who is not}}}%\vspace*{1em}
-		\close
-	%\have{babc}{\parbox{.8\textwidth}{{If Bob is not happy then someone who is happy is looking at someone who is not happy}}}\vspace*{1em}
-		\have{con}{\text{Therefore, someone who is happy is looking at someone who is not.}}%\orE{lem,b-abc,b2-abc2}
-	\end{fitchproof}
-
-	Are you convinced now that someone who is happy is looking at someone who is not happy? If not, find a friend and work through it together. Sometimes it can really help to try walking through the argument together.
-
-	Coming up with this sort of argument does just take that moment of inspiration to see how this argument will go (that's why it's a brain teaser). This is often the case with arguments that involve the law of excluded middle. We pick it out of nowhere and have to use our inspiration to see how it might be useful. But hopefully, with more examples you'll become familiar with cases where it might be of use. A strategy that might help is: it's a backup option if everything else fails. If it doesn't look like there's any elimination rules to use on your premises or any introduction rules that can get you to your conclusion, then perhaps LEM is the way forwards.
-
-
-%
-%Here is a slightly harder example. Consider:
-%	$$ A \eand (B \eor C) \therefore (A \eand B) \eor (A \eand C)$$
-%Here is a proof corresponding to this argument:
-%	\begin{fitchproof}
-%		\hypo{aboc}{A \eand (B \eor C)}
-%		\have{a}{A}\andE{aboc}
-%		\have{boc}{B \eor C}\andE{aboc}
-%		\open
-%			\hypo{b}{B}
-%			\have{ab}{A \eand B}\andI{a,b}
-%			\have{abo}{(A \eand B) \eor (A \eand C)}\orI{ab}
-%		\close
-%%		\have{bconc}{B \eif ((A \eand B) \eor (A \eand C))}{\ifI{b-abo}}
-%		\open
-%			\hypo{c}{C}
-%			\have{ac}{A \eand C}\andI{a,c}
-%			\have{aco}{(A \eand B) \eor (A \eand C)}\orI{ac}
-%		\close
-%%	\have{cconc}{C \eif ((A \eand B) \eor (A \eand C))}{\ifI{c-aco}}
-%\have{con}{(A \eand B) \eor (A \eand C)}\orE{boc, b-abo, c-aco}
-%%\have{con}{(A \eand B) \eor (A \eand C)}\orE{boc, bconc, cconc}
-%	\end{fitchproof}
-%Don't be alarmed if you think that you wouldn't have been able to come up with this proof yourself. The ability to come up with novel proofs will come with practice. The key question at this stage is whether, looking at the proof, you can see that it conforms with the rules that we have laid down. That just involves checking every line, and making sure that it is justified in accordance with the rules we have laid down.
-
-
-
-%Indeed, if we are going to try to create an automatic algorithm to do proofs for us, this becomes a challenge when LEM is used. Computer scientists often consider a weaker logic which doesn't accept LEM. And philosophers are interested in this,
-
-
-
-One more example:
-$$P \therefore (P \eand D) \eor (P \eand \enot D)$$
-Here is a proof corresponding with the argument:
+Consider this proof:
 \begin{fitchproof}
-	\hypo{a}{P}
-	\have{lem}{D\eor\enot D}\LEM
+	\hypo{a}{A}
 	\open
-	\hypo{b}{D}
-	\have{ab}{P \eand D}\andI{a, b}
-	\have{abo}{(P \eand D) \eor (P \eand \enot D)}\orI{ab}
+	\hypo{b1}{B}
+	%		\have{bb}{B \eand B}\andI{b1, b1}
+	\have{b2}{B} \Reiteration{b1}
 	\close
-%\have{dconc}{D \eif ((P \eand D) \eor (P \eand \enot D))}{\ifI{b-abo}}
-	\open
-	\hypo{nb}{\enot D}
-	\have{anb}{P \eand \enot D}\andI{a, nb}
-	\have{anbo}{(P \eand D) \eor (P \eand \enot D)}\orI{anb}
-	\close
-%\have{ndconc}{\enot D \eif ((P \eand D) \eor (P \eand \enot D))}{\ifI{b-abo}}
-	\have{con}{(P \eand D) \eor (P \eand \enot D)}\orE{lem,b-abo,nb-anbo}
+	\have{con}{B \eif B}\ifI{b1-b2}
 \end{fitchproof}
+This is perfectly in keeping with the rules we have laid down already, and it should not seem particularly strange. Since `$B \eif B$' is a tautology, no particular premises should be required to prove it.
+
+But suppose we now tried to continue the proof as follows:
+\begin{fitchproof}
+	\hypo{a}{A}
+	\open
+	\hypo{b1}{B}
+	%		\have{bb}{B \eand B}\andI{b1, b1}
+	\have{b2}{B} \Reiteration{b1}
+	\close
+	\have{con}{B \eif B}\ifI{b1-b2}
+	\have{b}{B}\by{naughty attempt to invoke $\eif$E}{con, b2}
+\end{fitchproof}
+If we were allowed to do this, it would be a disaster. It would allow us to prove any atomic sentence letter from any other atomic sentence letter. However, if you tell me that Anne is fast (symbolized by `$A$'), we shouldn't be able to conclude that Queen Boudica stood twenty-feet tall (symbolized by `$B$')! We must be prohibited from doing this, but how are we to implement the prohibition?
+
+We can describe the process of making an additional assumption as one of performing a \emph{subproof}: a subsidiary proof within the main proof. When we start a subproof, we draw another vertical line to indicate that we are no longer in the main proof. Then we write in the assumption upon which the subproof will be based. A subproof can be thought of as essentially posing this question: \emph{what could we show, if we also make this additional assumption?}
+
+When we are working within the subproof, we can refer to the additional assumption that we made in introducing the subproof, and to anything that we obtained from our original assumptions. (After all, those original assumptions are still in effect.) At some point though, we will want to stop working with the additional assumption: we will want to return from the subproof to the main proof. To indicate that we have returned to the main proof, the vertical line for the subproof comes to an end. At this point, we say that the subproof is {closed}:
+\factoidbox{A subproof is \define{closed} when the vertical line for the subproof comes to an end. At that point we say the assumption has been \define{discharged}} We typically do this when we use one of our rules that involve subproofs, such as $\eif$I. We introduced the assumption $\meta{X}$ to allow us to conclude $\meta{Y}$; and this reasoning allows us to close the subproof and conclude $\meta{X}\eif\meta{Y}$, which no longer relies on the assumption $\meta{X}$.
+Having closed a subproof, we have set aside the additional assumption, so it will be illegitimate to draw upon anything that depends upon that additional assumption. Thus we stipulate:
+\factoidbox{Any rule whose citation requires mentioning individual lines can mention any earlier lines, \emph{except} for those lines which occur within a closed subproof.
+	
+	Put another way: you cannot refer back to anything that was obtained using discharged assumptions}
+This stipulation rules out the disastrous attempted proof above. The rule of $\eif$E requires that we cite two individual lines from earlier in the proof. In the purported proof, above, one of these lines (namely, line 4) occurs within a subproof that has (by line 6) been closed. This is illegitimate.
+
+Subproofs, then, allow us to think about what we could show, if we made additional assumptions. The point to take away from this is not surprising---in the course of a proof, we have to keep very careful track of what assumptions we are making, at any given moment. Our proof system does this very graphically. (Indeed, that's precisely why we have chosen to use \emph{this} proof system.)
+
+Once we have started thinking about what we can show by making additional assumptions, nothing stops us from posing the question of what we could show if we were to make \emph{even more} assumptions. This might motivate us to introduce a subproof within a subproof. Here is an example which only uses the rules of proof that we have considered so far:
+\begin{fitchproof}
+	\hypo{a}{A}
+	\open
+	\hypo{b}{B}
+	\open
+	\hypo{c}{C}
+	\have{ab}{A \eand B}\andI{a,b}
+	\close
+	\have{cab}{C \eif (A \eand B)}\ifI{c-ab}
+	\close
+	\have{bcab}{B \eif (C \eif (A \eand B))}\ifI{b-cab}
+\end{fitchproof}
+Notice that the citation on line 4 refers back to the initial assumption (on line 1) and an assumption of a subproof (on line 2). This is perfectly in order, since neither assumption has been discharged at the time (i.e.\ by line 4).
+
+Again, though, we need to keep careful track of what we are assuming at any given moment. Suppose we tried to continue the proof as follows:
+\begin{fitchproof}
+	\hypo{a}{A}
+	\open
+	\hypo{b}{B}
+	\open
+	\hypo{c}{C}
+	\have{ab}{A \eand B}\andI{a,b}
+	\close
+	\have{cab}{C \eif (A \eand B)}\ifI{c-ab}
+	\close
+	\have{bcab}{B \eif(C \eif (A \eand B))}\ifI{b-cab}
+	\have{bcab}{C \eif (A \eand B)}\by{naughty attempt to invoke $\eif$I}{c-ab}
+\end{fitchproof}
+This would be awful. If we tell you that Anne is smart, you should not be able to infer that, if Cath is smart (symbolized by `$C$') then \emph{both} Anne is smart and Queen Boudica stood 20-feet tall! But this is just what such a proof would suggest, if it were permissible.
+
+The essential problem is that the subproof that began with the assumption `$C$' depended crucially on the fact that we had assumed `$B$' on line 2. By line 6, we have \emph{discharged} the assumption `$B$': we have stopped asking ourselves what we could show, if we also assumed `$B$'. So it is simply cheating, to try to help ourselves (on line 7) to the subproof that began with the assumption `$C$'. Thus we stipulate, much as before:
+\factoidbox{Any rule whose citation requires mentioning an entire subproof can mention any earlier subproof, \emph{except} for those subproofs which occur within some \emph{other} closed subproof.}
+The attempted disastrous proof violates this stipulation. The subproof of lines 3--4 occurs within a subproof that ends on line 5. So it cannot be invoked in line 7.
+
+It is always permissible to open a subproof with any assumption. However, there is some strategy involved in picking a useful assumption. Starting a subproof with an arbitrary, wacky assumption would just waste lines of the proof. In order to obtain a conditional by {\eif}I, for instance, you must assume the antecedent of the conditional in a subproof.
+
+Equally, it is always permissible to close a subproof and discharge its assumptions. However, it will not be helpful to do so until you have reached something useful.
+
+
+\chapter{The remaining Basic Rules for TFL}
 \section{Negation}
 \subsection{Negation Introduction}
 If assuming something leads you to a contradiction, then the assumption must be wrong. 
 %We have a contradiction when we both have $\metaY$ and $\enot\metaY$ for some sentence $\metaY$. So if assuming $\metaX$ leads to both $\metaY$ and $\enot\metaY$, then $\metaX$ must be false.  
 This thought motivates the following rule:
 \factoidbox{\begin{fitchproof}
-\open
-	\hypo[m]{a}{\metaX}
-	\ellipsesline
-%	\have[n]{x}{\metaY}\ellipsesline
-%	\have[k]{y}{\enot\metaY}
-	\have[k]{bot}{\metaY\eand\enot\metaY}
-\close
-\have[\ ]{na}{\enot\metaX}\notI{a-bot}
-%\have[m]{axx}{\metaX \eif \ered}
-%\have[\ ]{na}{\enot\metaX}\notI{axx}
+		\open
+		\hypo[m]{a}{\metaX}
+		\ellipsesline
+		%	\have[n]{x}{\metaY}\ellipsesline
+		%	\have[k]{y}{\enot\metaY}
+		\have[k]{bot}{\metaY\eand\enot\metaY}
+		\close
+		\have[\ ]{na}{\enot\metaX}\notI{a-bot}
+		%\have[m]{axx}{\metaX \eif \ered}
+		%\have[\ ]{na}{\enot\metaX}\notI{axx}
 \end{fitchproof}}
 %There can be as many lines between $i$ and $j$ as you like.
 It does not matter whether in the subproof you first derive $\metaY$ and then derive $\enot\metaY$ or whether you first derive $\enot\metaY$ and the derive $\metaY$. It is only important that in the subproof you derive both $\metaY$ and $\enot\metaY$.
 
 To see this in practice, and interacting with negation, consider this proof:
 
-	\begin{fitchproof}
-		\hypo{d}{D}
-		\open
-			\hypo{nd}{\enot D}
-%			\have{d2}{D}\Reiteration{d}
-%			\have{nd2}{\enot D}\Reiteration{nd}
-			\have{ndr}{D\eand\enot D}\andI{d, nd}
-		\close
-%		\have{ndxx}{\enot D \eif \ered}{\ifI{nd-ndr}}
-		\have{con}{\enot\enot D}\notI{nd-ndr} %contradiction in d2,nd2
-%		\have{con}{\enot\enot D}\notI{ndxx}
-	\end{fitchproof}
+\begin{fitchproof}
+	\hypo{d}{D}
+	\open
+	\hypo{nd}{\enot D}
+	%			\have{d2}{D}\Reiteration{d}
+	%			\have{nd2}{\enot D}\Reiteration{nd}
+	\have{ndr}{D\eand\enot D}\andI{d, nd}
+	\close
+	%		\have{ndxx}{\enot D \eif \ered}{\ifI{nd-ndr}}
+	\have{con}{\enot\enot D}\notI{nd-ndr} %contradiction in d2,nd2
+	%		\have{con}{\enot\enot D}\notI{ndxx}
+\end{fitchproof}
+
+
+
 
 \subsection{Negation Elimination} \todo[inline]{CCM Nov 23: 
 Should definitely ahve this instead of LEM as students always accidently use it anyway.
@@ -1045,85 +1006,153 @@ This rule also allows us to prove that anything follows from a contradiction. Fo
 		\close
 		\have{b}{B}\notE{nb-ana}
 	\end{fitchproof}
-	
-\section{Additional assumptions and subproofs}
-The rules we have just seen involve the idea of making additional assumptions. These need to be handled with some care.
 
-Consider this proof:
+
+
+\section{Law of Excluded Middle}\label{sec:LEM}
+We will actually add another rule for how to introduce a disjunction. There are special kinds of disjunctions that don't need further justification: sentences of the form $\metaX\eor\enot\metaX$.
+In \S\ref{s:TautologiesAndContradictions} we saw that $A\eor\enot A$ is a tautology: it is true on all valuations. More generally, any sentence of the form $\metaX\eor\enot\metaX$ is a tautology.
+The rule \emph{Law of Excluded Middle} encodes this fact: it simply says that you are always allowed to write $\metaX\eor\enot\metaX$:
+
+\factoidbox{
+	\begin{fitchproof}
+		\ellipsesline
+		\have[\ ]{lem}{\metaX\eor\enot\metaX}\LEM
+	\end{fitchproof}
+}
+
+As always, $\metaX$ can be whatever you want, e.g.~$(A\eand(B\eif C))$. Then the rule tells us, e.g.~that you can write $(A\eand(B\eif C))\eor\enot(A\eand(B\eif C))$ on any line of the proof.
+
+
+
+Consider the following brain teaser:\footnote{Originally by Hector Levesque.}
+\begin{quote}
+	Three people are standing in a row looking at each other.
+	\begin{center}
+		\begin{tikzpicture}[people/.style={minimum width=1.5cm}]
+			\node[people, alice] (alice) {Alice};
+			\node[people, bob, right=of alice] (bob) {Bob};
+			\node[people, charlie, right=of bob] (charlie) {Charlie};
+		\end{tikzpicture}
+	\end{center}
+	Alice is happy. Charlie is not happy. Is there someone who is happy who is looking at someone who is not happy?
+\end{quote} \ldots Think about it! \\\ldots Answer: Yes.
+Our Disjunction Elimination rule along with the Law of Excluded Middle allow us to show this.
+%They write up
+We can demonstrate this in the following argument, which we present in a pseudo-formal style.%
+\footnote{
+	Though, actually, this is most naturally formulated as a validity claim of First Order Logic. We'll walk through the formal proof as formulated in First Order Logic in  \S\ref{s:ExistsE}.
+}
+
+
 \begin{fitchproof}
-	\hypo{a}{A}
+	\have{lem}{\text{{Bob is either happy or he's not happy}}}%\LEM
 	\open
-		\hypo{b1}{B}
-%		\have{bb}{B \eand B}\andI{b1, b1}
-		\have{b2}{B} \Reiteration{b1}
+	\hypo{b}{\text{{Suppose Bob is happy}}}
+	\have{ab}{{\text{Then happy Bob is looking at not-happy Charlie}}}
+	\have{abc}{{\text{So someone who is happy is looking at someone who is not}}}%\vspace*{1em}
 	\close
-	\have{con}{B \eif B}\ifI{b1-b2}
+	%\have{babc}{\parbox{.8\textwidth}{{If Bob is happy then someone who is happy is looking at someone who is not happy}}}\vspace*{1em}
+	\open
+	\hypo{b2}{\text{Suppose Bob is not happy}}
+	\have{ab2}{\text{Then happy Alice is looking at not-happy Bob}}
+	\have{abc}{\text{{So someone who is happy is looking at someone who is not}}}%\vspace*{1em}
+	\close
+	%\have{babc}{\parbox{.8\textwidth}{{If Bob is not happy then someone who is happy is looking at someone who is not happy}}}\vspace*{1em}
+	\have{con}{\text{Therefore, someone who is happy is looking at someone who is not.}}%\orE{lem,b-abc,b2-abc2}
 \end{fitchproof}
-This is perfectly in keeping with the rules we have laid down already, and it should not seem particularly strange. Since `$B \eif B$' is a tautology, no particular premises should be required to prove it.
 
-But suppose we now tried to continue the proof as follows:
+Are you convinced now that someone who is happy is looking at someone who is not happy? If not, find a friend and work through it together. Sometimes it can really help to try walking through the argument together.
+
+Coming up with this sort of argument does just take that moment of inspiration to see how this argument will go (that's why it's a brain teaser). This is often the case with arguments that involve the law of excluded middle. We pick it out of nowhere and have to use our inspiration to see how it might be useful. But hopefully, with more examples you'll become familiar with cases where it might be of use. A strategy that might help is: it's a backup option if everything else fails. If it doesn't look like there's any elimination rules to use on your premises or any introduction rules that can get you to your conclusion, then perhaps LEM is the way forwards.
+
+
+%
+%Here is a slightly harder example. Consider:
+%	$$ A \eand (B \eor C) \therefore (A \eand B) \eor (A \eand C)$$
+%Here is a proof corresponding to this argument:
+%	\begin{fitchproof}
+	%		\hypo{aboc}{A \eand (B \eor C)}
+	%		\have{a}{A}\andE{aboc}
+	%		\have{boc}{B \eor C}\andE{aboc}
+	%		\open
+	%			\hypo{b}{B}
+	%			\have{ab}{A \eand B}\andI{a,b}
+	%			\have{abo}{(A \eand B) \eor (A \eand C)}\orI{ab}
+	%		\close
+	%%		\have{bconc}{B \eif ((A \eand B) \eor (A \eand C))}{\ifI{b-abo}}
+	%		\open
+	%			\hypo{c}{C}
+	%			\have{ac}{A \eand C}\andI{a,c}
+	%			\have{aco}{(A \eand B) \eor (A \eand C)}\orI{ac}
+	%		\close
+	%%	\have{cconc}{C \eif ((A \eand B) \eor (A \eand C))}{\ifI{c-aco}}
+	%\have{con}{(A \eand B) \eor (A \eand C)}\orE{boc, b-abo, c-aco}
+	%%\have{con}{(A \eand B) \eor (A \eand C)}\orE{boc, bconc, cconc}
+	%	\end{fitchproof}
+%Don't be alarmed if you think that you wouldn't have been able to come up with this proof yourself. The ability to come up with novel proofs will come with practice. The key question at this stage is whether, looking at the proof, you can see that it conforms with the rules that we have laid down. That just involves checking every line, and making sure that it is justified in accordance with the rules we have laid down.
+
+
+
+%Indeed, if we are going to try to create an automatic algorithm to do proofs for us, this becomes a challenge when LEM is used. Computer scientists often consider a weaker logic which doesn't accept LEM. And philosophers are interested in this,
+
+
+
+One more example:
+$$P \therefore (P \eand D) \eor (P \eand \enot D)$$
+Here is a proof corresponding with the argument:
 \begin{fitchproof}
-	\hypo{a}{A}
+	\hypo{a}{P}
+	\have{lem}{D\eor\enot D}\LEM
 	\open
-		\hypo{b1}{B}
-%		\have{bb}{B \eand B}\andI{b1, b1}
-		\have{b2}{B} \Reiteration{b1}
+	\hypo{b}{D}
+	\have{ab}{P \eand D}\andI{a, b}
+	\have{abo}{(P \eand D) \eor (P \eand \enot D)}\orI{ab}
 	\close
-	\have{con}{B \eif B}\ifI{b1-b2}
-	\have{b}{B}\by{naughty attempt to invoke $\eif$E}{con, b2}
-\end{fitchproof}
-If we were allowed to do this, it would be a disaster. It would allow us to prove any atomic sentence letter from any other atomic sentence letter. However, if you tell me that Anne is fast (symbolized by `$A$'), we shouldn't be able to conclude that Queen Boudica stood twenty-feet tall (symbolized by `$B$')! We must be prohibited from doing this, but how are we to implement the prohibition?
-
-We can describe the process of making an additional assumption as one of performing a \emph{subproof}: a subsidiary proof within the main proof. When we start a subproof, we draw another vertical line to indicate that we are no longer in the main proof. Then we write in the assumption upon which the subproof will be based. A subproof can be thought of as essentially posing this question: \emph{what could we show, if we also make this additional assumption?}
-
-When we are working within the subproof, we can refer to the additional assumption that we made in introducing the subproof, and to anything that we obtained from our original assumptions. (After all, those original assumptions are still in effect.) At some point though, we will want to stop working with the additional assumption: we will want to return from the subproof to the main proof. To indicate that we have returned to the main proof, the vertical line for the subproof comes to an end. At this point, we say that the subproof is {closed}:
-\factoidbox{A subproof is \define{closed} when the vertical line for the subproof comes to an end. At that point we say the assumption has been \define{discharged}} We typically do this when we use one of our rules that involve subproofs, such as $\eif$I. We introduced the assumption $\meta{X}$ to allow us to conclude $\meta{Y}$; and this reasoning allows us to close the subproof and conclude $\meta{X}\eif\meta{Y}$, which no longer relies on the assumption $\meta{X}$.
-Having closed a subproof, we have set aside the additional assumption, so it will be illegitimate to draw upon anything that depends upon that additional assumption. Thus we stipulate:
-\factoidbox{Any rule whose citation requires mentioning individual lines can mention any earlier lines, \emph{except} for those lines which occur within a closed subproof.
-
-Put another way: you cannot refer back to anything that was obtained using discharged assumptions}
-This stipulation rules out the disastrous attempted proof above. The rule of $\eif$E requires that we cite two individual lines from earlier in the proof. In the purported proof, above, one of these lines (namely, line 4) occurs within a subproof that has (by line 6) been closed. This is illegitimate.
-
-Subproofs, then, allow us to think about what we could show, if we made additional assumptions. The point to take away from this is not surprising---in the course of a proof, we have to keep very careful track of what assumptions we are making, at any given moment. Our proof system does this very graphically. (Indeed, that's precisely why we have chosen to use \emph{this} proof system.)
-
-Once we have started thinking about what we can show by making additional assumptions, nothing stops us from posing the question of what we could show if we were to make \emph{even more} assumptions. This might motivate us to introduce a subproof within a subproof. Here is an example which only uses the rules of proof that we have considered so far:
-\begin{fitchproof}
-\hypo{a}{A}
-\open
-	\hypo{b}{B}
+	%\have{dconc}{D \eif ((P \eand D) \eor (P \eand \enot D))}{\ifI{b-abo}}
 	\open
-		\hypo{c}{C}
-		\have{ab}{A \eand B}\andI{a,b}
+	\hypo{nb}{\enot D}
+	\have{anb}{P \eand \enot D}\andI{a, nb}
+	\have{anbo}{(P \eand D) \eor (P \eand \enot D)}\orI{anb}
 	\close
-	\have{cab}{C \eif (A \eand B)}\ifI{c-ab}
-\close
-\have{bcab}{B \eif (C \eif (A \eand B))}\ifI{b-cab}
+	%\have{ndconc}{\enot D \eif ((P \eand D) \eor (P \eand \enot D))}{\ifI{b-abo}}
+	\have{con}{(P \eand D) \eor (P \eand \enot D)}\orE{lem,b-abo,nb-anbo}
 \end{fitchproof}
-Notice that the citation on line 4 refers back to the initial assumption (on line 1) and an assumption of a subproof (on line 2). This is perfectly in order, since neither assumption has been discharged at the time (i.e.\ by line 4).
+%To see the rule in action, consider:
+%$$A\eif B,\enot A\eif B\;\therefore B$$
+%We can give the following proof to show this is valid:
+%\begin{fitchproof}
+%	\hypo{a}{A\eif B}
+%	\hypo{b}{\enot A\eif B}
+%	\have{lem}{A\eor\enot A}\LEM
+%	\have{conc}{B}\orE{a,b,lem}
+%\end{fitchproof}
+%The law of Excluded Middle is often used in combination with Disjunction Elimination. 
+%However, we will not yet introduce Disjunction Elimination. It will be introduced in \S\ref{s:orE}. That's when we'll see the full power of the LEM rule. 
 
-Again, though, we need to keep careful track of what we are assuming at any given moment. Suppose we tried to continue the proof as follows:
-\begin{fitchproof}
-\hypo{a}{A}
-\open
-	\hypo{b}{B}
-	\open
-		\hypo{c}{C}
-		\have{ab}{A \eand B}\andI{a,b}
-	\close
-	\have{cab}{C \eif (A \eand B)}\ifI{c-ab}
-\close
-\have{bcab}{B \eif(C \eif (A \eand B))}\ifI{b-cab}
-\have{bcab}{C \eif (A \eand B)}\by{naughty attempt to invoke $\eif$I}{c-ab}
-\end{fitchproof}
-This would be awful. If we tell you that Anne is smart, you should not be able to infer that, if Cath is smart (symbolized by `$C$') then \emph{both} Anne is smart and Queen Boudica stood 20-feet tall! But this is just what such a proof would suggest, if it were permissible.
 
-The essential problem is that the subproof that began with the assumption `$C$' depended crucially on the fact that we had assumed `$B$' on line 2. By line 6, we have \emph{discharged} the assumption `$B$': we have stopped asking ourselves what we could show, if we also assumed `$B$'. So it is simply cheating, to try to help ourselves (on line 7) to the subproof that began with the assumption `$C$'. Thus we stipulate, much as before:
-\factoidbox{Any rule whose citation requires mentioning an entire subproof can mention any earlier subproof, \emph{except} for those subproofs which occur within some \emph{other} closed subproof.}
-The attempted disastrous proof violates this stipulation. The subproof of lines 3--4 occurs within a subproof that ends on line 5. So it cannot be invoked in line 7.
+%
+%
+%
+% It is much like the rule used in disjunction elimination, and it requires a little motivation.
+%
+%Suppose that we can show that if it's sunny outside, then Bill will have brought an umbrella (for fear of burning). Suppose we can also show that, if it's not sunny outside, then Bill will have brought an umbrella (for fear of rain). Well, there is no third way for the weather to be. So, \emph{whatever the weather}, Bill will have brought an umbrella.
+%
+%This line of thinking motivates the following rule:
+%\factoidbox{\begin{fitchproof}
+		%		\open
+		%			\hypo[i]{a}{\metaX}
+		%			\have[j]{c1}{\metaY}
+		%		\close
+		%		\open
+		%			\hypo[k]{b}{\enot\metaX}
+		%			\have[l]{c2}{\metaY}
+		%		\close
+		%		\have[\ ]{ab}{\metaY}\tnd{a-c1,b-c2}
+		%	\end{fitchproof}}
+%The rule is sometimes called \emph{tertium non datur}, which means `no third way'. There can be as many lines as you like between $i$ and $j$, and as many lines as you like between $k$ and $l$. Moreover, the subproofs can come in any order, and the second subproof does not need to come immediately after the first.
 
-It is always permissible to open a subproof with any assumption. However, there is some strategy involved in picking a useful assumption. Starting a subproof with an arbitrary, wacky assumption would just waste lines of the proof. In order to obtain a conditional by {\eif}I, for instance, you must assume the antecedent of the conditional in a subproof.
 
-Equally, it is always permissible to close a subproof and discharge its assumptions. However, it will not be helpful to do so until you have reached something useful.
 
 
 \section{Proof Strategies}
