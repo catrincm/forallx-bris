@@ -515,27 +515,6 @@ Notice that \metaY can be \emph{any} sentence whatsoever, so the following is a 
 Using a truth table to show this would have taken 128 lines.
 
 
-\section{Biconditional}
-
-We strictly speaking have not got the biconditional `$\eiff$' in our language of TFL. We have, however, let you use it in symbolizations. We said in \ref{s:SymbolisingTFL:bicond} that  $\metaX\eiff\metaY$ is an abbreviation for  $(\metaX\eif\metaY)\eand(\metaY\eif\metaX)$.
-
-We then have rules in our natural deduction system that let you exchange $\metaX\eiff\metaY$ for its explicit form. 
-
-\factoidbox{
-	\begin{fitchproof}
-		\ellipsesline
-		\have[m]{ab}{\metaX\eiff\metaY}
-		\ellipsesline
-		\have[\ ]{b}{(\metaX\eif\metaY)\eand(\metaY\eiff\metaX)}\iffE{ab}
-	\end{fitchproof}
-	\begin{fitchproof}
-		\ellipsesline
-		\have[m]{a}{(\metaX\eif\metaY)\eand (\metaY\eif\metaX)}
-		\ellipsesline
-		\have[\ ]{ab}{\metaX\eiff\metaY}\iffI{a}
-	\end{fitchproof}
-}
-
 %\section{Contradiction}
 %Instead of tackling negation directly, we will first think about \emph{contradiction}. \todo[inline]{Why? maybe we should simply do Explosion and }
 %
@@ -1153,6 +1132,27 @@ Here is a proof corresponding with the argument:
 %The rule is sometimes called \emph{tertium non datur}, which means `no third way'. There can be as many lines as you like between $i$ and $j$, and as many lines as you like between $k$ and $l$. Moreover, the subproofs can come in any order, and the second subproof does not need to come immediately after the first.
 
 
+
+\section{Biconditional}
+
+We strictly speaking have not got the biconditional `$\eiff$' in our language of TFL. We have, however, let you use it in symbolizations. We said in \ref{s:SymbolisingTFL:bicond} that  $\metaX\eiff\metaY$ is an abbreviation for  $(\metaX\eif\metaY)\eand(\metaY\eif\metaX)$.
+
+We then have rules in our natural deduction system that let you exchange $\metaX\eiff\metaY$ for its explicit form. 
+
+\factoidbox{
+	\begin{fitchproof}
+		\ellipsesline
+		\have[m]{ab}{\metaX\eiff\metaY}
+		\ellipsesline
+		\have[\ ]{b}{(\metaX\eif\metaY)\eand(\metaY\eiff\metaX)}\iffE{ab}
+	\end{fitchproof}
+	\begin{fitchproof}
+		\ellipsesline
+		\have[m]{a}{(\metaX\eif\metaY)\eand (\metaY\eif\metaX)}
+		\ellipsesline
+		\have[\ ]{ab}{\metaX\eiff\metaY}\iffI{a}
+	\end{fitchproof}
+}
 
 
 \section{Proof Strategies}
