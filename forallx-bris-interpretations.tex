@@ -572,14 +572,15 @@ What about `$\exists x \exists y(Rxy \eand Ryx)$'? To show that it is true we wi
 
 One more example: $\forall x(Sx\eif \exists y Rxy)$? To check this is true we will need to check for every number $n$ whether `$Sx\eif \exists y Rxy$' is true under the variable assignment $\varvariant{\alpha}{x}{n}$ for each $n$ in the domain. 
 \begin{center}
-\begin{tabular}{c|ccc}
-$x$&$Sx$&$\exists y Rxy$&$Sx\eif\exists y Rxy$\Bstrut\\\hline\Tstrut
-$1$&T&?&?\\
-$2$&F&&T\\
-$3$&T&?&?\\
-$4$&F&&T
-\end{tabular}
+	\begin{tabular}{c|def}
+		$x$ & $Sx$ & $\eif$ & $\exists y Rxy$ \Bstrut\\\hline\Tstrut
+		1 & T & ? & ?\\
+		2 & F & T & \\
+		3 & T & ? & ?\\
+		4 & F & T & \\
+	\end{tabular}
 \end{center}
+
 
 So we need to check  whether $\exists y Rxy$ is true under the variable assignments $x\mapsto 1$ and $x\mapsto 3$. In the two other cases the conditional will be trivially true
 
@@ -591,15 +592,17 @@ Consider a variable assignment where $x\mapsto 1$. We can find an object for $y$
 %$x\mapsto 3$&$y\mapsto 3$&T
 % \end{tabular}
 %\end{center}So we now have
+We thus have
 \begin{center}
-\begin{tabular}{c|ccc}
-&$Sx$&$\exists y Rxy$&$Sx\eif\exists y Rxy$\Bstrut\\\hline\Tstrut
-$x\mapsto 1$&T&T&T\\
-$x\mapsto 2$&F&?&T\\
-$x\mapsto 3$&T&T&T\\
-$x\mapsto 4$&F&?&T
-\end{tabular}
-\end{center}So $\forall x(Sx\eif \exists y Rxy)$ is true. Informally we might say this as: for every number that has a square around it has an arrow going out of it.
+	\begin{tabular}{c|def}
+		$x$ & $Sx$ & $\eif$ & $\exists y Rxy$ \Bstrut\\\hline\Tstrut
+		1 & T & T & T\\
+		2 & F & T & \\
+		3 & T & T & T\\
+		4 & F & T & \\
+	\end{tabular}
+\end{center}
+So $\forall x(Sx\eif \exists y Rxy)$ is true. Informally we might say this as: for every number that has a square around it has an arrow going out of it.
 
 One final example: $\forall x\forall y Rxy$. To check this we will need to consider all choices for $x$ and all choices for $y$ and check $Rxy$ is true on all of them. There are 16 such choices. But we won't have to go through them all: it'll be false. Consider $x\mapsto 1$ and $y\mapsto 4$. $Rxy$ is false under this variable assignment: there is no arrow from 1 to 4. Thus $\forall yRxy$ is false on the variable assignment $\varvariant{\alpha}{x}{1}$. And so $\forall x\forall y Rxy$ is false in the model under the variable assignment $\alpha$. However, $\alpha$ itself played no role in the evaluation of $\forall x\forall y Rxy$. All that mattered was the objects that were assigned to $x$ and $y$, and for $x$ and $y$ we considered the $x$-variants/$y$-variants. So $\forall x\forall y Rxy$ is not only true under the variable assignment $\alpha$ in this model but true under all variable assignments. This goes back to what we said at the end of Section \ref{s:traf}: the particular choice of an variable assignment is only relevant if we are evaluating the truth of formulas with free variables. $\forall x\forall y Rxy$ is a sentence, as it has no free variables.
 
