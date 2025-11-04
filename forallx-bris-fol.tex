@@ -16,39 +16,42 @@ We have been studying arguments, and in particular their validity. In Part \labe
 \end{highlighted}
 
 However, this allows you to conclude that the original English language argument is valid provided, if its best TFL-symbolization is. But what if the best TFL symbolisation is invalid? Consider the following arguments:
-\begin{enumerate}
-\item \begin{earg}
+%\begin{enumerate}
+%\item 
+\begin{earg}
 \label{willard1}
 \prem Alice is a logician.
 \prem All logicians wear funny hats.
 \conc Alice wears a funny hat.
 \end{earg}
-\item \begin{earg}
-\prem Everyone who loves Manchester United hates Manchester City.
-\prem Manchester City is not hated by everyone.
-\conc there is at least one person who doesn't love Manchester United.
-\end{earg}
-\end{enumerate}
+%\item \begin{earg}
+%\prem Everyone who loves Manchester United hates Manchester City.
+%\prem Manchester City is not hated by everyone.
+%\conc there is at least one person who doesn't love Manchester United.
+%\end{earg}
+%\end{enumerate}
 
-We can symbolise these in TFL (follow the strategy as in \pageref{s:SymbolisingComplexTFL}). Since we cannot paraphrase any of these sentences with `and', `if', `or' or `not', we simply have to use atomic sentences. We thus offer the symbolisation:
+We can symbolise this in TFL (follow the strategy as in \pageref{s:SymbolisingComplexTFL}). Since we cannot paraphrase any of these sentences with `and', `if', `or' or `not', we simply have to use atomic sentences. We thus offer the symbolisation:
 $$L, A \therefore H$$
 with the symbolisation
 \begin{ekey}
 \item[L] Alice is a logician.
-\item[A] All logicians wear funny hats.
 \item[H] Alice wears a funny hat.
+\item[A] All logicians wear funny hats.
 \end{ekey}
 
-And for the second argument we would symbolise this as:
-\begin{equation*}
-P, \enot Q\; \therefore R
-\end{equation*}
-using
-\begin{ekey}
-\item[P] Everyone who loves Manchester United hates Manchester City.
-\item[Q] Manchester City is hated by everyone.
-\item[R] There is at least one person who doesn't love Manchester United.
-\end{ekey}
+
+
+%And for the second argument we would symbolise this as:
+%\begin{equation*}
+%P, \enot Q\; \therefore R
+%\end{equation*}
+%using
+%\begin{ekey}
+%\item[P] Everyone who loves Manchester United hates Manchester City.
+%\item[Q] Manchester City is hated by everyone.
+%\item[R] There is at least one person who doesn't love Manchester United.
+%\end{ekey}
 
 Both of these TFL arguments are invalid. But the original English arguments seem valid. Indeed, they seem valid independently of their subject matter, that is, independently of whether they are talking about Alice, logicians, funny hats or loving Manchester United. They seem to be valid in virtue of the argument form. And it is not that we have made a mistake while symbolizing the argument. The problem lies with TFL itself.
 %`All logicians wear funny hats' is about both logicians and hat-wearing. By not retaining this structure in our symbolization, we lose the connection between Willard's being a logician and Willard's wearing a hat.
@@ -61,7 +64,36 @@ The expressive power of TFL is not rich enough to explain why these English argu
 
 We will introduce a new logical language that will allow us to capture the validity of these arguments. We will call this language \emph{first-order logic}, or \emph{FOL}. The details of FOL will be explained throughout this chapter.
 
-%, but we will here give a sneak-preview by saying how the first argument will be symbolised in FOL to give you some ideas of how FOL works.
+We will here give a sneak-preview by saying how the first argument will be symbolised in FOL to give you some ideas of how FOL works.
+
+You might feel the pull to symbolise premise 1 as $$L\eif H.$$
+With the given symbolisation key, this is to say ``if Alice is a logician, she wears a funny hat.'' That's enough to get to the conclusion, and it's a consequence of premise 1, but it's not what premise 1 says. It's not an adequate symbolisation of premise 1. 
+
+Instead you might try: well, lets just let $L$ stand for `logician' and $H$ stand for `wears a funny hat'. Then we can just use $L\eif H$. The problem is that these aren't declarative sentences. They're not the sort of thing to be true or false. That is what a move to FOL will let us capture, though. ``If someone is a logician, they wear a funny hat.'' We will use variables to play the role of `they' which aren't talking about individuals but whose reference may vary. We then want to say of all people, if they are a logician then they wear a funny hat.  \begin{itemize}
+	\item for all $x$, if $x$ is a logician, then $x$ wears a funny hat.
+\end{itemize} We will then end up symbolising it as $$\forall x(Lx\eif Hx)$$ where $L$ and $H$ are now predicates expressing properties of individuals: being a logician, or wearing a funny hat. 
+
+In First Order Logic, then we can capture the argument as:
+$$\forall x(Lx\eif Hx),\; La\;\therefore\; Ha$$
+
+We can also capture arguments which talk about `some' or `exists'. 
+\begin{earg}
+	\prem Every logician wears a funny hat.
+	\prem There is a logician.
+	\conc Somone wears a funny hat.
+\end{earg}
+Which we will can end up symbolising as 
+$$\forall x(Lx\eif Hx),\; \exists x Lx\;\therefore\; \exists x Hx$$
+
+
+%We will be able to symbolse argument 1 as: 
+%\begin{equation*}
+%La,\; \forall x(Lx \eif Hx)\;\therefore\; Ha
+%\end{equation*}
+%and argument 2 as:
+%\begin{equation*}
+%\forall x(Lxu\eif Hxc),\; \enot \forall xHxc\; \therefore\; \exists x\enot Lxu
+%\end{equation*}
 %
 %We can symbolise this as:
 %\begin{equation*}
