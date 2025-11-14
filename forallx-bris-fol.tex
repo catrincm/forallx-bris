@@ -913,7 +913,7 @@ $$
 
 
 \section{Sentences}
-Recall that we are largely concerned in logic with assertoric sentences: sentences that can be either true or false. Many formulas are not sentences. Consider the following symbolization key:
+Recall that we are largely concerned in logic with declarative sentences: sentences that can be either true or false. Many formulas are not sentences. Consider the following symbolization key:
 	\begin{ekey}
 		\item[\text{domain}] people
 		\item[Lxy] \gap{x} loves \gap{y}
@@ -923,13 +923,22 @@ Consider the atomic formula $Lzz$. Can it be true or false? You might think that
 
 Of course, if we put an existential quantifier out front, obtaining $\exists zLzz$, then this would be true iff someone loves herself. Equally, if we wrote $\forall z Lzz$, this would be true iff everyone loves themself. The point is that we need a quantifier to tell us how to deal with a variable.
 
-Let's make this idea precise.
+To make this precise, we can use the construction of a formula. 
+\factoidbox{An occurrance of a variable being \define{free} is defined as follows:
+	\begin{itemize}
+		\item In an atomic formula, every occurance of a variable is free. 
+		\item An occurrance of a variable which is free in $\metaX$ or $\metaY$ is also free in $\enot\metaX$, $\metaX\eand\metaY$, $\metaX\eor\metaY$ and $\metaX\eif\metaY$. 
+		\item In $\forall v\metaX$ and $\exists v \metaX$, every occurrance of $v$ is now \define{bound}, any remaining occurrances of variables which were free are still free. 
+	\end{itemize}
+}
+
+We can also use the notion of scope to characterise this. 
 	\factoidbox{
-		A \define{bound variable} is an occurrence of the variable \metav that is within the scope of either $\forall\metav$ or $\exists\metav$.
+		An occurrence of a variable \metav is bound if it is within the scope of either $\forall\metav$ or $\exists\metav$.
 
 		\bigskip
 
-		A \define{free variable} is any variable that is not bound.
+		An occurrence of a variable \metav is free if it is not within the scope of either $\forall\metav$ or $\exists\metav$.
 	}
 
 \newglossaryentry{bound variable}{

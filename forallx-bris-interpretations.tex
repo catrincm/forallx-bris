@@ -167,7 +167,7 @@ In the same way that a three-place predicate picks out a ternary relation, an $n
 
 \section{Models}\label{s:model}\todo{call it ``model''?}
 We defined a \define{valuation} in TFL as any assignment of truth and falsity to atomic sentences. In FOL, we are going to define an \define{model}. Sentences of FOL will be true or false \emph{on a model}.
-\factoidbox{A model provides \begin{itemize}
+\factoidbox{A model $\model$ provides \begin{itemize}
 		\item specifies a non-empty set as the domain, $\domain$;
 		\item specifies an interpretation of the FOL-names and FOL-predicates. 
 		\begin{itemize}
@@ -385,18 +385,19 @@ Dealing with atomic formulas, then, is very intuitive. The only thing to be atte
 \factoidbox{A \define{term} is either a name or a variable. 
 	%CCM rewrote from JS. check.
 	\begin{itemize}
-		\item If $t$ is a name, then $\denote{t}^\alpha$ is just $\denote{t}$, the object of the domain assigned to the FOL-name $t$ by the model.
-		\item If $t$ is a variable, then $\denote{t}^\alpha$ the object of the domain assigned to the variable $t$ by the variable assignment; that is, it is $\alpha(t)$.
+		\item If $t$ is a name, then $\denote{t}^\alpha_\model$ is just $\denote{t}_\model$, the object of the domain assigned to the FOL-name $t$ by $\model$.
+		\item If $t$ is a variable, then $\denote{t}^\alpha_\model$ the object of the domain assigned to the variable $t$ by the variable assignment; that is, it is $\alpha(t)$.
 	\end{itemize}
 %	If $t$ is a term then the \define{denotation of the term} in the model under an variable assignment $\alpha$, $\denote{t}^\alpha$ is the object pick out by the model, if $t$ is a name and $\alpha(t)$ otherwise:
 %\begin{align*}\denote{t}^\alpha=\begin{cases}\denote{t},&\text{ if $t$ is name;}\\\alpha(t),&\text{  if $t$ is a variable.}\end{cases}\end{align*} 
 }
 
-With this final bit of terminology out of way we can state the truth conditions for atomic formuals. Let \meta{R} be an $n$-place predicate and $\metaterm_1,\,\metaterm_2\ldots\metaterm_{n}$ terms. Then
+With this final bit of terminology out of way we can state the truth conditions for atomic formuals. 
 
-	\factoidbox{
-		$\meta{R}\metaterm_1\metaterm_2\ldots\metaterm_{n}$ is true in a model under a variable assignment $\alpha$ \textbf{iff}\\
-		$$\langle\denote{t_1}^\alpha,\ldots,\denote{t_n}^\alpha\rangle\in\denote{\meta{R}}$$
+	\factoidbox{For \meta{R} an $n$-place predicate, $\metaterm_1,\,\metaterm_2\ldots\metaterm_{n}$ terms
+		
+		$\meta{R}\metaterm_1\metaterm_2\ldots\metaterm_{n}$ is true in a model $\model$ under a variable assignment $\alpha$ \textbf{iff}\\
+		$$\langle\denote{t_1}^\alpha_\model,\ldots,\denote{t_n}^\alpha_\model\rangle\in\denote{\meta{R}}_\model$$
 	}
 
 From this definition of the truth of atomic formulas we can tell that an assignment only plays an important role if one of the terms is a variable. If all terms are name then an atomic formula is true in a model under a variable assignment \textbf{iff} it is true in the model under \textbf{every} variable assignment. We will see that that is the case for sentences more generally: the choice of the variable assignment is only relevant to determine whether a formulas with free variables is true in a model (under the chosen variable assignment). For this reason we sometimes do not mention the variable assignment when we talk about the truth of sentences. However, as we shall see the variable assignment will still have a role to play when we talk about the truth and falsity of quantified sentencesd.
@@ -404,20 +405,20 @@ From this definition of the truth of atomic formulas we can tell that an assignm
 \section{Sentential connectives}
 We saw in \S\ref{s:FOLSentences} that FOL formulas can be built up from simpler ones using the truth-functional connectives that were familiar from TFL. The rules governing these truth-functional connectives are \emph{exactly} the same as they were when we considered TFL. Here they are:
 	\factoidbox{
-	$\enot \metaX$ is true in a model under a variable assignment \textbf{iff} \\$\metaX$ is false in that model under that variable assignment
+	$\enot \metaX$ is true in a model $\model$ under a variable assignment $\alpha$ \textbf{iff} \\$\metaX$ is false in $\model$ under $\alpha$.
 
 		\
-		\\$(\metaX \eand \metaY)$ is true in a model under a variable assignment \textbf{iff}\\ both $\metaX$ and $\metaY$ is true in that model under that variable assignment
+		\\$(\metaX \eand \metaY)$ is true in a model $\model$ under a variable assignment $\alpha$ \textbf{iff}\\ both $\metaX$ and $\metaY$ are true in $\model$ under $\alpha$.
 
 		\
 		\\
-		$(\metaX \eor \metaY)$ is true in a model under a variable assignment \textbf{iff}\\ either $\metaX$ is true or $\metaY$ is true in that model under that variable assignment
+		$(\metaX \eor \metaY)$ is true in a model $\model$ under a variable assignment $\alpha$ \textbf{iff}\\ either $\metaX$ is true or $\metaY$ is true in $\model$ under $\alpha$.
 
 		\
-		\\$(\metaX \eif \metaY)$ is true in a model under a variable assignment \textbf{iff}\\ either $\metaX$ is false or $\metaY$ is true in that model under that variable assignment
+		\\$(\metaX \eif \metaY)$ is true in a model $\model$ under a variable assignment $\alpha$ \textbf{iff}\\ either $\metaX$ is false or $\metaY$ is true in $\model$ under $\alpha$.
 
 		%\
-		%\\$\metaX \eiff \metaY$ is true in a model under a variable assignment \textbf{iff} \\$\metaX$ has the same truth value as $\metaY$ in that model under that variable assignment
+		%\\$\metaX \eiff \metaY$ is true in a model $\model$ under a variable assignment $\alpha$ \textbf{iff} \\$\metaX$ has the same truth value as $\metaY$ in $\model$ under $\alpha$
 	}
 This is just another presentation of the truth rules we gave for the connectives in TFL; it just does so in a slightly different way. Some examples will probably help to illustrate the idea. On our go-to model:
 	\begin{earg}
@@ -460,7 +461,17 @@ Consider the following model:
 \noindent Is `$\exists x Sx$' true in this model under a variable assignment? Intuitively this should be true iff there is an object in the domain which has a sword and since $\denote{S}=\Set{\text{\emph{Alice, Bob}}}$ should indeed come out as true. We can directly spell out these intuitive truth conditions by using the notion of an  $v$-variant of the initial variable assignment:
 
 Before we give a general definition of whether a formula is true or false \emph{under a variable assignment} in a give model, we need to introduce one further useful bit of terminology.
-\factoidbox{Let $\beta$ be a variable assignment and $\metav$ a variable. Then the variable assignment $\varvariant{\beta}{\metav}{o}$ is a variable assignment that assigns the same objects to the variables than $\beta$ except possibly to the variable $\metav$ to which it assigns $o$. $\varvariant{\beta}{\metav}{o}$ is called an \define{$\metav$-variant} of $\beta$.}
+\factoidbox{Let $\alpha$ be a variable assignment and $\metav$ a variable. \\
+	\define{$\varvariant{\alpha}{\metav}{o}$} is a variable assignment which assigns to the variables other than $\metav$ the same objects as $\alpha$ does and it assigns $o$ to $\metav$. \\
+	That is, $\varvariant{\alpha}{\metav}{o}(\metav')=
+	\begin{cases}
+		\alpha(\metav')&\text{if $\metav'\neq\metav$}\\
+		o&\text{if $\metav'=\metav$}
+	\end{cases}$
+	
+	
+	$\varvariant{\alpha}{\metav}{o}$ is called an \define{$\metav$-variant} of $\alpha$.\\
+	}
 
 Notice that $\metav$ is metavariable for variables of FOL, so that it can be done for any variable. 
 \todo{is this the right formulation??}
@@ -475,17 +486,24 @@ For example:
 
 Variants of variable assignments will be important for stating the truth conditions of quantified formulas.
 
-We can then say:
+We will define
 \begin{quote}
-`$\exists x Sx$' true in this model under the variable assignment $\alpha$ \textbf{iff} there exists an object $o$ of the domain, i.e.~$o\in \domain$, such that `$Sx$' is true in the model under the variable assignment $\varvariant{\alpha}{x}{o}$.
+	`$\exists \metav\metaX$' true in a model under the variable assignment $\alpha$ \textbf{iff} there exists an object $o$ of the domain, i.e.~$o\in \domain$, such that `$\metaX$' is true in the model under the variable assignment $\varvariant{\alpha}{v}{o}$.
 \end{quote}
-Then, to show that `$\exists x Sx$' true in the model under an arbitrary variable assignment it suffices to find an object in the domain, say, \emph{Alice} such that `$Sx$' is true under the variable assignment $\varvariant{\alpha}{x}{\text{\emph{Alice}}}$  (we can also denote this variable assignment by $x\mapsto \text{Alice}$). Under this variable assignment, $Sx$ is true: Since Alice does have a sword, i.e., $\text{\emph{Alice}}\in\denote{S}$, $Sx$ is indeed true under this assignment. This guaranteed the truth of `$\exists x Sx$': There is a choice of an object in our domain for $x$ under which $Sx$ is true.
 
-What about $\forall x Sx$? Intuitively, this should be true iff every object in the domain which has a sword. Appealing to the $x$-variant of out initial variable assignment we can again spell out the truth conditions in a straightforward:
+%Consider `$\exists x Sx$'.
+%\begin{quote}
+%	`$\exists x Sx$' true in a model under the variable assignment $\alpha$ \textbf{iff} there exists an object $o$ of the domain, i.e.~$o\in \domain$, such that `$Sx$' is true in the model under the variable assignment $\varvariant{\alpha}{x}{o}$.
+%\end{quote}
+To show that `$\exists x Sx$' true in $\model$ under $\alpha$ we need to find an object in the domain, say, \emph{Alice} such that `$Sx$' is true under the variable assignment $\varvariant{\alpha}{x}{\text{\emph{Alice}}}$. Under $\varvariant{\alpha}{x}{\text{\emph{Alice}}}$, $Sx$ is in fact true: it assigns \emph{Alice} to $x$ and Alice does have a sword, i.e., $\text{\emph{Alice}}\in\denote{S}$. This guaranteed the truth of `$\exists x Sx$': There is a choice of an object in our domain for $x$ under which $Sx$ is true.
+
+In this case, the other information in $\alpha$ is irrelevant as only the variable $x$ is relevant for determining the truth of $Sx$. Whether $\exists x Sx$ is true in $\model$ under $\alpha$ is independent of $\alpha$ and it can simply be said to be true or false in the model. 
+
+What about the univeral quantifier?
 \begin{quote}
-`$\forall x Sx$' true in this model under the variable assignment $\alpha$ \textbf{iff} for every object $o$ of the domain `$Sx$' is true in the model under the variable assignment $\varvariant{\alpha}{x}{o}$.
+	`$\forall \metav\metaX$' true in a model under the variable assignment $\alpha$ \textbf{iff} for every object $o$ of the domain, i.e.~$o\in \domain$, `$\metaX$' is true in the model under the variable assignment $\varvariant{\alpha}{v}{o}$.
 \end{quote}
- Since \emph{Denny} $\not\in\denote{S}=\Set{\text{\emph{Alice, Bob}}}$ `$\forall x Sx$' to comes out false in this model: `$Sx$' is not true in the model under the variable assignment $\varvariant{\alpha}{x}{\emph{Denny}}$. 
+ Since \emph{Denny} $\not\in\denote{S}=\Set{\text{\emph{Alice, Bob}}}$ `$\forall x Sx$' to comes out false in this model: `$Sx$' is not true in the model under the variable assignment $\varvariant{\alpha}{x}{\emph{Denny}}$, or simply $x\mapsto$\emph{Denny}, as the remaining information in the variable assignment $\alpha$ is irrelevant.
 
 What about $\forall x(Sx\eif (Hx\eor Cx))$? To check whether it is true we need to check whether `$Sx\eif(Hx\eor Cx)$ is true for every choice of object that is assigned to $x$:
 \begin{center}
@@ -538,7 +556,7 @@ Consider a new model: \begin{center}
 \end{interp}
 \end{center}
 
- Is $\exists x\forall y Rxy$ true? Intuitively, the sentence is true iff there is an object in the domain from which there is an arrow to all other arrows. Now, let's work through the example step by step and see whether we get the intuitive outcome.
+ Is $\exists x\forall y Rxy$ true? Intuitively, the sentence is true iff there is an object in the domain from which there is an arrow to all other objects. Now, let's work through the example step by step and see whether we get the intuitive outcome.
 
 
  \begin{enumerate}
@@ -614,16 +632,18 @@ More generally, if we have a quantifier like $\exists x$ or $\forall x$ we ignor
 
  Now for our formal definition:
 \factoidbox{
-$\forall \metav\metaX$ is true in the model under a variable assignment $\alpha$\\
-\textbf{iff} $\metaX$ is true in the model under the variable assignment $\varvariant{\alpha}{\metav}{o}$ for every $o\in \domain$.
+$\forall \metav\metaX$ is true in the model $\model$ under a variable assignment $\alpha$\\
+\textbf{iff} for every $o\in \domain$, $\metaX$ is true in $\model$ under the variable assignment $\varvariant{\alpha}{\metav}{o}$.
 
 \bigskip
 
-$\exists \metav\metaX$ is true in the model under a variable assignment $\alpha$\\
-\textbf{iff} $\metaX$ is true in the model under the variable assignment $\varvariant{\alpha}{\metav}{o}$ for some $o\in \domain$.
+$\exists \metav\metaX$ is true in the model $\model$ under a variable assignment $\alpha$\\
+\textbf{iff} for some $o\in \domain$, $\metaX$ is true in $\model$ under the variable assignment $\varvariant{\alpha}{\metav}{o}$.
 }
 %To be clear: all this is doing is formalizing the intuitive idea expressed in our examples. The result is a bit ugly, and the final definition might look a bit opaque. Hopefully, though, the \emph{spirit} of the idea is clear.
 
+
+We have now provided the full inductive definition of truth in a model under a variable assignment. This allows us to work up the formation tree of any sentence of FOL to detemrine its truth value. The special feature of sentences as opposed to formulas more generally was that there are no free variables. This means that information in a variable assignment $\alpha$ is irrelevant for the truth of the sentence and we can simply say that it is true or false on the model. 
 
 %\section{When the main logical operator is a quantifier}
 %The exciting innovation in FOL, though, is the use of \emph{quantifiers}.
