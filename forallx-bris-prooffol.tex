@@ -183,14 +183,19 @@ To give our rule in general we need to introduce some new notation for this abil
 	\have[m]{a}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}
 	\have[\ ]{c}{\exists \meta{x}\metaX(\ldots \meta{x} \ldots \meta{c}\ldots)} \existsI{a}
 \end{fitchproof}
-\meta{x} must not occur in $\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$
-}All the cases we've seen in this section follow this rule.
+In $\metaX$, $c$ must not already be bound by $\forall \meta{x}$ or $\exists \meta{x}$. 
+}
+%All the cases we've seen in this section follow this rule.
 
-You might have noticed the additional constraint that's added to the rule. It is {part} of the rule; so if you are asked to write the rule $\exists$I  you {must} include this constraint. However, you will not need to worry about it in practice. It's simply there to guarantee that applications of the rule yield sentences of FOL. If the rule were not there we would be allowed to argue as follows:
+You might have noticed the additional constraint that's added to the rule. 
+%It is {part} of the rule; so if you are asked to write the rule $\exists$I  you {must} include this constraint. However, you will not need to worry about it in practice. It's simply there to guarantee that applications of the rule yield sentences of FOL.
+%You shouldn't need to
+ If the rule were not there we would be allowed to argue as follows:
 \begin{fitchproof}
 	\hypo{a}{\exists xLnx}
 	\have{e}{\exists x \exists x Lxx}\by{naughtily attempting to invoke $\exists$I}{a}
-\end{fitchproof}But this expression on line 2 contains clashing variables. It will not count as a sentence of FOL.
+\end{fitchproof}
+$\exists x \exists x Lxx$ is in fact a sentence of FOL, although a confusing one. It's a sentence which should be avoided when symbolising. If one very carefully works through the definitions, it can be seen to be logically equivalent to $\exists x Lxx$. But $\exists x Lnx\therefore\exists x Lxx$ is clearly invalid. 
 
 
 \section{Empty domains}
