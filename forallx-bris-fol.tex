@@ -1287,21 +1287,23 @@ Consider also
 	\item[\ex{q.dog2}]Some dog is quiet but Finley is not
 \end{earg}
 
+
 \begin{center}
 	\begin{forest}
-		[Some dog is quiet but Finley is not\\Some dog is quiet \mainconnective{and} Finley is not quiet\\$(\exists x(Dx \eand Qx) \mainconnective{\eand} \enot Qf)$
-		[Some dog is quiet\\\mainconnective{There is some $x$:} $x$ is a dog and $x$ is quiet\\$\mainconnective{\exists x}(Dx \eand Qx)$
-		[$x$ is a dog \mainconnective{and} $x$ is quiet\\$Dx \mainconnective{\eand} Qx$
+		[Some dog is quiet but Finley is not\\Some dog is quiet \mainconnective{and} Finley is not quiet\\$(\ldots \mainconnective{\eand} \ldots)$
+		[Some dog is quiet\\\mainconnective{There is some $x$:} $x$ is a dog and $x$ is quiet\\$\mainconnective{\exists x}\ldots$
+		[$x$ is a dog \mainconnective{and} $x$ is quiet\\$(\ldots \mainconnective{\eand} \ldots)$
 		[$x$ is a dog\\$Dx$]
 		[$x$ is quiet\\$Qx$]
 		]
 		]
-		[Finley is not quiet\\\mainconnective{It is not the case that} Finley is quiet\\$\mainconnective{\enot} Qf$
+		[Finley is not quiet\\\mainconnective{It is not the case that} Finley is quiet\\$\mainconnective{\enot} \ldots$
 		[Finley is quiet\\$Qf$]
 		]
 		]
 	\end{forest}
 \end{center}
+So we result in: $(\exists x(Dx \eand Qx) \mainconnective{\eand} \enot Qf)$
 
 
 Consider:
@@ -2015,6 +2017,56 @@ Once we have the possibility of multiple quantifiers, representation in FOL can 
 \item[Oxy] \gap{x} owns \gap{y}
 \item[g] Geraldo
 \end{ekey}
+
+Now let's try to symbolise. Like in TFL and in FOL so far, our process is to break it up in stages. Can it be paraphrased in one of our canonical forms, in which case we can then replace that component with the relevant logic and then proceed to try to symbolise the component parts. 
+
+\begin{center}
+	\begin{forest}
+		[Gerardo is a dog owner\\There is a dog that Gerardo owns\\$\mainconnective{\exists x}(Dx \eand Ogx)$
+		[There is some $x$ such that $x$ is a dog and $g$ owns $x$\\$\exists x(Dx \eand Ogx)$
+		[$x$ is a dog \mainconnective{and} $g$ owns $x$\\$Dx {\eand} Ogx$
+		[$x$ is a dog\\${Dx}$]
+		[$g$ owns $x$\\${Ogx}$]
+		]
+		]
+		]
+	\end{forest}
+\end{center}
+
+
+
+\begin{center}
+	\begin{forest}
+		[Every dog owner is a friend of a dog owner\\For every $x$: if $x$ is a dog owner then $x$ is friend of a dog owner\\
+		For every $x$: if $x$ is a dog owner then $x$ is a friend of a dog owner\\$\mainconnective{\forall x}\ldots$
+		[if $x$ is a dog owner then $x$ is a friend of a dog owner\\$(\ldots \mainconnective{\eif} \ldots)$
+		[$x$ is a dog owner\\$\mainconnective{\exists z}\ldots$
+		[$z$ is a dog and $x$ owns $z$\\$(\ldots \mainconnective{\eand} \ldots)$
+		[$z$ is a dog\\$Dz$]
+		[$x$ owns $z$\\$Oxz$]
+		]
+		]
+		[$x$ is a friend of a dog owner\\$\mainconnective{\exists y}\ldots$
+		[$y$ is a dog owner \mainconnective{and} $x$ is a friend of $y$\\$(\ldots \mainconnective{\eand} \ldots)$
+		[$y$ is a dog owner\\$\mainconnective{\exists z}\ldots$
+		[$z$ is a dog \mainconnective{and} $y$ owns $z$\\$(\ldots \mainconnective{\eand} \ldots)$
+		[$z$ is a dog\\$Dz$]
+		[$y$ owns $z$\\$Oyz$]
+		]
+		]
+		[$x$ is a friend of $y$\\$Fxy$]
+		]
+		]
+		]
+		]
+	\end{forest}
+\end{center}
+
+
+
+
+
+
 Now let's try to symbolize these sentences:
 \begin{earg}
 \item[\ex{dog2}] Geraldo is a dog owner.
