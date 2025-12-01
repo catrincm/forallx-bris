@@ -472,6 +472,9 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 	\have[m]{a}{\forall \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)}
 	\have[\ ]{c}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)} \forallE{a}
 \end{fitchproof}
+\begin{itemize}
+	\item $c$ not already bound by $\forall x$ or $\exists x$ in $X$. 
+\end{itemize}
 
 \subsubsection*{Universal introduction}
 
@@ -480,10 +483,15 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 	\have[\ ]{c}{\forall \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)} \forallI{a}
 \end{fitchproof}
 
-\noindent 	\meta{c} must not occur in any undischarged assumption\\ 
-\meta{x} must not occur in $\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$
+ \begin{itemize}
+	\item 	\meta{c} must not occur in any undischarged assumption
+	\item \meta{c} must not already be bound by $\forall x$ or $\exists x$ in $\metaX$.
+%\meta{x} must not occur in $\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$
+\end{itemize}
 
-%\vfill
+
+\end{multicols}
+\begin{multicols}{2}
 
 \subsubsection*{Existential introduction}
 
@@ -492,7 +500,10 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 	\have[\ ]{c}{\exists \meta{x}\metaX(\ldots \meta{x} \ldots \meta{c}\ldots)} \Ei{a}
 \end{fitchproof}
 
-\noindent \meta{x} must not occur in $\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$
+\begin{itemize}
+	\item Instances of $c$ bound by $\forall x$ or $\exists x$ in $X$ must not be replaced. 
+\end{itemize}
+%\noindent \meta{x} must not occur in $\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$
 %\noindent You can replace one or more instance of \meta{c} with \meta{x}.
 
 \subsubsection*{Existential elimination}
@@ -507,33 +518,15 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 	\have[\ ]{d}{\metaY} \Ee{a,b-c}
 \end{fitchproof}
 
-\noindent \meta{c} must not occur in \\any undischarged assumption, \\in $\exists \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)$, \\or in \metaY
+\begin{itemize}
+	\item \meta{c} must be new to the proof: it does not occur in any line before $i$;
+	\item 	\meta{c} must not occur in \metaY.
+\end{itemize}
 %\vfill\columnbreak
+
 \end{multicols}
 
-\bigskip 
 
-\subsubsection*{Identity introduction}
-
-\begin{fitchproof}
-	\have[\ \,\,\,]{x}{\meta{c}\eid \meta{c}} \by{= I}{}
-\end{fitchproof}
-
-
-\subsubsection*{Identity elimination}
-
-\begin{multicols}{2}
-\begin{fitchproof}
-	\have[m]{e}{\meta{a}\eid \meta{b}}
-	\have[n]{a}{\metaX(\ldots \meta{a} \ldots \meta{a}\ldots)}
-	\have[\ ]{ea1}{\metaX(\ldots \meta{b} \ldots \meta{a}\ldots)} \by{= E}{e,a}
-\end{fitchproof}
-\begin{fitchproof}
-	\have[m]{e}{\meta{a}\eid \meta{b}}
-	\have[n]{a}{\metaX(\ldots \meta{b} \ldots \meta{b}\ldots)}
-	\have[\ ]{ea2}{\metaX(\ldots \meta{a} \ldots \meta{b}\ldots)} \by{= E}{e,a}
-\end{fitchproof}
-\end{multicols}
 
 
 \bigskip 
@@ -555,3 +548,29 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 \end{fitchproof}
 \end{multicols}
 
+
+
+\section{Identity rules}
+
+
+\subsubsection*{Identity introduction}
+
+\begin{fitchproof}
+	\have[\ \,\,\,]{x}{\meta{c}\eid \meta{c}} \by{= I}{}
+\end{fitchproof}
+
+
+\subsubsection*{Identity elimination}
+
+\begin{multicols}{2}
+	\begin{fitchproof}
+		\have[m]{e}{\meta{a}\eid \meta{b}}
+		\have[n]{a}{\metaX(\ldots \meta{a} \ldots \meta{a}\ldots)}
+		\have[\ ]{ea1}{\metaX(\ldots \meta{b} \ldots \meta{a}\ldots)} \by{= E}{e,a}
+	\end{fitchproof}
+	\begin{fitchproof}
+		\have[m]{e}{\meta{a}\eid \meta{b}}
+		\have[n]{a}{\metaX(\ldots \meta{b} \ldots \meta{b}\ldots)}
+		\have[\ ]{ea2}{\metaX(\ldots \meta{a} \ldots \meta{b}\ldots)} \by{= E}{e,a}
+	\end{fitchproof}
+\end{multicols}
