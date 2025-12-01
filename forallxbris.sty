@@ -136,6 +136,9 @@
 \newcommand*{\define}[1]{\textsc{\lowercase{\color{leadbeater}#1}}}
 
 
+\renewcommand{\emptyset}{\varnothing}
+
+
 %    ****************************************
 %    *          QUINE QUOTES          *
 %    ****************************************
@@ -236,6 +239,9 @@
 \newcolumntype{f}{@{\extracolsep{0.1em}}c }
 \newcommand*{\TTbf}[1]{\mainconnective{#1}}
 
+\RequirePackage[table]{xcolor}
+\newcommand{\varassigncline}[1]{\arrayrulecolor{gray!40}\cline{#1}\arrayrulecolor{black}}
+
 %    ****************************************
 %    *                PROOFS                *
 %    ****************************************
@@ -292,7 +298,7 @@
 \def\mt{\by{MT}}% TB: modus tollens (derived rule)
 \def\ds{\by{DS}}% TB: disjunctive syllogism (a derived rule in Cambridge version)
 \def\dem{\by{DeM}}% TB: De Morgan rule (derived rule)
-\def\cq{\by{CQ}}% TB: conversion of quantifiers (derived rule)
+\def\cq{\by{ConvQuant}}% TB: conversion of quantifiers (derived rule)
 
 
 %Modal logic
@@ -411,10 +417,16 @@ for tree={
 \def\pr{\ensuremath{p}}
 
 
+%\newcommand{\ensuretext}[1]{%
+%	\ifmmode
+%	\text{#1}%
+%	\else
+%	#1%
+%	\fi
+%}
 
-
-\newcommand{\true}{{T}}
-\newcommand{\false}{{F}}
+\newcommand{\true}{\textrm{T}}
+\newcommand{\false}{\textrm{F}}
 
 
 
