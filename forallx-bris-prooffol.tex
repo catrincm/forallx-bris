@@ -183,7 +183,7 @@ To give our rule in general we need to introduce some new notation for this abil
 	\have[m]{a}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}
 	\have[\ ]{c}{\exists \meta{x}\metaX(\ldots \meta{x} \ldots \meta{c}\ldots)} \existsI{a}
 \end{fitchproof}
-In $\metaX$, $c$ must not already be bound by $\forall \meta{x}$ or $\exists \meta{x}$. 
+Can only replace instances of $c$ which are not already bound by $\forall \meta{x}$ or $\exists \meta{x}$ in $\metaX$.
 }
 %All the cases we've seen in this section follow this rule.
 
@@ -247,9 +247,10 @@ The crucial thought here is that `$a$' was just some \emph{arbitrary} name. Ther
 	\have[\ ]{c}{\forall \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)} \Ai{a}
 \end{fitchproof}
 	\meta{c} must not occur in any undischarged assumption or premise.\\
-	\meta{x} must not occur in $\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$
+	\meta{c} must not already be bound by $\forall \meta{x}$ or $\exists \meta{x}$ in $\metaX$.
+%	\meta{x} must not occur in $\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$
 	}
-It is important to appreciate that to apply the rule correctly \textbf{we must replace every occurrence of the name $c$ by the variable $x$}. A crucial aspect of this rule, though, is bound up in the first constraint. This constraint ensures that we are always reasoning at a sufficiently general level (the second constraint guarantees that the variable $x$ is not already bound by a different quantifier in $X$ which would lead to unintended results.) 
+It is important to appreciate that to apply the rule correctly \textbf{we must replace every occurrence of the name $c$ by the variable $x$}. A crucial aspect of this rule, though, is bound up in the first constraint. This constraint ensures that we are always reasoning at a sufficiently general level (the second constraint is one which avoids unintended instances such as $\exists x Fcx\therefore \forall x\exists x Fxx$. The conclusion is logically equivalent to $\exists x Fxx$ and it is an invalid argument.) 
 %\footnote{Recall from \S\ref{s:BasicTFL} that we are treating `$\ered$' as a canonical contradiction. But if it were the canonical contradiction as involving some \emph{constant}, it might interfere with the constraint mentioned here. To avoid such problems, we will treat `$\ered$' as a canonical contradiction \emph{that involves no particular names}.}
 
 To see the constraint in action, consider this terrible argument:
