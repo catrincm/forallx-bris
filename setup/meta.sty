@@ -2,8 +2,17 @@
 
 
 % ---------- Yearly settings (edit once per year) ----------
-\newcommand{\AcademicYearText}{2025--26\xspace}  % for typeset text (en dash)
+\newcommand{\AcademicYearText}{2025--26 TB1\xspace}  % for typeset text (en dash)
 \newcommand{\AcademicYearPath}{2025-26}   % for URLs/paths (hyphen)
+
+
+
+% ---------- Status toggle ----------
+\newif\iffinalversion
+\finalversiontrue       % set \finalversiontrue at year end
+
+
+% ---------- Other settings ----------
 
 \newcommand{\Course}{PHIL10032 Logic and Critical Thinking}
 \newcommand{\University}{University of Bristol\xspace}
@@ -15,10 +24,6 @@
 
 
 
-% ---------- Status toggle ----------
-\newif\iffinalversion
-%\finalversiontrue       % set \finalversiontrue at year end
-
 
 
 % ---------- Derived text (no need to edit)----------
@@ -26,26 +31,34 @@
 
 % Full banner block used on the front matter
 \newcommand{\EditionBanner}{% 
-	 {\fontsize{12pt}{16pt}\selectfont
-	
-	\noindent For \Course\\\University
-	
-	\bigskip
-	
-	\noindent 	
-	\iffinalversion
+	{\fontsize{12pt}{16pt}\selectfont
+		
+		\noindent For \Course\\\University
+		
+		\bigskip
+		
+		\noindent 	
+		\iffinalversion
 		\noindent Final version from \AcademicYearText
-	\else
+		
+		\bigskip 
+		
+		\noindent Maintainer: \Teacher
+		
+		\else
 		\noindent In-progress version for \AcademicYearText \\
 		{\normalsize Last updated \@date. 
-		Please check for updates. }
-	\fi
-	
-	
-	\bigskip 
-	
-	\noindent Current maintainer: \Teacher
-	
+			Please check for updates. }
+		
+		\bigskip 
+		
+		\noindent Maintainer: \Teacher
+		
+		\fi
+		
+		
+		
+		
 	}
 }
 
