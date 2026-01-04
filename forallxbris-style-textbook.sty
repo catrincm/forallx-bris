@@ -159,7 +159,9 @@
 %\usepackage[active,generate=practiceproblems,extract-env={practiceproblems}]{extract}
 
 \newcommand\myanswer[1]{\textcolor{leadbeater}{#1}} % TB: puts model answers in blue
-\newcommand{\noanswers}{\renewcommand{\myanswer}[1]{}}
+\RequirePackage{marginnote}
+
+\newcommand{\noanswers}{\renewcommand{\myanswer}[1]{\marginnote{(\ensuremath{\ast})}}}
 \newcommand{\showanswers}{%
 	\renewcommand{\myanswer}[1]{\textcolor{blue}{##1}}%
 }
