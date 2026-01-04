@@ -10,8 +10,10 @@
 *.fot
 *.cb
 *.cb2
-*.pdf
 *.xmpi
+
+
+
 
 ## Intermediate documents:
 *.dvi
@@ -20,6 +22,11 @@
 *.ps
 *.eps
 *.pdf
+
+
+# --- Allow PDFs used by the website ---
+!/site/**/*.pdf
+!/site/**/*.pdf/**
 
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
