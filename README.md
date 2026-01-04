@@ -9,8 +9,6 @@ Download links for most recent version:
 -   [Textbook](https://catrincm.github.io/forallx-bris/forallxbris.pdf)
 -   [Accessible
     Textbook](https://catrincm.github.io/forallx-bris/forallxbris-accessible.pdf)
--   [Solutions
-    Book](https://catrincm.github.io/forallx-bris/forallxbris-withanswers.pdf)
 
 
 Downloads for previous editions can be found at [https://catrincm.github.io/forallx-bris/editions/](https://catrincm.github.io/forallx-bris/editions/).
