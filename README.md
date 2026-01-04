@@ -4,14 +4,15 @@ This is the formal logic textbook, _forall x: Bristol Remix_.
 
 [Site](https://catrincm.github.io/forallx-bris)
 
-Download links for most recent version:
-
--   [Textbook](https://catrincm.github.io/forallx-bris/forallxbris.pdf)
--   [Accessible
-    Textbook](https://catrincm.github.io/forallx-bris/forallxbris-accessible.pdf)
 
 
-[Previous Editions](https://catrincm.github.io/forallx-bris/editions/)
+Download links:
+
+-   [Most recent version of textbook](https://catrincm.github.io/forallx-bris/forallxbris.pdf)
+-   [Most recent version of textbook with accessible formatting](https://catrincm.github.io/forallx-bris/forallxbris-accessible.pdf)
+-   [Previous Editions](https://catrincm.github.io/forallx-bris/editions/)
+
+
 
 
 This book is based on forallx: Calgary by
