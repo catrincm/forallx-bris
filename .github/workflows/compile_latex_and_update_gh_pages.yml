@@ -53,18 +53,6 @@ jobs:
           cp "./main_repo/forallxbris-accessible.pdf" "./main_repo/site/"
           cp "./main_repo/forallxbris-accessible.pdf" "./main_repo/site/editions/$ACADEMIC_YEAR/forallxbris-accessible.pdf"
 
-      - name: Compile forallxbris-withanswers.tex
-        uses: xu-cheng/latex-action@v3
-        with:
-          root_file: forallxbris-withanswers.tex
-          working_directory: ./main_repo
-
-      - name: Copy to ./site/ directory (withanswers)
-        run: |
-          set -euo pipefail
-          cp "./main_repo/forallxbris-withanswers.pdf" "./main_repo/site/"
-          cp "./main_repo/forallxbris-withanswers.pdf" "./main_repo/site/editions/$ACADEMIC_YEAR/forallxbris-withanswers.pdf"
-
       - name: Copy README to ./site/ directory
         run: |
           set -euo pipefail

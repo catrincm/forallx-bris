@@ -28,13 +28,24 @@
 \addcontentsline{toc}{part}{Appendices}
 \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
 
-\input{forallx-bris-notation} % RZ for some reason, with an \include here the TOC gets messed up
+
+\chapter{Answers to practice exercises}
+\label{ch.answers}
+\PrintCollectedPracticeWithAnswers
+
+
+\include{forallx-bris-notation} 
 %\include{forallx-bris-alternatives}
 \include{forallx-bris-quickreference}
 
+
 \backmatter
 
-\glsaddallunused
-\addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
-\printglossaries
+%\glsaddallunused
+%\addcontentsline{toc}{part}{Glossary}
+%\addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
+%\printglossaries
+
+
+
 \include{forallx-bris-backmatter}

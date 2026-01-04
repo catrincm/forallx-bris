@@ -145,18 +145,76 @@
 \renewcommand{\theHProbPart}{\thechapter.\theProbPart}
 % This inserts a heading and resets the counter:
 
-\newenvironment{practiceproblems}{
-	\setcounter{ProbPart}{0}\section*{Practice exercises}%
-  \sectionmark{Practice exercises}%
-	\addcontentsline{toc}{section}{Practice exercises}
-}{}
+%\newenvironment{practiceproblems}{
+%	\setcounter{ProbPart}{0}\section*{Practice exercises}%
+%  \sectionmark{Practice exercises}%
+%	\addcontentsline{toc}{section}{Practice exercises}
+%}{}
 
 
-\usepackage{comment}
-\newcommand{\nopracticeproblems}{\excludecomment{practiceproblems}}
+%\RequirePackage{comment}
+%\newcommand{\nopracticeproblems}{\excludecomment{practiceproblems}}
 
 
 %\usepackage[active,generate=practiceproblems,extract-env={practiceproblems}]{extract}
+
+\newcommand\myanswer[1]{\textcolor{leadbeater}{#1}} % TB: puts model answers in blue
+\newcommand{\noanswers}{\renewcommand{\myanswer}[1]{}}
+\newcommand{\showanswers}{%
+	\renewcommand{\myanswer}[1]{\textcolor{blue}{##1}}%
+}
+
+
+
+\RequirePackage{xparse}
+\ExplSyntaxOn
+
+\tl_new:N \g_practice_store_tl
+
+% #1 = chapter number (already frozen as digits)
+% #2 = body
+\cs_new_protected:Npn \__pr_replay:nn #1#2
+{
+	\section*{Chapter~#1}
+	\begingroup
+	\setcounter{ProbPart}{0}%
+	
+	% avoid hyperref anchors on replay
+	\cs_set_eq:NN \refstepcounter \stepcounter
+	\cs_if_exist:NT \phantomsection
+	{ \cs_set_eq:NN \phantomsection \prg_do_nothing: }
+	
+	\showanswers
+	#2
+	\endgroup
+}
+
+\NewDocumentEnvironment{practiceproblems}{+b}
+{
+	% typeset in place (use frozen arabic chapter number)
+	\par\bigskip
+	\noindent\textbf{Practice~exercises~(Chapter~\int_to_arabic:n{\value{chapter}})}\par\medskip
+	\setcounter{ProbPart}{0}%
+	#1
+	
+	% store for later replay:
+	% - expand chapter number NOW to digits
+	% - keep body unexpanded
+	\tl_gput_right:Nx \g_practice_store_tl
+	{
+		\exp_not:N \__pr_replay:nn
+		{ \int_to_arabic:n { \value{chapter} } }
+		{ \exp_not:n {#1} }
+	}
+}
+{ }
+
+\NewDocumentCommand{\PrintCollectedPracticeWithAnswers}{}
+{ \tl_use:N \g_practice_store_tl }
+
+\ExplSyntaxOff
+
+
 
 
 
@@ -177,6 +235,13 @@
 	\markright{solutions for ch.~\ref{#1}}%
 	\setcounter{countSeq}{0}
 }
+
+
+
+
+
+
+
 
 % This is used to enumerate things that have a given property.
 % For example: \nextSeq\nextSeq\noSeq\lastSeq are valid.
@@ -214,9 +279,7 @@
 \setlength{\columnsep}{2em} % Sets 2em space between columns when calling multicol
 
 \definecolor{darkred}{rgb}{0.5,0,0} % TB: used to color links in red
-\newcommand\myanswer[1]{\textcolor{leadbeater}{#1}} % TB: puts model answers in blue
 
-\newcommand{\noanswers}[1]{\renewcommand{\myanswer}[1]{}}
 
 
 
