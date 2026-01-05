@@ -5,19 +5,19 @@ on:
     branches:
       - master
 
-jobs:
-  compile_and_deploy:
-    runs-on: ubuntu-latest
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
+jobs:
+  build:
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout branch
+      - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          ref: master
-          path: main_repo
 
       - name: Load academic year
-        working-directory: ./main_repo
         run: |
           set -euo pipefail
           AY=$(cat setup/academic-year.txt)
@@ -26,54 +26,48 @@ jobs:
       - name: Prepare site folders
         run: |
           set -euo pipefail
-          mkdir -p "./main_repo/site"
-          mkdir -p "./main_repo/site/editions/$ACADEMIC_YEAR"
+          mkdir -p "./site"
+          mkdir -p "./site/editions/$ACADEMIC_YEAR"
 
       - name: Compile forallxbris.tex
         uses: xu-cheng/latex-action@v3
         with:
           root_file: forallxbris.tex
-          working_directory: ./main_repo
 
       - name: Copy to ./site/ directory (forallxbris)
         run: |
           set -euo pipefail
-          cp "./main_repo/forallxbris.pdf" "./main_repo/site/"
-          cp "./main_repo/forallxbris.pdf" "./main_repo/site/editions/$ACADEMIC_YEAR/forallxbris.pdf"
+          cp "./forallxbris.pdf" "./site/"
+          cp "./forallxbris.pdf" "./site/editions/$ACADEMIC_YEAR/forallxbris.pdf"
 
       - name: Compile forallxbris-accessible.tex
         uses: xu-cheng/latex-action@v3
         with:
           root_file: forallxbris-accessible.tex
-          working_directory: ./main_repo
 
       - name: Copy to ./site/ directory (accessible)
         run: |
           set -euo pipefail
-          cp "./main_repo/forallxbris-accessible.pdf" "./main_repo/site/"
-          cp "./main_repo/forallxbris-accessible.pdf" "./main_repo/site/editions/$ACADEMIC_YEAR/forallxbris-accessible.pdf"
+          cp "./forallxbris-accessible.pdf" "./site/"
+          cp "./forallxbris-accessible.pdf" "./site/editions/$ACADEMIC_YEAR/forallxbris-accessible.pdf"
 
       - name: Copy README to ./site/ directory
         run: |
           set -euo pipefail
-          cp "./main_repo/README.md" "./main_repo/site/index.md" || true
+          cp "./README.md" "./site/index.md" || true
 
-      - name: Checkout 'gh-pages' branch
-        uses: actions/checkout@v4
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          ref: gh-pages
-          path: gh_pages_repo
+          path: ./site
 
-      - name: Copy ./site/ directory to 'gh-pages' (non-destructive so that past years content remains there)
-        run: |
-          set -euo pipefail
-          cp -r "./main_repo/site/"* "./gh_pages_repo/"
-
-      - name: Push to 'gh-pages' branch
-        run: |
-          set -euo pipefail
-          cd gh_pages_repo
-          git config user.name "GitHub Action"
-          git config user.email "action@github.com"
-          git add .
-          git diff --staged --quiet || (git commit -m "Update gh-pages branch ($ACADEMIC_YEAR)" && git push origin gh-pages)
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
