@@ -1,3 +1,5 @@
 title: forall x Bristol Remix
 description: This is the formal logic textbook, forall x Bristol.
 theme: jekyll-theme-slate
+url: "https://catrincm.github.io"
+baseurl: "/forallx-bris"
