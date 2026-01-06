@@ -2418,21 +2418,21 @@ The result will be:
 		&& &$\atomicstage{L}$ & &  & \\[.3em]
 		\hline
 		$v_1:$ & T & T &
-		& F & \textcolor{gray!20}{T} & \TTbf{T} & & \textcolor{gray!20}{T} & T & \textcolor{gray!20}{T} & & &
-		\TTbf{F} & \textcolor{gray!20}{T} &
-		& F & \textcolor{gray!20}{T} & \TTbf{T} & \textcolor{gray!20}{T} & \\
+		& F & \textcolor{gray!50}{T} & \TTbf{T} & & \textcolor{gray!50}{T} & T & \textcolor{gray!50}{T} & & &
+		\TTbf{F} & \textcolor{gray!50}{T} &
+		& F & \textcolor{gray!50}{T} & \TTbf{T} & \textcolor{gray!50}{T} & \\
 		$v_2:$ & T & F &
-		& T & \textcolor{gray!20}{F} & \TTbf{T} & & \textcolor{gray!20}{T} & T & \textcolor{gray!20}{F} & & &
-		\TTbf{F} & \textcolor{gray!20}{T} &
-		& T & \textcolor{gray!20}{F} & \TTbf{T} & \textcolor{gray!20}{T} & \\
+		& T & \textcolor{gray!50}{F} & \TTbf{T} & & \textcolor{gray!50}{T} & T & \textcolor{gray!50}{F} & & &
+		\TTbf{F} & \textcolor{gray!50}{T} &
+		& T & \textcolor{gray!50}{F} & \TTbf{T} & \textcolor{gray!50}{T} & \\
 		$v_3:$ & F & T &
-		& F & \textcolor{gray!20}{T} & \TTbf{T} & & \textcolor{gray!20}{F} & T & \textcolor{gray!20}{T} & & &
-		\TTbf{T} & \textcolor{gray!20}{F} &
-		& F & \textcolor{gray!20}{T} & \TTbf{T} & \textcolor{gray!20}{F} & \\
+		& F & \textcolor{gray!50}{T} & \TTbf{T} & & \textcolor{gray!50}{F} & T & \textcolor{gray!50}{T} & & &
+		\TTbf{T} & \textcolor{gray!50}{F} &
+		& F & \textcolor{gray!50}{T} & \TTbf{T} & \textcolor{gray!50}{F} & \\
 		$v_4:$ & F & F &
-		& T & \textcolor{gray!20}{F} & \TTbf{F} & & \textcolor{gray!20}{F} & F & \textcolor{gray!20}{F} & & &
-		\TTbf{T} & \textcolor{gray!20}{F} &
-		& T & \textcolor{gray!20}{F} & \TTbf{F} & \textcolor{gray!20}{F} & \\
+		& T & \textcolor{gray!50}{F} & \TTbf{F} & & \textcolor{gray!50}{F} & F & \textcolor{gray!50}{F} & & &
+		\TTbf{T} & \textcolor{gray!50}{F} &
+		& T & \textcolor{gray!50}{F} & \TTbf{F} & \textcolor{gray!50}{F} & \\
 	\end{tabular}
 \end{center}
 
@@ -2545,44 +2545,44 @@ $P\eif(C\eor D)\,,\,\enot C\;\therefore P\eif D$
 		\hline
 		% v1
 		$v_1:$ & T & T & T
-		& \textcolor{gray!20}{T} & \TTbf{T} &  & \textcolor{gray!20}{T} & T & \textcolor{gray!20}{T} & 
-		& \TTbf{F} & \textcolor{gray!20}{T}
-		&  & \textcolor{gray!20}{T} & \TTbf{T} & \textcolor{gray!20}{T} &  \\
+		& \textcolor{gray!50}{T} & \TTbf{T} &  & \textcolor{gray!50}{T} & T & \textcolor{gray!50}{T} & 
+		& \TTbf{F} & \textcolor{gray!50}{T}
+		&  & \textcolor{gray!50}{T} & \TTbf{T} & \textcolor{gray!50}{T} &  \\
 		% v2
 		$v_2:$ & T & T & F
-		& \textcolor{gray!20}{T} & \TTbf{T} &  & \textcolor{gray!20}{T} & T & \textcolor{gray!20}{F} & 
-		& \TTbf{F} & \textcolor{gray!20}{T}
-		&  & \textcolor{gray!20}{T} & \TTbf{F} & \textcolor{gray!20}{F} &  \\
+		& \textcolor{gray!50}{T} & \TTbf{T} &  & \textcolor{gray!50}{T} & T & \textcolor{gray!50}{F} & 
+		& \TTbf{F} & \textcolor{gray!50}{T}
+		&  & \textcolor{gray!50}{T} & \TTbf{F} & \textcolor{gray!50}{F} &  \\
 		% v3
 		$v_3:$ & T & F & T
-		& \textcolor{gray!20}{T} & \TTbf{T} &  & \textcolor{gray!20}{F} & T & \textcolor{gray!20}{T} & 
-		& \TTbf{T} & \textcolor{gray!20}{F}
-		&  & \textcolor{gray!20}{T} & \TTbf{T} & \textcolor{gray!20}{T} &  \\
+		& \textcolor{gray!50}{T} & \TTbf{T} &  & \textcolor{gray!50}{F} & T & \textcolor{gray!50}{T} & 
+		& \TTbf{T} & \textcolor{gray!50}{F}
+		&  & \textcolor{gray!50}{T} & \TTbf{T} & \textcolor{gray!50}{T} &  \\
 		% v4
 		$v_4:$ & T & F & F
-		& \textcolor{gray!20}{T} & \TTbf{F} &  & \textcolor{gray!20}{F} & F & \textcolor{gray!20}{F} & 
-		& \TTbf{T} & \textcolor{gray!20}{F}
-		&  & \textcolor{gray!20}{T} & \TTbf{F} & \textcolor{gray!20}{F} &  \\
+		& \textcolor{gray!50}{T} & \TTbf{F} &  & \textcolor{gray!50}{F} & F & \textcolor{gray!50}{F} & 
+		& \TTbf{T} & \textcolor{gray!50}{F}
+		&  & \textcolor{gray!50}{T} & \TTbf{F} & \textcolor{gray!50}{F} &  \\
 		% v5
 		$v_5:$ & F & T & T
-		& \textcolor{gray!20}{F} & \TTbf{T} &  & \textcolor{gray!20}{T} & T & \textcolor{gray!20}{T} & 
-		& \TTbf{F} & \textcolor{gray!20}{T}
-		&  & \textcolor{gray!20}{F} & \TTbf{T} & \textcolor{gray!20}{T} &  \\
+		& \textcolor{gray!50}{F} & \TTbf{T} &  & \textcolor{gray!50}{T} & T & \textcolor{gray!50}{T} & 
+		& \TTbf{F} & \textcolor{gray!50}{T}
+		&  & \textcolor{gray!50}{F} & \TTbf{T} & \textcolor{gray!50}{T} &  \\
 		% v6
 		$v_6:$ & F & T & F
-		& \textcolor{gray!20}{F} & \TTbf{T} &  & \textcolor{gray!20}{T} & T & \textcolor{gray!20}{F} & 
-		& \TTbf{F} & \textcolor{gray!20}{T}
-		&  & \textcolor{gray!20}{F} & \TTbf{T} & \textcolor{gray!20}{F} &  \\
+		& \textcolor{gray!50}{F} & \TTbf{T} &  & \textcolor{gray!50}{T} & T & \textcolor{gray!50}{F} & 
+		& \TTbf{F} & \textcolor{gray!50}{T}
+		&  & \textcolor{gray!50}{F} & \TTbf{T} & \textcolor{gray!50}{F} &  \\
 		% v7
 		$v_7:$ & F & F & T
-		& \textcolor{gray!20}{F} & \TTbf{T} &  & \textcolor{gray!20}{F} & T & \textcolor{gray!20}{T} & 
-		& \TTbf{T} & \textcolor{gray!20}{F}
-		&  & \textcolor{gray!20}{F} & \TTbf{T} & \textcolor{gray!20}{T} &  \\
+		& \textcolor{gray!50}{F} & \TTbf{T} &  & \textcolor{gray!50}{F} & T & \textcolor{gray!50}{T} & 
+		& \TTbf{T} & \textcolor{gray!50}{F}
+		&  & \textcolor{gray!50}{F} & \TTbf{T} & \textcolor{gray!50}{T} &  \\
 		% v8
 		$v_8:$ & F & F & F
-		& \textcolor{gray!20}{F} & \TTbf{T} &  & \textcolor{gray!20}{F} & F & \textcolor{gray!20}{F} & 
-		& \TTbf{T} & \textcolor{gray!20}{F}
-		&  & \textcolor{gray!20}{F} & \TTbf{T} & \textcolor{gray!20}{F} &  \\
+		& \textcolor{gray!50}{F} & \TTbf{T} &  & \textcolor{gray!50}{F} & F & \textcolor{gray!50}{F} & 
+		& \TTbf{T} & \textcolor{gray!50}{F}
+		&  & \textcolor{gray!50}{F} & \TTbf{T} & \textcolor{gray!50}{F} &  \\
 	\end{tabular}
 \end{center}
 
@@ -2591,7 +2591,9 @@ This is valid.
 
 \subsection{Example}
 
-$A\eor B,\,\enot (B\eand \enot C)\,\therefore \, \enot C\eor A$\begin{center}
+
+$A\eor B,\,\enot (B\eand \enot C)\,\therefore \, \enot C\eor A$
+\begin{center}
 	\begin{tabular}{r c c c | def | deeeeef | deeeef}
 		&&&& \multicolumn{3}{c}{Premise 1} & \multicolumn{7}{c}{Premise 2} & \multicolumn{6}{c}{Conclusion}\\
 		Val & $A$ & $B$ & $C$
@@ -2599,40 +2601,49 @@ $A\eor B,\,\enot (B\eand \enot C)\,\therefore \, \enot C\eor A$\begin{center}
 		& \mainconnective{$\enot$} & {(} & $B$ & {$\eand$} & {$\enot$} & $C$ & {)}
 		& {(} & {$\enot$} & $C$ & \mainconnective{$\eor$} & $A$ & {)} \\[.3em]
 		\hline
-		$v_1:$ & T & T & T
-		& T & \TTbf{T} & T
-		& \TTbf{T} &  & T & F & F & T &
-		&  & F & T & \TTbf{T} & T &  \\
-		$v_2:$ & T & T & F
-		& T & \TTbf{T} & T
-		& \TTbf{F} &  & T & T & T & F &
-		&  & T & F & \TTbf{T} & T &  \\
-		$v_3:$ & T & F & T
-		& T & \TTbf{T} & F
-		& \TTbf{T} &  & F & F & F & T &
-		&  & F & T & \TTbf{T} & T &  \\
-		$v_4:$ & T & F & F
-		& T & \TTbf{T} & F
-		& \TTbf{T} &  & F & F & T & F &
-		&  & T & F & \TTbf{T} & T &  \\
-		$\bigstar$ $v_5:$ & F & T & T
-		& F & \TTbf{T} & T
-		& \TTbf{T} &  & T & F & F & T &
-		&  & F & T & \TTbf{F} & F &  \\
-		$v_6:$ & F & T & F
-		& F & \TTbf{T} & T
-		& \TTbf{F} &  & T & T & T & F &
-		&  & T & F & \TTbf{T} & F &  \\
-		$v_7:$ & F & F & T
-		& F & \TTbf{F} & F
-		& \TTbf{T} &  & F & F & F & T &
-		&  & F & T & \TTbf{F} & F &  \\
-		$v_8:$ & F & F & F
-		& F & \TTbf{F} & F
-		& \TTbf{T} &  & F & F & T & F &
-		&  & T & F & \TTbf{T} & F &  \\
+	$v_1:$ & T & T & T
+	& \textcolor{gray!50}{T} & \TTbf{T} & \textcolor{gray!50}{T}
+	& \TTbf{T} &  & \textcolor{gray!50}{T} & F & F & \textcolor{gray!50}{T} &
+	&  & F & \textcolor{gray!50}{T} & \TTbf{T} & \textcolor{gray!50}{T} &  \\
+	
+	$v_2:$ & T & T & F
+	& \textcolor{gray!50}{T} & \TTbf{T} & \textcolor{gray!50}{T}
+	& \TTbf{F} &  & \textcolor{gray!50}{T} & T & T & \textcolor{gray!50}{F} &
+	&  & T & \textcolor{gray!50}{F} & \TTbf{T} & \textcolor{gray!50}{T} &  \\
+	
+	$v_3:$ & T & F & T
+	& \textcolor{gray!50}{T} & \TTbf{T} & \textcolor{gray!50}{F}
+	& \TTbf{T} &  & \textcolor{gray!50}{F} & F & F & \textcolor{gray!50}{T} &
+	&  & F & \textcolor{gray!50}{T} & \TTbf{T} & \textcolor{gray!50}{T} &  \\
+	
+	$v_4:$ & T & F & F
+	& \textcolor{gray!50}{T} & \TTbf{T} & \textcolor{gray!50}{F}
+	& \TTbf{T} &  & \textcolor{gray!50}{F} & F & T & \textcolor{gray!50}{F} &
+	&  & T & \textcolor{gray!50}{F} & \TTbf{T} & \textcolor{gray!50}{T} &  \\
+	
+	$\bigstar$ $v_5:$ & F & T & T
+	& \textcolor{gray!50}{F} & \TTbf{T} & \textcolor{gray!50}{T}
+	& \TTbf{T} &  & \textcolor{gray!50}{T} & F & F & \textcolor{gray!50}{T} &
+	&  & F & \textcolor{gray!50}{T} & \TTbf{F} & \textcolor{gray!50}{F} &  \\
+	
+	$v_6:$ & F & T & F
+	& \textcolor{gray!50}{F} & \TTbf{T} & \textcolor{gray!50}{T}
+	& \TTbf{F} &  & \textcolor{gray!50}{T} & T & T & \textcolor{gray!50}{F} &
+	&  & T & \textcolor{gray!50}{F} & \TTbf{T} & \textcolor{gray!50}{F} &  \\
+	
+	$v_7:$ & F & F & T
+	& \textcolor{gray!50}{F} & \TTbf{F} & \textcolor{gray!50}{F}
+	& \TTbf{T} &  & \textcolor{gray!50}{F} & F & F & \textcolor{gray!50}{T} &
+	&  & F & \textcolor{gray!50}{T} & \TTbf{F} & \textcolor{gray!50}{F} &  \\
+	
+	$v_8:$ & F & F & F
+	& \textcolor{gray!50}{F} & \TTbf{F} & \textcolor{gray!50}{F}
+	& \TTbf{T} &  & \textcolor{gray!50}{F} & F & T & \textcolor{gray!50}{F} &
+	&  & T & \textcolor{gray!50}{F} & \TTbf{T} & \textcolor{gray!50}{F} &  \\
+	
 	\end{tabular}
 \end{center}
+
 On $v_5$, premises are both true but conclusion is false. The argument is invalid. 
 
 
