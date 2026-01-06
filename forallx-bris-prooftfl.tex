@@ -365,8 +365,8 @@ The point is simply that, when you have a conjunction on some line of a proof, y
 
 Even with just these two rules, we can start to see some of the power of our formal proof system. Consider:
 \begin{earg}
-\prem $[(A\eor B)\eif(C\eor D)] \eand \enot(E\eor F)$
-\conc $\enot(E\eor F) \eand [(A\eor B)\eif(C\eor D)]$
+\prem $((A\eor B)\eif(C\eor D)) \eand \enot(E\eor F)$
+\conc $\enot(E\eor F) \eand ((A\eor B)\eif(C\eor D))$
 \end{earg}
 The main logical operator in both the premise and conclusion of this argument is `$\eand$'. In order to provide a proof, we begin by writing down the premise, which is our assumption. We draw a line below this: everything after this line must follow from our assumptions by (repeated applications of) our rules of inference. So the beginning of the proof looks like this:
 \begin{fitchproof}
@@ -2236,7 +2236,7 @@ Validity 				& Derive the conclusion from the premises & Find no line in the tru
 \begin{practiceproblems}
 \noindent\problempart Use either a derivation or a truth table for each of the following.
 \begin{problemslist}%[label=(\arabic*)]
-\item Show that $A \eif [((B \eand C) \eor D) \eif A]$ is a tautology.
+\item Show that $A \eif (((B \eand C) \eor D) \eif A)$ is a tautology.
 \item Show that $A \eif (A \eif B)$ is not a tautology
 \item Show that the sentence $A \eif \enot{A}$ is not a contradiction.
 \item Show that the sentence $A \eiff \enot A$ is a contradiction.
@@ -2349,7 +2349,7 @@ Show that each of the following sentences is a theorem:
 \begin{compactlist}
 \item $O \eif O$
 \item $N \eor \enot N$
-\item $J \eiff [J\eor (L\eand\enot L)]$
+\item $J \eiff (J\eor (L\eand\enot L))$
 \item $((A \eif B) \eif A) \eif A$
 \end{compactlist}
 

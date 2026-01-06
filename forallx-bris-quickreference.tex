@@ -195,7 +195,7 @@ One way to say `there are at most $n$ Fs' is to put a negation sign in front of 
 \item[\text{one}] $\forall x_1\forall x_2\bigl[(Fx_1 \eand Fx_2) \eif x_1\eid x_2\bigr]$
 \item[\text{two}] $\forall x_1\forall x_2\forall x_3\bigl[(Fx_1 \eand Fx_2 \eand Fx_3) \eif (x_1\eid x_2 \eor x_1\eid x_3 \eor x_2\eid x_3)\bigr]$
 \item[\text{three}] $\forall x_1\forall x_2\forall x_3\forall x_4\bigl[(Fx_1 \eand Fx_2 \eand Fx_3 \eand Fx_4) \eif \phantom{.}$\\
-\phantom{$\exists x_1 \exists x_2$}$(x_1\eid x_2 \eor x_1\eid x_3 \eor x_1\eid x_4 \eor x_2\eid x_3 \eor x_2\eid x_4 \eor x_3\eid x_4)\bigr]$
+\phantom{$\exists x_1 \exists x_2$}$(x_1\eid x_2 \eor x_1\eid x_3 \eor x_1\eid x_4 \eor x_2\eid x_3 \eor x_2\eid x_4 \eor x_3\eid x_4)\bigr)$
 \item[n]$\forall x_1\ldots\forall x_{n+1}
 \bigl[(Fx_1\eand \ldots \eand Fx_{n+1}) \eif (x_1\eid x_2 \eor \ldots \eor x_n\eid x_{n+1})\bigr]$ 
 \end{ekey}
@@ -209,9 +209,9 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 \item[\text{one}] $\exists x\bigl[Fx \eand \forall y(Fy \eif x\eid  y)\bigr]$
 \item[\text{two}] $\exists x_1\exists x_2\bigl[Fx_1 \eand Fx_2 \eand \enot x_1 \eid  x_2 \eand \forall y\bigl(Fy \eif (y\eid  x_1 \eor y \eid  x_2)\bigr) \bigr]$
 \item[\text{three}] $\exists x_1\exists x_2\exists x_3\bigl[Fx_1 \eand Fx_2 \eand Fx_3 \eand \enot x_1 \eid   x_2 \eand \enot  x_1 \eid  x_3 \eand \enot x_2 \eid  x_3 \eand \phantom{.}$\\
-\phantom{$\exists x_1 \exists x_2$}$\forall y\bigl(Fy \eif (y \eid  x_1 \eor y \eid  x_2 \eor y \eid   x_3)\bigr) \bigr]$
+\phantom{$\exists x_1 \exists x_2$}$\forall y\bigl(Fy \eif (y \eid  x_1 \eor y \eid  x_2 \eor y \eid   x_3)\bigr) \bigr)$
 \item[n] $\exists x_1\ldots\exists x_n\bigl[Fx_1 \eand\ldots\eand Fx_n  \eand \enot x_1 \eid  x_2 \eand\ldots\eand \enot x_{n-1}\eid  x_n \eand \phantom{.}$\\
-\phantom{$\exists x_1\exists x_2$}$\forall y\bigl(Fy \eif (y\eid  x_1 \eor \ldots \eor y\eid  x_n)\bigr)\bigr]$ 
+\phantom{$\exists x_1\exists x_2$}$\forall y\bigl(Fy \eif (y\eid  x_1 \eor \ldots \eor y\eid  x_n)\bigr)\bigr)$ 
 %\item[one] $\exists x\forall y\bigl[Fx \eand (Fy \eif y \eid  x)\bigr]$
 %\item[two] $\exists x\exists y\forall z\Bigl(Fx \eand Fy \eand \bigl[Fz \eif (z\eid x \eor z\eid y)\bigr] \eand x \neq y\Bigr)$
 %\item[three] $\exists x_1\exists x_2\exists x_3\forall y\Bigl(Fx_1 \eand Fx_2 \eand Fx_3 \eand [Fy \eif (y\eid x_1 \eor y\eid x_2 \eor y\eid x_3)] \eand x_1 \neq x_2 \eand x_1 \neq x_3 \eand x_2 \neq x_3\Bigr)$

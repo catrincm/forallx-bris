@@ -988,7 +988,7 @@ Identify which variables are bound and which are free.
 \item $\exists x Lxy \eand \forall y Lyx$
 \item $\forall x Ax \eand Bx$
 \item $\forall x (Ax \eand Bx) \eand \forall y(Cx \eand Dy)$
-\item $\forall x\exists y[Rxy \eif (Jz \eand Kx)] \eor Ryx$
+\item $\forall x\exists y(Rxy \eif (Jz \eand Kx)) \eor Ryx$
 \item $\forall x_1(Mx_2 \eif Lx_2x_1) \eand \exists x_2 Lx_3x_2$
 \end{problemslist}
 
@@ -1739,7 +1739,7 @@ We need to distinguish being a \emph{skilled surgeon} from merely being a \emph{
 Now the argument can be symbolized in this way:
 \begin{earg}
 \label{surgeon2}
-\prem $\forall x\bigl[\enot (Rx \eand Kx) \eif \enot Hx\bigr]$
+\prem $\forall x\bigl(\enot (Rx \eand Kx) \eif \enot Hx\bigr)$
 \prem $\forall x(Rx \eif Gx)$
 \prem $Rb \eand \enot Kb$
 \conc $Gb \eand \enot Hb$
@@ -2082,11 +2082,11 @@ $$\exists y \exists x(Dx \eand Oyx)$$
 We should pause to clarify something here. In working out how to symbolize the last sentence, we wrote down $\exists y(y\text{ is a dog owner})$. To be very clear: this is \emph{neither} an FOL sentence \emph{nor} an English sentence: it uses bits of FOL ($\exists$, $y$) and bits of English (`dog owner'). It is really is \emph{just a stepping-stone} on the way to symbolizing the entire English sentence with a FOL sentence. You should regard it as a bit of rough-working-out, on a par with the doodles that you might absent-mindedly draw in the margin of this book, whilst you are concentrating fiercely on some problem.
 
 Sentence \ref{dog4} can be paraphrased as, `Everyone who is a friend of Geraldo is a dog owner'. Using our stepping-stone tactic, we might write
-$$\forall x \bigl[Fxg \eif x \text{ is a dog owner}\bigr]$$
+$$\forall x \bigl(Fxg \eif x \text{ is a dog owner}\bigr)$$
 Now the fragment that we have left to deal with, `$x$ is a dog owner', is structurally just like sentence \ref{dog2}. However, it would be a mistake for us simply to write
-$$\forall x \bigl[Fxg \eif \exists x(Dx \eand Oxx)\bigr]$$
+$$\forall x \bigl(Fxg \eif \exists x(Dx \eand Oxx)\bigr)$$
 for we would here have a \emph{clash of variables}. While the scope of the universal quantifier, $\forall x$, is the entire conditional, the variable $x$ does not occur free in the consequent of the conditional : it is bound by the existential quantifier instead. This means that 
-$$\forall x \bigl[Fxg \eif \exists x(Dx \eand Oxx)\bigr]$$
+$$\forall x \bigl(Fxg \eif \exists x(Dx \eand Oxx)\bigr)$$
 does not symbolize `Every friend of Gerald is a dog owner' but rather a rather something like:
 \begin{itemize}
 \item If everyone is a friend of Gerald, then there is a dog that owns itself.
@@ -2094,33 +2094,33 @@ does not symbolize `Every friend of Gerald is a dog owner' but rather a rather s
 That's clearly not what we wanted!
 
 To make sure that we get the intended outcome we need to see to it that the universal quantifier binds the owner position in the consequent of the conditional. To continue our symbolization, then, we must choose some different variable for our existential quantifier. What we want is something like:
-$$\forall x\bigl[Fxg \eif\exists z(Dz \eand Oxz)\bigr]$$
+$$\forall x\bigl(Fxg \eif\exists z(Dz \eand Oxz)\bigr)$$
 This adequately symbolizes sentence \ref{dog4}, as the variable $x$ now occurs free in the consequent of the conditional and can be bound by the universal quatifier, which in turn guarantees that dog-owner must be friends of Gerald.
 
 Sentence \ref{dog5} can be paraphrased as `For any x that is a dog owner, there is a dog owner who x is a friend of'. Using our stepping-stone tactic, this becomes
-$$\forall x\bigl[\mbox{$x$ is a dog owner}\eif\exists y(\mbox{$y$ is a dog owner}\eand Fxy)\bigr]$$
+$$\forall x\bigl(\mbox{$x$ is a dog owner}\eif\exists y(\mbox{$y$ is a dog owner}\eand Fxy)\bigr)$$
 Completing the symbolization, we end up with
-$$\forall x\bigl[\exists z(Dz \eand Oxz)\eif\exists y\bigl(\exists z(Dz \eand Oyz)\eand Fxy\bigr)\bigr]$$
+$$\forall x\bigl(\exists z(Dz \eand Oxz)\eif\exists y\bigl(\exists z(Dz \eand Oyz)\eand Fxy\bigr)\bigr)$$
 Note that we have used the same letter, $z$, in both the antecedent and the consequent of the conditional, but that these are governed by two different quantifiers. This is ok: there is no clash here, because it is clear which quantifier that variable falls under. We might graphically represent the scope of the quantifiers thus:
-$$\overbrace{\forall x\bigl[\overbrace{\exists z(Dz \eand Oxz)}^{\text{scope of 1st `}\exists z\text{'}}\eif \overbrace{\exists y(\overbrace{\exists z(Dz \eand Oyz)}^{\text{scope of 2nd `}\exists z\text{'}}\eand Fxy)\bigr]}^{\text{scope of `}\exists y\text{'}}}^{\text{scope of `}\forall x\text{'}}$$
+$$\overbrace{\forall x\bigl(\overbrace{\exists z(Dz \eand Oxz)}^{\text{scope of 1st `}\exists z\text{'}}\eif \overbrace{\exists y(\overbrace{\exists z(Dz \eand Oyz)}^{\text{scope of 2nd `}\exists z\text{'}}\eand Fxy)\bigr)}^{\text{scope of `}\exists y\text{'}}}^{\text{scope of `}\forall x\text{'}}$$
 This shows that no variable is being forced to serve two masters simultaneously.
 
 Sentence \ref{dog6} is the trickiest yet. First we paraphrase it as `For any x that is a friend of a dog owner, x owns a dog which is also owned by a friend of x'. Using our stepping-stone tactic, this becomes:
 
 \
-\\$\forall x\bigl[x\text{ is a friend of a dog owner}\eif \phantom{x}$\\
-\phantom{x}\hfill $x\text{ owns a dog which is owned by a friend of }x\bigr]$
+\\$\forall x\bigl(x\text{ is a friend of a dog owner}\eif \phantom{x}$\\
+\phantom{x}\hfill $x\text{ owns a dog which is owned by a friend of }x\bigr)$
 
 \
 \\Breaking this down a bit more:
 
 \
-\\$\forall x\bigl[\exists y(Fxy \eand y\text{ is a dog owner})\eif \phantom{x}$\\
-\phantom{x}\hfill $\exists y(Dy \eand Oxy \eand y\text{ is owned by a friend of }x)\bigr]$
+\\$\forall x\bigl(\exists y(Fxy \eand y\text{ is a dog owner})\eif \phantom{x}$\\
+\phantom{x}\hfill $\exists y(Dy \eand Oxy \eand y\text{ is owned by a friend of }x)\bigr)$
 
 \
 \\And a bit more:
-$$\forall x\bigl[\exists y(Fxy \eand \exists z(Dz \eand Oyz)) \eif \exists y(Dy \eand Oxy \eand \exists z(Fzx \eand Ozy))\bigr]$$
+$$\forall x\bigl(\exists y(Fxy \eand \exists z(Dz \eand Oyz)) \eif \exists y(Dy \eand Oxy \eand \exists z(Fzx \eand Ozy))\bigr)$$
 And we are done!
 
 
@@ -2698,7 +2698,7 @@ symbolize the following sentences in FOL:
 %\item $\exists x Lxy \eand \forall y Lyx$
 %\item $\forall x Ax \eand Bx$
 %\item $\forall x (Ax \eand Bx) \eand \forall y(Cx \eand Dy)$
-%\item $\forall x\exists y[Rxy \eif (Jz \eand Kx)] \eor Ryx$
+%\item $\forall x\exists y(Rxy \eif (Jz \eand Kx)) \eor Ryx$
 %\item $\forall x_1(Mx_2 \eif Lx_2x_1) \eand \exists x_2 Lx_3x_2$
 %\end{earg}
 %
@@ -2769,7 +2769,7 @@ In the first reading, we say that the existential quantifier has \emph{wide scop
 %\begin{earg}
 %	\item[\ex{thenot}] The King of France is not bald.
 %\end{earg}
-%If the definite description has wide scope, and we are interpreting the `not' as an `inner' negation (as we said before), sentence~\ref{thenot} is interpreted to assert the existence of a single King of France, to whom we are ascribing non-baldness. In this reading, it is symbolized as `$\exists x\bigl[{K}{x} \eand \forall y({K}{y} \eif x=y)) \eand \enot {B}{x}\bigr]$'. In the other reading, the `not' denies the sentence `The King of France is bald', and we would symbolize it as: `$\enot\exists x\bigl[{K}{x} \eand \forall y({K}{y} \eif x=y)) \eand {B}{x}\bigr]$'. In the first case, we say that the definite description has wide scope and in the second that it has narrow scope.
+%If the definite description has wide scope, and we are interpreting the `not' as an `inner' negation (as we said before), sentence~\ref{thenot} is interpreted to assert the existence of a single King of France, to whom we are ascribing non-baldness. In this reading, it is symbolized as `$\exists x\bigl({K}{x} \eand \forall y({K}{y} \eif x=y)) \eand \enot {B}{x}\bigr)$'. In the other reading, the `not' denies the sentence `The King of France is bald', and we would symbolize it as: `$\enot\exists x\bigl({K}{x} \eand \forall y({K}{y} \eif x=y)) \eand {B}{x}\bigr)$'. In the first case, we say that the definite description has wide scope and in the second that it has narrow scope.
 %
 \begin{practiceproblems}
 \problempart

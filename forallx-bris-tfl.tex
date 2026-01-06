@@ -324,18 +324,18 @@ Using this definition, we can easily check to see whether someone is my ancestor
 
 Strictly speaking, $A\eand B$ is not a sentence of TFL. When we introduce a connective $\eand,\eor$ or $\eif$, strictly speaking, we must include brackets. Only $(A\eand B)$ is strictly speaking a sentence of TFL. The reason for this rule is that we might use $(A\eand B)$ as a subsentence in a more complicated sentence. For example, we might want to negate $(A\eand B)$, obtaining $\enot(A\eand B)$. If we just had $A \eand B$ without the brackets and put a negation in front of it, we would have $\enot A \eand B$. It is most natural to read this as meaning the same thing as $(\enot A \eand B)$, but this may be very different from $\enot(A\eand B)$.
 
-When working with TFL, however, it will make our lives easier if we are sometimes a little less than strict. So, here are two convenient conventions.
+When working with TFL, however, it will make our lives easier if we are sometimes a little less than strict. So, here is a convenient convetion.
 \begin{enumerate}
 \item We can remove \emph{outermost} brackets of a sentence. Thus we allow ourselves to write $A\eand B$ instead of the sentence $(A\eand B)$. However, we must remember to put the brackets back in, when we want to embed the sentence into a more complicated sentence!
-\item It can be a bit painful to stare at long sentences with many nested pairs of brackets. To make things a bit easier on the eyes, we will  allow ourselves to use square brackets, `[' and `]', instead of rounded ones. So there is no logical difference between $(P\eor Q)$ and $[P\eor Q]$, for example.
+%\item It can be a bit painful to stare at long sentences with many nested pairs of brackets. To make things a bit easier on the eyes, we will  allow ourselves to use square brackets, `[' and `]', instead of rounded ones. So there is no logical difference between $(P\eor Q)$ and $(P\eor Q)$, for example.
 \todo{Add in the rule that arrow binds stronger}
 \end{enumerate}
 
-Combining these two conventions, we can rewrite the unwieldy sentence
-$$(((H \eif I) \eor (I \eif H)) \eand (J \eor K))$$
-rather more clearly as follows:
-$$\bigl[(H \eif I) \eor (I \eif H)\bigr] \eand (J \eor K)$$
-The scope of each connective is now much easier to pick out.
+%Combining these two conventions, we can rewrite the unwieldy sentence
+%$$(((H \eif I) \eor (I \eif H)) \eand (J \eor K))$$
+%rather more clearly as follows:
+%$$\bigl((H \eif I) \eor (I \eif H)\bigr) \eand (J \eor K)$$
+%The scope of each connective is now much easier to pick out.
 
 \begin{practiceproblems}
 
@@ -367,7 +367,7 @@ For each of the following: (a) Is it a sentence of TFL, strictly speaking? (b) I
 \item $\enot \eand S$\hfill \myanswer{(a) no (b) no}
 \item $(G \eand \enot G)$\hfill \myanswer{(a) yes (b) yes}
 \item $(A \eif (A \eand \enot F)) \eor (D \eif E)$\hfill \myanswer{(a) no (b) yes}
-\item $[(Z \eif S) \eif W] \eand [J \eor X]$\hfill \myanswer{(a) no (b) yes}
+\item $((Z \eif S) \eif W) \eand (J \eor X)$\hfill \myanswer{(a) no (b) yes}
 \item $(F \eif \enot D \eif J) \eor (C \eand D)$\hfill \myanswer{(a) no (b) no}
 \end{problemslist}
 
@@ -2077,11 +2077,11 @@ There are tricks that mean you can miss out some of the gaps by using strategies
 					%\end{center}}
 					
 					
-					\item $\bigl[(A\eand B) \eand\enot(A\eand B)\bigr] \eand C$ %contradiction
+					\item $\bigl((A\eand B) \eand\enot(A\eand B)\bigr) \eand C$ %contradiction
 %					
 					\myanswer{\begin{center}
 							\begin{tabular}{c c c | d e e e e e e e e f}
-								$A$ & $B$&$C$&$\bigl[(A$&$\eand$&$B)$&$ \eand$&$\enot$&$(A$&$\eand$&$B)\bigr]$&$\eand$&$C$\\
+								$A$ & $B$&$C$&$\bigl((A$&$\eand$&$B)$&$ \eand$&$\enot$&$(A$&$\eand$&$B)\bigr)$&$\eand$&$C$\\
 								\hline
 								T & T & T & T & T & T & F & F & T & T & T & \TTbf{F} & T\\
 								T & T & F & T& T & T & F & F & T & T & T & \TTbf{F}& F\\
@@ -2093,11 +2093,11 @@ There are tricks that mean you can miss out some of the gaps by using strategies
 								F & F & F & F & F & F & F & T & F & F & F & \TTbf{F} & F
 							\end{tabular}
 					\end{center}}
-					\item $[(A \eand B) \eand C] \eif B$ %taut
+					\item $((A \eand B) \eand C) \eif B$ %taut
 %					
 					\myanswer{\begin{center}
 							\begin{tabular}{c c c | d e e e e e f}
-								$A$ & $B$&$C$&$[(A$&$\eand$&$B)$&$\eand$&$C]$&$\eif$&$B$\\
+								$A$ & $B$&$C$&$((A$&$\eand$&$B)$&$\eand$&$C)$&$\eif$&$B$\\
 								\hline
 								T & T & T & T & T & T & T & T & \TTbf{T} & T\\
 								T & T & F & T & T & T & F & F & \TTbf{T} & T\\
@@ -2109,11 +2109,11 @@ There are tricks that mean you can miss out some of the gaps by using strategies
 								F & F & F & F & F & F & F & F & \TTbf{T} & F\\
 							\end{tabular}
 					\end{center}}
-					\item $\enot\bigl[(C\eor A) \eor B\bigr]$ %contingent
+					\item $\enot\bigl((C\eor A) \eor B\bigr)$ %contingent
 %					
 					\myanswer{\begin{center}
 							\begin{tabular}{c c c | d e e e e f}
-								$A$ & $B$&$C$&$\enot\bigl[($&$C$&$\eor$&$A)$&$\eor$&$B\bigr]$\\
+								$A$ & $B$&$C$&$\enot\bigl(($&$C$&$\eor$&$A)$&$\eor$&$B\bigr)$\\
 								\hline
 								T & T & T & \TTbf{F} & T & T & T & T & T\\
 								T & T & F & \TTbf{F} & F & T & T & T & T\\
@@ -2128,7 +2128,7 @@ There are tricks that mean you can miss out some of the gaps by using strategies
 
 	
 	
-%	\item $\enot [(X \eand Y) \eor (X \eor Y)]$
+%	\item $\enot ((X \eand Y) \eor (X \eor Y))$
 %	
 %	\myanswer{
 %		\begin{center}
@@ -2163,7 +2163,7 @@ There are tricks that mean you can miss out some of the gaps by using strategies
 		\end{center}
 	}
 	
-	\item $[C \eif (D \eor E)] \eand \enot C$
+	\item $(C \eif (D \eor E)) \eand \enot C$
 	
 	%\myanswer{
 		%\begin{center}
@@ -2274,7 +2274,7 @@ Write complete truth tables for the following sentences and mark the column that
 	
 	
 	
-	\item 	$[(D \eand R) \eif I] \eif \enot(D \eor R) $
+	\item 	$((D \eand R) \eif I) \eif \enot(D \eor R) $
 %	
 	\myanswer{
 		\begin{center}
@@ -2298,7 +2298,7 @@ Write complete truth tables for the following sentences and mark the column that
 	\vspace{1em}
 	
 	
-	%\item	$\enot [(D \eiff O) \eiff A] \eif (\enot D \eand O) $
+	%\item	$\enot ((D \eiff O) \eiff A) \eif (\enot D \eand O) $
 	%\myanswer{
 		%&\begin{center}
 		%\begin{tabular}{ccccccc|c|cccc}
@@ -2823,7 +2823,7 @@ Since there is a $T$ under the main connective on every line of the truth table,
 }
 
 We can determine whether a sentence is a contradiction just by using truth tables. If the sentence is false on every line of a complete truth table, then it is false on every valuation, so it is a contradiction.
-%In the example of \S\ref{s:CompleteTruthTables}, `$[(C\eiff C) \eif C] \eand \enot(C \eif C)$' is a contradiction.
+%In the example of \S\ref{s:CompleteTruthTables}, `$((C\eiff C) \eif C) \eand \enot(C \eif C)$' is a contradiction.
 
 Our core example of a contradiction is $A\eand\enot A$. Whether $A$ is true or false, $A\eand\enot A$ is false. This can again be checked using truth tables, observing that there is an F under the main connective in each line of the truth table.
 
@@ -2993,13 +2993,13 @@ One can show that `$(A \eand B) \eand C$' and  `$A \eand (B \eand C)$' are logic
 		\item $(A\eand B) \eor (B\eand A)$\vspace{.5ex} %contingent
 		
 		
-		\item $\enot[A \eif (B \eif A)]$\vspace{.5ex} %contra
+		\item $\enot(A \eif (B \eif A))$\vspace{.5ex} %contra
 		
 		
-		\item $A \eiff [A \eif (B \eand \enot B)]$ \vspace{.5ex}%contra
+		\item $A \eiff (A \eif (B \eand \enot B))$ \vspace{.5ex}%contra
 		
 		
-		\item $[(A \eand B) \eiff B] \eif (A \eif B)$ \vspace{.5ex}% contingent.
+		\item $((A \eand B) \eiff B) \eif (A \eif B)$ \vspace{.5ex}% contingent.
 		
 	\end{problemslist}
 	
@@ -3011,9 +3011,9 @@ One can show that `$(A \eand B) \eand C$' and  `$A \eand (B \eand C)$' are logic
 	\begin{problemslist}
 		\item $A$ and $\enot A$
 		\item $A \eand \enot A$ and $\enot B \eiff B$
-		\item $[(A \eor B) \eor C]$ and $[A \eor (B \eor C)]$
+		\item $((A \eor B) \eor C)$ and $(A \eor (B \eor C))$
 		\item $A \eor (B \eand C)$ and $(A \eor B) \eand (A \eor C)$
-		\item $[A \eand (A \eor B)] \eif B$ and $A \eif B$\end{problemslist}
+		\item $(A \eand (A \eor B)) \eif B$ and $A \eif B$\end{problemslist}
 	
 	
 	\problempart
@@ -3339,11 +3339,11 @@ We have been discussing shortcuts in testing for logically validity, but exactly
 					F & F & & F & & \TTbf{F} & & F 
 				\end{tabular}
 		\end{center}}
-		\item $\enot[A \eif (B \eif A)]$ %contra
+		\item $\enot(A \eif (B \eif A))$ %contra
 		\myanswer{\hfill Contradiction
 			\begin{center}
 				\begin{tabular}{c c | d e e e e f }
-					$A$ & $B$ & $\enot[$&$A$&$\eif$&$(B$&$\eif$&$A)]$\\
+					$A$ & $B$ & $\enot($&$A$&$\eif$&$(B$&$\eif$&$A))$\\
 					\hline
 					T & T & \TTbf{F} &  & T & & T\\
 					T & F & \TTbf{F} &  & T & & T \\
@@ -3351,11 +3351,11 @@ We have been discussing shortcuts in testing for logically validity, but exactly
 					F & F & \TTbf{F} &  & T & &  
 				\end{tabular}
 		\end{center}}
-		\item $A \eiff [A \eif (B \eand \enot B)]$ %contra
+		\item $A \eiff (A \eif (B \eand \enot B))$ %contra
 		\myanswer{\hfill Contradiction
 			\begin{center}
 				\begin{tabular}{c c | d e e e e e e f }
-					$A$ & $B$ & $A$&$\eiff$&$[A$&$\eif$&$(B$&$\eand$&$\enot$&$B)]$\\
+					$A$ & $B$ & $A$&$\eiff$&$(A$&$\eif$&$(B$&$\eand$&$\enot$&$B))$\\
 					\hline
 					T & T & & \TTbf{F} &  & F & & F& F\\
 					T & F & & \TTbf{F} &  & F & & F \\
@@ -3411,7 +3411,7 @@ We have been discussing shortcuts in testing for logically validity, but exactly
 		\myanswer{\hfill Neither
 			\begin{center}
 				\begin{tabular}{c c c c | d e e e e e e e f }
-					$A$ & $B$ & $C$ & $D$ & $(B$&$\eand$&$D)$&$\eiff $&$[A$&$\eiff$&$(A$&$\eor$&$C)]$\\
+					$A$ & $B$ & $C$ & $D$ & $(B$&$\eand$&$D)$&$\eiff $&$(A$&$\eiff$&$(A$&$\eor$&$C))$\\
 					\hline
 					T & T & T & T & & T & & \TTbf{T} &  & T & &  T\\
 					T & T & T & F & & F & & \TTbf{F} &  & T & &  T\\
@@ -3690,11 +3690,11 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %	\label{pr.TT.valid4}
 %	Use complete or partial truth tables (as appropriate) to determine whether each argument is valid or invalid:
 %	\begin{earg}
-%		\item $A\eor\bigl[A\eif(A\eiff A)\bigr] \therefore A$ %invalid
+%		\item $A\eor\bigl(A\eif(A\eiff A)\bigr) \therefore A$ %invalid
 %		\myanswer{\hfill Invalid
 %			\begin{center}
 %				\begin{tabular}{c |  d e e e e e f | c}
-%					$A$ & $A$&$\eor$&$\bigl[A$&$\eif$&$(A$&$\eiff$&$A)\bigr]$ & $A$\\
+%					$A$ & $A$&$\eor$&$\bigl(A$&$\eif$&$(A$&$\eiff$&$A)\bigr)$ & $A$\\
 %					\hline
 %					F & & \TTbf{T} & & T & & & & F
 %				\end{tabular}
@@ -3815,7 +3815,7 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %		
 %		% 2 letters, 4 connectives
 %		
-%		\item $\enot B \eif [(\enot A \eand A) \eor B]$
+%		\item $\enot B \eif ((\enot A \eand A) \eor B)$
 %		\myanswer{ \hfill Contingent
 %			\[
 %			\begin{array}{cc|cccc@{}c@{}cccc@{}ccc@{}c}
@@ -3841,7 +3841,7 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %			\]}
 %		%2 letters, 6 connectives
 %		
-%		\item $[(A \eand B) \eand C] \eif B$
+%		\item $((A \eand B) \eand C) \eif B$
 %		\myanswer{ \hfill Tautology
 %			\[
 %			\begin{array}{ccc|c@{}c@{}ccc@{}ccc@{}ccc}
@@ -3859,7 +3859,7 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %		
 %		%3 letters, 3 connectives
 %		
-%		\item $\enot\bigl[(C\eor A) \eor B\bigr]$
+%		\item $\enot\bigl((C\eor A) \eor B\bigr)$
 %		\myanswer{ \hfill Contingent
 %			\[
 %			\begin{array}{ccc|cc@{}c@{}ccc@{}ccc@{}c}
@@ -3876,7 +3876,7 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %			\]}
 %		%	 	3 letters, 3 connectives
 %		
-%		\item $\bigl[(A\eand B) \eand\enot(A\eand B)\bigr] \eand C$
+%		\item $\bigl((A\eand B) \eand\enot(A\eand B)\bigr) \eand C$
 %		\myanswer{ \hfill Contradiction
 %			\[
 %			\begin{array}{ccc|c@{}c@{}ccc@{}cccc@{}ccc@{}c@{}ccc}
@@ -3894,7 +3894,7 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %		
 %		% 	3 letters, 5 connectives
 %		
-%		\item $(A \eand B) ]\eif[(A \eand C) \eor (B \eand D)]$
+%		\item $(A \eand B) )\eif((A \eand C) \eor (B \eand D))$
 %		\myanswer{ \hfill Contingent
 %			\[
 %			\begin{array}{cccc|c@{}c@{}ccc@{}c@{}ccc@{}c@{}ccc@{}ccc@{}ccc@{}c@{}c}
@@ -3913,14 +3913,14 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %	\begin{earg}
 %		\item  $\enot (A \eor A)$\vspace{.5ex}		\hfill			\myanswer{		Contradiction}	%	1 letter, 2 connectives
 %		\item $(A \eif B) \eor (B \eif A)$\vspace{.5ex}	\hfill		\myanswer{			Tautology	}	%	2 letters, 2 connectives
-%		\item $[(A \eif B) \eif A] \eif A$\vspace{.5ex}	\hfill			\myanswer{	  	Tautology		 }   %2 letters, 3 connectives
-%		\item $\enot[( A \eif B) \eor (B \eif A)]$\vspace{.5ex}	\hfill		\myanswer{		Contradiction}	%	2 letters, 4 connectives
+%		\item $((A \eif B) \eif A) \eif A$\vspace{.5ex}	\hfill			\myanswer{	  	Tautology		 }   %2 letters, 3 connectives
+%		\item $\enot(( A \eif B) \eor (B \eif A))$\vspace{.5ex}	\hfill		\myanswer{		Contradiction}	%	2 letters, 4 connectives
 %		\item $(A \eand B) \eor (A \eor B)$\vspace{.5ex} 	\hfill			\myanswer{		Contingent	}	%2 letters, 5 connectives
 %		\item $\enot(A\eand B) \eiff A$\vspace{.5ex} 		\hfill			\myanswer{	Contingent		}	%2 letters, 3 connectives
 %		\item $A\eif(B\eor C)$\vspace{.5ex} 				\hfill			\myanswer{	Contingent		}	%3 letters, 2 connectives
 %		\item $(A \eand\enot A) \eif (B \eor C)$\vspace{.5ex} 	\hfill		\myanswer{	Tautology		}	%3 letters, 4 connectives 
-%		\item $(B\eand D) \eiff [A \eiff(A \eor C)]$\vspace{.5ex}\hfill		\myanswer{		Contingent	}	%	4 letters, 4 connectives
-%		\item $\enot[(A \eif B) \eor (C \eif D)]$\vspace{.5ex} 	\hfill		\myanswer{	 Contingent 	}	%4 letters, 4 connectives
+%		\item $(B\eand D) \eiff (A \eiff(A \eor C))$\vspace{.5ex}\hfill		\myanswer{		Contingent	}	%	4 letters, 4 connectives
+%		\item $\enot((A \eif B) \eor (C \eif D))$\vspace{.5ex} 	\hfill		\myanswer{	 Contingent 	}	%4 letters, 4 connectives
 %	\end{earg}
 %	
 %	
@@ -4002,7 +4002,7 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %		\item $\enot(A \eand B)$ and $\enot A \eor \enot B$
 %		\item $ ((U \eif (X \eor X)) \eor U)$ and $\enot (X \eand (X \eand U))$
 %		\item $ ((C \eand (N \eiff C)) \eiff C)$ and $(\enot \enot \enot N \eif C)$
-%		\item $[(A \eor B) \eand C]$ and $[A \eor (B \eand C)]$
+%		\item $((A \eor B) \eand C)$ and $(A \eor (B \eand C))$
 %		\item $((L \eand C) \eand I)$ and $L \eor C$
 %	\end{earg}
 %	
@@ -4406,11 +4406,11 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %%\end{center}}
 %
 %
-%\item $\bigl[(A\eand B) \eand\enot(A\eand B)\bigr] \eand C$ %contradiction
+%\item $\bigl((A\eand B) \eand\enot(A\eand B)\bigr) \eand C$ %contradiction
 %
 %\myanswer{\begin{center}
 %\begin{tabular}{c c c | d e e e e e e e e f}
-%$A$ & $B$&$C$&$\bigl[(A$&$\eand$&$B)$&$ \eand$&$\enot$&$(A$&$\eand$&$B)\bigr]$&$\eand$&$C$\\
+%$A$ & $B$&$C$&$\bigl((A$&$\eand$&$B)$&$ \eand$&$\enot$&$(A$&$\eand$&$B)\bigr)$&$\eand$&$C$\\
 %\hline
 %T & T & T & T & T & T & F & F & T & T & T & \TTbf{F} & T\\
 %T & T & F & T& T & T & F & F & T & T & T & \TTbf{F}& F\\
@@ -4422,11 +4422,11 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %F & F & F & F & F & F & F & T & F & F & F & \TTbf{F} & F
 %\end{tabular}
 %\end{center}}
-%\item $[(A \eand B) \eand C] \eif B$ %taut
+%\item $((A \eand B) \eand C) \eif B$ %taut
 %
 %\myanswer{\begin{center}
 %\begin{tabular}{c c c | d e e e e e f}
-%$A$ & $B$&$C$&$[(A$&$\eand$&$B)$&$\eand$&$C]$&$\eif$&$B$\\
+%$A$ & $B$&$C$&$((A$&$\eand$&$B)$&$\eand$&$C)$&$\eif$&$B$\\
 %\hline
 %T & T & T & T & T & T & T & T & \TTbf{T} & T\\
 %T & T & F & T & T & T & F & F & \TTbf{T} & T\\
@@ -4438,11 +4438,11 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %F & F & F & F & F & F & F & F & \TTbf{T} & F\\
 %\end{tabular}
 %\end{center}}
-%\item $\enot\bigl[(C\eor A) \eor B\bigr]$ %contingent
+%\item $\enot\bigl((C\eor A) \eor B\bigr)$ %contingent
 %
 %\myanswer{\begin{center}
 %\begin{tabular}{c c c | d e e e e f}
-%$A$ & $B$&$C$&$\enot\bigl[($&$C$&$\eor$&$A)$&$\eor$&$B\bigr]$\\
+%$A$ & $B$&$C$&$\enot\bigl(($&$C$&$\eor$&$A)$&$\eor$&$B\bigr)$\\
 %\hline
 %T & T & T & \TTbf{F} & T & T & T & T & T\\
 %T & T & F & \TTbf{F} & F & T & T & T & T\\
@@ -4531,7 +4531,7 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %\begin{earg}
 %
 %
-% \item $\enot [(X \eand Y) \eor (X \eor Y)]$
+% \item $\enot ((X \eand Y) \eor (X \eor Y))$
 %
 %\myanswer{
 %\begin{center}
@@ -4566,7 +4566,7 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %\end{center}
 %}
 %
-%\item $[C \eif (D \eor E)] \eand \enot C$
+%\item $(C \eif (D \eor E)) \eand \enot C$
 %
 %%\myanswer{
 %%\begin{center}
@@ -4677,7 +4677,7 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %
 %
 %
-%\item 	$[(D \eand R) \eif I] \eif \enot(D \eor R) $
+%\item 	$((D \eand R) \eif I) \eif \enot(D \eor R) $
 %
 %\myanswer{
 %\begin{center}
@@ -4701,7 +4701,7 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %\vspace{1em}
 %
 %
-%%\item	$\enot [(D \eiff O) \eiff A] \eif (\enot D \eand O) $
+%%\item	$\enot ((D \eiff O) \eiff A) \eif (\enot D \eand O) $
 %%\myanswer{
 %%&\begin{center}
 %%\begin{tabular}{ccccccc|c|cccc}
@@ -4847,13 +4847,13 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %\item $(A\eand B) \eor (B\eand A)$\vspace{.5ex} \hfill \myanswer{Contingent}
 %
 %
-%\item $\enot[A \eif (B \eif A)]$\vspace{.5ex} \hfill \myanswer{Contradiction}
+%\item $\enot(A \eif (B \eif A))$\vspace{.5ex} \hfill \myanswer{Contradiction}
 %
 %
-%%\item $(A \eif [A \eif (B \eand \enot B)]$ \vspace{.5ex} \hfill \myanswer{Contradiction}
+%%\item $(A \eif (A \eif (B \eand \enot B))$ \vspace{.5ex} \hfill \myanswer{Contradiction}
 %
 %
-%\item $[(A \eand B) \eif B] \eif (A \eif B)$ \vspace{.5ex} \hfill \myanswer{Contingent}
+%\item $((A \eand B) \eif B) \eif (A \eif B)$ \vspace{.5ex} \hfill \myanswer{Contingent}
 %
 %
 %\end{earg}
@@ -4864,9 +4864,9 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %\begin{earg}
 %\item $A$ and $\enot A$
 %\item $A \eand \enot A$ and $\enot B \eif B$
-%\item $[(A \eor B) \eor C]$ and $[A \eor (B \eor C)]$
+%\item $((A \eor B) \eor C)$ and $(A \eor (B \eor C))$
 %\item $A \eor (B \eand C)$ and $(A \eor B) \eand (A \eor C)$
-%\item $[A \eand (A \eor B)] \eif B$ and $A \eif B$\end{earg}
+%\item $(A \eand (A \eor B)) \eif B$ and $A \eif B$\end{earg}
 %
 %
 %\problempart
@@ -4911,7 +4911,7 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %\label{pr.TT.valid3}
 %Determine whether each argument is valid or invalid, using a complete truth table. If invalid, provide a valuation that is a counterexample.
 %\begin{earg}
-%\item $A\eor\bigl[A\eif(A\eif A)\bigr] \therefore  A $\vspace{.5ex} \hfill \myanswer{Invalid}
+%\item $A\eor\bigl(A\eif(A\eif A)\bigr) \therefore  A $\vspace{.5ex} \hfill \myanswer{Invalid}
 %\item $A\eor B$, $B\eor C$, $\enot B \therefore A \eand C$\vspace{.5ex} \hfill \myanswer{Valid}
 %\item $A \eif B$, $\enot A\therefore \enot B$ \vspace{.5ex} \hfill \myanswer{Invalid}
 %\item $A$, $B\therefore \enot(A\eif \enot B)$ \vspace{.5ex} \hfill \myanswer{Valid}

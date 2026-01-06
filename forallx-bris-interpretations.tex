@@ -1103,7 +1103,7 @@ Show that the following sentences are jointly satisfiable:
 \item $\enot (\atom{M}{a} \eand \exists x\,\atom{A}{x}), Ma \eor \atom{F}{a}, \forall x(\atom{F}{x} \eif \atom{A}{x})$
 \item $\atom{M}{a} \eor \atom{M}{b}, \atom{M}{a} \eif \forall x \enot \atom{M}{x}$
 \item $\forall y\,\atom{G}{y}, \forall x (\atom{G}{x} \eif \atom{H}{x}), \exists y \enot \atom{I}{y}$
-\item $\exists x(\atom{B}{x} \eor \atom{A}{x}), \forall x \enot \atom{C}{x}, \forall x\bigl[(\atom{A}{x} \eand \atom{B}{x}) \eif Cx\bigr]$
+\item $\exists x(\atom{B}{x} \eor \atom{A}{x}), \forall x \enot \atom{C}{x}, \forall x\bigl((\atom{A}{x} \eand \atom{B}{x}) \eif Cx\bigr)$
 \item $\exists x\,\atom{X}{x}, \exists x\,\atom{Y}{x}, \forall x(\atom{X}{x} \eiff \enot \atom{Y}{x})$
 \item $\forall x(\atom{P}{x} \eor \atom{Q}{x}), \exists x\enot(\atom{Q}{x} \eand \atom{P}{x})$
 \item $\exists z(\atom{N}{z} \eand \atom{O}{z,z}), \forall x\forall y(\atom{O}{x,y} \eif \atom{O}{y,x})$
@@ -1116,7 +1116,7 @@ Show that the following sentences are jointly satisfiable:
 	\item[R(x,y)]\ntuple{Sally, Harry}
 	\item[\denote{a}] Harry
 	\end{interp}}
-\item $\forall x\forall y\forall z[(x=y \eor y=z )\eor x=z]$, $\exists x\exists y\ \enot x= y$
+\item $\forall x\forall y\forall z((x=y \eor y=z )\eor x=z)$, $\exists x\exists y\ \enot x= y$
 
 \myanswer{There are no predicates or constants, so we only need to give a domain.
 Any domain with 2 elements will do.}
