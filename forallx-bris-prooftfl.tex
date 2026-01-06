@@ -1356,7 +1356,7 @@ So for every valid argument there will be some proof. This doesn't mean it is al
 \problempart
 \label{pr.solvedTFLproofs}
 Show that each of the following arguments are valid using natural deduction:
-\begin{earg}
+\begin{compactlist}
 \item $J\eif\enot J \therefore \enot J$
 \myanswer{\begin{fitchproof}
 		\hypo{jimpnotj}{J \eif \enot J}
@@ -1493,7 +1493,7 @@ Show that each of the following arguments are valid using natural deduction:
 		\close
 		\have{P}{P}\notE{np-red}
 \end{fitchproof}}
-\end{earg}
+\end{compactlist}
 
 
 
@@ -1775,12 +1775,12 @@ The following proofs are missing their citations (rule and line numbers). Add th
 
 \problempart
 Give a proof for each of these arguments:
-\begin{earg}
+\begin{compactlist}
 \item $E\eor F$, $F\eor G$, $\enot F \therefore E \eand G$
 \item $M\eor(N\eif M) \therefore \enot M \eif \enot N$
 \item $(M \eor N) \eand (O \eor P)$, $N \eif P$, $\enot P \therefore M\eand O$
 \item $A\eand B)\eor(A\eand C)$, $\enot(A\eand D)$, $D\eor M$ \therefore $M$
-\end{earg}
+\end{compactlist}
 
 
 
@@ -2235,7 +2235,7 @@ Validity 				& Derive the conclusion from the premises & Find no line in the tru
 
 \begin{practiceproblems}
 \noindent\problempart Use either a derivation or a truth table for each of the following.
-\begin{enumerate}%[label=(\arabic*)]
+\begin{problemslist}%[label=(\arabic*)]
 \item Show that $A \eif [((B \eand C) \eor D) \eif A]$ is a tautology.
 \item Show that $A \eif (A \eif B)$ is not a tautology
 \item Show that the sentence $A \eif \enot{A}$ is not a contradiction.
@@ -2248,11 +2248,11 @@ Validity 				& Derive the conclusion from the premises & Find no line in the tru
 \item Show that the sentences $\enot(A \eor B)$, $\enot{B}$, $B \eif A$ are jointly consistent
 \item Show that $\enot(A \eor (B \eor C)) $ \therefore $ \enot{C}$ is valid.
 \item Show that $\enot(A \eand (B \eor C))$ \therefore $ \enot{C}$ is invalid.
-\end{enumerate}
+\end{problemslist}
 
 
 \noindent\problempart Use either a derivation or a truth table for each of the following.
-\begin{enumerate}%[label=(\arabic*)]
+\begin{problemslist}%[label=(\arabic*)]
 \item Show that $A \eif (B \eif A)$ is a tautology
 \item Show that $\enot (((N \eiff Q) \eor Q) \eor N)$ is not a tautology
 \item Show that $ Z \eor (\enot Z \eiff Z) $ is contingent
@@ -2265,7 +2265,7 @@ Validity 				& Derive the conclusion from the premises & Find no line in the tru
 \item Show that the sentences  $\enot R \eor C $, $(C \eand R) \eif \enot R$, $(\enot (R \eor R) \eif R) $ are consistent.
 \item Show that $\enot \enot (C \eiff \enot C), ((G \eor C) \eor G) \therefore ((G \eif C) \eand G) $ is valid.
 \item Show that $ \enot \enot L,  (C \eif \enot L) \eif C) \therefore \enot C$ is invalid.
-\end{enumerate}
+\end{problemslist}
 \end{practiceproblems}
 
 
@@ -2346,32 +2346,32 @@ consistent? & all possible proofs & one proof\\
 \begin{practiceproblems}
 \problempart
 Show that each of the following sentences is a theorem:
-\begin{earg}
+\begin{compactlist}
 \item $O \eif O$
 \item $N \eor \enot N$
 \item $J \eiff [J\eor (L\eand\enot L)]$
 \item $((A \eif B) \eif A) \eif A$
-\end{earg}
+\end{compactlist}
 
 \problempart
 Provide proofs to show each of the following:
-\begin{earg}
+\begin{compactlist}
 \item $C\eif(E\eand G), \enot C \eif G \proves G$
 \item $M \eand (\enot N \eif \enot M) \proves (N \eand M) \eor \enot M$
 \item $(Z\eand K)\eiff(Y\eand M), D\eand(D\eif M) \proves Y\eif Z$
 \item $(W \eor X) \eor (Y \eor Z), X\eif Y, \enot Z \proves W\eor Y$
-\end{earg}
+\end{compactlist}
 
 \problempart
 Show that each of the following pairs of sentences are provably equivalent:
-\begin{earg}
+\begin{compactlist}
 \item $R \eiff E$, $E \eiff R$
 \item $G$, $\enot\enot\enot\enot G$
 \item $T\eif S$, $\enot S \eif \enot T$
 \item $U \eif I$, $\enot(U \eand \enot I)$
 \item $\enot (C \eif D), C \eand \enot D$
 \item $\enot G \eiff H$, $\enot(G \eiff H)$
-\end{earg}
+\end{compactlist}
 
 \problempart
 If you know that $\metaX\proves\metaY$, what can you say about $(\metaX\eand\metaZ)\proves\metaY$? What about $(\metaX\eor\metaZ)\proves\metaY$? Explain your answers.

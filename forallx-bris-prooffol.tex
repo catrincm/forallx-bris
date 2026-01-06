@@ -436,7 +436,7 @@ Aristotle and his successors identified other syllogistic forms which depended u
 \problempart
 \label{pr.someFOLproofs}
 Provide a proof of each claim.
-\begin{earg}
+\begin{problemslist}
 \item $\proves \forall x Fx \eor \enot \forall x Fx$
 \item $\proves\forall z (Pz \eor \enot Pz)$
 \item $\forall x(Ax\eif Bx), \exists x Ax \proves \exists x Bx$
@@ -447,7 +447,7 @@ Provide a proof of each claim.
 \item $Na \eif \forall x(Mx \eiff Ma), Ma, \enot Mb\proves \enot Na$
 \item $\forall x \forall y (Gxy \eif Gyx) \proves \forall x\forall y (Gxy \eiff Gyx)$
 \item $\forall x(\enot Mx \eor Ljx), \forall x(Bx\eif Ljx), \forall x(Mx\eor Bx)\proves \forall xLjx$
-\end{earg}
+\end{problemslist}
 
 \solutions
 \problempart
@@ -460,29 +460,29 @@ There is someone who likes everyone who likes everyone that she likes. Therefore
 
 \problempart
 Show that each pair of sentences is provably equivalent.
-\begin{earg}
+\begin{problemslist}
 \item $\forall x (Ax\eif \enot Bx)$, $\enot\exists x(Ax \eand Bx)$
 \item $\forall x (\enot Ax\eif Bd)$, $\forall x Ax \eor Bd$
 \item $\exists x Px \eif Qc$, $\forall x (Px \eif Qc)$
-\end{earg}
+\end{problemslist}
 
 \solutions
 \problempart
 \label{pr.FOLequivornot}
 For each of the following pairs of sentences: If they are provably equivalent, give proofs to show this. If they are not, construct a model to show that they are not logically equivalent.
-\begin{earg}
+\begin{problemslist}
 \item $\forall x Px \eif Qc, \forall x (Px \eif Qc)$
 \item $\forall x\forall y \forall z Bxyz, \forall x Bxxx$
 \item $\forall x\forall y Dxy, \forall y\forall x Dxy$
 \item $\exists x\forall y Dxy, \forall y\exists x Dxy$
 \item $\forall x (Rca \eiff Rxa), Rca \eiff \forall x Rxa$
-\end{earg}
+\end{problemslist}
 
 \solutions
 \problempart
 \label{pr.FOLvalidornot}
 For each of the following arguments: If it is valid in FOL, give a proof. If it is invalid, construct a model to show that it is invalid.
-\begin{earg}
+\begin{problemslist}
 \item $\exists y\forall x Rxy \therefore \forall x\exists y Rxy$
 \item $\forall x\exists y Rxy \therefore  \exists y\forall x Rxy$
 \item $\exists x(Px \eand \enot Qx) \therefore \forall x(Px \eif \enot Qx)$
@@ -493,7 +493,7 @@ For each of the following arguments: If it is valid in FOL, give a proof. If it 
 \item $\exists x\exists y(Rxy \eor Ryx) \therefore Rjj$
 \item $\forall x Px \eif \forall x Qx, \exists x \enot Px \therefore \exists x \enot Qx$
 \item $\exists x Mx \eif \exists x Nx$, $\enot \exists x Nx\therefore  \forall x \enot Mx$
-\end{earg}
+\end{problemslist}
 
 \end{practiceproblems}
 
@@ -530,30 +530,30 @@ and
 \begin{practiceproblems}
 \problempart
 Show in each case that the sentences are provably inconsistent:
-\begin{earg}
+\begin{problemslist}
 \item $Sa\eif Tm, Tm \eif Sa, Tm \eand \enot Sa$
 \item $\enot\exists x Rxa, \forall x \forall y Ryx$
 \item $\enot\exists x \exists y Lxy, Laa$
 \item $\forall x(Px \eif Qx), \forall z(Pz \eif Rz), \forall y Py, \enot Qa \eand \enot Rb$
-\end{earg}
+\end{problemslist}
 
 \problempart
 Show that each pair of sentences is provably equivalent:
-\begin{earg}
+\begin{problemslist}
 \item $\forall x (Ax\eif \enot Bx), \enot\exists x(Ax \eand Bx)$
 \item $\forall x (\enot Ax\eif Bd), \forall x Ax \eor Bd$
-\end{earg}
+\end{problemslist}
 
 \problempart
 In \S\ref{s:MoreMonadic}, we considered what happens when we move quantifiers `across' various logical operators. Show that each pair of sentences is provably equivalent:
-\begin{earg}
+\begin{problemslist}
 \item $\forall x (Fx \eand Ga), \forall x Fx \eand Ga$
 \item $\exists x (Fx \eor Ga), \exists x Fx \eor Ga$
 \item $\forall x(Ga \eif Fx), Ga \eif \forall x Fx$
 \item $\forall x(Fx \eif Ga), \exists x Fx \eif Ga$
 \item $\exists x(Ga \eif Fx), Ga \eif \exists x Fx$
 \item $\exists x(Fx \eif Ga), \forall x Fx \eif Ga$
-\end{earg}
+\end{problemslist}
 NB: the variable `$x$' does not occur in `$Ga$'.
 
 When all the quantifiers occur at the beginning of a sentence, that sentence is said to be in \emph{prenex normal form}. These equivalences are sometimes called \emph{prenexing rules}, since they give us a means for putting any sentence into prenex normal form.

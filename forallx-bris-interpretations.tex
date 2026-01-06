@@ -421,12 +421,12 @@ We saw in \S\ref{s:FOLSentences} that FOL formulas can be built up from simpler 
 		%\\$\metaX \eiff \metaY$ is true in a model $\model$ under a variable assignment $\alpha$ \textbf{iff} \\$\metaX$ has the same truth value as $\metaY$ in $\model$ under $\alpha$
 	}
 This is just another presentation of the truth rules we gave for the connectives in TFL; it just does so in a slightly different way. Some examples will probably help to illustrate the idea. On our go-to model:
-	\begin{earg}
+	\begin{compactlist}
 		\item[\textbullet] `$Pa$' is true
 		\item[\textbullet] `$Rab \eand Pb$' is false because, although `$Rab$' is true, `$Pb$' is false
 		\item[\textbullet] `$\enot Pa$' is false
 		\item[\textbullet] `$Pa \eand \enot(Pb\eand Rab)$' is true, because `$Pa$' is true and `$Pb$' is false, so `$Pb\eand Rab$' is false, thus `$\enot (Pb\eand Rab)$' is also true.
-	\end{earg}
+	\end{compactlist}
 Make sure you understand these examples.
 
 We can also carry variable assignments around with us. Consider a variable assignment which assigns David Hume to $x$. Then \begin{ebullet}
@@ -708,7 +708,7 @@ Consider the following model:
 	\item[\denote{c}] \emph{Corwin}
 \end{interp}
 Determine whether each of the following sentences is true or false in that model:
-\begin{earg}
+\begin{problemslist}
 \item $\atom{B}{c}$ \hfill \myanswer{False}
 \item $\atom{A}{c} \eiff \enot \atom{N}{c}$ \hfill \myanswer{True}
 \item $\atom{N}{c} \eif (\atom{A}{c} \eor \atom{B}{c})$ \hfill \myanswer{True}
@@ -718,7 +718,7 @@ Determine whether each of the following sentences is true or false in that model
 \item $\exists x(\atom{A}{x} \eif \atom{N}{x})$ \hfill \myanswer{False}
 \item $\forall x(\atom{N}{x} \eor \enot \atom{N}{x})$ \hfill \myanswer{True}
 \item $\exists x\,\atom{B}{x} \eif \forall x\,\atom{A}{x}$ \hfill \myanswer{True}
-\end{earg}
+\end{problemslist}
 
 \problempart
 \label{pr.TorF2}
@@ -732,7 +732,7 @@ Consider the following model:
 \item[\denote{e}] \emph{Eddy}
 \end{interp}
 Determine whether each of the following sentences is true or false in that model:
-\begin{earg}
+\begin{problemslist}
 \item $\atom{H}{c}$ \hfill \myanswer{True}
 \item $\atom{H}{e}$\hfill \myanswer{False}
 \item $\atom{M}{c} \eor \atom{M}{e}$ \hfill \myanswer{True}
@@ -748,7 +748,7 @@ Determine whether each of the following sentences is true or false in that model
 \item $\forall x(\atom{H}{x} \eiff \enot \atom{M}{x})$ \hfill \myanswer{True}
 \item $\exists x\,\atom{G}{x} \eand \exists x \enot \atom{G}{x}$ \hfill \myanswer{False}
 \item $\forall x\exists y(\atom{G}{x} \eand \atom{H}{y})$ \hfill \myanswer{True}
-\end{earg}
+\end{problemslist}
 
 \problempart
 \label{pr.TorF3}
@@ -774,7 +774,7 @@ Following the diagram conventions introduced at the end of \S23, consider the fo
 \end{tikzpicture}
 \end{center}
 Determine whether each of the following sentences is true or false in that model:
-\begin{earg}
+\begin{problemslist}
 \item $\exists x\,\atom{R}{x x}$ \hfill \myanswer{True}
 \item $\forall x\,\atom{R}{x x}$ \hfill \myanswer{False}
 \item $\exists x \forall y\,\atom{R}{x y}$ \hfill \myanswer{True}
@@ -787,7 +787,7 @@ Determine whether each of the following sentences is true or false in that model
 \item $\exists x \forall y(\atom{R}{x y} \eiff x = y)$ \hfill \myanswer{True}
 \item $\exists x \forall y(\atom{R}{y x} \eiff x = y)$ \hfill \myanswer{False}
 \item $\exists x \exists y(\enot x = y \eand \atom{R}{x y} \eand \forall z(\atom{R}{z,x} \eiff y = z))$ \hfill \myanswer{True}
-\end{earg}
+\end{problemslist}
 \end{practiceproblems}
 
 \chapter{Semantic concepts}
@@ -964,7 +964,7 @@ When you provide a model to refute a claim---to logical truth, say, or to entail
 \problempart
 \label{pr.Contingent}
 Show that each of the following is neither a validity nor a contradiction:
-\begin{earg}
+\begin{problemslist}
 \item $\atom{D}{a} \eand \atom{D}{b}$
 
 \myanswer{The sentence is true in this model:
@@ -1014,13 +1014,13 @@ And it is false in this model:
 \item $\forall x (\atom{W}{x,m,n} \eor \exists y\atom{L}{x,y})$
 \item $\exists x (\atom{G}{x} \eif \forall y\,\atom{M}{y})$
 \item $\exists x (x = h \eand x = i)$
-\end{earg}
+\end{problemslist}
 
 \solutions
 \problempart
 \label{pr.NotEquiv}
 Show that the following pairs of sentences are not logically equivalent.
-\begin{earg}
+\begin{problemslist}
 \item $\atom{J}{a}$, $\atom{K}{a}$
 
 \myanswer{Making the first sentence true and the second false:
@@ -1092,12 +1092,12 @@ Show that the following pairs of sentences are not logically equivalent.
 	\item[\domain] $0$, $1$
 	\item[R(x,y)] \ntuple{$0$, $0$}, \ntuple{$0$, $1$}
 \end{interp}}
-\end{earg}
+\end{problemslist}
 
 
 \problempart
 Show that the following sentences are jointly satisfiable:
-\begin{earg}
+\begin{problemslist}
 \item $\atom{M}{a}, \enot \atom{N}{a}, Pa, \enot \atom{Q}{a}$
 \item $\atom{L}{e,e}, \atom{L}{e,g}, \enot \atom{L}{g,e}, \enot \atom{L}{g,g}$
 \item $\enot (\atom{M}{a} \eand \exists x\,\atom{A}{x}), Ma \eor \atom{F}{a}, \forall x(\atom{F}{x} \eif \atom{A}{x})$
@@ -1121,11 +1121,11 @@ Show that the following sentences are jointly satisfiable:
 \myanswer{There are no predicates or constants, so we only need to give a domain.
 Any domain with 2 elements will do.}
 \item $\exists x\exists y((\atom{Z}{x} \eand \atom{Z}{y} )\eand x=y)$, $\enot \atom{Z}{d}$, $d=e$
-\end{earg}
+\end{problemslist}
 
 \problempart
 Show that the following arguments are invalid:
-\begin{earg}
+\begin{problemslist}
 \item $\forall x(\atom{A}{x} \eif \atom{B}{x}) \therefore \exists x\,\atom{B}{x}$
 \item $\forall x(\atom{R}{x} \eif \atom{D}{x}), \forall x(\atom{R}{x} \eif \atom{F}{x}) \therefore \exists x(\atom{D}{x} \eand \atom{F}{x})$
 \item $\exists x(\atom{P}{x}\eif \atom{Q}{x}) \therefore \exists x\,\atom{P}{x}$
@@ -1136,7 +1136,7 @@ Show that the following arguments are invalid:
 \item $\exists x(\atom{J}{x} \eand \atom{K}{x}), \exists x \enot \atom{K}{x}, \exists x \enot \atom{J}{x} \therefore \exists x(\enot \atom{J}{x} \eand \enot \atom{K}{x})$
 \item $\atom{L}{a,b} \eif \forall x\,\atom{L}{x,b}, \exists x\,\atom{L}{x,b} \therefore \atom{L}{b,b}$
 \item $\forall x(\atom{D}{x} \eif \exists y\,\atom{T}{y,x}) \therefore \exists y \exists z\ \enot y= z$
-\end{earg}
+\end{problemslist}
 
 
 \end{practiceproblems}

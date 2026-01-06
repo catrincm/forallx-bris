@@ -188,23 +188,31 @@
 %    ****************************************
 %    *          LIST  ENVIRONMENTS          *
 %    ****************************************
-% The {earg} environment is used for arguments and example sentences.
-% The {ekey} environment is used for symbolization keys.
-\newcounter{eargnum}
-\newcounter{OLDeargnum}
-\newenvironment{earg}%
-{\begin{list}{\arabic{eargnum}.}{\usecounter{eargnum}\itemsep=0pt \parsep=0pt}}%
-{\setcounter{OLDeargnum}{\arabic{eargnum}}\end{list}}
 
+\RequirePackage{enumitem}
+
+\newlist{compactlist}{enumerate}{1}
+\setlist[compactlist]{noitemsep,label=\arabic*.}
+
+\newlist{earg}{enumerate}{1}
+\setlist[earg]{noitemsep,label=-}
+
+%\newlist{earg}{enumerate}{1}
+%\setlist[earg]{noitemsep,align=right}
+
+% ebullet - a bulleted list
 \newenvironment{ebullet}% TB: added to give a nice bulleted enivronment
-{\begin{list}{\textbullet}{\itemsep=0pt \parsep=0pt}}%
-{\end{list}}
-\newcommand{\ekeylabel}[1]{{\makebox[8ex][r]{{\ensuremath{ #1}:}}}}
-\newenvironment{ekey}{\begin{list}{}{\renewcommand{\makelabel}{\ekeylabel} \itemsep=0pt \parsep=0pt}}{\end{list}}
-\newenvironment{interp}{\begin{list}{}{\renewcommand{\makelabel}{\ekeylabel} \itemsep=0pt \parsep=0pt}}{\end{list}}
-% enumerate -- used for numbered examples; counter resets every
-% chapter
+{\begin{itemize}[noitemsep,label=\textbullet]}{\end{itemize}}
 
+\newlist{ekeylist}{description}{1}
+\setlist[ekeylist]{noitemsep,labelwidth=4em,align=right,font=\normalfont}
+\def\ekeylabel#1{\hfil\normalfont\ensuremath{#1}:}
+\newenvironment{ekey}{\begin{ekeylist}\renewcommand{\makelabel}{\ekeylabel}}{\end{ekeylist}}
+
+\newenvironment{interp}{\begin{ekeylist}\renewcommand{\makelabel}{\ekeylabel}}{\end{ekeylist}}
+
+\newlist{problemslist}{enumerate}{1}
+\setlist[problemslist]{noitemsep,label=\alph*)}
 
 %    ****************************************
 %    *             TRUTH TABLES             *

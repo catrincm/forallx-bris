@@ -6,9 +6,9 @@
 \chapter{Identity}
 
 Consider this sentence:
-\begin{earg}
-\item[\ex{else1}] Pavel owes money to everyone
-\end{earg}
+\begin{samplesent}
+\item\label{else1} Pavel owes money to everyone
+\end{samplesent}
 Let the domain be people; this will allow us to symbolize `everyone' as a universal quantifier. Offering the symbolization key:
 	\begin{ekey}
 		\item[Oxy] \gap{x} owes money to \gap{y}
@@ -17,11 +17,11 @@ Let the domain be people; this will allow us to symbolize `everyone' as a univer
 we can symbolize sentence \ref{else1} by `$\forall x Opx$'. But this has a (perhaps) odd consequence. It requires that Pavel owes money to every member of the domain (whatever the domain may be). The domain certainly includes Pavel. So this entails that Pavel owes money to himself.
 
 Perhaps we meant to say:
-	\begin{earg}
-		\item[\ex{else1b}] Pavel owes money to everyone \emph{else}
-		\item[\ex{else1c}] Pavel owes money to everyone \emph{other than} Pavel
-		\item[\ex{else1d}] Pavel owes money to everyone \emph{except} Pavel himself
-	\end{earg}
+	\begin{samplesent}
+		\item\label{else1b} Pavel owes money to everyone \emph{else}
+		\item\label{else1c} Pavel owes money to everyone \emph{other than} Pavel
+		\item\label{else1d} Pavel owes money to everyone \emph{except} Pavel himself
+	\end{samplesent}
 but we do not know how to deal with the italicised words yet. The solution is to add another symbol to FOL.
 
 \section{Adding identity}
@@ -29,28 +29,28 @@ but we do not know how to deal with the italicised words yet. The solution is to
 The new symbol we add is `$=$'. This is a symbol that we can use for \emph{identity}.
 
 We will then be able symbolise
-\begin{earg}
-\item[\ex{superman}] Clark Kent is Superman.
-\end{earg}
+\begin{samplesent}
+\item\label{superman} Clark Kent is Superman.
+\end{samplesent}
 as $k\eid s$, using the symbolisation key
 \begin{ekey}
 \item[k] Clark Kent
 \item[s] Superman
 \end{ekey}
 This will also be a symbolisations of paraphrases of \ref{superman}:
-\begin{earg}
-\item[\ex{superman1b}] Clark Kent and Superman are the same person.
-\item[\ex{superman1c}] Clark Kent is identical to Superman.
-\end{earg}
+\begin{samplesent}
+\item\label{superman1b} Clark Kent and Superman are the same person.
+\item\label{superman1c} Clark Kent is identical to Superman.
+\end{samplesent}
 
 Using `$\eid $' we will now be able to symbolise sentences \ref{else1b}--\ref{else1d}. All of these sentences can be  paraphrased as `Everyone who is not Pavel is owed money by Pavel'. Paraphrasing some more, we get: `For all x, if x is not Pavel, then x is owed money by Pavel'. Now that we are armed with our new identity symbol, we can symbolize this as `$\forall x (\enot\, x\eid p \eif Opx)$'.
 
 In addition to sentences that use the word `else', `other than' and `except', identity will be helpful when symbolizing some sentences that contain the words `besides' and `only.' Consider these examples:
 
-\begin{earg}
-\item[\ex{else3}] No one besides Pavel owes money to Hikaru.
-\item[\ex{else4}] Only Pavel owes Hikaru money.
-\end{earg}
+\begin{samplesent}
+\item\label{else3} No one besides Pavel owes money to Hikaru.
+\item\label{else4} Only Pavel owes Hikaru money.
+\end{samplesent}
 Let `$h$' name Hikaru. Sentence \ref{else3} can be paraphrased as, `No one who is not Pavel owes money to Hikaru'. This can be symbolized by `$\enot\exists x(\enot\,x \eid p \eand Oxh)$'. Equally, sentence \ref{else3} can be paraphrased as `for all x, if x owes money to Hikaru, then x is Pavel'. It can then be symbolized as `$\forall x (Oxh \eif x \eid p)$'.
 
 Sentence \ref{else4} can be treated similarly, but there is one subtlety here. Do either sentence \ref{else3} or \ref{else4} entail that Pavel himself owes money to Hikaru?
@@ -68,11 +68,11 @@ Sentence \ref{else4} can be treated similarly, but there is one subtlety here. D
 \section{There are at least\ldots}
 We will now look at more that we can do armed with our new identity symbol.
 We can also use identity to say how many things there are of a particular kind. For example, consider these sentences:
-\begin{earg}
-\item[\ex{atleast1}] There is at least one apple
-\item[\ex{atleast2}] There are at least two apples
-\item[\ex{atleast3}] There are at least three apples
-\end{earg}
+\begin{samplesent}
+\item\label{atleast1} There is at least one apple
+\item\label{atleast2} There are at least two apples
+\item\label{atleast3} There are at least three apples
+\end{samplesent}
 We will use the symbolization key:
 	\begin{ekey}
 		\item[Ax] \gap{x} is an apple
@@ -85,10 +85,10 @@ Sentence \ref{atleast3} requires talking about three different apples. Now we ne
 
 \section{There are at most\ldots}
 Now consider these sentences:
-\begin{earg}
-	\item[\ex{atmost1}] There is at most one apple
-	\item[\ex{atmost2}] There are at most two apples
-\end{earg}
+\begin{samplesent}
+	\item\label{atmost1} There is at most one apple
+	\item\label{atmost2} There are at most two apples
+\end{samplesent}
 Sentence \ref{atmost1} can be paraphrased as, `It is not the case that there are at least \emph{two} apples'. This is just the negation of sentence \ref{atleast2}:
 $$\enot \exists x \exists y[(Ax \eand Ay) \eand \enot\, x\eid y]$$
 But sentence \ref{atmost1} can also be approached in another way. It means that if you pick out an object and it's an apple, and then you pick out an object and it's also an apple, you must have picked out the same object both times. With this in mind, it can be symbolized by
@@ -103,11 +103,11 @@ $$\forall x\forall y\forall z\bigl[(Ax \eand Ay \eand Az) \eif (x\eid y \eor x\e
 
 \section{There are exactly\ldots}
 We can now consider precise statements, like:
-\begin{earg}
-\item[\ex{exactly1}] There is exactly one apple.
-\item[\ex{exactly2}] There are exactly two apples.
-\item[\ex{exactly3}] There are exactly three apples.
-\end{earg}
+\begin{samplesent}
+\item\label{exactly1} There is exactly one apple.
+\item\label{exactly2} There are exactly two apples.
+\item\label{exactly3} There are exactly three apples.
+\end{samplesent}
 Sentence \ref{exactly1} can be paraphrased as, `There is \emph{at least} one apple and there is \emph{at most} one apple'. This is just the conjunction of sentence \ref{atleast1} and sentence \ref{atmost1}. So we can offer:
 $$\exists x Ax \eand \forall x\forall y\bigl[(Ax \eand Ay) \eif x\eid y\bigr]$$
 But it is perhaps more straightforward to paraphrase sentence \ref{exactly1} as, `There is a thing x which is an apple, and everything which is an apple is just x itself'. Thought of in this way, we offer:
@@ -120,10 +120,10 @@ Similarly, sentence \ref{exactly2} may be paraphrased as, `There are \emph{at le
 More efficiently, though, we can paraphrase it as `There are at least two different apples, and every apple is one of those two apples'. Then we offer:
 $$\exists x\exists y\bigl[((Ax \eand Ay) \eand \enot\, x\eid y) \eand \forall z(Az \eif ( x\eid  z \eor y \eid z)\bigr]$$
 Finally, consider these sentence:
-\begin{earg}
-\item[\ex{exactly2things}] There are exactly two things
-\item[\ex{exactly2objects}] There are exactly two objects
-\end{earg}
+\begin{samplesent}
+\item\label{exactly2things} There are exactly two things
+\item\label{exactly2objects} There are exactly two objects
+\end{samplesent}
 It might be tempting to add a predicate to our symbolization key, to symbolize the English predicate `\blank\ is a thing' or `\blank\ is an object', but this is unnecessary. Words like `thing' and `object' do not sort wheat from chaff: they apply trivially to everything, which is to say, they apply trivially to every thing. So we can symbolize either sentence with either of the following:
 	\begin{center}
 		$\exists x \exists y \enot\, x\eid y \eand \enot \exists x \exists y \exists z ((\enot\, x\eid y \eand \enot\, y\eid z) \eand \enot\, x\eid z)$\\
@@ -169,15 +169,15 @@ It might be tempting to add a predicate to our symbolization key, to symbolize t
 %\end{earg}
 
 \problempart Consider the sentence,
-\begin{earg}
+\begin{problemslist}
 	\item[\ex{except2}] Every officer except Pavel owes money to Hikaru.
-\end{earg}
+\end{problemslist}
 Symbolize this sentence, using `$\atom{F}{x}$' for `\gap{x} is an officer'.  Are you confident that your symbolization is true if, and only if, sentence~\ref{except2} is true?  What happens if every officer owes money to Hikaru, Pavel does not, but Pavel isn't an officer? \myanswer{Most people, including most linguists thinking about `except', read sentence~\ref{except2} as entailing all three of the following:
-\begin{earg}
+\begin{problemslist}
 	\item No officer who is not Pavel owes money to Hikaru
 	\item Pavel does not owe money to Hikaru
 	\item Pavel is an officer
-\end{earg}
+\end{problemslist}
 So it can be symbolized as `$\forall x((\atom{F}{x} \eand \enot x = p) \eif \enot\atom{O}{x}{h}) \eand \enot \atom{O}{p,h} \eand \atom{F}{p}$'.}
 
 \problempart Explain why:
@@ -202,13 +202,13 @@ So it can be symbolized as `$\forall x((\atom{F}{x} \eand \enot x = p) \eif \eno
 \label{pr.freeFOL}
 Identify which variables are bound and which are free.
 \myanswer{We underline the bound variables, and overline the free variables.}
-\begin{earg}
+\begin{problemslist}
 \item $\exists x\, \atom{L}{\underline{x},\overline{y}} \eand \forall y\,\atom{L}{\underline{y},\overline{x}}$
 \item $\forall x\, \atom{A}{\underline{x}} \eand \atom{B}{\overline{x}}$
 \item $\forall x (\atom{A}{\underline{x}} \eand \atom{B}{\underline{x}}) \eand \forall y(\atom{C}{\overline{x}} \eand \atom{D}{\underline{y}})$
 \item $\forall x\exists y[\atom{R}{\underline{x},\underline{y}} \eif (\atom{J}{\overline{z}} \eand \atom{K}{\underline{x}})] \eor \atom{R}{\overline{y},\overline{x}}$
 \item $\forall x_1(\atom{M}{\overline{x_2}} \eiff \atom{L}{\overline{x_2},\underline{x_1}}) \eand \exists x_2\, \atom{L}{\overline{x_3},\underline{x_2}}$
-\end{earg}
+\end{problemslist}
 
 
 \end{practiceproblems}
@@ -216,11 +216,11 @@ Identify which variables are bound and which are free.
 
 \chapter{Definite descriptions}\label{subsec.defdesc}
 Consider sentences like:
-	\begin{earg}
-		\item[\ex{traitor1}] Nick is the traitor.
-		\item[\ex{traitor2}] The traitor went to Cambridge.
-		\item[\ex{traitor3}] The traitor is the deputy
-	\end{earg}
+	\begin{samplesent}
+		\item\label{traitor1} Nick is the traitor.
+		\item\label{traitor2} The traitor went to Cambridge.
+		\item\label{traitor3} The traitor is the deputy
+	\end{samplesent}
 These are definite descriptions: they are meant to pick out a \emph{unique} object. They should be contrasted with \emph{indefinite} descriptions, such as `Nick  is \emph{a} traitor'. They should equally be contrasted with \emph{generics}, such as `\emph{The} whale is a mammal' (it's inappropriate to ask \emph{which} whale). The question we face is: how should we deal with definite descriptions in FOL?
 
 
@@ -272,9 +272,9 @@ France has no king at present. Now, if we were to introduce a name, `$k$', to na
 Russell's analysis neatly avoids this problem. Russell tells us to treat definite descriptions using predicates and quantifiers, instead of names. Since predicates can be empty (see \S\ref{s:MoreMonadic}), this means that no difficulty now arises when the definite description is empty.
 
 Indeed, Russell's analysis helpfully highlights two ways to go wrong in a claim involving a definite description. To adapt an example from Stephen Neale (1990),\footnote{Neale, \emph{Descriptions}, 1990, Cambridge: MIT Press.}  suppose Alex claims:
-	\begin{earg}
-		\item[\ex{kingdate}] I am dating the present king of France.
-	\end{earg}
+	\begin{samplesent}
+		\item\label{kingdate} I am dating the present king of France.
+	\end{samplesent}
 Using the following symbolization key:
 	\begin{ekey}
 		\item[a] Alex
@@ -282,10 +282,10 @@ Using the following symbolization key:
 		\item[Dxy] \gap{x} is dating \gap{y}
 	\end{ekey}
 Sentence \ref{kingdate} would be symbolized by `$\exists x (\forall y(Ky \eiff  x \eid y) \eand Dax)$'. Now, this can be false in (at least) two ways, corresponding to these two different sentences:
-	\begin{earg}
-		\item[\ex{outernegation}] There is no one who is both the present King of France and  such that he and Alex are dating.
-		\item[\ex{innernegation}] There is a unique present King of France, but Alex is not dating him.
-	\end{earg}
+	\begin{samplesent}
+		\item\label{outernegation} There is no one who is both the present King of France and  such that he and Alex are dating.
+		\item\label{innernegation} There is a unique present King of France, but Alex is not dating him.
+	\end{samplesent}
 Sentence \ref{outernegation} might be paraphrased by `It is not the case that: the present King of France and Alex are dating'. It will then be symbolized by `$\enot \exists x\bigl[(Kx \eand \forall y(Ky \eif  x \eid y)) \eand Dax \bigr]$'. We might call this \emph{outer} negation, since the negation governs the entire sentence. Note that it will be true if there is no present King of France.
 
 Sentence \ref{innernegation} can be symbolized by `$\exists x ((Kx \eand \forall y(Ky \eif x \eid y)) \eand \enot Dax)$'. We might call this \emph{inner} negation, since the negation occurs within the scope of the definite description. Note that its truth requires that there is a present King of France, albeit one who is not dating Alex.
@@ -300,13 +300,13 @@ If we agree with Strawson here, we will need to revise our logic. For, in our lo
 But there is room to disagree with Strawson. Strawson is appealing to some linguistic intuitions, but it is not clear that they are very robust. For example: isn't it just \emph{false}, not `gappy', that Tim is dating the present King of France?
 
 Keith Donnellan raised a second sort of worry, which (very roughly) can be brought out by thinking about a case of mistaken identity.\footnote{Keith Donnellan, `Reference and Definite Descriptions', 1966, \emph{Philosophical Review 77}, pp.\ 281--304.} Two men stand in the corner: a very tall man drinking what looks like a gin martini; and a very short man drinking what looks like a pint of water. Seeing them, Malika says:
-	\begin{earg}
-		\item[\ex{gindrinker}] The gin-drinker is very tall!
-	\end{earg}
+	\begin{samplesent}
+		\item\label{gindrinker} The gin-drinker is very tall!
+	\end{samplesent}
 Russell's analysis will have us render Malika's sentence as:
-	\begin{earg}
+	\begin{compactlist}
 		\item[\ref{gindrinker}$'$.] There is exactly one gin-drinker [in the corner], and whoever is a gin-drinker [in the corner] is very tall.
-	\end{earg}
+	\end{compactlist}
 Now suppose that the very tall man is actually drinking \emph{water} from a martini glass; whereas the very short man is drinking a pint of (neat) gin. By Russell's analysis, Malika has said something false, but don't we want to say that Malika has said something \emph{true}?
 
 Again, one might wonder how clear our intuitions are on this case. We can all agree that Malika intended to pick out a particular man, and say something true of him (that he was tall). On Russell's analysis, she actually picked out a different man (the short one), and consequently said something false of him. But  maybe advocates of Russell's analysis only need to explain \emph{why} Malika's intentions were frustrated, and so why she said something false. This is easy enough to do:  Malika said something false because she had false beliefs about the men's drinks; if Malika's beliefs about the drinks had been true,  then she would have said something true.\footnote{Interested parties should read Saul Kripke, `Speaker Reference and Semantic Reference', 1977, in French et al (eds.), \emph{Contemporary Perspectives in the Philosophy of Language}, Minneapolis: University of Minnesota Press, pp.\ 6-27.}
@@ -327,7 +327,7 @@ Using the following symbolization key:
 \item[i] Ingmar
 \end{ekey}
 symbolize the following sentences in FOL:
-\begin{earg}
+\begin{problemslist}
 \item Hofthor trusts a vegetarian.
 \item Everyone who trusts Ingmar trusts a vegetarian.
 \item Everyone who trusts Ingmar trusts someone who trusts a vegetarian.
@@ -335,7 +335,7 @@ symbolize the following sentences in FOL:
 \item Ingmar trusts Hofthor, but no one else.
 \item The person who knows the combination to the safe is a vegetarian.
 \item The person who knows the combination to the safe is not a spy.
-\end{earg}
+\end{problemslist}
 
 
 \solutions
@@ -353,7 +353,7 @@ Using the following symbolization key:
 \item[Wx] \gap{x} is wild.
 \end{ekey}
 symbolize each sentence in FOL:
-\begin{earg}
+\begin{problemslist}
 \item All clubs are black cards.
 \item There are no wild cards.
 \item There are at least two clubs.
@@ -366,7 +366,7 @@ symbolize each sentence in FOL:
 \item If the deuce of clubs is wild, then there is exactly one wild card.
 \item The man with the axe is not a jack.
 \item The deuce of clubs is not the man with the axe.
-\end{earg}
+\end{problemslist}
 
 \
 
@@ -379,7 +379,7 @@ symbolize each sentence in FOL:
 \item[Wx] \gap{x} has wings.
 \end{ekey}
 symbolize the following sentences in FOL:
-\begin{earg}
+\begin{problemslist}
 \item There are at least three horses in the world.
 \item There are at least three animals in the world.
 \item There is more than one horse in Farmer Brown's field.
@@ -388,7 +388,7 @@ symbolize the following sentences in FOL:
 \item The Pegasus is a winged horse.
 \item The animal in Farmer Brown's field is not a horse.
 \item The horse in Farmer Brown's field does not have wings.
-\end{earg}
+\end{problemslist}
 
 \problempart
 In this chapter, we symbolized `Nick is the traitor' by `$\exists x (Tx \eand \forall y(Ty \eif x \eid y) \eand x \eid n)$'. Two equally good symbolizations would be:
@@ -591,7 +591,7 @@ Using the following symbolization key:
 \item[i] Ingmar
 \end{ekey}
 symbolize the following sentences in FOL:
-\begin{earg}
+\begin{problemslist}
 \item Hofthor trusts a vegetarian.
 \item[] \myanswer{$\exists x(\atom{V}{x} \eand \atom{T}{h,x})$}
 \item Everyone who trusts Ingmar trusts a vegetarian.
@@ -607,7 +607,7 @@ symbolize the following sentences in FOL:
 \item The person who knows the combination to the safe is not a spy.
 \item[] \myanswer{$\exists x\bigl[\atom{K}{x} \eand \forall y(\atom{K}{y} \eif x = y) \eand \enot \atom{S}{x}\bigr]$\\
 Comment: the scope of negation is potentially ambiguous here; I have read it as \emph{inner} negation.}
-\end{earg}
+\end{problemslist}
 
 
 \solutions
@@ -625,7 +625,7 @@ Using the following symbolization key:
 \item[\atom{W}{x}] \gap{x} is wild.
 \end{ekey}
 symbolize each sentence in FOL:
-\begin{earg}
+\begin{problemslist}
 \item All clubs are black cards.
 \item[] \myanswer{$\forall x (\atom{C}{x} \eif \atom{B}{x})$}
 \item There are no wild cards.
@@ -657,7 +657,7 @@ Comment: if there is not exactly one deuce of clubs, then the above sentence is 
 \item The deuce of clubs is not the man with the axe.
 \item[] \myanswer{$\exists x \exists y\bigl(\atom{D}{x} \eand \atom{C}{x} \eand \forall z[(\atom{D}{z} \eand \atom{C}{z}) \eif x = z] \eand \atom{M}{y} \eand \forall z(\atom{M}{z} \eif y = z) \eand \enot x = y\bigr)$}
 
-\end{earg}
+\end{problemslist}
 
 \
 
@@ -670,7 +670,7 @@ Comment: if there is not exactly one deuce of clubs, then the above sentence is 
 \item[\atom{W}{x}] \gap{x} has wings.
 \end{ekey}
 symbolize the following sentences in FOL:
-\begin{earg}
+\begin{problemslist}
 \item There are at least three horses in the world.
 \item[] \myanswer{$\exists x \exists y \exists z (\enot x = y \eand \enot x = z \eand \enot y = z \eand \atom{H}{x} \eand \atom{H}{y} \eand \atom{H}{z})$}
 \item There are at least three animals in the world.
@@ -688,7 +688,7 @@ symbolize the following sentences in FOL:
 \item The horse in Farmer Brown's field does not have wings.
 \item[] \myanswer{$\exists x \bigl[\atom{H}{x} \eand \atom{B}{x} \eand \forall y \bigl((\atom{H}{y} \eand \atom{B}{y}) \eif x = y\bigr) \eand \enot \atom{W}{x}\bigr]$\\Comment: the scope of negation might be ambiguous here; I have read it as \emph{inner} negation.}
 
-\end{earg}
+\end{problemslist}
 
 \problempart
 In this chapter, we symbolized `Nick is the traitor' by `$\exists x (\atom{T}{x} \eand \forall y(\atom{T}{y} \eif x = y) \eand x = n)$'. Explain why these would be equally good symbolisations:

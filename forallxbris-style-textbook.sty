@@ -93,18 +93,17 @@
 	\ifthenelse{\day<10}{0}{}\number\day%
 }
 
-% Used in conjunction with {earg}, this handles the numbering and
-% references to example sentences:
 
 \RequirePackage{enumitem}
-\newcounter{Example}[chapter]
-\newcommand*{\ex}[1]{\refstepcounter{Example}\arabic{Example}.\label{#1}}
 
+% Define an enumerate-like list
+\newlist{samplesent}{enumerate}{1}
 
-\newenvironment{samplesent}
-{\begin{earg}%
-	}%
-	{\end{earg}}
+% Make it compact and give it a "series" so it can resume across blocks
+\setlist[samplesent]{noitemsep,label=\arabic*.,ref=\arabic*,resume}
+
+% Reset the underlying counter each chapter
+\@addtoreset{samplesenti}{chapter}
 
 
 
@@ -222,7 +221,7 @@
 
 
 % This starts a new section which is automatically numbered:
-\newcommand*{\problempart}{\par\noindent\refstepcounter{ProbPart}\textbf{\Alph{ProbPart}. }}
+\newcommand*{\problempart}{\par\noindent\refstepcounter{ProbPart}\textbf{\Roman{ProbPart}. }}
 % This bullet is used to indicate that solutions appear at the end of
 % the book.
 \newcommand*{\solutions}{} %TB: removed, since I am not including the solutions in the book

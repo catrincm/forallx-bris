@@ -151,24 +151,24 @@ These are nonsense: a string of meaningful words, but not a grammatical English 
 
 
 The second purpose is to avoid ambiguity. In English we use commas to distinguish between two sentences
-\begin{earg}
-\item[\ex{engamb1}] John's tired, and Sue's tall or Rob's short.
-\item[\ex{engamb2}] John's tired and Sue's tall, or Rob's short.
-\end{earg}
+\begin{samplesent}
+\item\label{engamb1} John's tired, and Sue's tall or Rob's short.
+\item\label{engamb2} John's tired and Sue's tall, or Rob's short.
+\end{samplesent}
 and without a comma it would be unclear which of the two sentences we intend to convey. In TFL this job of punctuation marks is assumed by brackets, that is, we distinguish between:
 $$(A\eand(B\eor C))$$
 $$((A\eand B)\eor C)$$
 You can think of the former TFL-sentence as representing the English sentence 1, whereas the latter as representing the English sentence 2.
 
 You might know this use of brackets from mathematics:
-\begin{earg}
-\item[\ex{mathamb}] $9 + 3 \times 4$
-\end{earg}
+\begin{samplesent}
+\item\label{mathamb} $9 + 3 \times 4$
+\end{samplesent}
 can either be read as:
-\begin{earg}
-\item[\ex{mathamb1}] $9 + (3 \times 4) \qquad(=9+12=21)$
-\item[\ex{mathamb2}] $(9+3) \times 4 \qquad(=12\times 4=48)$
-\end{earg}
+\begin{samplesent}
+\item\label{mathamb1} $9 + (3 \times 4) \qquad(=9+12=21)$
+\item\label{mathamb2} $(9+3) \times 4 \qquad(=12\times 4=48)$
+\end{samplesent}
 
 Importantly, the language of TFL is designed to exclude any form of ambiguity. For example, $A\eand B\eor C$ will not be a sentence of TFL, as it would require disambiguation. Rather the syntactic/grammatical rules of the language of TFL will be such that only expressions that have a \emph{unique} reading can be sentences of TFL. To make this precise we now provide a formal definition of what it is to be a sentence in TFL.
 
@@ -349,18 +349,18 @@ Add brackets to form a sentence of TFL, strictly speaking (i.e., no dropped brac
 	\end{tabular}
 \end{center}
 
-\begin{earg}
+\begin{problemslist}
 	\item Where the `$\eif$' is the main connective
 	\item Where the `$\eor$' is the main connective.
 	\item Where the left `$\enot$' is the main connective. 
 	\item Can it be done so that the right `$\enot$' is the main connective?
-\end{earg}
+\end{problemslist}
 
 
 \problempart
 \label{pr.wiffTFL}
 For each of the following: (a) Is it a sentence of TFL, strictly speaking? (b) Is it a sentence of TFL, allowing for our relaxed bracketing conventions? (c) If the answer to (b) is yes, write down the formation tree of each sentence and determin the main connective at each node (if there is one). Is there a main connective for every node of the formation tree of a sentence.
-\begin{earg}
+\begin{problemslist}
 \item $(A)$\hfill \myanswer{(a) no (b) no}
 \item $J_{374} \eor \enot J_{374}$\hfill \myanswer{(a) no (b) yes}
 \item $\enot \enot \enot \enot F$\hfill \myanswer{(a) yes (b) yes}
@@ -369,15 +369,15 @@ For each of the following: (a) Is it a sentence of TFL, strictly speaking? (b) I
 \item $(A \eif (A \eand \enot F)) \eor (D \eif E)$\hfill \myanswer{(a) no (b) yes}
 \item $[(Z \eif S) \eif W] \eand [J \eor X]$\hfill \myanswer{(a) no (b) yes}
 \item $(F \eif \enot D \eif J) \eor (C \eand D)$\hfill \myanswer{(a) no (b) no}
-\end{earg}
+\end{problemslist}
 
 
 \problempart
-\begin{earg}
+\begin{problemslist}
 	\item  Does $\enot A\eor B$ have the form $\metaX\eor\metaY$?
 	\item Does $\enot(A\eor B)$ have the form $\metaX\eor \metaY$?
 	\item Does $(A\eor B)\eor C$ have the form $\metaX\eor\metaY$?
-\end{earg}
+\end{problemslist}
 \problempart
 \begin{enumerate}
 	\item Can there be a sentence of TFL of the form $(\metaX\eand\metaY)$ that includes three different connectives (the connectives are $\enot,\eand,\eor,\eif$)? If so, give an example, if not explain why not.
@@ -574,10 +574,10 @@ The `$\enot$'-connective is called negation. When we introduced the `$\enot$'-co
 If a sentence can be paraphrased as `it is not the case that \ldots'\\ it can be symbolised as $\enot\metaX$.
 }
 What does that mean for the truth rules? Consider:
-\begin{earg}
-\item[\ex{neg-f}] Bristol is not in France.
-\item[\ex{neg-f}] Bristol is not in England.
-\end{earg}
+\begin{samplesent}
+\item\label{neg-f} Bristol is not in France.
+\item\label{neg-f} Bristol is not in England.
+\end{samplesent}
 `Bristol is in France' is false, so `Bristol is not in France' is true.
 `Bristol is in England' is true, so `Bristol is not in England' is false.
 
@@ -617,9 +617,9 @@ The $\eand$-connective, called conjunction, is meant to be understood of the Eng
 	}
 
 What is the appropriate truth rule for conjunction? Consider:
-\begin{earg}
-\item[\ex{conj}] She can speak German and she can speak French.
-\end{earg}
+\begin{samplesent}
+\item\label{conj} She can speak German and she can speak French.
+\end{samplesent}
 If she can speak German and she can speak French, then this is true, but otherwise it is false.
 
 More generally, the rule governing $\eand$ is:
@@ -678,9 +678,9 @@ If a sentence can be paraphrased as `\ldots or \ldots' \\it can be symbolised as
 
 Whereas the truth rules for the negation and conjunction were relatively straightforward, the rule for disjunction is a bit more subtle.
 Consider:
-\begin{earg}
-\item[\ex{conj}] She can speak German or she can speak French.
-\end{earg}
+\begin{samplesent}
+\item\label{conj} She can speak German or she can speak French.
+\end{samplesent}
 If she cannot speak either German or French, then this is false. If she can speak German but not French, then it is true, and if she can speak French but not German it is also true.
 We have the general rules:
 \begin{itemize}
@@ -691,12 +691,12 @@ We have the general rules:
 
 But what if she can speak both? Is it true or false?
 It seems that in English there are two kinds of disjunctions: an \define{inclusive} and an \define{exclusive} one. For the inclusive \emph{or}, we might whisper a ``or both'' after it; whereas for the exclusive \emph{or}, we'd want to whisper a ``but not both'':
-\begin{earg}
-\item [\ex{inclor}] She can speak German or
+\begin{samplesent}
+\item\label{inclor} She can speak German or
 she can speak French (or both).
-\item [\ex{exclor}] She can speak German or
+\item\label{exclor} She can speak German or
 she can speak French (but not both).
-\end{earg}
+\end{samplesent}
 
 In logic there can be no ambiguity. We choose that $\eor$ stands for the \emph{inclusive or}.
 That is, we give the final rule:
@@ -772,9 +772,9 @@ name=conditional,
 description={The symbol \eif, used to represent words and phrases that function like the English phrase ``if \ldots{} then \ldots''; a sentence formed by using this symbol}
 }
 What are the truth rules for the conditional? Consider the sentence:
-\begin{earg}
-\item[\ex{bartender}] If she is drinking a beer, then she is over eighteen.
-\end{earg}
+\begin{samplesent}
+\item\label{bartender} If she is drinking a beer, then she is over eighteen.
+\end{samplesent}
 What are the circumstances under which this conditional is false?
 Here is what we'll say:
 \begin{itemize}
@@ -827,9 +827,9 @@ description={The sentence on the right side of a \gls{conditional}}
 }
 
 The TFL connective $\eif$ is \emph{stipulated} to be governed by these rules. This sometimes marked by calling it the \define{material conditional}. But the truth rules of the $\eif$-connective only tell us part of the story of \emph{if\ldots, then\ldots} sentences in English, as the truth rules do not seem to work well for all these sentences. For example, truth rules for material conditional do not seem to work well with our understanding of the sentence
-\begin{earg}
-\item[\ex{kangaroo}] If Kangaroos had no tails, they would topple over.
-\end{earg}
+\begin{samplesent}
+\item\label{kangaroo} If Kangaroos had no tails, they would topple over.
+\end{samplesent}
 %We will discuss conditional-sentences of this kind in \S\ref{s:IndicativeSubjunctive} and will look at some problems arising due to understanding $\eif$ in terms of material conditional in \S\ref{s:ParadoxesOfMaterialConditional}.
 %
 For our purposes $\eif$-connective will be understood in terms of truth rules given in this section.
@@ -865,10 +865,10 @@ In plenty of languages, e.g.~English, there are connectives that are not truth-f
 \subsection{Necessarily}
 
 In English, for example, we can form a new sentence from any simpler sentence by prefixing it with `Necessarily, \ldots' or  `It is necessary that\ldots'. The truth value of this new sentence is not fixed solely by the truth value of the original sentence. For consider two true sentences:
-\begin{earg}
-	\item[\ex{nec-math}] $2 + 2 = 4$
-	\item[\ex{nec-music}] Shostakovich wrote fifteen string quartets
-\end{earg}
+\begin{samplesent}
+	\item\label{nec-math} $2 + 2 = 4$
+	\item\label{nec-music} Shostakovich wrote fifteen string quartets
+\end{samplesent}
 Whereas it is necessary that $2 + 2 = 4$, it is not \emph{necessary} tthat Shostakovich wrote fifteen string quartets. If Shostakovich had died earlier, he would have failed to finish Quartet no.\ 15; if he had lived longer, he might have written a few more. So `It is necessary that\ldots' is a connective of English, but it is not \emph{truth-functional}.
 
 
@@ -879,10 +879,10 @@ Whereas it is necessary that $2 + 2 = 4$, it is not \emph{necessary} tthat Shost
 
 We said that $\eif$ was pretty bad at capturing some uses of `if\ldots, then\ldots' in Englihs. In particular, it is bad at capturing use of \emph{subjunctive conditionals} of English. The problem is that a subjunctive conditional is not truth functional.
 Consider the two sentences:
-\begin{earg}
-	\item[\ex{brownwins1}] If Mitt Romney had won the 2012 election, then he would have been the 45th President of the USA.
-	\item[\ex{brownwins2}] If Mitt Romney had won the 2012 election, then he would have turned into a helium-filled balloon and floated away into the night sky.
-\end{earg}
+\begin{samplesent}
+	\item\label{brownwins1} If Mitt Romney had won the 2012 election, then he would have been the 45th President of the USA.
+	\item\label{brownwins2} If Mitt Romney had won the 2012 election, then he would have turned into a helium-filled balloon and floated away into the night sky.
+\end{samplesent}
 Sentence \ref{brownwins1} is true; sentence \ref{brownwins2} is false, but both have false antecedents and false consequents. So the truth value of the whole sentence is not uniquely determined by the truth value of the constituent sentences.
 
 However, the material conditional, which is what we specify $\eif$ to be is the best that can be done at symbolising subjunctive conditionals of English in TFL. TFL just doesn't have the required resources as the subjunctive conditional is not truth-functional.
@@ -1288,7 +1288,7 @@ For example:
 	\end{tabular}
 \end{center}
 
-\begin{earg}
+\begin{problemslist}
 	\item $\,\enot A \eor (B \eif \enot (C \eor A))\,$
 	\item $\, (A \eand H) \eor (I \eand \enot B)\,$
 	\item $\, H \eif (A \eor C)\,$
@@ -1300,7 +1300,7 @@ For example:
 	\item $\, ((J \eand \enot C )\eif D) \eand \enot (J \eand E)\,$
 	\item $\, (A \eor B) \eand (\enot A \eor \enot B)$
 	\item $\, (H \eif D) \eor (I \eif A)\,$
-\end{earg}
+\end{problemslist}
 
 	
 	\end{practiceproblems}
@@ -1992,7 +1992,7 @@ There are tricks that mean you can miss out some of the gaps by using strategies
 	\label{pr.TT.TTorC}
 	\label{pr.TT.TTorC}
 	Complete truth tables for each of the following:
-	\begin{earg}
+	\begin{problemslist}
 		\item $A \eif A$ %taut
 		\myanswer{\begin{center}
 				\begin{tabular}{c | def}
@@ -2207,12 +2207,12 @@ There are tricks that mean you can miss out some of the gaps by using strategies
 	
 	\vspace{1em}
 	
-\end{earg}
+\end{problemslist}
 
 \problempart
 Write complete truth tables for the following sentences and mark the column that represents the possible truth values for the whole sentence.
 
-\begin{earg}
+\begin{problemslist}
 	
 	\item	$(D \eand \enot D) \eif G $
 	
@@ -2318,7 +2318,7 @@ Write complete truth tables for the following sentences and mark the column that
 		%\end{center}
 		%}
 	%\vspace{1em}
-\end{earg}
+\end{problemslist}
 
 
 
@@ -2326,7 +2326,7 @@ Write complete truth tables for the following sentences and mark the column that
 
 \problempart
 Can you think of sentences with the following truth table:
-\begin{enumerate}
+\begin{problemslist}
 	\item \begin{tabular}{cc|c}
 		$A$&$B$&?\\\hline
 		T&T&T\\
@@ -2351,10 +2351,10 @@ Can you think of sentences with the following truth table:
 			$\enot( A\eand \enot B)$;\\ or a more systematic answer by simply writing out the different options when the sentence is true: $$((A\eand B)\eor (\enot A\eand B))\eor (\enot A\eand\enot B)$$
 	\end{minipage}}
 	
-\end{enumerate}
+\end{problemslist}
 \problempart
 Suppose $X$ is TFL sentence containing two atomic sentences. Then there are in fact sixteen different possible columns for $X$.
-\begin{enumerate}
+\begin{problemslist}
 	\item Can you explain why?\myanswer{\\ The first line might have T or F, the second line might have T or F, etc. There are 4 valuations, so there are $2\times 2\times 2\times 2=2^4=16$ different ways of putting Ts and Fs to these 4 lines. I.e.~16 different columns. }
 	\item Can you show for each of these combinations that there is a sentence of TFL with that column describing its truth.
 	%\myanswer{\\
@@ -2365,7 +2365,7 @@ Suppose $X$ is TFL sentence containing two atomic sentences. Then there are in f
 		%The previous answer had that every truth table can be given by a sentence with $\eand, \eor$ and $\enot$. We can replace any instances of $\eor$ by $\eand$ using: $$\metaX\eor\metaY\text{ is logically equivalent to }\enot(\enot\metaX\eand\enot\metaY)$$
 		%See 37.4 of forall$x$:Bristol for more details.
 		%}
-\end{enumerate}
+\end{problemslist}
 
 If you want additional practice, you can construct truth tables for any of the sentences and arguments in the exercises for the previous chapter.
 
@@ -2973,17 +2973,17 @@ One can show that `$(A \eand B) \eand C$' and  `$A \eand (B \eand C)$' are logic
 	\problempart
 	\label{pr.TT.consistent}
 	Use truth tables to determine whether these sentences are jointly consistent, or jointly inconsistent:
-	\begin{earg}
+	\begin{problemslist}
 		\item $A\eif A$, $\enot A \eif \enot A$, $A\eand A$, $A\eor A$ %consistent
 		\item $A\eor B$, $A\eif C$, $B\eif C$ %consistent
 		\item $B\eand(C\eor A)$, $A\eif B$, $\enot(B\eor C)$  %inconsistent
 		\item $A\eiff(B\eor C)$, $C\eif \enot A$, $A\eif \enot B$ %consistent
-	\end{earg}
+	\end{problemslist}
 	
 	
 	
 	\problempart Determine whether each sentence is a tautology, a contradiction, or a contingent sentence, using a complete truth table.
-	\begin{earg}
+	\begin{problemslist}
 		\item $\enot B \eand B$ \vspace{.5ex}%contra
 		
 		
@@ -3001,37 +3001,37 @@ One can show that `$(A \eand B) \eand C$' and  `$A \eand (B \eand C)$' are logic
 		
 		\item $[(A \eand B) \eiff B] \eif (A \eif B)$ \vspace{.5ex}% contingent.
 		
-	\end{earg}
+	\end{problemslist}
 	
 	
 	
 	\noindent\problempart
 	\label{pr.TT.equiv}
 	Determine whether each the following sentences are logically equivalent using complete truth tables. If the two sentences really are logically equivalent, write ``equivalent.'' Otherwise write, ``Not equivalent.''
-	\begin{earg}
+	\begin{problemslist}
 		\item $A$ and $\enot A$
 		\item $A \eand \enot A$ and $\enot B \eiff B$
 		\item $[(A \eor B) \eor C]$ and $[A \eor (B \eor C)]$
 		\item $A \eor (B \eand C)$ and $(A \eor B) \eand (A \eor C)$
-		\item $[A \eand (A \eor B)] \eif B$ and $A \eif B$\end{earg}
+		\item $[A \eand (A \eor B)] \eif B$ and $A \eif B$\end{problemslist}
 	
 	
 	\problempart
 	\label{pr.TT.equiv2}
 	Determine whether each the following sentences are logically equivalent using complete truth tables. If the two sentences really are equivalent, write ``equivalent.'' Otherwise write, ``not equivalent.''
-	\begin{earg}
+	\begin{problemslist}
 		\item $A\eif A$ and $A \eiff A$
 		\item $\enot(A \eif B)$ and $\enot A \eif \enot B$
 		\item $A \eor B$ and $\enot A \eif B$
 		\item$(A \eif B) \eif C$ and $A \eif (B \eif C)$
 		\item $A \eiff (B \eiff C)$ and $A \eand (B \eand C)$
-	\end{earg}
+	\end{problemslist}
 	
 	
 	\problempart
 	\label{pr.TT.consistent2}
 	Determine whether each collection of sentences is jointly consistent or jointly inconsistent using a complete truth table.
-	\begin{earg}
+	\begin{problemslist}
 		\item $A \eand \enot B$, $\enot(A \eif B)$, $B \eif A$\vspace{.5ex} %Consistent
 		
 		%\begin{tabular}{ccccccccccccccc}
@@ -3079,18 +3079,18 @@ One can show that `$(A \eand B) \eand C$' and  `$A \eand (B \eand C)$' are logic
 		
 		\item $A \eif (B \eif C)$, $(A \eif B) \eif C$, $A \eif C$\vspace{.5ex} % consistent.
 		
-	\end{earg}
+	\end{problemslist}
 	
 	\noindent\problempart
 	\label{pr.TT.consistent3}
 	Determine whether each collection of sentences is jointly consistent or jointly inconsistent, using a complete truth table.
-	\begin{earg}
+	\begin{problemslist}
 		\item $\enot B$, $A \eif B$, $A$ \vspace{.5ex}%inconsistent.
 		\item $\enot(A \eor B)$, $A \eiff B$, $B \eif A$\vspace{.5ex} %Consistent
 		\item $A \eor B$, $\enot B$, $\enot B \eif \enot A$\vspace{.5ex} %Inconsistent
 		\item $A \eiff B$, $\enot B \eor \enot A$, $A \eif B$\vspace{.5ex} %consistent.
 		\item $(A \eor B) \eor C$, $\enot A \eor \enot B$, $\enot C \eor \enot B$\vspace{.5ex} %consistent
-	\end{earg}
+	\end{problemslist}
 	
 	
 	
@@ -3099,7 +3099,7 @@ One can show that `$(A \eand B) \eand C$' and  `$A \eand (B \eand C)$' are logic
 	\problempart
 	\label{pr.TT.concepts}
 	Answer each of the questions below and justify your answer.
-	\begin{earg}
+	\begin{problemslist}
 		\item Suppose $\metaX$ is true and $\metaY$ is true\\Is $\metaX\eor\metaY$ true.\myanswer{\\true}
 		\item Suppose $\metaX$ is false \\Is $\metaX\eor\metaY$ true?\myanswer{\\false. If $\metaY$ is also false, then $\metaX\eor\metaY$ is false. }
 		\item Suppose $\metaX$ is false \\Is $\metaX\eif\metaY$ true. \myanswer{\\true}
@@ -3120,7 +3120,7 @@ One can show that `$(A \eand B) \eand C$' and  `$A \eand (B \eand C)$' are logic
 		\myanswer{\item[] Not much. Since $\metaX$ and $\metaY$ are true on exactly the same lines of the truth table, their disjunction is true on exactly the same lines. So, their disjunction is logically equivalent to them.}
 		\item Suppose that \metaX and \metaY are \emph{not} logically equivalent.\\ What can you say about $\metaX\eor\metaY$?
 		\myanswer{\item[] \metaX and \metaY have different truth values on at least one line of a complete truth table, and $(\metaX\eor\metaY)$ will be true on that line. On other lines, it might be true or false. So $\metaX\eor\metaY$ is either a tautology or it is contingent; it is \emph{not} a contradiction.}
-	\end{earg}
+	\end{problemslist}
 	
 	\noindent\problempart
 	\label{pr.TT.meta}
@@ -3202,10 +3202,10 @@ So `$((P \eif Q) \eif P) \eif P$' is a tautology. In fact, it is an instance of 
 
 \section{Testing for validity and logical consequence}
 When we use truth tables to test for validity or logical consequence, we are checking for \emph{bad} lines: lines where the premises are all true and the conclusion is false. Note:
-\begin{earg}
+\begin{compactlist}
 	\item[\textbullet] Any line where the conclusion is true is not a bad line.
 	\item[\textbullet] Any line where some premise is false is not a bad line.
-\end{earg}
+\end{compactlist}
 Since \emph{all} we are doing is looking for bad lines, we should bear this in mind. So: if we find a line where the conclusion is true, we do not need to evaluate anything else on that line: that line definitely isn't bad. Likewise, if we find a line where some premise is false, we do not need to evaluate anything else on that line.
 
 With this in mind, consider how we might test the following for validity:
@@ -3306,7 +3306,7 @@ We have been discussing shortcuts in testing for logically validity, but exactly
 	\problempart
 	\label{pr.TT.TTorC2}
 	Using shortcuts, determine whether each sentence is a tautology, a contradiction, or neither.
-	\begin{earg}
+	\begin{problemslist}
 		
 		\item $\enot B \eand B$ %contra
 		\myanswer{ \hfill Contradiction\begin{center}
@@ -3431,7 +3431,7 @@ We have been discussing shortcuts in testing for logically validity, but exactly
 					F & F & F & F & & F & & \TTbf{F} &  & T & &  F
 				\end{tabular}
 		\end{center}}
-	\end{earg}
+	\end{problemslist}
 \end{practiceproblems}
 
 \chapter{Partial truth tables}\label{s:PartialTruthTable}\teachingnote{Not taught in course. This knowledge will not be needed for the exam. (Although you can use these techniques in the exam if you wish.)}
