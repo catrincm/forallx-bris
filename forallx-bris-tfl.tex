@@ -1478,7 +1478,7 @@ So we will somewhat recreate the formation tree in the header of the truth table
 \begin{center}
 	\begin{tabular}{r c c| d e e ee e e f}
 \multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eand$ & $H$ & $)$ & $\mainconnective{\eif}$ & $H$ \\[.2em]
-	&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & $\mainconnective{\eor}$ & $H$ & $\mainconnectivecolor{)}$ & &$\atomicstage{H}$ \\[.2em]
+	&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & $\mainconnective{\eand}$ & $H$ & $\mainconnectivecolor{)}$ & &$\atomicstage{H}$ \\[.2em]
 	&	& & & $\mainconnective{\enot}$ & $I$  & & $\atomicstage{H}$ & & &\\[.2em]
 	&	& & & & $\atomicstage{I}$& & & & &  \\\hline 
 	$v_1:$&T&T&\\
@@ -1494,7 +1494,7 @@ In the bottom line we just have `$I$', whose truth value is just specified by th
 \begin{center}
 	\begin{tabular}{r c c| d e e ee e e fc}
 		\multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eand$ & $H$ & $)$ & $\mainconnective{\eif}$ & $H$ \\[.2em]
-		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & $\mainconnective{\eor}$ & $H$ & $\mainconnectivecolor{)}$ & &$\atomicstage{H}$ \\[.2em]
+		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & $\mainconnective{\eand}$ & $H$ & $\mainconnectivecolor{)}$ & &$\atomicstage{H}$ \\[.2em]
 		&	& & & $\mainconnective{\enot}$ & $I$  & & $\atomicstage{H}$ & & &\\[.2em]
 		&	& & & & $\atomicstage{I}$& & & & & &$\star$ \\\hline 
 		$v_1:$&T&T& & &T& & & & &\\
@@ -1510,7 +1510,7 @@ The next line is to include the truth value for `$\enot I$' and the truth value 
 \begin{center}
 	\begin{tabular}{r c c| d e e ee e e f c}
 		\multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eand$ & $H$ & $)$ & $\mainconnective{\eif}$ & $H$ &  \\[.2em]
-		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & $\mainconnective{\eor}$ & $H$ & $\mainconnectivecolor{)}$ & &$\atomicstage{H}$ & \\[.2em]
+		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & $\mainconnective{\eand}$ & $H$ & $\mainconnectivecolor{)}$ & &$\atomicstage{H}$ & \\[.2em]
 		&	& & & $\mainconnective{\enot}$ & $I$  & & $\atomicstage{H}$ & & & & $\star$ \\[.2em]
 		&	& & & & $\atomicstage{I}$& & & & &  & \\\hline 
 		$v_1:$&T&T& & &T& &T& & & &\\
@@ -1536,7 +1536,7 @@ This results in:
 \begin{center}
 	\begin{tabular}{r c c| d e e ee e e fc}
 		\multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eand$ & $H$ & $)$ & $\mainconnective{\eif}$ & $H$ \\[.2em]
-		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & $\mainconnective{\eor}$ & $H$ & $\mainconnectivecolor{)}$ & &$\atomicstage{H}$ \\[.2em]
+		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & $\mainconnective{\eand}$ & $H$ & $\mainconnectivecolor{)}$ & &$\atomicstage{H}$ \\[.2em]
 		&	& & & $\mainconnective{\enot}$ & $I$  & & $\atomicstage{H}$ & & &&$\star$\\[.2em]
 		&	& & & & $\atomicstage{I}$& & & & &  \\\hline 
 		$v_1:$&T&T& &F&T& &T& & &\\
@@ -2805,8 +2805,8 @@ Our main example of a tautology is $A\eor\enot A$. Whatever the weather is like 
 \begin{center}
 	\begin{tabular}{c|deef}
 		$A$&$A$&$\eor$&$\enot$&$A$\\\hline
-		T&T&\textbf{T}&F&T\\
-		F&F&\textbf{T}&T&F
+		T&T&\TTbf{T}&F&T\\
+		F&F&\TTbf{T}&T&F
 	\end{tabular}
 \end{center}
 Since there is a $T$ under the main connective on every line of the truth table, $A\eor \enot A$ is true, whatever the valuation is, i.e.~whether $A$ is true or false.
@@ -2830,8 +2830,8 @@ Our core example of a contradiction is $A\eand\enot A$. Whether $A$ is true or f
 \begin{center}
 	\begin{tabular}{c|deef}
 		$A$&$A$&$\eand$&$\enot$&$A$\\\hline
-		T&T&\textbf{F}&F&T\\
-		F&F&\textbf{F}&T&F
+		T&T&\TTbf{F}&F&T\\
+		F&F&\TTbf{F}&T&F
 	\end{tabular}
 \end{center}
 
