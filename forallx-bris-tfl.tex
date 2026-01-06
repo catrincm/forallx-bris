@@ -893,14 +893,14 @@ However, the material conditional, which is what we specify $\eif$ to be is the 
 	
 	
 	\problempart 
-\begin{enumerate}
+\begin{problemslist}
 	\item Suppose $\metaX$ is true, what can you say about $\metaX\eor\metaY$?
 \item Suppose $\metaX$ is false, what can you say about $\metaX\eif \metaY$?
-\end{enumerate}
+\end{problemslist}
 
 
 \problempart
-\begin{enumerate}
+\begin{problemslist}
 	\item 	Is `I know that' truth functional? \\
 %	\emph{(Hint: try to think of a situation with two English sentences, $\metaX$ and $\metaY$, which have the same truth value but where `I know that \metaX' and `I know that \metaY' have different truth values) }
 	\myanswer{\\No. \begin{center}
@@ -909,7 +909,7 @@ However, the material conditional, which is what we specify $\eif$ to be is the 
 		\begin{center}
 			`I know that France won the FIFA world cup'
 		\end{center} (well, I now know it but I didn't 20 minutes ago. )}
-\end{enumerate}
+\end{problemslist}
 \end{practiceproblems}
 
 
@@ -2026,7 +2026,7 @@ There are tricks that mean you can miss out some of the gaps by using strategies
 				%\end{tabular}
 				%\end{center}}
 				\item $(A \eif B) \eor (B \eif A)$ % taut
-				
+%				
 				\myanswer{
 					\begin{center}
 						\begin{tabular}{c c | d e e e e e f}
@@ -2039,7 +2039,7 @@ There are tricks that mean you can miss out some of the gaps by using strategies
 						\end{tabular}
 				\end{center}}
 				\item $(A \eand B) \eif (B \eor A)$  %taut
-				
+%				
 				\myanswer{
 					\begin{center}
 						\begin{tabular}{c c | d e e e e e f}
@@ -2052,7 +2052,7 @@ There are tricks that mean you can miss out some of the gaps by using strategies
 						\end{tabular}
 				\end{center}}
 				\item $\enot(A \eor B) \eif (\enot A \eand \enot B)$ %taut
-				
+%				
 				\myanswer{\begin{center}
 						\begin{tabular}{c c | d e e e e e e e e f}
 							$A$ & $B$&$\enot$&$(A$&$\eor$&$B)$&$\eif$&$(\enot$&$A$&$\eand$&$\enot$&$B)$\\
@@ -2078,7 +2078,7 @@ There are tricks that mean you can miss out some of the gaps by using strategies
 					
 					
 					\item $\bigl[(A\eand B) \eand\enot(A\eand B)\bigr] \eand C$ %contradiction
-					
+%					
 					\myanswer{\begin{center}
 							\begin{tabular}{c c c | d e e e e e e e e f}
 								$A$ & $B$&$C$&$\bigl[(A$&$\eand$&$B)$&$ \eand$&$\enot$&$(A$&$\eand$&$B)\bigr]$&$\eand$&$C$\\
@@ -2094,7 +2094,7 @@ There are tricks that mean you can miss out some of the gaps by using strategies
 							\end{tabular}
 					\end{center}}
 					\item $[(A \eand B) \eand C] \eif B$ %taut
-					
+%					
 					\myanswer{\begin{center}
 							\begin{tabular}{c c c | d e e e e e f}
 								$A$ & $B$&$C$&$[(A$&$\eand$&$B)$&$\eand$&$C]$&$\eif$&$B$\\
@@ -2110,7 +2110,7 @@ There are tricks that mean you can miss out some of the gaps by using strategies
 							\end{tabular}
 					\end{center}}
 					\item $\enot\bigl[(C\eor A) \eor B\bigr]$ %contingent
-					
+%					
 					\myanswer{\begin{center}
 							\begin{tabular}{c c c | d e e e e f}
 								$A$ & $B$&$C$&$\enot\bigl[($&$C$&$\eor$&$A)$&$\eor$&$B\bigr]$\\
@@ -2147,7 +2147,7 @@ There are tricks that mean you can miss out some of the gaps by using strategies
 	
 	
 	\item $(A \eif B) \eif (\enot B\eif \enot A)$
-	
+%	
 	\myanswer{
 		\begin{center}
 			\begin{tabular}{cccc|c|ccccc}
@@ -2215,8 +2215,8 @@ Write complete truth tables for the following sentences and mark the column that
 \begin{problemslist}
 	
 	\item	$(D \eand \enot D) \eif G $
-	
-	
+%	
+%	
 	\myanswer{\vspace{1em}
 		\begin{center}
 			\begin{tabular}{ccccc|c|c}
@@ -2255,7 +2255,7 @@ Write complete truth tables for the following sentences and mark the column that
 	
 	
 	\item	$\enot \enot (\enot A \eand \enot B)  $
-	
+%	
 	\myanswer{
 		\begin{center}
 			\begin{tabular}{c|c|cccccc}
@@ -2275,7 +2275,7 @@ Write complete truth tables for the following sentences and mark the column that
 	
 	
 	\item 	$[(D \eand R) \eif I] \eif \enot(D \eor R) $
-	
+%	
 	\myanswer{
 		\begin{center}
 			\begin{tabular}{cccccc|c|cccc}
@@ -3407,7 +3407,7 @@ We have been discussing shortcuts in testing for logically validity, but exactly
 					F & F & F & & \TTbf{F} & &  & T \\ 
 				\end{tabular}
 		\end{center}}
-		\item $(B\eand D) \eiff [A \eiff(A \eor C)]$%contingent
+		\item $(B\eand D) \eiff (A \eiff(A \eor C))$%contingent
 		\myanswer{\hfill Neither
 			\begin{center}
 				\begin{tabular}{c c c c | d e e e e e e e f }
