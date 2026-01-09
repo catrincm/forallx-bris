@@ -10,9 +10,10 @@
 
 \RequirePackage{hyperref,ifthen,graphicx,xcolor,amssymb}
 \usepackage[numbered]{bookmark} %TB: added for speedy navigation
-\usepackage[toc,style=index]{glossaries}
+\usepackage[nonumberlist,toc,style=index]{glossaries}
 \makeglossaries
 \usepackage{tabu}
+\usepackage[defaultlines=2,all]{nowidow}
 
 %RZ: typefaces
 
@@ -160,7 +161,12 @@
 \newcommand\myanswer[1]{\textcolor{leadbeater}{#1}} % TB: puts model answers in blue
 \RequirePackage{marginnote}
 
-\newcommand{\noanswers}{\renewcommand{\myanswer}[1]{\marginnote{(\ensuremath{\ast})}}}
+\newcommand{\noanswers}{%
+	\renewcommand{\myanswer}[1]{%
+		\marginnote{(\ensuremath{\ast})}%
+	}%
+}
+
 \newcommand{\showanswers}{%
 	\renewcommand{\myanswer}[1]{\textcolor{blue}{##1}}%
 }
