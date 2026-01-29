@@ -11,3 +11,5 @@ Move the generated pdfs manually into /site/editions/..
 3. Update details in /setup/ for next year
 Remove \finalversiontrue so we're in in-progress
 Update year details in /setup/meta.sty and /setup/academic-year.txt
+
+4. Copy sty to current year teaching docs to protect against future changes. Backwards compatibility cannot be guaranteed. 
