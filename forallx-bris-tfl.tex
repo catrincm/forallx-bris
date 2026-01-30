@@ -64,10 +64,14 @@ lead to valid arguments independently of what expressions we substitute for `$A$
 When one introduces a language there are (at least) two task: the first is to specify the vocabulary of the language and equip the language with a grammar, that is, one has to specify how well-formed sentences of the language look like. This aspect of the language is called its \define{syntax}. The second task is to specify the \define{semantics} of the language. The semantics specifies how we are to understand the expressions of the language, what the sentences of the language mean etc. Part \ref{ch.TFL} develops both the syntax and the semantics of the language of TFL. Once this has been established we can consider how TFL may be useful for thinking about arguments in English. This will lead to the idea of symbolizing arguments in TFL and will be picked up in Part \ref{ch.TFLsymb}.
 
 %In Parts \ref{ch.TFL}--\ref{ch.NDTFL}, we are going to develop a formal system which allows us to symbolize many arguments in such a way as to show that they are valid in virtue of their form. That language will be \emph{truth-functional logic}, or TFL. It will have sentences like $$(A\eand (B\eif\enot C)),$$ which we will read ``$A$ and if $B$, then it is not the case that $C$''.
+%\chapter{Building blocks of TFL}
 
-\chapter{Syntax of TFL}\label{ch:syntfl}
-\section{Atomic sentences}\label{sec:as}
+%In natural languages like English or German, there are many different parts of the vocabulary 
+\section{Sentences of TFL}
+The vocabulary of TFL is very simple. Sentences are built from three components: atomic sentences, connectives, and brackets. 
 
+\subsection{Atomic Sentences}
+\label{s:atomic sentences}
 We started isolating the form of an argument by replacing  \emph{subsentences} of sentences with individual letters. Thus in the first example of this section, `it is raining outside' is a subsentence of `If it is raining outside, then Jenny is miserable', and we replaced this subsentence with `$A$'.
 
 Our artificial language, TFL, pursues this idea absolutely ruthlessly. We start with some \emph{atomic sentences}. These will be the basic building blocks out of which more complex sentences are built. We will use uppercase Roman letters for atomic sentences of TFL (except for $X$, $Y$, and $Z$ which we reserve for metavariables). There are only twenty-three letters $A$--$W$, but there is no limit to the number of atomic sentences that we might want to consider. By adding subscripts to letters, we obtain new atomic sentences. So, here are some different atomic sentences of TFL:
@@ -82,7 +86,7 @@ name=atomic sentence,
 description={A sentence used to represent a basic sentence; a single letter in TFL, or a predicate symbol followed by names in FOL}
 }
 
-\section{Connectives}
+\subsection{Connectives}
 \label{s:TFLConnectives}
 
 In the previous section, we introduced the atomic sentences of TFL.  In TFL we have counterparts to the conjunction-words that play an important role for spelling out arguments in English, that is, in TFL we have expression that play a similar role to the role expressions like `and', `or' and `not' play in English. These are the \emph{connectives}---they can be used to form new sentences out of old ones. In TFL, we will make use of logical connectives to build complex sentences from atomic components. There are four logical connectives in TFL. This table summarises them, and they are explained throughout this section.
@@ -117,24 +121,679 @@ with `$\eand$' to form the sentence `$A\eand C$'. If think of `$A$' and `$C$' as
 	\end{ekey}
 `$A\eand C$' can be read as:
 \begin{itemize}
-\item It is raining \emph{and} Jenny is miserable.
+\item It is raining \mainconnective{and} Jenny is miserable.
 \end{itemize}
 Similarly, on this understanding we get the following readings:
 \begin{itemize}
-\item $\enot A$: It is not the case that it is raining outside. (Alternatively, it is not raining outside).
-\item $A\eor C$: It is raining outside \emph{or} Jenny is miserable.
-\item $A\eif C$: \emph{If} it is raining outside, \emph{then} Jenny is miserable.
+\item $\enot A$\\\mainconnective{It is not the case that} it is raining outside. \\(Alternatively, it is not raining outside).
+\item $A\eor C$\\It is raining outside \mainconnective{or} Jenny is miserable.
+\item $A\eif C$\\\mainconnective{If} it is raining outside, \mainconnective{then} Jenny is miserable.
 %\item $A\leftrightarrow B$: It is raining outside, \emph{if and only if} Jenny is miserable.
  \end{itemize}
- We shall go back to studying the connection between the connectives of truth-functional logic and various conjunction-words of English in \S\ref{sec:tt}, when we discuss the precise meaning of the connectives in truth-functional logic. For now we focus on completing the description of the formal language of truth-functional logic.
 
- To conclude our discussion of the connectives we focused on the application of the connectives to atomic sentences, but connectives can be applied to all sorts of sentences not only atomic sentences. For example, as `$\enot A$' is a TFL sentence we can use `$\eand$' to conjoin it the sentence `$C$' to form the new sentence `$(\enot A\eand C)$'. Connectives can be applied to all TFL sentences, not only atomic sentences. It is time to say precisely what TFL sentences are.
+
+
+
+\subsection{Brackets}
+Brackets are the remaining component of the vocabulary of TFL. They will be used to provide the grammar. They are vital when we start looking at more complex sentences of TFL. But we will first start to discuss the connectives applied just to simple sentences so can ignore brackets for now. 
+
+
+\chapter{The connectives}\label{s:Connectives}
+Whilst this provides a gloss on our new symbols of TFL, their role in TFL is explicitly specified. 
+In \S\ref{ch:syntfl} we introduced the idea that an argument is valid if there is no interpretation on which all premises of the argument are true but the conclusion false. Accordingly, if we wish to make a start on making this idea more precise, we need to say when a sentence of TFL is true according to an interpretation and when it is false. The target of this chapter is to give precise rules to this effect. The important feature of truth functional logic is that the truth value of a sentence such as $A\eand B$ is determined entirely by the truth value of $A$ and the truth value of $B$. 
+
+\newglossaryentry{truth value}
+{
+			name = truth value,
+			description = {One of the two logical values sentences can have: True and False}
+		}
+
+
+\section{Negation}
+The `$\enot$'-connective is called negation. When we introduced the `$\enot$'-connective we said it should roughly be understood as `it is not the case' or, perhaps, simply `not'. 
+
+If think of `$A$' as representing the English sentences
+\begin{ekey}
+	\item[A] Alice is happy
+\end{ekey}
+`$\enot A$' will be used to symbolise the English sentence:
+\begin{samplesent}
+	\item {It is not the case that} Alice is happy
+\end{samplesent}
+Is this sentence true or false? It depends on whether Alice is happy. She either is or isn't happy, that is `Alice is happy' might be true or false:
+\begin{center}
+	\begin{tabular}{c}
+		$A$\\\hline\Tstrut
+		T\\
+		F
+	\end{tabular}
+\end{center}
+
+In which cases is `$\enot A$' true? Only when `$A$' is false: 
+\begin{center}
+	\begin{tabular}{c|c}
+		$A$&$\enot A$\\\hline\Tstrut
+		T&F\\
+		F&T
+	\end{tabular}
+\end{center}
+
+
+\section{Conjunction}
+
+\newglossaryentry{conjunction}{
+	name=conjunction,
+	description={The connective \eand, used to represent words and phrases that function like the English word ``and''; or a sentence formed using this connective}
+}
+
+\newglossaryentry{conjunct}
+{
+	name=conjunct,
+	description={A sentence joined to another by a \gls{conjunction}}
+}
+\newglossaryentry{conjunct}
+{
+	name=conjunct,
+	description={A sentence joined to another by a \gls{conjunction}}
+}
+The $\eand$-connective, called conjunction, is meant to be understood of the English word `and':
+
+If think of `$A$' and `$B$' as representing the English sentences
+\begin{ekey}
+	\item[A] Alice is happy
+	\item[B] Beth is happy
+\end{ekey}
+`$A\eand C$' can be read as:
+\begin{samplesent}
+	\item Alice is happy \emph{and} Beth is happy.
+\end{samplesent}
+
+Is it true or false? It depends on whether Alice is happy and whether Beth is happy. 
+Here are the four possibilities:
+\begin{center}
+	\begin{tabular}{rccl}
+	&$A$&$B$\\\hline\Tstrut
+	$v_1$&T&T&Alice and Beth are both happy\\
+	$v_2$&T&F&Alice is happy but Beth is not\\
+	$v_3$&F&T&Alice is not happy but Beth is\\
+	$v_4$&F&F&Neither Alice nor Beth are happy
+\end{tabular}
+\end{center}
+
+In which cases is `$A\eand B$' true? Only $v_1$. This is:
+\begin{center}
+	\begin{tabular}{cc|c}
+	$A$&$B$&$A\eand B$\\\hline
+	T&T&T\\
+	T&F&F\\
+	F&T&F\\
+	F&F&F
+\end{tabular}
+\end{center}
+
+
+\section{Disjunction}
+\newglossaryentry{disjunction}
+{
+	name=disjunction,
+	description={The connective \eor, used to represent words and phrases that function like the English word ``or'' in its inclusive sense; or a sentence formed by using this connective}
+}
+
+\newglossaryentry{disjunct}
+{
+	name=disjunct,
+	description={A sentence joined to another by a \gls{disjunction}}
+}
+If think of `$G$' and `$F$' as representing the English sentences
+\begin{ekey}
+	\item[G] She understands German
+	\item[F] She understands French
+\end{ekey}
+`$G\eor F$' can be read as:
+\begin{samplesent}
+	\item She understands German or she understands French.
+\end{samplesent}
+
+Again whether this is true will depend on $G$ and $F$
+\begin{center}
+	\begin{tabular}{rccl}
+		&$G$&$F$\\\hline\Tstrut
+		$v_1$&T&T&She understands German and French\\
+		$v_2$&T&F&She understands German but not French\\
+		$v_3$&F&T&She understands French but not German\\
+		$v_4$&F&F&She neither understands German nor French\\
+	\end{tabular}
+\end{center}
+Clearly `She understands German or French' is false in $v_4$ and true in $v_2$ and $v_3$:
+\begin{center}
+	\begin{tabular}{rcc|c}
+		&$G$&$F$&$G\eor F$\\\hline\Tstrut
+		$v_1$&T&T&\\
+		$v_2$&T&F&T\\
+		$v_3$&F&T&T\\
+		$v_4$&F&F&F
+	\end{tabular}
+\end{center}
+But what about $v_1$? 
+It seems that in English there are two kinds of disjunctions: an \define{inclusive} and an \define{exclusive} one. For the inclusive \emph{or}, we might whisper a ``or both'' after it; whereas for the exclusive \emph{or}, we'd want to whisper a ``but not both'':
+\begin{samplesent}
+	\item\label{inclor} She can understand German or French (or both).
+	\item\label{exclor} She can understand German or French (but not both).
+\end{samplesent}
+Sometimes English is ambiguous between the two readings. 
+
+In logic there can be no ambiguity. We stipulate that $\eor$ stands for the \emph{inclusive or}, giving it the truth value true in $v_1$:
+\begin{center}
+	\begin{tabular}{rcc|c}
+		&$G$&$F$&$G\eor F$\\\hline
+		$v_1$&T&T&T\\
+		$v_2$&T&F&T\\
+		$v_3$&F&T&T\\
+		$v_4$&F&F&F
+	\end{tabular}
+\end{center}
+
+If one wishes to capture the exclusive use of English, this will be perfectly possible in TFL, but for that, we'll have to use a more complex sentence. We will essentially make explicit the whispered ``but not both''. This will end up being symbolised as:
+$$(G\eor F)\eand\enot (G\eand F)$$
+She can understand German or French, and it's not the case that she can understand both. 
+
+\section{Conditional}
+
+The `$\eif$'-connective is called the conditional-connective and it is meant to be related to our understanding of \emph{if\ldots, then\ldots} sentences. 
+
+Consider
+\begin{samplesent}
+	\item\label{exsent:cond: beer then eighteen} If she is drinking beer, then she is over eighteen.
+	\item\label{exsent:cond: eighteen then beer} If she is over eighteen, then she is drinking beer.
+\end{samplesent}
+These are very different. We might have atomic sentences:
+\begin{ekey}
+	\item[B] She is drinking beer.
+	\item[E] She is over eighteen.
+\end{ekey}
+We will then represent \ref{exsent:cond: beer then eighteen} as `$B\eif E$' and \ref{exsent:cond: eighteen then beer} as `$E\eif B$'. 
+
+\ref{exsent:cond: beer then eighteen} 
+
+Since it matters which order they come in, we is valuable to give a name to indicate which part goes where:
+\begin{highlighted}
+	In $\metaX\eif\metaY$, \metaX is called the \define{antecedent}, and \metaY is called the \define{consequent}.
+\end{highlighted}
+
+\newglossaryentry{antecedent}
+{
+	name=antecedent,
+	description={The  \define{antecedent} of a conditional $\metaX\eif\metaY$ is \metaX.}
+}
+\newglossaryentry{consequent}
+{
+	name=consequent,
+	description={The  \define{consequent} of a conditional $\metaX\eif\metaY$ is \metaY.}
+}
+
+
+Again whether this is true will depend on the truth value of `$B$' and `$E$'
+\begin{center}
+	\begin{tabular}{rccl}
+		&$B$&$E$\\\hline
+		$v_1$&T&T&She is drinking beer and is over eighteen\\
+		$v_2$&T&F&She is drinking beer and is under eighteen\\
+		$v_3$&F&T&She is not drinking beer and she is over eighteen\\
+		$v_4$&F&F&She is not drinking beer and she is under eighteen\\
+	\end{tabular}
+\end{center}
+In what cases is `$B\eif E$' it true or false?
+
+In $v_1$ it is true. In $v_2$ it is false. In $v_3$ it is true.
+\begin{center}
+	\begin{tabular}{rcc|c}
+		&$B$&$E$&$B\eif E$\\\hline
+		$v_1$&T&T&T\\
+		$v_2$&T&F&F\\
+		$v_3$&F&T&\\
+		$v_4$&F&F&
+	\end{tabular}
+\end{center}
+What about $v_3$ and $v_4$? 
+We stipulate that it is true in $v_3$ and $v_4$: if the antecedent of the conditional is false, the conditional is true.
+\begin{center}
+	\begin{tabular}{rcc|c}
+		&$B$&$E$&$B\eif E$\\\hline
+		$v_1$&T&T&T\\
+		$v_2$&T&F&F\\
+		$v_3$&F&T&T\\
+		$v_4$&F&F&T
+	\end{tabular}
+\end{center}
+
+To understand the rationale for this, let us think about when a bartender would get into trouble (clearly the conditional should be true for everyone drinking beer in a bar). They will get into trouble in case there a woman in drinking beer and it turns out that the woman is under age. They will not get into trouble if the woman is over 18 years old, i.e., if the consequent of the conditional is true. They will also not get in trouble if it turns out that the woman is not drinking beer (but orange juice), i.e., if the antecedent of the conditional is false.  In that case it is irrelevant whether she is 18 or not. The barkeeper doesn't have to check her age. The conditional is true for trivial reasons.
+
+
+
+
+
+
+%This material conditional tells us nothing about what would be the case if the antecedent were true; if she were to be drinking a beer she would be over eighteen. 
+
+For our purposes $\eif$-connective will be understood in terms of truth rules given in this section.
+That is, we define `$\eif$' by these truth rules:
+
+	\begin{center}
+		\begin{tabular}{cccc}
+			If \metaX is:&and \metaY is:&&then $(\metaX\eif\metaY)$ is:\\
+			T & T &$\leadsto$& T\\
+			T & F &$\leadsto$& F\\
+			F & T &$\leadsto$& T\\
+			F & F &$\leadsto$& T
+		\end{tabular}
+	\end{center}
+
+The conditional which is defined by this truth rule is sometimes marked by calling it the \define{material conditional}. It is the conditional that we will use in the unit. 
+
+This material conditional says nothing about what the world \emph{would be like} were the antecedent to be true. For the material conditional, if the antecedent doesn't apply, in this case, she is not drinking beer, then the conditional is simply trivially true independently of what would happen were she to be drinking a beer. 
+
+There is a rich philosophical and logical investigation into conditionals, but for this unit, we will stick with the material conditional.
+The material conditional is the best that can be done to capture the conditional in a truth-functional way, where the truth can be determined simply from the truth values of its constituent parts. 
+ See \url{https://plato.stanford.edu/entries/conditionals} and \ref{s:IndicativeSubjunctive} for further discussion
+
+As we highlighted, the order matters. So lets consider `$E\eif B$'? How does it differ from $B\eif E$? We can apply this rule, but we have to be careful which order to apply it in. To help make sure we apply it in the right order, it might be helpful to copy down the values for $E$ and $B$ before applying the rule: 
+\begin{center}
+	\begin{tabular}{rcc|c|def}
+		&&&&$E$&$\mainconnective{\eif}$&$B$\\
+		&$B$&$E$&$B\eif E$&$E$&&$B$\\\hline
+		$v_1$&T&T&T&T&&T\\
+		$v_2$&T&F&F&F&&T\\
+		$v_3$&F&T&T&T&&F\\
+		$v_4$&F&F&T&F&&T
+	\end{tabular}
+\end{center}
+and we can then apply the rule. We will write the answer underneath the `$\eif$'. As we have extra truth values hanging around in the table, we have highlighted the column of truth values which give the truth value for the sentence `$E\eif B$'.
+\begin{center}
+	\begin{tabular}{rcc|c|def}
+		&&&&$E$&$\mainconnective{\eif}$&$B$\\
+		&$B$&$E$&$B\eif E$&$E$&&$B$\\\hline
+		$v_1$&T&T&T&T&\TTbf{T}&T\\
+		$v_2$&T&F&F&F&\TTbf{T}&T\\
+		$v_3$&F&T&T&T&\TTbf{F}&F\\
+		$v_4$&F&F&T&F&\TTbf{T}&T
+	\end{tabular}
+\end{center}
+`$E\eif B$' is false when she is over eighteen and not drinking beer. But otherwise it is true. 
+
+
+
+
+\section{Truth rules}\label{s:Truth rules}
+These are the rules associated with the connectives. They are motivated by the English uses, but are stipulated to be governed by these truth rules. 
+\begin{highlighted}\label{Truthint}
+	% 	Let $v$ be a valuation. 
+	%	\begin{enumerate}
+		%		\item An atomic sentence $X$ is true relative to $v$, if and only if $v$ assigns the value T to $X$.
+		%		\item A sentence $\enot\metaX$, $(\metaX\eand\metaY)$, $(\metaX\eor\metaY)$, $(\metaX\eif\metaY)$, whether it is true or false relative to $v$ can be determined by applying the appropriate truth rule depending on the truth of its constituant parts
+		%			\begin{tabular}{@{If \metaX is }c@{ relative to $v$, then $\enot\metaX$ is }c@{ relative to $v$}}
+			%				true &false\\
+			%				false &true
+			%			\end{tabular}
+		\begin{center}
+			\begin{tabular}{ccc}
+				If \metaX is:&&then $\enot\metaX$ is:\\
+				T &$\leadsto$& F\\
+				F &$\leadsto$& T
+			\end{tabular}
+		\end{center}
+		\begin{center}
+			\begin{tabular}{cccc}
+				If \metaX is:&and \metaY is:&&then $\metaX\eand\metaY$ is:\\
+				T & T &$\leadsto$& T\\
+				T & F &$\leadsto$& F\\
+				F & T &$\leadsto$& F\\
+				F & F &$\leadsto$& F
+			\end{tabular}
+		\end{center}
+		\begin{center}
+			\begin{tabular}{cccc}
+				If \metaX is:&and \metaY is:&&then $\metaX\eor\metaY$ is:\\
+				T & T &$\leadsto$& T\\
+				T & F &$\leadsto$& T\\
+				F & T &$\leadsto$& T\\
+				F & F &$\leadsto$& F
+			\end{tabular}
+		\end{center}
+		\begin{center}
+			\begin{tabular}{cccc}
+				If \metaX is:&and \metaY is:&&then $\metaX\eif\metaY$ is:\\
+				T & T &$\leadsto$& T\\
+				T & F &$\leadsto$& F\\
+				F & T &$\leadsto$& T\\
+				F & F &$\leadsto$& T
+			\end{tabular}
+		\end{center}
+		%		\item a sentence $\enot\metaX$ is true relative to $v$, if and only if $\metaX$ is false relative to $v$.
+		%		\item a sentence $(\metaX\eand\metaY)$ is true relative to $v$, if and only if $\metaX$ and $\metaY$ are both true relative to $v$.
+		%		\item a sentence $(\metaX\eor\metaY)$ is true relative to $v$, if and only if $\metaX$ or $\metaY$is true relative to $v$.
+		%		\item a sentence $(\metaX\eif\metaY)$  is true relative to $v$, if and only if $\metaX$ is false or $\metaY$ is true relative to $v$
+		%\item If \metaX and \metaY are sentences, then $(\metaX\eiff\metaY)$ is a sentence.
+		%\item Nothing else is a sentence.
+		%	\end{enumerate}
+\end{highlighted}
+
+
+
+If you want to capture an exclusive disjunction, you can use a more complex sentence of TFL. In fact, anything where the truth values of the sentence depends entirely on the truth of the component sentences is something that can be captured in truth-functional logic, possibly by a more complex sentence. Non-truth-functional notions, however, go beyond the resources of TFL. See \ref{s:TruthFunctionality}.
+
+
+
+
+
+%%To spell out this idea, we need to describe how the truth values of different sentences (e.g., `$A$', `$B$', and `$C$') are to be combined to obtain the truth value of a sentence  that has been obtained via the formation rules 2-5 (e.g., `$A\eor(B\eand C)$'). To do this we work through each of our connectives describing the rules governing it.
+%
+%\newglossaryentry{truth value}
+%{
+%		name = truth value,
+%		description = {One of the two logical values sentences can have: True and False}
+%	}
+%
+%
+%\section{Negation}
+%
+%The `$\enot$'-connective is called negation. When we introduced the `$\enot$'-connective we said it should roughly be understood as `it is not the case' or, perhaps, simply `not'. Let's make that official:
+%\factoidbox{
+%	If a sentence can be paraphrased as `it is not the case that \ldots'\\ it can be symbolised as $\enot\metaX$.
+%}
+%What does that mean for the truth rules? Consider:
+%\begin{samplesent}
+%	\item\label{neg-f} Bristol is not in France.
+%	\item\label{neg-f} Bristol is not in England.
+%\end{samplesent}
+%`Bristol is in France' is false, so `Bristol is not in France' is true.
+%`Bristol is in England' is true, so `Bristol is not in England' is false.
+%
+%In general, to determine whether a sentence of the form $\enot \metaX$ is true we check whether $\metaX$ is false. If the answer is yes, then $\enot \metaX$ is indeed true. If to the contrary  $\metaX$ is true, then $\enot \metaX$ is false:
+%\begin{itemize}
+%	\item If $\metaX$ is true, then $\enot \metaX$ is false.
+%	\item If $\metaX$ is false, then $\enot \metaX$ is true.
+%\end{itemize}
+%We record this in shorthand:
+%\begin{highlighted}
+%	\begin{center}
+%		\begin{tabular}{ccc}
+%			If \metaX is: &&then \enot \metaX is:\\
+%			T &$\leadsto$& F\\
+%			F &$\leadsto$& T
+%		\end{tabular}
+%	\end{center}
+%\end{highlighted}
+%We have abbreviated `True' with `T' and `False' with `F'. (But just to be clear, the two truth values are True and False; the truth values are not \emph{letters}!)
+%\newglossaryentry{negation}
+%{
+%	name=negation,
+%	description={The symbol \enot, used to represent words and phrases that function like the English word ``not''}
+%}
+%
+%
+%
+%
+%
+%
+%\section{Conjunction}
+%\label{s:ConnectiveConjunction}
+%
+%\newglossaryentry{conjunction}{
+%	name=conjunction,
+%	description={The connective \eand, used to represent words and phrases that function like the English word ``and''; or a sentence formed using this connective}
+%}
+%
+%\newglossaryentry{conjunct}
+%{
+%	name=conjunct,
+%	description={A sentence joined to another by a \gls{conjunction}}
+%}
+%
+%The $\eand$-connective, called conjunction, is meant to be understood of the English word `and':
+%\factoidbox{
+%	%		A sentence can be symbolized as $(\metaX\eand\metaY)$ if it can be paraphrased in English as `Both\ldots, and\ldots', or as `\ldots, but \ldots', or as `although \ldots, \ldots'.
+%	If a sentence can be paraphrased as `\ldots and\ldots' \\it can be symbolised as $(\metaX\eand\metaY)$.
+%}
+%
+%What is the appropriate truth rule for conjunction? Consider:
+%\begin{samplesent}
+%	\item\label{conj} She can speak German and she can speak French.
+%\end{samplesent}
+%If she can speak German and she can speak French, then this is true, but otherwise it is false.
+%
+%More generally, the rule governing $\eand$ is:
+%\begin{itemize}
+%	\item If $\metaX$ and $\metaY$ are both true, then $\metaX\eand\metaY$ is true.
+%	\item Otherwise, $\metaX\eand \metaY$ is false.
+%\end{itemize}
+%Which we summarise
+%\begin{highlighted}
+%	\begin{center}
+%		\begin{tabular}{cccc}
+%			If \metaX is:&and \metaY is:&&then $(\metaX\eand\metaY)$ is:\\
+%			T & T &$\leadsto$& T\\
+%			T & F &$\leadsto$& F\\
+%			F & T &$\leadsto$& F\\
+%			F & F &$\leadsto$& F
+%		\end{tabular}
+%	\end{center}
+%\end{highlighted}
+%%in the characteristic truth table:
+%%\begin{center}
+%%\begin{tabular}{c c |c}
+%%\metaX & \metaY & $\metaX\eand\metaY$\\
+%%\hline
+%%T & T & T\\
+%%T & F & F\\
+%%F & T & F\\
+%%F & F & F
+%%\end{tabular}
+%%\end{center}
+%Note that conjunction is \emph{symmetrical}. The truth value for $(\metaX \eand \metaY)$ is always the same as the truth value for $(\metaY \eand \metaX)$.
+%
+%\newglossaryentry{conjunct}
+%{
+%	name=conjunct,
+%	description={A sentence joined to another by a \gls{conjunction}}
+%}
+%
+%
+%\section{Disjunction}
+%The `$\eor$'-connective is called disjunction and is meant to be understood in terms of the English `or'.
+%\newglossaryentry{disjunction}
+%{
+%	name=disjunction,
+%	description={The connective \eor, used to represent words and phrases that function like the English word ``or'' in its inclusive sense; or a sentence formed by using this connective}
+%}
+%
+%\newglossaryentry{disjunct}
+%{
+%	name=disjunct,
+%	description={A sentence joined to another by a \gls{disjunction}}
+%}
+%\factoidbox{
+%	If a sentence can be paraphrased as `\ldots or \ldots' \\it can be symbolised as $(\metaX\eor\metaY)$.
+%}
+%
+%Whereas the truth rules for the negation and conjunction were relatively straightforward, the rule for disjunction is a bit more subtle.
+%Consider:
+%\begin{samplesent}
+%	\item\label{conj} She can speak German or she can speak French.
+%\end{samplesent}
+%If she cannot speak either German or French, then this is false. If she can speak German but not French, then it is true, and if she can speak French but not German it is also true.
+%We have the general rules:
+%\begin{itemize}
+%	\item If $\metaX$ and $\metaY$ are both false, then $(\metaX\eor\metaY)$ is false.
+%	\item  If $\metaX$ is true and $\metaY$ is false, then $(\metaX\eor\metaY)$ is true.
+%	\item  If $\metaX$ is false and $\metaY$ is true, then $(\metaX\eor\metaY)$ is true.
+%\end{itemize}
+%
+%But what if she can speak both? Is it true or false?
+%It seems that in English there are two kinds of disjunctions: an \define{inclusive} and an \define{exclusive} one. For the inclusive \emph{or}, we might whisper a ``or both'' after it; whereas for the exclusive \emph{or}, we'd want to whisper a ``but not both'':
+%\begin{samplesent}
+%	\item\label{inclor} She can speak German or
+%	she can speak French (or both).
+%	\item\label{exclor} She can speak German or
+%	she can speak French (but not both).
+%\end{samplesent}
+%
+%In logic there can be no ambiguity. We choose that $\eor$ stands for the \emph{inclusive or}.
+%That is, we give the final rule:
+%\begin{itemize}
+%	\item If $\metaX$ and $\metaY$ are both true, then $(\metaX\eor\metaY)$ is true.
+%\end{itemize}
+%
+%%So, when we turn to symbolisations of arguments, one should only symbolise a sentence as $(\metaX\eor \metaY)$ if it is to be read as the \emph{inclusive or}. 
+%
+%Once we have completed our presentation of the semantics for. TFL we will see that more complex sentence: $((\metaX\eor\metaY)\eand \enot(\metaX\eand\metaY))$ has the truth conditions of the \emph{exclusive or}, that is it is true if $\metaX$ is true or $\metaY$ is true but not both $\metaX$ and $\metaY$ are true.
+%%Sometimes the English is ambiguous, in which case one should point that out when symbolising and give the two alternative symbolisations.
+%
+%%Consider:
+%%\begin{earg}
+%%\item[\ex{exclor}]She either ate pizza or pasta.
+%%\end{earg}
+%%Maybe this is an exclusive or, though an alternative treatment is to take this to be an inclusive or, but note that there's a implicit, or missing, premise: that she didn't eat both.
+%
+%To summarise the rules for $\eor$:
+%%\begin{center}
+%%\begin{tabular}{c c |c}
+%%\metaX & \metaY & $\metaX\eor\metaY$\\
+%%\hline
+%%T & T & T\\
+%%T & F & T\\
+%%F & T & T\\
+%%F & F & F
+%%\end{tabular}
+%%\end{center}
+%\begin{highlighted}
+%	\begin{center}
+%		\begin{tabular}{cccc}
+%			If \metaX is:&and \metaY is:&&then $(\metaX\eor\metaY)$ is:\\
+%			T & T &$\leadsto$& T\\
+%			T & F &$\leadsto$& T\\
+%			F & T &$\leadsto$& T\\
+%			F & F &$\leadsto$& F
+%		\end{tabular}
+%	\end{center}
+%\end{highlighted}
+%Like conjunction, disjunction is symmetrical.
+%
+%\section{Conditional}\todo{Say more about ``only if''! Students thought it was $\eiff$}
+%The `$\eif$'-connective is called the conditional-connective and it is meant to be related to our understanding of \emph{if\ldots, then\ldots} sentences. 
+%Unlike conjunction and disjunction, the conditional is asymmetric, it matters which order the sentences come in, and $(\metaX\eif\metaY)$ will be different to $(\metaY\eif\metaX)$. It is thus valuable to give a name to indicate which part goes where:
+%\begin{highlighted}
+%	In $\metaX\eif\metaY$, \metaX is called the \define{antecedent}, and \metaY is called the \define{consequent}.
+%\end{highlighted}
+%
+%\newglossaryentry{antecedent}
+%{
+%	name=antecedent,
+%	description={The  \define{antecedent} of a conditional $\metaX\eif\metaY$ is \metaX.}
+%}
+%\newglossaryentry{consequent}
+%{
+%	name=consequent,
+%	description={The  \define{consequent} of a conditional $\metaX\eif\metaY$ is \metaY.}
+%}
+%
+%Recall our guidance on the rough meaning of $\eif$:
+%
+%\factoidbox{
+%	If a sentence can be paraphrased as \\`If \ldots, then \ldots' it can be symbolised as $(\metaX\eif\metaY)$.
+%}
+%
+%
+%
+%
+%\newglossaryentry{conditional}
+%{
+%	name=conditional,
+%	description={The symbol \eif, used to represent words and phrases that function like the English phrase ``if \ldots{} then \ldots''; a sentence formed by using this symbol}
+%}
+%What are the truth rules for the conditional? Consider the sentence:
+%\begin{samplesent}
+%	\item\label{bartender} If she is drinking a beer, then she is over eighteen.
+%\end{samplesent}
+%What are the circumstances under which this conditional is false?
+%Here is what we'll say:
+%\begin{itemize}
+%	\item If she's drinking beer and is under age, then it is false.
+%	\item It is true in all other circumstances.
+%\end{itemize}
+%To understand the rationale for this, let us think about when a bartender would get into trouble (clearly the conditional should be true for everyone drinking beer in a bar). They will get into trouble in case there a woman in drinking beer and it turns out that the woman is under age. They will not get into trouble if the woman is over 18 years old, i.e., if the consequent of the conditional is true. They will also not get in trouble if it turns out that the woman is not drinking beer (but orange juice), i.e., if the antecedent of the conditional is false.  In that case it is irrelevant whether she is 18 or not. The barkeeper doesn't have to check her age. The conditional is true for trivial reasons.
+%
+%
+%%We get the characteristic truth table:
+%%\begin{center}
+%%\begin{tabular}{c c|c}
+%%\metaX & \metaY & $\metaX\eif\metaY$\\
+%%\hline
+%%T & T & T\\
+%%T & F & F\\
+%%F & T & T\\
+%%F & F & T
+%%\end{tabular}
+%%\end{center}
+%We are led to the following rules:
+%\begin{highlighted}
+%	\begin{center}
+%		\begin{tabular}{cccc}
+%			If \metaX is:&and \metaY is:&&then $(\metaX\eif\metaY)$ is:\\
+%			T & T &$\leadsto$& T\\
+%			T & F &$\leadsto$& F\\
+%			F & T &$\leadsto$& T\\
+%			F & F &$\leadsto$& T
+%		\end{tabular}
+%	\end{center}
+%\end{highlighted}
+%In this case, it's very important to remember which way around it goes. The TF-line is different to the FT-line.
+%
+%This is why the terms `antecedent' and `consequent' are so useful.  
+%In $\metaX\eif\metaY$, \metaX is called the \define{antecedent}, and \metaY the \define{consequent}.
+%Using the antecedent/consequent terminology we can summarize the truth rule as follows:
+%If the antecedent is true and the consequent false, then the conditional sentence is false, otherwise it is true.
+%\newglossaryentry{antecedent}
+%{
+%	name=antecedent,
+%	description={The sentence on the left side of a \gls{conditional}}
+%}
+%
+%
+%\newglossaryentry{consequent}
+%{
+%	name=consequent,
+%	description={The sentence on the right side of a \gls{conditional}}
+%}
+%
+%The TFL connective $\eif$ is \emph{stipulated} to be governed by these rules. This sometimes marked by calling it the \define{material conditional}. But the truth rules of the $\eif$-connective only tell us part of the story of \emph{if\ldots, then\ldots} sentences in English, as the truth rules do not seem to work well for all these sentences. For example, truth rules for material conditional do not seem to work well with our understanding of the sentence
+%\begin{samplesent}
+%	\item\label{kangaroo} If Kangaroos had no tails, they would topple over.
+%\end{samplesent}
+%%We will discuss conditional-sentences of this kind in \S\ref{s:IndicativeSubjunctive} and will look at some problems arising due to understanding $\eif$ in terms of material conditional in \S\ref{s:ParadoxesOfMaterialConditional}.
+%%
+%For our purposes $\eif$-connective will be understood in terms of truth rules given in this section.
+
+
+
+
+\begin{practiceproblems}
+		\problempart 
+	Write down (from memory) the truth rules for each of the connectives. 
+	
+	\problempart 
+	\begin{problemslist}
+		\item Suppose $\metaX$ is true, what can you say about $\metaX\eor\metaY$?
+		\item Suppose $\metaX$ is false, what can you say about $\metaX\eif \metaY$?
+	\end{problemslist}
+\end{practiceproblems}
+\chapter{Syntax of TFL}\label{ch:syntfl}
+So far, we have only  focused on the application of the connectives to atomic sentences, but connectives can be applied to all sorts of sentences not only atomic sentences. For example, as `$\enot A$' is a TFL sentence we can use `$\eand$' to conjoin it the sentence `$C$' to form the new sentence `$(\enot A\eand C)$'. Connectives can be applied to all TFL sentences, not only atomic sentences. It is time to say precisely what TFL sentences are.
 
 \section{Sentences}\label{s:TFLSentences}
 \todo{This went through a major rewrite. Check it!!!}
 We have introduced the basic building blocks of truth-functional logic, the atomic sentences, and the connectives, which allow us to conjoin different sentences to form new sentences. In terms of the \define{vocabulary} of a (written) language we have introduced all the important parts save the punctuation marks. In the language of truth-functional logic we use brackets for this purpose.
 
-What is still missing is to equip the language with a \define{grammar}. The purpose of the grammar is to distinguish wellformed sentences from nonsense, but also to avoid ambiguity.
+What is still missing is to equip the language with a \define{grammar}. The purpose of the grammar is to distinguish wellformed sentences from nonsense, but also to avoid ambiguity. It is in the grammar that brackets are vital parts of TFL. 
 
 We wish to have rules that guarantee that
 $$(A\eor (B\eand C))$$ and $$\enot (A\eand B)$$
@@ -160,11 +819,10 @@ $$(A\eand(B\eor C))$$
 $$((A\eand B)\eor C)$$
 You can think of the former TFL-sentence as representing the English sentence 1, whereas the latter as representing the English sentence 2.
 
-You might know this use of brackets from mathematics:
+You might know this use of brackets from mathematics. Consider:
 \begin{samplesent}
 \item\label{mathamb} $9 + 3 \times 4$
-\end{samplesent}
-can either be read as:
+\end{samplesent}One could add brackets to this equation to obtain: 
 \begin{samplesent}
 \item\label{mathamb1} $9 + (3 \times 4) \qquad(=9+12=21)$
 \item\label{mathamb2} $(9+3) \times 4 \qquad(=12\times 4=48)$
@@ -564,382 +1222,19 @@ Is `Sharky' used or mentioned in the above sentence? Discuss.
 
 
 
-\chapter{Truth rules for the connectives}\label{sec:tt}
-
-We have completed introducing the syntax of the language of TFL. It is now time to turn to the semantics of TFL. The idea underlying the semantics is to specify conditions under which sentences of TFL are true. In \S\ref{ch:syntfl} we introduced the idea that an argument is valid if there is no interpretation on which all premises of the argument are true but the conclusion false. Accordingly, if we wish to make a start on making this idea more precise, we need to say when a sentence of TFL is true according to an interpretation and when it is false. The target of this chapter is to give precise rules to this effect. The important feature of truth functional logic is that the truth value of a complex sentence, such as `$A\eor(B\eand C)$' is fully determined by the truths of is component parts, that is `$A$', `$B$' and `$C$'. If we're told whether `$A$', `$B$' and $C$ are true or false, then we will be able to say whether `$A\eor(B\eand C)$' is true or false.
-
-To spell out this idea, we need to describe how the truth values of different sentences (e.g., `$A$', `$B$', and `$C$') are to be combined to obtain the truth value of a sentence  that has been obtained via the formation rules 2-5 (e.g., `$A\eor(B\eand C)$'). To do this we work through each of our connectives describing the rules governing it.
-
-\newglossaryentry{truth value}
-{
-	name = truth value,
-	description = {One of the two logical values sentences can have: True and False}
-}
-
-
-\section{Negation}
-The `$\enot$'-connective is called negation. When we introduced the `$\enot$'-connective we said it should roughly be understood as `it is not the case' or, perhaps, simply `not'. Let's make that official:
-\factoidbox{
-If a sentence can be paraphrased as `it is not the case that \ldots'\\ it can be symbolised as $\enot\metaX$.
-}
-What does that mean for the truth rules? Consider:
-\begin{samplesent}
-\item\label{neg-f} Bristol is not in France.
-\item\label{neg-f} Bristol is not in England.
-\end{samplesent}
-`Bristol is in France' is false, so `Bristol is not in France' is true.
-`Bristol is in England' is true, so `Bristol is not in England' is false.
-
-In general, to determine whether a sentence of the form $\enot \metaX$ is true we check whether $\metaX$ is false. If the answer is yes, then $\enot \metaX$ is indeed true. If to the contrary  $\metaX$ is true, then $\enot \metaX$ is false:
-\begin{itemize}
-\item If $\metaX$ is true, then $\enot \metaX$ is false.
-\item If $\metaX$ is false, then $\enot \metaX$ is true.
-\end{itemize}
-We record this in shorthand:
-\begin{highlighted}
-\begin{center}
-\begin{tabular}{ccc}
-If \metaX is: &&then \enot \metaX is:\\
-T &$\leadsto$& F\\
-F &$\leadsto$& T
-\end{tabular}
-\end{center}
-\end{highlighted}
-We have abbreviated `True' with `T' and `False' with `F'. (But just to be clear, the two truth values are True and False; the truth values are not \emph{letters}!)
-\newglossaryentry{negation}
-{
-name=negation,
-description={The symbol \enot, used to represent words and phrases that function like the English word ``not''}
-}
-
-
-
-
-
-
-\section{Conjunction}
-\label{s:ConnectiveConjunction}
-
-\newglossaryentry{conjunction}{
-	name=conjunction,
-	description={The connective \eand, used to represent words and phrases that function like the English word ``and''; or a sentence formed using this connective}
-}
-
-\newglossaryentry{conjunct}
-{
-	name=conjunct,
-	description={A sentence joined to another by a \gls{conjunction}}
-}
-
-The $\eand$-connective, called conjunction, is meant to be understood of the English word `and':
-\factoidbox{
-%		A sentence can be symbolized as $(\metaX\eand\metaY)$ if it can be paraphrased in English as `Both\ldots, and\ldots', or as `\ldots, but \ldots', or as `although \ldots, \ldots'.
-		If a sentence can be paraphrased as `\ldots and\ldots' \\it can be symbolised as $(\metaX\eand\metaY)$.
-	}
-
-What is the appropriate truth rule for conjunction? Consider:
-\begin{samplesent}
-\item\label{conj} She can speak German and she can speak French.
-\end{samplesent}
-If she can speak German and she can speak French, then this is true, but otherwise it is false.
-
-More generally, the rule governing $\eand$ is:
-\begin{itemize}
-\item If $\metaX$ and $\metaY$ are both true, then $\metaX\eand\metaY$ is true.
-\item Otherwise, $\metaX\eand \metaY$ is false.
-\end{itemize}
-Which we summarise
-\begin{highlighted}
-\begin{center}
-\begin{tabular}{cccc}
-If \metaX is:&and \metaY is:&&then $(\metaX\eand\metaY)$ is:\\
-T & T &$\leadsto$& T\\
-T & F &$\leadsto$& F\\
-F & T &$\leadsto$& F\\
-F & F &$\leadsto$& F
-\end{tabular}
-\end{center}
-\end{highlighted}
-%in the characteristic truth table:
-%\begin{center}
-%\begin{tabular}{c c |c}
-%\metaX & \metaY & $\metaX\eand\metaY$\\
-%\hline
-%T & T & T\\
-%T & F & F\\
-%F & T & F\\
-%F & F & F
-%\end{tabular}
-%\end{center}
-Note that conjunction is \emph{symmetrical}. The truth value for $(\metaX \eand \metaY)$ is always the same as the truth value for $(\metaY \eand \metaX)$.
-
-\newglossaryentry{conjunct}
-{
-name=conjunct,
-description={A sentence joined to another by a \gls{conjunction}}
-}
-
-
-\section{Disjunction}
-The `$\eor$'-connective is called disjunction and is meant to be understood in terms of the English `or'.
-\newglossaryentry{disjunction}
-{
-name=disjunction,
-description={The connective \eor, used to represent words and phrases that function like the English word ``or'' in its inclusive sense; or a sentence formed by using this connective}
-}
-
-\newglossaryentry{disjunct}
-{
-name=disjunct,
-description={A sentence joined to another by a \gls{disjunction}}
-}
-\factoidbox{
-If a sentence can be paraphrased as `\ldots or \ldots' \\it can be symbolised as $(\metaX\eor\metaY)$.
-	}
-
-Whereas the truth rules for the negation and conjunction were relatively straightforward, the rule for disjunction is a bit more subtle.
-Consider:
-\begin{samplesent}
-\item\label{conj} She can speak German or she can speak French.
-\end{samplesent}
-If she cannot speak either German or French, then this is false. If she can speak German but not French, then it is true, and if she can speak French but not German it is also true.
-We have the general rules:
-\begin{itemize}
-\item If $\metaX$ and $\metaY$ are both false, then $(\metaX\eor\metaY)$ is false.
-\item  If $\metaX$ is true and $\metaY$ is false, then $(\metaX\eor\metaY)$ is true.
-\item  If $\metaX$ is false and $\metaY$ is true, then $(\metaX\eor\metaY)$ is true.
-\end{itemize}
-
-But what if she can speak both? Is it true or false?
-It seems that in English there are two kinds of disjunctions: an \define{inclusive} and an \define{exclusive} one. For the inclusive \emph{or}, we might whisper a ``or both'' after it; whereas for the exclusive \emph{or}, we'd want to whisper a ``but not both'':
-\begin{samplesent}
-\item\label{inclor} She can speak German or
-she can speak French (or both).
-\item\label{exclor} She can speak German or
-she can speak French (but not both).
-\end{samplesent}
-
-In logic there can be no ambiguity. We choose that $\eor$ stands for the \emph{inclusive or}.
-That is, we give the final rule:
-\begin{itemize}
-\item If $\metaX$ and $\metaY$ are both true, then $(\metaX\eor\metaY)$ is true.
-\end{itemize}
-
-%So, when we turn to symbolisations of arguments, one should only symbolise a sentence as $(\metaX\eor \metaY)$ if it is to be read as the \emph{inclusive or}. 
-
-Once we have completed our presentation of the semantics for. TFL we will see that more complex sentence: $((\metaX\eor\metaY)\eand \enot(\metaX\eand\metaY))$ has the truth conditions of the \emph{exclusive or}, that is it is true if $\metaX$ is true or $\metaY$ is true but not both $\metaX$ and $\metaY$ are true.
-%Sometimes the English is ambiguous, in which case one should point that out when symbolising and give the two alternative symbolisations.
-
-%Consider:
-%\begin{earg}
-%\item[\ex{exclor}]She either ate pizza or pasta.
-%\end{earg}
-%Maybe this is an exclusive or, though an alternative treatment is to take this to be an inclusive or, but note that there's a implicit, or missing, premise: that she didn't eat both.
-
-To summarise the rules for $\eor$:
-%\begin{center}
-%\begin{tabular}{c c |c}
-%\metaX & \metaY & $\metaX\eor\metaY$\\
-%\hline
-%T & T & T\\
-%T & F & T\\
-%F & T & T\\
-%F & F & F
-%\end{tabular}
-%\end{center}
-\begin{highlighted}
-\begin{center}
-\begin{tabular}{cccc}
-If \metaX is:&and \metaY is:&&then $(\metaX\eor\metaY)$ is:\\
-T & T &$\leadsto$& T\\
-T & F &$\leadsto$& T\\
-F & T &$\leadsto$& T\\
-F & F &$\leadsto$& F
-\end{tabular}
-\end{center}
-\end{highlighted}
-Like conjunction, disjunction is symmetrical.
-
-\section{Conditional}\todo{Say more about ``only if''! Students thought it was $\eiff$}
-The `$\eif$'-connective is called the conditional-connective and it is meant to be related to our understanding of \emph{if\ldots, then\ldots} sentences. 
-Unlike conjunction and disjunction, the conditional is asymmetric, it matters which order the sentences come in, and $(\metaX\eif\metaY)$ will be different to $(\metaY\eif\metaX)$. It is thus valuable to give a name to indicate which part goes where:
-\begin{highlighted}
-	In $\metaX\eif\metaY$, \metaX is called the \define{antecedent}, and \metaY is called the \define{consequent}.
-\end{highlighted}
-
-\newglossaryentry{antecedent}
-{
-	name=antecedent,
-	description={The  \define{antecedent} of a conditional $\metaX\eif\metaY$ is \metaX.}
-}
-\newglossaryentry{consequent}
-{
-	name=consequent,
-	description={The  \define{consequent} of a conditional $\metaX\eif\metaY$ is \metaY.}
-}
-
-Recall our guidance on the rough meaning of $\eif$:
-
-	\factoidbox{
-	 If a sentence can be paraphrased as \\`If \ldots, then \ldots' it can be symbolised as $(\metaX\eif\metaY)$.
-	}
-
-
-
-
-\newglossaryentry{conditional}
-{
-name=conditional,
-description={The symbol \eif, used to represent words and phrases that function like the English phrase ``if \ldots{} then \ldots''; a sentence formed by using this symbol}
-}
-What are the truth rules for the conditional? Consider the sentence:
-\begin{samplesent}
-\item\label{bartender} If she is drinking a beer, then she is over eighteen.
-\end{samplesent}
-What are the circumstances under which this conditional is false?
-Here is what we'll say:
-\begin{itemize}
-\item If she's drinking beer and is under age, then it is false.
-\item It is true in all other circumstances.
-\end{itemize}
-To understand the rationale for this, let us think about when a bartender would get into trouble (clearly the conditional should be true for everyone drinking beer in a bar). They will get into trouble in case there a woman in drinking beer and it turns out that the woman is under age. They will not get into trouble if the woman is over 18 years old, i.e., if the consequent of the conditional is true. They will also not get in trouble if it turns out that the woman is not drinking beer (but orange juice), i.e., if the antecedent of the conditional is false.  In that case it is irrelevant whether she is 18 or not. The barkeeper doesn't have to check her age. The conditional is true for trivial reasons.
-
-
-%We get the characteristic truth table:
-%\begin{center}
-%\begin{tabular}{c c|c}
-%\metaX & \metaY & $\metaX\eif\metaY$\\
-%\hline
-%T & T & T\\
-%T & F & F\\
-%F & T & T\\
-%F & F & T
-%\end{tabular}
-%\end{center}
-We are led to the following rules:
-\begin{highlighted}
-\begin{center}
-\begin{tabular}{cccc}
-If \metaX is:&and \metaY is:&&then $(\metaX\eif\metaY)$ is:\\
-T & T &$\leadsto$& T\\
-T & F &$\leadsto$& F\\
-F & T &$\leadsto$& T\\
-F & F &$\leadsto$& T
-\end{tabular}
-\end{center}
-\end{highlighted}
-In this case, it's very important to remember which way around it goes. The TF-line is different to the FT-line.
-
-This is why the terms `antecedent' and `consequent' are so useful.  
-In $\metaX\eif\metaY$, \metaX is called the \define{antecedent}, and \metaY the \define{consequent}.
-Using the antecedent/consequent terminology we can summarize the truth rule as follows:
-If the antecedent is true and the consequent false, then the conditional sentence is false, otherwise it is true.
-\newglossaryentry{antecedent}
-{
-name=antecedent,
-description={The sentence on the left side of a \gls{conditional}}
-}
-
-
-\newglossaryentry{consequent}
-{
-name=consequent,
-description={The sentence on the right side of a \gls{conditional}}
-}
-
-The TFL connective $\eif$ is \emph{stipulated} to be governed by these rules. This sometimes marked by calling it the \define{material conditional}. But the truth rules of the $\eif$-connective only tell us part of the story of \emph{if\ldots, then\ldots} sentences in English, as the truth rules do not seem to work well for all these sentences. For example, truth rules for material conditional do not seem to work well with our understanding of the sentence
-\begin{samplesent}
-\item\label{kangaroo} If Kangaroos had no tails, they would topple over.
-\end{samplesent}
-%We will discuss conditional-sentences of this kind in \S\ref{s:IndicativeSubjunctive} and will look at some problems arising due to understanding $\eif$ in terms of material conditional in \S\ref{s:ParadoxesOfMaterialConditional}.
-%
-For our purposes $\eif$-connective will be understood in terms of truth rules given in this section.
-
-\section{On Truth-functional connectives}
-\label{s:TruthFunctionality}
-%We now reflect on truth-functional logic and the connectives we've used.
-%\section{Non truth-functional connectives}
-
-%%%%because???
-Let's introduce an important idea.
-\factoidbox{
-	A connective is \define{truth-functional} iff the truth value of a sentence with that connective as its main connective is uniquely determined by the truth value(s) of the constituent sentence(s).
-}
-\newglossaryentry{truth-functional connective}
-{
-	name=truth-functional connective,
-	description={an operator that builds larger sentences out of smaller ones and fixes the \gls{truth value} of the resulting sentence based only on the truth value of the component sentences}
-}
-
-Every connective in TFL is truth-functional. We were able to give rules to determine what the truth value of a sentence $\enot\metaX$ is depending only on the truth value of $\metaX$. The truth value of $\metaX$ uniquely determines the truth value of $\enot \metaX$. The same was true for all the other connectives of TFL ($\eand,\eor,\eif$), as is evidenced by the truth rules and truth tables we gave for these connectives. This is what gives TFL its name: it is \emph{truth-functional logic}.
-
-%The truth value of a negation is uniquely determined by the truth value of the unnegated sentence. The truth value of a conjunction is uniquely determined by the truth value of both conjuncts. The truth value of a disjunction is uniquely determined by the truth value of both disjuncts, and so on.
-
-%This then means that to determine the truth value of any TFL sentence, we only need to know the truth value of the atomic sentences it includes. We will see exactly how to do this in \S\ref{s:CompleteTruthTables}.
-
-
-%The truth value of a non-atomic sentence of TFL, such as $A\eand B$ depends on the truth values of $A$ and $B$. But once the truth values of $A$, $B$ and $C$ are provided, the truth value of $A\eand B$ is fixed. Indeed, this is the characteristic feature of \emph{truth functional logic}.
-
-
-In plenty of languages, e.g.~English, there are connectives that are not truth-functional. We here describe just two (Exercise: find further non-truth-functional connectives of English):
-
-\subsection{Necessarily}
-
-In English, for example, we can form a new sentence from any simpler sentence by prefixing it with `Necessarily, \ldots' or  `It is necessary that\ldots'. The truth value of this new sentence is not fixed solely by the truth value of the original sentence. For consider two true sentences:
-\begin{samplesent}
-	\item\label{nec-math} $2 + 2 = 4$
-	\item\label{nec-music} Shostakovich wrote fifteen string quartets
-\end{samplesent}
-Whereas it is necessary that $2 + 2 = 4$, it is not \emph{necessary} tthat Shostakovich wrote fifteen string quartets. If Shostakovich had died earlier, he would have failed to finish Quartet no.\ 15; if he had lived longer, he might have written a few more. So `It is necessary that\ldots' is a connective of English, but it is not \emph{truth-functional}.
-
-
-
-\subsection{Subjunctive conditionals}\label{s:IndicativeSubjunctive}
-
-
-
-We said that $\eif$ was pretty bad at capturing some uses of `if\ldots, then\ldots' in Englihs. In particular, it is bad at capturing use of \emph{subjunctive conditionals} of English. The problem is that a subjunctive conditional is not truth functional.
-Consider the two sentences:
-\begin{samplesent}
-	\item\label{brownwins1} If Mitt Romney had won the 2012 election, then he would have been the 45th President of the USA.
-	\item\label{brownwins2} If Mitt Romney had won the 2012 election, then he would have turned into a helium-filled balloon and floated away into the night sky.
-\end{samplesent}
-Sentence \ref{brownwins1} is true; sentence \ref{brownwins2} is false, but both have false antecedents and false consequents. So the truth value of the whole sentence is not uniquely determined by the truth value of the constituent sentences.
-
-However, the material conditional, which is what we specify $\eif$ to be is the best that can be done at symbolising subjunctive conditionals of English in TFL. TFL just doesn't have the required resources as the subjunctive conditional is not truth-functional.
-
-
-
-\begin{practiceproblems}
-		\problempart 
-	Write down (from memory) the truth rules for each of the connectives. 
-	
-	\problempart 
-\begin{problemslist}
-	\item Suppose $\metaX$ is true, what can you say about $\metaX\eor\metaY$?
-\item Suppose $\metaX$ is false, what can you say about $\metaX\eif \metaY$?
-\end{problemslist}
-
-
-\problempart
-\begin{problemslist}
-	\item 	Is `I know that' truth functional? \\
-%	\emph{(Hint: try to think of a situation with two English sentences, $\metaX$ and $\metaY$, which have the same truth value but where `I know that \metaX' and `I know that \metaY' have different truth values) }
-	\myanswer{\\No. \begin{center}
-			`I know that I have hands'
-		\end{center} is true (true $\leadsto$ true). But there are some sentences that are true but I don't know them. E.g., 
-		\begin{center}
-			`I know that France won the FIFA world cup'
-		\end{center} (well, I now know it but I didn't 20 minutes ago. )}
-\end{problemslist}
-\end{practiceproblems}
-
-
 
 \chapter{Truth on a Valuation}
-In the previous section we have learned how truth values of constituent sentences determine the truth value of complex sentences. This means that if we are presented with the truth value of the relevant atomic sentences that appear in a complex sentence, we can determine whether that sentence is true or false.
 
-But how do we determine whether a given atomic sentence is true? This is where the notion of an \emph{interpretation} comes into the picture. An interpretation will stipulate (assign) truth values of particular atomic sentences. Let `$B$' stand for the English sentence `Ben is happy'. Then there is one interpretation according to which this is true, that is, $B$ will be assigned the value ``True'' on this interpretation. There is another interpretation according to which Ben is not happy, that is, $B$ is assigned the value ``False'' on this interpretation. In TFL an interpretation of the atomic sentences is called a \define{valuation}:
+In \ref{s:Truth rules} we gave truth rules for the connectives of TFL. Now we can apply them to complex sentences. 
+
+The truth rules associated with the connectives allow us to calculate the truth value of a complex sentences based on the truth values of its constituent parts, but ultimately we get to the atomic sentences and have to ask whether they are true or false. 
+A valuation is a specification of whether each atomic sentence is true or false. Once you give me a valuation, I can then use the rules associated with the connectives to determine the truth value of the sentence of TFL. Sentences of TFL are true or false relative to a valuation. 
+
+
+
+%In the previous section we have learned how truth values of constituent sentences determine the truth value of complex sentences. This means that if we are presented with the truth value of the relevant atomic sentences that appear in a complex sentence, we can determine whether that sentence is true or false.
+%
+%But how do we determine whether a given atomic sentence is true? This is where the notion of an \emph{interpretation} comes into the picture. An interpretation will stipulate (assign) truth values of particular atomic sentences. Let `$B$' stand for the English sentence `Ben is happy'. Then there is one interpretation according to which this is true, that is, $B$ will be assigned the value ``True'' on this interpretation. There is another interpretation according to which Ben is not happy, that is, $B$ is assigned the value ``False'' on this interpretation. In TFL an interpretation of the atomic sentences is called a \define{valuation}:
 
 \factoidbox{
 		A \define{valuation} is any assignment of truth values (true or false) to the atomic sentences of TFL.
@@ -960,8 +1255,9 @@ For example a valuation $v$ might assign:
 	\end{tabular}
 \end{center}
 
+If you give me a valuation, I can then use the rules to calculate the truth value of any sentence. 
 Sentences of TFL are true or false \emph{relative to a valuation}. 
-The valuation determines the truth values of the atomic sentences, and complex sentences are determined using the truth rules described in the previous section. 
+The valuation determines the truth values of the atomic sentences, and complex sentences are determined using the truth rules:
  \factoidbox{\label{Truthint}Let $v$ be a valuation. Then
 	\begin{enumerate}
 		\item An atomic sentence $X$ is true relative to $v$, if and only if $v$ assigns the value T to $X$.
@@ -2346,49 +2642,6 @@ Write complete truth tables for the following sentences and mark the column that
 
 
 
-\problempart
-Can you think of sentences with the following truth table:
-\begin{problemslist}
-	\item \begin{tabular}{cc|c}
-		$A$&$B$&?\\\hline
-		T&T&T\\
-		T&F&T\\
-		F&T&T\\
-		F&F&T
-	\end{tabular}\myanswer{$A\eor\enot A$}
-	\item \begin{tabular}{cc|c}
-		$A$&$B$&?\\\hline
-		T&T&F\\
-		T&F&F\\
-		F&T&T\\
-		F&F&F
-	\end{tabular}\myanswer{$\enot A\eand B$}
-	\item \begin{tabular}{cc|c}
-		$A$&$B$&?\\\hline
-		T&T&T\\
-		T&F&F\\
-		F&T&T\\
-		F&F&T
-	\end{tabular}\myanswer{\quad\begin{minipage}{.75\textwidth}
-			$\enot( A\eand \enot B)$;\\ or a more systematic answer by simply writing out the different options when the sentence is true: $$((A\eand B)\eor (\enot A\eand B))\eor (\enot A\eand\enot B)$$
-	\end{minipage}}
-	
-\end{problemslist}
-\problempart
-Suppose $X$ is TFL sentence containing two atomic sentences. Then there are in fact sixteen different possible columns for $X$.
-\begin{problemslist}
-	\item Can you explain why?\myanswer{\\ The first line might have T or F, the second line might have T or F, etc. There are 4 valuations, so there are $2\times 2\times 2\times 2=2^4=16$ different ways of putting Ts and Fs to these 4 lines. I.e.~16 different columns. }
-	\item Can you show for each of these combinations that there is a sentence of TFL with that column describing its truth.
-	%\myanswer{\\
-		%See section 37.2 of forall$x$:Bristol for the general argument for this.
-		%}
-	\item {} Can you show there's always a formula just using $\enot$ and $\eand$ with that column describing its truth.
-	%\myanswer{\\
-		%The previous answer had that every truth table can be given by a sentence with $\eand, \eor$ and $\enot$. We can replace any instances of $\eor$ by $\eand$ using: $$\metaX\eor\metaY\text{ is logically equivalent to }\enot(\enot\metaX\eand\enot\metaY)$$
-		%See 37.4 of forall$x$:Bristol for more details.
-		%}
-\end{problemslist}
-
 If you want additional practice, you can construct truth tables for any of the sentences and arguments in the exercises for the previous chapter.
 
 \end{practiceproblems}
@@ -3175,6 +3428,8 @@ One can show that `$(A \eand B) \eand C$' and  `$A \eand (B \eand C)$' are logic
 	Is this principle correct? Explain your answer.
 	
 \end{practiceproblems}
+
+
 
 \chapter{Truth table shortcuts}\teachingnote{Not taught in the course. You may use these techniques if you wish.\\}
 
@@ -4963,3 +5218,143 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %\item if $X\eor\enot X\eif Y$ is true relative to a valuation, then $Y$ is a tautology.\myanswer{No}
 %\end{itemize}
 %\end{practiceproblems}
+
+
+
+
+
+\chapter{On Truth-functional connectives}
+\label{s:TruthFunctionality}
+%We now reflect on truth-functional logic and the connectives we've used.
+
+
+\section{Truth-functionality}
+%%%%because???
+Let's introduce an important idea.
+\factoidbox{
+	A connective is \define{truth-functional} iff the truth value of a sentence with that connective as its main connective is uniquely determined by the truth value(s) of the constituent sentence(s).
+}
+\newglossaryentry{truth-functional connective}
+{
+	name=truth-functional connective,
+	description={an operator that builds larger sentences out of smaller ones and fixes the \gls{truth value} of the resulting sentence based only on the truth value of the component sentences}
+}
+
+Every connective in TFL is truth-functional. We were able to give rules to determine what the truth value of a sentence $\enot\metaX$ is depending only on the truth value of $\metaX$. The truth value of $\metaX$ uniquely determines the truth value of $\enot \metaX$. The same was true for all the other connectives of TFL ($\eand,\eor,\eif$), as is evidenced by the truth rules and truth tables we gave for these connectives. This is what gives TFL its name: it is \emph{truth-functional logic}.
+
+%The truth value of a negation is uniquely determined by the truth value of the unnegated sentence. The truth value of a conjunction is uniquely determined by the truth value of both conjuncts. The truth value of a disjunction is uniquely determined by the truth value of both disjuncts, and so on.
+
+%This then means that to determine the truth value of any TFL sentence, we only need to know the truth value of the atomic sentences it includes. We will see exactly how to do this in \S\ref{s:CompleteTruthTables}.
+
+
+%The truth value of a non-atomic sentence of TFL, such as $A\eand B$ depends on the truth values of $A$ and $B$. But once the truth values of $A$, $B$ and $C$ are provided, the truth value of $A\eand B$ is fixed. Indeed, this is the characteristic feature of \emph{truth functional logic}.
+
+\section{Non truth-functional connectives}
+In plenty of languages, e.g.~English, there are connectives that are not truth-functional. We here describe just two (Exercise: find further non-truth-functional connectives of English):
+
+\subsection{Necessarily}
+
+In English, for example, we can form a new sentence from any simpler sentence by prefixing it with `Necessarily, \ldots' or  `It is necessary that\ldots'. The truth value of this new sentence is not fixed solely by the truth value of the original sentence. For consider two true sentences:
+\begin{samplesent}
+	\item\label{nec-math} $2 + 2 = 4$
+	\item\label{nec-music} Shostakovich wrote fifteen string quartets
+\end{samplesent}
+Whereas it is necessary that $2 + 2 = 4$, it is not \emph{necessary} tthat Shostakovich wrote fifteen string quartets. If Shostakovich had died earlier, he would have failed to finish Quartet no.\ 15; if he had lived longer, he might have written a few more. So `It is necessary that\ldots' is a connective of English, but it is not \emph{truth-functional}.
+
+
+
+\subsection{Subjunctive conditionals}\label{s:IndicativeSubjunctive}
+
+
+
+We said that $\eif$ was pretty bad at capturing some uses of `if\ldots, then\ldots' in English. It is especially bad at capturing use of \emph{subjunctive conditionals} of English. The problem is that a subjunctive conditional is not truth functional.
+Consider the two sentences:
+\begin{samplesent}
+	\item\label{brownwins1} If Mitt Romney had won the 2012 election, then he would have been the 45th President of the USA.
+	\item\label{brownwins2} If Mitt Romney had won the 2012 election, then he would have turned into a helium-filled balloon and floated away into the night sky.
+\end{samplesent}
+Sentence \ref{brownwins1} is true; sentence \ref{brownwins2} is false, but both have false antecedents and false consequents. So the truth value of the whole sentence is not uniquely determined by the truth value of the constituent sentences.
+
+However, the material conditional, which is what we specify $\eif$ to be, is the best that can be done in TFL for capturing conditionals. TFL just doesn't have the required resources as the subjunctive conditional is not truth-functional.
+
+\section{Truth-functional completeness}
+There is an important result about TFL, or truth functional logic: not only are its connectives truth functional, in fact, it can capture all truth-functional connectives, possibly by use of a more complex sentence of TFL. 
+
+Consider the following:
+\[\begin{array}{cc|c}
+	A&B&?\\\hline
+	\true&\true&\false\\
+	\true&\false&\true\\
+	\false&\true&\true\\
+	\false&\false&\false
+\end{array}\]
+One can come up with a sentence of TFL which has this truth table, we already gave it as the exclusive disjunction:\[(A\eor B)\eand\enot (A\eand B)\]
+
+This is a general fact about TFL and the reason it is called ``Truth-functional logic'', it is the logic of truth functions, the logic of all truth-functional connectives. Whatever truth table you give me, I can find a sentence of TFL which has that truth table. It can encode any possible truth functional connective. 
+
+
+\begin{practiceproblems}
+	
+	
+	
+	\problempart
+	\begin{problemslist}
+		\item 	Is `I know that' truth functional? \\
+		%	\emph{(Hint: try to think of a situation with two English sentences, $\metaX$ and $\metaY$, which have the same truth value but where `I know that \metaX' and `I know that \metaY' have different truth values) }
+		\myanswer{\\No. \begin{center}
+				`I know that I have hands'
+			\end{center} is true (true $\leadsto$ true). But there are some sentences that are true but I don't know them. E.g., 
+			\begin{center}
+				`I know that France won the FIFA world cup'
+			\end{center} (well, I now know it but I didn't 20 minutes ago. )}
+	\end{problemslist}
+	
+	
+	\problempart
+	Can you think of sentences with the following truth table:
+	\begin{problemslist}
+		\item \begin{tabular}{cc|c}
+			$A$&$B$&?\\\hline
+			T&T&T\\
+			T&F&T\\
+			F&T&T\\
+			F&F&T
+		\end{tabular}\myanswer{$A\eor\enot A$}
+		\item \begin{tabular}{cc|c}
+			$A$&$B$&?\\\hline
+			T&T&F\\
+			T&F&F\\
+			F&T&T\\
+			F&F&F
+		\end{tabular}\myanswer{$\enot A\eand B$}
+		\item \begin{tabular}{cc|c}
+			$A$&$B$&?\\\hline
+			T&T&T\\
+			T&F&F\\
+			F&T&T\\
+			F&F&T
+		\end{tabular}\myanswer{\quad\begin{minipage}{.75\textwidth}
+				$\enot( A\eand \enot B)$;\\ or a more systematic answer by simply writing out the different options when the sentence is true: $$((A\eand B)\eor (\enot A\eand B))\eor (\enot A\eand\enot B)$$
+		\end{minipage}}
+		
+	\end{problemslist}
+	\problempart
+	Suppose $X$ is TFL sentence containing two atomic sentences. Then there are in fact sixteen different possible columns for $X$.
+	\begin{problemslist}
+		\item Can you explain why?\myanswer{\\ The first line might have T or F, the second line might have T or F, etc. There are 4 valuations, so there are $2\times 2\times 2\times 2=2^4=16$ different ways of putting Ts and Fs to these 4 lines. I.e.~16 different columns. }
+		\item Can you show for each of these combinations that there is a sentence of TFL with that column describing its truth.
+		%\myanswer{\\
+			%See section 37.2 of forall$x$:Bristol for the general argument for this.
+			%}
+		\item {} Can you show there's always a formula just using $\enot$ and $\eand$ with that column describing its truth.
+		%\myanswer{\\
+			%The previous answer had that every truth table can be given by a sentence with $\eand, \eor$ and $\enot$. We can replace any instances of $\eor$ by $\eand$ using: $$\metaX\eor\metaY\text{ is logically equivalent to }\enot(\enot\metaX\eand\enot\metaY)$$
+			%See 37.4 of forall$x$:Bristol for more details.
+			%}
+	\end{problemslist}
+	
+	
+\end{practiceproblems}
+
+
+
