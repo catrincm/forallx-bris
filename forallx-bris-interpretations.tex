@@ -696,6 +696,223 @@ We have now provided the full inductive definition of truth in a model under a v
 %To be clear: all this is doing is formalizing (very pedantically) the intuitive idea expressed on the previous page. The result is a bit ugly, and the final definition might look a bit opaque. Hopefully, though, the \emph{spirit} of the idea is clear.
 
 
+
+\section{Working out the truth value}
+
+Consider 
+\begin{itemize}
+	\item $M_1$: 
+	\begin{interp}
+		\item[\domain] $\Set{1,2,3,4}$
+		\item[\denote{C}] $\Set{1,2}$
+		\item[\denote{S}] $\Set{1,2,3}$
+		\item[\denote{R}] $\{\langle 1,3\rangle,\langle 2,4\rangle,\langle 3,1\rangle\}$
+	\end{interp}
+	\item $M_2$:
+	\begin{interp}
+		\item[\domain] $\Set{1,2}$
+		\item[\denote{C}] $\Set{1}$
+		\item[\denote{S}] $\Set{2}$
+		\item[\denote{R}] $\{\langle 1,1\rangle\}$
+	\end{interp}
+\end{itemize}
+
+We are asked to evaluate this sentence on these two models
+			$$\enot \exists x Cx \eor \forall y (Cy\eor Sy)$$
+	
+	Its truth depends on the truth of the constituent sentences under variable assignments. All the relevant cases are the `$?$' in the below table. 
+\[
+\begin{array}{c|d*{12}{e}f}
+	&\enot & \exists & x & C x & \eor &\forall&y &(&Cy&\eor&Sy&)  \\
+	\hline
+	
+	M_1
+	& ? &  ?&  &  &?&?  &&&&&&&&\\
+	
+	\varassigncline{4-5} 		\varassigncline{8-12} 
+	&  & & 1 & ? &&&1&&?&?&?\\
+	\varassigncline{4-5} 		\varassigncline{8-12} 
+	&  & & 2 & ? &&&2&&?&?&?\\
+	\varassigncline{4-5} 		\varassigncline{8-12} 
+	&  & & 3 & ? &&&3&&?&?&?\\
+	\varassigncline{4-5} 		\varassigncline{8-12} 
+	&  & & 4 & ? &&&4&&?&?&?\\
+	\hline
+	M_2
+	& ? &  ?&  &  &?&?  &&&&&&&&\\
+	
+	\varassigncline{4-5} 		\varassigncline{8-12} 
+	&  & & 1 & ? &&&1&&?&?&?\\
+	\varassigncline{4-5} 		\varassigncline{8-12} 
+	&  & & 2 & ? &&&2&&?&?&?\\
+	\hline
+\end{array}
+\]
+Although one doesn't need to fill out all the values, once you have found one variable assignment where the sentence is true, you can stop and put `$T$' for $\exists x \metaX$. 
+
+We can summarise that, there is no need to present it as a table: 
+
+\[
+\begin{array}{c|d*{12}{e}f}
+	&\enot & \exists & x & C x & \eor &\forall&y &(&Sy&\eor&Cy&)  \\
+	\hline
+	
+	M_1
+	& \false&  \true&  &  &\TTbf{\false}&\false  &&&&&&&&\\
+	
+	\varassigncline{4-5} 		\varassigncline{8-12} 
+	&  & & 1 & \true &&&4&&\false&\false&\false\\
+	\hline
+	M_2
+	& \false&  \true&  &  &\TTbf{\true}&\true  &&&&&&&&\\
+	
+	\varassigncline{4-5} 		\varassigncline{8-12} 
+	&  & & 1 & \true &&&1&&\false&\true&\true\\
+	&  & & &  &&&2&&\true&\true&.\\
+	\hline
+\end{array}
+\]
+
+\begin{itemize}
+	\item On $M_1$ it is false: $\exists x Cx$ is true so $\enot\exists x Cx$ is false. Also $\forall y(Sy\eor Cy)$ is false ($y\mapsto 4$). So the disjunction is false. 
+\item 
+On $M_2$ it is true because $\forall y(Sy\eor Cy)$ is true: $1$ is $C$ and $2$ is $S$. 
+\end{itemize}
+
+What about $$\enot\forall x(Cx\eif\enot\exists y(Cy\eand Rxy))\eand \exists x \enot Cx$$
+To calculate this, we need to reason through filling out enough of the `$?$' in the below table to work out the answer. 
+\[
+\begin{array}{c|d*{20}{e}f}
+	&	\enot& \forall & x & ( & Cx & \eif & \enot & \exists & y & ( & Cy & \eand & Rxy & ) & )  & &\eand&\exists&x&\enot&Cx
+	\\ \hline
+	
+	M_1 & ?& ? &  &  &  &  &  &  &  &  &  &  &  &  & & &? &?\\ \varassigncline{4-16}\varassigncline{20-22}
+	
+	% x = 1 block
+	& &  & 1 &  & ? & ? & ? & ? &  &  &  &  &  &  & &&&&1 &? &?\\\varassigncline{10-15}\varassigncline{20-22}
+	& &  &   &  &   &   &   &   & 1 &  & ? & ? & ? &  &&&&&2&? &?  \\ \varassigncline{10-15}\varassigncline{20-22}
+	& &  &   &  &   &   &   &   & 2 &  & ? & ? & ? & & &&&&3 &? &?  \\ \varassigncline{10-15}\varassigncline{20-22}
+	& &  &   &  &   &   &   &   & 3 &  & ? & ? & ? &  &&&&&4 &? &?  \\ \varassigncline{10-15}\varassigncline{20-22}
+	& &  &   &  &   &   &   &   & 4 &  & ? & ? & ? &  &  \\ \varassigncline{4-16}
+	
+	% x = 2 block
+	& &  & 2 &  & ? & ? & ? & ? &  &  &  &  &  &  &  \\\varassigncline{10-15}
+	& &  &   &  &   &   &   &   & 1 &  & ? & ? & ? &  &  \\ \varassigncline{10-15}
+	& &  &   &  &   &   &   &   & 2 &  & ? & ? & ? &  &  \\ \varassigncline{10-15}
+	& &  &   &  &   &   &   &   & 3 &  & ? & ? & ? &  &  \\ \varassigncline{10-15}
+	& &  &   &  &   &   &   &   & 4 &  & ? & ? & ? &  &  \\ \varassigncline{4-16}
+	
+	% x = 3 block
+	& &  & 3 &  & ? & ? & ? & ? &  &  &  &  &  &  &  \\\varassigncline{10-15}
+	& &  &   &  &   &   &   &   & 1 &  & ? & ? & ? &  &  \\ \varassigncline{10-15}
+	& &  &   &  &   &   &   &   & 2 &  & ? & ? & ? &  &  \\ \varassigncline{10-15}
+	& &  &   &  &   &   &   &   & 3 &  & ? & ? & ? &  &  \\ \varassigncline{10-15}
+	& &  &   &  &   &   &   &   & 4 &  & ? & ? & ? &  &  \\ \varassigncline{4-16}
+	
+	% x = 4 block
+	& &  & 4 &  & ? & ? & ? & ? &  &  &  &  &  &  &  \\\varassigncline{10-15}
+	& &  &   &  &   &   &   &   & 1 &  & ? & ? & ? &  &  \\ \varassigncline{10-15}
+	& &  &   &  &   &   &   &   & 2 &  & ? & ? & ? &  &  \\ \varassigncline{10-15}
+	& &  &   &  &   &   &   &   & 3 &  & ? & ? & ? &  &  \\ \varassigncline{10-15}
+	& &  &   &  &   &   &   &   & 4 &  & ? & ? & ? &  &  \\ \hline
+	
+	
+	M_2 & ?& ? &  &  &  &  &  &  &  &  &  &  &  &  & & &? &?\\ \varassigncline{4-16}\varassigncline{20-22}
+	
+	% x = 1 block
+	& &  & 1 &  & ? & ? & ? & ? &  &  &  &  &  &  & &&&&1 &? &?\\\varassigncline{10-15}\varassigncline{20-22}
+	& &  &   &  &   &   &   &   & 1 &  & ? & ? & ? &  &&&&&2&? &?  \\ \varassigncline{10-15}\varassigncline{20-22}
+	& &  &   &  &   &   &   &   & 2 &  & ? & ? & ? & & &&&&& &  \\ \varassigncline{10-15}
+	\varassigncline{4-16}
+	
+	% x = 2 block
+	& &  & 2 &  & ? & ? & ? & ? &  &  &  &  &  &  &  \\\varassigncline{10-15}
+	& &  &   &  &   &   &   &   & 1 &  & ? & ? & ? &  &  \\ \varassigncline{10-15}
+	& &  &   &  &   &   &   &   & 2 &  & ? & ? & ? &  &  \\ \varassigncline{10-15}
+	\hline
+\end{array}
+\]
+\[
+	\begin{array}{c|d*{20}{e}f}
+		&	\enot& \forall & x & ( & Cx & \eif & \enot & \exists & y & ( & Cy & \eand & Rxy & ) & )  & &\eand&\exists&x&\enot&Cx
+		\\ \hline
+		
+		M_1 & \false& \true &  &  &  &  &  &  &  &  &  &  &  &  & & &\false &\true\\
+		\varassigncline{4-16}\varassigncline{20-22}
+		
+		% x = 1 block
+		& &  & 1 &  & \true & \true & \true & \false &  &  &  &  &  &  & &&&&1 &\false &\true\\
+		\varassigncline{10-15}\varassigncline{20-22}
+		& &  &   &  &   &   &   &   & 1 &  & \true & \false & \false &  &&&&&2&\false &\true  \\ 
+		\varassigncline{10-15}\varassigncline{20-22}
+		& &  &   &  &   &   &   &   & 2 &  & \true & \false & \false & & &&&&3 &\true &\false  \\ 
+		\varassigncline{10-15}\varassigncline{20-22}
+		& &  &   &  &   &   &   &   & 3 &  & \false & \false & \true &  &&&&&4 &\true &\false  \\ 
+		\varassigncline{10-15}\varassigncline{20-22}
+		& &  &   &  &   &   &   &   & 4 &  & \false & \false & \false &  &  \\ 
+		\varassigncline{4-16}
+		
+		% x = 2 block
+		& &  & 2 &  & \true & \true & \true & \false &  &  &  &  &  &  &  \\
+		\varassigncline{10-15}
+		& &  &   &  &   &   &   &   & 1 &  & \true & \false & \false &  &  \\ 
+		\varassigncline{10-15}
+		& &  &   &  &   &   &   &   & 2 &  & \true & \false & \false &  &  \\ 
+		\varassigncline{10-15}
+		& &  &   &  &   &   &   &   & 3 &  & \false & \false & \false &  &  \\ 
+		\varassigncline{10-15}
+		& &  &   &  &   &   &   &   & 4 &  & \false & \false & \true &  &  \\ 
+		\varassigncline{4-16}
+		
+		% x = 3 block
+		& &  & 3 &  & \false & \true & . & . &  &  &  &  &  &  &  \\
+		%		\varassigncline{10-15}
+		%		& &  &   &  &   &   &   &   & 1 &  & . & . & . &  &  \\ 
+		%		\varassigncline{10-15}
+		%		& &  &   &  &   &   &   &   & 2 &  & . & . & . &  &  \\ 
+		%		\varassigncline{10-15}
+		%		& &  &   &  &   &   &   &   & 3 &  & . & . & . &  &  \\ 
+		%		\varassigncline{10-15}
+		%		& &  &   &  &   &   &   &   & 4 &  & . & . & . &  &  \\ 
+		\varassigncline{4-16}
+		
+		% x = 4 block
+		& &  & 4 &  & \false & \true & . & . &  &  &  &  &  &  &  \\
+		%		\varassigncline{10-15}
+		%		& &  &   &  &   &   &   &   & 1 &  & . & . & . &  &  \\ 
+		%		\varassigncline{10-15}
+		%		& &  &   &  &   &   &   &   & 2 &  & . & . & . &  &  \\ 
+		%		\varassigncline{10-15}
+		%		& &  &   &  &   &   &   &   & 3 &  & . & . & . &  &  \\ 
+		%		\varassigncline{10-15}
+		%		& &  &   &  &   &   &   &   & 4 &  & . & . & . &  &  \\ 
+		\hline
+		
+		
+		M_2 & \true& \false &  &  &  &  &  &  &  &  &  &  &  &  & & &\true &\true\\ 
+		\varassigncline{4-16}\varassigncline{20-22}
+		
+		% x = 1 block
+		& &  & 1 &  & \true & \false & \false & \true &  &  &  &  &  &  & &&&&1 &\false &\true\\
+		\varassigncline{10-15}\varassigncline{20-22}
+		& &  &   &  &   &   &   &   & 1 &  & \true & \true & \true &  &&&&&2&\true &\false  \\ 
+		\varassigncline{20-22}
+		%		& &  &   &  &   &   &   &   & 2 &  & \false & \false & \false & & &&&&& &  \\ 
+		\varassigncline{4-16}
+		
+		% x = 2 block
+		& &  & 2 &  & \false & \true & . & &  &  &  &  &  &  &  \\
+		\varassigncline{10-15}
+		%		& &  &   &  &   &   &   &   & 1 &  & . & . & . &  &  \\ 
+		%		\varassigncline{10-15}
+		%		& &  &   &  &   &   &   &   & 2 &  & . & . & . &  &  \\ 
+		%		\varassigncline{10-15}
+		\hline
+	\end{array}
+	\]
+
+
+
 \begin{practiceproblems}
 \problempart
 \label{pr.TorF1}
