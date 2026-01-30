@@ -720,7 +720,7 @@ Consider
 We are asked to evaluate this sentence on these two models
 			$$\enot \exists x Cx \eor \forall y (Cy\eor Sy)$$
 	
-	Its truth depends on the truth of the constituent sentences under variable assignments. All the relevant cases are the `$?$' in the below table. 
+Its truth depends on the truth of the constituent sentences under variable assignments. All the relevant cases are the `$?$' in the below table. 
 \[
 \begin{array}{c|d*{12}{e}f}
 	&\enot & \exists & x & C x & \eor &\forall&y &(&Cy&\eor&Sy&)  \\
@@ -750,7 +750,6 @@ We are asked to evaluate this sentence on these two models
 \]
 Although one doesn't need to fill out all the values, once you have found one variable assignment where the sentence is true, you can stop and put `$T$' for $\exists x \metaX$. 
 
-We can summarise that, there is no need to present it as a table: 
 
 \[
 \begin{array}{c|d*{12}{e}f}
@@ -773,11 +772,15 @@ We can summarise that, there is no need to present it as a table:
 \end{array}
 \]
 
+We can summarise that, there is no need to present it as a table: 
+
 \begin{itemize}
 	\item On $M_1$ it is false: $\exists x Cx$ is true so $\enot\exists x Cx$ is false. Also $\forall y(Sy\eor Cy)$ is false ($y\mapsto 4$). So the disjunction is false. 
-\item 
-On $M_2$ it is true because $\forall y(Sy\eor Cy)$ is true: $1$ is $C$ and $2$ is $S$. 
+\item On $M_2$ it is true because $\forall y(Sy\eor Cy)$ is true: $1$ is $C$ and $2$ is $S$. 
 \end{itemize}
+
+Since models can be infinite there may not even theoretically be a table like this to calculate the truth, but it should give you the idea of how to go about reasoning about it. 
+
 
 What about $$\enot\forall x(Cx\eif\enot\exists y(Cy\eand Rxy))\eand \exists x \enot Cx$$
 To calculate this, we need to reason through filling out enough of the `$?$' in the below table to work out the answer. 
@@ -910,6 +913,8 @@ To calculate this, we need to reason through filling out enough of the `$?$' in 
 		\hline
 	\end{array}
 	\]
+
+
 
 
 
