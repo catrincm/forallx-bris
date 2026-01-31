@@ -239,7 +239,7 @@ We can symbolise
 \end{samplesent}
 \begin{center}
 	\begin{forest}
-		[Joe is happy and Katie is sad\\Joe is happy \mainconnective{and} Katie is sad\\$Hj \mainconnective{\eand} Sk$
+		[Joe is happy and Katie is sad\\Joe is happy \mainconnectivecolor{and} Katie is sad\\$\ldots {\eand} \ldots$
 		[Joe is happy\\$Hj$]
 		[Katie is sad\\$Sk$]
 		]
@@ -274,11 +274,11 @@ We can also symbolise more complex sentences, for example:
 \item\label{folcomplex} If Joe is not happy then Katie or Billy is sad.
 \begin{center}
 	\begin{forest}
-		[If Joe is not happy then Katie or Billy is sad\\\mainconnective{If} Joe is not happy \mainconnective{then} Katie or Billy is sad.\\$\enot Hj \mainconnective{\eif} (Sk \eor Sb)$
-		[Joe is not happy\\\mainconnective{It is not the case that} Joe is happy\\$\mainconnective{\enot} Hj$
+		[If Joe is not happy then Katie or Billy is sad\\\mainconnectivecolor{If} Joe is not happy \mainconnectivecolor{then} Katie or Billy is sad.\\$\ldots {\eif} \ldots$
+		[Joe is not happy\\\mainconnectivecolor{It is not the case that} Joe is happy\\${\enot} \ldots$
 		[Joe is happy\\$Hj$]
 		]
-		[Katie or Billy is sad\\Katie is sad \mainconnective{or} Billy is sad\\$Sk \mainconnective{\eor} Sb$
+		[Katie or Billy is sad\\Katie is sad \mainconnectivecolor{or} Billy is sad\\$\ldots {\eor} \ldots$
 		[Katie is sad\\$Sk$]
 		[Billy is sad\\$Sb$]
 		]
@@ -288,7 +288,7 @@ We can also symbolise more complex sentences, for example:
 %\item
 %\item\label{folcomplex}  Katie and Billy is happy only if neither Joe nor Alice is sad.$$(Hk\eand Hb)\eif \enot (Sj\eor Sa)$$
 \end{samplesent}
-
+so giving the symbolisation: $$Hj\eif(Sk\eor Sb)$$
 
 One final example. To symbolise:
 \begin{samplesent}
@@ -525,8 +525,8 @@ Whatever we wanted to say of an individual we can now say of everyone using this
 We can break this up:
 \begin{center}
 	\begin{forest}
-		[Everyone is happy and wears a funny hat\\\mainconnective{For everyone, $x$:} $x$ is happy and $x$ wears a funny hat\\$\mainconnective{\forall x}(Hx \eand Fx)$
-		[$x$ is happy \mainconnective{and} $x$ wears a funny hat\\$Hx \mainconnective{\eand} Fx$
+		[Everyone is happy and wears a funny hat\\\mainconnectivecolor{For everyone, $x$:} $x$ is happy and $x$ wears a funny hat\\${\forall x}\ldots$
+		[$x$ is happy \mainconnectivecolor{and} $x$ wears a funny hat\\$\ldots {\eand} \ldots$
 		[$x$ is happy\\$Hx$]
 		[$x$ wears a funny hat\\$Fx$]
 		]
@@ -600,16 +600,14 @@ with the symbolisation key
 	\item[\text{domain}] people
 	\item[Ax]\gap{x} is angry
 \end{ekey}
-We can paraphrase it as \begin{center}
-	There is someone, $x$, such that: $x$ is angry.
-\end{center}
 \begin{center}
 	\begin{forest}
-		[Someone is angry.\\\mainconnective{There is someone, $x$, such that:} $x$ is angry.\\$\mainconnective{\exists x}Ax$
+		[Someone is angry.\\\mainconnectivecolor{There is someone, $x$, such that:} $x$ is angry.\\${\exists x}\ldots$
 		[$x$ is angry\\$Ax$]
 		]
 	\end{forest}
 \end{center}
+Thus giving our symbolisation as: $\exists x Ax$
 %\begin{ebullet}
 %\item $\underbrace{\text{There is someone, $x$, such that}}_{\exists x}$: $\underbrace{\text{$x$ is angry}}_{Ax}$.
 %\end{ebullet}
@@ -623,15 +621,16 @@ To symbolise
 %$$\underbrace{\underbrace{\text{There is someone, $x$, such that}}_{\exists x}: \underbrace{\underbrace{\text{$x$ is a logician}}_{Lx}\text{ and }\underbrace{\text{$x$ wears glasses}}_{Gx}}_{(Lx\eand Gx)}.}_{\exists x(Lx\eand Gx)}$$
 \begin{center}
 	\begin{forest}
-	[There is a logician who wears glasses\\\mainconnective{There is someone, $x$:} $x$ is a logician who wears glasses\\$\mainconnective{\exists x}(Lx\eand Gx)$
-	[$x$ is a logician who wears glasses\\$x$ is a logician \mainconnective{and} $x$ wears glasses\\$Lx\mainconnective{\eand} Gx$
+	[There is a logician who wears glasses\\\mainconnectivecolor{There is someone, $x$:} $x$ is a logician who wears glasses\\${\exists x}\ldots$
+	[$x$ is a logician who wears glasses\\$x$ is a logician \mainconnectivecolor{and} $x$ wears glasses\\$\ldots{\eand} \ldots$
 		[$x$ is a logician\\$Lx$]
 		[$x$ wears glasses\\$Gx$]
 	]
 	]
 \end{forest}
 \end{center}
-giving our symbolisation key:
+Giving: \[\exists x(Lx\eand Gx)\]
+with a symbolisation key:
 \begin{ekey}
 \item[\text{domain}] people
 \item[Lx]\gap{x} is a logician
@@ -645,9 +644,9 @@ To symbolise
 
 \begin{center}
 	\begin{forest}
-	[There is a Polish woman who won the Nobel Prize\\\mainconnective{There is someone, $x$:} $x$ is a Polish woman who won the Nobel Prize\\$\mainconnective{\exists x }((Px\eand Wx)\eand Nx)$
-		[$x$ is a Polish woman who won the Nobel Prize\\$x$ is a Polish woman \mainconnective{and} $x$ won the Nobel Prize \\$(Px\eand Wx)\mainconnective{\eand} Nx$
-			[$x$ is a Polish woman\\$x$ is Polish \mainconnective{and} $x$ is a woman\\$Px\mainconnective{\eand} Wx$
+	[There is a Polish woman who won the Nobel Prize\\\mainconnectivecolor{There is someone, $x$:} $x$ is a Polish woman who won the Nobel Prize\\${\exists x }\ldots$
+		[$x$ is a Polish woman who won the Nobel Prize\\$x$ is a Polish woman \mainconnectivecolor{and} $x$ won the Nobel Prize \\$\ldots{\eand} \ldots$
+			[$x$ is a Polish woman\\$x$ is Polish \mainconnectivecolor{and} $x$ is a woman\\$\ldots{\eand} \ldots$
 				[$x$ is Polish\\$Px$]
 				[$x$ is a woman\\$Wx$]
 			]
@@ -1181,12 +1180,12 @@ To symbolise
 We want to paraphrase it in one of our standard forms, which we do as:
 \begin{center}
 	\begin{forest}
-		[Everyone loves Alice\\\mainconnective{For everyone, $x$:} $x$ loves Alice\\$\mainconnective{\forall x}Lxa$
+		[Everyone loves Alice\\\mainconnectivecolor{For everyone, $x$:} $x$ loves Alice\\$\mainconnectivecolor{\forall x}\ldots$
 		[$x$ loves Alice\\$Lxa$]
 		]
 	\end{forest}
 \end{center}
-So we give the symbolisation $$\forall x Lxa$$ with the symbolisation key:
+So we give the symbolisation $\forall x Lxa$ with the symbolisation key:
 \begin{ekey}
 \item[\text{domain}] people
 \item[Lxy]\gap{x} loves \gap{y}
@@ -1199,7 +1198,7 @@ If we instead want to symbolise
 We paraphrase this as:
 \begin{center}
 	\begin{forest}
-		[Alice loves everyone\\\mainconnective{For everyone, $x$:} Alice loves $x$\\$\mainconnective{\forall x}Lax$
+		[Alice loves everyone\\\mainconnectivecolor{For everyone, $x$:} Alice loves $x$\\$\mainconnectivecolor{\forall x}\ldots$
 		[Alice loves $x$\\$Lax$]
 		]
 	\end{forest}
@@ -1212,7 +1211,7 @@ To symbolise
 \end{samplesent}
 \begin{center}
 	\begin{forest}
-		[Someone loves themselves.\\\mainconnective{For someone, $x$:} $x$ loves themselves\\$\mainconnective{\exists x}Lxx$
+		[Someone loves themselves.\\\mainconnectivecolor{For someone, $x$:} $x$ loves themselves\\$\mainconnectivecolor{\exists x}\ldots$
 		[$x$ loves themselves\\$x$ loves $x$\\$Lxx$]
 		]
 	\end{forest}
@@ -1237,8 +1236,8 @@ If we want to symbolise
 we should paraphrase this as:
 \begin{center}
 	\begin{forest}
-		[Some dog likes playing with Finley\\\mainconnective{There is some thing $x$:} $x$ is a dog who likes playing with Finley\\$\mainconnective{\exists x}(Dx \eand Pxf)$
-		[$x$ is a dog who likes playing with Finley\\ $x$ is a dog \mainconnective{and} $x$ likes playing with Finley\\$Dx \mainconnective{\eand} Pxf$
+		[Some dog likes playing with Finley\\\mainconnectivecolor{There is some thing $x$:} $x$ is a dog who likes playing with Finley\\${\exists x}\ldots$
+		[$x$ is a dog who likes playing with Finley\\ $x$ is a dog \mainconnectivecolor{and} $x$ likes playing with Finley\\$\ldots {\eand} \ldots$
 		[$x$ is a dog\\$Dx$]
 		[$x$ likes playing with Finley\\$Pxf$]
 		]
@@ -1258,12 +1257,12 @@ We work as follows:
 \begin{center}
 	\begin{forest}
 		[{
-		Finley is not quiet, but some dog is\\Finley is not quiet \mainconnective{and} some dog is quiet\\$(\enot Qf \mainconnective{\eand} \exists x(Dx \eand Qx))$}
-			[Finley is not quiet\\\mainconnective{It is not the case that} Finley is quiet\\$\mainconnective{\enot} Qf$
+		Finley is not quiet, but some dog is\\Finley is not quiet \mainconnectivecolor{and} some dog is quiet\\$\ldots {\eand}\ldots$}
+			[Finley is not quiet\\\mainconnectivecolor{It is not the case that} Finley is quiet\\${\enot} \ldots$
 				[Finley is quiet\\$Qf$]
 			]
-			[Some dog is quiet\\\mainconnective{There is some $x$:} $x$ is a dog and $x$ is quiet\\$\mainconnective{\exists x}(Dx \eand Qx)$
-				[$x$ is a dog \mainconnective{and} $x$ is quiet\\$Dx \mainconnective{\eand} Qx$
+			[Some dog is quiet\\\mainconnectivecolor{There is some $x$:} $x$ is a dog and $x$ is quiet\\${\exists x}\ldots$
+				[$x$ is a dog \mainconnectivecolor{and} $x$ is quiet\\$\ldots {\eand} \ldots$
 					[$x$ is a dog\\$Dx$]
 					[$x$ is quiet\\$Qx$]
 				]
@@ -1290,20 +1289,20 @@ Consider also
 
 \begin{center}
 	\begin{forest}
-		[Some dog is quiet but Finley is not\\Some dog is quiet \mainconnective{and} Finley is not quiet\\$(\ldots \mainconnective{\eand} \ldots)$
-		[Some dog is quiet\\\mainconnective{There is some $x$:} $x$ is a dog and $x$ is quiet\\$\mainconnective{\exists x}\ldots$
-		[$x$ is a dog \mainconnective{and} $x$ is quiet\\$(\ldots \mainconnective{\eand} \ldots)$
+		[Some dog is quiet but Finley is not\\Some dog is quiet \mainconnectivecolor{and} Finley is not quiet\\$(\ldots {\eand} \ldots)$
+		[Some dog is quiet\\\mainconnectivecolor{There is some $x$:} $x$ is a dog and $x$ is quiet\\${\exists x}\ldots$
+		[$x$ is a dog \mainconnectivecolor{and} $x$ is quiet\\$(\ldots {\eand} \ldots)$
 		[$x$ is a dog\\$Dx$]
 		[$x$ is quiet\\$Qx$]
 		]
 		]
-		[Finley is not quiet\\\mainconnective{It is not the case that} Finley is quiet\\$\mainconnective{\enot} \ldots$
+		[Finley is not quiet\\\mainconnectivecolor{It is not the case that} Finley is quiet\\${\enot} \ldots$
 		[Finley is quiet\\$Qf$]
 		]
 		]
 	\end{forest}
 \end{center}
-So we result in: $(\exists x(Dx \eand Qx) \mainconnective{\eand} \enot Qf)$
+So we result in: $(\exists x(Dx \eand Qx) {\eand} \enot Qf)$
 
 
 Consider:
@@ -1314,9 +1313,9 @@ Consider:
 We work as follows:
 \begin{center}
 	\begin{forest}
-		[Not every dog is quiet\\\mainconnective{It is not the case that} every dog is quiet\\$\mainconnective{\enot}\forall x(Dx \eif Qx)$
-		[Every dog is quiet\\\mainconnective{For all $x$:} if $x$ is a dog then $x$ is quiet\\$\mainconnective{\forall x}(Dx \eif Qx)$
-		[\mainconnective{If} $x$ is a dog \mainconnective{then} $x$ is quiet\\$Dx \mainconnective{\eif} Qx$
+		[Not every dog is quiet\\\mainconnectivecolor{It is not the case that} every dog is quiet\\${\enot}\ldots$
+		[Every dog is quiet\\\mainconnectivecolor{For all $x$:} if $x$ is a dog then $x$ is quiet\\${\forall x}\ldots$
+		[\mainconnectivecolor{If} $x$ is a dog \mainconnectivecolor{then} $x$ is quiet\\$\ldots {\eif} \ldots$
 		[$x$ is a dog\\$Dx$]
 		[$x$ is quiet\\$Qx$]
 		]
@@ -2022,12 +2021,11 @@ Now let's try to symbolise. Like in TFL and in FOL so far, our process is to bre
 
 \begin{center}
 	\begin{forest}
-		[Gerardo is a dog owner\\There is a dog that Gerardo owns\\$\mainconnective{\exists x}(Dx \eand Ogx)$
-		[There is some $x$ such that $x$ is a dog and $g$ owns $x$\\$\exists x(Dx \eand Ogx)$
-		[$x$ is a dog \mainconnective{and} $g$ owns $x$\\$Dx {\eand} Ogx$
+		[Gerardo is a dog owner\\There is a dog that Gerardo owns\\
+		\mainconnectivecolor{There is some $x$ such that} $x$ is a dog and $g$ owns $x$\\$\exists x\ldots$
+		[$x$ is a dog \mainconnectivecolor{and} $g$ owns $x$\\$\ldots {\eand} \ldots$
 		[$x$ is a dog\\${Dx}$]
 		[$g$ owns $x$\\${Ogx}$]
-		]
 		]
 		]
 	\end{forest}
@@ -2038,18 +2036,18 @@ Now let's try to symbolise. Like in TFL and in FOL so far, our process is to bre
 \begin{center}
 	\begin{forest}
 		[Every dog owner is a friend of a dog owner\\For every $x$: if $x$ is a dog owner then $x$ is friend of a dog owner\\
-		For every $x$: if $x$ is a dog owner then $x$ is a friend of a dog owner\\$\mainconnective{\forall x}\ldots$
-		[if $x$ is a dog owner then $x$ is a friend of a dog owner\\$(\ldots \mainconnective{\eif} \ldots)$
-		[$x$ is a dog owner\\$\mainconnective{\exists z}\ldots$
-		[$z$ is a dog and $x$ owns $z$\\$(\ldots \mainconnective{\eand} \ldots)$
+		For every $x$: if $x$ is a dog owner then $x$ is a friend of a dog owner\\${\forall x}\ldots$
+		[if $x$ is a dog owner then $x$ is a friend of a dog owner\\$(\ldots {\eif} \ldots)$
+		[$x$ is a dog owner\\${\exists z}\ldots$
+		[$z$ is a dog and $x$ owns $z$\\$(\ldots {\eand} \ldots)$
 		[$z$ is a dog\\$Dz$]
 		[$x$ owns $z$\\$Oxz$]
 		]
 		]
-		[$x$ is a friend of a dog owner\\$\mainconnective{\exists y}\ldots$
-		[$y$ is a dog owner \mainconnective{and} $x$ is a friend of $y$\\$(\ldots \mainconnective{\eand} \ldots)$
-		[$y$ is a dog owner\\$\mainconnective{\exists z}\ldots$
-		[$z$ is a dog \mainconnective{and} $y$ owns $z$\\$(\ldots \mainconnective{\eand} \ldots)$
+		[$x$ is a friend of a dog owner\\${\exists y}\ldots$
+		[$y$ is a dog owner {and} $x$ is a friend of $y$\\$(\ldots {\eand} \ldots)$
+		[$y$ is a dog owner\\${\exists z}\ldots$
+		[$z$ is a dog {and} $y$ owns $z$\\$(\ldots {\eand} \ldots)$
 		[$z$ is a dog\\$Dz$]
 		[$y$ owns $z$\\$Oyz$]
 		]
