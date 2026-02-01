@@ -124,13 +124,16 @@ with `$\eand$' to form the sentence `$A\eand C$'. If think of `$A$' and `$C$' as
 \item It is raining \mainconnective{and} Jenny is miserable.
 \end{itemize}
 Similarly, on this understanding we get the following readings:
-\begin{itemize}
-\item $\enot A$\\\mainconnective{It is not the case that} it is raining outside. \\(Alternatively, it is not raining outside).
-\item $A\eor C$\\It is raining outside \mainconnective{or} Jenny is miserable.
-\item $A\eif C$\\\mainconnective{If} it is raining outside, \mainconnective{then} Jenny is miserable.
-%\item $A\leftrightarrow B$: It is raining outside, \emph{if and only if} Jenny is miserable.
- \end{itemize}
 
+\begin{center}
+	\begin{tabular}{rl}
+	$\enot A$&\mainconnective{It is not the case that} it is raining outside. \\
+	&(Alternatively, it is not raining outside).\\\Tstrut
+		$A\eand C$& It is raining \mainconnective{and} Jenny is miserable.\\\Tstrut
+	$A\eor C$&It is raining outside \mainconnective{or} Jenny is miserable.\\\Tstrut
+	 $A\eif C$&\mainconnective{If} it is raining outside, \mainconnective{then} Jenny is miserable.
+\end{tabular}
+\end{center}
 
 
 
@@ -203,7 +206,7 @@ If think of `$A$' and `$B$' as representing the English sentences
 	\item[A] Alice is happy
 	\item[B] Beth is happy
 \end{ekey}
-`$A\eand C$' can be read as:
+`$A\eand B$' can be read as:
 \begin{samplesent}
 	\item Alice is happy \emph{and} Beth is happy.
 \end{samplesent}
@@ -254,14 +257,14 @@ If think of `$G$' and `$F$' as representing the English sentences
 	\item She understands German or she understands French.
 \end{samplesent}
 
-Again whether this is true will depend on $G$ and $F$
+Again whether this is true will depend on $G$ and $F$. Here are the four possibilities:
 \begin{center}
 	\begin{tabular}{rccl}
 		&$G$&$F$\\\hline\Tstrut
 		$v_1$&T&T&She understands German and French\\
 		$v_2$&T&F&She understands German but not French\\
 		$v_3$&F&T&She understands French but not German\\
-		$v_4$&F&F&She neither understands German nor French\\
+		$v_4$&F&F&She understands neither German nor French\\
 	\end{tabular}
 \end{center}
 Clearly `She understands German or French' is false in $v_4$ and true in $v_2$ and $v_3$:
@@ -331,7 +334,7 @@ Since it matters which order they come in, we is valuable to give a name to indi
 }
 
 
-In what cases is $B\eif E$' it true or false?
+In what cases is `$B\eif E$' true or false?
 \begin{center}
 	\begin{tabular}{rccl}
 		&$B$&$E$\\\hline
@@ -341,8 +344,7 @@ In what cases is $B\eif E$' it true or false?
 		$v_4$&F&F&She is not drinking beer and she is under eighteen\\
 	\end{tabular}
 \end{center}
-
-In $v_1$ it is true. In $v_2$ it is false. 
+In $v_2$ it is false, and in $v_1$ it is true. 
 \begin{center}
 	\begin{tabular}{rcc|c}
 		&$B$&$E$&$B\eif E$\\\hline
@@ -789,7 +791,7 @@ So far, we have only  focused on the application of the connectives to atomic se
 
 \section{Sentences}\label{s:TFLSentences}
 \todo{This went through a major rewrite. Check it!!!}
-We have introduced the basic building blocks of truth-functional logic, the atomic sentences, and the connectives, which allow us to conjoin different sentences to form new sentences. In terms of the \define{vocabulary} of a (written) language we have introduced all the important parts save the punctuation marks. In the language of truth-functional logic we use brackets for this purpose.
+We have introduced the basic building blocks of truth-functional logic, the atomic sentences, and the connectives, which allow us to conjoin different sentences to form new sentences. The third component of the vocabulary of TFL is brackets. These play a role like punctuation marks. 
 
 What is still missing is to equip the language with a \define{grammar}. The purpose of the grammar is to distinguish wellformed sentences from nonsense, but also to avoid ambiguity. It is in the grammar that brackets are vital parts of TFL. 
 
@@ -828,17 +830,31 @@ You might know this use of brackets from mathematics. Consider:
 
 Importantly, the language of TFL is designed to exclude any form of ambiguity. For example, $A\eand B\eor C$ will not be a sentence of TFL, as it would require disambiguation. Rather the syntactic/grammatical rules of the language of TFL will be such that only expressions that have a \emph{unique} reading can be sentences of TFL. To make this precise we now provide a formal definition of what it is to be a sentence in TFL.
 
-\factoidbox{\label{TFLsentences}
+
+\begin{highlighted}\label{TFLsentences}
+	
+	The {sentence letters} of TFL are the capital letters 
+	\begin{center}
+		$A$, $B$, $C$,\ldots $W$,
+	\end{center}
+	Plus these capital letters subscripted by a number, $$A_{1}, A_2, C_{37}, F_{102},\ldots$$
+	Excluding `$X$', `$Y$', `$Z$', which are reserved for metavariables.
+	
+
+	
+	\medskip Sentences of TFL are given by the following rules:
 	\begin{enumerate}
-		\item Every atomic sentence is a sentence.
-		\item If \metaX is a sentence, then $\enot\metaX$ is a sentence.
-		\item If \metaX and \metaY are sentences, then $(\metaX\eand\metaY)$ is a sentence.
-		\item If \metaX and \metaY are sentences, then $(\metaX\eor\metaY)$ is a sentence.
-		\item If \metaX and \metaY are sentences, then $(\metaX\eif\metaY)$ is a sentence.
-		%\item If \metaX and \metaY are sentences, then $(\metaX\eiff\metaY)$ is a sentence.
-		\item Nothing else is a sentence.
+		\item Sentence letters are sentences of TFL; they are called the \define{atomic sentences}.
+		\item If \metaX is a sentence of TFL, then $\enot\metaX$ is a sentence of TFL.
+		\item If \metaX and \metaY are sentences of TFL, then $(\metaX\eand\metaY)$ is a sentence of TFL.
+		\item If \metaX and \metaY are sentences of TFL, then $(\metaX\eor\metaY)$ is a sentence of TFL.
+		\item If \metaX and \metaY are sentences of TFL, then $(\metaX\eif\metaY)$ is a sentence of TFL.
+		%\item If \metaX and \metaY are sentences of TFL, then $(\metaX\eiff\metaY)$ is a sentence of TFL.
+		\item 	Nothing else is a sentence of TFL.
 	\end{enumerate}
-	}
+
+\end{highlighted}
+
 
 	\newglossaryentry{sentence of TFL}
 {
@@ -1138,7 +1154,7 @@ This talks about \emph{arbitrary} sentences. If we had instead offered:
 	\end{itemize}
 this would not have allowed us to determine whether `$\enot B$' is a sentence. To emphasize:
 	\factoidbox{
-	  `$\metaX$' is a symbol (called a \define{metavariable}) in augmented English, which we use to talk about expressions of TFL. 	`$A$' is a particular sentence letter of TFL.}
+	  `$\metaX$',  is a symbol (called a \define{metavariable}) in augmented English, which we use to talk about expressions of TFL. 	`$A$' is a particular sentence letter of TFL.}
 
         \newglossaryentry{metavariables}
 {
