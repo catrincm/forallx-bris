@@ -67,8 +67,8 @@ When one introduces a language there are (at least) two task: the first is to sp
 %\chapter{Building blocks of TFL}
 
 %In natural languages like English or German, there are many different parts of the vocabulary 
-\section{Sentences of TFL}
-The vocabulary of TFL is very simple. Sentences are built from three components: atomic sentences, connectives, and brackets. 
+\section{Vocabulary of TFL}
+The vocabulary of TFL is very simple. There are three parts to the vocabulary: atomic sentences, connectives, and brackets. 
 
 \subsection{Atomic Sentences}
 \label{s:atomic sentences}
@@ -89,7 +89,7 @@ description={A sentence used to represent a basic sentence; a single letter in T
 \subsection{Connectives}
 \label{s:TFLConnectives}
 
-In the previous section, we introduced the atomic sentences of TFL.  In TFL we have counterparts to the conjunction-words that play an important role for spelling out arguments in English, that is, in TFL we have expression that play a similar role to the role expressions like `and', `or' and `not' play in English. These are the \emph{connectives}---they can be used to form new sentences out of old ones. In TFL, we will make use of logical connectives to build complex sentences from atomic components. There are four logical connectives in TFL. This table summarises them, and they are explained throughout this section.
+The second category of the vocabulary of TFL is the connectives. They can be used to form new sentences out of old ones.
 
 \newglossaryentry{connective}
 {
@@ -113,8 +113,7 @@ description={A logical operator in TFL used to combine \glspl{atomic sentence} i
 
 %These are not the only connectives of English of interest. Others are, e.g., `unless', `neither \dots{} nor \dots', and `because'. We will see that the first two can be expressed by the connectives we will discuss, while the last cannot. `Because', in contrast to the others, is not \emph{truth functional}. In \S\ref{??} we shall explain what this means precisely.
 
-If we were to substitute declarative sentences for `\dots' in the right hand column of the table above, we obtain new English sentences. The language of truth-functional logic works in the same way: the connectives `\enot',`\eand',`\eor' and `\eif' combine with sentences as introduced in \S\ref{sec:as} to form new sentences. For example, the atomic sentences `$A$' and `$C$' combine
-with `$\eand$' to form the sentence `$A\eand C$'. If think of `$A$' and `$C$' as representing the English sentences
+If we were to substitute declarative sentences for `\dots' in the right hand column of the table above, we obtain new English sentences. The language of truth-functional logic works in the same way: the connectives `\enot',`\eand',`\eor' and `\eif' combine other sentences. For example, the atomic sentences `$A$' and `$C$' combine with `$\eand$' to form the sentence `$A\eand C$'. If think of `$A$' and `$C$' as representing the English sentences
 \begin{ekey}
 		\item[A] It is raining outside
 		\item[C] Jenny is miserable
@@ -138,12 +137,14 @@ Similarly, on this understanding we get the following readings:
 
 
 \subsection{Brackets}
-Brackets are the remaining component of the vocabulary of TFL. They will be used to provide the grammar. They are vital when we start looking at more complex sentences of TFL. But we will first start to discuss the connectives applied just to simple sentences so can ignore brackets for now. 
+Brackets are the remaining component of the vocabulary of TFL. They will be used to provide the grammar. They are vital when we start looking at complex sentences of TFL. For example `$A\eand(B\eor C)$'. 
+But, to start to understand the connectives we will ignore this for now and just focus on one connective applied to atomic sentences. 
 
 
 \chapter{The connectives}\label{s:Connectives}
-Whilst this provides a gloss on our new symbols of TFL, their role in TFL is explicitly specified. 
-In \S\ref{ch:syntfl} we introduced the idea that an argument is valid if there is no interpretation on which all premises of the argument are true but the conclusion false. Accordingly, if we wish to make a start on making this idea more precise, we need to say when a sentence of TFL is true according to an interpretation and when it is false. The target of this chapter is to give precise rules to this effect. The important feature of truth functional logic is that the truth value of a sentence such as $A\eand B$ is determined entirely by the truth value of $A$ and the truth value of $B$. 
+Whilst this provides a gloss on our new symbols of TFL, their role in TFL in terms of their contribution to the truth conditions of a sentence is explicitly specified. 
+%In \S\ref{ch:syntfl} we introduced the idea that an argument is valid if there is no interpretation on which all premises of the argument are true but the conclusion false. Accordingly, if we wish to make a start on making this idea more precise, we need to say when a sentence of TFL is true according to an interpretation and when it is false. The target of this chapter is to give precise rules to this effect. 
+The important feature of truth functional logic is that the truth value of a sentence such as `$A\eand B$' is determined entirely by the truth value of `$A$' and the truth value of `$B$'. 
 
 \newglossaryentry{truth value}
 {
@@ -153,13 +154,13 @@ In \S\ref{ch:syntfl} we introduced the idea that an argument is valid if there i
 
 
 \section{Negation}
-The `$\enot$'-connective is called negation. When we introduced the `$\enot$'-connective we said it should roughly be understood as `it is not the case' or, perhaps, simply `not'. 
+The `$\enot$'-connective is called negation. It should roughly be understood as `it is not the case' or, perhaps, simply `not'. 
 
-If think of `$A$' as representing the English sentences
+If think of `$A$' as representing the English sentence `Alice is happy':
 \begin{ekey}
 	\item[A] Alice is happy
 \end{ekey}
-`$\enot A$' will be used to symbolise the English sentence:
+Then `$\enot A$' will be used to symbolise the English sentence:
 \begin{samplesent}
 	\item {It is not the case that} Alice is happy
 \end{samplesent}
@@ -223,7 +224,7 @@ Here are the four possibilities:
 \end{tabular}
 \end{center}
 
-In which cases is `$A\eand B$' true? Only $v_1$. This is:
+In which cases is `$A\eand B$' true? Only $v_1$. That is, only if `$A$' is true and `$B$' is true. This is:
 \begin{center}
 	\begin{tabular}{cc|c}
 	$A$&$B$&$A\eand B$\\\hline
@@ -267,7 +268,7 @@ Again whether this is true will depend on $G$ and $F$. Here are the four possibi
 		$v_4$&F&F&She understands neither German nor French\\
 	\end{tabular}
 \end{center}
-Clearly `She understands German or French' is false in $v_4$ and true in $v_2$ and $v_3$:
+Clearly `She understands German or French' is false in $v_4$ where she understands neither; and true in $v_2$ and $v_3$ where she understands one of these languages:
 \begin{center}
 	\begin{tabular}{rcc|c}
 		&$G$&$F$&$G\eor F$\\\hline\Tstrut
@@ -277,7 +278,7 @@ Clearly `She understands German or French' is false in $v_4$ and true in $v_2$ a
 		$v_4$&F&F&F
 	\end{tabular}
 \end{center}
-But what about $v_1$? 
+But what about $v_1$, where she understands both? 
 It seems that in English there are two kinds of disjunctions: an \define{inclusive} and an \define{exclusive} one. For the inclusive \emph{or}, we might whisper a ``or both'' after it; whereas for the exclusive \emph{or}, we'd want to whisper a ``but not both'':
 \begin{samplesent}
 	\item\label{inclor} She can understand German or French (or both).
@@ -295,6 +296,7 @@ In logic there can be no ambiguity. We stipulate that $\eor$ stands for the \emp
 		$v_4$&F&F&F
 	\end{tabular}
 \end{center}
+That is `$G\eor F$' is true if and only if `$G$' is true or `$F$' is true (or both). The ``or both'' will be dropped throughout, and we will understand the English `or' to be given an inclusive reading unless explicitly discussed. 
 
 If one wishes to capture the exclusive use of English, this will be perfectly possible in TFL, but for that, we'll have to use a more complex sentence. We will essentially make explicit the whispered ``but not both''. This will end up being symbolised as:
 $$(G\eor F)\eand\enot (G\eand F)$$
@@ -387,6 +389,7 @@ That is, we define `$\eif$' by these truth rules:
 			F & F &$\leadsto$& T
 		\end{tabular}
 	\end{center}
+	That is, $\metaX\eif\metaY$ is true if and only if it is not the case that $\metaX$ is true and $\metaY$ is false; or, equivalently, if $\metaX$ is false or $\metaY$ is true.
 
 The conditional which is defined by this truth rule is sometimes marked by calling it the \define{material conditional}. It is the conditional that we will use in the unit. 
 
@@ -787,13 +790,15 @@ If you want to capture an exclusive disjunction, you can use a more complex sent
 	\end{problemslist}
 \end{practiceproblems}
 \chapter{Syntax of TFL}\label{ch:syntfl}
-So far, we have only  focused on the application of the connectives to atomic sentences, but connectives can be applied to all sorts of sentences not only atomic sentences. For example, as `$\enot A$' is a TFL sentence we can use `$\eand$' to conjoin it the sentence `$C$' to form the new sentence `$(\enot A\eand C)$'. Connectives can be applied to all TFL sentences, not only atomic sentences. It is time to say precisely what TFL sentences are.
+So far, we have only  focused on the application of the connectives to atomic sentences, but they can be applied to sentences which already contain connectives. 
+%For example, we already have that $\enot A$ is a sentence of TFL, we can combine this with a new atomic sentence, $C$, to form a complex sentence of TFL: $\enot A\eand C$. 
+%but connectives can be applied to all sorts of sentences not only atomic sentences. For example, as `$\enot A$' is a TFL sentence we can use `$\eand$' to conjoin it the sentence `$C$' to form the new sentence `$(\enot A\eand C)$'. Connectives can be applied to all TFL sentences, not only atomic sentences. It is time to say precisely what TFL sentences are.
 
 \section{Sentences}\label{s:TFLSentences}
 \todo{This went through a major rewrite. Check it!!!}
 We have introduced the basic building blocks of truth-functional logic, the atomic sentences, and the connectives, which allow us to conjoin different sentences to form new sentences. The third component of the vocabulary of TFL is brackets. These play a role like punctuation marks. 
 
-What is still missing is to equip the language with a \define{grammar}. The purpose of the grammar is to distinguish wellformed sentences from nonsense, but also to avoid ambiguity. It is in the grammar that brackets are vital parts of TFL. 
+We will now discuss the rules of grammar of TFL. Two important roles of grammar are to distinguish wellformed sentences from nonsense and to avoid ambiguity. It is in the grammar that brackets are vital parts of TFL. 
 
 We wish to have rules that guarantee that
 $$(A\eor (B\eand C))$$ and $$\enot (A\eand B)$$
@@ -815,8 +820,8 @@ The second purpose is to avoid ambiguity. In English we use commas to distinguis
 \item\label{engamb2} John's tired and Sue's tall, or Rob's short.
 \end{samplesent}
 and without a comma it would be unclear which of the two sentences we intend to convey. In TFL this job of punctuation marks is assumed by brackets, that is, we distinguish between:
-$$(A\eand(B\eor C))$$
-$$((A\eand B)\eor C)$$
+$$A\eand(B\eor C)$$
+$$(A\eand B)\eor C$$
 You can think of the former TFL-sentence as representing the English sentence 1, whereas the latter as representing the English sentence 2.
 
 You might know this use of brackets from mathematics. Consider:
@@ -994,13 +999,38 @@ Using this definition, we can easily check to see whether someone is my ancestor
 \label{TFLconventions}
 \subsection{Outer brackets}
 
-Strictly speaking, $A\eand B$ is not a sentence of TFL. When we introduce a connective $\eand,\eor$ or $\eif$, strictly speaking, we must include brackets. Only $(A\eand B)$ is strictly speaking a sentence of TFL. The reason for this rule is that we might use $(A\eand B)$ as a subsentence in a more complicated sentence. For example, we might want to negate $(A\eand B)$, obtaining $\enot(A\eand B)$. If we just had $A \eand B$ without the brackets and put a negation in front of it, we would have $\enot A \eand B$. It is most natural to read this as meaning the same thing as $(\enot A \eand B)$, but this may be very different from $\enot(A\eand B)$.
+Strictly speaking, $A\eand B$ is not a sentence of TFL. When we introduce a connective $\eand,\eor$ or $\eif$, strictly speaking, we must include brackets. Only $(A\eand B)$ is strictly speaking a sentence of TFL. 
+%The reason for this rule is that we might use $(A\eand B)$ as a subsentence in a more complicated sentence. For example, we might want to negate $(A\eand B)$, obtaining $\enot(A\eand B)$. If we just had $A \eand B$ without the brackets and put a negation in front of it, we would have $\enot A \eand B$. It is most natural to read this as meaning the same thing as $(\enot A \eand B)$, but this may be very different from $\enot(A\eand B)$.
 
 When working with TFL, however, it will make our lives easier if we are sometimes a little less than strict. So, here is a convenient convention.
 \begin{enumerate}
-\item We can remove \emph{outermost} brackets of a sentence. Thus we allow ourselves to write $A\eand B$ instead of the sentence $(A\eand B)$. However, we must remember to put the brackets back in, when we want to embed the sentence into a more complicated sentence!
+\item We can remove \emph{outermost} brackets of a sentence. 
 %\item It can be a bit painful to stare at long sentences with many nested pairs of brackets. To make things a bit easier on the eyes, we will  allow ourselves to use square brackets, `[' and `]', instead of rounded ones. So there is no logical difference between $(P\eor Q)$ and $(P\eor Q)$, for example.
 \end{enumerate}
+Thus we allow ourselves to write $A\eand B$ instead of the sentence $(A\eand B)$. However, we must remember to put the brackets back in, when we want to embed the sentence into a more complicated sentence!
+
+So we can write $$A\eand(B\eor C)$$ dropping the outer brackets from the strictly speaking formation $$(A\eand (B\eor C))$$ But we cannot drop the brackets in the inner `$(B\eor C)$'. This would result in $$A\eand B\eor C$$ which would be dangerously ambiguous.
+
+An important example is $$\enot A\eor B$$
+Here, this can be understood as the outer brackets being dropped from $$(\enot A\eor B)$$ The main connective of $\enot A\eor B$ is $\eor$ not $\enot$. It has the following formation tree: 
+\begin{center}
+	\begin{forest}
+	[$\enot A\mainconnective{\eor}B$
+	[$\mainconnective{\enot} A$[$A$]]
+	[$B$]
+	]
+\end{forest}
+\end{center}
+To instead have $\enot$ as the main connective, one must include brackets: $\enot(A\eor B)$. These brackets cannot be dropped because they are inner brackets. 
+\begin{center}
+	\begin{forest}
+		[$\mainconnective{\enot} (A\eor B)$
+		[$\textcolor{lightgray}{(} A\mainconnective{\eor}B\textcolor{lightgray}{)} $
+		[$A$][$B$]
+		]
+		]
+	\end{forest}
+\end{center}
 
 %Combining these two conventions, we can rewrite the unwieldy sentence
 %$$(((H \eif I) \eor (I \eif H)) \eand (J \eor K))$$
@@ -1242,7 +1272,7 @@ Is `Sharky' used or mentioned in the above sentence? Discuss.
 In \ref{s:Truth rules} we gave truth rules for the connectives of TFL. Now we can apply them to complex sentences. 
 
 The truth rules associated with the connectives allow us to calculate the truth value of a complex sentences based on the truth values of its constituent parts, but ultimately we get to the atomic sentences and have to ask whether they are true or false. 
-A valuation is a specification of whether each atomic sentence is true or false. Once you give me a valuation, I can then use the rules associated with the connectives to determine the truth value of the sentence of TFL. Sentences of TFL are true or false relative to a valuation. 
+A valuation is a specification of whether each atomic sentence is true or false.
 
 
 
@@ -1275,7 +1305,7 @@ The valuation determines the truth values of the atomic sentences, and complex s
  \factoidbox{\label{Truthint}Let $v$ be a valuation. Then
 	\begin{enumerate}
 		\item An atomic sentence $X$ is true relative to $v$, if and only if $v$ assigns the value T to $X$.
-		\item For a sentence $\enot\metaX$, $(\metaX\eand\metaY)$, $(\metaX\eor\metaY)$, $(\metaX\eif\metaY)$, whether it is true or false relative to $v$ can be determined by applying the appropriate truth rule:
+		\item For a sentence $\enot\metaX$, $(\metaX\eand\metaY)$, $(\metaX\eor\metaY)$, $(\metaX\eif\metaY)$, whether it is true or false relative to $v$ can be determined by applying the appropriate truth rule depending on whether $\metaX$ and $\metaY$ are true or false relative to $v$:
 %			\begin{tabular}{@{If \metaX is }c@{ relative to $v$, then $\enot\metaX$ is }c@{ relative to $v$}}
 %				true &false\\
 %				false &true
