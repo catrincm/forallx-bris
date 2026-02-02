@@ -141,8 +141,8 @@
 \newcommand*{\openntuple}{\langle}
 \newcommand*{\closentuple}{\rangle}
  \newcommand{\varvariant}[3]{#1[#2 \!\mapsto\! #3]} % variant of a variable assignment
-
-
+\newcommand*{\ntuple}[1]{\ensuremath{\mathopen{\openntuple}}#1\ensuremath{\mathclose{\closentuple}}}
+\DeclarePairedDelimiter\sequence{\langle}{\rangle}
 
 \newcommand\SetSymbol[1][]{\nonscript\:#1\vert\nonscript\:
 	\mathopen{}\allowbreak}
@@ -154,11 +154,11 @@
 
 \newcommand{\domain}{\mathsf{Dom}}
 	
-\newcommand*{\ntuple}[1]{\ensuremath{\mathopen{\openntuple}}#1\ensuremath{\mathclose{\closentuple}}}
+
 
 \newcommand{\NumberConnective}[3][black]{\stackrel{\textcolor{#1}{\hbox{#3}}}{\hbox{$#2$}}} %CCM added for the additional section.
 
-\DeclarePairedDelimiter\sequence{\langle}{\rangle}
+
 
 
 
