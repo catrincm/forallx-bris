@@ -228,7 +228,7 @@ Taking the symbolization key as a guideline we can construct an appropriate mode
 \item[\denote{t}]\emph{The trampoline}
 \item[\denote{B}]$\Set{\langle o_1,o_2,o_3\rangle \given o_1\text{ bounces with }o_2\text{ on }o_3}$
 \end{interp}
-Symbolization keys and models have similar components. Indeed we will sometimes be lazy and simply assume the model to be suitably specified by the symbolization key. However, symbolization keys and models are very different things: a model of the vocabulary of FOL inolves specifying objects, sets and relations while in the symblization key we specify which FOL-symbols are to stand for the English names and predicates of a sentence, e.g, which FOL-name is to stand for the name `Pooh'. In the model we are saying that the FOL-name `$p$' picks out Pooh (the bear) or, in some different model, a different object of the domain. 
+Symbolization keys and models have similar components. However, symbolization keys and models are very different things: a model of the vocabulary of FOL involves specifying objects, sets and relations while in the symbolization key we specify which FOL-symbols are to stand for the English names and predicates of a sentence, e.g, which FOL-name is to stand for the name `Pooh'. In the model we are saying that the FOL-name `$p$' picks out Pooh (the bear) or, in some different model, a different object of the domain. 
 
 We may then ask whether the FOL-sentence $Bpet$ is true in the model so specified. The answer is that it is true iff, indeed, Pooh bounces with Eeyore on the trampoline, that is, iff
 $${\small \langle \text{Pooh, Eeyore, The trampoline}\rangle\in\Set{\langle o_1,o_2,o_3\rangle \given o_1\text{ bounces with }o_2\text{ on }o_3}.}$$
@@ -499,7 +499,7 @@ To show that `$\exists x Sx$' true in $\model$ under $\alpha$ we need to find an
 
 In this case, the other information in $\alpha$ is irrelevant as only the variable $x$ is relevant for determining the truth of $Sx$. Whether $\exists x Sx$ is true in $\model$ under $\alpha$ is independent of $\alpha$ and it can simply be said to be true or false in the model. 
 
-What about the univeral quantifier?
+What about the universal quantifier?
 \begin{quote}
 	`$\forall \metav\metaX$' true in a model under the variable assignment $\alpha$ \textbf{iff} for every object $o$ of the domain, i.e.~$o\in \domain$, `$\metaX$' is true in the model under the variable assignment $\varvariant{\alpha}{v}{o}$.
 \end{quote}
