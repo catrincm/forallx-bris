@@ -3,16 +3,94 @@
 \label{ch.semantics}
 \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
 
-\chapter{Sets and Relations}
-We have discussed the syntax of the language of first-order language and, using our intuitive understanding of the vocabulary of the language, proposed a guideline for symbolizing English sentences in the language of FOL. We now turn to the semantics, that is, we now want to spell out truth-conditions for sentences of the language. In TFL the basic building blocks of the language were atomic sentences that were declared true or false by a valuation. In FOL the basic building blocks are names and predicates, which cannot be true or false as they are not sentences. But if their \emph{semantic value} is not a truth value, what is it?
+\chapter{FOL semantics part 1}
+We have discussed the syntax of the language of first-order language and, using our intuitive understanding of the vocabulary of the language, proposed a guideline for symbolizing English sentences in the language of FOL. We now turn to the semantics, that is, we now want to spell out truth-conditions for sentences of the language. 
+
+In TFL, the notion of `interpretation' was spelled out by a valuation, which assigns a truth value to each atomic sentence. A valuation provides enough information to determine the truth values of all the sentences of TFL, by applying the rules associated with each of the connectives and working up the formation tree.
+
+What plays the equivalent role for FOL? What is the information that one needs to provide in order to determine the truth value of each of the sentences of FOL? The answer will be called a \emph{model}. 
+
+Suppose we have symbolised 
+\begin{samplesent}
+	\item Alice is happy
+\end{samplesent}
+as $Ha$
+with a symbolisation key
+\begin{ekey}
+	\item[\text{Domain}] people
+	\item[Px] \gap{x} is a philosopher
+	\item[Hx] \gap{x} is happy
+	\item[a] Alice
+\end{ekey}
+
+To evaluate whether it is true, one needs to know who Alice is, and if she is happy. 
+
+If we have symbolised 
+\begin{samplesent}
+	\item All philosophers are happy
+\end{samplesent}
+as $\forall x(Px\eif Hx)$
+To evaluate whether it is true, one needs to work out who the philosophers are and ask each of them whether they are happy. 
+
+If we have symbolised 
+\begin{samplesent}
+	\item Alice likes some philosopher.
+\end{samplesent}
+as $\exists x(Lax\eand Px)$
+To evaluate whether it is true, one needs to work out who Alice is, who she likes, and whether they are a philosopher. 
 
 
-\section{Sets}
-In symbolizing English sentences in FOL we were required to specify a domain, that is, the collection of objects the quantifiers range over. For example, an adequate domain for symbolizing the sentence
+The information needed to determine these matters is the following:
 \begin{itemize}
-\item All philosophers are fashionable
+	\item A domain. A collection of things/people.
+	\item A specification of who/what (in the domain) does each name refer to. Who is `Alice'?
+	\item A specification of who/what (in the domain) does each predicate apply to. Who is happy, who likes whom?
 \end{itemize}
-might consist of people, e.g.,  the collection of all living people in the world. From now on we call a collection of objects (people, things, numbers,\ldots) a \define{set} and we will take domains to be sets. The domain we just alluded to would thus be the set consisting of all living people.
+
+
+%\section{Sentences without quantifiers or relations}
+
+
+
+When we give a model, we specify who/what is in the domain, who/what each name refers to, and who/what each predicate applies to. This is an example of a model: 
+\begin{interp}
+	\item[\domain] $\Set{\text{Alice, Bob, Cathy, Denny}}$
+	\item[\denote{H}] $\Set{\text{Bob}}$
+	\item[\denote{S}] $\Set{\text{Alice, Bob}}$
+	\item[\denote{C}] $\Set{\text{Alice, Cathy}}$
+%	\item[\denote{A}] $\Set{\sequence{\text{Alice, Denny}},\sequence{\text{Alice, Cathy}}}$
+	\item[\denote{a}] {Alice}
+	\item[\denote{b}] {Bob}
+	%\item[\denote{A}]
+	%\item[\denote{G}] nothing
+\end{interp}
+
+This is the \emph{intended model} when the symbolisation key is:
+\begin{ekey}
+	\item[\text{Domain}] People in the below picture.
+	\item[Hx] \gap{x} has horns
+	\item[Sx] \gap{x} has a sword
+	\item[Cx]\gap{x} is looking at a computer
+	\item[a] Alice
+	\item[b] Bob
+\end{ekey}
+with the associated picture:
+\begin{center}
+	\begin{tikzpicture}
+		\node (A) [alice,monitor,sword,minimum size=1cm] {Alice};
+		\node (B)[bob,evil,sword,minimum size=1cm,right=1.8cm of A] {Bob};
+		\node (C) [charlie,monitor,female, minimum size=1cm,below=1.2cm of A] {Cathy};
+		\node (D)[businessman,minimum size=1cm,skin=brown,below=1.2cm of B] {Denny};
+%		\draw [->, thick] (A)--(D);
+%		\draw [->, thick] (A)--(C);
+	\end{tikzpicture}
+\end{center}
+
+The model specifies a collection of people (or more generally objects) as the domain, and says which predicates are true of each of them. 
+
+\section{Introduction to sets}
+A collection of objects is called a \define{set}. The domain in a model is a set. The extensions of the predicates assigned by a model are also sets, they are subsets of the domain. 
+
 
 Any collection of objects form a set and the objects forming the set are the \define{members} or \define{elements} of the set. For example, we can form the set consisting of Poppy and Naomi, which we convey by writing
 $$\Set{\text{Poppy, Naomi}}.$$
@@ -43,6 +121,336 @@ This does not \emph{mean} that the two properties are identical, but that any po
 
 As just discussed, sets are collections of objects, but weirdly there is also a set that has no members, i.e., a set with no elements. This set is called the \define{empty set} and denoted by $\emptyset$. There are many different ways to specify the empty set. For example,
 $$\Set{o \given o\neq o}=\emptyset.$$
+
+
+
+\section{Truth of simple sentences}
+
+
+A model $\model$ provides \begin{itemize}
+	\item specifies a non-empty set as the domain.
+	\item specifies an interpretation of the FOL-names and FOL-predicates. 
+	\begin{itemize}
+		\item assigns exactly one object of the domain to every name (specifies the referent of the name);
+		\item assigns a subset of the domain to any one-placed predicate.
+		%		\item assigns a binary relation on the domain to every two-placed predicate.
+		%		\item assigns a ternary relation on the domain to every three-placed preciate.
+		%		\item \ldots
+		%		\item assigns an $n$-ary relation to every $n$-place predicate (the things the predicate is to be true of in the respective order). 
+		%		\begin{itemize}
+			%		\item a model assigns a subset of the domain to a one-place predicate
+			%		\item a model assigns a binary relation to a two-place predicate
+			%		\item a model assigns a ternary relation to a three-place predicate 
+			%		\item \ldots
+			%		\end{itemize}
+	\end{itemize}
+\end{itemize}
+We denote the domain of a model as $\domain_\model$; its assignment of an object to a name by, for example, $\denote{a}_\model$; and its assignment of a subset to a predicate by, for example, $\denote{H}_\model$. 
+
+We typically simply drop the subscript to $\model$ when it is clear which model we are referring to.
+
+So, here is a model, $\model$: \begin{interp}
+	\item[\domain] $\Set{\text{Alice, Bob, Cathy, Denny}}$
+	\item[\denote{H}] $\Set{\text{Bob}}$
+	\item[\denote{S}] $\Set{\text{Alice, Bob}}$
+	\item[\denote{C}] $\Set{\text{Alice, Cathy}}$
+	%	\item[\denote{A}] $\Set{\sequence{\text{Alice, Denny}},\sequence{\text{Alice, Cathy}}}$
+	\item[\denote{a}] {Alice}
+	\item[\denote{b}] {Bob}
+	%\item[\denote{A}]
+	%\item[\denote{G}] nothing
+\end{interp}
+
+Is `$Ca$' true on this model? To answer this, we simply ask if the object the model assigns to `$a$', in this case the person/image {Alice}, is a member of the set that the model assigns to `$C$', in this case $\{\text{Alice, Cathy}\}$. That is, `$Ca$' is true on $\model$ iff $$\denote{a}_\model\in\denote{C}_\model.$$ On this model, that is the question of whether $\text{{Alice}}\in\Set{\text{{Alice, Cathy}}}$. Since she is, it is true.
+
+
+
+Is $Ha$ true on this model? It is true on $\model$ iff $$\denote{a}_\model\in\denote{H}_\model.$$ That is, iff 
+$\text{{Alice}}\in\Set{\text{{Bob}}}$
+Since $\text{{Alice}}\notin\Set{\text{{Bob}}}$, $Ha$ is false on $\model$. 
+
+What about `$Ha\eif Ca$'? 
+Just like in TFL, the truth of this conditional is determined by the truth of its constituent parts according to the truth rule for `$\eif$'.
+
+Recall the truth rule for $\eif$: 			
+\begin{center}
+	\begin{tabular}{cccc}
+		If \metaX is:&and \metaY is:&&then $\metaX\eif\metaY$ is:\\
+		T & T &$\leadsto$& T\\
+		T & F &$\leadsto$& F\\
+		F & T &$\leadsto$& T\\
+		F & F &$\leadsto$& T
+	\end{tabular}
+\end{center}
+
+So we can see:
+\[\begin{array}{c|def}
+	&Ha&\eif &Ca\\
+	&Ha&&Ca\\\hline
+	\model &\false&\TTbf{\true}&\true\\\hline
+\end{array}\]
+
+Observe that the truth value of $Ca$ is irrelevant here: once you know that $Ha$ is false, you can write $\true$. This observation is important. 
+
+\[\begin{array}{c|def}
+	&Ha&\eif &Ca\\
+	&Ha&&Ca\\\hline
+	\model &\false&\TTbf{\true}&\cdot\\\hline
+\end{array}\]
+
+A closely related observation is that if $Ha$ is false, then you don't need to consult the truth value of $Ca$ to determine the truth value for $Ha\eand Ca$. 
+		\begin{center}
+	\begin{tabular}{cccc}
+		If \metaX is:&and \metaY is:&&then $\metaX\eand\metaY$ is:\\
+		T & T &$\leadsto$& T\\
+		T & F &$\leadsto$& F\\
+		F & T &$\leadsto$& F\\
+		F & F &$\leadsto$& F
+	\end{tabular}
+\end{center}
+
+\[\begin{array}{c|def}
+	&Ha&\eand &Ca\\
+	&Ha&&Ca\\\hline
+	\model &\false&\TTbf{\false}&\cdot\\\hline
+\end{array}\]
+
+\section{Universal quantifier}
+What about $\forall x (Hx\eif Cx)$? This would symbolise \begin{samplesent}
+\item 	Everyone who has horns is looking at a computer.
+\end{samplesent}
+
+It has the following formation tree: 
+\[\begin{array}{deeeeef}
+	\mainconnective{\forall x} &(&Hx&\eif &Cx&)\\
+	&&Hx&\mainconnective{\eif} &Cx\\
+	&&\atomicstage{Hx}&&\atomicstage{Cx}\\
+\end{array}\]
+
+The idea we've applied so far is that to determine the truth value of complex sentences one works up the formation tree. 
+
+But this means that we need to answer whether $Hx$ or $Cx$ is true or false. But this is not answered by the model. The model doesn't specify who `$x$' is, and indeed that's important. It's important that the reference of $x$ can vary. 
+
+To evaluate $Cx$, then we will need  an additional component: a variable assignment. This will specify the referent of the variables. Here we only care about the variable $x$, so we just need to specify who $x$ is, for example, $x\mapsto \text{Alice}$. We can then evaluate $Hx\eif Cx$ on this variable assignment. 
+\[\begin{array}{c|deeeef}
+	x &(&Hx&\eif &Cx&)\\
+	&&Hx&\mainconnective{\eif} &Cx\\
+	&&\atomicstage{Hx}&&\atomicstage{Cx}\\\hline
+	\text{Alice}&&\false&\true&.
+\end{array}\]
+But to evaluate $\forall x(Hx\eif Cx)$ we need to consider not only this variable assignment, but all the possible assignments of objects to the variable $x$. 
+\[\begin{array}{c|deeeef}
+	x &(&Hx&\eif &Cx&)\\
+	&&Hx&\mainconnective{\eif} &Cx\\
+	&&\atomicstage{Hx}&&\atomicstage{Cx}\\\hline
+	\text{Al}&&\false&\true&.\\
+	\text{Bo}&&\true&\false&\false\\
+	\text{Ca}&&\false&\true&.\\
+	\text{De}&&\false&\true&.
+\end{array}\]
+So is $\forall x(Hx\eif Cx)$ true or false? There is someone for whom $Hx$ is true but $Cx$ is false. There is some possible choice of someone for $x$ which makes $Hx\eif Cx$ false. This means $\forall x(Hx\eif Cx)$ is false on $\model$. We can write it out like this in a table. Underneath the variable we write out the possible assignments of objects to the variable and then evaluate the sub-sentences on those variable assignments. 
+\[\begin{array}{c|deeeeef}
+&	\mainconnective{\forall} &\mainconnective{x} &(&Hx&\eif &Cx&)\\
+	&&&&Hx&\mainconnective{\eif} &Cx\\
+	&&&&\atomicstage{Hx}&&\atomicstage{Cx}\\\hline
+\model &\false &	\\\varassigncline{3-8} 
+&& \text{Al}&&\false&\true&.\\\varassigncline{3-8}
+&&	\text{Bo}&&\true&\false&\false\\\varassigncline{3-8}
+&&	\text{Ca}&&\false&\true&.\\\varassigncline{3-8}
+&&	\text{De}&&\false&\true&.\\\varassigncline{3-8}
+\end{array}\]
+
+Since we only need to consider the variable assignment $x\mapsto\text{Bo}$ we could just give:
+\[\begin{array}{c|deeeeef}
+	&	{\forall} &{x} &(&Hx&\eif &Cx&)\\\hline
+%	&&&&Hx&\mainconnective{\eif} &Cx\\
+%	&&&&\atomicstage{Hx}&&\atomicstage{Cx}\\\hline
+	\model &\TTbf{\false} &	\\\varassigncline{3-8} 
+%	&& \text{Al}&&\false&\true&.\\\varassigncline{3-8}
+	&&	\text{Bo}&&\true&\false&\false\\\varassigncline{3-8}
+%	&&	\text{Ca}&&\false&\true&.\\\varassigncline{3-8}
+%	&&	\text{De}&&\false&\true&.\\\varassigncline{3-8}
+\end{array}\]
+
+But if the model makes $\forall x \metaX$ true, then you can only see that by checking every instance, so need to include all the variable assignments. 
+
+%
+%A universal sentence, $\forall x\metaX$ is true on a model when $\metaX$ is true under every choice of an object from the domain as the referent of $x$:
+\[\begin{array}{c|def}
+	&	{\forall} &{x} &\metaX\\\hline
+	\model &\true & &\\\varassigncline{3-4} 
+	&&o_1&\true\\\varassigncline{3-4} 
+	&&\vdots&\true\\\varassigncline{3-4} 
+	&&o_n&\true\\\varassigncline{3-4} 
+\end{array}\]
+In fact, domains may be infinite and then there isn't even in principle a presentation in terms of a table like this. But it can help you get the idea. 
+
+Here is the clause for $\forall$:
+\begin{itemize}
+	\item $\forall x\metaX$ is true on $\model$ iff for every $o\in\domain_\model$, $\metaX$ is true on $\model$ under the variable assignment $x\mapsto o$. 
+\end{itemize}
+Once we have multiple variables interacting, we'll have to give a more general clause. 
+
+Note that we can still then apply all the connectives. For example:
+\[\begin{array}{c|deeeeeef}
+	&{\enot}&	{\forall} &{x} &(&Hx&\eif &Cx&)\\\hline
+%	&&	\mainconnective{\forall} &\mainconnective{x} &(&Hx&\eif &Cx&)\\
+%	&&&&&Hx&\mainconnective{\eif} &Cx\\
+%	&&&&&\atomicstage{Hx}&&\atomicstage{Cx}\\\hline
+	\model &\TTbf{\true}&\false &	\\\varassigncline{4-9} 
+%	&&& \text{Al}&&\false&\true&.\\\varassigncline{4-9} 
+	&&&	\text{Bo}&&\true&\false&\false\\\varassigncline{4-9} 
+%	&&&	\text{Ca}&&\false&\true&.\\\varassigncline{4-9} 
+%	&&&	\text{De}&&\false&\true&.\\\varassigncline{4-9} 
+\end{array}\]
+
+
+
+\section{Existential quantifier}
+What about $\exists x (Sx\eand Cx)$? This would symbolise \begin{samplesent}
+	\item 	Some sword carrier is looking at a computer.
+\end{samplesent}
+
+It has the following formation tree: 
+\[\begin{array}{deeeeef}
+	\mainconnective{\exists x} &(&Sx&\eand &Cx&)\\
+	&&Sx&\mainconnective{\eand} &Cx\\
+	&&\atomicstage{Sx}&&\atomicstage{Cx}\\
+\end{array}\]
+
+Just like for the universal quantifier, we need to consider possible assignments of objects from the domain to the variable $x$. 
+Here is the clause for $\exists$:
+\begin{itemize}
+	\item $\exists x\metaX$ is true on $\model$ iff for at least one $o\in\domain_\model$, $\metaX$ is true on $\model$ under the variable assignment $x\mapsto o$. 
+\end{itemize}
+
+
+\[\begin{array}{c|deeeeef}
+	&	\mainconnective{\exists} &\mainconnective{x} &(&Sx&\eand &Cx&)\\
+	&&&&Sx&\mainconnective{\eand} &Cx\\
+	&&&&\atomicstage{Sx}&&\atomicstage{Cx}\\\hline
+	\model &\TTbf{\true} &	\\\varassigncline{3-8} 
+	&& \text{Al}&&\true&\true&\true\\\varassigncline{3-8}
+	&&	\text{Bo}&&\true&\false&\false\\\varassigncline{3-8}
+	&&	\text{Ca}&&\false&\false&.\\\varassigncline{3-8}
+	&&	\text{De}&&\false&\false&.\\\varassigncline{3-8}
+\end{array}\]
+
+Since we only need to consider the variable assignment $x\mapsto\text{Al}$ we could just give:
+\[\begin{array}{c|deeeeef}
+	&	\mainconnective{\exists} &\mainconnective{x} &(&Sx&\eand &Cx&)\\
+	&&&&Sx&\mainconnective{\eand} &Cx\\
+	&&&&\atomicstage{Sx}&&\atomicstage{Cx}\\\hline
+	\model &\TTbf{\true} &	\\\varassigncline{3-8} 
+	&& \text{Al}&&\true&\true&\true\\\varassigncline{3-8}
+%	&&	\text{Bo}&&\true&\false&\false\\\varassigncline{3-8}
+%	&&	\text{Ca}&&\false&\false&.\\\varassigncline{3-8}
+%	&&	\text{De}&&\false&\false&.\\\varassigncline{3-8}
+\end{array}\]
+
+But if the model makes $\exists x \metaX$ false, then you can only see that by checking every instance, so need to include all the variable assignments. 
+
+%
+%A universal sentence, $\forall x\metaX$ is true on a model when $\metaX$ is true under every choice of an object from the domain as the referent of $x$:
+\[\begin{array}{c|def}
+	&	{\exists} &{x} &\metaX\\\hline
+	\model &\false & &\\\varassigncline{3-4} 
+	&&o_1&\false\\\varassigncline{3-4} 
+	&&\vdots&\false\\\varassigncline{3-4} 
+	&&o_n&\false\\\varassigncline{3-4} 
+\end{array}\]
+Again, domains may be infinite and then there isn't even in principle a presentation in terms of a table like this. But it can help you get the idea. 
+
+
+
+\section{Examples}
+
+
+
+Consider 
+\begin{itemize}
+	\item $\model_1$: 
+	\begin{interp}
+		\item[\domain] $\Set{1,2,3,4}$
+		\item[\denote{C}] $\Set{1,2}$
+		\item[\denote{S}] $\Set{1,2,3}$
+		\item[\denote{R}] $\{\langle 1,3\rangle,\langle 2,4\rangle,\langle 3,1\rangle\}$
+	\end{interp}
+	\item $\model_2$:
+	\begin{interp}
+		\item[\domain] $\Set{1,2}$
+		\item[\denote{C}] $\Set{1}$
+		\item[\denote{S}] $\Set{2}$
+		\item[\denote{R}] $\{\langle 1,1\rangle\}$
+	\end{interp}
+\end{itemize}
+
+We are asked to evaluate this sentence on these two models
+$$\enot \exists x Cx \eor \forall y (Cy\eor Sy)$$
+
+Its truth depends on the truth of the constituent sentences under variable assignments. All the relevant cases are the `$?$' in the below table. 
+\[
+\begin{array}{c|d*{12}{e}f}
+	&\enot & \exists & x & C x & \eor &\forall&y &(&Cy&\eor&Sy&)  \\
+	\hline
+	
+	\model_1
+	& ? &  ?&  &  &?&?  &&&&&&&&\\
+	
+	\varassigncline{4-5} 		\varassigncline{8-12} 
+	&  & & 1 & ? &&&1&&?&?&?\\
+	\varassigncline{4-5} 		\varassigncline{8-12} 
+	&  & & 2 & ? &&&2&&?&?&?\\
+	\varassigncline{4-5} 		\varassigncline{8-12} 
+	&  & & 3 & ? &&&3&&?&?&?\\
+	\varassigncline{4-5} 		\varassigncline{8-12} 
+	&  & & 4 & ? &&&4&&?&?&?\\
+	\hline
+	\model_2
+	& ? &  ?&  &  &?&?  &&&&&&&&\\
+	
+	\varassigncline{4-5} 		\varassigncline{8-12} 
+	&  & & 1 & ? &&&1&&?&?&?\\
+	\varassigncline{4-5} 		\varassigncline{8-12} 
+	&  & & 2 & ? &&&2&&?&?&?\\
+	\hline
+\end{array}
+\]
+Although one doesn't need to fill out all the values, once you have found one variable assignment where the sentence is true, you can stop and put `$T$' for $\exists x \metaX$. 
+
+
+\[
+\begin{array}{c|d*{12}{e}f}
+	&\enot & \exists & x & C x & \eor &\forall&y &(&Sy&\eor&Cy&)  \\
+	\hline
+	
+	\model_1
+	& \false&  \true&  &  &\TTbf{\false}&\false  &&&&&&&&\\
+	
+	\varassigncline{4-5} 		\varassigncline{8-12} 
+	&  & & 1 & \true &&&4&&\false&\false&\false\\
+	\hline
+	\model_2
+	& \false&  \true&  &  &\TTbf{\true}&\true  &&&&&&&&\\
+	
+	\varassigncline{4-5} 		\varassigncline{8-12} 
+	&  & & 1 & \true &&&1&&\false&\true&\true\\
+	&  & & &  &&&2&&\true&\true&.\\
+	\hline
+\end{array}
+\]
+
+We can summarise that, there is no need to present it as a table: 
+
+\begin{itemize}
+	\item On $\model_1$ it is false: $\exists x Cx$ is true so $\enot\exists x Cx$ is false. Also $\forall y(Sy\eor Cy)$ is false ($y\mapsto 4$). So the disjunction is false. 
+	\item On $\model_2$ it is true because $\forall y(Sy\eor Cy)$ is true: $1$ is $C$ and $2$ is $S$. 
+\end{itemize}
+
+Since models can be infinite there may not even theoretically be a table like this to calculate the truth, but it should give you the idea of how to go about reasoning about it. 
+
+\chapter{FOL semantics part 2 - relations and interacting quantifiers}
+
 
 
 
@@ -162,138 +570,708 @@ In the same way that a three-place predicate picks out a ternary relation, an $n
 %
 %To make these ideas more precise, we would need to develop some \emph{set theory}. That would give us some precise tools for dealing with extensions and with ordered pairs (and ordered triples, etc.). However, set theory is not covered in this book, so we will leave these ideas at an imprecise level. Nevertheless, the general idea should be clear.
 
-
-
-
 \section{Models}\label{s:model}\todo{call it ``model''?}
-We defined a \define{valuation} in TFL as any assignment of truth and falsity to atomic sentences. In FOL, we are going to define an \define{model}. Sentences of FOL will be true or false \emph{on a model}.
+
+In \ref{s:TruthFOL}, we introduced the idea of a model but we did not include relations. Now we can extend it to give the proper definition of a  \define{model}. Sentences of FOL will be true or false \emph{on a model}.
+
+{A model $\model$ provides \begin{itemize}
+		\item specifies a non-empty set as the domain, $\domain$;
+		\item specifies an interpretation of the FOL-names and FOL-predicates. 
+		\begin{itemize}
+			\item assigns exactly one object of the domain to every name (specifies the referent of the name);
+			\item assigns a subset of the domain to any one-placed predicate.
+			\item assigns a binary relation on the domain to every two-placed predicate.
+			\item assigns a ternary relation on the domain to every three-placed preciate.
+			\item \ldots
+			%		\item assigns an $n$-ary relation to every $n$-place predicate (the things the predicate is to be true of in the respective order). 
+			%		\begin{itemize}
+				%		\item a model assigns a subset of the domain to a one-place predicate
+				%		\item a model assigns a binary relation to a two-place predicate
+				%		\item a model assigns a ternary relation to a three-place predicate 
+				%		\item \ldots
+				%		\end{itemize}
+		\end{itemize}
+\end{itemize}}
+
+{For a model, $\model$, we denote its assignment to $\eta$ as $\denote{\eta}_\model$. 
+	
+	We will often drop the explicit reference to $\model$ and simply describe a model by providing a domain and $\denote{\eta}$ for each name and predicate.}
+
+
+Consider the following model:
+
+
+\begin{interp}
+	\item[\domain] $\Set{\text{Alice, Bob, Cathy, Denny}}$
+	\item[\denote{H}] $\Set{\text{Bob}}$
+	\item[\denote{S}] $\Set{\text{Alice, Denny}}$
+	\item[\denote{C}] $\Set{\text{Alice, Cathy}}$
+	\item[\denote{A}] $\Set{\sequence{\text{Alice, Denny}},\sequence{\text{Alice, Cathy}}}$
+	\item[\denote{a}] {Alice}
+	\item[\denote{b}] {Bob}
+	%\item[\denote{A}]
+	%\item[\denote{G}] nothing
+\end{interp}
+\begin{center}
+	\begin{tikzpicture}
+		\node (A) [alice,monitor,minimum size=1cm] {Alice};
+		\node (B)[bob,evil,sword,minimum size=1cm,right=1.8cm of A] {Bob};
+		\node (C) [charlie,monitor,female, minimum size=1cm,below=1.2cm of A] {Cathy};
+		\node (D)[businessman,sword,minimum size=1cm,skin=brown,below=1.2cm of B] {Denny};
+		\draw [->, thick] (A)--(D);
+		\draw [->, thick] (A)--(C);
+	\end{tikzpicture}
+\end{center}
+
+Is `$Aab$' true? This is answered by looking at whether the sequence of the objects that the model assigns as denotations of `$a$' and `$b$' are in the model's denotation of the relation `$A$', that is, whether $$\sequence{\denote{a}_\model,\denote{b}_\model}\in\denote{A}_\model.$$
+In this model, this is the question of whether  $$\sequence{\text{Alice, Bob}}\in\Set{\sequence{\text{Alice, Denny}},\sequence{\text{Alice, Cathy}}}\text{?}$$
+Since $\sequence{\text{Alice, Bob}}\notin\Set{\sequence{\text{Alice, Denny}},\sequence{\text{Alice, Cathy}}}$, `$Aab$' is false on $\model$. 
+
+
+
+Is $\exists x Aax$ true? This works just like what we have done so far, we have to consider variable assignments choosing each member of the domain to be the referent of the variable $x$. If there is at least one object in the domain we can choose for $x$ which makes $Aax$ true, then $\exists x Aax$ is true.
+
+\[\begin{array}{c|def}
+	&	{\exists} &{x} &Aax\\\hline
+	\model &\TTbf{?} & &\\\varassigncline{3-4} 
+	&&\text{Al}&\false\\\varassigncline{3-4} 
+	&&\text{Bo}&\false\\\varassigncline{3-4} 
+	&&\text{Ca}&\true\\\varassigncline{3-4} 
+	&&\text{De}&\true\\\varassigncline{3-4} 
+\end{array}\]
+
+So, $\exists x Aax$ is true. There is some choice of an object for $x$ which makes $Aax$ true: there someone for whom there is an arrow from Alice to them. For example, $x\mapsto$Cathy makes $Aax$ true on $\model$; so $\exists x Aax$ is true on $\model$. 
+
+\section{Interacting quantifiers}
+
+
+How about $\exists x(Cx\eand \forall y(Sy\eif Axy))$. This says that there is some computer watcher who has an arrow to all sword-bearers.
+
+We need to consider the different possible variable assignments $x\mapsto o$ and evaluate whether $Cx\eand \forall y(Sy\eif Axy)$ is true on each of them. That's fine for $Cx$. And when $Cx$ is false, that's enough to know that the conjunction is false. But we need to know then whether $ \forall y(Sy\eif Axy)$ is true under the variable assignment, say $x\mapsto$Alice. 
+\[\begin{array}{c|deeeeeeeeeeeeeeef}
+	&	{\exists} &{x} &(&Cx&\eand &\forall& y&(& Sy&\eif& Axy&)&)\\\hline
+	\model &\TTbf{?} & &\\\varassigncline{3-14} 
+	&&\text{Al}&&\true&?&?& &&&&\\
+	\varassigncline{3-14} 
+	&&\text{Bo}&&\false&\false&.\\\varassigncline{3-14} 
+	&&\text{Ca}&&\true&?&?\\
+	\varassigncline{3-14} 
+	&&\text{De}&&\false&\false&.\\\varassigncline{3-14} 
+\end{array}\]
+
+To do this, we need to extend our variable assignment so it not only considers $x\mapsto$Alice but also considers a choice of who is $y$. A variable assignment in general assigns an object of the domain to every variable. So to evaluate $\forall y(Sy\eif Axy)$ under the variable assignment $x\mapsto$Alice, we consider the variable assignments $x\mapsto$Alice; $y\mapsto o$, for each $o$ in the domain. If $Sy\eif Axy$ is true on each such, then $\forall y(Sy\eif Axy)$ is true under $x\mapsto$Alice. But, $\forall y(Sy\eif Axy)$ is false under $x\mapsto$Alice because on $x\mapsto$Alice;$y\mapsto$Bob, $Sy\eif Axy$ is false. 
+
+
+\[\begin{array}{c|deeeeeeeeeeeeeeef}
+	&	{\exists} &{x} &(&Cx&\eand &\forall& y&(& Sy&\eif& Axy&)&)\\\hline
+	\model &\TTbf{\false} & &\\\varassigncline{3-14} 
+	&&\text{Al}&&\true&\false&\false& &&&&\\\varassigncline{8-13}
+	&&&&&&& \text{Al}&&\false&\true&.&\\\varassigncline{8-13}
+	&&&&&&& \text{Bo}&&\true&\false&\false\\\varassigncline{8-13}
+	&&&&&&& \text{Ca}&&\false&\true&.&\\\varassigncline{8-13}
+	&&&&&&& \text{De}&&\true&\true&\true\\\varassigncline{8-13}
+	\varassigncline{3-14} 
+	&&\text{Bo}&&\false&\false&.\\\varassigncline{3-14} 
+	&&\text{Ca}&&\true&\false&\false\\
+	&&&&&&& \text{Al}&&\false&\true&.&\\\varassigncline{8-13}
+	&&&&&&& \text{Bo}&&\true&\false&\false\\\varassigncline{8-13}
+	&&&&&&& \text{Ca}&&\false&\true&.&\\\varassigncline{8-13}
+	&&&&&&& \text{De}&&\true&\false&\false\\\varassigncline{8-13}
+	\varassigncline{3-14} 
+	&&\text{De}&&\false&\false&.\\\varassigncline{3-14} 
+\end{array}\]
+
+
+
+
+
+
+
+\section{Examples}
+
+
+
+Consider 
+\begin{itemize}
+	\item $\model_1$: 
+	\begin{interp}
+		\item[\domain] $\Set{1,2,3,4}$
+		\item[\denote{C}] $\Set{1,2}$
+		\item[\denote{S}] $\Set{1,2,3}$
+		\item[\denote{R}] $\{\langle 1,3\rangle,\langle 2,4\rangle,\langle 3,1\rangle\}$
+	\end{interp}
+	\item $\model_2$:
+	\begin{interp}
+		\item[\domain] $\Set{1,2}$
+		\item[\denote{C}] $\Set{1}$
+		\item[\denote{S}] $\Set{2}$
+		\item[\denote{R}] $\{\langle 1,1\rangle\}$
+	\end{interp}
+\end{itemize}
+
+What about $$\enot\forall x(Cx\eif\enot\exists y(Cy\eand Rxy))\eand \exists x \enot Cx$$
+To calculate this, we need to reason through filling out enough of the `$?$' in the below table to work out the answer. 
+\[
+\begin{array}{c|d*{20}{e}f}
+	&	\enot& \forall & x & ( & Cx & \eif & \enot & \exists & y & ( & Cy & \eand & Rxy & ) & )  & &\eand&\exists&x&\enot&Cx
+	\\ \hline
+	
+	\model_1 & ?& ? &  &  &  &  &  &  &  &  &  &  &  &  & & &? &?\\ \varassigncline{4-16}\varassigncline{20-22}
+	
+	% x = 1 block
+	& &  & 1 &  & ? & ? & ? & ? &  &  &  &  &  &  & &&&&1 &? &?\\\varassigncline{10-15}\varassigncline{20-22}
+	& &  &   &  &   &   &   &   & 1 &  & ? & ? & ? &  &&&&&2&? &?  \\ \varassigncline{10-15}\varassigncline{20-22}
+	& &  &   &  &   &   &   &   & 2 &  & ? & ? & ? & & &&&&3 &? &?  \\ \varassigncline{10-15}\varassigncline{20-22}
+	& &  &   &  &   &   &   &   & 3 &  & ? & ? & ? &  &&&&&4 &? &?  \\ \varassigncline{10-15}\varassigncline{20-22}
+	& &  &   &  &   &   &   &   & 4 &  & ? & ? & ? &  &  \\ \varassigncline{4-16}
+	
+	% x = 2 block
+	& &  & 2 &  & ? & ? & ? & ? &  &  &  &  &  &  &  \\\varassigncline{10-15}
+	& &  &   &  &   &   &   &   & 1 &  & ? & ? & ? &  &  \\ \varassigncline{10-15}
+	& &  &   &  &   &   &   &   & 2 &  & ? & ? & ? &  &  \\ \varassigncline{10-15}
+	& &  &   &  &   &   &   &   & 3 &  & ? & ? & ? &  &  \\ \varassigncline{10-15}
+	& &  &   &  &   &   &   &   & 4 &  & ? & ? & ? &  &  \\ \varassigncline{4-16}
+	
+	% x = 3 block
+	& &  & 3 &  & ? & ? & ? & ? &  &  &  &  &  &  &  \\\varassigncline{10-15}
+	& &  &   &  &   &   &   &   & 1 &  & ? & ? & ? &  &  \\ \varassigncline{10-15}
+	& &  &   &  &   &   &   &   & 2 &  & ? & ? & ? &  &  \\ \varassigncline{10-15}
+	& &  &   &  &   &   &   &   & 3 &  & ? & ? & ? &  &  \\ \varassigncline{10-15}
+	& &  &   &  &   &   &   &   & 4 &  & ? & ? & ? &  &  \\ \varassigncline{4-16}
+	
+	% x = 4 block
+	& &  & 4 &  & ? & ? & ? & ? &  &  &  &  &  &  &  \\\varassigncline{10-15}
+	& &  &   &  &   &   &   &   & 1 &  & ? & ? & ? &  &  \\ \varassigncline{10-15}
+	& &  &   &  &   &   &   &   & 2 &  & ? & ? & ? &  &  \\ \varassigncline{10-15}
+	& &  &   &  &   &   &   &   & 3 &  & ? & ? & ? &  &  \\ \varassigncline{10-15}
+	& &  &   &  &   &   &   &   & 4 &  & ? & ? & ? &  &  \\ \hline
+	
+	
+	\model_2 & ?& ? &  &  &  &  &  &  &  &  &  &  &  &  & & &? &?\\ \varassigncline{4-16}\varassigncline{20-22}
+	
+	% x = 1 block
+	& &  & 1 &  & ? & ? & ? & ? &  &  &  &  &  &  & &&&&1 &? &?\\\varassigncline{10-15}\varassigncline{20-22}
+	& &  &   &  &   &   &   &   & 1 &  & ? & ? & ? &  &&&&&2&? &?  \\ \varassigncline{10-15}\varassigncline{20-22}
+	& &  &   &  &   &   &   &   & 2 &  & ? & ? & ? & & &&&&& &  \\ \varassigncline{10-15}
+	\varassigncline{4-16}
+	
+	% x = 2 block
+	& &  & 2 &  & ? & ? & ? & ? &  &  &  &  &  &  &  \\\varassigncline{10-15}
+	& &  &   &  &   &   &   &   & 1 &  & ? & ? & ? &  &  \\ \varassigncline{10-15}
+	& &  &   &  &   &   &   &   & 2 &  & ? & ? & ? &  &  \\ \varassigncline{10-15}
+	\hline
+\end{array}
+\]
+
+This is a lot to fill out. But the guidance is that you take shortcuts: don't carry on if you already have enough information to determine the truth value. Or only consider those variable assignments which seem relevant. Once you've found one choice of $x$ on which $\metaX$ is true, then $\exists x \metaX$ is true; it doesn't matter what the other values are. 
+
+\[
+\begin{array}{c|d*{20}{e}f}
+	&	\enot& \forall & x & ( & Cx & \eif & \enot & \exists & y & ( & Cy & \eand & Rxy & ) & )  & &\eand&\exists&x&\enot&Cx
+	\\ \hline
+	
+	\model_1 & \false& \true &  &  &  &  &  &  &  &  &  &  &  &  & & &\false &\true\\
+	\varassigncline{4-16}\varassigncline{20-22}
+	
+	% x = 1 block
+	& &  & 1 &  & \true & \true & \true & \false &  &  &  &  &  &  & &&&&1 &\false &\true\\
+	\varassigncline{10-15}\varassigncline{20-22}
+	& &  &   &  &   &   &   &   & 1 &  & \true & \false & \false &  &&&&&2&\false &\true  \\ 
+	\varassigncline{10-15}\varassigncline{20-22}
+	& &  &   &  &   &   &   &   & 2 &  & \true & \false & \false & & &&&&3 &\true &\false  \\ 
+	\varassigncline{10-15}\varassigncline{20-22}
+	& &  &   &  &   &   &   &   & 3 &  & \false & \false & \true &  &&&&&4 &\true &\false  \\ 
+	\varassigncline{10-15}\varassigncline{20-22}
+	& &  &   &  &   &   &   &   & 4 &  & \false & \false & \false &  &  \\ 
+	\varassigncline{4-16}
+	
+	% x = 2 block
+	& &  & 2 &  & \true & \true & \true & \false &  &  &  &  &  &  &  \\
+	\varassigncline{10-15}
+	& &  &   &  &   &   &   &   & 1 &  & \true & \false & \false &  &  \\ 
+	\varassigncline{10-15}
+	& &  &   &  &   &   &   &   & 2 &  & \true & \false & \false &  &  \\ 
+	\varassigncline{10-15}
+	& &  &   &  &   &   &   &   & 3 &  & \false & \false & \false &  &  \\ 
+	\varassigncline{10-15}
+	& &  &   &  &   &   &   &   & 4 &  & \false & \false & \true &  &  \\ 
+	\varassigncline{4-16}
+	
+	% x = 3 block
+	& &  & 3 &  & \false & \true & . & . &  &  &  &  &  &  &  \\
+	%		\varassigncline{10-15}
+	%		& &  &   &  &   &   &   &   & 1 &  & . & . & . &  &  \\ 
+	%		\varassigncline{10-15}
+	%		& &  &   &  &   &   &   &   & 2 &  & . & . & . &  &  \\ 
+	%		\varassigncline{10-15}
+	%		& &  &   &  &   &   &   &   & 3 &  & . & . & . &  &  \\ 
+	%		\varassigncline{10-15}
+	%		& &  &   &  &   &   &   &   & 4 &  & . & . & . &  &  \\ 
+	\varassigncline{4-16}
+	
+	% x = 4 block
+	& &  & 4 &  & \false & \true & . & . &  &  &  &  &  &  &  \\
+	%		\varassigncline{10-15}
+	%		& &  &   &  &   &   &   &   & 1 &  & . & . & . &  &  \\ 
+	%		\varassigncline{10-15}
+	%		& &  &   &  &   &   &   &   & 2 &  & . & . & . &  &  \\ 
+	%		\varassigncline{10-15}
+	%		& &  &   &  &   &   &   &   & 3 &  & . & . & . &  &  \\ 
+	%		\varassigncline{10-15}
+	%		& &  &   &  &   &   &   &   & 4 &  & . & . & . &  &  \\ 
+	\hline
+	
+	
+	\model_2 & \true& \false &  &  &  &  &  &  &  &  &  &  &  &  & & &\true &\true\\ 
+	\varassigncline{4-16}\varassigncline{20-22}
+	
+	% x = 1 block
+	& &  & 1 &  & \true & \false & \false & \true &  &  &  &  &  &  & &&&&1 &\false &\true\\
+	\varassigncline{10-15}\varassigncline{20-22}
+	& &  &   &  &   &   &   &   & 1 &  & \true & \true & \true &  &&&&&2&\true &\false  \\ 
+	\varassigncline{20-22}
+	%		& &  &   &  &   &   &   &   & 2 &  & \false & \false & \false & & &&&&& &  \\ 
+	\varassigncline{4-16}
+	
+	% x = 2 block
+	& &  & 2 &  & \false & \true & . & &  &  &  &  &  &  &  \\
+	\varassigncline{10-15}
+	%		& &  &   &  &   &   &   &   & 1 &  & . & . & . &  &  \\ 
+	%		\varassigncline{10-15}
+	%		& &  &   &  &   &   &   &   & 2 &  & . & . & . &  &  \\ 
+	%		\varassigncline{10-15}
+	\hline
+\end{array}
+\]
+
+
+
+\chapter{Truth on a model, more carefully}
+Sentences of FOL are true or false on a model. 
 \factoidbox{A model $\model$ provides \begin{itemize}
 		\item specifies a non-empty set as the domain, $\domain$;
 		\item specifies an interpretation of the FOL-names and FOL-predicates. 
 		\begin{itemize}
-		\item assigns exactly one object of the domain to every name (specifies the referent of the name);
-		\item assigns a subset of the domain to any one-placed predicate.
-		\item assigns a binary relation on the domain to every two-placed predicate.
-		\item assigns a ternary relation on the domain to every three-placed preciate.
-		\item \ldots
-%		\item assigns an $n$-ary relation to every $n$-place predicate (the things the predicate is to be true of in the respective order). 
-%		\begin{itemize}
-%		\item a model assigns a subset of the domain to a one-place predicate
-%		\item a model assigns a binary relation to a two-place predicate
-%		\item a model assigns a ternary relation to a three-place predicate 
-%		\item \ldots
-%		\end{itemize}
+			\item assigns exactly one object of the domain to every name (specifies the referent of the name);
+			\item assigns a subset of the domain to any one-placed predicate.
+			\item assigns a binary relation on the domain to every two-placed predicate.
+			\item assigns a ternary relation on the domain to every three-placed preciate.
+			\item \ldots
+			%		\item assigns an $n$-ary relation to every $n$-place predicate (the things the predicate is to be true of in the respective order). 
+			%		\begin{itemize}
+				%		\item a model assigns a subset of the domain to a one-place predicate
+				%		\item a model assigns a binary relation to a two-place predicate
+				%		\item a model assigns a ternary relation to a three-place predicate 
+				%		\item \ldots
+				%		\end{itemize}
 		\end{itemize}
-		\end{itemize}}
-	
-	\factoidbox{For a model, $\model$, we denote its assignment to $\eta$ as $\denote{\eta}_\model$. 
-		
-		We will often drop the explicit reference to $\model$ and simply describe a model by providing a domain and $\denote{\eta}$ for each name and predicate.}
-	
-%	For a model, $\model$, we will often describe 
-%	For a model, $\model$, and a FOL-expression, $\eta$, we will use $\denote{\eta}_\model$ to denote the model of $\eta$ given by $\model$. For example, if $c$ is a FOL-name, then $\denote{\eta}_\model$ is the object assigned to $c$ by $\model$, and 
-%	
-%	we will use $\denote{\cdot}_\model$ to denote the model of $P$ given by $\model$, for example, $\denote{P}_\model=
-%	
-%	\factoidbox{
-%	For a model, $\mathcal{A}$, The model of a FOL-expression $\eta$ is denoted by $\denote{\eta}$: $\llbracket \eta\rrbracket$
-%		\begin{ebullet}
-%		\item if $c$ is a FOL-name, $\denote{c}$ denotes the object of the domain assigned to `$c$' by the model and thus $\denote{c}\in \domain$.
-%		\item if $P$ is the $n$-place predicate, then we write $\denote{P}$ to denote the $n$-ary relation assigned to $P$ by the model.
-%	\end{ebullet}}
-	
-A model thus provides us with all the necessary information for interpreting the predicates and names, as well as, information about the range of the quantifiers. This will be enough to determine the truth value of all sentences of FOL, which we will turn to in \ref{s:TruthFOL}
-
-Importantly, we are not guaranteed that the denotation of an $n$-place predicate is nonempty, i.e., it is possible that $\emptyset$ is assigned to a predicate. In general, a convenient way of specifying a model is to supplement a given symbolization key (cf.~ Part~\ref{ch.FOL}) with the relevant model of the names and predicates.
-
-Suppose we have just symbolized the sentence
-\begin{itemize}
-\item Pooh bounces with Eeyore on the trampoline
-\end{itemize}
-using the symbolization key;
-\begin{ekey}
-\item[\text{domain}]Animals and trampolines
-\item[p]Pooh
-\item[e]Eeyore
-\item[t]The trampoline
-\item[Bxyz]\gap{x} bounces with \gap{y} on \gap{z}
-\end{ekey}
-
-
-Taking the symbolization key as a guideline we can construct an appropriate model as follows:
-\begin{interp}
-\item[\domain]$\Set{o \given o\text{ is an animal or }o\text{ is trampolines}}$
-\item[\denote{p}]\emph{Pooh}
-\item[\denote{e}]\emph{Eeyore}
-\item[\denote{t}]\emph{The trampoline}
-\item[\denote{B}]$\Set{\langle o_1,o_2,o_3\rangle \given o_1\text{ bounces with }o_2\text{ on }o_3}$
-\end{interp}
-Symbolization keys and models have similar components. However, symbolization keys and models are very different things: a model of the vocabulary of FOL involves specifying objects, sets and relations while in the symbolization key we specify which FOL-symbols are to stand for the English names and predicates of a sentence, e.g, which FOL-name is to stand for the name `Pooh'. In the model we are saying that the FOL-name `$p$' picks out Pooh (the bear) or, in some different model, a different object of the domain. 
-
-We may then ask whether the FOL-sentence $Bpet$ is true in the model so specified. The answer is that it is true iff, indeed, Pooh bounces with Eeyore on the trampoline, that is, iff
-$${\small \langle \text{Pooh, Eeyore, The trampoline}\rangle\in\Set{\langle o_1,o_2,o_3\rangle \given o_1\text{ bounces with }o_2\text{ on }o_3}.}$$
-The model we have given above is arguably the \emph{intended model}, that is, the model that fits the symbolization key and our understanding of the English sentence. But there are many alternative models for the FOL-sentence $Bpet$, the only thing which we require is that the model specifies a domain, that the FOL-name `$p$', `$e$', and `$t$' pick out objects from the domain, and that the three-place $B$ is assigned a ternary relation. 
-
-Here are two other models that could be provided.
-\begin{interp}
-	\item[\domain]$\Set{\emph{Alice},\emph{Bob}, \emph{Carly}}$
-	\item[\denote{p}]$\emph{Alice}$
-	\item[\denote{e}]$\emph{Bob}$
-	\item[\denote{t}]$\emph{Carly}$
-	\item[\denote{B}]$\Set{\sequence{\emph{Alice},\emph{Bob},\emph{Carly}}}$
-\end{interp}
-or
-\begin{interp}
-	\item[\domain]$\Set{1,2,3,4}$
-	\item[\denote{p}]$1$
-	\item[\denote{e}]$2$
-	\item[\denote{t}]$1$
-	\item[\denote{B}]$\Set{\sequence{1,2,3},\sequence{3,2,1}}$
-\end{interp}
-As in the case TFL: once we move to the language of FOL we forget about the particular English sentences and their meaning.
-
-
-It is often convenient to present a model \emph{diagrammatically}.
-
+\end{itemize}}
 \newglossaryentry{model}{
-  name = {model},
-  description = {a specification of a \gls{domain} together with the objects the \glspl{name} pick out and the sets and relations assigned to the different \glspl{predicate}}
+	name = {model},
+	description = {a specification of a \gls{domain} together with the objects the \glspl{name} pick out and the sets and relations assigned to the different \glspl{predicate}}
 }
 
-Suppose we want to consider just a single two-place predicate, $Rxy$ and we wish to consider the following model:
+
+\factoidbox{For a model, $\model$, we denote its assignment to $\eta$ as $\denote{\eta}_\model$. 
+	
+	We will often drop the explicit reference to $\model$ and simply describe a model by providing a domain and $\denote{\eta}$ for each name and predicate.}
+
+
+For example $\model$ might be:
 \begin{interp}
-	\item[\domain]$\Set{1,2,3,4}$
-	\item[\denote{R}]$\Set{
-		\ntuple{1, 1},
-		\ntuple{1, 2},
-		\ntuple{2, 3},
-		\ntuple{3, 4},
-		\ntuple{4, 1},
-		\ntuple{1, 3}}
-		$
+	\item[\domain] $\Set{1,2,3}$
+	\item[\denote{H}] $\Set{1}$
+	\item[\denote{S}] $\Set{1,2}$
+	\item[\denote{C}] $\Set{2,3}$
+	\item[\denote{A}] $\Set{\sequence{1,2},\sequence{2,2}}$
+	\item[\denote{a}] $2$
+	\item[\denote{b}] $3$
+	%\item[\denote{A}]
+	%\item[\denote{G}] nothing
 \end{interp}
-Then we can equivalently offer
-\begin{interp}
-	\item[\domain]$\Set{x\given x \text{ is a number in the diagram}}$
-	\item[\denote{R}]$\Set{\sequence{x,y}\given \text{ there is an arrow from $x$ to $y$ in the diagram}}$
-\end{interp}
-along with the diagram:
+
+Notes:\begin{itemize}
+	\item Domain must be non-empty.
+	\item Domains may be infinite, e.g., $\domain$ as $\mathbb{N}$, the natural numbers $\{0,1,2,\ldots\}$
+	\item Predicates and relations may be empty, e.g., $\denote{P}=\emptyset$
+	\item Multiple names may name the same object. 
+\end{itemize}
+
+
+Since, among other things, models tell us how we are to understand FOL-predicates and FOL-names, they will provide us with an account of the truth of atomic sentences. We already hinted at this account in the previous chapter. However, we must also present a detailed account of what it is for an arbitrary FOL sentence to be true or false in a model.
+
+But we defined what a sentence was by first specifying what a formula is. Formulas like $Ex$ aren't the sorts of things that are true or false on a model. Only \emph{sentences} are true or false. But if we provide extra information we can determine the truth of $Ex$: we need to specify what object $x$ stands for. This is done by using a variable assignment: 
+
+
+\factoidbox{A \define{variable assignment} assigns to each variable an object of the domain.}
+
+For example, if our domain is the set of characters in Winnie the Pooh, a variable assignment $\alpha$ might be:
 \begin{center}
-\begin{tikzpicture}
-\node (atom1) at (0,2) {1};
-\node (atom2) at (2,2) {2};
-\node (atom3) at (2,0) {3};
-\node (atom4) at (0,0) {4};
-\draw[->, thick] (atom1)--(atom2);
-\draw[->, thick] (atom2)--(atom3);
-\draw[->, thick] (atom3)--(atom4);
-\draw[->, thick] (atom4)--(atom1);
-\draw[->, thick] (atom1) -- (atom3);
-\draw[->, thick] (atom1)+(-0.15,0.15) arc (-330:-30:.3);
-\end{tikzpicture}
+	\begin{tabular}{r@{\,:\quad}cccccc}
+		\omit & $x$ & $y$ & $z$ & $x_1$ & \ldots \\ \hline
+		$\alpha$ & \emph{Pooh} & \emph{Eeyore} & \emph{Pooh} & \emph{Tigger} & \ldots
+	\end{tabular}
 \end{center}
 
-It must be abundantly clear what the domain is, what the names refer to, and which objects satisfy the predicates. 
+
+
+We often talk and compare different variable assignments so it's convenient to have names for them and we use Greek letters $\alpha, \beta,\gamma$ for this purpose. 
+
+Now consider a model where the domain $\domain$ is the set of natural numbers and the predicate $E$ picks out the even numbers:
+\begin{align*}&\domain=\Set{o \given  o\text{ is a natural number}}\\
+	&\denote{E}=\Set{o \given o\text{ is an even number}}\end{align*}
+Then $Ex$ will be true in this model under a variable assignment $\alpha$ that assigns, say, 4 to $x$---we write $\alpha(x)=4$---but false under a variable assignment $\beta$ that assigns 3 to $x$, i.e., $\beta(x)=3$.
+
+
+
+
+We know from \S\ref{s:FOLSentences} that there are three kinds of formulas in FOL:
+\begin{ebullet}
+	\item atomic formulas
+	\item formulas whose main logical operator is a sentential connective
+	\item formulas whose main logical operator is a quantifier
+\end{ebullet}
+We need to explain truth for all three kinds of formula.
+
+
+\section{Atomic formulas}
+We already described the clause for atomic sentences, for example: 
+\begin{itemize}
+	\item $Ca$ is true on $\model$ iff $$\denote{a}_\model\in\denote{C}_\model.$$ 
+\item $Lab$ is true on $\model$ iff $$\sequence{\denote{a}_\model,\denote{b}_\model}\in\denote{L}_\model.$$
+\end{itemize}
+
+But we also need to describe a clause for atomic formulas which contain variables. 
+\begin{itemize}
+	\item $Cx$ is true on $\model$ under variable assignment $\alpha$ iff $$\alpha(x)\in\denote{C}_\model$$
+	\item
+	$Lxy$ is true on a model $\model$ under a variable assignment $\alpha$ iff $$\sequence{\alpha(x),\alpha(y)}\in\denote{L}_\model$$
+\item
+$Lxb$ is true on a model $\model$ under a variable assignment $\alpha$ iff $$\sequence{\alpha(x),\denote{b}_\model}\in\denote{L}_\model$$
+\end{itemize}
+
+To write these out more precisely, we unify the terminology:
+\factoidbox{A \define{term} is either a name or a variable. 
+	%CCM rewrote from JS. check.
+	\begin{itemize}
+		\item If $t$ is a name, then $\denote{t}^\alpha_\model$ is just $\denote{t}_\model$, the object of the domain assigned to the FOL-name $t$ by $\model$.
+		\item If $t$ is a variable, then $\denote{t}^\alpha_\model$ the object of the domain assigned to the variable $t$ by the variable assignment; that is, it is $\alpha(t)$.
+	\end{itemize}
+	%	If $t$ is a term then the \define{denotation of the term} in the model under an variable assignment $\alpha$, $\denote{t}^\alpha$ is the object pick out by the model, if $t$ is a name and $\alpha(t)$ otherwise:
+	%\begin{align*}\denote{t}^\alpha=\begin{cases}\denote{t},&\text{ if $t$ is name;}\\\alpha(t),&\text{  if $t$ is a variable.}\end{cases}\end{align*} 
+}
+
+
+
+With this final bit of terminology out of way we can state the truth conditions for atomic formuals. 
+
+\factoidbox{For \meta{R} an $n$-place predicate, $\metaterm_1,\,\metaterm_2\ldots\metaterm_{n}$ terms
+	
+	$\meta{R}\metaterm_1\metaterm_2\ldots\metaterm_{n}$ is true in a model $\model$ under a variable assignment $\alpha$ \textbf{iff}\\
+	$$\langle\denote{t_1}^\alpha_\model,\ldots,\denote{t_n}^\alpha_\model\rangle\in\denote{\meta{R}}_\model$$
+}
+
+
+
+\section{Sentential connectives}
+We saw in \S\ref{s:FOLSentences} that FOL formulas can be built up from simpler ones using the truth-functional connectives that were familiar from TFL. The rules governing these truth-functional connectives are \emph{exactly} the same as they were when we considered TFL. Here they are:
+\factoidbox{
+	$\enot \metaX$ is true in a model $\model$ under a variable assignment $\alpha$ \textbf{iff} \\$\metaX$ is false in $\model$ under $\alpha$.
+	
+	\
+	\\$(\metaX \eand \metaY)$ is true in a model $\model$ under a variable assignment $\alpha$ \textbf{iff}\\ both $\metaX$ and $\metaY$ are true in $\model$ under $\alpha$.
+	
+	\
+	\\
+	$(\metaX \eor \metaY)$ is true in a model $\model$ under a variable assignment $\alpha$ \textbf{iff}\\ either $\metaX$ is true or $\metaY$ is true in $\model$ under $\alpha$.
+	
+	\
+	\\$(\metaX \eif \metaY)$ is true in a model $\model$ under a variable assignment $\alpha$ \textbf{iff}\\ either $\metaX$ is false or $\metaY$ is true in $\model$ under $\alpha$.
+	
+	%\
+	%\\$\metaX \eiff \metaY$ is true in a model $\model$ under a variable assignment $\alpha$ \textbf{iff} \\$\metaX$ has the same truth value as $\metaY$ in $\model$ under $\alpha$
+}
+This is just another presentation of the truth rules we gave for the connectives in TFL; it just does so in a slightly different way. Some examples will probably help to illustrate the idea. On 	\begin{interp}
+	\item[\domain]$\Set{o \given o\text{ is a person born before before 2000\textsc{ce}}}$)
+	\item[\denote{a}] \emph{Aristotle}
+	\item[\denote{b}] \emph{Beyonc\'e}
+	\item[\denote{P}] $\Set{o \given o\text{ is a philosopher}}$
+	\item[\denote{R}] $\Set{\langle o_1,o_2\rangle \given o_1\text{ was born before }o_2}$
+\end{interp}
+we have:
+\begin{compactlist}
+	\item[\textbullet] `$Pa$' is true
+	\item[\textbullet] `$Rab \eand Pb$' is false because, although `$Rab$' is true, `$Pb$' is false
+	\item[\textbullet] `$\enot Pa$' is false
+	\item[\textbullet] `$Pa \eand \enot(Pb\eand Rab)$' is true, because `$Pa$' is true and `$Pb$' is false, so `$Pb\eand Rab$' is false, thus `$\enot (Pb\eand Rab)$' is also true.
+\end{compactlist}
+Make sure you understand these examples.
+
+We can also carry variable assignments around with us. Consider a variable assignment which assigns David Hume to $x$. Then \begin{ebullet}
+	\item `$Px$' is true under this variable assignment: David Hume was a philosopher
+	\item `$Bxa$' is false under this variable assignment: David Hume was born after Aristotle
+	\item `$Px\eif Bxa$' is false under this variable assignment: `$Px$' is true and `$Bxa$' is false, so by our rule for $\eif$, `$Px\eif Bxa$' is false.
+\end{ebullet}
+
+
+\section{Quantifiers}
+
+The exciting innovation in FOL, though, is the use of \emph{quantifiers}.
+
+Consider the following model:
+\begin{center}
+	\begin{tikzpicture}
+		\node (A) [alice,monitor,sword,minimum size=1cm] {Alice};
+		\node (B)[bob,evil,sword,minimum size=1cm,right=1cm of A] {Bob};
+		\node[charlie,monitor,female, minimum size=1cm,below=.8cm of A] {Cathy};
+		\node[businessman,minimum size=1cm,skin=brown,below=.8cm of B] {Denny};
+	\end{tikzpicture}
+	
+\end{center}
+%(Hint: read $Hx$ as `\gap{x} has horns', $Sx$ as `\gap{x} has horns' and $Cx$ as `\gap{x}has a computer')\\
+
+\noindent Is `$\exists x Sx$' true in this model under a variable assignment? Intuitively this should be true iff there is an object in the domain which has a sword and since $\denote{S}=\Set{\text{\emph{Alice, Bob}}}$ should indeed come out as true. We can directly spell out these intuitive truth conditions by using the notion of an  $v$-variant of the initial variable assignment.
+
+Before we give a general definition of whether a formula is true or false \emph{under a variable assignment} in a give model, we need to introduce one further useful bit of terminology.
+
+\factoidbox{Let $\alpha$ be a variable assignment and $\metav$ a variable. \\
+	\define{$\varvariant{\alpha}{\metav}{o}$} is a variable assignment which assigns to the variables other than $\metav$ the same objects as $\alpha$ does and it assigns $o$ to $\metav$. \\
+	That is, $\varvariant{\alpha}{\metav}{o}(\metav')=
+	\begin{cases}
+		\alpha(\metav')&\text{if $\metav'\neq\metav$}\\
+		o&\text{if $\metav'=\metav$}
+	\end{cases}$
+	
+	
+	$\varvariant{\alpha}{\metav}{o}$ is called an \define{$\metav$-variant} of $\alpha$.\\
+}
+
+Notice that $\metav$ is metavariable for variables of FOL, so that it can be done for any variable. 
+\todo{is this the right formulation??}
+For example:
+\begin{center}
+	\begin{tabular}{r@{\,:\quad}cccccc}
+		\omit & $x$ & $y$ & $z$ & $x_1$ & \ldots \\ \hline
+		$\alpha$ & \emph{Alice} & \emph{Cathy} & \emph{Cathy} & \emph{Bob} & \ldots \\
+		$\varvariant{\alpha}{y}{\emph{Bob}}$ & \emph{Alice} & \emph{Bob} & \emph{Cathy} & \emph{Bob} & \ldots
+	\end{tabular}
+\end{center}
+
+Variants of variable assignments will be important for stating the truth conditions of quantified formulas.
+We will define
+\begin{quote}
+	`$\exists \metav\metaX$' true in a model under the variable assignment $\alpha$ \textbf{iff} there exists an object $o$ of the domain, i.e.~$o\in \domain$, such that `$\metaX$' is true in the model under the variable assignment $\varvariant{\alpha}{v}{o}$.
+\end{quote}
+
+To show that `$\exists x Sx$' true in $\model$ under $\alpha$ we need to find an object in the domain, say, \emph{Alice} such that `$Sx$' is true under the variable assignment $\varvariant{\alpha}{x}{\text{\emph{Alice}}}$. Under $\varvariant{\alpha}{x}{\text{\emph{Alice}}}$, $Sx$ is in fact true: it assigns \emph{Alice} to $x$ and Alice does have a sword, i.e., $\text{\emph{Alice}}\in\denote{S}$. This guaranteed the truth of `$\exists x Sx$': There is a choice of an object in our domain for $x$ under which $Sx$ is true.
+
+In this case, the other information in $\alpha$ is irrelevant as only the variable $x$ is relevant for determining the truth of $Sx$. Whether $\exists x Sx$ is true in $\model$ under $\alpha$ is independent of $\alpha$ and it can simply be said to be true or false in the model. 
+
+What about the universal quantifier?
+\begin{quote}
+	`$\forall \metav\metaX$' true in a model under the variable assignment $\alpha$ \textbf{iff} for every object $o$ of the domain, i.e.~$o\in \domain$, `$\metaX$' is true in the model under the variable assignment $\varvariant{\alpha}{v}{o}$.
+\end{quote}
+Since \emph{Denny} $\not\in\denote{S}=\Set{\text{\emph{Alice, Bob}}}$ `$\forall x Sx$' to comes out false in this model: `$Sx$' is not true in the model under the variable assignment $\varvariant{\alpha}{x}{\emph{Denny}}$, or simply $x\mapsto$\emph{Denny}, as the remaining information in the variable assignment $\alpha$ is irrelevant.
+
+
+We have to tread more carefully once we start having multiple quantifiers. Let's walk through some cases.
+
+Consider a new model: \begin{center}
+	\begin{tikzpicture}
+		\node (atom1) [draw] at (0,2) {1};
+		\node (atom2) at (2,2) {2};
+		\node (atom3) [draw] at (0,0) {3};
+		\node (atom4)  at (2,0) {4};
+		\draw[->, thick] (atom3)+(-0.15,0.15) arc (-330:-30:.3);
+		\draw[<-, thick] (atom2) -- (atom3);
+		\draw[<-,thick] (atom1)--(atom3);
+		\draw[<-, thick] (atom4)--(atom3);
+		\draw[->, thick] (atom1)--(atom2);
+		\draw[->, thick] (atom2)--(atom4);
+	\end{tikzpicture}
+	
+	\begin{interp}
+		\item[\domain] $\Set{1,2,3,4}$
+		\item[\denote{R}] $\Set{\sequence{ o_1,o_2} \given \text{There is an arrow from $o_1$ to $o_2$ in the diagram}}$.
+		\item[\denote{S}] $\Set{o \given \text{There is a square around $o$ in the diagram}}$.
+	\end{interp}
+\end{center}
+
+Is $\exists x\forall y Rxy$ true? Intuitively, the sentence is true iff there is an object in the domain from which there is an arrow to all other objects. Now, let's work through the example step by step and see whether we get the intuitive outcome.
+
+
+\begin{enumerate}
+	\item  `$\exists x\forall y Rxy$' is true in the model under an (arbitrary) variable assignment $\alpha$ iff there is a number $n\in\Set{1,2,3,4}$ such `$\forall y Rxy$' is true in the model under the variable assignment $\varvariant{\alpha}{x}{n}$. 
+	\begin{itemize}
+		\item We choose $n$ to be the number 3 (with some foresight)
+	\end{itemize}
+	\item `$\forall y Rxy$' is true in the model under the variable assignment $\varvariant{\alpha}{x}{3}$ iff $Rxy$ is true in the model under the variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{m}$ for all $m\in\Set{1,2,3,4}$.
+	\begin{itemize}
+		\item $\varvariant{\varvariant{\alpha}{x}{3}}{y}{m}$ looks very complicated; it is a $y$-variant of an $x$-variant\ldots But all it says is that the variable $y$ gets assigned the number $m$, i.e., $y\mapsto m$ and the variable $x$ gets assigned the number $3$, i.e., $x\mapsto 3$.
+	\end{itemize}
+	\item `$Rxy$' is true in the model under the variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{m}$ for all $m\in\Set{1,2,3,4}$ iff there is an arrow from $3$ to every number in the set $\Set{1,2,3,4}$. In that case we have that `$Rxy$' is true in the model under the variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{1}$, the variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{2}$, the variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{3}$ and also $\varvariant{\varvariant{\alpha}{x}{3}}{y}{4}$.
+	\item Since there is an arrow from 3 to every number we can conclude that `$\exists x\forall y Rxy$' is true in the model
+\end{enumerate}
+
+
+What about `$\exists x \exists y(Rxy \eand Ryx)$'? To show that it is true we will want to choose an object $o$ that we can assign to $x$ such that `$\exists y (Rxy\eand Ryx)$' is true uunder the assignment $\varvariant{\alpha}{x}{o}$. Let's consider $x\mapsto 3$ (again I'm using my foresight of what will come to choose carefully). Now is `$\exists y (Rxy\eand Ryx)$'  true under the variable assignment $x\mapsto 3$ (i.e., $\varvariant{\alpha}{x}{3}$? We need to find $y$-variant of this assignment which chooses an object such that `$Rxy\eand Ryx$' is true. Consider $y\mapsto 3$. We now have a variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{3}$. $x$ and $y$ are different variables but there's nothing stopping them being assigned the same object. And we can then consider whether $Rxy\eand Ryx$ is true under this model. Well, `$Rxy$' is true: 3 does have an arrow to 3. And `$Ryx$' is also true: 3 does have an arrow to 3. So by our clause for $\eand$, `$Rxy\eand Ryx$' is true under the variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{3}$. And so `$\exists y(Rxy\eand Ryx)$' is true under the variable assignment $\varvariant{\alpha}{x}{3}$. And so $\exists x\exists y(Rxy\eand Ryx)$ is true in this model.
+
+
+One final example: $\forall x\forall y Rxy$. To check this we will need to consider all choices for $x$ and all choices for $y$ and check $Rxy$ is true on all of them. There are 16 such choices. But we won't have to go through them all: it'll be false. Consider $x\mapsto 1$ and $y\mapsto 4$. $Rxy$ is false under this variable assignment: there is no arrow from 1 to 4. Thus $\forall yRxy$ is false on the variable assignment $\varvariant{\alpha}{x}{1}$. And so $\forall x\forall y Rxy$ is false in the model under the variable assignment $\alpha$. However, $\alpha$ itself played no role in the evaluation of $\forall x\forall y Rxy$. All that mattered was the objects that were assigned to $x$ and $y$, and for $x$ and $y$ we considered the $x$-variants/$y$-variants. So $\forall x\forall y Rxy$ is not only true under the variable assignment $\alpha$ in this model but true under all variable assignments. This goes back to what we said at the end of Section \ref{s:traf}: the particular choice of an variable assignment is only relevant if we are evaluating the truth of formulas with free variables. $\forall x\forall y Rxy$ is a sentence, as it has no free variables.
+
+
+More generally, if we have a quantifier like $\exists x$ or $\forall x$ we ignore whatever our original variable assignment told us about $x$ but consider suitable $x$-variants. So when all our variables are bound by quantifiers, all the original components of our variable assignment are ignored. To summarise: Sentences are simply true or false in models, variable assignments don't matter.
+
+Now for our formal definition:
+\factoidbox{
+	$\forall \metav\metaX$ is true in the model $\model$ under a variable assignment $\alpha$\\
+	\textbf{iff} for every $o\in \domain$, $\metaX$ is true in $\model$ under the variable assignment $\varvariant{\alpha}{\metav}{o}$.
+	
+	\bigskip
+	
+	$\exists \metav\metaX$ is true in the model $\model$ under a variable assignment $\alpha$\\
+	\textbf{iff} for some $o\in \domain$, $\metaX$ is true in $\model$ under the variable assignment $\varvariant{\alpha}{\metav}{o}$.
+}
+%To be clear: all this is doing is formalizing the intuitive idea expressed in our examples. The result is a bit ugly, and the final definition might look a bit opaque. Hopefully, though, the \emph{spirit} of the idea is clear.
+
+
+We have now provided the full inductive definition of truth in a model under a variable assignment. This allows us to work up the formation tree of any sentence of FOL to detemrine its truth value. The special feature of sentences as opposed to formulas more generally was that there are no free variables. This means that information in a variable assignment $\alpha$ is irrelevant for the truth of the sentence and we can simply say that it is true or false on the model. 
+
+
+
+
+
+
+%
+%\section{Models}\label{s:model}\todo{call it ``model''?}
+%We defined a \define{valuation} in TFL as any assignment of truth and falsity to atomic sentences. In FOL, we are going to define an \define{model}. Sentences of FOL will be true or false \emph{on a model}.
+%\factoidbox{A model $\model$ provides \begin{itemize}
+%		\item specifies a non-empty set as the domain, $\domain$;
+%		\item specifies an interpretation of the FOL-names and FOL-predicates. 
+%		\begin{itemize}
+%		\item assigns exactly one object of the domain to every name (specifies the referent of the name);
+%		\item assigns a subset of the domain to any one-placed predicate.
+%		\item assigns a binary relation on the domain to every two-placed predicate.
+%		\item assigns a ternary relation on the domain to every three-placed preciate.
+%		\item \ldots
+%%		\item assigns an $n$-ary relation to every $n$-place predicate (the things the predicate is to be true of in the respective order). 
+%%		\begin{itemize}
+%%		\item a model assigns a subset of the domain to a one-place predicate
+%%		\item a model assigns a binary relation to a two-place predicate
+%%		\item a model assigns a ternary relation to a three-place predicate 
+%%		\item \ldots
+%%		\end{itemize}
+%		\end{itemize}
+%		\end{itemize}}
+%	
+%	\factoidbox{For a model, $\model$, we denote its assignment to $\eta$ as $\denote{\eta}_\model$. 
+%		
+%		We will often drop the explicit reference to $\model$ and simply describe a model by providing a domain and $\denote{\eta}$ for each name and predicate.}
+%	
+%%	For a model, $\model$, we will often describe 
+%%	For a model, $\model$, and a FOL-expression, $\eta$, we will use $\denote{\eta}_\model$ to denote the model of $\eta$ given by $\model$. For example, if $c$ is a FOL-name, then $\denote{\eta}_\model$ is the object assigned to $c$ by $\model$, and 
+%%	
+%%	we will use $\denote{\cdot}_\model$ to denote the model of $P$ given by $\model$, for example, $\denote{P}_\model=
+%%	
+%%	\factoidbox{
+%%	For a model, $\mathcal{A}$, The model of a FOL-expression $\eta$ is denoted by $\denote{\eta}$: $\llbracket \eta\rrbracket$
+%%		\begin{ebullet}
+%%		\item if $c$ is a FOL-name, $\denote{c}$ denotes the object of the domain assigned to `$c$' by the model and thus $\denote{c}\in \domain$.
+%%		\item if $P$ is the $n$-place predicate, then we write $\denote{P}$ to denote the $n$-ary relation assigned to $P$ by the model.
+%%	\end{ebullet}}
+%	
+%A model thus provides us with all the necessary information for interpreting the predicates and names, as well as, information about the range of the quantifiers. This will be enough to determine the truth value of all sentences of FOL, which we will turn to in \ref{s:TruthFOL}
+%
+%Importantly, we are not guaranteed that the denotation of an $n$-place predicate is nonempty, i.e., it is possible that $\emptyset$ is assigned to a predicate. In general, a convenient way of specifying a model is to supplement a given symbolization key (cf.~ Part~\ref{ch.FOL}) with the relevant model of the names and predicates.
+%
+%Suppose we have just symbolized the sentence
+%\begin{itemize}
+%\item Pooh bounces with Eeyore on the trampoline
+%\end{itemize}
+%using the symbolization key;
+%\begin{ekey}
+%\item[\text{domain}]Animals and trampolines
+%\item[p]Pooh
+%\item[e]Eeyore
+%\item[t]The trampoline
+%\item[Bxyz]\gap{x} bounces with \gap{y} on \gap{z}
+%\end{ekey}
+%
+%
+%Taking the symbolization key as a guideline we can construct an appropriate model as follows:
+%\begin{interp}
+%\item[\domain]$\Set{o \given o\text{ is an animal or }o\text{ is trampolines}}$
+%\item[\denote{p}]\emph{Pooh}
+%\item[\denote{e}]\emph{Eeyore}
+%\item[\denote{t}]\emph{The trampoline}
+%\item[\denote{B}]$\Set{\langle o_1,o_2,o_3\rangle \given o_1\text{ bounces with }o_2\text{ on }o_3}$
+%\end{interp}
+%Symbolization keys and models have similar components. However, symbolization keys and models are very different things: a model of the vocabulary of FOL involves specifying objects, sets and relations while in the symbolization key we specify which FOL-symbols are to stand for the English names and predicates of a sentence, e.g, which FOL-name is to stand for the name `Pooh'. In the model we are saying that the FOL-name `$p$' picks out Pooh (the bear) or, in some different model, a different object of the domain. 
+%
+%We may then ask whether the FOL-sentence $Bpet$ is true in the model so specified. The answer is that it is true iff, indeed, Pooh bounces with Eeyore on the trampoline, that is, iff
+%$${\small \langle \text{Pooh, Eeyore, The trampoline}\rangle\in\Set{\langle o_1,o_2,o_3\rangle \given o_1\text{ bounces with }o_2\text{ on }o_3}.}$$
+%The model we have given above is arguably the \emph{intended model}, that is, the model that fits the symbolization key and our understanding of the English sentence. But there are many alternative models for the FOL-sentence $Bpet$, the only thing which we require is that the model specifies a domain, that the FOL-name `$p$', `$e$', and `$t$' pick out objects from the domain, and that the three-place $B$ is assigned a ternary relation. 
+%
+%Here are two other models that could be provided.
+%\begin{interp}
+%	\item[\domain]$\Set{\emph{Alice},\emph{Bob}, \emph{Carly}}$
+%	\item[\denote{p}]$\emph{Alice}$
+%	\item[\denote{e}]$\emph{Bob}$
+%	\item[\denote{t}]$\emph{Carly}$
+%	\item[\denote{B}]$\Set{\sequence{\emph{Alice},\emph{Bob},\emph{Carly}}}$
+%\end{interp}
+%or
+%\begin{interp}
+%	\item[\domain]$\Set{1,2,3,4}$
+%	\item[\denote{p}]$1$
+%	\item[\denote{e}]$2$
+%	\item[\denote{t}]$1$
+%	\item[\denote{B}]$\Set{\sequence{1,2,3},\sequence{3,2,1}}$
+%\end{interp}
+%As in the case TFL: once we move to the language of FOL we forget about the particular English sentences and their meaning.
+%
+%
+%It is often convenient to present a model \emph{diagrammatically}.
+%
+%\newglossaryentry{model}{
+%  name = {model},
+%  description = {a specification of a \gls{domain} together with the objects the \glspl{name} pick out and the sets and relations assigned to the different \glspl{predicate}}
+%}
+%
+%Suppose we want to consider just a single two-place predicate, $Rxy$ and we wish to consider the following model:
+%\begin{interp}
+%	\item[\domain]$\Set{1,2,3,4}$
+%	\item[\denote{R}]$\Set{
+%		\ntuple{1, 1},
+%		\ntuple{1, 2},
+%		\ntuple{2, 3},
+%		\ntuple{3, 4},
+%		\ntuple{4, 1},
+%		\ntuple{1, 3}}
+%		$
+%\end{interp}
+%Then we can equivalently offer
+%\begin{interp}
+%	\item[\domain]$\Set{x\given x \text{ is a number in the diagram}}$
+%	\item[\denote{R}]$\Set{\sequence{x,y}\given \text{ there is an arrow from $x$ to $y$ in the diagram}}$
+%\end{interp}
+%along with the diagram:
+%\begin{center}
+%\begin{tikzpicture}
+%\node (atom1) at (0,2) {1};
+%\node (atom2) at (2,2) {2};
+%\node (atom3) at (2,0) {3};
+%\node (atom4) at (0,0) {4};
+%\draw[->, thick] (atom1)--(atom2);
+%\draw[->, thick] (atom2)--(atom3);
+%\draw[->, thick] (atom3)--(atom4);
+%\draw[->, thick] (atom4)--(atom1);
+%\draw[->, thick] (atom1) -- (atom3);
+%\draw[->, thick] (atom1)+(-0.15,0.15) arc (-330:-30:.3);
+%\end{tikzpicture}
+%\end{center}
+%
+%It must be abundantly clear what the domain is, what the names refer to, and which objects satisfy the predicates. 
 
 
 
@@ -320,330 +1298,6 @@ It must be abundantly clear what the domain is, what the names refer to, and whi
 %	\end{align*}
 %If we wanted, we could make our diagrams more complex. For example, we could add names as labels for particular objects. Equally, to symbolize the extension of a one-place predicate, we might simply draw a ring around some particular objects and stipulate that the set formed out of the encircled objects constitutes the model of a one-place predicate $H$, say.
 
-
-\chapter{Truth in FOL}\label{s:TruthFOL}
-We know what models are. Since, among other things, they tell us how we are to understand FOL-predicates and FOL-names, they will provide us with an account of the truth of atomic sentences. We already hinted at this account in the previous chapter. However, we must also present a detailed account of what it is for an arbitrary FOL sentence to be true or false in a model.
-
-But we defined what a sentence was by first specifying what a formula is. Formulas like $Ex$ aren't the sorts of things that are true or false on a model. Only \emph{sentences} are true or false. But if we provide extra information we can determine the truth of $Ex$: we need to specify what object $x$ stands for. This is done by using a variable assignment: 
-\factoidbox{A \define{variable assignment} assigns to each variable an object of the domain.}
-
-For example, if our domain is the set of characters in Winnie the Pooh, a variable assignment $\alpha$ might be:
-\begin{center}
-	\begin{tabular}{r@{\,:\quad}cccccc}
-		\omit & $x$ & $y$ & $z$ & $x_1$ & \ldots \\ \hline
-		$\alpha$ & \emph{Pooh} & \emph{Eeyore} & \emph{Pooh} & \emph{Tigger} & \ldots
-	\end{tabular}
-\end{center}
-
-
-
-We often talk and compare different variable assignments so it's convenient to have names for them and we use Greek letters $\alpha, \beta,\gamma$ for this purpose. 
-
-Now consider a model where the domain $\domain$ is the set of natural number and the predicate $E$ picks out the even numbers:
-\begin{align*}&\domain=\Set{o \given  o\text{ is a natural number}}\\
-&\denote{E}=\Set{o \given o\text{ is an even number}}\end{align*}
-Then $Ex$ will be true in this model under a variable assignment $\alpha$ that assigns, say, 4 to $x$---we write $\alpha(x)=4$---but false under a variable assignment $\beta$ that assigns 3 to $x$, i.e., $\beta(x)=3$.
-
-
-
-
-We know from \S\ref{s:FOLSentences} that there are three kinds of formulas in FOL:
-	\begin{ebullet}
-		\item atomic formulas
-		\item formulas whose main logical operator is a sentential connective
-		\item formulas whose main logical operator is a quantifier
-	\end{ebullet}
-We need to explain truth for all three kinds of formula.
-
-We will provide a completely general explanation in this section. However, to try to keep the explanation comprehensible, we will, at several points, use the following model:
-	\begin{interp}
-		\item[\domain]$\Set{o \given o\text{ is a person born before before 2000\textsc{ce}}}$)
-		\item[\denote{a}] \emph{Aristotle}
-		\item[\denote{b}] \emph{Beyonc\'e}
-		\item[\denote{P}] $\Set{o \given o\text{ is a philosopher}}$
-		\item[\denote{R}] $\Set{\langle o_1,o_2\rangle \given o_1\text{ was born before }o_2}$
-	\end{interp}
-This will be our \emph{go-to example} in what follows.
-%
-\section{Atomic formulas}\label{s:traf}
-Atomic formulas are things like $Px$, $Pb$ or $Rax$.
-
-To see whether an atomic sentence like `$Pb$' is true in a model, we need to check whether the object that is picked out by the name `$b$' is a member of the set the model assigns to `$P$'. Looking at our \emph{go-to example} this means that `$Pb$' is true in the model iff $$\text{\emph{Beyonc\'e}}\in\Set{o \given o\text{ is a philosopher}}.$$
-Since Beyonc\'e is not a philosopher, i.e., 
-$$\text{\emph{Beyonc\'e}}\not\in\Set{o \given o\text{ is a philosopher}}$$
-`$Pb$' is false in that model.
-
-
-What about $Px$? This reads something like `they are a philosopher'. The question is who `they' refers to, or in the logic terms: who $x$ is. This depends on a variable assignment. A variable assignment needs to give an object in our domain for the variable $x$. For example, a variable assignment $\alpha$  assign Beyonc\'e to $x$, i.e., $\alpha(x)$=Beyonc\'e and since Beyonc\'e is not in the model of `$P$' `$Px$' is not true in the model under the variable assignment $\alpha$. However, since Aristotle is a philosopher `$Px$ would be true in the model under a variable assignment $\beta$, where $$\beta(x)=\text{Aristotle}.$$
-A variable assignment doesn't need to specify one of the objects that are named, it can give us anyone in our domain, e.g.~Queen Elizabeth II. Under the variable assignment which assigns $x$ Queen Elizabeth II, `$Px$' is false: Queen Elizabeth II is not a philosopher.
-
-%The truth of atomic \emph{sentences} should be fairly straightforward. The sentence $Pa$ should be true just in case $Px$ is true of $a$. Given our go-to model, this is true iff Aristotle is a philosopher. Aristotle is a philosopher. So the sentence is true. Equally, $Pb$ is false on our go-to model.
-
-Likewise, on this model, $Rab$ is true iff the object named by $a$ was born before the object named by $b$. Well, Aristotle was born before Beyonc\'e. So $Rab$ is true. Equally, $Raa$ is false: Aristotle was not born before Aristotle. How about $Rax$? Well what does our variable assignment specify for $x$? If we have a variable assignment where $x$ is Queen Elizabeth II, then $Rax$ is true: Aristotle was born before Queen Elizabeth II.
-
-Dealing with atomic formulas, then, is very intuitive. The only thing to be attentive to is the difference between names or variables:
-\factoidbox{A \define{term} is either a name or a variable. 
-	%CCM rewrote from JS. check.
-	\begin{itemize}
-		\item If $t$ is a name, then $\denote{t}^\alpha_\model$ is just $\denote{t}_\model$, the object of the domain assigned to the FOL-name $t$ by $\model$.
-		\item If $t$ is a variable, then $\denote{t}^\alpha_\model$ the object of the domain assigned to the variable $t$ by the variable assignment; that is, it is $\alpha(t)$.
-	\end{itemize}
-%	If $t$ is a term then the \define{denotation of the term} in the model under an variable assignment $\alpha$, $\denote{t}^\alpha$ is the object pick out by the model, if $t$ is a name and $\alpha(t)$ otherwise:
-%\begin{align*}\denote{t}^\alpha=\begin{cases}\denote{t},&\text{ if $t$ is name;}\\\alpha(t),&\text{  if $t$ is a variable.}\end{cases}\end{align*} 
-}
-
-With this final bit of terminology out of way we can state the truth conditions for atomic formuals. 
-
-	\factoidbox{For \meta{R} an $n$-place predicate, $\metaterm_1,\,\metaterm_2\ldots\metaterm_{n}$ terms
-		
-		$\meta{R}\metaterm_1\metaterm_2\ldots\metaterm_{n}$ is true in a model $\model$ under a variable assignment $\alpha$ \textbf{iff}\\
-		$$\langle\denote{t_1}^\alpha_\model,\ldots,\denote{t_n}^\alpha_\model\rangle\in\denote{\meta{R}}_\model$$
-	}
-
-From this definition of the truth of atomic formulas we can tell that an assignment only plays an important role if one of the terms is a variable. If all terms are name then an atomic formula is true in a model under a variable assignment \textbf{iff} it is true in the model under \textbf{every} variable assignment. We will see that that is the case for sentences more generally: the choice of the variable assignment is only relevant to determine whether a formulas with free variables is true in a model (under the chosen variable assignment). For this reason we sometimes do not mention the variable assignment when we talk about the truth of sentences. However, as we shall see the variable assignment will still have a role to play when we talk about the truth and falsity of quantified sentencesd.
-
-\section{Sentential connectives}
-We saw in \S\ref{s:FOLSentences} that FOL formulas can be built up from simpler ones using the truth-functional connectives that were familiar from TFL. The rules governing these truth-functional connectives are \emph{exactly} the same as they were when we considered TFL. Here they are:
-	\factoidbox{
-	$\enot \metaX$ is true in a model $\model$ under a variable assignment $\alpha$ \textbf{iff} \\$\metaX$ is false in $\model$ under $\alpha$.
-
-		\
-		\\$(\metaX \eand \metaY)$ is true in a model $\model$ under a variable assignment $\alpha$ \textbf{iff}\\ both $\metaX$ and $\metaY$ are true in $\model$ under $\alpha$.
-
-		\
-		\\
-		$(\metaX \eor \metaY)$ is true in a model $\model$ under a variable assignment $\alpha$ \textbf{iff}\\ either $\metaX$ is true or $\metaY$ is true in $\model$ under $\alpha$.
-
-		\
-		\\$(\metaX \eif \metaY)$ is true in a model $\model$ under a variable assignment $\alpha$ \textbf{iff}\\ either $\metaX$ is false or $\metaY$ is true in $\model$ under $\alpha$.
-
-		%\
-		%\\$\metaX \eiff \metaY$ is true in a model $\model$ under a variable assignment $\alpha$ \textbf{iff} \\$\metaX$ has the same truth value as $\metaY$ in $\model$ under $\alpha$
-	}
-This is just another presentation of the truth rules we gave for the connectives in TFL; it just does so in a slightly different way. Some examples will probably help to illustrate the idea. On our go-to model:
-	\begin{compactlist}
-		\item[\textbullet] `$Pa$' is true
-		\item[\textbullet] `$Rab \eand Pb$' is false because, although `$Rab$' is true, `$Pb$' is false
-		\item[\textbullet] `$\enot Pa$' is false
-		\item[\textbullet] `$Pa \eand \enot(Pb\eand Rab)$' is true, because `$Pa$' is true and `$Pb$' is false, so `$Pb\eand Rab$' is false, thus `$\enot (Pb\eand Rab)$' is also true.
-	\end{compactlist}
-Make sure you understand these examples.
-
-We can also carry variable assignments around with us. Consider a variable assignment which assigns David Hume to $x$. Then \begin{ebullet}
-\item `$Px$' is true under this variable assignment: David Hume was a philosopher
-\item `$Bxa$' is false under this variable assignment: David Hume was born after Aristotle
-\item `$Px\eif Bxa$' is false under this variable assignment: `$Px$' is true and `$Bxa$' is false, so by our rule for $\eif$, `$Px\eif Bxa$' is false.
-\end{ebullet}
-
-
-\section{When the main logical operator is a quantifier}
-The exciting innovation in FOL, though, is the use of \emph{quantifiers}.
-
-Consider the following model:
-\begin{center}
-\begin{tikzpicture}
-\node (A) [alice,monitor,sword,minimum size=1cm] {Alice};
-\node (B)[bob,evil,sword,minimum size=1cm,right=1cm of A] {Bob};
-\node[charlie,monitor,female, minimum size=1cm,below=.8cm of A] {Cathy};
-\node[businessman,minimum size=1cm,skin=brown,below=.8cm of B] {Denny};
-\end{tikzpicture}
-
-\begin{interp}\item[\domain] $\Set{\text{\emph{Alice, Bob, Cathy, Denny}}}$
-\item[\denote{H}] $\Set{x\given x\text{ has horns}}=\Set{\text{\emph{Bob}}}$
-\item[\denote{S}] $\Set{x\given x\text{ is carrying a sword}}=\Set{\text{\emph{Alice, Bob}}}$
-\item[\denote{C}]$\Set{x\given x\text{ has a computer}}=\Set{\text{\emph{Alice, Cathy}}}$
-%\item[\denote{A}]
-%\item[\denote{G}] nothing
-\end{interp}
-\end{center}
-%(Hint: read $Hx$ as `\gap{x} has horns', $Sx$ as `\gap{x} has horns' and $Cx$ as `\gap{x}has a computer')\\
-
-\noindent Is `$\exists x Sx$' true in this model under a variable assignment? Intuitively this should be true iff there is an object in the domain which has a sword and since $\denote{S}=\Set{\text{\emph{Alice, Bob}}}$ should indeed come out as true. We can directly spell out these intuitive truth conditions by using the notion of an  $v$-variant of the initial variable assignment:
-
-Before we give a general definition of whether a formula is true or false \emph{under a variable assignment} in a give model, we need to introduce one further useful bit of terminology.
-\factoidbox{Let $\alpha$ be a variable assignment and $\metav$ a variable. \\
-	\define{$\varvariant{\alpha}{\metav}{o}$} is a variable assignment which assigns to the variables other than $\metav$ the same objects as $\alpha$ does and it assigns $o$ to $\metav$. \\
-	That is, $\varvariant{\alpha}{\metav}{o}(\metav')=
-	\begin{cases}
-		\alpha(\metav')&\text{if $\metav'\neq\metav$}\\
-		o&\text{if $\metav'=\metav$}
-	\end{cases}$
-	
-	
-	$\varvariant{\alpha}{\metav}{o}$ is called an \define{$\metav$-variant} of $\alpha$.\\
-	}
-
-Notice that $\metav$ is metavariable for variables of FOL, so that it can be done for any variable. 
-\todo{is this the right formulation??}
-For example:
-\begin{center}
-	\begin{tabular}{r@{\,:\quad}cccccc}
-		\omit & $x$ & $y$ & $z$ & $x_1$ & \ldots \\ \hline
-		$\alpha$ & \emph{Alice} & \emph{Cathy} & \emph{Cathy} & \emph{Bob} & \ldots \\
-		$\varvariant{\alpha}{y}{\emph{Bob}}$ & \emph{Alice} & \emph{Bob} & \emph{Cathy} & \emph{Bob} & \ldots
-	\end{tabular}
-\end{center}
-
-Variants of variable assignments will be important for stating the truth conditions of quantified formulas.
-
-We will define
-\begin{quote}
-	`$\exists \metav\metaX$' true in a model under the variable assignment $\alpha$ \textbf{iff} there exists an object $o$ of the domain, i.e.~$o\in \domain$, such that `$\metaX$' is true in the model under the variable assignment $\varvariant{\alpha}{v}{o}$.
-\end{quote}
-
-%Consider `$\exists x Sx$'.
-%\begin{quote}
-%	`$\exists x Sx$' true in a model under the variable assignment $\alpha$ \textbf{iff} there exists an object $o$ of the domain, i.e.~$o\in \domain$, such that `$Sx$' is true in the model under the variable assignment $\varvariant{\alpha}{x}{o}$.
-%\end{quote}
-To show that `$\exists x Sx$' true in $\model$ under $\alpha$ we need to find an object in the domain, say, \emph{Alice} such that `$Sx$' is true under the variable assignment $\varvariant{\alpha}{x}{\text{\emph{Alice}}}$. Under $\varvariant{\alpha}{x}{\text{\emph{Alice}}}$, $Sx$ is in fact true: it assigns \emph{Alice} to $x$ and Alice does have a sword, i.e., $\text{\emph{Alice}}\in\denote{S}$. This guaranteed the truth of `$\exists x Sx$': There is a choice of an object in our domain for $x$ under which $Sx$ is true.
-
-In this case, the other information in $\alpha$ is irrelevant as only the variable $x$ is relevant for determining the truth of $Sx$. Whether $\exists x Sx$ is true in $\model$ under $\alpha$ is independent of $\alpha$ and it can simply be said to be true or false in the model. 
-
-What about the universal quantifier?
-\begin{quote}
-	`$\forall \metav\metaX$' true in a model under the variable assignment $\alpha$ \textbf{iff} for every object $o$ of the domain, i.e.~$o\in \domain$, `$\metaX$' is true in the model under the variable assignment $\varvariant{\alpha}{v}{o}$.
-\end{quote}
- Since \emph{Denny} $\not\in\denote{S}=\Set{\text{\emph{Alice, Bob}}}$ `$\forall x Sx$' to comes out false in this model: `$Sx$' is not true in the model under the variable assignment $\varvariant{\alpha}{x}{\emph{Denny}}$, or simply $x\mapsto$\emph{Denny}, as the remaining information in the variable assignment $\alpha$ is irrelevant.
-
-What about $\forall x(Sx\eif (Hx\eor Cx))$? To check whether it is true we need to check whether `$Sx\eif(Hx\eor Cx)$ is true for every choice of object that is assigned to $x$:
-\begin{center}
-	\begin{tabular}{c| deeeeeeef}
-		$x$
-		& $\mainconnectivecolor{(}$ & $Sx$ & $\mainconnective{\eif}$ & $($ & $Hx$ & $\eor$ & $Cx$ & $)$ & $\mainconnectivecolor{)}$ \\[.3em]\hline
-		\textit{Alice} &
-		& \textcolor{gray}{T} & \TTbf{T} & & \textcolor{gray}{F} & T & \textcolor{gray}{T} & & \\
-		\textit{Bob} &
-		& \textcolor{gray}{T} & \TTbf{T} & & \textcolor{gray}{T} & T & \textcolor{gray}{F} & & \\
-		\textit{Cathy} &
-		& \textcolor{gray}{F} & \TTbf{T} & & \textcolor{gray}{F} & T & \textcolor{gray}{T} & & \\
-		\textit{Denny} &
-		& \textcolor{gray}{F} & \TTbf{T} & & \textcolor{gray}{F} & F & \textcolor{gray}{F} & & \\
-	\end{tabular}
-\end{center}
-%\begin{center}
-%\begin{tabular}{l|ccccc}
-%$x$&$Sx$&$Hx$&$Cx$&$Hx\eor Cx$&$Sx\eif (Hx\eor Cx)$\Bstrut\\\hline\Tstrut
-%$\text{\emph{Alice}}$&T&F&T&T&T\\
-%$ \text{\emph{Bob}}$&T&T&F&T&T\\
-%$ \text{\emph{Cathy}}$&F&F&T&T&T\\
-%$ \text{\emph{Denny}}$&F&F&F&F&T
-%\end{tabular}
-%\end{center}
-So `$Sx\eif (Hx\eor Cx)$'  is true in the model under every assignment $\varvariant{\alpha}{x}{o}$ for every object $o\in \domain$. And so $\forall x(Sx\eif (Hx\eor Cx))$ is true is true in the model (under every variable assignment).
-
-
-
-We have to tread more carefully once we start having multiple quantifiers. Let's walk through some cases.
-
-Consider a new model: \begin{center}
-\begin{tikzpicture}
-\node (atom1) [draw] at (0,2) {1};
-\node (atom2) at (2,2) {2};
-\node (atom3) [draw] at (0,0) {3};
-\node (atom4)  at (2,0) {4};
-\draw[->, thick] (atom3)+(-0.15,0.15) arc (-330:-30:.3);
-\draw[<-, thick] (atom2) -- (atom3);
-\draw[<-,thick] (atom1)--(atom3);
-\draw[<-, thick] (atom4)--(atom3);
-\draw[->, thick] (atom1)--(atom2);
-\draw[->, thick] (atom2)--(atom4);
-\end{tikzpicture}
-
- \begin{interp}
-\item[\domain] $\Set{1,2,3,4}$
-\item[\denote{R}] $\Set{\sequence{ o_1,o_2} \given \text{There is an arrow from $o_1$ to $o_2$ in the diagram}}$.
-\item[\denote{S}] $\Set{o \given \text{There is a square around $o$ in the diagram}}$.
-\end{interp}
-\end{center}
-
- Is $\exists x\forall y Rxy$ true? Intuitively, the sentence is true iff there is an object in the domain from which there is an arrow to all other objects. Now, let's work through the example step by step and see whether we get the intuitive outcome.
-
-
- \begin{enumerate}
- \item  `$\exists x\forall y Rxy$' is true in the model under an (arbitrary) variable assignment $\alpha$ iff there is a number $n\in\Set{1,2,3,4}$ such `$\forall y Rxy$' is true in the model under the variable assignment $\varvariant{\alpha}{x}{n}$. 
- \begin{itemize}
- \item We choose $n$ to be the number 3 (with some foresight)
- \end{itemize}
- \item `$\forall y Rxy$' is true in the model under the variable assignment $\varvariant{\alpha}{x}{3}$ iff $Rxy$ is true in the model under the variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{m}$ for all $m\in\Set{1,2,3,4}$.
- \begin{itemize}
- \item $\varvariant{\varvariant{\alpha}{x}{3}}{y}{m}$ looks very complicated; it is a $y$-variant of an $x$-variant\ldots But all it says is that the variable $y$ gets assigned the number $m$, i.e., $y\mapsto m$ and the variable $x$ gets assigned the number $3$, i.e., $x\mapsto 3$.
- \end{itemize}
- \item `$Rxy$' is true in the model under the variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{m}$ for all $m\in\Set{1,2,3,4}$ iff there is an arrow from $3$ to every number in the set $\Set{1,2,3,4}$. In that case we have that `$Rxy$' is true in the model under the variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{1}$, the variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{2}$, the variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{3}$ and also $\varvariant{\varvariant{\alpha}{x}{3}}{y}{4}$.
- \item Since there is an arrow from 3 to every number we can conclude that `$\exists x\forall y Rxy$' is true in the model
- \end{enumerate}
- 
-% To check whether We need to find some number $n$ such that every number $m$: $\langle n,m\rangle\in\denote{R}$, i.e., there is an arrow from $n$ to every number $m$. Let's chose the number 3 for $x$ ($x\mapsto 3$). Let's call this particular variable assignment $\alpha$. $\alpha$ also assigns objects to all other variables of the language (we just don't care which ones) Is $\forall y Rxy$ true under the variable assignment $\alpha$? Intuitively, the answer is yes as there is an arrow from 3 to 1, 2, 3, and 4, that is, all objects of the domain.
-% 
-%  %To check this we need to do something more with our variable assignment: we need to extend it with a choice of an object for $y$. 
-% To evaluate the universal quantifier $\forall y$ we need to think about all ways of picking an object for $y$, not only the one of the particular variable assignment $\alpha$. Moreover, in doing so we need to keep the assignment of $3$ to $x$ fixed. This means we need to evaluate whether $Rxy$ is true under all assignments that differ from the assignment $\alpha$ at most in that they might assign a different object $y$ than $\alpha$. Since in this case our domain has four objects this means that there are only four different objects an assignment can assign to $x$ (whilst assigning $3$ to $x$). If $Rxy$ is true on all these options $\exists x\forall y Rxy$ is true:
-%\begin{center}
-% \begin{tabular}{cc|c}
-%&&$Rxy$\Bstrut\\\hline\Tstrut
-%$x\mapsto 3$&$y\mapsto 1$&T\\
-%$x\mapsto 3$&$y\mapsto 2$&T\\
-%$x\mapsto 3$&$y\mapsto 3$&T\\
-%$x\mapsto 3$&$y\mapsto 4$&T\\
-% \end{tabular}
-%\end{center}So under every variable assignment that differs from $\alpha$ at most at $y$ (it assigns the same object as $\alpha$ to a variable except for $y$ to which it may assign a different object)  $Rxy$ true. This tells us that $\forall y Rxy$ is true under the variable assignment $\alpha$ for which $x\mapsto 3$. And \emph{that} tells us that $\exists x\forall y Rxy$ is true: there's an assignment of the variable $x$ under which the constituent formula $\forall y Rxy$ is true.
-
-What about `$\exists x \exists y(Rxy \eand Ryx)$'? To show that it is true we will want to choose an object $o$ that we can assign to $x$ such that `$\exists y (Rxy\eand Ryx)$' is true uunder the assignment $\varvariant{\alpha}{x}{o}$. Let's consider $x\mapsto 3$ (again I'm using my foresight of what will come to choose carefully). Now is `$\exists y (Rxy\eand Ryx)$'  true under the variable assignment $x\mapsto 3$ (i.e., $\varvariant{\alpha}{x}{3}$? We need to find $y$-variant of this assignment which chooses an object such that `$Rxy\eand Ryx$' is true. Consider $y\mapsto 3$. We now have a variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{3}$. $x$ and $y$ are different variables but there's nothing stopping them being assigned the same object. And we can then consider whether $Rxy\eand Ryx$ is true under this model. Well, `$Rxy$' is true: 3 does have an arrow to 3. And `$Ryx$' is also true: 3 does have an arrow to 3. So by our clause for $\eand$, `$Rxy\eand Ryx$' is true under the variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{3}$. And so `$\exists y(Rxy\eand Ryx)$' is true under the variable assignment $\varvariant{\alpha}{x}{3}$. And so $\exists x\exists y(Rxy\eand Ryx)$ is true in this model.
-
-One more example: $\forall x(Sx\eif \exists y Rxy)$? To check this is true we will need to check for every number $n$ whether `$Sx\eif \exists y Rxy$' is true under the variable assignment $\varvariant{\alpha}{x}{n}$ for each $n$ in the domain. 
-\begin{center}
-	\begin{tabular}{c|def}
-		$x$ & $Sx$ & $\eif$ & $\exists y Rxy$ \Bstrut\\\hline\Tstrut
-		1 & T & ? & ?\\
-		2 & F & T & \\
-		3 & T & ? & ?\\
-		4 & F & T & \\
-	\end{tabular}
-\end{center}
-
-
-So we need to check  whether $\exists y Rxy$ is true under the variable assignments $x\mapsto 1$ and $x\mapsto 3$. In the two other cases the conditional will be trivially true
-
-Consider a variable assignment where $x\mapsto 1$. We can find an object for $y$ such that `$Rxy$' is true under that variable assignment, namely, $y\mapsto 2$. Since there is an arrow from 1 to 2, `$Rxy$' is true in the variable assignment $\varvariant{\varvariant{\alpha}{x}{1}}{y}{2}$. Thus `$\exists y Rxy$' is true under the variable assignment $\varvariant{\alpha}{x}{1}$. For $x\mapsto 3$ we can also find an assignment for $y$ such that `$Rxy$' is true (which one?) and thus  `$\exists y Rxy$' is also true under the variable assignment $\varvariant{\alpha}{x}{3}$.
-%\begin{center}
-%\begin{tabular}{cc|c}
-%&&$Rxy$\Bstrut\\\hline\Tstrut
-%$x\mapsto 1$&$y\mapsto 2$&T\\
-%$x\mapsto 3$&$y\mapsto 3$&T
-% \end{tabular}
-%\end{center}So we now have
-We thus have
-\begin{center}
-	\begin{tabular}{c|def}
-		$x$ & $Sx$ & $\eif$ & $\exists y Rxy$ \Bstrut\\\hline\Tstrut
-		1 & T & T & T\\
-		2 & F & T & \\
-		3 & T & T & T\\
-		4 & F & T & \\
-	\end{tabular}
-\end{center}
-So $\forall x(Sx\eif \exists y Rxy)$ is true. Informally we might say this as: for every number that has a square around it has an arrow going out of it.
-
-One final example: $\forall x\forall y Rxy$. To check this we will need to consider all choices for $x$ and all choices for $y$ and check $Rxy$ is true on all of them. There are 16 such choices. But we won't have to go through them all: it'll be false. Consider $x\mapsto 1$ and $y\mapsto 4$. $Rxy$ is false under this variable assignment: there is no arrow from 1 to 4. Thus $\forall yRxy$ is false on the variable assignment $\varvariant{\alpha}{x}{1}$. And so $\forall x\forall y Rxy$ is false in the model under the variable assignment $\alpha$. However, $\alpha$ itself played no role in the evaluation of $\forall x\forall y Rxy$. All that mattered was the objects that were assigned to $x$ and $y$, and for $x$ and $y$ we considered the $x$-variants/$y$-variants. So $\forall x\forall y Rxy$ is not only true under the variable assignment $\alpha$ in this model but true under all variable assignments. This goes back to what we said at the end of Section \ref{s:traf}: the particular choice of an variable assignment is only relevant if we are evaluating the truth of formulas with free variables. $\forall x\forall y Rxy$ is a sentence, as it has no free variables.
-
-% Let's now give a formal definition of the idea we've been using here. Quantified formulas like $\exists y Rxy$ still need to be given truth conditions \emph{relative to a variable assignment}, because we'll need to specify an assignment of an object for the free variable $x$. So we define when $\exists \metav\metaX$ is true under a variable assignment $\alpha$, which might be, e.g.~$x\mapsto 1$. To give a general definition, though we might also consider whether $\forall y Rxy$ is true under a variable assignment $x\mapsto 1, y\mapsto 4$. This is slightly odd: we're considering $\exists y Rxy$ but have been told who $y$ refers to already. However when we evaluate it we simply ignore whatever our given variable assignment tells us about $y$: we consider variable assignments that modify the assignment by changing what is assigned to $y$. And by modifying it to $x\mapsto 1, y\mapsto2$ we have a variable assignment under which $Rxy$ is true, so $\exists y Rxy$ is true under the original variable assignment $x\mapsto 1, y\mapsto 4$.
-%
-% Similarly consider $\exists x Sx$ under the variable assignment $x\mapsto 1$. To evaluate this we consider modification of this variable assignment which assign other objects to $x$. Under the variable assignment $x\mapsto 2$, $Sx$ is true.  So under our original variable assignment $\exists x Sx$ is true: it didn't matter what our original variable assignment was, we ignored this and considered variants to evaluate its truth.
-
-More generally, if we have a quantifier like $\exists x$ or $\forall x$ we ignore whatever our original variable assignment told us about $x$ but consider suitable $x$-variants. So when all our variables are bound by quantifiers, all the original components of our variable assignment are ignored. To summarise: Sentences are simply true or false in models, variable assignments don't matter.
-
- Now for our formal definition:
-\factoidbox{
-$\forall \metav\metaX$ is true in the model $\model$ under a variable assignment $\alpha$\\
-\textbf{iff} for every $o\in \domain$, $\metaX$ is true in $\model$ under the variable assignment $\varvariant{\alpha}{\metav}{o}$.
-
-\bigskip
-
-$\exists \metav\metaX$ is true in the model $\model$ under a variable assignment $\alpha$\\
-\textbf{iff} for some $o\in \domain$, $\metaX$ is true in $\model$ under the variable assignment $\varvariant{\alpha}{\metav}{o}$.
-}
-%To be clear: all this is doing is formalizing the intuitive idea expressed in our examples. The result is a bit ugly, and the final definition might look a bit opaque. Hopefully, though, the \emph{spirit} of the idea is clear.
-
-
-We have now provided the full inductive definition of truth in a model under a variable assignment. This allows us to work up the formation tree of any sentence of FOL to detemrine its truth value. The special feature of sentences as opposed to formulas more generally was that there are no free variables. This means that information in a variable assignment $\alpha$ is irrelevant for the truth of the sentence and we can simply say that it is true or false on the model. 
 
 %\section{When the main logical operator is a quantifier}
 %The exciting innovation in FOL, though, is the use of \emph{quantifiers}.
@@ -696,223 +1350,6 @@ We have now provided the full inductive definition of truth in a model under a v
 %To be clear: all this is doing is formalizing (very pedantically) the intuitive idea expressed on the previous page. The result is a bit ugly, and the final definition might look a bit opaque. Hopefully, though, the \emph{spirit} of the idea is clear.
 
 
-
-\section{Working out the truth value}
-
-Consider 
-\begin{itemize}
-	\item $M_1$: 
-	\begin{interp}
-		\item[\domain] $\Set{1,2,3,4}$
-		\item[\denote{C}] $\Set{1,2}$
-		\item[\denote{S}] $\Set{1,2,3}$
-		\item[\denote{R}] $\{\langle 1,3\rangle,\langle 2,4\rangle,\langle 3,1\rangle\}$
-	\end{interp}
-	\item $M_2$:
-	\begin{interp}
-		\item[\domain] $\Set{1,2}$
-		\item[\denote{C}] $\Set{1}$
-		\item[\denote{S}] $\Set{2}$
-		\item[\denote{R}] $\{\langle 1,1\rangle\}$
-	\end{interp}
-\end{itemize}
-
-We are asked to evaluate this sentence on these two models
-			$$\enot \exists x Cx \eor \forall y (Cy\eor Sy)$$
-	
-Its truth depends on the truth of the constituent sentences under variable assignments. All the relevant cases are the `$?$' in the below table. 
-\[
-\begin{array}{c|d*{12}{e}f}
-	&\enot & \exists & x & C x & \eor &\forall&y &(&Cy&\eor&Sy&)  \\
-	\hline
-	
-	M_1
-	& ? &  ?&  &  &?&?  &&&&&&&&\\
-	
-	\varassigncline{4-5} 		\varassigncline{8-12} 
-	&  & & 1 & ? &&&1&&?&?&?\\
-	\varassigncline{4-5} 		\varassigncline{8-12} 
-	&  & & 2 & ? &&&2&&?&?&?\\
-	\varassigncline{4-5} 		\varassigncline{8-12} 
-	&  & & 3 & ? &&&3&&?&?&?\\
-	\varassigncline{4-5} 		\varassigncline{8-12} 
-	&  & & 4 & ? &&&4&&?&?&?\\
-	\hline
-	M_2
-	& ? &  ?&  &  &?&?  &&&&&&&&\\
-	
-	\varassigncline{4-5} 		\varassigncline{8-12} 
-	&  & & 1 & ? &&&1&&?&?&?\\
-	\varassigncline{4-5} 		\varassigncline{8-12} 
-	&  & & 2 & ? &&&2&&?&?&?\\
-	\hline
-\end{array}
-\]
-Although one doesn't need to fill out all the values, once you have found one variable assignment where the sentence is true, you can stop and put `$T$' for $\exists x \metaX$. 
-
-
-\[
-\begin{array}{c|d*{12}{e}f}
-	&\enot & \exists & x & C x & \eor &\forall&y &(&Sy&\eor&Cy&)  \\
-	\hline
-	
-	M_1
-	& \false&  \true&  &  &\TTbf{\false}&\false  &&&&&&&&\\
-	
-	\varassigncline{4-5} 		\varassigncline{8-12} 
-	&  & & 1 & \true &&&4&&\false&\false&\false\\
-	\hline
-	M_2
-	& \false&  \true&  &  &\TTbf{\true}&\true  &&&&&&&&\\
-	
-	\varassigncline{4-5} 		\varassigncline{8-12} 
-	&  & & 1 & \true &&&1&&\false&\true&\true\\
-	&  & & &  &&&2&&\true&\true&.\\
-	\hline
-\end{array}
-\]
-
-We can summarise that, there is no need to present it as a table: 
-
-\begin{itemize}
-	\item On $M_1$ it is false: $\exists x Cx$ is true so $\enot\exists x Cx$ is false. Also $\forall y(Sy\eor Cy)$ is false ($y\mapsto 4$). So the disjunction is false. 
-\item On $M_2$ it is true because $\forall y(Sy\eor Cy)$ is true: $1$ is $C$ and $2$ is $S$. 
-\end{itemize}
-
-Since models can be infinite there may not even theoretically be a table like this to calculate the truth, but it should give you the idea of how to go about reasoning about it. 
-
-
-What about $$\enot\forall x(Cx\eif\enot\exists y(Cy\eand Rxy))\eand \exists x \enot Cx$$
-To calculate this, we need to reason through filling out enough of the `$?$' in the below table to work out the answer. 
-\[
-\begin{array}{c|d*{20}{e}f}
-	&	\enot& \forall & x & ( & Cx & \eif & \enot & \exists & y & ( & Cy & \eand & Rxy & ) & )  & &\eand&\exists&x&\enot&Cx
-	\\ \hline
-	
-	M_1 & ?& ? &  &  &  &  &  &  &  &  &  &  &  &  & & &? &?\\ \varassigncline{4-16}\varassigncline{20-22}
-	
-	% x = 1 block
-	& &  & 1 &  & ? & ? & ? & ? &  &  &  &  &  &  & &&&&1 &? &?\\\varassigncline{10-15}\varassigncline{20-22}
-	& &  &   &  &   &   &   &   & 1 &  & ? & ? & ? &  &&&&&2&? &?  \\ \varassigncline{10-15}\varassigncline{20-22}
-	& &  &   &  &   &   &   &   & 2 &  & ? & ? & ? & & &&&&3 &? &?  \\ \varassigncline{10-15}\varassigncline{20-22}
-	& &  &   &  &   &   &   &   & 3 &  & ? & ? & ? &  &&&&&4 &? &?  \\ \varassigncline{10-15}\varassigncline{20-22}
-	& &  &   &  &   &   &   &   & 4 &  & ? & ? & ? &  &  \\ \varassigncline{4-16}
-	
-	% x = 2 block
-	& &  & 2 &  & ? & ? & ? & ? &  &  &  &  &  &  &  \\\varassigncline{10-15}
-	& &  &   &  &   &   &   &   & 1 &  & ? & ? & ? &  &  \\ \varassigncline{10-15}
-	& &  &   &  &   &   &   &   & 2 &  & ? & ? & ? &  &  \\ \varassigncline{10-15}
-	& &  &   &  &   &   &   &   & 3 &  & ? & ? & ? &  &  \\ \varassigncline{10-15}
-	& &  &   &  &   &   &   &   & 4 &  & ? & ? & ? &  &  \\ \varassigncline{4-16}
-	
-	% x = 3 block
-	& &  & 3 &  & ? & ? & ? & ? &  &  &  &  &  &  &  \\\varassigncline{10-15}
-	& &  &   &  &   &   &   &   & 1 &  & ? & ? & ? &  &  \\ \varassigncline{10-15}
-	& &  &   &  &   &   &   &   & 2 &  & ? & ? & ? &  &  \\ \varassigncline{10-15}
-	& &  &   &  &   &   &   &   & 3 &  & ? & ? & ? &  &  \\ \varassigncline{10-15}
-	& &  &   &  &   &   &   &   & 4 &  & ? & ? & ? &  &  \\ \varassigncline{4-16}
-	
-	% x = 4 block
-	& &  & 4 &  & ? & ? & ? & ? &  &  &  &  &  &  &  \\\varassigncline{10-15}
-	& &  &   &  &   &   &   &   & 1 &  & ? & ? & ? &  &  \\ \varassigncline{10-15}
-	& &  &   &  &   &   &   &   & 2 &  & ? & ? & ? &  &  \\ \varassigncline{10-15}
-	& &  &   &  &   &   &   &   & 3 &  & ? & ? & ? &  &  \\ \varassigncline{10-15}
-	& &  &   &  &   &   &   &   & 4 &  & ? & ? & ? &  &  \\ \hline
-	
-	
-	M_2 & ?& ? &  &  &  &  &  &  &  &  &  &  &  &  & & &? &?\\ \varassigncline{4-16}\varassigncline{20-22}
-	
-	% x = 1 block
-	& &  & 1 &  & ? & ? & ? & ? &  &  &  &  &  &  & &&&&1 &? &?\\\varassigncline{10-15}\varassigncline{20-22}
-	& &  &   &  &   &   &   &   & 1 &  & ? & ? & ? &  &&&&&2&? &?  \\ \varassigncline{10-15}\varassigncline{20-22}
-	& &  &   &  &   &   &   &   & 2 &  & ? & ? & ? & & &&&&& &  \\ \varassigncline{10-15}
-	\varassigncline{4-16}
-	
-	% x = 2 block
-	& &  & 2 &  & ? & ? & ? & ? &  &  &  &  &  &  &  \\\varassigncline{10-15}
-	& &  &   &  &   &   &   &   & 1 &  & ? & ? & ? &  &  \\ \varassigncline{10-15}
-	& &  &   &  &   &   &   &   & 2 &  & ? & ? & ? &  &  \\ \varassigncline{10-15}
-	\hline
-\end{array}
-\]
-\[
-	\begin{array}{c|d*{20}{e}f}
-		&	\enot& \forall & x & ( & Cx & \eif & \enot & \exists & y & ( & Cy & \eand & Rxy & ) & )  & &\eand&\exists&x&\enot&Cx
-		\\ \hline
-		
-		M_1 & \false& \true &  &  &  &  &  &  &  &  &  &  &  &  & & &\false &\true\\
-		\varassigncline{4-16}\varassigncline{20-22}
-		
-		% x = 1 block
-		& &  & 1 &  & \true & \true & \true & \false &  &  &  &  &  &  & &&&&1 &\false &\true\\
-		\varassigncline{10-15}\varassigncline{20-22}
-		& &  &   &  &   &   &   &   & 1 &  & \true & \false & \false &  &&&&&2&\false &\true  \\ 
-		\varassigncline{10-15}\varassigncline{20-22}
-		& &  &   &  &   &   &   &   & 2 &  & \true & \false & \false & & &&&&3 &\true &\false  \\ 
-		\varassigncline{10-15}\varassigncline{20-22}
-		& &  &   &  &   &   &   &   & 3 &  & \false & \false & \true &  &&&&&4 &\true &\false  \\ 
-		\varassigncline{10-15}\varassigncline{20-22}
-		& &  &   &  &   &   &   &   & 4 &  & \false & \false & \false &  &  \\ 
-		\varassigncline{4-16}
-		
-		% x = 2 block
-		& &  & 2 &  & \true & \true & \true & \false &  &  &  &  &  &  &  \\
-		\varassigncline{10-15}
-		& &  &   &  &   &   &   &   & 1 &  & \true & \false & \false &  &  \\ 
-		\varassigncline{10-15}
-		& &  &   &  &   &   &   &   & 2 &  & \true & \false & \false &  &  \\ 
-		\varassigncline{10-15}
-		& &  &   &  &   &   &   &   & 3 &  & \false & \false & \false &  &  \\ 
-		\varassigncline{10-15}
-		& &  &   &  &   &   &   &   & 4 &  & \false & \false & \true &  &  \\ 
-		\varassigncline{4-16}
-		
-		% x = 3 block
-		& &  & 3 &  & \false & \true & . & . &  &  &  &  &  &  &  \\
-		%		\varassigncline{10-15}
-		%		& &  &   &  &   &   &   &   & 1 &  & . & . & . &  &  \\ 
-		%		\varassigncline{10-15}
-		%		& &  &   &  &   &   &   &   & 2 &  & . & . & . &  &  \\ 
-		%		\varassigncline{10-15}
-		%		& &  &   &  &   &   &   &   & 3 &  & . & . & . &  &  \\ 
-		%		\varassigncline{10-15}
-		%		& &  &   &  &   &   &   &   & 4 &  & . & . & . &  &  \\ 
-		\varassigncline{4-16}
-		
-		% x = 4 block
-		& &  & 4 &  & \false & \true & . & . &  &  &  &  &  &  &  \\
-		%		\varassigncline{10-15}
-		%		& &  &   &  &   &   &   &   & 1 &  & . & . & . &  &  \\ 
-		%		\varassigncline{10-15}
-		%		& &  &   &  &   &   &   &   & 2 &  & . & . & . &  &  \\ 
-		%		\varassigncline{10-15}
-		%		& &  &   &  &   &   &   &   & 3 &  & . & . & . &  &  \\ 
-		%		\varassigncline{10-15}
-		%		& &  &   &  &   &   &   &   & 4 &  & . & . & . &  &  \\ 
-		\hline
-		
-		
-		M_2 & \true& \false &  &  &  &  &  &  &  &  &  &  &  &  & & &\true &\true\\ 
-		\varassigncline{4-16}\varassigncline{20-22}
-		
-		% x = 1 block
-		& &  & 1 &  & \true & \false & \false & \true &  &  &  &  &  &  & &&&&1 &\false &\true\\
-		\varassigncline{10-15}\varassigncline{20-22}
-		& &  &   &  &   &   &   &   & 1 &  & \true & \true & \true &  &&&&&2&\true &\false  \\ 
-		\varassigncline{20-22}
-		%		& &  &   &  &   &   &   &   & 2 &  & \false & \false & \false & & &&&&& &  \\ 
-		\varassigncline{4-16}
-		
-		% x = 2 block
-		& &  & 2 &  & \false & \true & . & &  &  &  &  &  &  &  \\
-		\varassigncline{10-15}
-		%		& &  &   &  &   &   &   &   & 1 &  & . & . & . &  &  \\ 
-		%		\varassigncline{10-15}
-		%		& &  &   &  &   &   &   &   & 2 &  & . & . & . &  &  \\ 
-		%		\varassigncline{10-15}
-		\hline
-	\end{array}
-	\]
 
 
 
