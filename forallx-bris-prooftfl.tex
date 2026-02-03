@@ -139,7 +139,7 @@ The modern development of natural deduction dates from simultaneous and unrelate
 
 Natural deduction selects a few basic rules of inference and natural forms of reasoning and encodes these into a proof system. We will now see natural deduction for TFL. This system will form the basis also for natural deduction for FOL, which will also add rules for the quantifiers.
 
-\chapter{The Basic Rules for TFL Part 1}\label{s:BasicTFL}
+\chapter{The First Basic Rules}\label{s:BasicTFL}
 
 
 %
@@ -488,32 +488,6 @@ Simple, but effective. In fact this shows that we didn't need to have the rule o
 %\end{fitchproof}}
 %Note that the biconditional, and the right or left half, can be separated from one another, and they can appear in any order. However, in the citation for $\eiff$E, we always cite the biconditional first.
 
-\section{Disjunction Introduction}
-Suppose Alice came to the party. Then Alice or Beth came to the party. After all, to say that Alice or Beth came to the party is to say something weaker than to say that Alice came to the party.
-
-Let me emphasize this point. Suppose Alice came to the party. It follows that Alice came to the party \emph{or} I am the Queen of England. Equally, it follows that Alice or the Queen came to the party.  Equally, it follows that Alice came to the party \emph{or} that God is dead. Many of these are strange inferences to draw, but there is nothing \emph{logically} wrong with them (even if they maybe violate all sorts of implicit conversational norms).
-
-Armed with all this, we present the disjunction introduction rule(s):
-\factoidbox{\begin{fitchproof}
-\ellipsesline
-	\have[m]{a}{\metaX}
-	\ellipsesline
-	\have[\ ]{ab}{\metaX\eor\metaY}\orI{a}
-\end{fitchproof}
-and
-\begin{fitchproof}
-\ellipsesline
-	\have[m]{a}{\metaX}
-	\ellipsesline
-	\have[\ ]{ba}{\metaY\eor\metaX}\orI{a}
-\end{fitchproof}}
-Notice that \metaY can be \emph{any} sentence whatsoever, so the following is a perfectly acceptable proof:
-\begin{fitchproof}
-	\hypo{m}{M}
-	\have{mmm}{M \eor ([(A\eiff B) \eif (C \eand D)] \eiff [E \eand F])}\orI{m}
-\end{fitchproof}
-Using a truth table to show this would have taken 128 lines.
-
 
 %\section{Contradiction}
 %Instead of tackling negation directly, we will first think about \emph{contradiction}. \todo[inline]{Why? maybe we should simply do Explosion and }
@@ -606,20 +580,15 @@ Give a proof corresponding to each of the following arguments:
 		\have{bc}{B \eor C}\andE{prem}
 		\have{conj}{(B \eor C) \eand A}\andI{bc,a}
 \end{fitchproof}}
-\item $(A\eor\enot A)\eif B\,\therefore\, B$
-\myanswer{\begin{fitchproof}
-		\hypo{cond}{(A \eor \enot A) \eif B}
-		\have{lem}{A \eor \enot A}\LEM
-		\have{b}{B}\ifE{cond,lem}
-\end{fitchproof}}
 \end{enumerate}
 
 
 
 \end{practiceproblems}
 
+\chapter{The remaining Basic Rules for TFL}
 
-\chapter{More Basic Rules for TFL: part 2: the first basic rules with subproofs}
+%\chapter{More Basic Rules for TFL: Subproofs}
 
 To introduce a conditional we need to introduce another kind of thing: a sub-proof.
 
@@ -742,65 +711,6 @@ The subproof also doesn't need to start immediately. For example:
 %Two things need emphasising. First `$\metaX$' is not a sentence of TFL. Rather, it a symbol in the metalanguage, which we use when we want to talk about any sentence of TFL (see \S\ref{s:UseMention}). Second, and similarly, `$m$' is not a numeral that will appear on a proof. Rather, it is a symbol in the metalanguage, which we use when we want to talk about any line number of a proof. In an actual proof, the lines are numbered `$1$', `$2$', `$3$', and so forth. But when we define the rule, we use variables to underscore the point that the rule may be applied at any point.
 \todo[inline]{I removed reiteration!!!}
 
-
-\section{Disjunction Elimination}\label{s:orE}
-The disjunction elimination rule also makes use of subproofs.
-
-Suppose that  Alice came to the party or Beth came to the party. What can you conclude? Not that Alice came to the party; it might be that Beth came to the party instead. Equally, not that Beth came to the party; for it might be that only Alice came. Disjunctions, just by themselves, are hard to work with.
-
-But suppose that we could somehow show both of the following: first, that Alice coming to the party entails that it was fun: second, that Beth coming to the party entails that it was fun. Then if we know that Alice or Beth came to the party, then we know that either way, it was fun. This insight can be expressed in the following rule, which is our disjunction elimination ($\eor$E) rule:
-\factoidbox{
-	\begin{fitchproof}
-		\have[m]{ab}{\metaX\eor\metaY}
-%		\have[i]{i}{\metaX\to\metaZ}
-%		\have[j]{j}{\metaY\to\metaZ}
-%		\have[\ ]{c}{\metaZ} \orE{ab,i,j}
-	\\	\open
-			\hypo[i]{a}{\metaX}
-			\ellipsesline
-			\have[j]{c1}{\metaZ}
-		\close
-		\open
-			\hypo[k]{b}{\metaY}
-			\ellipsesline
-			\have[l]{c2}{\metaZ}
-		\close
-		\have[\ ]{c}{\metaZ} \orE{ab,a-c1,b-c2}
-	\end{fitchproof}}
-This is obviously a bit clunkier to write down than our previous rules, but the point is fairly simple. Suppose we have some disjunction, $\metaX \eor \metaY$. Suppose we have two
-subproofs,
-showing us that $\metaZ$ follows from
-the assumption that
-$\metaX$, and that $\metaZ$ follows from
-the assumption that
-$\metaY$. Then we can infer $\metaZ$ itself. As usual, there can be as many lines as you like between
-$i$ and $j$, and as many lines as you like between $k$ and $l$.
-Moreover,
-%these lines,
-the subproofs and the disjunction
-can come in any order, and do not have to be adjacent.
-
-Some examples might help illustrate this. Consider this argument:
-$$(P \eand Q) \eor (P \eand R) \therefore P$$
-A proof corresponding to this argument is:
-	\begin{fitchproof}
-		\hypo{prem}{(P \eand Q) \eor (P \eand R) }
-			\open
-				\hypo{pq}{P \eand Q}
-				\have{p1}{P}\andE{pq}
-			\close
-%			\have{pqp}{(P \eand Q) \eif P} {\ifI{pq-p1}}
-			\open
-				\hypo{pr}{P \eand R}
-				\have{p2}{P}\andE{pr}
-			\close
-%			\have{prp}{(P \eand R) \eif P} {\ifI{pr-p2}}
-		\have{con}{P}\orE{prem, pq-p1, pr-p2}
-%		\have{con}{P}\orE{prem, pq-p1, pr-p2}
-	\end{fitchproof}
-
-
-
 \section{Additional assumptions and subproofs}
 The rules we have just seen involve the idea of making additional assumptions. These need to be handled with some care.
 
@@ -881,7 +791,7 @@ It is always permissible to open a subproof with any assumption. However, there 
 Equally, it is always permissible to close a subproof and discharge its assumptions. However, it will not be helpful to do so until you have reached something useful.
 
 
-\chapter{The remaining Basic Rules for TFL}
+%\chapter{More basic rules: Negation}
 \section{Negation}
 \subsection{Negation Introduction}
 If assuming something leads you to a contradiction, then the assumption must be wrong. 
@@ -921,8 +831,8 @@ To see this in practice, and interacting with negation, consider this proof:
 
 
 \subsection{Negation Elimination} \todo[inline]{CCM Nov 23: 
-Should definitely ahve this instead of LEM as students always accidently use it anyway.
-Should it be called neg Elim? For normalisation need negE to be the explosion. But I don't really care. 
+	Should definitely ahve this instead of LEM as students always accidently use it anyway.
+	Should it be called neg Elim? For normalisation need negE to be the explosion. But I don't really care. 
 }
 
 
@@ -935,60 +845,148 @@ The negation elimination rule is quite similar.
 We motivate the rule by the following thought:
 If assuming that something is false leads you to a contradiction, then that assumption must be wrong --- and so that `something' must in fact be true. In other words, if we assume $\enot\metaX$ and derive a contradiction, then we can conclude $\metaX$: we eliminate the negation.
 \factoidbox{\begin{fitchproof}
-\open
-	\hypo[m]{a}{\enot\metaX}
-	\ellipsesline
-%	\have[n]{x}{\metaY}\ellipsesline
-%	\have[k]{y}{\enot\metaY}
-	\have[k]{y}{\metaY\eand\enot\metaY}
-\close
-\have[\ ]{na}{\metaX}\notE{a-y}
-%\have[m]{axx}{\metaX \eif \ered}
-%\have[\ ]{na}{\enot\metaX}\notI{axx}
+		\open
+		\hypo[m]{a}{\enot\metaX}
+		\ellipsesline
+		%	\have[n]{x}{\metaY}\ellipsesline
+		%	\have[k]{y}{\enot\metaY}
+		\have[k]{y}{\metaY\eand\enot\metaY}
+		\close
+		\have[\ ]{na}{\metaX}\notE{a-y}
+		%\have[m]{axx}{\metaX \eif \ered}
+		%\have[\ ]{na}{\enot\metaX}\notI{axx}
 \end{fitchproof}}
 Formally, the rule is very similar to $\enot$I, but they are different.\footnote{There are logicians who accept $\enot$I but reject $\enot$E. They are called ``intuitionists.'' Intuitionists reject the law of excluded middle. They don't buy our basic assumption that every sentence has one of two truth values, true or false. For intuitionists, $\metaX$ and $\enot\enot\metaX$ are not equivalent. 
-%To get the system of intuitionist logic, we reject $\enot$E and LEM. We then need to add the rule of explosion as a basic rule. This rule is derivable in our system.
+	%To get the system of intuitionist logic, we reject $\enot$E and LEM. We then need to add the rule of explosion as a basic rule. This rule is derivable in our system.
 } They switch $\metaX$ and $\enot\metaX$. 
- $\enot$I introduced a negation, but $\enot$E eliminates a negation.
- 
+$\enot$I introduced a negation, but $\enot$E eliminates a negation.
+
 Sometimes this is called the rule of \emph{indirect proof}, \emph{reductio ad absurdum} or \emph{proof by contradiction}. It allows us to prove something by showing that its negation leads to contradiction. This technique is very common in mathematics.%
 \footnote{
-For example it is used to show there are infinitely many prime numbers. We assume, for contradiction, that there are not infinitely many primes, so there must be a biggest prime number. We can then use this assumption to construct a further prime number which is larger than the biggest prime number. This is a contradiction. We can thus conclude that there are infinitely many primes.
+	For example it is used to show there are infinitely many prime numbers. We assume, for contradiction, that there are not infinitely many primes, so there must be a biggest prime number. We can then use this assumption to construct a further prime number which is larger than the biggest prime number. This is a contradiction. We can thus conclude that there are infinitely many primes.
 }
 
 
 
 To see this rule in action, here is an example proof using it:
-	\begin{fitchproof}
-		\hypo{d}{\enot\enot D}
-		\open
-			\hypo{nd}{\enot D}
-			\have{red}{\enot D\eand\enot\enot D}\andI{d, nd}
-%			\have{nnd}{\enot\enot D}\Reiteration{d}
-%			\have{nd2}{\enot D}\Reiteration{nd}
-%			\have{red}{\enot D\eand\enot\enot D}\andI{nd2,nnd}
-		\close
-		\have{con}{D}\notE{nd-red}
-	\end{fitchproof}
-	Here $\metaX$ is $D$ and $\metaY$ is $\enot D$. 
+\begin{fitchproof}
+	\hypo{d}{\enot\enot D}
+	\open
+	\hypo{nd}{\enot D}
+	\have{red}{\enot D\eand\enot\enot D}\andI{d, nd}
+	%			\have{nnd}{\enot\enot D}\Reiteration{d}
+	%			\have{nd2}{\enot D}\Reiteration{nd}
+	%			\have{red}{\enot D\eand\enot\enot D}\andI{nd2,nnd}
+	\close
+	\have{con}{D}\notE{nd-red}
+\end{fitchproof}
+Here $\metaX$ is $D$ and $\metaY$ is $\enot D$. 
 
 
 This rule also allows us to prove that anything follows from a contradiction. For example:
+\begin{fitchproof}
+	\hypo{a}{A}
+	\hypo{na}{\enot A}
+	\open
+	\hypo{nb}{\enot B}
+	%			\have{a2}{A}\Reiteration{a}
+	%			\have{na2}{\enot A}\Reiteration{na}
+	\have{ana}{A\eand\enot A}\andI{a,na}
+	\close
+	\have{b}{B}\notE{nb-ana}
+\end{fitchproof}
+
+
+\section{Disjunction}
+
+\subsection{Disjunction Introduction}
+Suppose Alice came to the party. Then Alice or Beth came to the party. After all, to say that Alice or Beth came to the party is to say something weaker than to say that Alice came to the party.
+
+Let me emphasize this point. Suppose Alice came to the party. It follows that Alice came to the party \emph{or} I am the Queen of England. Equally, it follows that Alice or the Queen came to the party.  Equally, it follows that Alice came to the party \emph{or} that God is dead. Many of these are strange inferences to draw, but there is nothing \emph{logically} wrong with them (even if they maybe violate all sorts of implicit conversational norms).
+
+Armed with all this, we present the disjunction introduction rule(s):
+\factoidbox{\begin{fitchproof}
+		\ellipsesline
+		\have[m]{a}{\metaX}
+		\ellipsesline
+		\have[\ ]{ab}{\metaX\eor\metaY}\orI{a}
+	\end{fitchproof}
+	and
 	\begin{fitchproof}
-		\hypo{a}{A}
-		\hypo{na}{\enot A}
-		\open
-			\hypo{nb}{\enot B}
-%			\have{a2}{A}\Reiteration{a}
-%			\have{na2}{\enot A}\Reiteration{na}
-			\have{ana}{A\eand\enot A}\andI{a,na}
+		\ellipsesline
+		\have[m]{a}{\metaX}
+		\ellipsesline
+		\have[\ ]{ba}{\metaY\eor\metaX}\orI{a}
+\end{fitchproof}}
+Notice that \metaY can be \emph{any} sentence whatsoever, so the following is a perfectly acceptable proof:
+\begin{fitchproof}
+	\hypo{m}{M}
+	\have{mmm}{M \eor ([(A\eiff B) \eif (C \eand D)] \eiff [E \eand F])}\orI{m}
+\end{fitchproof}
+Using a truth table to show this would have taken 128 lines.
+
+\subsection{Disjunction Elimination}\label{s:orE}
+The disjunction elimination rule also makes use of subproofs.
+
+Suppose that  Alice came to the party or Beth came to the party. What can you conclude? Not that Alice came to the party; it might be that Beth came to the party instead. Equally, not that Beth came to the party; for it might be that only Alice came. Disjunctions, just by themselves, are hard to work with.
+
+But suppose that we could somehow show both of the following: first, that Alice coming to the party entails that it was fun: second, that Beth coming to the party entails that it was fun. Then if we know that Alice or Beth came to the party, then we know that either way, it was fun. This insight can be expressed in the following rule, which is our disjunction elimination ($\eor$E) rule:
+\factoidbox{
+	\begin{fitchproof}
+		\have[m]{ab}{\metaX\eor\metaY}
+%		\have[i]{i}{\metaX\to\metaZ}
+%		\have[j]{j}{\metaY\to\metaZ}
+%		\have[\ ]{c}{\metaZ} \orE{ab,i,j}
+	\\	\open
+			\hypo[i]{a}{\metaX}
+			\ellipsesline
+			\have[j]{c1}{\metaZ}
 		\close
-		\have{b}{B}\notE{nb-ana}
+		\open
+			\hypo[k]{b}{\metaY}
+			\ellipsesline
+			\have[l]{c2}{\metaZ}
+		\close
+		\have[\ ]{c}{\metaZ} \orE{ab,a-c1,b-c2}
+	\end{fitchproof}}
+This is obviously a bit clunkier to write down than our previous rules, but the point is fairly simple. Suppose we have some disjunction, $\metaX \eor \metaY$. Suppose we have two
+subproofs,
+showing us that $\metaZ$ follows from
+the assumption that
+$\metaX$, and that $\metaZ$ follows from
+the assumption that
+$\metaY$. Then we can infer $\metaZ$ itself. As usual, there can be as many lines as you like between
+$i$ and $j$, and as many lines as you like between $k$ and $l$.
+Moreover,
+%these lines,
+the subproofs and the disjunction
+can come in any order, and do not have to be adjacent.
+
+Some examples might help illustrate this. Consider this argument:
+$$(P \eand Q) \eor (P \eand R) \therefore P$$
+A proof corresponding to this argument is:
+	\begin{fitchproof}
+		\hypo{prem}{(P \eand Q) \eor (P \eand R) }
+			\open
+				\hypo{pq}{P \eand Q}
+				\have{p1}{P}\andE{pq}
+			\close
+%			\have{pqp}{(P \eand Q) \eif P} {\ifI{pq-p1}}
+			\open
+				\hypo{pr}{P \eand R}
+				\have{p2}{P}\andE{pr}
+			\close
+%			\have{prp}{(P \eand R) \eif P} {\ifI{pr-p2}}
+		\have{con}{P}\orE{prem, pq-p1, pr-p2}
+%		\have{con}{P}\orE{prem, pq-p1, pr-p2}
 	\end{fitchproof}
 
 
 
-\section{Law of Excluded Middle}\label{sec:LEM}
+
+
+
+\subsection{Law of Excluded Middle}\label{sec:LEM}
 We will actually add another rule for how to introduce a disjunction. There are special kinds of disjunctions that don't need further justification: sentences of the form $\metaX\eor\enot\metaX$.
 In \S\ref{s:TautologiesAndContradictions} we saw that $A\eor\enot A$ is a tautology: it is true on all valuations. More generally, any sentence of the form $\metaX\eor\enot\metaX$ is a tautology.
 The rule \emph{Law of Excluded Middle} encodes this fact: it simply says that you are always allowed to write $\metaX\eor\enot\metaX$:
@@ -1155,37 +1153,6 @@ We then have rules in our natural deduction system that let you exchange $\metaX
 }
 
 
-\section{Proof Strategies}
-
-\begin{highlighted}
-{These are all of the basic rules for the proof system for TFL.} For ease of reference, they're listed again in appendix \ref{glossary:quick ref}.
-\end{highlighted}
-%Any other forms of reasoning that you want to use will have to be reduced to these.
-
-There is no simple recipe for proofs, and there is no substitute for practice. Here, though, are some rules of thumb and strategies to keep in mind.
-
-\paragraph{Work backwards from what you want.}
-The ultimate goal is to obtain the conclusion. Look at the conclusion and ask what the introduction rule is for its main logical operator. This gives you an idea of what should happen \emph{just before} the last line of the proof. Then you can treat this line as if it were your goal. Ask what you could do to get to this new goal.
-
-For example: If your conclusion is a conditional $\metaX\eif\metaY$, plan to use the {\eif}I rule. This requires starting a subproof in which you assume \metaX. The subproof ought to end with \metaY. So, what can you do to get $\metaY$?
-
-\paragraph{Work forwards from what you have.}
-When you are starting a proof, look at the premises; later, look at the sentences that you have obtained so far. Think about the elimination rules for the main operators of these sentences. These will often tell you what your options are.
-
-For a short proof, you might be able to eliminate the premises and introduce the conclusion. A long proof is formally just a number of short proofs linked together, so you can fill the gap by alternately working back from the conclusion and forward from the premises.
-
-\paragraph{Try proceeding indirectly.}
-If you cannot find a way to show $\metaX$ directly, try starting by assuming $\enot \metaX$. If a contradiction follows, then you will be able to obtain $\metaX$ by $\enot$E.
-
-\paragraph{Law of Excluded Middle.}
-If you're hitting a blank, try seeing if there's some instance of LEM that might help you. These arguments do just need some inspiration to see the instance of LEM that'll be helpful.
-
-\paragraph{Persist.}
-Try different things. If one approach fails, then try something else.
-
-If the argument is actually valid (which is defined using truth-tables) there will be a proof of it somehow\ldots
-
-
 
 \begin{practiceproblems}
 
@@ -1266,6 +1233,38 @@ The following three proofs are missing their citations (rule and line numbers). 
 \chapter{Proofs and Validity}
 
 
+\section{Proof Strategies}
+
+\begin{highlighted}
+	{These are all of the basic rules for the proof system for TFL.} For ease of reference, they're listed again in appendix \ref{glossary:quick ref}.
+\end{highlighted}
+%Any other forms of reasoning that you want to use will have to be reduced to these.
+
+There is no simple recipe for proofs, and there is no substitute for practice. Here, though, are some rules of thumb and strategies to keep in mind.
+
+\paragraph{Work backwards from what you want.}
+The ultimate goal is to obtain the conclusion. Look at the conclusion and ask what the introduction rule is for its main logical operator. This gives you an idea of what should happen \emph{just before} the last line of the proof. Then you can treat this line as if it were your goal. Ask what you could do to get to this new goal.
+
+For example: If your conclusion is a conditional $\metaX\eif\metaY$, plan to use the {\eif}I rule. This requires starting a subproof in which you assume \metaX. The subproof ought to end with \metaY. So, what can you do to get $\metaY$?
+
+\paragraph{Work forwards from what you have.}
+When you are starting a proof, look at the premises; later, look at the sentences that you have obtained so far. Think about the elimination rules for the main operators of these sentences. These will often tell you what your options are.
+
+For a short proof, you might be able to eliminate the premises and introduce the conclusion. A long proof is formally just a number of short proofs linked together, so you can fill the gap by alternately working back from the conclusion and forward from the premises.
+
+\paragraph{Try proceeding indirectly.}
+If you cannot find a way to show $\metaX$ directly, try starting by assuming $\enot \metaX$. If a contradiction follows, then you will be able to obtain $\metaX$ by $\enot$E.
+
+\paragraph{Law of Excluded Middle.}
+If you're hitting a blank, try seeing if there's some instance of LEM that might help you. These arguments do just need some inspiration to see the instance of LEM that'll be helpful.
+
+\paragraph{Persist.}
+Try different things. If one approach fails, then try something else.
+
+If the argument is actually valid (which is defined using truth-tables) there will be a proof of it somehow\ldots
+
+
+\section{Proofs and Validity}
 The system of rules we have set up is not just a game. It helps us understand the validity of arguments.
 
 An argument
@@ -1502,7 +1501,7 @@ Show that each of the following arguments are valid using natural deduction:
 
 
 \chapter{Derived rules for TFL}\label{s:Further}
-In \S\ref{s:BasicTFL}, we introduced the basic rules of our proof system for TFL. In this section, we will add some additional rules to our system. These will make our system much easier to work with. (However, in \S\ref{s:Derived} we will see that they are not strictly speaking \emph{necessary}.)
+We have introduced all the basic rules of our proof system for TFL. In this section, we will add some additional rules to our system. These will make our system much easier to work with. (However, in \S\ref{s:Derived} we will see that they are not strictly speaking \emph{necessary}.)
 
 %\section{Reiteration}\label{sec:reiteration}
 %The first additional rule is \emph{reiteration} (R). This just allows us to repeat ourselves:
@@ -1786,7 +1785,7 @@ Give a proof for each of these arguments:
 
 \end{practiceproblems}
 
-\chapter{Derived rules}\label{s:Derived}
+\chapter{Derivations of the derived rules}\label{s:Derived}
 
 In this section, we will see why we introduced the rules of our proof system in two separate batches. In particular, we want to show that the additional rules of \S\ref{s:Further} are not strictly speaking necessary, but can be derived from the basic rules of \S\ref{s:BasicTFL}.
 
