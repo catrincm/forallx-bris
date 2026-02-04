@@ -66,10 +66,10 @@ We will introduce a new logical language that will allow us to capture the valid
 
 We will here give a sneak-preview by saying how the first argument will be symbolised in FOL to give you some ideas of how FOL works.
 
-You might feel the pull to symbolise premise 1 as $$L\eif H.$$
-With the given symbolisation key, this is to say ``if Alice is a logician, she wears a funny hat.'' That's enough to get to the conclusion, and it's a consequence of premise 1, but it's not what premise 1 says. It's not an adequate symbolisation of premise 1. 
+You might feel the pull to symbolise premise 2 as $$L\eif H.$$
+With the given symbolisation key, this is to say \begin{samplesent}\item if Alice is a logician, she wears a funny hat.\end{samplesent} That's enough to get to the conclusion, and it's a consequence of premise 2, but it's not what premise 2 says. It's not an adequate symbolisation of ``All logicians wear funny hats''.
 
-Instead you might try: well, lets just let $L$ stand for `logician' and $H$ stand for `wears a funny hat'. Then we can just use $L\eif H$. The problem is that these aren't declarative sentences. They're not the sort of thing to be true or false. They only form declarative sentences once their applied to an individual, such as Alice. 
+Instead you might try: well, lets just let $L$ stand for `logician' and $H$ stand for `wears a funny hat'. Then we can just use $L\eif H$. The problem is that these aren't declarative sentences. They're not the sort of thing to be true or false. They only form declarative sentences once the person they're to be applied to is given, such as Alice. 
 
 In First Order Logic, we can capture the idea that whoever is being referred to, if they are a logician, then they wear a funny hat. Or ``If someone is a logician, they wear a funny hat.'' 
 In this sentence, `they' isn't referring to any particular individual, but instead its reference is varying. In First Order Logic, we will have variables such as $x,y,z$ which play this role.  
@@ -84,7 +84,7 @@ Saying that they apply to Alice, we will introduce a name in FOL `$a$' which wil
 $La$ will then stand for `Alice is a logician' and $Ha$ stands for `Alice wears a funny hat'. 
 
 In First Order Logic, then we can capture the argument as:
-$$\forall x(Lx\eif Hx),\; La\;\therefore\; Ha$$
+$$La,\;\forall x(Lx\eif Hx)\;\therefore\; Ha$$
 
 We can also capture arguments which talk about `some' or `exists'. 
 \begin{earg}
@@ -176,8 +176,8 @@ Like in TFL, when symbolising we have to give a symbolisation key to specify how
 \begin{ekey}
 \item[a] Alice
 \item[Lx] \gap{x} is a logician
-\end{ekey}
-and we can then symbolise `Alice is a logician' as $$La.$$ (We will say more about the ``$x$'' subscript later.)
+\end{ekey}(We will say more about the ``$x$'' subscript later.)
+and we can then symbolise `Alice is a logician' as $$La.$$ 
 
 Note that in FOL the name follows the predicate: we have to write it as $La$. The property of being a logician applies to Alice.
 
