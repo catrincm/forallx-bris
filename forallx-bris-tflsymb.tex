@@ -183,6 +183,141 @@ with the following symbolization key:
 Using our symbolization procedure we then obtain the following TFL-argument $$R\eor L,\enot R\therefore L$$ which can be checked for logical validity (Check!).
 
 
+\chapter{On Truth-functional connectives}
+\label{s:TruthFunctionality}
+%We now reflect on truth-functional logic and the connectives we've used.
+
+
+\section{Truth-functionality}
+%%%%because???
+Let's introduce an important idea.
+\factoidbox{
+	A connective is \define{truth-functional} iff the truth value of a sentence with that connective as its main connective is uniquely determined by the truth value(s) of the constituent sentence(s).
+}
+\newglossaryentry{truth-functional connective}
+{
+	name=truth-functional connective,
+	description={an operator that builds larger sentences out of smaller ones and fixes the \gls{truth value} of the resulting sentence based only on the truth value of the component sentences}
+}
+
+Every connective in TFL is truth-functional. We were able to give rules to determine what the truth value of a sentence $\enot\metaX$ is depending only on the truth value of $\metaX$. The truth value of $\metaX$ uniquely determines the truth value of $\enot \metaX$. The same was true for all the other connectives of TFL ($\eand,\eor,\eif$), as is evidenced by the truth rules and truth tables we gave for these connectives. This is what gives TFL its name: it is \emph{truth-functional logic}.
+
+%The truth value of a negation is uniquely determined by the truth value of the unnegated sentence. The truth value of a conjunction is uniquely determined by the truth value of both conjuncts. The truth value of a disjunction is uniquely determined by the truth value of both disjuncts, and so on.
+
+%This then means that to determine the truth value of any TFL sentence, we only need to know the truth value of the atomic sentences it includes. We will see exactly how to do this in \S\ref{s:CompleteTruthTables}.
+
+
+%The truth value of a non-atomic sentence of TFL, such as $A\eand B$ depends on the truth values of $A$ and $B$. But once the truth values of $A$, $B$ and $C$ are provided, the truth value of $A\eand B$ is fixed. Indeed, this is the characteristic feature of \emph{truth functional logic}.
+
+\section{Non truth-functional connectives}
+In plenty of languages, e.g.~English, there are connectives that are not truth-functional. We here describe just two (Exercise: find further non-truth-functional connectives of English):
+
+\subsection{Necessarily}
+
+In English, for example, we can form a new sentence from any simpler sentence by prefixing it with `Necessarily, \ldots' or  `It is necessary that\ldots'. The truth value of this new sentence is not fixed solely by the truth value of the original sentence. For consider two true sentences:
+\begin{samplesent}
+	\item\label{nec-math} $2 + 2 = 4$
+	\item\label{nec-music} Shostakovich wrote fifteen string quartets
+\end{samplesent}
+Whereas it is necessary that $2 + 2 = 4$, it is not \emph{necessary} tthat Shostakovich wrote fifteen string quartets. If Shostakovich had died earlier, he would have failed to finish Quartet no.\ 15; if he had lived longer, he might have written a few more. So `It is necessary that\ldots' is a connective of English, but it is not \emph{truth-functional}.
+
+
+
+\subsection{Subjunctive conditionals}\label{s:IndicativeSubjunctive}
+
+
+
+We said that $\eif$ was pretty bad at capturing some uses of `if\ldots, then\ldots' in English. It is especially bad at capturing use of \emph{subjunctive conditionals} of English. The problem is that a subjunctive conditional is not truth functional.
+Consider the two sentences:
+\begin{samplesent}
+	\item\label{brownwins1} If Mitt Romney had won the 2012 election, then he would have been the 45th President of the USA.
+	\item\label{brownwins2} If Mitt Romney had won the 2012 election, then he would have turned into a helium-filled balloon and floated away into the night sky.
+\end{samplesent}
+Sentence \ref{brownwins1} is true; sentence \ref{brownwins2} is false, but both have false antecedents and false consequents. So the truth value of the whole sentence is not uniquely determined by the truth value of the constituent sentences.
+
+However, the material conditional, which is what we specify $\eif$ to be, is the best that can be done in TFL for capturing conditionals. TFL just doesn't have the required resources as the subjunctive conditional is not truth-functional.
+
+\section{Truth-functional completeness}
+There is an important result about TFL, or truth functional logic: not only are its connectives truth functional, in fact, it can capture all truth-functional connectives, possibly by use of a more complex sentence of TFL. 
+
+Consider the following:
+\[\begin{array}{cc|c}
+	A&B&?\\\hline
+	\true&\true&\false\\
+	\true&\false&\true\\
+	\false&\true&\true\\
+	\false&\false&\false
+\end{array}\]
+One can come up with a sentence of TFL which has this truth table, we already gave it as the exclusive disjunction:\[(A\eor B)\eand\enot (A\eand B)\]
+
+This is a general fact about TFL and the reason it is called ``Truth-functional logic'', it is the logic of truth functions, the logic of all truth-functional connectives. Whatever truth table you give me, I can find a sentence of TFL which has that truth table. It can encode any possible truth functional connective. 
+
+
+\begin{practiceproblems}
+	
+	
+	
+	\problempart
+	\begin{problemslist}
+		\item 	Is `I know that' truth functional? \\
+		%	\emph{(Hint: try to think of a situation with two English sentences, $\metaX$ and $\metaY$, which have the same truth value but where `I know that \metaX' and `I know that \metaY' have different truth values) }
+		\myanswer{\\No. \begin{center}
+				`I know that I have hands'
+			\end{center} is true (true $\leadsto$ true). But there are some sentences that are true but I don't know them. E.g., 
+			\begin{center}
+				`I know that France won the FIFA world cup'
+			\end{center} (well, I now know it but I didn't 20 minutes ago. )}
+	\end{problemslist}
+	
+	
+	\problempart
+	Can you think of sentences with the following truth table:
+	\begin{problemslist}
+		\item \begin{tabular}{cc|c}
+			$A$&$B$&?\\\hline
+			T&T&T\\
+			T&F&T\\
+			F&T&T\\
+			F&F&T
+		\end{tabular}\myanswer{$A\eor\enot A$}
+		\item \begin{tabular}{cc|c}
+			$A$&$B$&?\\\hline
+			T&T&F\\
+			T&F&F\\
+			F&T&T\\
+			F&F&F
+		\end{tabular}\myanswer{$\enot A\eand B$}
+		\item \begin{tabular}{cc|c}
+			$A$&$B$&?\\\hline
+			T&T&T\\
+			T&F&F\\
+			F&T&T\\
+			F&F&T
+		\end{tabular}\myanswer{\quad\begin{minipage}{.75\textwidth}
+				$\enot( A\eand \enot B)$;\\ or a more systematic answer by simply writing out the different options when the sentence is true: $$((A\eand B)\eor (\enot A\eand B))\eor (\enot A\eand\enot B)$$
+		\end{minipage}}
+		
+	\end{problemslist}
+	\problempart
+	Suppose $X$ is TFL sentence containing two atomic sentences. Then there are in fact sixteen different possible columns for $X$.
+	\begin{problemslist}
+		\item Can you explain why?\myanswer{\\ The first line might have T or F, the second line might have T or F, etc. There are 4 valuations, so there are $2\times 2\times 2\times 2=2^4=16$ different ways of putting Ts and Fs to these 4 lines. I.e.~16 different columns. }
+		\item Can you show for each of these combinations that there is a sentence of TFL with that column describing its truth.
+		%\myanswer{\\
+			%See section 37.2 of forall$x$:Bristol for the general argument for this.
+			%}
+		\item {} Can you show there's always a formula just using $\enot$ and $\eand$ with that column describing its truth.
+		%\myanswer{\\
+			%The previous answer had that every truth table can be given by a sentence with $\eand, \eor$ and $\enot$. We can replace any instances of $\eor$ by $\eand$ using: $$\metaX\eor\metaY\text{ is logically equivalent to }\enot(\enot\metaX\eand\enot\metaY)$$
+			%See 37.4 of forall$x$:Bristol for more details.
+			%}
+	\end{problemslist}
+	
+	
+\end{practiceproblems}
+
+
+
 
 \chapter{Conjunction-words and TFL-Connectives}\label{sec:symbcon}
 
