@@ -7,20 +7,20 @@
 
 Consider this sentence:
 \begin{samplesent}
-\item\label{else1} Pavel owes money to everyone
+\item\label{sent:else1} Pavel owes money to everyone
 \end{samplesent}
 Let the domain be people; this will allow us to symbolize `everyone' as a universal quantifier. Offering the symbolization key:
 	\begin{ekey}
 		\item[Oxy] \gap{x} owes money to \gap{y}
 		\item[p] Pavel
 	\end{ekey}
-we can symbolize sentence \ref{else1} by `$\forall x Opx$'. But this has a (perhaps) odd consequence. It requires that Pavel owes money to every member of the domain (whatever the domain may be). The domain certainly includes Pavel. So this entails that Pavel owes money to himself.
+we can symbolize sentence \ref{sent:else1} by `$\forall x Opx$'. But this has a (perhaps) odd consequence. It requires that Pavel owes money to every member of the domain (whatever the domain may be). The domain certainly includes Pavel. So this entails that Pavel owes money to himself.
 
 Perhaps we meant to say:
 	\begin{samplesent}
-		\item\label{else1b} Pavel owes money to everyone \emph{else}
-		\item\label{else1c} Pavel owes money to everyone \emph{other than} Pavel
-		\item\label{else1d} Pavel owes money to everyone \emph{except} Pavel himself
+		\item\label{sent:else1b} Pavel owes money to everyone \emph{else}
+		\item\label{sent:else1c} Pavel owes money to everyone \emph{other than} Pavel
+		\item\label{sent:else1d} Pavel owes money to everyone \emph{except} Pavel himself
 	\end{samplesent}
 but we do not know how to deal with the italicised words yet. The solution is to add another symbol to FOL.
 
@@ -30,30 +30,30 @@ The new symbol we add is `$=$'. This is a symbol that we can use for \emph{ident
 
 We will then be able symbolise
 \begin{samplesent}
-\item\label{superman} Clark Kent is Superman.
+\item\label{sent:superman} Clark Kent is Superman.
 \end{samplesent}
 as $k\eid s$, using the symbolisation key
 \begin{ekey}
 \item[k] Clark Kent
 \item[s] Superman
 \end{ekey}
-This will also be a symbolisations of paraphrases of \ref{superman}:
+This will also be a symbolisations of paraphrases of \ref{sent:superman}:
 \begin{samplesent}
-\item\label{superman1b} Clark Kent and Superman are the same person.
-\item\label{superman1c} Clark Kent is identical to Superman.
+\item\label{sent:superman1b} Clark Kent and Superman are the same person.
+\item\label{sent:superman1c} Clark Kent is identical to Superman.
 \end{samplesent}
 
-Using `$\eid $' we will now be able to symbolise sentences \ref{else1b}--\ref{else1d}. All of these sentences can be  paraphrased as `Everyone who is not Pavel is owed money by Pavel'. Paraphrasing some more, we get: `For all x, if x is not Pavel, then x is owed money by Pavel'. Now that we are armed with our new identity symbol, we can symbolize this as `$\forall x (\enot\, x\eid p \eif Opx)$'.
+Using `$\eid $' we will now be able to symbolise sentences \ref{sent:else1b}--\ref{sent:else1d}. All of these sentences can be  paraphrased as `Everyone who is not Pavel is owed money by Pavel'. Paraphrasing some more, we get: `For all x, if x is not Pavel, then x is owed money by Pavel'. Now that we are armed with our new identity symbol, we can symbolize this as `$\forall x (\enot\, x\eid p \eif Opx)$'.
 
 In addition to sentences that use the word `else', `other than' and `except', identity will be helpful when symbolizing some sentences that contain the words `besides' and `only.' Consider these examples:
 
 \begin{samplesent}
-\item\label{else3} No one besides Pavel owes money to Hikaru.
-\item\label{else4} Only Pavel owes Hikaru money.
+\item\label{sent:else3} No one besides Pavel owes money to Hikaru.
+\item\label{sent:else4} Only Pavel owes Hikaru money.
 \end{samplesent}
-Let `$h$' name Hikaru. Sentence \ref{else3} can be paraphrased as, `No one who is not Pavel owes money to Hikaru'. This can be symbolized by `$\enot\exists x(\enot\,x \eid p \eand Oxh)$'. Equally, sentence \ref{else3} can be paraphrased as `for all x, if x owes money to Hikaru, then x is Pavel'. It can then be symbolized as `$\forall x (Oxh \eif x \eid p)$'.
+Let `$h$' name Hikaru. Sentence \ref{sent:else3} can be paraphrased as, `No one who is not Pavel owes money to Hikaru'. This can be symbolized by `$\enot\exists x(\enot\,x \eid p \eand Oxh)$'. Equally, sentence \ref{sent:else3} can be paraphrased as `for all x, if x owes money to Hikaru, then x is Pavel'. It can then be symbolized as `$\forall x (Oxh \eif x \eid p)$'.
 
-Sentence \ref{else4} can be treated similarly, but there is one subtlety here. Do either sentence \ref{else3} or \ref{else4} entail that Pavel himself owes money to Hikaru?
+Sentence \ref{sent:else4} can be treated similarly, but there is one subtlety here. Do either sentence \ref{sent:else3} or \ref{sent:else4} entail that Pavel himself owes money to Hikaru?
 
 
 
@@ -69,33 +69,33 @@ Sentence \ref{else4} can be treated similarly, but there is one subtlety here. D
 We will now look at more that we can do armed with our new identity symbol.
 We can also use identity to say how many things there are of a particular kind. For example, consider these sentences:
 \begin{samplesent}
-\item\label{atleast1} There is at least one apple
-\item\label{atleast2} There are at least two apples
-\item\label{atleast3} There are at least three apples
+\item\label{sent:atleast1} There is at least one apple
+\item\label{sent:atleast2} There are at least two apples
+\item\label{sent:atleast3} There are at least three apples
 \end{samplesent}
 We will use the symbolization key:
 	\begin{ekey}
 		\item[Ax] \gap{x} is an apple
 	\end{ekey}
-Sentence \ref{atleast1} does not require identity. It can be adequately symbolized by `$\exists x Ax$': There is an apple; perhaps many, but at least one.
+Sentence \ref{sent:atleast1} does not require identity. It can be adequately symbolized by `$\exists x Ax$': There is an apple; perhaps many, but at least one.
 
-It might be tempting to also symbolize sentence \ref{atleast2} without identity. Yet consider the sentence `$\exists x \exists y(Ax \eand Ay)$'. Roughly, this says that there is some apple $x$ in the domain and some apple $y$ in the domain. Since nothing precludes these from being one and the same apple, this would be true even if there were only one apple. In order to make sure that we are dealing with \emph{different} apples, we need an identity predicate. Sentence \ref{atleast2} needs to say that the two apples that exist are not identical, so it can be symbolized by `$\exists x \exists y((Ax \eand Ay) \eand \enot\, x\eid y)$'.
+It might be tempting to also symbolize sentence \ref{sent:atleast2} without identity. Yet consider the sentence `$\exists x \exists y(Ax \eand Ay)$'. Roughly, this says that there is some apple $x$ in the domain and some apple $y$ in the domain. Since nothing precludes these from being one and the same apple, this would be true even if there were only one apple. In order to make sure that we are dealing with \emph{different} apples, we need an identity predicate. Sentence \ref{sent:atleast2} needs to say that the two apples that exist are not identical, so it can be symbolized by `$\exists x \exists y((Ax \eand Ay) \eand \enot\, x\eid y)$'.
 
-Sentence \ref{atleast3} requires talking about three different apples. Now we need three existential quantifiers, and we need to make sure that each will pick out something different: `$\exists x \exists y\exists z(((Ax \eand Ay) \eand Az) \eand ((\enot\, x\eid y \eand \enot\, y\eid z) \eand \enot\, x\eid z))$'.
+Sentence \ref{sent:atleast3} requires talking about three different apples. Now we need three existential quantifiers, and we need to make sure that each will pick out something different: `$\exists x \exists y\exists z(((Ax \eand Ay) \eand Az) \eand ((\enot\, x\eid y \eand \enot\, y\eid z) \eand \enot\, x\eid z))$'.
 
 \section{There are at most\ldots}
 Now consider these sentences:
 \begin{samplesent}
-	\item\label{atmost1} There is at most one apple
-	\item\label{atmost2} There are at most two apples
+	\item\label{sent:atmost1} There is at most one apple
+	\item\label{sent:atmost2} There are at most two apples
 \end{samplesent}
-Sentence \ref{atmost1} can be paraphrased as, `It is not the case that there are at least \emph{two} apples'. This is just the negation of sentence \ref{atleast2}:
+Sentence \ref{sent:atmost1} can be paraphrased as, `It is not the case that there are at least \emph{two} apples'. This is just the negation of sentence \ref{sent:atleast2}:
 $$\enot \exists x \exists y((Ax \eand Ay) \eand \enot\, x\eid y)$$
-But sentence \ref{atmost1} can also be approached in another way. It means that if you pick out an object and it's an apple, and then you pick out an object and it's also an apple, you must have picked out the same object both times. With this in mind, it can be symbolized by
+But sentence \ref{sent:atmost1} can also be approached in another way. It means that if you pick out an object and it's an apple, and then you pick out an object and it's also an apple, you must have picked out the same object both times. With this in mind, it can be symbolized by
 $$\forall x\forall y\bigl((Ax \eand Ay) \eif x\eid y\bigr)$$
 The two sentences will turn out to be logically equivalent.
 
-In a similar way, sentence \ref{atmost2} can be approached in two equivalent ways. It can be paraphrased as, `It is not the case that there are \emph{three} or more distinct apples', so we can offer:
+In a similar way, sentence \ref{sent:atmost2} can be approached in two equivalent ways. It can be paraphrased as, `It is not the case that there are \emph{three} or more distinct apples', so we can offer:
 $$\enot \exists x \exists y\exists z(Ax \eand Ay \eand Az \eand \enot\, x\eid y \eand \enot\, y\eid z \eand \enot\, x\eid z)$$
 Alternatively we can read it as saying that if you pick out an apple, and an apple, and an apple, then you will have picked out (at least) one of these objects more than once. Thus:
 $$\forall x\forall y\forall z\bigl((Ax \eand Ay \eand Az) \eif (x\eid y \eor x\eid z \eor y\eid z)\bigr)$$
@@ -104,15 +104,15 @@ $$\forall x\forall y\forall z\bigl((Ax \eand Ay \eand Az) \eif (x\eid y \eor x\e
 \section{There are exactly\ldots}
 We can now consider precise statements, like:
 \begin{samplesent}
-\item\label{exactly1} There is exactly one apple.
-\item\label{exactly2} There are exactly two apples.
-\item\label{exactly3} There are exactly three apples.
+\item\label{sent:exactly1} There is exactly one apple.
+\item\label{sent:exactly2} There are exactly two apples.
+\item\label{sent:exactly3} There are exactly three apples.
 \end{samplesent}
-Sentence \ref{exactly1} can be paraphrased as, `There is \emph{at least} one apple and there is \emph{at most} one apple'. This is just the conjunction of sentence \ref{atleast1} and sentence \ref{atmost1}. So we can offer:
+Sentence \ref{sent:exactly1} can be paraphrased as, `There is \emph{at least} one apple and there is \emph{at most} one apple'. This is just the conjunction of sentence \ref{sent:atleast1} and sentence \ref{sent:atmost1}. So we can offer:
 $$\exists x Ax \eand \forall x\forall y\bigl((Ax \eand Ay) \eif x\eid y\bigr)$$
-But it is perhaps more straightforward to paraphrase sentence \ref{exactly1} as, `There is a thing x which is an apple, and everything which is an apple is just x itself'. Thought of in this way, we offer:
+But it is perhaps more straightforward to paraphrase sentence \ref{sent:exactly1} as, `There is a thing x which is an apple, and everything which is an apple is just x itself'. Thought of in this way, we offer:
 $$\exists x\bigl(Ax \eand \forall y(Ay \eif x\eid  y)\bigr)$$
-Similarly, sentence \ref{exactly2} may be paraphrased as, `There are \emph{at least} two apples, and there are \emph{at most} two apples'. Thus we could offer
+Similarly, sentence \ref{sent:exactly2} may be paraphrased as, `There are \emph{at least} two apples, and there are \emph{at most} two apples'. Thus we could offer
 \begin{multline*}
   \exists x \exists y((Ax \eand Ay) \eand \enot\, x\eid y) \eand {}\\
   \forall x\forall y\forall z\bigl[((Ax \eand Ay) \eand Az) \eif ((x\eid y \eor x\eid z) \eor y\eid z)\bigr]
@@ -121,8 +121,8 @@ More efficiently, though, we can paraphrase it as `There are at least two differ
 $$\exists x\exists y\bigl(((Ax \eand Ay) \eand \enot\, x\eid y) \eand \forall z(Az \eif ( x\eid  z \eor y \eid z)\bigr)$$
 Finally, consider these sentence:
 \begin{samplesent}
-\item\label{exactly2things} There are exactly two things
-\item\label{exactly2objects} There are exactly two objects
+\item\label{sent:exactly2things} There are exactly two things
+\item\label{sent:exactly2objects} There are exactly two objects
 \end{samplesent}
 It might be tempting to add a predicate to our symbolization key, to symbolize the English predicate `\blank\ is a thing' or `\blank\ is an object', but this is unnecessary. Words like `thing' and `object' do not sort wheat from chaff: they apply trivially to everything, which is to say, they apply trivially to every thing. So we can symbolize either sentence with either of the following:
 	\begin{center}
@@ -217,9 +217,9 @@ Identify which variables are bound and which are free.
 \chapter{Definite descriptions}\label{subsec.defdesc}
 Consider sentences like:
 	\begin{samplesent}
-		\item\label{traitor1} Nick is the traitor.
-		\item\label{traitor2} The traitor went to Cambridge.
-		\item\label{traitor3} The traitor is the deputy
+		\item\label{sent:traitor1} Nick is the traitor.
+		\item\label{sent:traitor2} The traitor went to Cambridge.
+		\item\label{sent:traitor3} The traitor is the deputy
 	\end{samplesent}
 These are definite descriptions: they are meant to pick out a \emph{unique} object. They should be contrasted with \emph{indefinite} descriptions, such as `Nick  is \emph{a} traitor'. They should equally be contrasted with \emph{generics}, such as `\emph{The} whale is a mammal' (it's inappropriate to ask \emph{which} whale). The question we face is: how should we deal with definite descriptions in FOL?
 
@@ -235,7 +235,7 @@ A second option would be to use a \emph{new} definite description operator, such
 		\item[Cx] \gap{x} went to Cambridge
 		\item[n] Nick
 	\end{ekey}
-We could symbolize sentence \ref{traitor1} with `$\maththe x Tx \eid  n$', sentence \ref{traitor2} with `$C\maththe xTx$', and sentence \ref{traitor3} with `$\maththe x Tx \eid  \maththe x Dx$'.
+We could symbolize sentence \ref{sent:traitor1} with `$\maththe x Tx \eid  n$', sentence \ref{sent:traitor2} with `$C\maththe xTx$', and sentence \ref{sent:traitor3} with `$\maththe x Tx \eid  \maththe x Dx$'.
 
 However, it would be nice if we didn't have to add a new symbol to FOL. And indeed, we might be able to make do without one.
 
@@ -254,13 +254,13 @@ If we accept Russell's analysis of definite descriptions, then we can symbolize 
 	$$\exists x Fx \eand \forall x \forall y ((Fx \eand Fy) \eif x \eid y) \eand \forall x (Fx \eif Gx)$$
 In fact, we could express the same point rather more crisply, by recognizing that the first two conjuncts just amount to the claim that there is \emph{exactly} one F, and that the last conjunct tells us that that object is F. So, equivalently, we could offer:
 	$$\exists x \bigl((Fx \eand \forall y (Fy \eif x \eid y)) \eand Gx\bigr)$$
-Using these sorts of techniques, we can now symbolize sentences \ref{traitor1}--\ref{traitor3} without using any new-fangled fancy operator, such as `$\maththe$'.
+Using these sorts of techniques, we can now symbolize sentences \ref{sent:traitor1}--\ref{sent:traitor3} without using any new-fangled fancy operator, such as `$\maththe$'.
 
-Sentence \ref{traitor1} is exactly like the examples we have just considered. So we would symbolize it by `$\exists x (Tx \eand \forall y(Ty \eif x \eid y) \eand x \eid n)$'.
+Sentence \ref{sent:traitor1} is exactly like the examples we have just considered. So we would symbolize it by `$\exists x (Tx \eand \forall y(Ty \eif x \eid y) \eand x \eid n)$'.
 
-Sentence \ref{traitor2} poses no problems either: `$\exists x (Tx \eand \forall y(Ty \eif x \eid y) \eand Cx)$'.
+Sentence \ref{sent:traitor2} poses no problems either: `$\exists x (Tx \eand \forall y(Ty \eif x \eid y) \eand Cx)$'.
 
-Sentence \ref{traitor3} is a little trickier, because it links two definite descriptions. But, deploying  Russell's analysis, it can be paraphrased by `there is exactly one traitor, x, and there is exactly one deputy, y, and x \eid  y'. So we can symbolize it by:
+Sentence \ref{sent:traitor3} is a little trickier, because it links two definite descriptions. But, deploying  Russell's analysis, it can be paraphrased by `there is exactly one traitor, x, and there is exactly one deputy, y, and x \eid  y'. So we can symbolize it by:
 $$\exists x \exists y \bigl(\bigl(Tx \eand \forall z(Tz \eif x \eid z)\bigr) \eand \bigl(Dy \eand \forall z(Dz \eif y \eid z)\bigr) \eand x \eid  y\bigr)$$
 Note that we have made sure that the formula `$x \eid y$' falls within the scope of both quantifiers!
 
@@ -273,7 +273,7 @@ Russell's analysis neatly avoids this problem. Russell tells us to treat definit
 
 Indeed, Russell's analysis helpfully highlights two ways to go wrong in a claim involving a definite description. To adapt an example from Stephen Neale (1990),\footnote{Neale, \emph{Descriptions}, 1990, Cambridge: MIT Press.}  suppose Alex claims:
 	\begin{samplesent}
-		\item\label{kingdate} I am dating the present king of France.
+		\item\label{sent:kingdate} I am dating the present king of France.
 	\end{samplesent}
 Using the following symbolization key:
 	\begin{ekey}
@@ -281,14 +281,14 @@ Using the following symbolization key:
 		\item[Kx] \gap{x} is a present king of France
 		\item[Dxy] \gap{x} is dating \gap{y}
 	\end{ekey}
-Sentence \ref{kingdate} would be symbolized by `$\exists x (\forall y(Ky \eiff  x \eid y) \eand Dax)$'. Now, this can be false in (at least) two ways, corresponding to these two different sentences:
+Sentence \ref{sent:kingdate} would be symbolized by `$\exists x (\forall y(Ky \eiff  x \eid y) \eand Dax)$'. Now, this can be false in (at least) two ways, corresponding to these two different sentences:
 	\begin{samplesent}
-		\item\label{outernegation} There is no one who is both the present King of France and  such that he and Alex are dating.
-		\item\label{innernegation} There is a unique present King of France, but Alex is not dating him.
+		\item\label{sent:outernegation} There is no one who is both the present King of France and  such that he and Alex are dating.
+		\item\label{sent:innernegation} There is a unique present King of France, but Alex is not dating him.
 	\end{samplesent}
-Sentence \ref{outernegation} might be paraphrased by `It is not the case that: the present King of France and Alex are dating'. It will then be symbolized by `$\enot \exists x\bigl((Kx \eand \forall y(Ky \eif  x \eid y)) \eand Dax \bigr)$'. We might call this \emph{outer} negation, since the negation governs the entire sentence. Note that it will be true if there is no present King of France.
+Sentence \ref{sent:outernegation} might be paraphrased by `It is not the case that: the present King of France and Alex are dating'. It will then be symbolized by `$\enot \exists x\bigl((Kx \eand \forall y(Ky \eif  x \eid y)) \eand Dax \bigr)$'. We might call this \emph{outer} negation, since the negation governs the entire sentence. Note that it will be true if there is no present King of France.
 
-Sentence \ref{innernegation} can be symbolized by `$\exists x ((Kx \eand \forall y(Ky \eif x \eid y)) \eand \enot Dax)$'. We might call this \emph{inner} negation, since the negation occurs within the scope of the definite description. Note that its truth requires that there is a present King of France, albeit one who is not dating Alex.
+Sentence \ref{sent:innernegation} can be symbolized by `$\exists x ((Kx \eand \forall y(Ky \eif x \eid y)) \eand \enot Dax)$'. We might call this \emph{inner} negation, since the negation occurs within the scope of the definite description. Note that its truth requires that there is a present King of France, albeit one who is not dating Alex.
 
 \section{The adequacy of Russell's analysis}
 How good is Russell's analysis of definite descriptions? This question has generated a substantial philosophical literature, but we will restrict ourselves to two observations.
@@ -301,11 +301,11 @@ But there is room to disagree with Strawson. Strawson is appealing to some lingu
 
 Keith Donnellan raised a second sort of worry, which (very roughly) can be brought out by thinking about a case of mistaken identity.\footnote{Keith Donnellan, `Reference and Definite Descriptions', 1966, \emph{Philosophical Review 77}, pp.\ 281--304.} Two men stand in the corner: a very tall man drinking what looks like a gin martini; and a very short man drinking what looks like a pint of water. Seeing them, Malika says:
 	\begin{samplesent}
-		\item\label{gindrinker} The gin-drinker is very tall!
+		\item\label{sent:gindrinker} The gin-drinker is very tall!
 	\end{samplesent}
 Russell's analysis will have us render Malika's sentence as:
 	\begin{compactlist}
-		\item[\ref{gindrinker}$'$.] There is exactly one gin-drinker [in the corner], and whoever is a gin-drinker [in the corner] is very tall.
+		\item[\ref{sent:gindrinker}$'$.] There is exactly one gin-drinker [in the corner], and whoever is a gin-drinker [in the corner] is very tall.
 	\end{compactlist}
 Now suppose that the very tall man is actually drinking \emph{water} from a martini glass; whereas the very short man is drinking a pint of (neat) gin. By Russell's analysis, Malika has said something false, but don't we want to say that Malika has said something \emph{true}?
 

@@ -281,8 +281,8 @@ Clearly `She understands German or French' is false in $v_4$ where she understan
 But what about $v_1$, where she understands both? 
 It seems that in English there are two kinds of disjunctions: an \define{inclusive} and an \define{exclusive} one. For the inclusive \emph{or}, we might whisper a ``or both'' after it; whereas for the exclusive \emph{or}, we'd want to whisper a ``but not both'':
 \begin{samplesent}
-	\item\label{inclor} She can understand German or French (or both).
-	\item\label{exclor} She can understand German or French (but not both).
+	\item\label{sent:inclor} She can understand German or French (or both).
+	\item\label{sent:exclor} She can understand German or French (but not both).
 \end{samplesent}
 Sometimes English is ambiguous between the two readings. 
 
@@ -308,15 +308,15 @@ The `$\eif$'-connective is called the conditional-connective and it is meant to 
 
 Consider
 \begin{samplesent}
-	\item\label{exsent:cond: beer then eighteen} If she is drinking beer, then she is over eighteen.
-	\item\label{exsent:cond: eighteen then beer} If she is over eighteen, then she is drinking beer.
+	\item\label{sent:cond: beer then eighteen} If she is drinking beer, then she is over eighteen.
+	\item\label{sent:cond: eighteen then beer} If she is over eighteen, then she is drinking beer.
 \end{samplesent}
 These are very different. We might have atomic sentences:
 \begin{ekey}
 	\item[B] She is drinking beer.
 	\item[E] She is over eighteen.
 \end{ekey}
-We will then represent \ref{exsent:cond: beer then eighteen} as `$B\eif E$' and \ref{exsent:cond: eighteen then beer} as `$E\eif B$'. 
+We will then represent \ref{sent:cond: beer then eighteen} as `$B\eif E$' and \ref{sent:cond: eighteen then beer} as `$E\eif B$'. 
 
 
 Since it matters which order they come in, we is valuable to give a name to indicate which part goes where:
@@ -368,7 +368,7 @@ We stipulate that it is true in $v_3$ and $v_4$: if the antecedent of the condit
 	\end{tabular}
 \end{center}
 
-To understand the rationale for this, let us think about when a bartender would get into trouble (clearly the conditional \ref{exsent:cond: beer then eighteen} should be true for everyone drinking beer in a bar). They will get into trouble in case there a woman in drinking beer and it turns out that the woman is under age. They will not get into trouble if the woman is over 18 years old, i.e., if the consequent of the conditional is true. They will also not get in trouble if it turns out that the woman is not drinking beer (but orange juice), i.e., if the antecedent of the conditional is false.  In that case it is irrelevant whether she is 18 or not. The barkeeper doesn't have to check her age. The conditional is true for trivial reasons.
+To understand the rationale for this, let us think about when a bartender would get into trouble (clearly the conditional \ref{sent:cond: beer then eighteen} should be true for everyone drinking beer in a bar). They will get into trouble in case there a woman in drinking beer and it turns out that the woman is under age. They will not get into trouble if the woman is over 18 years old, i.e., if the consequent of the conditional is true. They will also not get in trouble if it turns out that the woman is not drinking beer (but orange juice), i.e., if the antecedent of the conditional is false.  In that case it is irrelevant whether she is 18 or not. The barkeeper doesn't have to check her age. The conditional is true for trivial reasons.
 
 
 
@@ -505,8 +505,8 @@ If you want to capture an exclusive disjunction, you can use a more complex sent
 %}
 %What does that mean for the truth rules? Consider:
 %\begin{samplesent}
-%	\item\label{neg-f} Bristol is not in France.
-%	\item\label{neg-f} Bristol is not in England.
+%	\item\label{sent:neg-f} Bristol is not in France.
+%	\item\label{sent:neg-f} Bristol is not in England.
 %\end{samplesent}
 %`Bristol is in France' is false, so `Bristol is not in France' is true.
 %`Bristol is in England' is true, so `Bristol is not in England' is false.
@@ -560,7 +560,7 @@ If you want to capture an exclusive disjunction, you can use a more complex sent
 %
 %What is the appropriate truth rule for conjunction? Consider:
 %\begin{samplesent}
-%	\item\label{conj} She can speak German and she can speak French.
+%	\item\label{sent:conj} She can speak German and she can speak French.
 %\end{samplesent}
 %If she can speak German and she can speak French, then this is true, but otherwise it is false.
 %
@@ -621,7 +621,7 @@ If you want to capture an exclusive disjunction, you can use a more complex sent
 %Whereas the truth rules for the negation and conjunction were relatively straightforward, the rule for disjunction is a bit more subtle.
 %Consider:
 %\begin{samplesent}
-%	\item\label{conj} She can speak German or she can speak French.
+%	\item\label{sent:conj} She can speak German or she can speak French.
 %\end{samplesent}
 %If she cannot speak either German or French, then this is false. If she can speak German but not French, then it is true, and if she can speak French but not German it is also true.
 %We have the general rules:
@@ -634,9 +634,9 @@ If you want to capture an exclusive disjunction, you can use a more complex sent
 %But what if she can speak both? Is it true or false?
 %It seems that in English there are two kinds of disjunctions: an \define{inclusive} and an \define{exclusive} one. For the inclusive \emph{or}, we might whisper a ``or both'' after it; whereas for the exclusive \emph{or}, we'd want to whisper a ``but not both'':
 %\begin{samplesent}
-%	\item\label{inclor} She can speak German or
+%	\item\label{sent:inclor} She can speak German or
 %	she can speak French (or both).
-%	\item\label{exclor} She can speak German or
+%	\item\label{sent:exclor} She can speak German or
 %	she can speak French (but not both).
 %\end{samplesent}
 %
@@ -715,7 +715,7 @@ If you want to capture an exclusive disjunction, you can use a more complex sent
 %}
 %What are the truth rules for the conditional? Consider the sentence:
 %\begin{samplesent}
-%	\item\label{bartender} If she is drinking a beer, then she is over eighteen.
+%	\item\label{sent:bartender} If she is drinking a beer, then she is over eighteen.
 %\end{samplesent}
 %What are the circumstances under which this conditional is false?
 %Here is what we'll say:
@@ -770,7 +770,7 @@ If you want to capture an exclusive disjunction, you can use a more complex sent
 %
 %The TFL connective $\eif$ is \emph{stipulated} to be governed by these rules. This sometimes marked by calling it the \define{material conditional}. But the truth rules of the $\eif$-connective only tell us part of the story of \emph{if\ldots, then\ldots} sentences in English, as the truth rules do not seem to work well for all these sentences. For example, truth rules for material conditional do not seem to work well with our understanding of the sentence
 %\begin{samplesent}
-%	\item\label{kangaroo} If Kangaroos had no tails, they would topple over.
+%	\item\label{sent:kangaroo} If Kangaroos had no tails, they would topple over.
 %\end{samplesent}
 %%We will discuss conditional-sentences of this kind in \S\ref{s:IndicativeSubjunctive} and will look at some problems arising due to understanding $\eif$ in terms of material conditional in \S\ref{s:ParadoxesOfMaterialConditional}.
 %%
@@ -816,8 +816,8 @@ These are nonsense: a string of meaningful words, but not a grammatical English 
 
 The second purpose is to avoid ambiguity. In English we use commas to distinguish between two sentences
 \begin{samplesent}
-\item\label{engamb1} John's tired, and Sue's tall or Rob's short.
-\item\label{engamb2} John's tired and Sue's tall, or Rob's short.
+\item\label{sent:engamb1} John's tired, and Sue's tall or Rob's short.
+\item\label{sent:engamb2} John's tired and Sue's tall, or Rob's short.
 \end{samplesent}
 and without a comma it would be unclear which of the two sentences we intend to convey. In TFL this job of punctuation marks is assumed by brackets, that is, we distinguish between:
 $$A\eand(B\eor C)$$
@@ -826,11 +826,11 @@ You can think of the former TFL-sentence as representing the English sentence 1,
 
 You might know this use of brackets from mathematics. Consider:
 \begin{samplesent}
-\item\label{mathamb} $9 + 3 \times 4$
+\item\label{sent:mathamb} $9 + 3 \times 4$
 \end{samplesent}One could add brackets to this equation to obtain: 
 \begin{samplesent}
-\item\label{mathamb1} $9 + (3 \times 4) \qquad(=9+12=21)$
-\item\label{mathamb2} $(9+3) \times 4 \qquad(=12\times 4=48)$
+\item\label{sent:mathamb1} $9 + (3 \times 4) \qquad(=9+12=21)$
+\item\label{sent:mathamb2} $(9+3) \times 4 \qquad(=12\times 4=48)$
 \end{samplesent}
 
 Importantly, the language of TFL is designed to exclude any form of ambiguity. For example, $A\eand B\eor C$ will not be a sentence of TFL, as it would require disambiguation. Rather the syntactic/grammatical rules of the language of TFL will be such that only expressions that have a \emph{unique} reading can be sentences of TFL. To make this precise we now provide a formal definition of what it is to be a sentence in TFL.
