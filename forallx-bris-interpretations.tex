@@ -125,7 +125,7 @@ $$\Set{o \given o\neq o}=\emptyset.$$
 
 
 \section{Truth of simple sentences}
-
+\label{sec:Truth FOL monadic}
 
 A model $\model$ provides \begin{itemize}
 	\item specifies a non-empty set as the domain.
@@ -470,7 +470,7 @@ $\Set{\text{Tom, Jerry}}$ for which the order does not matter (recall that $\Set
 Now, that we know what an ordered pairs are we can form sets of ordered pairs and such thats, that is, sets that only have ordered pairs as their elements are called \define{binary relations}. While, as discussed the one-place predicate like `is a cat' picks out the set of all cats in the domain, the two place predicate picks out a binary relation. More precisely, it picks out the set
 $$\Set{\langle o_1,o_2\rangle \given o_1\text{ is bigger than }o_2}.$$
 where we always assume that both $o_1$ and $o_2$ members of the domain. To recap: one-place predicates pick out sets and two-place predicates pick out binary relations. For example, the set
-$${\small \Set{\langle\text{Oslo, Norway}\rangle,\langle\text{Stockholm, Sweden}\rangle,\langle\text{Helsinki, Finland}\rangle,\langle\text{Copenhague, Denmark}\rangle}}$$
+$${ \Set{\langle\text{Oslo, Norway}\rangle,\langle\text{Stockholm, Sweden}\rangle,\langle\text{Helsinki, Finland}\rangle,\langle\text{Copenhague, Denmark}\rangle}}$$
 is a binary relation picked out by the two-place predicate `\gap{x}is a capital of\gap{y}' with a domain, which, e.g., is a set that has Scandinavian cities and countries as its elements.
 
 In \cref{ch:TFLsymb} we learned that there are not only two-place predicates but also three-place predicates, four-place predicates and, indeed, at least in principle predicates for any number of argument places. What does a three place predicate pick out? It picks out a \define{ternary relation}. While a binary relation is a set of ordered pairs, a ternary relation is a set of ordered triples. An ordered triple such as $\langle\text{Pooh, Eeyore, The trampoline}\rangle$ consists of the three-objects Pooh, Eeyore, The trampoline \emph{in that particular order}. The three-place predicate `\gap{x}bounces with\gap{y}on\gap{z}' picks out the following ternary relation:
@@ -572,7 +572,7 @@ In the same way that a three-place predicate picks out a ternary relation, an $n
 
 \section{Models}\label{sec:model}\todo{call it ``model''?}
 
-In \cref{sec:TruthFOL}, we introduced the idea of a model but we did not include relations. Now we can extend it to give the proper definition of a  \define{model}. Sentences of FOL will be true or false \emph{on a model}.
+In \cref{sec:Truth FOL monadic}, we introduced the idea of a model but we did not include relations. Now we can extend it to give the proper definition of a  \define{model}. Sentences of FOL will be true or false \emph{on a model}.
 
 {A model $\model$ provides \begin{itemize}
 		\item specifies a non-empty set as the domain, $\domain$;
