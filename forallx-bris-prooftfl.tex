@@ -5,7 +5,7 @@
 
 \chapter{The very idea of natural deduction}\label{s:NDVeryIdea}
 
-Way back in \S\ref{s:Valid}, we said that an argument is valid iff it is impossible to make all of the premises true and the conclusion false. In the case of TFL, this led us to develop truth tables. Each line of a complete truth table corresponds to a valuation. So, when faced with a TFL argument, we have a very direct way of assessing whether it is possible to make all of the premises true and the conclusion false: just thrash through the truth table. However, using truth tables means that we are not reasoning or arguing within the language of TFL. Rather, we reasoning \emph{about} TFL-arguments rather than with them.
+Way back in \cref{s:Valid}, we said that an argument is valid iff it is impossible to make all of the premises true and the conclusion false. In the case of TFL, this led us to develop truth tables. Each line of a complete truth table corresponds to a valuation. So, when faced with a TFL argument, we have a very direct way of assessing whether it is possible to make all of the premises true and the conclusion false: just thrash through the truth table. However, using truth tables means that we are not reasoning or arguing within the language of TFL. Rather, we reasoning \emph{about} TFL-arguments rather than with them.
 
 When you actually use arguments, for example in philosophical essays, you typically instead will break down an argument into smaller compelling steps, which your interlocutor or reader is forced to accept. It is good that at the end we may check, using truth tables, that your argument was indeed valid, but that's not how reasoning and argumentation works. The goal of this section is to provide a ``reasoning system'' for TFL. This reasoning system should produce valid arguments only and, ideally, also enable us to produce, that is, \emph{prove} all valid arguments of TFL.
 
@@ -115,7 +115,7 @@ And that will increase exponentially as more atomic sentences get added. Once an
 This argument is also valid---as you might be able to tell---but to test it requires a truth table with $2^{20} = 1048576$ lines. In principle, we can set a machine to grind through truth tables and report back when it is finished. In practice, complicated arguments in TFL can become \emph{intractable} if we use truth tables.
 
 
-When we get to first-order logic (FOL) (beginning in chapter \ref{s:FOLBuildingBlocks}) the problem gets dramatically worse. There is nothing like the truth table test for FOL. To assess whether or not an argument is valid, we have to reason about \emph{all} interpretations, but, as we will see, there are infinitely many possible interpretations. We cannot even in principle set a machine to grind through infinitely many possible interpretations and report back when it is finished: it will \emph{never} finish. We either need to come up with some more efficient way of reasoning about all interpretations, or we need to look for something different. We will be looking for something different; and we will develop natural deduction.\footnote{There are, in fact, systems that codify ways to reason about all possible interpretations which can be used for FOL in a similar way to the way we use truth tables for TFL. They were developed in the 1950s by Evert Beth and Jaakko Hintikka, but we will not follow this path.}
+When we get to first-order logic (FOL) (beginning in \cref{s:FOLBuildingBlocks}) the problem gets dramatically worse. There is nothing like the truth table test for FOL. To assess whether or not an argument is valid, we have to reason about \emph{all} interpretations, but, as we will see, there are infinitely many possible interpretations. We cannot even in principle set a machine to grind through infinitely many possible interpretations and report back when it is finished: it will \emph{never} finish. We either need to come up with some more efficient way of reasoning about all interpretations, or we need to look for something different. We will be looking for something different; and we will develop natural deduction.\footnote{There are, in fact, systems that codify ways to reason about all possible interpretations which can be used for FOL in a similar way to the way we use truth tables for TFL. They were developed in the 1950s by Evert Beth and Jaakko Hintikka, but we will not follow this path.}
 %
 %There is something philosophically desirable about Consider an argument like:
 %	\begin{earg}
@@ -188,7 +188,7 @@ We will now describe the various rules one can use. All other valid arguments sh
 
 The rules we give will often be attached to particular connectives. This will help guide finding proofs.
 
-The full list of the rules can be found in Appendix \ref{glossary:quick ref}.
+The full list of the rules can be found in \cref{glossary:quick ref}.
 
 %It would be be convenient to present our rules by going through the various connectives and giving introduction and elimination rules.
 %However, some rules will involve the tool of \emph{subproofs}, which introduces some complexity. So we begin just by giving the rules that don't do so.
@@ -216,7 +216,7 @@ Here is a general expression of the rule:
 \end{highlighted}
 The point is that, if any sentence $\metaX$ occurs on some line, then we can repeat $\metaX$ on later lines. Each line of our proof must be justified by some rule, and here we have `R $m$'. This means: Reiteration, applied to line $m$.
 
-Two things need emphasising. First `$\metaX$' is not a sentence of TFL. Rather, it a symbol in the metalanguage, which we use when we want to talk about any sentence of TFL (see \S\ref{s:UseMention}). Second, and similarly, `$m$' is not a numeral that will appear on a proof. Rather, it is a symbol in the metalanguage, which we use when we want to talk about any line number of a proof. In an actual proof, the lines are numbered `$1$', `$2$', `$3$', and so forth. But when we define the rule, we use variables to underscore the point that the rule may be applied at any point.
+Two things need emphasising. First `$\metaX$' is not a sentence of TFL. Rather, it a symbol in the metalanguage, which we use when we want to talk about any sentence of TFL (see \cref{s:UseMention}). Second, and similarly, `$m$' is not a numeral that will appear on a proof. Rather, it is a symbol in the metalanguage, which we use when we want to talk about any line number of a proof. In an actual proof, the lines are numbered `$1$', `$2$', `$3$', and so forth. But when we define the rule, we use variables to underscore the point that the rule may be applied at any point.
 
 Why might this be useful? For example, we can now show $A\,\therefore\,A$ is valid using the proof:
 \begin{fitchproof}
@@ -332,7 +332,7 @@ More generally, here is our conjunction introduction rule:
 
 Two things need emphasising.
 
-First `$\metaX$' and `\metaY' are metavariables. They are not particular sentences of TFL but are there to play the role of any particular sentence (see \S\ref{s:UseMention}).
+First `$\metaX$' and `\metaY' are metavariables. They are not particular sentences of TFL but are there to play the role of any particular sentence (see \cref{s:UseMention}).
 
 
 
@@ -340,7 +340,7 @@ First `$\metaX$' and `\metaY' are metavariables. They are not particular sentenc
 Similarly, `$m$' is not a numeral that will appear on a proof. Rather, it is a symbol in the metalanguage, which we use when we want to talk about any line number of a proof. In an actual proof, the lines are numbered `$1$', `$2$', `$3$', and so forth. But when we define the rule, we use variables to underscore the point that the rule may be applied at any point.
 
 
-To be clear, the statement of the rule is \emph{schematic}. It is not itself a proof.  `$\metaX$' and `$\metaY$' are not sentences of TFL. Rather, they are symbols in the metalanguage, which we use when we want to talk about any sentence of TFL (see \S\ref{s:UseMention}). Similarly, `$m$' and `$n$' are not a numerals that will appear on any actual proof. Rather, they are symbols in the metalanguage, which we use when we want to talk about any line number of any proof. In an actual proof, the lines are numbered `$1$', `$2$', `$3$', and so forth, but when we define the rule, we use variables to emphasize that the rule may be applied at any point. The rule requires only that we have both conjuncts available to us somewhere in the proof. They can be separated from one another, and they can appear in any order.
+To be clear, the statement of the rule is \emph{schematic}. It is not itself a proof.  `$\metaX$' and `$\metaY$' are not sentences of TFL. Rather, they are symbols in the metalanguage, which we use when we want to talk about any sentence of TFL (see \cref{s:UseMention}). Similarly, `$m$' and `$n$' are not a numerals that will appear on any actual proof. Rather, they are symbols in the metalanguage, which we use when we want to talk about any line number of any proof. In an actual proof, the lines are numbered `$1$', `$2$', `$3$', and so forth, but when we define the rule, we use variables to emphasize that the rule may be applied at any point. The rule requires only that we have both conjuncts available to us somewhere in the proof. They can be separated from one another, and they can appear in any order.
 
 The rule is called `conjunction \emph{introduction}' because it introduces the symbol `$\eand$' into our proof where it may have been absent.
 
@@ -388,7 +388,7 @@ So by applying the {\eand}I rule to lines 3 and 2 (in that order), we arrive at 
 \end{fitchproof}
 This is a very simple proof, but it shows how we can chain rules of proof together into longer proofs. In passing, note that investigating this argument with a truth table would have required a staggering 256 lines; our formal proof required only four lines.
 
-It is worth giving another example. Way back in \S\ref{s:MoreBracketingConventions}, we noted that this argument is valid:
+It is worth giving another example. Way back in \cref{s:MoreBracketingConventions}, we noted that this argument is valid:
 	$$A \eand (B \eand C) \therefore (A \eand B) \eand C$$
 To provide a proof corresponding with this argument, we start by writing:
 \begin{fitchproof}
@@ -708,7 +708,7 @@ The subproof also doesn't need to start immediately. For example:
 %\end{fitchproof}
 %The point is that, if any sentence $\metaX$ occurs on some line, then we can repeat $\metaX$ on later lines. Each line of our proof must be justified by some rule, and here we have `R $m$'. This means: Reiteration, applied to line $m$.
 %
-%Two things need emphasising. First `$\metaX$' is not a sentence of TFL. Rather, it a symbol in the metalanguage, which we use when we want to talk about any sentence of TFL (see \S\ref{s:UseMention}). Second, and similarly, `$m$' is not a numeral that will appear on a proof. Rather, it is a symbol in the metalanguage, which we use when we want to talk about any line number of a proof. In an actual proof, the lines are numbered `$1$', `$2$', `$3$', and so forth. But when we define the rule, we use variables to underscore the point that the rule may be applied at any point.
+%Two things need emphasising. First `$\metaX$' is not a sentence of TFL. Rather, it a symbol in the metalanguage, which we use when we want to talk about any sentence of TFL (see \cref{s:UseMention}). Second, and similarly, `$m$' is not a numeral that will appear on a proof. Rather, it is a symbol in the metalanguage, which we use when we want to talk about any line number of a proof. In an actual proof, the lines are numbered `$1$', `$2$', `$3$', and so forth. But when we define the rule, we use variables to underscore the point that the rule may be applied at any point.
 \todo[inline]{I removed reiteration!!!}
 
 \section{Additional assumptions and subproofs}
@@ -988,7 +988,7 @@ A proof corresponding to this argument is:
 
 \subsection{Law of Excluded Middle}\label{sec:LEM}
 We will actually add another rule for how to introduce a disjunction. There are special kinds of disjunctions that don't need further justification: sentences of the form $\metaX\eor\enot\metaX$.
-In \S\ref{s:TautologiesAndContradictions} we saw that $A\eor\enot A$ is a tautology: it is true on all valuations. More generally, any sentence of the form $\metaX\eor\enot\metaX$ is a tautology.
+In \cref{s:TautologiesAndContradictions} we saw that $A\eor\enot A$ is a tautology: it is true on all valuations. More generally, any sentence of the form $\metaX\eor\enot\metaX$ is a tautology.
 The rule \emph{Law of Excluded Middle} encodes this fact: it simply says that you are always allowed to write $\metaX\eor\enot\metaX$:
 
 \factoidbox{
@@ -1018,7 +1018,7 @@ Our Disjunction Elimination rule along with the Law of Excluded Middle allow us 
 %They write up
 We can demonstrate this in the following argument, which we present in a pseudo-formal style.%
 \footnote{
-	Though, actually, this is most naturally formulated as a validity claim of First Order Logic. We'll walk through the formal proof as formulated in First Order Logic in  \S\ref{s:ExistsE}.
+	Though, actually, this is most naturally formulated as a validity claim of First Order Logic. We'll walk through the formal proof as formulated in First Order Logic in  \cref{s:ExistsE}.
 }
 
 
@@ -1105,7 +1105,7 @@ Here is a proof corresponding with the argument:
 %	\have{conc}{B}\orE{a,b,lem}
 %\end{fitchproof}
 %The law of Excluded Middle is often used in combination with Disjunction Elimination. 
-%However, we will not yet introduce Disjunction Elimination. It will be introduced in \S\ref{s:orE}. That's when we'll see the full power of the LEM rule. 
+%However, we will not yet introduce Disjunction Elimination. It will be introduced in \cref{s:orE}. That's when we'll see the full power of the LEM rule. 
 
 
 %
@@ -1133,7 +1133,7 @@ Here is a proof corresponding with the argument:
 
 \section{Biconditional}
 
-We strictly speaking have not got the biconditional `$\eiff$' in our language of TFL. We have, however, let you use it in symbolizations. We said in \ref{s:SymbolisingTFL:bicond} that  $\metaX\eiff\metaY$ is an abbreviation for  $(\metaX\eif\metaY)\eand(\metaY\eif\metaX)$.
+We strictly speaking have not got the biconditional `$\eiff$' in our language of TFL. We have, however, let you use it in symbolizations. We said in \cref{s:SymbolisingTFL:bicond} that  $\metaX\eiff\metaY$ is an abbreviation for  $(\metaX\eif\metaY)\eand(\metaY\eif\metaX)$.
 
 We then have rules in our natural deduction system that let you exchange $\metaX\eiff\metaY$ for its explicit form. 
 
@@ -1236,7 +1236,7 @@ The following three proofs are missing their citations (rule and line numbers). 
 \section{Proof Strategies}
 
 \begin{highlighted}
-	{These are all of the basic rules for the proof system for TFL.} For ease of reference, they're listed again in appendix \ref{glossary:basic rules TFL}.
+	{These are all of the basic rules for the proof system for TFL.} For ease of reference, they're listed again in \cref{glossary:basic rules TFL}.
 \end{highlighted}
 %Any other forms of reasoning that you want to use will have to be reduced to these.
 
@@ -1501,7 +1501,7 @@ Show that each of the following arguments are valid using natural deduction:
 
 
 \chapter{Derived rules for TFL}\label{s:Further}
-We have introduced all the basic rules of our proof system for TFL. In this section, we will add some additional rules to our system. These will make our system much easier to work with. (However, in \S\ref{s:Derived} we will see that they are not strictly speaking \emph{necessary}.)
+We have introduced all the basic rules of our proof system for TFL. In this section, we will add some additional rules to our system. These will make our system much easier to work with. (However, in \cref{s:Derived} we will see that they are not strictly speaking \emph{necessary}.)
 
 %\section{Reiteration}\label{sec:reiteration}
 %The first additional rule is \emph{reiteration} (R). This just allows us to repeat ourselves:
@@ -1603,7 +1603,7 @@ We can add rules to our system that encode this idea: allowing us to immediately
 %
 
 %%The justification for this is that, in natural language, double-negations tend to cancel out.
-%The justification for this is the same as the justification for LEM (\S\ref{sec:LEM}).
+%The justification for this is the same as the justification for LEM (\cref{sec:LEM}).
 %Any sentence is either true or false, there is no other possibility beyond these two options.
 %So for any sentence $A$, exactly one of $A$ or $\enot A$ must be true.
 %So if $\enot A$ isn't true (which is what $\enot \enot A$ says) then $A$ must be true.  We can present this argument more formally as follows:
@@ -1787,7 +1787,7 @@ Give a proof for each of these arguments:
 
 \chapter{Derivations of the derived rules}\label{s:Derived}
 
-In this section, we will see why we introduced the rules of our proof system in two separate batches. In particular, we want to show that the additional rules of \S\ref{s:Further} are not strictly speaking necessary, but can be derived from the basic rules of \S\ref{s:BasicTFL}.
+In this section, we will see why we introduced the rules of our proof system in two separate batches. In particular, we want to show that the additional rules of \cref{s:Further} are not strictly speaking necessary, but can be derived from the basic rules of \cref{s:BasicTFL}.
 
 %\section{Derivation of Reiteration}
 %We actually start by talking about the derivation of the rule of reiteration. We actually took this as a basic rule of the system. But we didn't need to. We could have instead had it as a derived rule.
@@ -1796,7 +1796,7 @@ In this section, we will see why we introduced the rules of our proof system in 
 %\begin{fitchproof}
 %	\have[m]{a}{\metaX}
 %\end{fitchproof}
-%You now want to repeat yourself, on some line $k$. You could just invoke the rule R, introduced in \S\ref{s:Further}. But equally well, you can do this with the \emph{basic} rules of \S\ref{s:BasicTFL}:
+%You now want to repeat yourself, on some line $k$. You could just invoke the rule R, introduced in \cref{s:Further}. But equally well, you can do this with the \emph{basic} rules of \cref{s:BasicTFL}:
 %\begin{fitchproof}
 %	\have[m]{a}{\metaX}
 %	\have[k]{aa}{\metaX \eand \metaX}\andI{a, a}
@@ -1804,7 +1804,7 @@ In this section, we will see why we introduced the rules of our proof system in 
 %\end{fitchproof}
 %To be clear: this is not a proof. Rather, it is a proof  \emph{scheme}. After all, it uses a variable, `$\metaX$', rather than a sentence of TFL, but the point is simple: Whatever sentences of TFL we plugged in for `$\metaX$', and whatever lines we were working on, we could produce a bona fide proof. So you can think of this as a recipe for producing proofs.
 %
-%Indeed, it is a recipe which shows us that, anything we can prove using the rule R, we can prove (with one more line) using just the other rules of \S\ref{s:BasicTFL}. So we did not actually need to introduce it as a \emph{basic} rule in our system; we could have introduced it as a \emph{derived} rule. However, for ease, we have allowed it in as a basic rule.
+%Indeed, it is a recipe which shows us that, anything we can prove using the rule R, we can prove (with one more line) using just the other rules of \cref{s:BasicTFL}. So we did not actually need to introduce it as a \emph{basic} rule in our system; we could have introduced it as a \emph{derived} rule. However, for ease, we have allowed it in as a basic rule.
 %
 
 \section{Derivation of Disjunctive syllogism}
@@ -1813,7 +1813,7 @@ Suppose that you are in a proof, and you have something of this form:
 	\have[m]{ab}{\metaX\eor\metaY}
 	\have[n]{na}{\enot \metaX}
 \end{fitchproof}
-You now want, on line $k$, to prove $\metaY$. You can do this with the rule of DS, introduced in \S\ref{s:Further}, but equally well, you can do this with the \emph{basic} rules of \S\ref{s:BasicTFL}:
+You now want, on line $k$, to prove $\metaY$. You can do this with the rule of DS, introduced in \cref{s:Further}, but equally well, you can do this with the \emph{basic} rules of \cref{s:BasicTFL}:
 	\begin{fitchproof}
 		\have[m]{ab}{\metaX\eor\metaY}
 		\have[n]{na}{\enot \metaX}
@@ -1841,7 +1841,7 @@ To be clear: this is not a proof. Rather, it is a proof \emph{scheme}.
 %After all, it uses variables, `$\metaX$' and `$\metaY$', which are not, strictly speaking, sentences of TFL, but the point is simple:
 Whatever sentences of TFL we plugged in for `$\metaX$' or `$\metaY$', and whatever lines we were working on, we could produce a bona fide proof. So you can think of this as a recipe for producing proofs.
 
-Indeed, it is a recipe which shows us that, anything we can prove using the rule DS, we can prove (with a few more lines) using just the other rules of \S\ref{s:BasicTFL}.
+Indeed, it is a recipe which shows us that, anything we can prove using the rule DS, we can prove (with a few more lines) using just the other rules of \cref{s:BasicTFL}.
 %So we did not actually need to introduce it as a \emph{basic} rule in our system; we could have introduced it as a \emph{derived} rule. However, for ease, we have allowed it in as a basic rule.
 %
 %So the DS rule, again, can be derived from our more basic rules.
@@ -1856,7 +1856,7 @@ Suppose in the course of you proof you already have $\metaX\eif\metaY$, say on l
 %You now want
 %%, on line $k$,
 %to prove $\enot \metaX$.
- You can do this with the rule of Modus Tollens (MT), introduced in \S\ref{s:Further}. But you could also do this with the \emph{basic} rules of \S\ref{s:BasicTFL}:
+ You can do this with the rule of Modus Tollens (MT), introduced in \cref{s:Further}. But you could also do this with the \emph{basic} rules of \cref{s:BasicTFL}:
 
 \begin{fitchproof}
 	\have[m]{ab}{\metaX\eif\metaY}
@@ -1870,7 +1870,7 @@ Suppose in the course of you proof you already have $\metaX\eif\metaY$, say on l
 %\have{xtoxx}{X \eif \ered}{\ifI{(a)-(nb1)}}
 	\have{no}{\enot\metaX}\notI{a-red} % contradiction in b,nb
 \end{fitchproof}
-Again, the rule of MT can be derived from the \emph{basic} rules of \S\ref{s:BasicTFL}.
+Again, the rule of MT can be derived from the \emph{basic} rules of \cref{s:BasicTFL}.
 
 
 
@@ -1898,7 +1898,7 @@ and
 	\close
 \have{con}{\metaX}\notE{j - k}
 \end{fitchproof}
-So again,  we can derive the double negations rules from the \emph{basic} rules of \S\ref{s:BasicTFL}.
+So again,  we can derive the double negations rules from the \emph{basic} rules of \cref{s:BasicTFL}.
 
 
 
@@ -1922,7 +1922,7 @@ So again,  we can derive the double negations rules from the \emph{basic} rules 
 %%\have{con}{\metaX}\orE{lem,a-a1, na-a2}
 %\have{con}{\metaX}\orE{lem,xtox,nxtox}
 %\end{fitchproof}
-%Again,  we can derive the DNE rule from the \emph{basic} rules of \S\ref{s:BasicTFL}.
+%Again,  we can derive the DNE rule from the \emph{basic} rules of \cref{s:BasicTFL}.
 %
 %
 %
@@ -2015,7 +2015,7 @@ Provide proof schemes that justify the addition of the third and fourth De Morga
 \
 
 \problempart
-The proofs you offered in response to the practice exercises of \S\S\ref{s:Further}--\ref{s:ProofTheoreticConcepts} used derived rules. Replace the use of derived rules, in such proofs, with only basic rules. You will find some `repetition' in the resulting proofs; in such cases, offer a streamlined proof using only basic rules.  (This will give you a sense, both of the power of derived rules, and of how all the rules interact.)
+The proofs you offered in response to the practice exercises of \cref{s:Further}--\ref{s:ProofTheoreticConcepts} used derived rules. Replace the use of derived rules, in such proofs, with only basic rules. You will find some `repetition' in the resulting proofs; in such cases, offer a streamlined proof using only basic rules.  (This will give you a sense, both of the power of derived rules, and of how all the rules interact.)
 
 \end{practiceproblems}
 
@@ -2026,7 +2026,7 @@ A very important result:
 \begin{highlighted}
 A TFL argument is valid if and only if it can be given a proof in this natural deduction system.
 \end{highlighted}
-In this chapter, we explain a bit more about how such an argument would go. Soundness is proved in more detail in \S\ref{ch:Soundness}.
+In this chapter, we explain a bit more about how such an argument would go. Soundness is proved in more detail in \cref{ch:Soundness}.
 
 \subsection{Logical Consequence}
 For this chapter we will make use of a further symbols:
@@ -2035,7 +2035,7 @@ For this chapter we will make use of a further symbols:
 %$$\metaX_1, \metaX_2, \ldots, \metaX_n \entails \metaY$$
 %The symbol `$\entails$' is known as \emph{the double-turnstile}, since it looks like a turnstile with two horizontal beams.
 %
-%Let me be clear. `$\entails$' is not a symbol of TFL. Rather, it is a symbol of our metalanguage, augmented English (recall the difference between object language and metalanguage from \S\ref{s:UseMention}). So the metalanguage sentence:
+%Let me be clear. `$\entails$' is not a symbol of TFL. Rather, it is a symbol of our metalanguage, augmented English (recall the difference between object language and metalanguage from \cref{s:UseMention}). So the metalanguage sentence:
 %\begin{ebullet}
 %	\item $P, P \eif Q \entails Q$
 %\end{ebullet}
@@ -2055,7 +2055,7 @@ is a logical consequence of the TFL sentences $\metaX_1, \metaX_2, \ldots$ and $
 $$\metaX_1, \metaX_2, \ldots, \metaX_n \entails \metaY$$
 The symbol `$\entails$' is known as \emph{the double-turnstile}, since it looks like a turnstile with two horizontal beams.
 
-Let us be clear be clear. `$\entails$' is not a symbol of TFL. Rather, it is a symbol of our metalanguage, augmented English (recall the difference between object language and metalanguage from \S\ref{s:UseMention}). So the metalanguage sentence:
+Let us be clear be clear. `$\entails$' is not a symbol of TFL. Rather, it is a symbol of our metalanguage, augmented English (recall the difference between object language and metalanguage from \cref{s:UseMention}). So the metalanguage sentence:
 \begin{ebullet}
 	\item $P, P \eif Q \entails Q$
 \end{ebullet}
@@ -2063,7 +2063,7 @@ is just an abbreviation of the sentence:
 \begin{ebullet}
 	\item The TFL sentences `$Q$' is a logical consequence of `$P$' and `$P \eif Q$'.
 \end{ebullet}
-Note that there is no limit on the number of TFL sentences that can be mentioned before the symbol `$\entails$'. Indeed, we can even consider the limiting case where there is no sentence (this should ring familiar from \S\ref{sec:valtt}):
+Note that there is no limit on the number of TFL sentences that can be mentioned before the symbol `$\entails$'. Indeed, we can even consider the limiting case where there is no sentence (this should ring familiar from \cref{sec:valtt}):
 $$\entails \metaY$$
 
 \subsection{Proof}
@@ -2128,14 +2128,14 @@ This is the problem of completeness. A proof system has the property of  \define
 
 \section{Other Semantic and Proof Theoretic Notions}
 
-%In \S\ref{s:ProofTheoreticConcepts}, we saw that we could use derivations to test for the same concepts we used truth tables to test for. Not only could we use derivations to prove that an argument is valid, we could also use them to test if a sentence is a tautology or a pair of sentences are equivalent. %We also started using the single turnstile the same way we used the double turnstile. If we could prove that \metaX was a tautology with a truth table, we wrote $\entails \metaX$, and if we could prove it using a derivation, we wrote $\proves \metaX.$
+%In \cref{s:ProofTheoreticConcepts}, we saw that we could use derivations to test for the same concepts we used truth tables to test for. Not only could we use derivations to prove that an argument is valid, we could also use them to test if a sentence is a tautology or a pair of sentences are equivalent. %We also started using the single turnstile the same way we used the double turnstile. If we could prove that \metaX was a tautology with a truth table, we wrote $\entails \metaX$, and if we could prove it using a derivation, we wrote $\proves \metaX.$
 %
 %You may have wondered at that point if the two kinds of turnstiles always worked the same way. If you can show that \metaX is a tautology using truth tables, can you also always show that it is true using a derivation? Is the reverse true? Are these things also true for tautologies and pairs of equivalent sentences? As it turns out, the answer to all these questions and many more like them is yes. We can show this by defining all these concepts separately and then proving them equivalent. That is, we imagine that we actually have two notions of validity, valid$_{\entails}$ and  valid$_{\proves}$ and then show that the two concepts always work the same way.
 
 
 %These were all defined with truth tables, but we can also provide proof-theoretic versions of them.
 %
-%To begin with, we need to define all of our logical concepts separately for truth tables and derivations. A lot of this work has already been done. We handled all of the truth table definitions in \S\ref{s:SemanticConcepts}. We have also already given syntactic definitions for tautologies (theorems) and pairs of logically equivalent sentences. The other definitions follow naturally. For most logical properties we can devise a test using derivations, and those that we cannot test for directly can be defined in terms of the concepts that we can define.
+%To begin with, we need to define all of our logical concepts separately for truth tables and derivations. A lot of this work has already been done. We handled all of the truth table definitions in \cref{s:SemanticConcepts}. We have also already given syntactic definitions for tautologies (theorems) and pairs of logically equivalent sentences. The other definitions follow naturally. For most logical properties we can devise a test using derivations, and those that we cannot test for directly can be defined in terms of the concepts that we can define.
 %
 %For instance, we defined a theorem as a sentence that can be derived without any premises (p.~\pageref{def:syntactic_tautology_in_sl}). Since the negation of a contradiction is a tautology, we can define a \define{syntactic contradiction in TFL} \label{def:syntactic_contradiction_in_sl} as a sentence whose negation can be derived without any premises. The syntactic definition of a contingent sentence is a little different. We don't have any practical, finite method for proving that a sentence is contingent using derivations, the way we did using truth tables. So we have to content ourselves with defining ``contingent sentence'' negatively. A sentence is \define{{syntactically contingent in TFL}} \label{def:syntactically_contingent_in_sl} if it is not a theorem or a contradiction.
 %
@@ -2173,11 +2173,11 @@ This is the problem of completeness. A proof system has the property of  \define
 
 Now we know that the proof theoretic and truth-table methods are equivalent, we can use them interchangable depending on which is more useful.
 
-%In \S\ref{s:ProofTheoreticConcepts}, we saw that we could use derivations to test for the same concepts we used truth tables to test for. Not only could we use derivations to prove that an argument is valid, we could also use them to test if a sentence is a tautology or a pair of sentences are equivalent. %We also started using the single turnstile the same way we used the double turnstile. If we could prove that \metaX was a tautology with a truth table, we wrote $\entails \metaX$, and if we could prove it using a derivation, we wrote $\proves \metaX.$
+%In \cref{s:ProofTheoreticConcepts}, we saw that we could use derivations to test for the same concepts we used truth tables to test for. Not only could we use derivations to prove that an argument is valid, we could also use them to test if a sentence is a tautology or a pair of sentences are equivalent. %We also started using the single turnstile the same way we used the double turnstile. If we could prove that \metaX was a tautology with a truth table, we wrote $\entails \metaX$, and if we could prove it using a derivation, we wrote $\proves \metaX.$
 %
 %You may have wondered at that point if the two kinds of turnstiles always worked the same way. If you can show that \metaX is a tautology using truth tables, can you also always show that it is true using a derivation? Is the reverse true? Are these things also true for tautologies and pairs of equivalent sentences? As it turns out, the answer to all these questions and many more like them is yes. We can show this by defining all these concepts separately and then proving them equivalent. That is, we imagine that we actually have two notions of validity, valid$_{\entails}$ and  valid$_{\proves}$ and then show that the two concepts always work the same way.
 %
-%To begin with, we need to define all of our logical concepts separately for truth tables and derivations. A lot of this work has already been done. We handled all of the truth table definitions in \S\ref{s:SemanticConcepts}. We have also already given syntactic definitions for tautologies (theorems) and pairs of logically equivalent sentences. The other definitions follow naturally. For most logical properties we can devise a test using derivations, and those that we cannot test for directly can be defined in terms of the concepts that we can define.
+%To begin with, we need to define all of our logical concepts separately for truth tables and derivations. A lot of this work has already been done. We handled all of the truth table definitions in \cref{s:SemanticConcepts}. We have also already given syntactic definitions for tautologies (theorems) and pairs of logically equivalent sentences. The other definitions follow naturally. For most logical properties we can devise a test using derivations, and those that we cannot test for directly can be defined in terms of the concepts that we can define.
 %
 %For instance, we defined a theorem as a sentence that can be derived without any premises (p.~\pageref{def:syntactic_tautology_in_sl}). Since the negation of a contradiction is a tautology, we can define a \define{syntactic contradiction in TFL} \label{def:syntactic_contradiction_in_sl} as a sentence whose negation can be derived without any premises. The syntactic definition of a contingent sentence is a little different. We don't have any practical, finite method for proving that a sentence is contingent using derivations, the way we did using truth tables. So we have to content ourselves with defining ``contingent sentence'' negatively. A sentence is \define{{syntactically contingent in TFL}} \label{def:syntactically_contingent_in_sl} if it is not a theorem or a contradiction.
 %
@@ -2188,7 +2188,7 @@ Now we know that the proof theoretic and truth-table methods are equivalent, we 
 %Finally, an argument is \define{provably valid in TFL} \label{def:syntactically_valid_in_SL} if and only if there is a derivation of its conclusion from its premises. All of these definitions are given in Table \ref{table:truth_tables_or_derivations}.
 %
 %
-We can also use proof theoretic methods for determining other logical notions, such as being consistent. We summarise how one would define them in \ref{table:truth_tables_or_derivations}
+We can also use proof theoretic methods for determining other logical notions, such as being consistent. We summarise how one would define them in \cref{table:truth_tables_or_derivations}
 \begin{sidewaystable}
 \tabulinesep=1ex
 \begin{tabu}{X[.5,c,m] ||X[1,l,m] |X[1,l,m]}
@@ -2212,7 +2212,7 @@ Valid argument		&	An argument whose truth table has no lines where there are all
 \label{table:truth_tables_or_derivations}
 \end{sidewaystable}
 
-In fact, we can give general guidelines about when it's best to give proofs and when it is best to give truth tables. We do this in \ref{table.ProofOrModel}:
+In fact, we can give general guidelines about when it's best to give proofs and when it is best to give truth tables. We do this in \cref{table.ProofOrModel}:
 
 
 \begin{table}[h]

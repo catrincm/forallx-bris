@@ -370,11 +370,11 @@ Since this latter symbolisation extracts more of the information from the origin
 %		\item[\ex{terms2a}] Gregor and Marybeth are angry.
 %		\item[\ex{terms2}] If Elsa is angry, then so are Gregor and Marybeth.
 %	\end{earg}
-%Sentence \ref{terms1} is straightforward: we symbolize it by $Ae$.
+%\Cref{terms1} is straightforward: we symbolize it by $Ae$.
 %
-%Sentence \ref{terms2a}: this is a conjunction of two simpler sentences. The simple sentences can be symbolized just by $Ag$ and $Am$. Then we help ourselves to our resources from TFL, and symbolize the entire sentence by $Ag \eand Am$. This illustrates an important point: FOL has all of the truth-functional connectives of TFL.
+%\Cref{terms2a}: this is a conjunction of two simpler sentences. The simple sentences can be symbolized just by $Ag$ and $Am$. Then we help ourselves to our resources from TFL, and symbolize the entire sentence by $Ag \eand Am$. This illustrates an important point: FOL has all of the truth-functional connectives of TFL.
 %
-%Sentence \ref{terms2}: this is a conditional, whose antecedent is sentence \ref{terms1} and whose consequent is sentence \ref{terms2a}, so we can symbolize this with $Ae \eif (Ag \eand Am)$.
+%\Cref{terms2}: this is a conditional, whose antecedent is \cref{terms1} and whose consequent is \cref{terms2a}, so we can symbolize this with $Ae \eif (Ag \eand Am)$.
 %
 %Sometimes the truth functional nature of a sentence isn't explicit. For example suppose we wish to symbolise:
 %\begin{earg}
@@ -439,15 +439,15 @@ We will start with the following symbolisation key:
 		\item[k] Karl
 		\item[Lxy] \gap{x} loves \gap{y}
 	\end{ekey}
-%Sentence \ref{sent:terms3} can now be symbolized by $Tmd$. Note the order of the names!
-%Sentence \ref{sent:terms4} might seem as if it requires a new predicate. But there is obviously a connection connection between `shorter' and `taller.' We can paraphrase sentence \ref{sent:terms4} using predicates already in our key: `It is not the case that Imre is as tall or taller than Karl'. We can now symbolize it as $\enot Tmd$.
-Sentence \ref{sent:terms3} will now be symbolized by $Lki$.
+%\Cref{sent:terms3} can now be symbolized by $Tmd$. Note the order of the names!
+%\Cref{sent:terms4} might seem as if it requires a new predicate. But there is obviously a connection connection between `shorter' and `taller.' We can paraphrase \cref{sent:terms4} using predicates already in our key: `It is not the case that Imre is as tall or taller than Karl'. We can now symbolize it as $\enot Tmd$.
+\Cref{sent:terms3} will now be symbolized by $Lki$.
 
-Sentence \ref{sent:terms4} can be paraphrased as `Imre loves Imre'. It can now be symbolized by $Lii$.
+\Cref{sent:terms4} can be paraphrased as `Imre loves Imre'. It can now be symbolized by $Lii$.
 
-Sentence \ref{sent:terms5} is a conjunction. We might paraphrase it as `Karl loves Imre, and Imre does not love Karl'. It can now be symbolized by $Lki \eand \enot Lik$.
+\Cref{sent:terms5} is a conjunction. We might paraphrase it as `Karl loves Imre, and Imre does not love Karl'. It can now be symbolized by $Lki \eand \enot Lik$.
 
-Sentence \ref{sent:terms6} might be paraphrased by `Imre loves Karl'. It can then be symbolized by $Lik$. Of course, this slurs over the difference in tone between the active and passive voice; such nuances are lost in FOL.
+\Cref{sent:terms6} might be paraphrased by `Imre loves Karl'. It can then be symbolized by $Lik$. Of course, this slurs over the difference in tone between the active and passive voice; such nuances are lost in FOL.
 
 This last example, though, highlights something important. Suppose we add to our symbolization key the following:
 	\begin{ekey}
@@ -734,7 +734,7 @@ with subscripts, as needed $x_1, y_1, z_1, x_2,\ldots$. $u,v,w$ may also be used
 %\section{Terms and formulas}
 %\label{s:TermsFormulas}
 %
-%In \S\ref{s:TFLSentences}, we went straight from the statement of the vocabulary of TFL to the definition of a sentence of TFL. In FOL, we will have to go via an intermediary stage: via the notion of a \define{formula}. The intuitive idea is that a formula is any sentence, or anything which can be turned into a sentence by adding quantifiers out front. But this will take some unpacking.
+%In \cref{s:TFLSentences}, we went straight from the statement of the vocabulary of TFL to the definition of a sentence of TFL. In FOL, we will have to go via an intermediary stage: via the notion of a \define{formula}. The intuitive idea is that a formula is any sentence, or anything which can be turned into a sentence by adding quantifiers out front. But this will take some unpacking.
 %
 %We start by defining the notion of a term.
 %	\factoidbox{
@@ -757,11 +757,11 @@ with subscripts, as needed $x_1, y_1, z_1, x_2,\ldots$. $u,v,w$ may also be used
 %
 %\newglossaryentry{formula}{
 %  name = formula,
-%  description = {an expression of FOL built according to the recursive rules in \S\ref{s:TermsFormulas}}
+%  description = {an expression of FOL built according to the recursive rules in \cref{s:TermsFormulas}}
 %}
 %
 %
-%The use of script letters here follows the conventions laid down in \S\ref{s:UseMention}. So, $\meta{R}$ is not itself a predicate of FOL. Rather, it is a symbol of our metalanguage (augmented English) that we use to talk about any predicate of FOL. Similarly, $\meta{t}_1$ is not a term of FOL, but a symbol of the metalanguage that we can use to talk about any term of FOL. So, where $F$ is a one-place predicate, $G$ is a three-place predicate, and $S$ is a six-place predicate, here are some atomic formulas:
+%The use of script letters here follows the conventions laid down in \cref{s:UseMention}. So, $\meta{R}$ is not itself a predicate of FOL. Rather, it is a symbol of our metalanguage (augmented English) that we use to talk about any predicate of FOL. Similarly, $\meta{t}_1$ is not a term of FOL, but a symbol of the metalanguage that we can use to talk about any term of FOL. So, where $F$ is a one-place predicate, $G$ is a three-place predicate, and $S$ is a six-place predicate, here are some atomic formulas:
 %	\begin{center}
 %		$x = a$\\
 %		$a = b$\\
@@ -775,7 +775,7 @@ with subscripts, as needed $x_1, y_1, z_1, x_2,\ldots$. $u,v,w$ may also be used
 %Once we know what atomic formulas are, we can offer recursion clauses to define arbitrary formulas. The first few clauses are exactly the same as for TFL.
 
 \section{Formulas}
-In \S\ref{s:TFLSentences}, we went straight from the presentation of the vocabulary of TFL to the definition of a sentence of TFL. In FOL, we will have to go via an intermediary stage, that is, we first need to introduce \define{formulas} of FOL. The intuitive idea is that a formula is any sentence, or anything which can be turned into a sentence by adding quantifiers out front. But this will take some unpacking.
+In \cref{s:TFLSentences}, we went straight from the presentation of the vocabulary of TFL to the definition of a sentence of TFL. In FOL, we will have to go via an intermediary stage, that is, we first need to introduce \define{formulas} of FOL. The intuitive idea is that a formula is any sentence, or anything which can be turned into a sentence by adding quantifiers out front. But this will take some unpacking.
 
 As we did for TFL, we will  present a inductive definition of a formula of FOL. The starting point of this is the notion of an \emph{atomic formula}. In TFL we started our definition with the notion of an atomic sentence, which were just given to us in our vocabulary. In FOL, the starting point of our definition is the notion of an atomic formula. Atomic formulas will be given by the following definition:
 \factoidbox{ If $\metaPredicate$ is an $n$-place predicate and $\metaterm_1,\ldots\metaterm_n$ are either variables or names, then $\metaPredicate\metaterm_1\ldots\metaterm_n$ is an \define{atomic formula}.\footnotemark}
@@ -821,7 +821,7 @@ We now give the inductive definition of what it is to be a formula of FOL.
 	$(Dx\eand Db)$, \\
 	$\enot (Dx\eand Db)$\\
 	$(\enot(Dx\eand Db)\eif Lxy)$
-	\end{center}And we can display their construction using our formation trees, as in 	\ref{S:formationtree}.
+	\end{center}And we can display their construction using our formation trees, as in 	\cref{S:formationtree}.
 		\begin{center}
 		\begin{forest}
 			[$(\enot(Dx\eand Db)\eif Lxy)$
@@ -879,7 +879,7 @@ We now give the inductive definition of what it is to be a formula of FOL.
 
 
 
-%Why in \ref{item:quantifiers} did we have the restriction that $\exists \metav$ or $\forall \metav$ is not already in $\metaX$? This is to ensure that variables only serve one master at any one time (see \S\ref{s:MultipleGenerality}).Otherwise we could see that $\forall x Rxx$ is a sentence and then conclude that $\exists x\forall x Rxx$, which is not a good sentence.  However, note that $\exists x Cx\;\eor\;\forall x Bx$ is a sentence. Here the variable $x$ is used in both quantifiers, but there's no ambiguity because the sentence was constructed by combing the two sentences $\exists x Cx$ and $\forall xBx$ with a connective, $\eor$. The \emph{scope} of $\exists x$ is just $\exists x Cx$; it doesn't look ``over'' the connective to where $\forall x$ is used. So the two uses of $x$ are kept separate and no problems arise. However, to avoid any potential worries it is generally a good idea to use different variables when symbolising sentences; in this case one could equally well give $\exists x Cx\;\eor\;\forall y By$ as a symbolisation.
+%Why in \ref{item:quantifiers} did we have the restriction that $\exists \metav$ or $\forall \metav$ is not already in $\metaX$? This is to ensure that variables only serve one master at any one time (see \cref{s:MultipleGenerality}).Otherwise we could see that $\forall x Rxx$ is a sentence and then conclude that $\exists x\forall x Rxx$, which is not a good sentence.  However, note that $\exists x Cx\;\eor\;\forall x Bx$ is a sentence. Here the variable $x$ is used in both quantifiers, but there's no ambiguity because the sentence was constructed by combing the two sentences $\exists x Cx$ and $\forall xBx$ with a connective, $\eor$. The \emph{scope} of $\exists x$ is just $\exists x Cx$; it doesn't look ``over'' the connective to where $\forall x$ is used. So the two uses of $x$ are kept separate and no problems arise. However, to avoid any potential worries it is generally a good idea to use different variables when symbolising sentences; in this case one could equally well give $\exists x Cx\;\eor\;\forall y By$ as a symbolisation.
 
  The notions of scope and main logical operators that were given in \ref{s:TFLSentences} equally applies to FOL but now the main logical operator might be a quantifier. These were:
 % In fact, we can now give a formal definition of scope which incorporates the definition of the scope of a quantifier. Here we follow the case of TFL, though we note that a logical operator can be either a connective or a quantifier:
@@ -969,7 +969,7 @@ Finally we can say what a sentence of FOL is
 
 \section{Bracketing conventions}
 
-We will adopt the same notational conventions governing brackets that we did for TFL (see \S\ref{s:TFLSentences}):  we may omit the outermost brackets of a formula.
+We will adopt the same notational conventions governing brackets that we did for TFL (see \cref{s:TFLSentences}):  we may omit the outermost brackets of a formula.
 
 %First, we may omit the outermost brackets of a formula.
 
@@ -1018,7 +1018,7 @@ Identify which variables are bound and which are free.
 %%\end{quote}
 %
 %A quantifier must always be followed by a \define{variable}. In FOL, variables are usually $x$, $y$ and $z$, they might also have subscripts $x_1,y_{27},z_{333}$; we also sometimes use $u,v,w$.
-%So we might symbolize sentence \ref{q.a} as $\forall x Hx$.  The variable $x$ is serving as a kind of placeholder. If you give me an $x$ then $Hx$ says that that particular person is happy.
+%So we might symbolize \cref{q.a} as $\forall x Hx$.  The variable $x$ is serving as a kind of placeholder. If you give me an $x$ then $Hx$ says that that particular person is happy.
 %
 %The symbolisation key doesn't specify who $x$ refers to; it can refer to anyone. So $Hx$ itself isn't going to be true or false, it is only true or false once you provide the additional information of who $x$ refers to.
 %
@@ -1042,7 +1042,7 @@ Identify which variables are bound and which are free.
 %%		\item[\ex{q.ac}] Everyone is at least as tough as Elsa.
 %		\item[\ex{q.e}] Someone is angry.
 %	\end{earg}
-%%It might be tempting to symbolize sentence \ref{q.a} as $Ha \eand Hg \eand Hm$. Yet this would only say that Elsa, Gregor, and Marybeth are happy.
+%%It might be tempting to symbolize \cref{q.a} as $Ha \eand Hg \eand Hm$. Yet this would only say that Elsa, Gregor, and Marybeth are happy.
 %We want to say that \emph{everyone} is happy, even those with no names. In order to do this, we introduce the $\forall$ symbol. This is called the \define{universal quantifier}.
 %
 %\newglossaryentry{universal quantifier}{
@@ -1051,7 +1051,7 @@ Identify which variables are bound and which are free.
 %}
 %
 %A quantifier must always be followed by a \define{variable}. In FOL, variables are usually $x$, $y$ and $z$, they might also have subscripts $x_1,y_{27},z_{333}$; we also sometimes use $u,v,w$.
-%So we might symbolize sentence \ref{q.a} as $\forall x Hx$.  The variable $x$ is serving as a kind of placeholder. If you give me an $x$ then $Hx$ says that that particular person is happy.
+%So we might symbolize \cref{q.a} as $\forall x Hx$.  The variable $x$ is serving as a kind of placeholder. If you give me an $x$ then $Hx$ says that that particular person is happy.
 %
 %The symbolisation key doesn't specify who $x$ refers to; it can refer to anyone. So $Hx$ itself isn't going to be true or false, it is only true or false once you provide the additional information of who $x$ refers to.
 %
@@ -1064,7 +1064,7 @@ Identify which variables are bound and which are free.
 %
 %It should be pointed out that there is no special reason to use $x$ rather than some other variable. The sentences $\forall x Hx$, $\forall y Hy$, $\forall z Hz$, and $\forall x_5 Hx_5$ use different variables, but they will all be logically equivalent.
 %
-%To symbolize sentence \ref{sent:q.e}, we introduce another new symbol: the \define{existential quantifier}, $\exists$. Like the universal quantifier, the existential quantifier requires a variable. Sentence \ref{sent:q.e} can be symbolized by $\exists x Ax$. Whereas $\forall x Ax$ is read naturally as `for all x, x is angry', $\exists x Ax$ is read naturally as `there is something, x, such that x is angry'. Once again, the variable is a kind of placeholder; we could just as easily have symbolized sentence \ref{sent:q.e} with $\exists z Az$, $\exists w_{256} Aw_{256}$, or whatever.
+%To symbolize \cref{sent:q.e}, we introduce another new symbol: the \define{existential quantifier}, $\exists$. Like the universal quantifier, the existential quantifier requires a variable. \Cref{sent:q.e} can be symbolized by $\exists x Ax$. Whereas $\forall x Ax$ is read naturally as `for all x, x is angry', $\exists x Ax$ is read naturally as `there is something, x, such that x is angry'. Once again, the variable is a kind of placeholder; we could just as easily have symbolized \cref{sent:q.e} with $\exists z Az$, $\exists w_{256} Aw_{256}$, or whatever.
 %
 %\newglossaryentry{existential quantifier}{
 %  name = existential quantifier,
@@ -1077,9 +1077,9 @@ Identify which variables are bound and which are free.
 %		\item[\ex{q.en}] There is someone who is not happy.
 %		\item[\ex{q.na}] Not everyone is happy.
 %	\end{earg}
-%Sentence \ref{q.ne} can be paraphrased as, `It is not the case that someone is angry'. We can then symbolize it using negation and an existential quantifier: $\enot \exists x Ax$. Yet sentence \ref{q.ne} could also be paraphrased as, `Everyone is not angry'. With this in mind, it can be symbolized using negation and a universal quantifier: $\forall x \enot Ax$. Both of these are acceptable symbolizations.  Indeed, it will transpire that, in general, $\forall x \enot\metaX$ is logically equivalent to $\enot\exists x\metaX$. (Notice that we have here returned to the practice of using $\metaX$ as a metavariable, from \S\ref{s:UseMention}.) Symbolizing a sentence one way, rather than the other, might seem more `natural' in some contexts, but it is not much more than a matter of taste.
+%\Cref{q.ne} can be paraphrased as, `It is not the case that someone is angry'. We can then symbolize it using negation and an existential quantifier: $\enot \exists x Ax$. Yet \cref{q.ne} could also be paraphrased as, `Everyone is not angry'. With this in mind, it can be symbolized using negation and a universal quantifier: $\forall x \enot Ax$. Both of these are acceptable symbolizations.  Indeed, it will transpire that, in general, $\forall x \enot\metaX$ is logically equivalent to $\enot\exists x\metaX$. (Notice that we have here returned to the practice of using $\metaX$ as a metavariable, from \cref{s:UseMention}.) Symbolizing a sentence one way, rather than the other, might seem more `natural' in some contexts, but it is not much more than a matter of taste.
 %
-%Sentence \ref{q.en} is most naturally paraphrased as, `There is some x, such that x is not happy'. This then becomes $\exists x \enot Hx$. Of course, we could equally have written $\enot\forall x Hx$, which we would naturally read as `it is not the case that everyone is happy'. That too would be a perfectly adequate symbolization of sentence \ref{q.na}.
+%\Cref{q.en} is most naturally paraphrased as, `There is some x, such that x is not happy'. This then becomes $\exists x \enot Hx$. Of course, we could equally have written $\enot\forall x Hx$, which we would naturally read as `it is not the case that everyone is happy'. That too would be a perfectly adequate symbolization of \cref{q.na}.
 %
 %
 %\section{When the domain does not match up}
@@ -1093,7 +1093,7 @@ Identify which variables are bound and which are free.
 
 \chapter{FOL-Symbolisations}
 \label{s:SymbolisingComplexFOL}
-We have already seem the key idea of FOL symbolisation in Chapter \ref{s:FOLBuildingBlocks} applied to sentences with limited logical complexity. Before moving to symbolise more complex sentences, we explicitly summarise our strategy for symbolising complex sentences. This extends the strategy that we used for TFL in \S\ref{s:SymbolisingComplexTFL}:
+We have already seem the key idea of FOL symbolisation in \cref{s:FOLBuildingBlocks} applied to sentences with limited logical complexity. Before moving to symbolise more complex sentences, we explicitly summarise our strategy for symbolising complex sentences. This extends the strategy that we used for TFL in \cref{s:SymbolisingComplexTFL}:
 
 \begin{highlighted}
 \begin{enumerate}
@@ -1157,13 +1157,13 @@ It is tempting just to define a name to mean `chimera.' The symbolization key wo
 \item[Ax] \gap{x} is angry.
 \item[c] chimera
 \end{ekey}
-We could then symbolize sentence \ref{sent:chimera1} as $Ac$ and sentence \ref{sent:chimera2} as $\enot Ac$.
+We could then symbolize \cref{sent:chimera1} as $Ac$ and \cref{sent:chimera2} as $\enot Ac$.
 
 Problems will arise when we ask whether these sentences are true or false.
 
-One option is to say that sentence \ref{sent:chimera1} is not true, because there is no chimera. If sentence \ref{sent:chimera1} is false because it talks about a non-existent thing, then sentence \ref{sent:chimera2} is false for the same reason. Yet this would mean that $Ac$ and $\enot Ac$ would both be false. Given the truth conditions for negation, this cannot be the case, and contradict the Law of Excluded Middle.
+One option is to say that \cref{sent:chimera1} is not true, because there is no chimera. If \cref{sent:chimera1} is false because it talks about a non-existent thing, then \cref{sent:chimera2} is false for the same reason. Yet this would mean that $Ac$ and $\enot Ac$ would both be false. Given the truth conditions for negation, this cannot be the case, and contradict the Law of Excluded Middle.
 
-Since we cannot say that they are both false, what should we do? Another option is to say that sentence \ref{sent:chimera1} is \emph{meaningless} because it talks about a non-existent thing. So $Ac$ would be a meaningful expression in FOL for some interpretations but not for others. Yet this would make our formal language hostage to particular interpretations. Since we are interested in logical form, we want to consider the logical force of a sentence like $Ac$ apart from any particular interpretation. If $Ac$ were sometimes meaningful and sometimes meaningless, we could not do that.
+Since we cannot say that they are both false, what should we do? Another option is to say that \cref{sent:chimera1} is \emph{meaningless} because it talks about a non-existent thing. So $Ac$ would be a meaningful expression in FOL for some interpretations but not for others. Yet this would make our formal language hostage to particular interpretations. Since we are interested in logical form, we want to consider the logical force of a sentence like $Ac$ apart from any particular interpretation. If $Ac$ were sometimes meaningful and sometimes meaningless, we could not do that.
 
 This is the \emph{problem of non-referring terms} which is important problem in philosophical logic and the philosophy of language. For our purpose the important point is to appreciate that each name of FOL \emph{must} refer to something in the domain (although the domain can contain any things we like). If we want to symbolize arguments about mythological creatures, then we must define a domain that includes them. This option is important if we want to consider the logic of stories. We can symbolize a sentence like `Sherlock Holmes lived at 221B Baker Street' by including fictional characters like Sherlock Holmes in our domain.
 
@@ -1358,7 +1358,7 @@ So we symbolise this sentence as $$\enot \forall x(Dx\eif Qx)$$
 %		\item[Cx] \gap{x} is a car
 %		\item[h] Herbie
 %	\end{ekey}
-%This allows us to symbolize sentence \ref{syn1} as $Wh \eand Ch$. But now consider:
+%This allows us to symbolize \cref{syn1} as $Wh \eand Ch$. But now consider:
 %	\begin{earg}
 %		\item[\ex{syn2}] Damon Stoudamire is a short basketball player.
 %		\item[\ex{syn3}] Damon Stoudamire is a man.
@@ -1371,7 +1371,7 @@ So we symbolise this sentence as $$\enot \forall x(Dx\eif Qx)$$
 %		\item[Mx] \gap{x} is a man
 %		\item[d] Damon Stoudamire
 %	\end{ekey}
-%Then we would symbolize sentence \ref{syn2} with $Sd \eand Bd$, sentence \ref{syn3} with $Md$ and sentence \ref{syn4} with $Sd \eand Md$, but that would be a terrible mistake! This now suggests that sentences \ref{syn2} and \ref{syn3} together \emph{entail} sentence \ref{syn4}, but they do not. Standing at  5'10'', Damon Stoudamire is one of the shortest professional basketball players of all time, but he is nevertheless an averagely-tall man. The point is that sentence \ref{syn2} says that Damon is short \emph{qua} basketball player, even though he is of average height \emph{qua} man. So you will need to symbolize `\blank\ is a short basketball player' and `\blank\ is a short man' using completely different predicates.
+%Then we would symbolize \cref{syn2} with $Sd \eand Bd$, \cref{syn3} with $Md$ and \cref{syn4} with $Sd \eand Md$, but that would be a terrible mistake! This now suggests that sentences \ref{syn2} and \ref{syn3} together \emph{entail} \cref{syn4}, but they do not. Standing at  5'10'', Damon Stoudamire is one of the shortest professional basketball players of all time, but he is nevertheless an averagely-tall man. The point is that \cref{syn2} says that Damon is short \emph{qua} basketball player, even though he is of average height \emph{qua} man. So you will need to symbolize `\blank\ is a short basketball player' and `\blank\ is a short man' using completely different predicates.
 
 %Similar examples abound. All politicians are people, but some good politicians are (arguably) bad people. Someone might be an incompetent statesman, but a competent individual. And so it goes. The moral is: when you see two adjectives in a row, you need to ask yourself carefully whether they can be treated as a conjunction or not.
 
@@ -1392,16 +1392,16 @@ In providing a symbolization key, we need to specify a domain. Since we are talk
 		\item[Qx] \gap{x} is a quarter
 		\item[Dx] \gap{x} is a dime
 	\end{ekey}
-Sentence \ref{sent:quan1} is most naturally symbolized using a universal quantifier. The universal quantifier says something about everything in the domain, not just about the coins in my pocket. Sentence \ref{sent:quan1} can be paraphrased as `for any coin, \emph{if} that coin is in my pocket \emph{then} it is a quarter'. So we can symbolize it as $\forall x(Px \eif Qx)$.
+\Cref{sent:quan1} is most naturally symbolized using a universal quantifier. The universal quantifier says something about everything in the domain, not just about the coins in my pocket. \Cref{sent:quan1} can be paraphrased as `for any coin, \emph{if} that coin is in my pocket \emph{then} it is a quarter'. So we can symbolize it as $\forall x(Px \eif Qx)$.
 
-Since sentence \ref{sent:quan1} is about coins that are both in my pocket \emph{and} that are quarters, it might be tempting to symbolize it using a conjunction. However, the sentence $\forall x(Px \eand Qx)$ would symbolize the sentence `every coin is both a quarter and in my pocket'. This obviously means something very different than sentence \ref{sent:quan1}. And so we see:
+Since \cref{sent:quan1} is about coins that are both in my pocket \emph{and} that are quarters, it might be tempting to symbolize it using a conjunction. However, the sentence $\forall x(Px \eand Qx)$ would symbolize the sentence `every coin is both a quarter and in my pocket'. This obviously means something very different than \cref{sent:quan1}. And so we see:
 	\factoidbox{
 		If a sentence can be paraphrased in English as \begin{center}
 		\begin{tabular}{l}`every F is G',\\`all Fs are Gs', or\\ `any F is a G',
 		\end{tabular}
 		\end{center} it can be symbolised as $$\forall x (\meta{F}x \eif \meta{G}x).$$
 	}
-Sentence \ref{sent:quan2} is most naturally symbolized using an existential quantifier. It can be paraphrased as `there is some coin which is both on the table and which is a dime'. So we can symbolize it as $\exists x(Tx \eand Dx)$.
+\Cref{sent:quan2} is most naturally symbolized using an existential quantifier. It can be paraphrased as `there is some coin which is both on the table and which is a dime'. So we can symbolize it as $\exists x(Tx \eand Dx)$.
 
 Notice that we needed to use a conditional with the universal quantifier, but we used a conjunction with the existential quantifier. Suppose we had instead written $\exists x(Tx \eif Dx)$. That would mean that there is some object in the domain of which $(Tx \eif Dx)$ is true. Recall that, in TFL, $\metaX \eif \metaY$ is logically equivalent (in TFL) to $\enot\metaX \eor \metaY$. This equivalence will also hold in FOL. So $\exists x(Tx \eif Dx)$ is true if there is some object in the domain, such that $(\enot Tx \eor Dx)$ is true of that object. That is, $\exists x (Tx \eif Dx)$ is true if some coin is \emph{either} not on the table \emph{or} is a dime. Of course there is a coin that is not on the table: there are coins lots of other places. So it is \emph{very easy} for $\exists x(Tx \eif Dx)$ to be true. A conditional will usually be the natural connective to use with a universal quantifier, but a conditional within the scope of an existential quantifier tends to say something very weak indeed. As a general rule of thumb, do not put conditionals in the scope of existential quantifiers unless you are sure that you need one.
 	\factoidbox{
@@ -1411,7 +1411,7 @@ Notice that we needed to use a conditional with the universal quantifier, but we
 		\end{center} it can be symbolised as $$\exists x (\meta{F}x \eand \meta{G}x).$$
 	}
 
-Sentence \ref{sent:quan3} can be paraphrased as, `It is not the case that every coin on the table is a dime'. So we can symbolize it by $\enot \forall x(Tx \eif Dx)$. You might look at sentence \ref{sent:quan3} and paraphrase it instead as, `Some coin on the table is not a dime'. You would then symbolize it by $\exists x(Tx \eand \enot Dx)$. Although it is probably not immediately obvious yet, these two sentences are logically equivalent. (This is due to the logical equivalence between $\enot\forall x\metaX$ and $\exists x\enot\metaX$, mentioned in \S\ref{s:FOLBuildingBlocks}, along with the equivalence between $\enot(\metaX\eif\metaY)$ and $\metaX\eand\enot\metaY$.)
+\Cref{sent:quan3} can be paraphrased as, `It is not the case that every coin on the table is a dime'. So we can symbolize it by $\enot \forall x(Tx \eif Dx)$. You might look at \cref{sent:quan3} and paraphrase it instead as, `Some coin on the table is not a dime'. You would then symbolize it by $\exists x(Tx \eand \enot Dx)$. Although it is probably not immediately obvious yet, these two sentences are logically equivalent. (This is due to the logical equivalence between $\enot\forall x\metaX$ and $\exists x\enot\metaX$, mentioned in \cref{s:FOLBuildingBlocks}, along with the equivalence between $\enot(\metaX\eif\metaY)$ and $\metaX\eand\enot\metaY$.)
 	\factoidbox{
 		If a sentence can be paraphrased in English as \begin{center}
 		`not all Fs are Gs',
@@ -1421,7 +1421,7 @@ Sentence \ref{sent:quan3} can be paraphrased as, `It is not the case that every 
 				\end{center}
 	}
 
-Sentence \ref{sent:quan4} can be paraphrased as, `It is not the case that there is some dime in my pocket'. This can be symbolized by $\enot\exists x(Px \eand Dx)$. It might also be paraphrased as, `Everything in my pocket is a non-dime', and then could be symbolized by $\forall x(Px \eif \enot Dx)$. Again the two symbolizations are logically equivalent; both are correct symbolizations of sentence \ref{sent:quan4}.
+\Cref{sent:quan4} can be paraphrased as, `It is not the case that there is some dime in my pocket'. This can be symbolized by $\enot\exists x(Px \eand Dx)$. It might also be paraphrased as, `Everything in my pocket is a non-dime', and then could be symbolized by $\forall x(Px \eif \enot Dx)$. Again the two symbolizations are logically equivalent; both are correct symbolizations of \cref{sent:quan4}.
 	\factoidbox{
 		If a sentence can be paraphrased in English as \begin{center}
 		`no Fs are Gs',
@@ -1451,7 +1451,7 @@ How should we symbolize this?  A good strategy is to consider when the sentence 
 
 \section{Empty predicates}
 
-In \S\ref{s:FOLBuildingBlocks}, we emphasized that a name must pick out exactly one object in the domain. However, a predicate need not apply to anything in the domain. A predicate that applies to nothing in the domain is called an \define{empty predicate}. This is worth exploring.
+In \cref{s:FOLBuildingBlocks}, we emphasized that a name must pick out exactly one object in the domain. However, a predicate need not apply to anything in the domain. A predicate that applies to nothing in the domain is called an \define{empty predicate}. This is worth exploring.
 
 \newglossaryentry{empty predicate}{
   name = {empty predicate},
@@ -1469,9 +1469,9 @@ It is possible to write the symbolization key for these sentences in this way:
 		\item[Mx] \gap{x} is a monkey.
 		\item[Sx] \gap{x} knows sign language.
 	\end{ekey}
-Sentence \ref{sent:monkey1} can now be symbolized by $\forall x(Mx \eif Sx)$. Sentence \ref{sent:monkey2} can be symbolized as $\exists x(Mx \eand Sx)$.
+\Cref{sent:monkey1} can now be symbolized by $\forall x(Mx \eif Sx)$. \Cref{sent:monkey2} can be symbolized as $\exists x(Mx \eand Sx)$.
 
-It is tempting to say that sentence \ref{sent:monkey1} \emph{entails} sentence \ref{sent:monkey2}. That is, we might think that it is impossible for it to be the case that every monkey knows sign language, without its also being the case that some monkey knows sign language, but this would be a mistake. It is possible for the sentence $\forall x(Mx \eif Sx)$ to be true even though the sentence $\exists x(Mx \eand Sx)$ is false.
+It is tempting to say that \cref{sent:monkey1} \emph{entails} \cref{sent:monkey2}. That is, we might think that it is impossible for it to be the case that every monkey knows sign language, without its also being the case that some monkey knows sign language, but this would be a mistake. It is possible for the sentence $\forall x(Mx \eif Sx)$ to be true even though the sentence $\exists x(Mx \eand Sx)$ is false.
 
 How can this be? The answer comes from considering whether these sentences would be true or false \emph{if there were no monkeys}. If there were no monkeys at all (in the domain), then $\forall x(Mx \eif Sx)$ would be \emph{vacuously} true: take any monkey you like---it knows sign language! But if there were no monkeys at all (in the domain), then $\exists x(Mx \eand Sx)$ would be false.
 
@@ -1497,19 +1497,19 @@ The appropriate symbolization of an English language sentence in FOL will depend
 		\item[Rx] \gap{x} is a rose
 		\item[Tx] \gap{x} has a thorn
 	\end{ekey}
-According to our symbolization guideline sentence \ref{sent:pickdomainrose} should then be symbolized as $\forall x(Rx \eif Tx)$. However, it remains to specify a domain. Without specific contextual information we must assume that the sentence makes a claim about all roses, that is, we should assume that the domain contains all roses. Also, arguable by saying that all roses have thorns we contrast roses to other tings in the domain: for if every object in the domain were a rose, it would suffice to say `Everything has a thorne'.  So in the case of sentence \ref{sent:pickdomainrose} taking the domain to consist of flowers would be a good, plausible choice and picking the domain to consist of roses only would not be satisfactory. 
+According to our symbolization guideline \cref{sent:pickdomainrose} should then be symbolized as $\forall x(Rx \eif Tx)$. However, it remains to specify a domain. Without specific contextual information we must assume that the sentence makes a claim about all roses, that is, we should assume that the domain contains all roses. Also, arguable by saying that all roses have thorns we contrast roses to other tings in the domain: for if every object in the domain were a rose, it would suffice to say `Everything has a thorne'.  So in the case of \cref{sent:pickdomainrose} taking the domain to consist of flowers would be a good, plausible choice and picking the domain to consist of roses only would not be satisfactory. 
 
 
 
-% but we have not yet chosen a domain. If the domain contains all roses, this would be a good symbolization. Yet if the domain is merely \emph{things on my kitchen table}, then $\forall x(Rx \eif Tx)$ would only come close to covering the fact that every rose \emph{on my kitchen table} has a thorn. If there are no roses on my kitchen table, the sentence would be trivially true. This is not what we want. To symbolize sentence \ref{sent:pickdomainrose} adequately, we need to include all the roses in the domain, but now we have two options.
+% but we have not yet chosen a domain. If the domain contains all roses, this would be a good symbolization. Yet if the domain is merely \emph{things on my kitchen table}, then $\forall x(Rx \eif Tx)$ would only come close to covering the fact that every rose \emph{on my kitchen table} has a thorn. If there are no roses on my kitchen table, the sentence would be trivially true. This is not what we want. To symbolize \cref{sent:pickdomainrose} adequately, we need to include all the roses in the domain, but now we have two options.
 %
-%First, we can restrict the domain to include all roses but \emph{only} roses. Then sentence \ref{sent:pickdomainrose} can, if we like, be symbolized with $\forall x Tx$. This is true iff everything in the domain has a thorn; since the domain is just the roses, this is true iff every rose has a thorn. By restricting the domain, we have been able to symbolize our English sentence with a very short sentence of FOL. So this approach can save us trouble, if every sentence that we want to deal with is about roses.
+%First, we can restrict the domain to include all roses but \emph{only} roses. Then \cref{sent:pickdomainrose} can, if we like, be symbolized with $\forall x Tx$. This is true iff everything in the domain has a thorn; since the domain is just the roses, this is true iff every rose has a thorn. By restricting the domain, we have been able to symbolize our English sentence with a very short sentence of FOL. So this approach can save us trouble, if every sentence that we want to deal with is about roses.
 
 More generally, in absence of specific contextual information about the domain, it is preferable to pick a domain that includes many things. that is, things besides roses: rhododendrons; rats; rifles; whatevers., and we will certainly need to include a more expansive domain if we simultaneously want to symbolize sentences like:
 	\begin{samplesent}
 		\item\label{sent:pickdomaincowboy} Every cowboy sings a sad, sad song.
 	\end{samplesent}
-Our domain must now include both all the roses (so that we can symbolize sentence \ref{sent:pickdomainrose}) and all the cowboys (so that we can symbolize sentence \ref{sent:pickdomaincowboy}). So we might offer the following symbolization key:
+Our domain must now include both all the roses (so that we can symbolize \cref{sent:pickdomainrose}) and all the cowboys (so that we can symbolize \cref{sent:pickdomaincowboy}). So we might offer the following symbolization key:
 	\begin{ekey}
 		\item[\text{domain}] people and plants
 		\item[Cx] \gap{x} is a cowboy
@@ -1517,7 +1517,7 @@ Our domain must now include both all the roses (so that we can symbolize sentenc
 		\item[Rx] \gap{x} is a rose
 		\item[Tx] \gap{x} has a thorn
 	\end{ekey}
-Now we will have to symbolize sentence \ref{sent:pickdomainrose} with $\forall x (Rx \eif Tx)$, since $\forall x Tx$ would symbolize the sentence `every person or plant has a thorn'. Similarly, we will have to symbolize sentence \ref{sent:pickdomaincowboy} with $\forall x (Cx \eif Sx)$.
+Now we will have to symbolize \cref{sent:pickdomainrose} with $\forall x (Rx \eif Tx)$, since $\forall x Tx$ would symbolize the sentence `every person or plant has a thorn'. Similarly, we will have to symbolize \cref{sent:pickdomaincowboy} with $\forall x (Cx \eif Sx)$.
 
 In general, the universal quantifier can be used to symbolize the English expression `everyone' if the domain only contains people. If there are people and other things in the domain, then `everyone' must be treated as `every person'.
 
@@ -1585,7 +1585,7 @@ In general, the universal quantifier can be used to symbolize the English expres
 %
 %\chapter{Symbolising complex sentences}
 %\label{s:SymbolisingComplexFOL}
-%We have discussed how to symbolise some sentences. To symbolise complex sentences, we follow the same kind of strategy that we used for TFL in \S\ref{s:SymbolisingComplexTFL}:
+%We have discussed how to symbolise some sentences. To symbolise complex sentences, we follow the same kind of strategy that we used for TFL in \cref{s:SymbolisingComplexTFL}:
 %
 %\begin{highlighted}
 %\begin{enumerate}
@@ -1670,9 +1670,9 @@ In general, the universal quantifier can be used to symbolize the English expres
 %%	\end{earg}
 %%The same words appear as the consequent in sentences \ref{pronoun1} and \ref{pronoun2} (`$\ldots$ she is a rock star'), but they mean very different things. To make this clear, it often helps to paraphrase the original sentences, removing pronouns.
 %%
-%%Sentence \ref{pronoun1} can be paraphrased as, `If Kim Deal is a bassist, then \emph{Kim Deal} is a rockstar'. This can obviously be symbolized as $Bk \eif Rk$.
+%%\Cref{pronoun1} can be paraphrased as, `If Kim Deal is a bassist, then \emph{Kim Deal} is a rockstar'. This can obviously be symbolized as $Bk \eif Rk$.
 %%
-%%Sentence \ref{pronoun2} must be paraphrased differently: `If a person is a bassist, then \emph{that person} is a rock star'. This sentence is not about any particular person, so we need a variable. As an intermediate step, we can paraphrase this as, `For any person x, if x is a bassist, then x is a rockstar'. Now this can be symbolized as $\forall x (Bx \eif Rx)$. This is the same sentence we would have used to symbolize `Everyone who is a bassist is a rock star'. On reflection, that is surely true iff sentence \ref{pronoun2} is true, as we would hope.
+%%\Cref{pronoun2} must be paraphrased differently: `If a person is a bassist, then \emph{that person} is a rock star'. This sentence is not about any particular person, so we need a variable. As an intermediate step, we can paraphrase this as, `For any person x, if x is a bassist, then x is a rockstar'. Now this can be symbolized as $\forall x (Bx \eif Rx)$. This is the same sentence we would have used to symbolize `Everyone who is a bassist is a rock star'. On reflection, that is surely true iff \cref{pronoun2} is true, as we would hope.
 %%
 %%Consider these further sentences:
 %%	\begin{earg}
@@ -1681,9 +1681,9 @@ In general, the universal quantifier can be used to symbolize the English expres
 %%	\end{earg}
 %%The same words appear as the antecedent in sentences \ref{anyone1} and \ref{anyone2}  (`If anyone is a bassist$\ldots$'), but it can be tricky to work out how to symbolize these two uses. Again, paraphrase will come to our aid.
 %%
-%%Sentence \ref{anyone1} can be paraphrased, `If there is at least one bassist, then Kim Deal is a rock star'. It is now clear that this is a conditional whose antecedent is a quantified expression; so we can symbolize the entire sentence with a conditional as the main logical operator: $\exists x Bx \eif Rk$.
+%%\Cref{anyone1} can be paraphrased, `If there is at least one bassist, then Kim Deal is a rock star'. It is now clear that this is a conditional whose antecedent is a quantified expression; so we can symbolize the entire sentence with a conditional as the main logical operator: $\exists x Bx \eif Rk$.
 %%
-%%Sentence \ref{anyone2} can be paraphrased, `For all people x, if x is a bassist, then x is a rock star'. Or, in more natural English, it can be paraphrased by `All bassists are rock stars'. It is best symbolized as $\forall x(Bx \eif Rx)$, just like sentence \ref{pronoun2}.
+%%\Cref{anyone2} can be paraphrased, `For all people x, if x is a bassist, then x is a rock star'. Or, in more natural English, it can be paraphrased by `All bassists are rock stars'. It is best symbolized as $\forall x(Bx \eif Rx)$, just like \cref{pronoun2}.
 %%
 %%The moral is that the English words `any' and `anyone' should typically be symbolized using quantifiers, and if you are having a hard time determining whether to use an existential or a universal quantifier, try paraphrasing the sentence with an English sentence that uses words \emph{besides} `any' or `anyone'.
 %%
@@ -1699,9 +1699,9 @@ In general, the universal quantifier can be used to symbolize the English expres
 %%	\begin{ekey}
 %%		\item[l] Lars
 %%	\end{ekey}
-%%Sentence \ref{qscope1} is a conditional, whose antecedent is `everyone is a bassist', so we will symbolize it with $\forall x Bx \eif Bl$. This sentence is \emph{necessarily} true: if \emph{everyone} is indeed a bassist, then take any one you like---for example Lars---and he will be a bassist.
+%%\Cref{qscope1} is a conditional, whose antecedent is `everyone is a bassist', so we will symbolize it with $\forall x Bx \eif Bl$. This sentence is \emph{necessarily} true: if \emph{everyone} is indeed a bassist, then take any one you like---for example Lars---and he will be a bassist.
 %%
-%%Sentence \ref{qscope2}, by contrast, might best be paraphrased by `every person x is such that, if x is a bassist, then Lars is a bassist'. This is symbolized by $\forall x (Bx \eif Bl)$. This sentence is false; Kim Deal is a bassist. So $Bk$ is true, but Lars is not a bassist, so $Bl$ is false. Accordingly, $Bk \eif Bl$ will be false, so $\forall x (Bx \eif Bl)$ will be false as well.
+%%\Cref{qscope2}, by contrast, might best be paraphrased by `every person x is such that, if x is a bassist, then Lars is a bassist'. This is symbolized by $\forall x (Bx \eif Bl)$. This sentence is false; Kim Deal is a bassist. So $Bk$ is true, but Lars is not a bassist, so $Bl$ is false. Accordingly, $Bk \eif Bl$ will be false, so $\forall x (Bx \eif Bl)$ will be false as well.
 %%
 %%In short, $\forall x Bx \eif Bl$ and $\forall x (Bx \eif Bl)$ are very different sentences. We can explain the difference in terms of the \emph{scope} of the quantifier. The scope of quantification is very much like the scope of negation, which we considered when discussing TFL, and it will help to explain it in this way.
 %%
@@ -1718,7 +1718,7 @@ Suppose we just want to symbolize this sentence:
 \begin{samplesent}
 \item\label{sent:surgeon1} Adina is a skilled surgeon.
 \end{samplesent}
-Let the domain be people, let $Kx$ mean `$x$ is a skilled surgeon', and let $a$ mean Adina. Sentence \ref{sent:surgeon1} is simply $Ka$.
+Let the domain be people, let $Kx$ mean `$x$ is a skilled surgeon', and let $a$ mean Adina. \Cref{sent:surgeon1} is simply $Ka$.
 
 
 Suppose instead that we want to symbolize this argument:
@@ -1764,7 +1764,7 @@ Like the English language argument it symbolizes, this is invalid. %\nix{Notice 
 
 The moral of these examples is that you need to be careful of symbolizing predicates in an ambiguous way. Similar problems can arise with predicates like \emph{good}, \emph{bad}, \emph{big}, and \emph{small}. Just as skilled surgeons and skilled tennis players have different skills, big dogs, big mice, and big problems are big in different ways.
 
-Is it enough to have a predicate that means `$x$ is a skilled surgeon', rather than two predicates `$x$ is skilled' and `$x$ is a surgeon'? Sometimes. As sentence \ref{sent:surgeon1} shows, sometimes we do not need to distinguish between skilled surgeons and other surgeons.
+Is it enough to have a predicate that means `$x$ is a skilled surgeon', rather than two predicates `$x$ is skilled' and `$x$ is a surgeon'? Sometimes. As \cref{sent:surgeon1} shows, sometimes we do not need to distinguish between skilled surgeons and other surgeons.
 
 Must we always distinguish between different ways of being skilled, good, bad, or big? No. As the argument about Billy shows, sometimes we only need to talk about one kind of skill. If you are symbolizing an argument that is just about dogs, it is fine to define a predicate that means `$x$ is big.' If the domain includes dogs and mice, however, it is probably best to make the predicate mean `$x$ is big for a dog.'
 
@@ -1965,7 +1965,7 @@ as $\forall x Ljx$, using the symbolisation key:\begin{ekey}
 \item[j] John
 \item[Lxy] \gap{x} loves \gap{y}
 \end{ekey}
-This gives us an insight into how to symbolise \ref{sent:loveseg}: it's like \ref{sent:johnloveseg} except it might not be John who loves everyone, \ref{sent:loveseg} just says that there is \emph{someone}, $y$, such that $y$ loves everyone. We will thus symbolise it $\exists y\forall x Lyx$.
+This gives us an insight into how to symbolise \cref{sent:loveseg}: it's like \cref{sent:johnloveseg} except it might not be John who loves everyone, \cref{sent:loveseg} just says that there is \emph{someone}, $y$, such that $y$ loves everyone. We will thus symbolise it $\exists y\forall x Lyx$.
 
 In the earlier examples we always used $x$ as our variables; but we here had to use $y$ because $x$ is already taken. We don't want to say $\exists x\forall xLxx$ as it's not clear how one should read this sentence as we need to identify which variables come with which quantifiers.
 
@@ -1976,9 +1976,9 @@ Consider the sentence `everyone loves someone'. This is potentially ambiguous. I
 		\item\label{sent:lovecycle} For every person x, there is some person that x loves
 		\item\label{sent:loveconverge} There is some particular person whom every person loves
 	\end{samplesent}
-Sentence \ref{sent:lovecycle} can be symbolized by $\forall x \exists y Lxy$, and would be true of a love-triangle. For example, suppose that our domain of discourse is restricted to Imre, Juan and Karl. Suppose also that Karl loves Imre but not Juan, that Imre loves Juan but not Karl, and that Juan loves Karl but not Imre. Then sentence \ref{sent:lovecycle} is true.
+\Cref{sent:lovecycle} can be symbolized by $\forall x \exists y Lxy$, and would be true of a love-triangle. For example, suppose that our domain of discourse is restricted to Imre, Juan and Karl. Suppose also that Karl loves Imre but not Juan, that Imre loves Juan but not Karl, and that Juan loves Karl but not Imre. Then \cref{sent:lovecycle} is true.
 
-Sentence \ref{sent:loveconverge} is symbolized by $\exists y \forall x Lxy$. Sentence \ref{sent:loveconverge} is \emph{not} true in the situation just described. Again, suppose that our domain of discourse is restricted to Imre, Juan and Karl. This requires that all of Juan, Imre and Karl converge on (at least) one object of love.
+\Cref{sent:loveconverge} is symbolized by $\exists y \forall x Lxy$. \Cref{sent:loveconverge} is \emph{not} true in the situation just described. Again, suppose that our domain of discourse is restricted to Imre, Juan and Karl. This requires that all of Juan, Imre and Karl converge on (at least) one object of love.
 
 The point of the example is to illustrate that the order of the quantifiers matters a great deal. Indeed, to switch them around is called a \emph{quantifier shift fallacy}. Here is an example, which comes up in various forms throughout the philosophical literature:
 	\begin{earg}
@@ -2073,15 +2073,15 @@ Now let's try to symbolize these sentences:
 \item\label{sent:dog5} Every dog owner is a friend of a dog owner.
 \item\label{sent:dog6} Every dog owner's friend owns a dog of a friend.
 \end{samplesent}
-Sentence \ref{sent:dog2} can be paraphrased as, `There is a dog that Geraldo owns'. This can be symbolized by $\exists x(Dx \eand Ogx)$.
+\Cref{sent:dog2} can be paraphrased as, `There is a dog that Geraldo owns'. This can be symbolized by $\exists x(Dx \eand Ogx)$.
 
-Sentence \ref{sent:dog3} can be paraphrased as, `There is some y such that y is a dog owner'. Dealing with part of this, we might write $\exists y(y\text{ is a dog owner})$. Now the fragment we have left as `$y$ is a dog owner' is much like sentence \ref{sent:dog2}, except that it is not specifically about Geraldo. So we can symbolize sentence \ref{sent:dog3} by:
+\Cref{sent:dog3} can be paraphrased as, `There is some y such that y is a dog owner'. Dealing with part of this, we might write $\exists y(y\text{ is a dog owner})$. Now the fragment we have left as `$y$ is a dog owner' is much like \cref{sent:dog2}, except that it is not specifically about Geraldo. So we can symbolize \cref{sent:dog3} by:
 $$\exists y \exists x(Dx \eand Oyx)$$
 We should pause to clarify something here. In working out how to symbolize the last sentence, we wrote down $\exists y(y\text{ is a dog owner})$. To be very clear: this is \emph{neither} an FOL sentence \emph{nor} an English sentence: it uses bits of FOL ($\exists$, $y$) and bits of English (`dog owner'). It is really is \emph{just a stepping-stone} on the way to symbolizing the entire English sentence with a FOL sentence. You should regard it as a bit of rough-working-out, on a par with the doodles that you might absent-mindedly draw in the margin of this book, whilst you are concentrating fiercely on some problem.
 
-Sentence \ref{sent:dog4} can be paraphrased as, `Everyone who is a friend of Geraldo is a dog owner'. Using our stepping-stone tactic, we might write
+\Cref{sent:dog4} can be paraphrased as, `Everyone who is a friend of Geraldo is a dog owner'. Using our stepping-stone tactic, we might write
 $$\forall x \bigl(Fxg \eif x \text{ is a dog owner}\bigr)$$
-Now the fragment that we have left to deal with, `$x$ is a dog owner', is structurally just like sentence \ref{sent:dog2}. However, it would be a mistake for us simply to write
+Now the fragment that we have left to deal with, `$x$ is a dog owner', is structurally just like \cref{sent:dog2}. However, it would be a mistake for us simply to write
 $$\forall x \bigl(Fxg \eif \exists x(Dx \eand Oxx)\bigr)$$
 for we would here have a \emph{clash of variables}. While the scope of the universal quantifier, $\forall x$, is the entire conditional, the variable $x$ does not occur free in the consequent of the conditional : it is bound by the existential quantifier instead. This means that 
 $$\forall x \bigl(Fxg \eif \exists x(Dx \eand Oxx)\bigr)$$
@@ -2093,9 +2093,9 @@ That's clearly not what we wanted!
 
 To make sure that we get the intended outcome we need to see to it that the universal quantifier binds the owner position in the consequent of the conditional. To continue our symbolization, then, we must choose some different variable for our existential quantifier. What we want is something like:
 $$\forall x\bigl(Fxg \eif\exists z(Dz \eand Oxz)\bigr)$$
-This adequately symbolizes sentence \ref{sent:dog4}, as the variable $x$ now occurs free in the consequent of the conditional and can be bound by the universal quatifier, which in turn guarantees that dog-owner must be friends of Gerald.
+This adequately symbolizes \cref{sent:dog4}, as the variable $x$ now occurs free in the consequent of the conditional and can be bound by the universal quatifier, which in turn guarantees that dog-owner must be friends of Gerald.
 
-Sentence \ref{sent:dog5} can be paraphrased as `For any x that is a dog owner, there is a dog owner who x is a friend of'. Using our stepping-stone tactic, this becomes
+\Cref{sent:dog5} can be paraphrased as `For any x that is a dog owner, there is a dog owner who x is a friend of'. Using our stepping-stone tactic, this becomes
 $$\forall x\bigl(\mbox{$x$ is a dog owner}\eif\exists y(\mbox{$y$ is a dog owner}\eand Fxy)\bigr)$$
 Completing the symbolization, we end up with
 $$\forall x\bigl(\exists z(Dz \eand Oxz)\eif\exists y\bigl(\exists z(Dz \eand Oyz)\eand Fxy\bigr)\bigr)$$
@@ -2103,7 +2103,7 @@ Note that we have used the same letter, $z$, in both the antecedent and the cons
 $$\overbrace{\forall x\bigl(\overbrace{\exists z(Dz \eand Oxz)}^{\text{scope of 1st `}\exists z\text{'}}\eif \overbrace{\exists y(\overbrace{\exists z(Dz \eand Oyz)}^{\text{scope of 2nd `}\exists z\text{'}}\eand Fxy)\bigr)}^{\text{scope of `}\exists y\text{'}}}^{\text{scope of `}\forall x\text{'}}$$
 This shows that no variable is being forced to serve two masters simultaneously.
 
-Sentence \ref{sent:dog6} is the trickiest yet. First we paraphrase it as `For any x that is a friend of a dog owner, x owns a dog which is also owned by a friend of x'. Using our stepping-stone tactic, this becomes:
+\Cref{sent:dog6} is the trickiest yet. First we paraphrase it as `For any x that is a friend of a dog owner, x owns a dog which is also owned by a friend of x'. Using our stepping-stone tactic, this becomes:
 
 \
 \\$\forall x\bigl(x\text{ is a friend of a dog owner}\eif \phantom{x}$\\
@@ -2225,7 +2225,7 @@ treason against the Queen!
 
 \begin{practiceproblems}
 \solutions
-%Warning: some of these problems require you to use identity, which hasn't yet been introduced. See Chapter \ref{ch.identity}.
+%Warning: some of these problems require you to use identity, which hasn't yet been introduced. See \cref{ch.identity}.
 \problempart
 Using this symbolization key:
 \begin{ekey}
@@ -2455,7 +2455,7 @@ symbolize the following sentences in FOL:
 %%\section{Terms and formulas}
 %%\label{s:TermsFormulas}
 %%
-%%In \S\ref{s:TFLSentences}, we went straight from the statement of the vocabulary of TFL to the definition of a sentence of TFL. In FOL, we will have to go via an intermediary stage: via the notion of a \define{formula}. The intuitive idea is that a formula is any sentence, or anything which can be turned into a sentence by adding quantifiers out front. But this will take some unpacking.
+%%In \cref{s:TFLSentences}, we went straight from the statement of the vocabulary of TFL to the definition of a sentence of TFL. In FOL, we will have to go via an intermediary stage: via the notion of a \define{formula}. The intuitive idea is that a formula is any sentence, or anything which can be turned into a sentence by adding quantifiers out front. But this will take some unpacking.
 %%
 %%We start by defining the notion of a term.
 %%	\factoidbox{
@@ -2478,11 +2478,11 @@ symbolize the following sentences in FOL:
 %%
 %%\newglossaryentry{formula}{
 %%  name = formula,
-%%  description = {an expression of FOL built according to the recursive rules in \S\ref{s:TermsFormulas}}
+%%  description = {an expression of FOL built according to the recursive rules in \cref{s:TermsFormulas}}
 %%}
 %%
 %%
-%%The use of script letters here follows the conventions laid down in \S\ref{s:UseMention}. So, $\meta{R}$ is not itself a predicate of FOL. Rather, it is a symbol of our metalanguage (augmented English) that we use to talk about any predicate of FOL. Similarly, $\meta{t}_1$ is not a term of FOL, but a symbol of the metalanguage that we can use to talk about any term of FOL. So, where $F$ is a one-place predicate, $G$ is a three-place predicate, and $S$ is a six-place predicate, here are some atomic formulas:
+%%The use of script letters here follows the conventions laid down in \cref{s:UseMention}. So, $\meta{R}$ is not itself a predicate of FOL. Rather, it is a symbol of our metalanguage (augmented English) that we use to talk about any predicate of FOL. Similarly, $\meta{t}_1$ is not a term of FOL, but a symbol of the metalanguage that we can use to talk about any term of FOL. So, where $F$ is a one-place predicate, $G$ is a three-place predicate, and $S$ is a six-place predicate, here are some atomic formulas:
 %%	\begin{center}
 %%		$x = a$\\
 %%		$a = b$\\
@@ -2496,7 +2496,7 @@ symbolize the following sentences in FOL:
 %%Once we know what atomic formulas are, we can offer recursion clauses to define arbitrary formulas. The first few clauses are exactly the same as for TFL.
 %
 %\section{Formulas}
-%In \S\ref{s:TFLSentences}, we went straight from the statement of the vocabulary of TFL to the definition of a sentence of TFL. In FOL, we will have to go via an intermediary stage: via the notion of a \define{formula}. The intuitive idea is that a formula is any sentence, or anything which can be turned into a sentence by adding quantifiers out front. But this will take some unpacking.
+%In \cref{s:TFLSentences}, we went straight from the statement of the vocabulary of TFL to the definition of a sentence of TFL. In FOL, we will have to go via an intermediary stage: via the notion of a \define{formula}. The intuitive idea is that a formula is any sentence, or anything which can be turned into a sentence by adding quantifiers out front. But this will take some unpacking.
 %
 %As we did for TFL, we will  present a inductive definition of a formula of FOL.
 %
@@ -2544,7 +2544,7 @@ symbolize the following sentences in FOL:
 %	$(Dx\eand Db)$, \\
 %	$\enot (Dx\eand Db)$\\
 %	$(\enot(Dx\eand Db)\eif Lxy)$
-%	\end{center}And we can display their construction using our formation trees, as in 	\ref{S:formationtree}.
+%	\end{center}And we can display their construction using our formation trees, as in 	\cref{S:formationtree}.
 %		\begin{center}
 %		\begin{forest}
 %			[$(\enot(Dx\eand Db)\eif Lxy)$
@@ -2559,7 +2559,7 @@ symbolize the following sentences in FOL:
 %		\end{forest}
 %		\end{center}This is exactly as in the case of TFL, the only difference is that the ``leaves'' of the tree have more structure to them: they're predicates applied to names or variables rather than simply the single atomic sentences that we had in TFL.
 %
-%		The new clauses here are in \ref{item:quantifiers}. This lets us put $\forall x$ in front of a formula, e.g.~$Bx$ to construct a formula $\forall xBx$. We can also add quantifiers when the formula was already more complicated, e.g., we can construct a formula $$\forall x(\enot(Dx\eand Db)\eif Lxy).$$ We could also have added an existential quantifier, $\exists$ to construct $$\exists x(\enot(Dx\eand Db)\eif Lxy).$$ We can also do it with other variables, e.g. $$\forall y(\enot(Dx\eand Db)\eif Lxy).$$ We can then add further quantifiers to \emph{these} new formula, to construct, e.g.~$$\exists y\forall x(\enot(Dx\eand Db)\eif Lxy).$$
+%		The new clauses here are in \cref{item:quantifiers}. This lets us put $\forall x$ in front of a formula, e.g.~$Bx$ to construct a formula $\forall xBx$. We can also add quantifiers when the formula was already more complicated, e.g., we can construct a formula $$\forall x(\enot(Dx\eand Db)\eif Lxy).$$ We could also have added an existential quantifier, $\exists$ to construct $$\exists x(\enot(Dx\eand Db)\eif Lxy).$$ We can also do it with other variables, e.g. $$\forall y(\enot(Dx\eand Db)\eif Lxy).$$ We can then add further quantifiers to \emph{these} new formula, to construct, e.g.~$$\exists y\forall x(\enot(Dx\eand Db)\eif Lxy).$$
 %
 %	We can again display the structure and construction of the sentence perspicuously by presenting a formation tree:
 %
@@ -2597,10 +2597,10 @@ symbolize the following sentences in FOL:
 %
 %
 %
-%Why in \ref{item:quantifiers} did we have the restriction that $\exists \metav$ or $\forall \metav$ is not already in $\metaX$? This is to ensure that variables only serve one master at any one time (see \S\ref{s:MultipleGenerality}).
+%Why in \cref{item:quantifiers} did we have the restriction that $\exists \metav$ or $\forall \metav$ is not already in $\metaX$? This is to ensure that variables only serve one master at any one time (see \cref{s:MultipleGenerality}).
 %Otherwise we could see that $\forall x Rxx$ is a sentence and then conclude that $\exists x\forall x Rxx$, which is not a good sentence.  However, note that $\exists x Cx\;\eor\;\forall x Bx$ is a sentence. Here the variable $x$ is used in both quantifiers, but there's no ambiguity because the sentence was constructed by combing the two sentences $\exists x Cx$ and $\forall xBx$ with a connective, $\eor$. The \emph{scope} of $\exists x$ is just $\exists x Cx$; it doesn't look ``over'' the connective to where $\forall x$ is used. So the two uses of $x$ are kept separate and no problems arise. However, to avoid any potential worries it is generally a good idea to use different variables when symbolising sentences; in this case one could equally well give $\exists x Cx\;\eor\;\forall y By$ as a symbolisation.
 %
-% The notions of scope and main logical operators that were given in \ref{s:TFLSentences} equally applies to FOL but now the main logical operator might be a quantifier. These were:
+% The notions of scope and main logical operators that were given in \cref{s:TFLSentences} equally applies to FOL but now the main logical operator might be a quantifier. These were:
 %% In fact, we can now give a formal definition of scope which incorporates the definition of the scope of a quantifier. Here we follow the case of TFL, though we note that a logical operator can be either a connective or a quantifier:
 %	\factoidbox{
 %		The \define{main logical operator} in a sentence is the operator that was introduced last when that sentence was constructed using the recursion rules.
@@ -2678,7 +2678,7 @@ symbolize the following sentences in FOL:
 %
 %\section{Bracketing conventions}
 %
-%We will adopt the same notational conventions governing brackets that we did for TFL (see \S\ref{s:TFLSentences} and \S\ref{s:MoreBracketingConventions}.):  we may omit the outermost brackets of a formula.
+%We will adopt the same notational conventions governing brackets that we did for TFL (see \cref{s:TFLSentences} and \cref{s:MoreBracketingConventions}.):  we may omit the outermost brackets of a formula.
 %
 %%First, we may omit the outermost brackets of a formula.
 %
@@ -2705,7 +2705,7 @@ symbolize the following sentences in FOL:
 
 \chapter{Ambiguity}
 
-In chapter~\ref{s:AmbiguityTFL} we discussed the fact that sentences of English can be ambiguous, and pointed out that sentences of TFL are not. One important application of this fact is that the structural ambiguity of English sentences can often, and usefully, be straightened out using different symbolizations.  One common source of ambiguity is \emph{scope ambiguity}, where the English sentence does not make it clear which logical word is supposed to be in the scope of which other. Multiple interpretations are possible.  In FOL, every connective and quantifier has a well-determined scope, and so whether or not one of them occurs in the scope of another in a given sentence of FOL is always determined.
+In \cref{s:AmbiguityTFL} we discussed the fact that sentences of English can be ambiguous, and pointed out that sentences of TFL are not. One important application of this fact is that the structural ambiguity of English sentences can often, and usefully, be straightened out using different symbolizations.  One common source of ambiguity is \emph{scope ambiguity}, where the English sentence does not make it clear which logical word is supposed to be in the scope of which other. Multiple interpretations are possible.  In FOL, every connective and quantifier has a well-determined scope, and so whether or not one of them occurs in the scope of another in a given sentence of FOL is always determined.
 
 For instance, consider the English idiom,
 \begin{samplesent}
@@ -2736,7 +2736,7 @@ According to our schema, we would symbolize it this way:
 \begin{itemize}
 	\item $\forall x({P}{x} \eif ({Y}{x} \eand {C}{x}))$
 \end{itemize}
-The meaning of this sentence of FOL is something like, `If an animal is playful, it is a young cat'. (Assuming that the domain is animals, of course.) This is probably not what's intended in uttering sentence~\ref{sent:onlyamb}, however. It's more likely that we want to say that old cats are not playful. In other words, what we mean to say is that if something is a cat and playful, it must be young. This would be symbolized as:
+The meaning of this sentence of FOL is something like, `If an animal is playful, it is a young cat'. (Assuming that the domain is animals, of course.) This is probably not what's intended in uttering \cref{sent:onlyamb}, however. It's more likely that we want to say that old cats are not playful. In other words, what we mean to say is that if something is a cat and playful, it must be young. This would be symbolized as:
 \begin{itemize}
 	\item $\forall x(({C}{x} \eand {P}{x}) \eif {Y}{x})$
 \end{itemize}
@@ -2746,7 +2746,7 @@ There is even a third reading! Suppose we're talking about young animals and the
 \end{itemize}
 Each of the last two readings can be made salient in English by placing the stress appropriately. For instance, to suggest the last reading, you would say `Only young \emph{cats} are playful', and to get the other reading you would say `Only \emph{young} cats are playful'.  The very first reading can be indicate by stressing both `young' and `cats': `Only \emph{young cats} are playful' (but not old cats, or dogs of any age).
 
-In chapter \ref{s:MultipleGenerality} we discussed the importance of the order of quantifiers.  This is relevant here because, in English, the order of quantifiers is sometimes not completely determined.  When both universal (`all') and existential (`some', `a') quantifiers are  involved, this can result in scope ambiguities. Consider:
+In \cref{s:MultipleGenerality} we discussed the importance of the order of quantifiers.  This is relevant here because, in English, the order of quantifiers is sometimes not completely determined.  When both universal (`all') and existential (`some', `a') quantifiers are  involved, this can result in scope ambiguities. Consider:
 \begin{samplesent}
 	\item\label{sent:everya} Everyone went to see a movie.
 \end{samplesent}

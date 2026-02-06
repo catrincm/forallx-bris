@@ -19,7 +19,7 @@ We here have a series of sentences which may either be true or false. The final 
 
 On the face of it, our sample argument appears to be a good argument, but can one develop a general theory of what a good argument is, that is, a theory that abstracts away from particular arguments and equips us with general tools for evaluating arguments? It turns out that one can and this general theory is what we call `logic'.
 
-In logic we want to abstract away from specific arguments and their particular content, and focus on specific structural features of arguments. To achieve this  logic is spelled out in its own particular language like, say, latin.  This means that learning logic amounts to learning a new language and it can be helpful to approach the course with this mindset. As we want to make sure that there are no ambiguities or misunderstandings the language of logic happens to be a formal language. Now to learn a language one needs to
+In logic we want to abstract away from specific arguments and their particular content, and focus on specific structural features of arguments. To achieve this  logic is spelled out in its own particular language like, say, Latin.  This means that learning logic amounts to learning a new language and it can be helpful to approach the course with this mindset. As we want to make sure that there are no ambiguities or misunderstandings the language of logic happens to be a formal language. Now to learn a language one needs to
 \begin{itemize}
 \item[\textsc{Voc}:]\label{vocInt} learn its vocabulary (what are the basic expressions of language?);
 \item[\textsc{Gra}:]\label{graInt} learn its grammar (what is a well-formed sentence of the language?);
@@ -27,7 +27,7 @@ In logic we want to abstract away from specific arguments and their particular c
 \item[\textsc{PfTh}:]\label{ptInt} learn how to use the new language and how to reason with it.
 \end{itemize}
 
-This course is about learning logic and thus learning the language of logic. Accordingly, we will work ourselves through the different items of the above list. But in addition we need to think about how this helps us with assessing philosophical arguments and reasoning, which is carried out in English or some other natural language. To this effect we discuss how one can symbolize (or formalize) English arguments in the language of logic, which will allow us to evaluate English arguments in the logical language. Summing up, the structure of the course will be as follows: we first introduce the \define{syntax} of the language, which subsumes both \textsc{Voc} and \textsc{Gra}, and then turn to its \define{semantics} (\textsc{Sem}), that is, the meaning of the sentences of the language. The semantics of the language will also allow us to spell out whether an argument is a good argument from the logical perspective. Such an argument is called a \emph{valid} argument.\todo{valid=good?}  We then explain how to symbolize English sentences in the logical language, which enables us to check whether an English argument is valid or not. Finally, we turn to PfTh and introduce a reasoning system for the logical language, that makes it possible for us to argue or reason within the logical language. In the context of our formal language, this means that we give a proof system, that is, we specify a number of rules that allows us to derive a sentence (the conclusion) from other sentences (the premises) in the same way that in natural language a good argument licenses us to infer the conclusion of the argument from its premises. Importantly, the rules will only allow us to produce valid argument. If we apply the rules correctly our reasoning cannot go wrong (this doesn't meant that our premises were true however).
+This course is about learning logic and thus learning the language of logic. Accordingly, we will work ourselves through the different items of the above list. But in addition we need to think about how this helps us with assessing philosophical arguments and reasoning, which is carried out in English or some other natural language. To this effect we discuss how one can symbolize (or formalize) English arguments in the language of logic, which will allow us to evaluate English arguments in the logical language. Summing up, the structure of the course will be as follows: we first introduce the \define{syntax} of the language, which subsumes both \textsc{Voc} and \textsc{Gra}, and then turn to its \define{semantics} (\textsc{Sem}), that is, the meaning of the sentences of the language. The semantics of the language will also allow us to spell out whether an argument is a good argument from the logical perspective. Such an argument is called a \emph{valid} argument.\todo{valid=good?}  We then explain how to symbolize English sentences in the logical language, which enables us to check whether an English argument is valid or not. Finally, we turn to \textsc{PfTh} and introduce a reasoning system for the logical language, that makes it possible for us to argue or reason within the logical language. In the context of our formal language, this means that we give a proof system, that is, we specify a number of rules that allows us to derive a sentence (the conclusion) from other sentences (the premises) in the same way that in natural language a good argument licenses us to infer the conclusion of the argument from its premises. Importantly, the rules will only allow us to produce valid argument. If we apply the rules correctly our reasoning cannot go wrong (this doesn't meant that our premises were true however).
 
 %Much of philosophical practice is about argument and
 %analysis.
@@ -91,7 +91,7 @@ Our standard way to present them is:
 \prem Premise 1
 \prem Premise 2
 \item[] \dots
-\item[$n$.] Premise $n$
+\prem Premise $n$
 \conc Conclusion
 \end{earg}
 For	example
@@ -372,7 +372,7 @@ explore the material covered in the chapter.
 %The problem sheet you need to complete is constructed from these exercises, but the book offers some additional practice if you want more.
 There is no substitute for actually working through some problems. This course isn't about memorizing facts but about developing a way of thinking.
 
-Some of the answers to the practice questions are in Appendix \ref{ch.answers}, but it is important to first try yourself. The answers are provided on a best-endeavours basis. There will be gaps and mistakes. Questions with answers are indicated with stars. Mistakes can be reported to \MaintainerEmailLink.
+Some of the answers to the practice questions are in \cref{ch.answers}, but it is important to first try yourself. The answers are provided on a best-endeavours basis. There will be gaps and mistakes. Questions with answers are indicated with stars. Mistakes can be reported to \MaintainerEmailLink.
 
 %\bigskip
 So here’s the first exercise.
@@ -458,7 +458,7 @@ Write each of the following arguments in the standard form.
 
 \section{Consequence and validity}
 
-In \S\ref{s:Arguments}, we talked about arguments, i.e., a collection of sentences (the premises), followed by a single sentence (the conclusion). We said that some words, such as ``therefore,'' indicate which sentence is supposed to be the conclusion. ``Therefore,'' of course, suggests that there is a connection between the premises and the conclusion, namely that the conclusion \emph{follows from}, or \emph{is a consequence of}, the premises.
+In \cref{s:Arguments}, we talked about arguments, i.e., a collection of sentences (the premises), followed by a single sentence (the conclusion). We said that some words, such as ``therefore,'' indicate which sentence is supposed to be the conclusion. ``Therefore,'' of course, suggests that there is a connection between the premises and the conclusion, namely that the conclusion \emph{follows from}, or \emph{is a consequence of}, the premises.
 
 This notion of consequence is one of the primary things logic is concerned with and we will ultimately define a precise notion of consequence for our formal language. One might even say that logic is the science of what follows from what.  Logic develops a general account of and general tools that tell us when a sentence follows from some other sentences.
 
@@ -974,10 +974,10 @@ In each case: if so, give an example; if not, explain why not.
 
 %\chapter{Other logical notions}\label{s:BasicNotions}
 
-%In \S\ref{s:Valid}, we introduced the ideas of consequence and of valid argument.  This is one of the most important ideas in logic. In this section, we will introduce are some similarly important ideas. They all rely, as did validity, on the idea that sentences are true (or not) in cases. For the rest of this section, we'll take cases in the sense of conceivable scenario, i.e., in the sense in which we used them to define conceptual validity. The points we made about different kinds of validity can be made about our new notions along similar lines: if we use a different idea of what counts as a ``case'' we will get different notions.  And as logicians we will, eventually, consider a more permissive definition of case than we do here.
+%In \cref{s:Valid}, we introduced the ideas of consequence and of valid argument.  This is one of the most important ideas in logic. In this section, we will introduce are some similarly important ideas. They all rely, as did validity, on the idea that sentences are true (or not) in cases. For the rest of this section, we'll take cases in the sense of conceivable scenario, i.e., in the sense in which we used them to define conceptual validity. The points we made about different kinds of validity can be made about our new notions along similar lines: if we use a different idea of what counts as a ``case'' we will get different notions.  And as logicians we will, eventually, consider a more permissive definition of case than we do here.
 
 %\section{Truth values}
-%As we said in \S\ref{s:Arguments}, arguments consist of premises and a conclusion. Note that many kinds of English sentence cannot be used to express premises or conclusions of arguments. For example:
+%As we said in \cref{s:Arguments}, arguments consist of premises and a conclusion. Note that many kinds of English sentence cannot be used to express premises or conclusions of arguments. For example:
 %	\begin{ebullet}
 %		\item \textbf{Questions}, e.g.\ `are you feeling sleepy?'
 %		\item \textbf{Imperatives}, e.g.\ `Wake up!'
@@ -1028,7 +1028,7 @@ In each case: if so, give an example; if not, explain why not.
 %		\item[\ex{Atautology}] Either it is raining here, or it is not.
 %		\item[\ex{Acontradiction}] It is both raining here and not raining here.
 %	\end{earg}
-%In order to know if sentence \ref{Acontingent} is true, you would need to look outside or check the weather channel. It might be true; it might be false. A sentence which is capable of being true and capable of being false (in different circumstances, of course) is called \define{contingent}.
+%In order to know if \cref{Acontingent} is true, you would need to look outside or check the weather channel. It might be true; it might be false. A sentence which is capable of being true and capable of being false (in different circumstances, of course) is called \define{contingent}.
 
 %\newglossaryentry{contingent sentence}
 %{
@@ -1036,7 +1036,7 @@ In each case: if so, give an example; if not, explain why not.
 %description={A sentence that is neither a \gls{necessary truth} nor a \gls{necessary falsehood}; a sentence that in some case is true and in some other case, false}
 %}
 
-%Sentence \ref{Atautology} is different. You do not need to look outside to know that it is true. Regardless of what the weather is like, it is either raining or it is not. That is a \define{necessary truth}.
+%\Cref{Atautology} is different. You do not need to look outside to know that it is true. Regardless of what the weather is like, it is either raining or it is not. That is a \define{necessary truth}.
 
 
 %\end{practiceproblems}

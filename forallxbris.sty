@@ -20,10 +20,6 @@
 \DeclareOption*{\PackageWarning{forallxbris}{Unknown option `\CurrentOption' ignored}}
 \ProcessOptions\relax
 
-
-
-
-	
 	    
 
 
@@ -48,8 +44,28 @@
 \RequirePackage[bigdelims,baskervaldx]{newtxmath} % redefines \therefore, but we want to ourselves redefine \therefore, so it has to come at the beginning rather than the end where the rest of the textbook stuff comes.
 
 
-% The original fitchproofs was written in 2005
-% Comments marked "TB" are additions by Tim Button in September 2012
+
+
+\ifforallx@beamer
+	\RequirePackage{etex} 	
+\else
+	\RequirePackage{hyperref}
+	\RequirePackage{cleveref}
+	
+	%RZ: typefaces
+	
+	\RequirePackage{helvet}
+	\RequirePackage[osf]{Baskervaldx} % oldstyle figures
+	
+	
+
+	
+\fi 
+
+
+
+
+
 
 %    ****************************************
 %    *            LOGICAL SYMBOLS           *
@@ -64,36 +80,36 @@
 % are given below.
 %
 \let\oldtherefore\therefore
-\def\therefore{\ensuremath{\oldtherefore}}
-%\def\therefore{\text{Therefore}}
+\renewcommand\therefore{\ensuremath{\oldtherefore}}
+%\newcommand\therefore{\text{Therefore}}
 
 % disjunction
-\def\eor{\ensuremath{\vee}}
+\newcommand\eor{\ensuremath{\vee}}
 % conjunction:
 % {\,^{_{_{_{_{\mbox{\footnotesize\textbullet}}}}}}} gives the dot
-% \def\eand{\ensuremath{\wedge}}
-\def\eand{\ensuremath{\mathbin{\wedge}}}
+% \newcommand\eand{\ensuremath{\wedge}}
+\newcommand\eand{\ensuremath{\mathbin{\wedge}}}
 % conditional: \supset gives the horseshoe
-\def\eif{\ensuremath{\rightarrow}}
+\newcommand\eif{\ensuremath{\rightarrow}}
 % biconditional: \equiv gives the triple bar
-\def\eiff{\ensuremath{\leftrightarrow}}
+\newcommand\eiff{\ensuremath{\leftrightarrow}}
 % negation: {\sim} gives the swung dash
-\def\enot{\ensuremath{\neg}}
-\def\ered{\ensuremath{\bot}}% TB: added to give an absurdity sign
-\def\eid{\ensuremath{\!=\!}}% CCM: to have no spacing around identity.
+\newcommand\enot{\ensuremath{\neg}}
+\newcommand\ered{\ensuremath{\bot}}% TB: added to give an absurdity sign
+\newcommand\eid{\ensuremath{\!=\!}}% CCM: to have no spacing around identity.
 \newcommand*{\ebox}{\ensuremath{\Box}}
-\def\ediamond{\ensuremath{\Diamond}}
-\def\maththe{\rotatebox[origin=c]{180}{$\iota$}} % TB: added to give definite description operator
-\def\proves{\ensuremath{\vdash}}
-\def\entails{\ensuremath{\vDash}}
-\def\nproves{\ensuremath{\nvdash}}
-\def\nentails{\ensuremath{\nvDash}}
+\newcommand\ediamond{\ensuremath{\Diamond}}
+\newcommand\maththe{\rotatebox[origin=c]{180}{$\iota$}} % TB: added to give definite description operator
+\newcommand\proves{\ensuremath{\vdash}}
+\newcommand\entails{\ensuremath{\vDash}}
+\newcommand\nproves{\ensuremath{\nvdash}}
+\newcommand\nentails{\ensuremath{\nvDash}}
 
 % modal logic systems
-\def\mlK{\ensuremath{\mathbf{K}}}
-\def\mlT{\ensuremath{\mathbf{T}}}
-\def\mlSfour{\ensuremath{\mathbf{S4}}}
-\def\mlSfive{\ensuremath{\mathbf{S5}}}
+\newcommand\mlK{\ensuremath{\mathbf{K}}}
+\newcommand\mlT{\ensuremath{\mathbf{T}}}
+\newcommand\mlSfour{\ensuremath{\mathbf{S4}}}
+\newcommand\mlSfive{\ensuremath{\mathbf{S5}}}
 
 % args -- format a list of arguments separated by commas without commas
 
@@ -103,7 +119,7 @@
     \@argsep\@arg}%
 }
 
-\def\@argsepinit{\let\@argsep\argsep}
+\newcommand\@argsepinit{\let\@argsep\argsep}
 
 \newcommand{\argsep}{}
 
@@ -297,6 +313,8 @@
 	
 	\newlist{samplesent}{enumerate}{1}
 	\setlist[samplesent]{noitemsep,label=\arabic*.,ref=\arabic*,resume}
+	\crefname{samplesenti}{sentence}{sentences}
+	\Crefname{samplesenti}{Sentence}{Sentences}
 	
 	% Reset per chapter if chapters exist (book/memoir); ignore otherwise (handout/article etc.)
 	
@@ -317,7 +335,7 @@
 	
 	\newlist{ekeylist}{description}{1}
 	\setlist[ekeylist]{noitemsep,labelwidth=4em,align=right,font=\normalfont}
-	\def\ekeylabel#1{\hfil\normalfont\ensuremath{#1}:}
+	\newcommand\ekeylabel[1]{\hfil\normalfont\ensuremath{#1}:}
 	\newenvironment{ekey}{\begin{ekeylist}\renewcommand{\makelabel}{\ekeylabel}}{\end{ekeylist}}
 	\newenvironment{interp}{\begin{ekeylist}\renewcommand{\makelabel}{\ekeylabel}}{\end{ekeylist}}
 	
@@ -417,22 +435,22 @@
 
 
 % added by Tim Button
-\def\tnd{\by{TND}}% TB: tertium non datur
-\def\dne{\by{DNE}}% TB: double negation elimination (derived rule)
-\def\mt{\by{MT}}% TB: modus tollens (derived rule)
-\def\ds{\by{DS}}% TB: disjunctive syllogism (a derived rule in Cambridge version)
-\def\dem{\by{DeM}}% TB: De Morgan rule (derived rule)
-\def\cq{\by{ConvQuant}}% TB: conversion of quantifiers (derived rule)
+\newcommand\tnd{\by{TND}}% TB: tertium non datur
+\newcommand\dne{\by{DNE}}% TB: double negation elimination (derived rule)
+\newcommand\mt{\by{MT}}% TB: modus tollens (derived rule)
+\newcommand\ds{\by{DS}}% TB: disjunctive syllogism (a derived rule in Cambridge version)
+\newcommand\dem{\by{DeM}}% TB: De Morgan rule (derived rule)
+\newcommand\cq{\by{ConvQuant}}% TB: conversion of quantifiers (derived rule)
 
 
 %Modal logic
-  \def\boxI{\by{{\ebox}I}}%
-  \def\boxE{\by{{\ebox}E}}%
-  \def\mc{\by{MC}}%
-  \def\diadf{\by{Def{\ediamond}}}%
-  \def\rt{\by{R$\mathbf{T}$}}%
-  \def\rfour{\by{R$\mathbf{4}$}}%
-  \def\rfive{\by{R$\mathbf{5}$}}%
+  \newcommand\boxI{\by{{\ebox}I}}%
+  \newcommand\boxE{\by{{\ebox}E}}%
+  \newcommand\mc{\by{MC}}%
+  \newcommand\diadf{\by{Def{\ediamond}}}%
+  \newcommand\rt{\by{R$\mathbf{T}$}}%
+  \newcommand\rfour{\by{R$\mathbf{4}$}}%
+  \newcommand\rfive{\by{R$\mathbf{5}$}}%
 
 \newcommand*{\ellipsesline}{\have[\ ]{dots}{\;\raise-.65ex\hbox{\vdots}}}
 \newcommand*{\hypoellipsesline}{\hypo[\ ]{dots}{\;\raise-.65ex\hbox{\vdots}}}
@@ -493,7 +511,7 @@ for tree={
 %
 %%RZ: Make sure we have a copyright symbol
 %
-%\def\copyright{\textcircled{C}}
+%\newcommand\copyright{\textcircled{C}}
 
 \definecolor{darkred}{rgb}{0.5,0,0} % TB: used to color links in red
 
@@ -535,7 +553,7 @@ for tree={
 }
 
 
-\def\pr{\ensuremath{p}}
+\newcommand\pr{\ensuremath{p}}
 
 
 %\newcommand{\ensuretext}[1]{%
@@ -569,22 +587,7 @@ for tree={
 
 
 
-\ifforallx@beamer
-	\RequirePackage{etex} 	
-\else
-	\RequirePackage{hyperref}
-	\RequirePackage{cleveref}
-	
-		% forallxbris-style provides layout and style setup for forall x: bris books
-	%RZ: typefaces
-	
-	\RequirePackage{helvet}
-	\RequirePackage[osf]{Baskervaldx} % oldstyle figures
-	
-	
 
-	
-\fi 
 
 \ifforallx@textbook
 
@@ -592,10 +595,11 @@ for tree={
 	
 	
 	
-	\RequirePackage[numbered]{bookmark} %TB: added for speedy navigation
 	\RequirePackage[nonumberlist,toc,style=index]{glossaries}
 	\makeglossaries
-	% `tabu` is required globally later; avoid duplicate load here.
+
+	%\RequirePackage[numbered]{bookmark} %TB: added for speedy navigation
+
 	\RequirePackage[defaultlines=2,all]{nowidow}
 	
 	
@@ -603,9 +607,10 @@ for tree={
 
 	
 	
-		%RZ: Make sure we have a copyright symbol
+		
+	%RZ: Make sure we have a copyright symbol
 	
-	\def\copyright{\textcircled{C}}
+	%	\newcommand\copyright{\textcircled{C}}
 	
 	%RZ: Include git revision info
 	
