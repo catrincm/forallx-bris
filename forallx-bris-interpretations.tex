@@ -1,6 +1,6 @@
 %!TEX root = forallxbris.tex
 \part{FOL-Semantics}
-\label{ch.semantics}
+\label{ch:semantics}
 \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
 
 \chapter{FOL semantics part 1}
@@ -473,7 +473,7 @@ where we always assume that both $o_1$ and $o_2$ members of the domain. To recap
 $${\small \Set{\langle\text{Oslo, Norway}\rangle,\langle\text{Stockholm, Sweden}\rangle,\langle\text{Helsinki, Finland}\rangle,\langle\text{Copenhague, Denmark}\rangle}}$$
 is a binary relation picked out by the two-place predicate `\gap{x}is a capital of\gap{y}' with a domain, which, e.g., is a set that has Scandinavian cities and countries as its elements.
 
-In \cref{ch.TFLsymb} we learned that there are not only two-place predicates but also three-place predicates, four-place predicates and, indeed, at least in principle predicates for any number of argument places. What does a three place predicate pick out? It picks out a \define{ternary relation}. While a binary relation is a set of ordered pairs, a ternary relation is a set of ordered triples. An ordered triple such as $\langle\text{Pooh, Eeyore, The trampoline}\rangle$ consists of the three-objects Pooh, Eeyore, The trampoline \emph{in that particular order}. The three-place predicate `\gap{x}bounces with\gap{y}on\gap{z}' picks out the following ternary relation:
+In \cref{ch:TFLsymb} we learned that there are not only two-place predicates but also three-place predicates, four-place predicates and, indeed, at least in principle predicates for any number of argument places. What does a three place predicate pick out? It picks out a \define{ternary relation}. While a binary relation is a set of ordered pairs, a ternary relation is a set of ordered triples. An ordered triple such as $\langle\text{Pooh, Eeyore, The trampoline}\rangle$ consists of the three-objects Pooh, Eeyore, The trampoline \emph{in that particular order}. The three-place predicate `\gap{x}bounces with\gap{y}on\gap{z}' picks out the following ternary relation:
 $$\Set{\langle o_1,o_2,o_3\rangle \given o_1\text{ bounces with }o_2\text{ on }o_3}.$$
 So intuitively the sentence 
 \begin{itemize}
@@ -1182,7 +1182,7 @@ We have now provided the full inductive definition of truth in a model under a v
 %	
 %A model thus provides us with all the necessary information for interpreting the predicates and names, as well as, information about the range of the quantifiers. This will be enough to determine the truth value of all sentences of FOL, which we will turn to in \cref{s:TruthFOL}
 %
-%Importantly, we are not guaranteed that the denotation of an $n$-place predicate is nonempty, i.e., it is possible that $\emptyset$ is assigned to a predicate. In general, a convenient way of specifying a model is to supplement a given symbolization key (cf.~ \cref{ch.FOL}) with the relevant model of the names and predicates.
+%Importantly, we are not guaranteed that the denotation of an $n$-place predicate is nonempty, i.e., it is possible that $\emptyset$ is assigned to a predicate. In general, a convenient way of specifying a model is to supplement a given symbolization key (cf.~ \cref{ch:FOL}) with the relevant model of the names and predicates.
 %
 %Suppose we have just symbolized the sentence
 %\begin{itemize}
@@ -1357,7 +1357,7 @@ We have now provided the full inductive definition of truth in a model under a v
 
 \begin{practiceproblems}
 \problempart
-\label{pr.TorF1}
+\label{pr:TorF1}
 Consider the following model:
 \begin{interp}
 	\item[\domain] $\Set{\emph{Corwin}, \emph{Benedict}}$
@@ -1380,7 +1380,7 @@ Determine whether each of the following sentences is true or false in that model
 \end{problemslist}
 
 \problempart
-\label{pr.TorF2}
+\label{pr:TorF2}
 Consider the following model:	
 \begin{interp}
 	\item[\domain]$\Set{\emph{Lemmy}, \emph{Courtney}, \emph{Eddy}}$
@@ -1410,7 +1410,7 @@ Determine whether each of the following sentences is true or false in that model
 \end{problemslist}
 
 \problempart
-\label{pr.TorF3}
+\label{pr:TorF3}
 Following the diagram conventions introduced at the end of \S23, consider the following model:	
 \begin{interp}
 	\item[\domain] $\Set{1,2,3,4,5}$
@@ -1507,7 +1507,7 @@ description={A property held by \glspl{sentence of FOL} if and only if some \gls
 }
 
 \chapter{Using models}
-\label{sec.UsingModels}
+\label{sec:UsingModels}
 
 \section{Logical truths and contradictions}
 Suppose we want to show that `$\exists xAxx \eif Bd$' is \emph{not} a logical truth. This requires showing that the sentence is not true in every model; i.e.,\ that it is false in some model. If we can provide just one model in which the sentence is false, then we will have shown that the sentence is not a logical truth.
@@ -1621,7 +1621,7 @@ When you provide a model to refute a claim---to logical truth, say, or to entail
 
 \begin{practiceproblems}
 \problempart
-\label{pr.Contingent}
+\label{pr:Contingent}
 Show that each of the following is neither a validity nor a contradiction:
 \begin{problemslist}
 \item $\atom{D}{a} \eand \atom{D}{b}$
@@ -1677,7 +1677,7 @@ And it is false in this model:
 
 \solutions
 \problempart
-\label{pr.NotEquiv}
+\label{pr:NotEquiv}
 Show that the following pairs of sentences are not logically equivalent.
 \begin{problemslist}
 \item $\atom{J}{a}$, $\atom{K}{a}$
@@ -1855,6 +1855,6 @@ valid? & all models & one counter-model\\
 entailment? & all models & one counter-model\\
 \end{tabular}
 \end{center}
-\label{table.ModelOrArgument}
+\label{table:ModelOrArgument}
 
 This might usefully be compared with the table at the end of \cref{s:PartialTruthTable}. The key difference resides in the fact that TFL concerns truth tables, whereas FOL concerns models. This difference is deeply important, since each truth-table only ever has finitely many lines, so that a complete truth table is a relatively tractable object. By contrast, there are infinitely many models for any given sentence(s), so that reasoning about all models can be a deeply tricky business.

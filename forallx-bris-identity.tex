@@ -1,6 +1,6 @@
 %!TEX root = forallxbris.tex
 \part{Identity}
-\label{ch.identity}
+\label{ch:identity}
 \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
 
 \chapter{Identity}
@@ -134,7 +134,7 @@ It might be tempting to add a predicate to our symbolization key, to symbolize t
 \begin{practiceproblems}
 
 %\problempart
-%\label{pr.FOLcandies}
+%\label{pr:FOLcandies}
 %Using the following symbolization key:
 %\begin{ekey}
 %\item[\text{domain}] candies
@@ -199,7 +199,7 @@ So it can be symbolized as `$\forall x((\atom{F}{x} \eand \enot x = p) \eif \eno
 
 \chapter{Sentences of FOL}\setcounter{ProbPart}{0}
 \problempart
-\label{pr.freeFOL}
+\label{pr:freeFOL}
 Identify which variables are bound and which are free.
 \myanswer{We underline the bound variables, and overline the free variables.}
 \begin{problemslist}
@@ -214,7 +214,7 @@ Identify which variables are bound and which are free.
 \end{practiceproblems}
 
 
-\chapter{Definite descriptions}\label{subsec.defdesc}
+\chapter{Definite descriptions}\label{subsec:defdesc}
 Consider sentences like:
 	\begin{samplesent}
 		\item\label{sent:traitor1} Nick is the traitor.
@@ -340,7 +340,7 @@ symbolize the following sentences in FOL:
 
 \solutions
 \problempart
-\label{pr.FOLcards}
+\label{pr:FOLcards}
 Using the following symbolization key:
 \begin{ekey}
 \item[\text{domain}] cards in a standard deck
@@ -427,7 +427,7 @@ Sometimes you might come across cases where you might feel tempted to write some
 
 \section{Semantics for identity}
 
-%In \cref{ch.semantics} we described when sentences of FOL were true or false. Whereas for TFL sentences were true or false \emph{on a valuation}, in FOL sentences were true or false \emph{on a model}. For FOL with identity we will also use models, for example: 	\begin{ekey}
+%In \cref{ch:semantics} we described when sentences of FOL were true or false. Whereas for TFL sentences were true or false \emph{on a valuation}, in FOL sentences were true or false \emph{on a model}. For FOL with identity we will also use models, for example: 	\begin{ekey}
 %		\item[\text{domain}] all people born before 2000\textsc{ce}
 %		\item[a] Aristotle
 %		\item[b] Beyonc\'e
@@ -440,11 +440,11 @@ Sometimes you might come across cases where you might feel tempted to write some
 %\item[c] Aristotle
 %\end{ekey} then a sentence $a\eid c$ is true.
 
-Now that we have added the identity symbol to FOL, we simply need to expand our notion of truth from \cref{ch.semantics} to also account for atomic sentences like $a\eid b$. Our clause that we add is:
+Now that we have added the identity symbol to FOL, we simply need to expand our notion of truth from \cref{ch:semantics} to also account for atomic sentences like $a\eid b$. Our clause that we add is:
 \factoidbox{
 $\meta{a}\eid\meta{b}$ is true \textbf{iff} $\meta{a}$ and $\meta{b}$ name the same object in that model.
 }
-So on our go-to model from \cref{ch.semantics},
+So on our go-to model from \cref{ch:semantics},
 \begin{ekey}
 		\item[\text{domain}] all people born before 2000\textsc{ce}
 		\item[a] Aristotle
@@ -503,7 +503,7 @@ On the first of these, $d\eid a$ is true, on the second $d\eid b$ is true, and o
 %So in our go-to model, `$a \eid  b$' is false, since Aristotle is distinct from Beyonc\'e.
 
 \chapter{Rules for identity}
-If two names refer to the same object, then swapping one name for another will not change the truth value of any sentence. So, in particular, if `$a$' and `$b$' name the same object, then all of the following will be valid:\label{model.nonidentity}
+If two names refer to the same object, then swapping one name for another will not change the truth value of any sentence. So, in particular, if `$a$' and `$b$' name the same object, then all of the following will be valid:\label{model:nonidentity}
 	\begin{align*}
 	 	Aa &\therefore Ab \\
 	 	Ab &\therefore Aa \\
@@ -612,7 +612,7 @@ Comment: the scope of negation is potentially ambiguous here; I have read it as 
 
 \solutions
 \problempart
-\label{pr.FOLcards}
+\label{pr:FOLcards}
 Using the following symbolization key:
 \begin{ekey}
 \item[\text{domain}] cards in a standard deck

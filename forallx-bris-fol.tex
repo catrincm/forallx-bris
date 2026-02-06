@@ -1,10 +1,10 @@
 %!TEX root = forallxbris.tex
 \part{First-order logic}
-\label{ch.FOL}
+\label{ch:FOL}
 \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
 \chapter{Building blocks of FOL}\label{s:FOLBuildingBlocks}
 %\section{The need to decompose sentences}
-We have been studying arguments, and in particular their validity. In Part \label{ch.TFLsymb} we gave a strategy for checking the validity of an argument by using TFL. That was:
+We have been studying arguments, and in particular their validity. In Part \label{ch:TFLsymb} we gave a strategy for checking the validity of an argument by using TFL. That was:
 \begin{highlighted}\begin{enumerate}
 \item Find the structure of the argument. \\Identify the premises and conclusion.
 \item \label{itm:validity-symbolise}Symbolise the argument in TFL.
@@ -496,7 +496,7 @@ We symbolise this as $$Rabcd$$ using:
 
 Consider
 \begin{samplesent}
-\item\label{sent:q.hat} Everyone wears a funny hat
+\item\label{sent:q:hat} Everyone wears a funny hat
 \end{samplesent}
 This doesn't say of any specific individual that they wear a funny hat, but it says everyone does so. To express this, we introduce the $\forall$ symbol. This is called the \emph{universal quantifier}.
 
@@ -520,7 +520,7 @@ If we wanted to symbolise ``Alice wears a funny hat'' we would use $Fa$. To symb
 
 Whatever we wanted to say of an individual we can now say of everyone using this quantifier.  Consider
 \begin{samplesent}
-\item\label{sent:q.hat} Everyone is happy and wears a funny hat
+\item\label{sent:q:hat} Everyone is happy and wears a funny hat
 \end{samplesent}
 We can break this up:
 \begin{center}
@@ -593,7 +593,7 @@ The Universal Quantifier, $\forall$, allows us to capture English notions like `
 
 To symbolise
 \begin{samplesent}
-\item\label{sent:q.e} Someone is angry.
+\item\label{sent:q:e} Someone is angry.
 \end{samplesent}
 with the symbolisation key
 \begin{ekey}
@@ -616,7 +616,7 @@ Thus giving our symbolisation as: $\exists x Ax$
 
 To symbolise
 \begin{samplesent}
-\item\label{sent:q.e} There is a logician who wears glasses
+\item\label{sent:q:e} There is a logician who wears glasses
 \end{samplesent}
 %$$\underbrace{\underbrace{\text{There is someone, $x$, such that}}_{\exists x}: \underbrace{\underbrace{\text{$x$ is a logician}}_{Lx}\text{ and }\underbrace{\text{$x$ wears glasses}}_{Gx}}_{(Lx\eand Gx)}.}_{\exists x(Lx\eand Gx)}$$
 \begin{center}
@@ -639,7 +639,7 @@ with a symbolisation key:
 
 To symbolise
 \begin{samplesent}
-\item\label{sent:q.e} There is a Polish woman who won the Nobel Prize
+\item\label{sent:q:e} There is a Polish woman who won the Nobel Prize
 \end{samplesent}
 
 \begin{center}
@@ -981,7 +981,7 @@ We will adopt the same notational conventions governing brackets that we did for
 
 \begin{practiceproblems}
 \problempart
-\label{pr.freeFOL}
+\label{pr:freeFOL}
 Identify which variables are bound and which are free.
 \begin{problemslist}
 \item $\exists x Lxy \eand \forall y Lyx$
@@ -1006,7 +1006,7 @@ Identify which variables are bound and which are free.
 %%In FOL we will symbolise it as:
 %%In FOL we use $x,y,z$ etc as variables.
 %%
-%%We will then symbolise \ref{sent:q.hat} as $$\forall x Hx$$ using the symbolisation key:
+%%We will then symbolise \ref{sent:q:hat} as $$\forall x Hx$$ using the symbolisation key:
 %%\begin{ekey}
 %%\item[Hx]\gap{x} wears a funny hat
 %%\item[\text{domain}]people
@@ -1018,7 +1018,7 @@ Identify which variables are bound and which are free.
 %%\end{quote}
 %
 %A quantifier must always be followed by a \define{variable}. In FOL, variables are usually $x$, $y$ and $z$, they might also have subscripts $x_1,y_{27},z_{333}$; we also sometimes use $u,v,w$.
-%So we might symbolize \cref{q.a} as $\forall x Hx$.  The variable $x$ is serving as a kind of placeholder. If you give me an $x$ then $Hx$ says that that particular person is happy.
+%So we might symbolize \cref{q:a} as $\forall x Hx$.  The variable $x$ is serving as a kind of placeholder. If you give me an $x$ then $Hx$ says that that particular person is happy.
 %
 %The symbolisation key doesn't specify who $x$ refers to; it can refer to anyone. So $Hx$ itself isn't going to be true or false, it is only true or false once you provide the additional information of who $x$ refers to.
 %
@@ -1042,7 +1042,7 @@ Identify which variables are bound and which are free.
 %%		\item[\ex{q.ac}] Everyone is at least as tough as Elsa.
 %		\item[\ex{q.e}] Someone is angry.
 %	\end{earg}
-%%It might be tempting to symbolize \cref{q.a} as $Ha \eand Hg \eand Hm$. Yet this would only say that Elsa, Gregor, and Marybeth are happy.
+%%It might be tempting to symbolize \cref{q:a} as $Ha \eand Hg \eand Hm$. Yet this would only say that Elsa, Gregor, and Marybeth are happy.
 %We want to say that \emph{everyone} is happy, even those with no names. In order to do this, we introduce the $\forall$ symbol. This is called the \define{universal quantifier}.
 %
 %\newglossaryentry{universal quantifier}{
@@ -1051,7 +1051,7 @@ Identify which variables are bound and which are free.
 %}
 %
 %A quantifier must always be followed by a \define{variable}. In FOL, variables are usually $x$, $y$ and $z$, they might also have subscripts $x_1,y_{27},z_{333}$; we also sometimes use $u,v,w$.
-%So we might symbolize \cref{q.a} as $\forall x Hx$.  The variable $x$ is serving as a kind of placeholder. If you give me an $x$ then $Hx$ says that that particular person is happy.
+%So we might symbolize \cref{q:a} as $\forall x Hx$.  The variable $x$ is serving as a kind of placeholder. If you give me an $x$ then $Hx$ says that that particular person is happy.
 %
 %The symbolisation key doesn't specify who $x$ refers to; it can refer to anyone. So $Hx$ itself isn't going to be true or false, it is only true or false once you provide the additional information of who $x$ refers to.
 %
@@ -1064,7 +1064,7 @@ Identify which variables are bound and which are free.
 %
 %It should be pointed out that there is no special reason to use $x$ rather than some other variable. The sentences $\forall x Hx$, $\forall y Hy$, $\forall z Hz$, and $\forall x_5 Hx_5$ use different variables, but they will all be logically equivalent.
 %
-%To symbolize \cref{sent:q.e}, we introduce another new symbol: the \define{existential quantifier}, $\exists$. Like the universal quantifier, the existential quantifier requires a variable. \Cref{sent:q.e} can be symbolized by $\exists x Ax$. Whereas $\forall x Ax$ is read naturally as `for all x, x is angry', $\exists x Ax$ is read naturally as `there is something, x, such that x is angry'. Once again, the variable is a kind of placeholder; we could just as easily have symbolized \cref{sent:q.e} with $\exists z Az$, $\exists w_{256} Aw_{256}$, or whatever.
+%To symbolize \cref{sent:q:e}, we introduce another new symbol: the \define{existential quantifier}, $\exists$. Like the universal quantifier, the existential quantifier requires a variable. \Cref{sent:q:e} can be symbolized by $\exists x Ax$. Whereas $\forall x Ax$ is read naturally as `for all x, x is angry', $\exists x Ax$ is read naturally as `there is something, x, such that x is angry'. Once again, the variable is a kind of placeholder; we could just as easily have symbolized \cref{sent:q:e} with $\exists z Az$, $\exists w_{256} Aw_{256}$, or whatever.
 %
 %\newglossaryentry{existential quantifier}{
 %  name = existential quantifier,
@@ -1077,9 +1077,9 @@ Identify which variables are bound and which are free.
 %		\item[\ex{q.en}] There is someone who is not happy.
 %		\item[\ex{q.na}] Not everyone is happy.
 %	\end{earg}
-%\Cref{q.ne} can be paraphrased as, `It is not the case that someone is angry'. We can then symbolize it using negation and an existential quantifier: $\enot \exists x Ax$. Yet \cref{q.ne} could also be paraphrased as, `Everyone is not angry'. With this in mind, it can be symbolized using negation and a universal quantifier: $\forall x \enot Ax$. Both of these are acceptable symbolizations.  Indeed, it will transpire that, in general, $\forall x \enot\metaX$ is logically equivalent to $\enot\exists x\metaX$. (Notice that we have here returned to the practice of using $\metaX$ as a metavariable, from \cref{s:UseMention}.) Symbolizing a sentence one way, rather than the other, might seem more `natural' in some contexts, but it is not much more than a matter of taste.
+%\Cref{q:ne} can be paraphrased as, `It is not the case that someone is angry'. We can then symbolize it using negation and an existential quantifier: $\enot \exists x Ax$. Yet \cref{q:ne} could also be paraphrased as, `Everyone is not angry'. With this in mind, it can be symbolized using negation and a universal quantifier: $\forall x \enot Ax$. Both of these are acceptable symbolizations.  Indeed, it will transpire that, in general, $\forall x \enot\metaX$ is logically equivalent to $\enot\exists x\metaX$. (Notice that we have here returned to the practice of using $\metaX$ as a metavariable, from \cref{s:UseMention}.) Symbolizing a sentence one way, rather than the other, might seem more `natural' in some contexts, but it is not much more than a matter of taste.
 %
-%\Cref{q.en} is most naturally paraphrased as, `There is some x, such that x is not happy'. This then becomes $\exists x \enot Hx$. Of course, we could equally have written $\enot\forall x Hx$, which we would naturally read as `it is not the case that everyone is happy'. That too would be a perfectly adequate symbolization of \cref{q.na}.
+%\Cref{q:en} is most naturally paraphrased as, `There is some x, such that x is not happy'. This then becomes $\exists x \enot Hx$. Of course, we could equally have written $\enot\forall x Hx$, which we would naturally read as `it is not the case that everyone is happy'. That too would be a perfectly adequate symbolization of \cref{q:na}.
 %
 %
 %\section{When the domain does not match up}
@@ -1124,7 +1124,7 @@ If \metaX, then \metaY&$(\metaX\eif\metaY)$\\
 \end{center}
 \end{highlighted}
 
-Also remember that there were various further tricks from \ref{ch.TFL}, such as `\metaX only if \metaY' as $(\metaX\eif\metaY)$ and `Unless \metaX, \metaY' as $(\metaX\eor\metaY)$. These still apply in the FOL setting. We will also see some more such tricks later.
+Also remember that there were various further tricks from \ref{ch:TFL}, such as `\metaX only if \metaY' as $(\metaX\eif\metaY)$ and `Unless \metaX, \metaY' as $(\metaX\eor\metaY)$. These still apply in the FOL setting. We will also see some more such tricks later.
 
 \todo[inline]{This has all been reorganised. Now give some worked examples!!}
 
@@ -1250,7 +1250,7 @@ All the sentences we've considered so far have the quantifiers at the beginning 
 
 
 \begin{samplesent}
-\item\label{sent:q.dog}Finley is not quiet, but some dog is.
+\item\label{sent:q:dog}Finley is not quiet, but some dog is.
 \end{samplesent}
 
 We work as follows:
@@ -1283,7 +1283,7 @@ Note, that as per \ref{s:Domain}, this symbolisation is only legitimate assuming
 
 Consider also 
 \begin{samplesent}
-	\item\label{sent:q.dog2}Some dog is quiet but Finley is not
+	\item\label{sent:q:dog2}Some dog is quiet but Finley is not
 \end{samplesent}
 
 
@@ -1307,7 +1307,7 @@ So we result in: $(\exists x(Dx \eand Qx) {\eand} \enot Qf)$
 
 Consider:
 \begin{samplesent}
-\item\label{sent:q.notevery}Not every dog is quiet
+\item\label{sent:q:notevery}Not every dog is quiet
 \end{samplesent}
 
 We work as follows:
@@ -1633,7 +1633,7 @@ In general, the universal quantifier can be used to symbolize the English expres
 %\end{center}
 %\end{highlighted}
 %
-%Also remember that there were various further tricks from \ref{ch.TFL}, such as `\metaX only if \metaY' as $(\metaX\eif\metaY)$ and `Unless \metaX, \metaY' as $(\metaX\eor\metaY)$. These still apply in the FOL setting.
+%Also remember that there were various further tricks from \ref{ch:TFL}, such as `\metaX only if \metaY' as $(\metaX\eif\metaY)$ and `Unless \metaX, \metaY' as $(\metaX\eor\metaY)$. These still apply in the FOL setting.
 %
 %\todo[inline]{This has all been reorganised. Now give some worked examples!!}
 %
@@ -1773,7 +1773,7 @@ Must we always distinguish between different ways of being skilled, good, bad, o
 
 \begin{practiceproblems}
 \problempart
-\label{pr.BarbaraEtc}
+\label{pr:BarbaraEtc}
 Here are the syllogistic figures identified by Aristotle and his successors, along with their medieval names:
 \begin{problemslist}
 	\item \textbf{Barbara.} All G are F. All H are G. So:  All H are F
@@ -1811,7 +1811,7 @@ Symbolize each argument in FOL.
 
 \
 \problempart
-\label{pr.FOLvegetarians}
+\label{pr:FOLvegetarians}
 Using the following symbolization key:
 \begin{ekey}
 \item[\text{domain}] people
@@ -1842,7 +1842,7 @@ symbolize the following sentences in FOL:
 \end{problemslist}
 
 \solutions
-\problempart\label{pr.FOLalligators}
+\problempart\label{pr:FOLalligators}
 Using this symbolization key:
 \begin{ekey}
 \item[\text{domain}] all animals
@@ -1882,7 +1882,7 @@ symbolize each of the following sentences in FOL:
 \end{problemslist}
 
 \problempart
-\label{pr.FOLarguments}
+\label{pr:FOLarguments}
 For each argument, write a symbolization key and symbolize the argument in FOL.
 \begin{problemslist}
 \item Willard is a logician. All logicians wear funny hats. So Willard wears a funny hat
@@ -2225,7 +2225,7 @@ treason against the Queen!
 
 \begin{practiceproblems}
 \solutions
-%Warning: some of these problems require you to use identity, which hasn't yet been introduced. See \cref{ch.identity}.
+%Warning: some of these problems require you to use identity, which hasn't yet been introduced. See \cref{ch:identity}.
 \problempart
 Using this symbolization key:
 \begin{ekey}
@@ -2314,7 +2314,7 @@ Comment: I have assumed that `larger than any dog' here means `larger than every
 \end{problemslist}
 
 \problempart
-\label{pr.QLcandies}
+\label{pr:QLcandies}
 Using the symbolization key given, translate each English-language sentence into FOL.
 \begin{ekey}
 \item[\text{domain}] candies
@@ -2373,7 +2373,7 @@ symbolize the following English sentences in FOL:
 
 \solutions
 \problempart
-\label{pr.FOLballet}
+\label{pr:FOLballet}
 Using the following symbolization key:
 \begin{ekey}
 \item[\text{domain}] people
@@ -2690,7 +2690,7 @@ symbolize the following sentences in FOL:
 %
 %\begin{practiceproblems}
 %\problempart
-%\label{pr.freeFOL}
+%\label{pr:freeFOL}
 %Identify which variables are bound and which are free.
 %\begin{earg}
 %\item $\exists x Lxy \eand \forall y Lyx$
@@ -2763,7 +2763,7 @@ We assume here that the domain contains (at least) people and movies, and the sy
 \end{ekey}
 In the first reading, we say that the existential quantifier has \emph{wide scope} (and its scope contains the universal quantifier, which has \emph{narrow scope}), and the other way round in the second.
 
-%In chapter~\ref{subsec.defdesc}, we encountered another scope ambiguity, arising from definite descriptions interacting with negation.  Consider Russell's own example:
+%In chapter~\ref{subsec:defdesc}, we encountered another scope ambiguity, arising from definite descriptions interacting with negation.  Consider Russell's own example:
 %\begin{earg}
 %	\item[\ex{thenot}] The King of France is not bald.
 %\end{earg}

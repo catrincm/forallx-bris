@@ -1,6 +1,6 @@
 %!TEX root = forallxbris.tex
 \part{Truth-functional logic}
-\label{ch.TFL}
+\label{ch:TFL}
 \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
 
 \chapter{A Prolegomenon to TFL}
@@ -61,9 +61,9 @@ as well as the form
 	\end{earg}
 lead to valid arguments independently of what expressions we substitute for `$A$' and `$B$': we can understand (interpret) `$A$' and `$B$' in whatever way we want, as long as we take them to be place holder for sentences the resulting argument will be valid. These examples illustrate the important idea that the validity of the arguments just considered has nothing to do with the meanings of English expressions like `Jenny is miserable', `Dipan is an avid reader of Tolstoy', or any other sentence. If it has to do with meanings at all, it is with the meanings of conjunction-words like `and', `or', `not,' and `if\ldots, then\ldots'. The language of truth-functional logic is built to single out characteristic feature of these conjunction words and this will enable us to fruitfully study the idea of validity of an argument in virtue of its form.
 
-When one introduces a language there are (at least) two task: the first is to specify the vocabulary of the language and equip the language with a grammar, that is, one has to specify how well-formed sentences of the language look like. This aspect of the language is called its \define{syntax}. The second task is to specify the \define{semantics} of the language. The semantics specifies how we are to understand the expressions of the language, what the sentences of the language mean etc. \cref{ch.TFL} develops both the syntax and the semantics of the language of TFL. Once this has been established we can consider how TFL may be useful for thinking about arguments in English. This will lead to the idea of symbolizing arguments in TFL and will be picked up in \cref{ch.TFLsymb}.
+When one introduces a language there are (at least) two task: the first is to specify the vocabulary of the language and equip the language with a grammar, that is, one has to specify how well-formed sentences of the language look like. This aspect of the language is called its \define{syntax}. The second task is to specify the \define{semantics} of the language. The semantics specifies how we are to understand the expressions of the language, what the sentences of the language mean etc. \cref{ch:TFL} develops both the syntax and the semantics of the language of TFL. Once this has been established we can consider how TFL may be useful for thinking about arguments in English. This will lead to the idea of symbolizing arguments in TFL and will be picked up in \cref{ch:TFLsymb}.
 
-%In \cref{ch.TFL}--\ref{ch.NDTFL}, we are going to develop a formal system which allows us to symbolize many arguments in such a way as to show that they are valid in virtue of their form. That language will be \emph{truth-functional logic}, or TFL. It will have sentences like $$(A\eand (B\eif\enot C)),$$ which we will read ``$A$ and if $B$, then it is not the case that $C$''.
+%In \cref{ch:TFL}--\ref{ch:NDTFL}, we are going to develop a formal system which allows us to symbolize many arguments in such a way as to show that they are valid in virtue of their form. That language will be \emph{truth-functional logic}, or TFL. It will have sentences like $$(A\eand (B\eif\enot C)),$$ which we will read ``$A$ and if $B$, then it is not the case that $C$''.
 %\chapter{Building blocks of TFL}
 
 %In natural languages like English or German, there are many different parts of the vocabulary 
@@ -76,7 +76,7 @@ We started isolating the form of an argument by replacing  \emph{subsentences} o
 
 Our artificial language, TFL, pursues this idea absolutely ruthlessly. We start with some \emph{atomic sentences}. These will be the basic building blocks out of which more complex sentences are built. We will use uppercase Roman letters for atomic sentences of TFL (except for $X$, $Y$, and $Z$ which we reserve for metavariables). There are only twenty-three letters $A$--$W$, but there is no limit to the number of atomic sentences that we might want to consider. By adding subscripts to letters, we obtain new atomic sentences. So, here are some different atomic sentences of TFL:
 	$$A, B, P, P_1, P_2, A_{234}$$
-You can think of atomic sentences as representing certain English sentences but for now this is simply a heuristic (in \cref{ch.TFLsymb} we shall take atomic sentences to \emph{symbolize} certain English sentence).  For example, you can think of $A$ as representing the English sentence `It is raining outside', and the atomic sentence of TFL, $C$, as representing the English sentence `Jenny is miserable'.
+You can think of atomic sentences as representing certain English sentences but for now this is simply a heuristic (in \cref{ch:TFLsymb} we shall take atomic sentences to \emph{symbolize} certain English sentence).  For example, you can think of $A$ as representing the English sentence `It is raining outside', and the atomic sentence of TFL, $C$, as representing the English sentence `Jenny is miserable'.
 
 However, if you think of the letter $P$ as representing a particular English sentence it is important to understand that whatever structure the English sentence has, atomic sentence $P$ will not reflect this structure. From the point of view of TFL, an atomic sentence is just a letter. It can be used to build more complex sentences, but it cannot be taken apart.
 
@@ -1069,7 +1069,7 @@ Add brackets to form a sentence of TFL.
 
 
 \problempart
-\label{pr.wiffTFL}
+\label{pr:wiffTFL}
 For each of the following: (a) Is it a sentence of TFL, strictly speaking? (b) Is it a sentence of TFL, allowing for our relaxed bracketing conventions? (c) If the answer to (b) is yes, write down the formation tree of each sentence and determin the main connective at each node (if there is one). Is there a main connective for every node of the formation tree of a sentence.
 \begin{problemslist}
 \item $(A)$\hfill \myanswer{(a) no (b) no}
@@ -1135,7 +1135,7 @@ Those are just general rules for quotation, and you should observe them carefull
 These general quotation conventions are very important for us. After all, we are describing a formal language here, TFL, and so we must often \emph{mention} expressions from TFL.
 
 When we talk about a language, the language that we are talking about is called the \define{object language}. The language that we use to talk about the object language is called the \define{metalanguage}.
-\label{def.metalanguage}
+\label{def:metalanguage}
 \newglossaryentry{object language}
 {
 name=object language,
@@ -1769,7 +1769,7 @@ Again we need to split each of our valuations for $A,B,C$ into one which assigns
 
 The list of all possible valuations gets very big very fast.
 
-There are $2^n$ ways to assign truth values to $n$ atomic sentences. Using truth tables to determine validity thus becomes quite difficult and it is one reason we consider an alternative method: that of proofs, which we will see in \cref{ch.NDTFL}.
+There are $2^n$ ways to assign truth values to $n$ atomic sentences. Using truth tables to determine validity thus becomes quite difficult and it is one reason we consider an alternative method: that of proofs, which we will see in \cref{ch:NDTFL}.
 
 
 Here's one strategy that some people find useful for listing all the valuations. 
@@ -2350,10 +2350,10 @@ You can provide your answer without explicitly providing the header row matching
 
 There are tricks that mean you can miss out some of the gaps by using strategies such as: knowing that $\metaX$ is false is already enough to see that $\metaX\eand\metaY$ is false, so we don't need to continue to work out the truth value of $\metaY$. These ``shortcuts'' are discussed in \cref{s:PartialTruthTable}, but we won't read it in this course.
 
-\begin{practiceproblems}\label{pr.TT.TTorC}
+\begin{practiceproblems}\label{pr:TT:TTorC}
 	\problempart
-	\label{pr.TT.TTorC}
-	\label{pr.TT.TTorC}
+	\label{pr:TT:TTorC}
+	\label{pr:TT:TTorC}
 	Complete truth tables for each of the following:
 	\begin{problemslist}
 		\item $A \eif A$ %taut
@@ -3296,13 +3296,13 @@ One can show that `$(A \eand B) \eand C$' and  `$A \eand (B \eand C)$' are logic
 
 \begin{practiceproblems}
 	\problempart
-	Revisit your answers to \cref{pr.TT.TTorC}. Determine which sentences were tautologies, which were contradictions, and which were neither tautologies nor contradictions.
+	Revisit your answers to \cref{pr:TT:TTorC}. Determine which sentences were tautologies, which were contradictions, and which were neither tautologies nor contradictions.
 	\solutions
 	
 	\
 	
 	\problempart
-	\label{pr.TT.consistent}
+	\label{pr:TT:consistent}
 	Use truth tables to determine whether these sentences are jointly consistent, or jointly inconsistent:
 	\begin{problemslist}
 		\item $A\eif A$, $\enot A \eif \enot A$, $A\eand A$, $A\eor A$ %consistent
@@ -3337,7 +3337,7 @@ One can show that `$(A \eand B) \eand C$' and  `$A \eand (B \eand C)$' are logic
 	
 	
 	\noindent\problempart
-	\label{pr.TT.equiv}
+	\label{pr:TT:equiv}
 	Determine whether each the following sentences are logically equivalent using complete truth tables. If the two sentences really are logically equivalent, write ``equivalent.'' Otherwise write, ``Not equivalent.''
 	\begin{problemslist}
 		\item $A$ and $\enot A$
@@ -3348,7 +3348,7 @@ One can show that `$(A \eand B) \eand C$' and  `$A \eand (B \eand C)$' are logic
 	
 	
 	\problempart
-	\label{pr.TT.equiv2}
+	\label{pr:TT:equiv2}
 	Determine whether each the following sentences are logically equivalent using complete truth tables. If the two sentences really are equivalent, write ``equivalent.'' Otherwise write, ``not equivalent.''
 	\begin{problemslist}
 		\item $A\eif A$ and $A \eiff A$
@@ -3360,7 +3360,7 @@ One can show that `$(A \eand B) \eand C$' and  `$A \eand (B \eand C)$' are logic
 	
 	
 	\problempart
-	\label{pr.TT.consistent2}
+	\label{pr:TT:consistent2}
 	Determine whether each collection of sentences is jointly consistent or jointly inconsistent using a complete truth table.
 	\begin{problemslist}
 		\item $A \eand \enot B$, $\enot(A \eif B)$, $B \eif A$\vspace{.5ex} %Consistent
@@ -3413,7 +3413,7 @@ One can show that `$(A \eand B) \eand C$' and  `$A \eand (B \eand C)$' are logic
 	\end{problemslist}
 	
 	\noindent\problempart
-	\label{pr.TT.consistent3}
+	\label{pr:TT:consistent3}
 	Determine whether each collection of sentences is jointly consistent or jointly inconsistent, using a complete truth table.
 	\begin{problemslist}
 		\item $\enot B$, $A \eif B$, $A$ \vspace{.5ex}%inconsistent.
@@ -3428,7 +3428,7 @@ One can show that `$(A \eand B) \eand C$' and  `$A \eand (B \eand C)$' are logic
 	
 	\solutions
 	\problempart
-	\label{pr.TT.concepts}
+	\label{pr:TT:concepts}
 	Answer each of the questions below and justify your answer.
 	\begin{problemslist}
 		\item Suppose $\metaX$ is true and $\metaY$ is true\\Is $\metaX\eor\metaY$ true.\myanswer{\\true}
@@ -3454,7 +3454,7 @@ One can show that `$(A \eand B) \eand C$' and  `$A \eand (B \eand C)$' are logic
 	\end{problemslist}
 	
 	\noindent\problempart
-	\label{pr.TT.meta}
+	\label{pr:TT:meta}
 	Are the following statements true? Why?
 	\begin{itemize}
 	\item if $Y$ is a logical consequence of $X$, then $X\eif Y$ is a logical truth.\myanswer{Yes}
@@ -3637,7 +3637,7 @@ We have been discussing shortcuts in testing for logically validity, but exactly
 
 \begin{practiceproblems}
 	\problempart
-	\label{pr.TT.TTorC2}
+	\label{pr:TT:TTorC2}
 	Using shortcuts, determine whether each sentence is a tautology, a contradiction, or neither.
 	\begin{problemslist}
 		
@@ -3866,12 +3866,12 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 		logical consequence? & complete truth table & one-line partial truth table\\
 	\end{tabular}
 \end{center}
-\label{table.CompleteVsPartial}
+\label{table:CompleteVsPartial}
 
 %
 %\begin{practiceproblems}
 %	\problempart
-%	\label{pr.TT.equiv3}
+%	\label{pr:TT:equiv3}
 %	Use complete or partial truth tables (as appropriate) to determine whether these pairs of sentences are logically equivalent:
 %	\begin{earg}
 %		\item $A$, $\enot A$
@@ -3962,7 +3962,7 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %	
 %	\solutions
 %	\problempart
-%	\label{pr.TT.satisfiable4}
+%	\label{pr:TT:satisfiable4}
 %	Use complete or partial truth tables (as appropriate) to determine whether these sentences are jointly satisfiable, or jointly unsatisfiable:
 %	\begin{earg}
 %		\item $A \eand B$, $C\eif \enot B$, $C$ %unsatisfiable
@@ -4020,7 +4020,7 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %	
 %	\solutions
 %	\problempart
-%	\label{pr.TT.valid4}
+%	\label{pr:TT:valid4}
 %	Use complete or partial truth tables (as appropriate) to determine whether each argument is valid or invalid:
 %	\begin{earg}
 %		\item $A\eor\bigl(A\eif(A\eiff A)\bigr) \therefore A$ %invalid
@@ -4088,7 +4088,7 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %	\end{earg}
 %	
 %	\problempart
-%	\label{pr.TT.TTorC3}
+%	\label{pr:TT:TTorC3}
 %	Determine whether each sentence is a tautology, a contradiction, or a contingent sentence. Justify your answer with a complete or partial truth table where appropriate.
 %	
 %	% truth tables in LaTeX generated by http://www.curtisbright.com/logic/. Be sure to give him a shout out.
@@ -4241,7 +4241,7 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %	\end{earg}
 %	
 %	\noindent\problempart
-%	\label{pr.TT.TTorC4}
+%	\label{pr:TT:TTorC4}
 %	Determine whether each sentence is a tautology, a contradiction, or a contingent sentence. Justify your answer with a complete or partial truth table where appropriate.
 %	\begin{earg}
 %		\item  $\enot (A \eor A)$\vspace{.5ex}		\hfill			\myanswer{		Contradiction}	%	1 letter, 2 connectives
@@ -4341,7 +4341,7 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %	
 %	
 %	\noindent\problempart
-%	\label{pr.TT.satisfiable5}
+%	\label{pr:TT:satisfiable5}
 %	Determine whether each collection of sentences is jointly consistent or jointly inconstent. Justify your answer with a complete or partial truth table where appropriate.
 %	\begin{earg}
 %		\item $A\eif A$, $\enot A \eif \enot A$, $A\eand A$, $A\eor A$ \vspace{.5ex} \hfill \myanswer{Consistent}
@@ -4357,7 +4357,7 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %	\end{earg}
 %	
 %	\noindent\problempart Determine whether each argument is valid or invalid. Justify your answer with a complete or partial truth table where appropriate.
-%	\label{pr.TT.valid5} 
+%	\label{pr:TT:valid5} 
 %	\begin{enumerate}
 %		\item $A\eif(A\eand\enot A)\therefore \enot A$ \hfill \myanswer{ Valid}
 %		\item $A \eor B$, $A \eif B$, $B \eif A \therefore  A \eiff B$  \hfill \myanswer{ Valid}
@@ -4373,7 +4373,7 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %	\end{enumerate}
 %	
 %	\noindent\problempart Determine whether each argument is valid or invalid. Justify your answer with a complete or partial truth table where appropriate.
-%	\label{pr.TT.valid6} 
+%	\label{pr:TT:valid6} 
 %	\begin{enumerate}
 %%		\item $A\eiff\enot(B\eiff A)\therefore A$ \hfill \myanswer{ Invalid}
 %		\item $A\eor B$, $B\eor C$, $\enot A\therefore B \eand C$ \hfill \myanswer{ Invalid}
@@ -4384,7 +4384,7 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %	
 %	
 %	\noindent\problempart
-%	\label{pr.TT.meta}
+%	\label{pr:TT:meta}
 %	Are the following statements true? Why?
 %	\begin{itemize}
 %		\item if $Y$ is a logical consequence of $X$, then $X\eif Y$ is a logical truth.\myanswer{Yes}
@@ -4649,10 +4649,10 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %\item[Consistency]To check whether $X_1,\ldots,X_n$ are consistent construct a truth table with columns for all atomic sentences occurring in $X_1,\ldots,X_n$, columns for all subsentences of $X_1,\ldots,X_n$, and columns for $X_1,\ldots,X_n$. If there is a valuation (horizontal line) relative to which all of $X_1,\ldots,X_n$ receive value T, they are consistent. Otherwise they are inconsistent.
 %\end{description}
 %
-%\begin{practiceproblems}\label{pr.TT.TTorC}
+%\begin{practiceproblems}\label{pr:TT:TTorC}
 %\problempart
-%\label{pr.TT.TTorC}
-%\label{pr.TT.TTorC}
+%\label{pr:TT:TTorC}
+%\label{pr:TT:TTorC}
 %Complete truth tables for each of the following:
 %\begin{earg}
 %\item $A \eif A$ %taut
@@ -5104,8 +5104,8 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %If you want additional practice, you can construct truth tables for any of the sentences and arguments in the exercises for the previous chapter.
 %
 %\problempart
-%\label{pr.TT.valid}
-%\label{pr.TT.valid}
+%\label{pr:TT:valid}
+%\label{pr:TT:valid}
 %Use truth tables to determine whether each argument is valid or invalid.
 %\begin{earg}
 %\item $A\eif A \therefore A$  \hfill \myanswer{Invalid (see line 2)}
@@ -5192,7 +5192,7 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %\end{earg}
 %
 %\noindent\problempart
-%\label{pr.TT.equiv}
+%\label{pr:TT:equiv}
 %Determine whether each the following sentences are logically equivalent using complete truth tables. If the two sentences really are logically equivalent, write ``equivalent.'' Otherwise write, ``Not equivalent.''
 %\begin{earg}
 %\item $A$ and $\enot A$
@@ -5203,7 +5203,7 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %
 %
 %\problempart
-%\label{pr.TT.equiv2}
+%\label{pr:TT:equiv2}
 %Determine whether each the following sentences are logically equivalent using complete truth tables. If the two sentences really are equivalent, write ``equivalent.'' Otherwise write, ``not equivalent.''
 %\begin{earg}
 %\item $A\eif A$ and $(A \eif A)\eand (\enot A\eif\enot A)$
@@ -5214,10 +5214,10 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %\end{earg}
 %
 %\problempart
-%\label{pr.TT.satisfiable2}
+%\label{pr:TT:satisfiable2}
 %
 %\noindent\problempart
-%\label{pr.TT.satisfiable3}
+%\label{pr:TT:satisfiable3}
 %Determine whether each collection of sentences is consistent or inconsistent, using a complete truth table.
 %\begin{earg}
 %\item $\enot B$, $A \eif B$, $A$ \vspace{.5ex} \hfill \myanswer{Inconsistent}
@@ -5228,7 +5228,7 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %\end{earg}
 %
 %\noindent\problempart
-%\label{pr.TT.valid2}
+%\label{pr:TT:valid2}
 %Determine whether each argument is valid or invalid, using a complete truth table.
 %\begin{earg}
 %\item $A\eif B$, $B \therefore  A$ \hfill \myanswer{Invalid}
@@ -5241,7 +5241,7 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %\end{earg}
 %
 %\noindent\problempart
-%\label{pr.TT.valid3}
+%\label{pr:TT:valid3}
 %Determine whether each argument is valid or invalid, using a complete truth table. If invalid, provide a valuation that is a counterexample.
 %\begin{earg}
 %\item $A\eor\bigl(A\eif(A\eif A)\bigr) \therefore  A $\vspace{.5ex} \hfill \myanswer{Invalid}
@@ -5252,7 +5252,7 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %\end{earg}
 %
 %\noindent\problempart
-%\label{pr.TT.meta}
+%\label{pr:TT:meta}
 %Are the following statements true? Why?
 %\begin{itemize}
 %\item if $Y$ is a logical consequence of $X$, then $X\eif Y$ is a logical truth.\myanswer{Yes}

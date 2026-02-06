@@ -1,12 +1,12 @@
 %!TEX root = forallxbris.tex
 \part{Natural deduction for FOL}
-\label{ch.NDFOL}
+\label{ch:NDFOL}
 \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
 
 
 \chapter{Basic rules for FOL}\label{s:BasicFOL}
 
-FOL makes use of all of the connectives of TFL. So proofs in FOL will use all of the basic and derived rules from \cref{ch.NDTFL}. We will also use the proof-theoretic notions (particularly, the symbol `$\proves$') introduced there. However, we will also need some new basic rules to govern the quantifiers.
+FOL makes use of all of the connectives of TFL. So proofs in FOL will use all of the basic and derived rules from \cref{ch:NDTFL}. We will also use the proof-theoretic notions (particularly, the symbol `$\proves$') introduced there. However, we will also need some new basic rules to govern the quantifiers.
 
 
 \section{Universal elimination}Consider:
@@ -44,7 +44,7 @@ This is valid: the premise says \emph{everything} in the domain owes money to Pa
 
 %A closely related sentence is: \begin{earg}
 %\item Pavel owes money to everyone \emph{else}.
-%\end{earg}and that will not be symbolised as $\forall x Oxx$; however, we do not yet have the resources to symbolise at. In \cref{ch.identity} we will introduce identity which will allow us to formalise it properly.
+%\end{earg}and that will not be symbolised as $\forall x Oxx$; however, we do not yet have the resources to symbolise at. In \cref{ch:identity} we will introduce identity which will allow us to formalise it properly.
 
 This argument is also directly allowed by our rule $\forall$E:
 \begin{fitchproof}
@@ -366,7 +366,7 @@ The following two `proofs' are \emph{incorrect}. Explain why both are incorrect.
 \end{multicols}
 
 \problempart
-\label{pr.justifyFOLproof}
+\label{pr:justifyFOLproof}
 The following three proofs are missing their citations (rule and line numbers). Add them, to turn them into bona fide proofs.
 \begin{fitchproof}
 \hypo{p1}{\forall x\exists y(Rxy \eor Ryx)}
@@ -413,13 +413,13 @@ The following three proofs are missing their citations (rule and line numbers). 
 
 
 \problempart
-\label{pr.BarbaraEtc.proof1}
+\label{pr:BarbaraEtc:proof1}
 In \cref{s:MoreMonadic} problem A, we considered fifteen syllogistic figures of Aristotelian logic. Provide proofs for each of the argument forms. NB: You will find it \emph{much} easier if you symbolize (for example) `No F is G' as `$\forall x (Fx \eif \enot Gx)$'.
 
 \
 
 \problempart
-\label{pr.BarbaraEtc.proof2}
+\label{pr:BarbaraEtc:proof2}
 Aristotle and his successors identified other syllogistic forms which depended upon `existential import'. Symbolize each of the following argument forms in FOL and offer proofs.
 \begin{ebullet}
 	\item \textbf{Barbari.} Something is H. All G are F. All H are G. So: Some H is F
@@ -434,7 +434,7 @@ Aristotle and his successors identified other syllogistic forms which depended u
 \end{ebullet}
 
 \problempart
-\label{pr.someFOLproofs}
+\label{pr:someFOLproofs}
 Provide a proof of each claim.
 \begin{problemslist}
 \item $\proves \forall x Fx \eor \enot \forall x Fx$
@@ -451,7 +451,7 @@ Provide a proof of each claim.
 
 \solutions
 \problempart
-\label{pr.likes}
+\label{pr:likes}
 Write a symbolization key for the following argument, symbolize it, and prove it:
 \begin{quote}
 There is someone who likes everyone who likes everyone that she likes. Therefore, there is someone who likes herself.
@@ -468,7 +468,7 @@ Show that each pair of sentences is provably equivalent.
 
 \solutions
 \problempart
-\label{pr.FOLequivornot}
+\label{pr:FOLequivornot}
 For each of the following pairs of sentences: If they are provably equivalent, give proofs to show this. If they are not, construct a model to show that they are not logically equivalent.
 \begin{problemslist}
 \item $\forall x Px \eif Qc, \forall x (Px \eif Qc)$
@@ -480,7 +480,7 @@ For each of the following pairs of sentences: If they are provably equivalent, g
 
 \solutions
 \problempart
-\label{pr.FOLvalidornot}
+\label{pr:FOLvalidornot}
 For each of the following arguments: If it is valid in FOL, give a proof. If it is invalid, construct a model to show that it is invalid.
 \begin{problemslist}
 \item $\exists y\forall x Rxy \therefore \forall x\exists y Rxy$
