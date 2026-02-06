@@ -231,7 +231,7 @@ In which cases is `$A\eand B$' true? Only $v_1$. That is, only if `$A$' is true 
 \end{center}
 
 
-\section{Disjunction}
+\section{Disjunction}\label{sec:connectives-intro:disjunction}
 \newglossaryentry{disjunction}
 {
 	name=disjunction,
@@ -867,7 +867,7 @@ The definition specifies rules according to which sentences of the language can 
 
 
 \begin{enumerate}
-\item[1.] Tells us that atomic sentences as discussed in \cref{sec:as} are sentence of TFL.
+\item[1.] Tells us that atomic sentences are sentence of TFL.
 \end{enumerate}
 Recall that any uppercase Roman letters $A$--$W$, or with subscripts, e.g., $A_1, B_3, A_{100}, J_{375}$, are atomic sentences of TFL. Notice $X$, $Y$, and $Z$ are not atomic sentences. They are so-called \define{metavariables} and used as place holders for sentences of TFL (see more on metavairables in \cref{sec:UseMention}).
 
@@ -934,7 +934,7 @@ It has a different formation tree from $((A\eand B)\eor C)$:
 	]
 \end{forest}
 \end{center}
-The different formations will be important when we describe truth-tables for these sentences (\cref{sec:tt}). $((A\eand B)\eor C)$ and $(A\eand (B\eor C))$ will differ in when they are true.
+The different formations will be important for determining the truth values of the sentences on different valuations. $((A\eand B)\eor C)$ and $(A\eand (B\eor C))$ will differ in when they are true.
 
 
 One more example: consider $\enot (P \eand \enot (\enot Q \eor P))$ we can check this is a sentence by drawing the following formation tree:
@@ -1212,7 +1212,7 @@ and similarly, for expressions like `$(\metaX \eand \metaY)$', `$(\metaX \eor \m
 
 
 \section{Quotation conventions for arguments}
-One of our main purposes for using TFL is to study arguments, and that will be our concern in \cref{sec:tt}. In English, the premises of an argument are often expressed by individual sentences, and the conclusion by a further sentence. Since we can symbolize English sentences, we can symbolize English arguments using TFL.
+One of our main purposes for using TFL is to study arguments. In English, the premises of an argument are often expressed by individual sentences, and the conclusion by a further sentence. Since we can symbolize English sentences, we can symbolize English arguments using TFL.
 
 Or rather, we can use TFL to symbolize each of the \emph{sentences} used in an English argument. However, TFL itself has no way to flag some of them as the \emph{premises} and another as the \emph{conclusion} of an argument.  (Contrast this with natural English, which uses words like `so', `therefore', etc., to mark that a sentence is the \emph{conclusion} of an argument.)
 

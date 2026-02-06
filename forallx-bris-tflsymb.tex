@@ -58,8 +58,8 @@ It is important to understand that whatever structure an English sentence might 
 Once we have fixed a symbolization key, the next step is to symbolize the complex sentences of the argument, that is, the sentences that conjoin different sentences into a new more complex sentence via conjunction words. This requires a closer look at the relation between specific conjunction words and the connectives of TFL.
 
 
-\section{Symbolizing Complex Sentences}\label{sec:SymbolisingComplexTFL}
-We introduced our connectives giving their rough English meaning. This gives us some tools to know how to symbolise English sentences. As a general instruction:
+\section{Symbolizing Complex Sentences}\label{sec:SymbolisingTFL - simple connectives complex form}
+We introduced our connectives in \cref{sec:Connectives} giving their rough English meaning. This gives us some tools to know how to symbolise English sentences. As a general instruction:
 \factoidbox{
 	\begin{itemize}
 		\item If a sentence can be paraphrased as `it is not the case that \ldots'\\ it can be symbolised as $\enot\metaX$.
@@ -345,7 +345,7 @@ We will also discuss in more detail when it is appropriate to paraphrase in the 
 %Let's first have a look which conjunction words and expressions can be directly symbolized by one of the TFL-connectives.
 
 \section{Negation}
-Let's start by recalling the guideline we proposed in \cref{sec:tt}.
+Let's start by recalling the guideline we proposed in \cref{sec:SymbolisingTFL - simple connectives complex form}.
 \factoidbox{
 If a sentence can be paraphrased as `it is not the case that \ldots'\\ it can be symbolised as $\enot\metaX$.
 }
@@ -393,7 +393,7 @@ To some it may feel like Jane can be neither happy nor unhappy, and this may eve
 \section{Conjunction}
 \label{sec:ConnectiveConjunction}
 
-The symbolization guideline for conjunction we introduced Section \cref{sec:tt} was:.
+The symbolization guideline for conjunction we introduced Section \cref{sec:SymbolisingTFL - simple connectives complex form} was:.
 
 	\factoidbox{
 %		A sentence can be symbolized as $(\metaX\eand\metaY)$ if it can be paraphrased in English as `Both\ldots, and\ldots', or as `\ldots, but \ldots', or as `although \ldots, \ldots'.
@@ -438,7 +438,7 @@ We can add these to our toolbox for symbolisation:
 	}
 
 \section{Disjunction}
-In \cref{sec:tt}, we proposed that:
+In \cref{sec:SymbolisingTFL - simple connectives complex form}, we proposed that:
 \factoidbox{
 If a sentence can be paraphrased as `\ldots or \ldots' \\it can be symbolised as $(\metaX\eor\metaY)$.
 	}
@@ -454,7 +454,7 @@ with the symbolization key
 		\item[M] Fatima will watch movies.
 	\end{ekey}
 
-In \cref{sec:tt} we already point out that here are two different reading available for the English word `or': an \emph{inclusive} one and an \emph{exclusive} one. On the inclusive reading of `or' we take the \Cref{sent:or2} to be true, if either Fatima or Omar play videogames, or both play videogames. In contrast, on the exclusive reading we take \cref{sent:or2} to be true if either Fatima or Omar play videogames, but false if both play video games. It is the inclusive reading of `or' that we symbolize using the TFL-connective $\eor$.
+In \cref{sec:connectives-intro:disjunction} we already point out that here are two different reading available for the English word `or': an \emph{inclusive} one and an \emph{exclusive} one. On the inclusive reading of `or' we take the \Cref{sent:or2} to be true, if either Fatima or Omar play videogames, or both play videogames. In contrast, on the exclusive reading we take \cref{sent:or2} to be true if either Fatima or Omar play videogames, but false if both play video games. It is the inclusive reading of `or' that we symbolize using the TFL-connective $\eor$.
 
 For \Cref{sent:or2} the inclusive reading is available and using the above symbolization key it can be symbolized as $F\eor O$. For \Cref{sent:or1} it seems that the salient understanding of the sentence points to the exclusive reading: presumably Fatima cannot play videogames and watch movies at the same time. In fact the reason why we tend to understand \Cref{sent:or1} in that way is, arguably, precisely because we think that Fatima cannot do two things at once, and not because of our understanding of `or'. As a consequence when, in the context of an argument, we symbolize the \Cref{sent:or1} it is still preferable to symbolize it using the inclusive `or' as `$F\eor M$' and to add the additional premise that she does not do both, that is `$\enot(F\eand M)$'.
 
@@ -547,7 +547,7 @@ Whilst in general you are not allowed to substitute in any logically equivalent 
 	If a sentence can be paraphrased in English as\\`\emph{neither \ldots nor \ldots}', it can be symbolised as $\enot(\metaX\eor\metaY)$ or $\enot \metaX\eand\enot \metaY$.}
 
 \section{Conditional}
-Let us again recall the symbolization guideline that we introduced in Section \ref{sec:tt}:
+Let us again recall the symbolization guideline that we introduced in \Cref{sec:SymbolisingTFL - simple connectives complex form}:
 	\factoidbox{
 	 If a sentence can be paraphrased as \\`\emph{If \ldots, then \ldots}' it can be symbolised as $(\metaX\eif\metaY)$.
 	}

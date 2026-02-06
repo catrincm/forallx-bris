@@ -4,7 +4,7 @@
 \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
 \chapter{Building blocks of FOL}\label{sec:FOLBuildingBlocks}
 %\section{The need to decompose sentences}
-We have been studying arguments, and in particular their validity. In Part \cref{ch:TFLsymb} we gave a strategy for checking the validity of an argument by using TFL. That was:
+We have been studying arguments, and in particular their validity. In Part \label{ch:TFLsymb} we gave a strategy for checking the validity of an argument by using TFL. That was:
 \begin{highlighted}\begin{enumerate}
 \item Find the structure of the argument. \\Identify the premises and conclusion.
 \item \label{itm:validity-symbolise}Symbolise the argument in TFL.
@@ -19,7 +19,7 @@ However, this allows you to conclude that the original English language argument
 %\begin{enumerate}
 %\item 
 \begin{earg}
-\label{arg:willard1}
+\label{willard1}
 \prem Alice is a logician.
 \prem All logicians wear funny hats.
 \conc Alice wears a funny hat.
@@ -31,7 +31,7 @@ However, this allows you to conclude that the original English language argument
 %\end{earg}
 %\end{enumerate}
 
-We can symbolise this in TFL (follow the strategy as in \pageref{s:SymbolisingComplexTFL}). Since we cannot paraphrase any of these sentences with `and', `if', `or' or `not', we simply have to use atomic sentences. We thus offer the symbolisation:
+We can symbolise this in TFL (follow the strategy as in \pageref{sec:SymbolisingComplexTFL}). Since we cannot paraphrase any of these sentences with `and', `if', `or' or `not', we simply have to use atomic sentences. We thus offer the symbolisation:
 $$L, A \therefore H$$
 with the symbolisation
 \begin{ekey}
@@ -264,7 +264,7 @@ we observe that it can be naturally paraphrased as
 
 To symbolise
 \begin{samplesent}
-\item If Joe is happy, then Katie is too
+\item\label{sent:folor} If Joe is happy, then Katie is too
 \end{samplesent}
 we observe that it can be naturally paraphrased as
 `If Joe is happy then Katie is happy' and thus symbolised as $$Hj\eif Hk$$
@@ -520,7 +520,7 @@ If we wanted to symbolise ``Alice wears a funny hat'' we would use $Fa$. To symb
 
 Whatever we wanted to say of an individual we can now say of everyone using this quantifier.  Consider
 \begin{samplesent}
-\item Everyone is happy and wears a funny hat
+\item\label{sent:q:hat} Everyone is happy and wears a funny hat
 \end{samplesent}
 We can break this up:
 \begin{center}
@@ -616,7 +616,7 @@ Thus giving our symbolisation as: $\exists x Ax$
 
 To symbolise
 \begin{samplesent}
-\item There is a logician who wears glasses
+\item\label{sent:q:e} There is a logician who wears glasses
 \end{samplesent}
 %$$\underbrace{\underbrace{\text{There is someone, $x$, such that}}_{\exists x}: \underbrace{\underbrace{\text{$x$ is a logician}}_{Lx}\text{ and }\underbrace{\text{$x$ wears glasses}}_{Gx}}_{(Lx\eand Gx)}.}_{\exists x(Lx\eand Gx)}$$
 \begin{center}
@@ -639,7 +639,7 @@ with a symbolisation key:
 
 To symbolise
 \begin{samplesent}
-\item There is a Polish woman who won the Nobel Prize
+\item\label{sent:q:e} There is a Polish woman who won the Nobel Prize
 \end{samplesent}
 
 \begin{center}
@@ -1219,7 +1219,7 @@ To symbolise
 
 If we want to symbolise
 \begin{samplesent}
-	\item Some dog likes playing with Finley.
+	\item\label{sent:lovesesomeonethemselves} Some dog likes playing with Finley.
 \end{samplesent}
 %We can do:
 %\begin{equation*}
@@ -1737,7 +1737,7 @@ We need to distinguish being a \emph{skilled surgeon} from merely being a \emph{
 
 Now the argument can be symbolized in this way:
 \begin{earg}
-\label{arg:surgeon2}
+\label{surgeon2}
 \prem $\forall x\bigl(\enot (Rx \eand Kx) \eif \enot Hx\bigr)$
 \prem $\forall x(Rx \eif Gx)$
 \prem $Rb \eand \enot Kb$
@@ -1746,7 +1746,7 @@ Now the argument can be symbolized in this way:
 
 Next suppose that we want to symbolize this argument:
 \begin{quote}
-\label{arg:surgeon3}
+\label{surgeon3}
 Carol is a skilled surgeon and a tennis player. Therefore, Carol is a skilled tennis player.
 \end{quote}
 If we start with the symbolization key we used for the previous argument, we could add a predicate (let $Tx$ mean `$x$ is a tennis player') and a name (let $c$ mean Carol). Then the argument becomes:
@@ -1756,7 +1756,7 @@ If we start with the symbolization key we used for the previous argument, we cou
 \end{earg}
 This symbolization is a disaster! It takes what in English is a terrible argument and symbolizes it as a valid argument in FOL. The problem is that there is a difference between being \emph{skilled as a surgeon} and \emph{skilled as a tennis player}. Symbolizing this argument correctly requires two separate predicates, one for each type of skill. If we let $K_1x$ mean `$x$ is skilled as a surgeon' and $K_2x$ mean `$x$ is skilled as a tennis player,' then we can symbolize the argument in this way:
 \begin{earg}
-\label{arg:surgeon3correct}
+\label{surgeon3correct}
 \prem $(Rc \eand K_1c) \eand Tc$
 \conc $Tc \eand K_2c$
 \end{earg}
@@ -2728,7 +2728,7 @@ Of course we can alternatively symbolize the two readings using existential quan
 	\item $\exists x(F{x} \eand \enot {G}{x})$
 \end{itemize}
 
-In chapter~{s:SymbolisingSimpleFOL} we discussed how to symbolize sentences involving `only'. Consider the sentence:
+In chapter~{sec:SymbolisingSimpleFOL} we discussed how to symbolize sentences involving `only'. Consider the sentence:
 \begin{samplesent}
 	\item\label{sent:onlyamb} Only young cats are playful.
 \end{samplesent}

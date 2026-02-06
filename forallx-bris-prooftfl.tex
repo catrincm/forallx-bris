@@ -388,7 +388,7 @@ So by applying the {\eand}I rule to lines 3 and 2 (in that order), we arrive at 
 \end{fitchproof}
 This is a very simple proof, but it shows how we can chain rules of proof together into longer proofs. In passing, note that investigating this argument with a truth table would have required a staggering 256 lines; our formal proof required only four lines.
 
-It is worth giving another example. Way back in \cref{sec:MoreBracketingConventions}, we noted that this argument is valid:
+It is worth giving another example. This is a valid argument:
 	$$A \eand (B \eand C) \therefore (A \eand B) \eand C$$
 To provide a proof corresponding with this argument, we start by writing:
 \begin{fitchproof}
@@ -2094,7 +2094,7 @@ A full proof here goes well beyond the scope of this book. However, we can sketc
 name=soundness,
 description={A property held by logical systems if and only if $\proves $ implies $\entails $}
 }
-This argument from $\proves $ to $\entails $ is the problem of \define{\gls{soundness}}. \label{def:soundness} A proof system is \define{sound} if there are no derivations of arguments that can be shown invalid by truth tables. Demonstrating that the proof system is sound would require showing that \emph{any} possible proof is the proof of a valid argument. It would not be enough simply to succeed when trying to prove many valid arguments and to fail when trying to prove invalid ones.
+This argument from $\proves $ to $\entails $ is the problem of \define{\gls{soundness}}. \label{def:soundness} A proof system is \define{sound} if there are no derivations of arguments that can be shown invalid by truth tables. \label{def_Soundness} Demonstrating that the proof system is sound would require showing that \emph{any} possible proof is the proof of a valid argument. It would not be enough simply to succeed when trying to prove many valid arguments and to fail when trying to prove invalid ones.
 
 The proof that we will sketch depends on the fact that we initially defined a sentence of TFL using a inductive definition (see p.~\pageref{TFLsentences}). We could have also used inductive definitions to define a proper proof in TFL and a proper truth table. \nix{Later this will be a truth assignment}(Although we didn't.) If we had these definitions, we could then use a \emph{inductive proof} to show the soundness of TFL. A inductive proof works the same way as a inductive definition. With the inductive definition, we identified a group of base elements that were stipulated to be examples of the thing we were trying to define. In the case of a TFL sentence, the base class was the set of sentence letters $A$, $B$, $C$, \dots. We just announced that these were sentences. The second step of a inductive definition is to say that anything that is built up from your base class using certain rules also counts as an example of the thing you are defining. In the case of a definition of a sentence, the rules corresponded to the five sentential connectives (see p.~\pageref{TFLsentences}). Once you have established a inductive definition, you can use that definition to show that all the members of the class you have defined have a certain property. You simply prove that the property is true of the members of the base class, and then you prove that the rules for extending the base class don't change the property. This is what it means to give a inductive proof.
 
