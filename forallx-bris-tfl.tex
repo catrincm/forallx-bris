@@ -195,11 +195,6 @@ In which cases is `$\enot A$' true? Only when `$A$' is false:
 	name=conjunct,
 	description={A sentence joined to another by a \gls{conjunction}}
 }
-\newglossaryentry{conjunct}
-{
-	name=conjunct,
-	description={A sentence joined to another by a \gls{conjunction}}
-}
 The $\eand$-connective, called conjunction, is meant to be understood of the English word `and':
 
 If think of `$A$' and `$B$' as representing the English sentences
@@ -915,7 +910,6 @@ By rule 1, $B_1$ and $D$ are both sentences. So rule 3 allows us to conclude tha
 The rules 4 and 5 then tell us how the $\eor$- and $\eif$-connective respectively can be used to produce new sentences of TFL. Rule 6, in contrast, tells us that sentences of TFL must be formed using the rules 1-5: if an expression cannot be obtained by consecutively applying rules 1-5, then the expression is not a sentence of TFL. Again formation trees are helpful to understand this: rule 7 tells us that all nodes of the formation tree must be sentences of TFL.
 
 For example, consider $(A \eand (B \eor C))$ we can check this is a sentence by drawing the following formation tree:
-\label{S:formationtree}
 \begin{center}
 \begin{forest}
 	[$(A\mainconnective{\eand} (B\eor C))$
@@ -1303,7 +1297,7 @@ For example a valuation $v$ might assign:
 If you give me a valuation, I can then use the rules to calculate the truth value of any sentence. 
 Sentences of TFL are true or false \emph{relative to a valuation}. 
 The valuation determines the truth values of the atomic sentences, and complex sentences are determined using the truth rules:
- \factoidbox{\label{Truthint}Let $v$ be a valuation. Then
+\factoidbox{Let $v$ be a valuation. Then
 	\begin{enumerate}
 		\item An atomic sentence $X$ is true relative to $v$, if and only if $v$ assigns the value T to $X$.
 		\item For a sentence $\enot\metaX$, $(\metaX\eand\metaY)$, $(\metaX\eor\metaY)$, $(\metaX\eif\metaY)$, whether it is true or false relative to $v$ can be determined by applying the appropriate truth rule depending on whether $\metaX$ and $\metaY$ are true or false relative to $v$:
@@ -2352,8 +2346,6 @@ There are tricks that mean you can miss out some of the gaps by using strategies
 
 \begin{practiceproblems}\label{pr:TT:TTorC}
 	\problempart
-	\label{pr:TT:TTorC}
-	\label{pr:TT:TTorC}
 	Complete truth tables for each of the following:
 	\begin{problemslist}
 		\item $A \eif A$ %taut
@@ -2694,7 +2686,7 @@ If you want additional practice, you can construct truth tables for any of the s
 \chapter{Validity and the method of truth tables}
 \section{Validity}
 
-\factoidbox{\label{TFLvalid}A TFL-argument $X_1,\ldots,X_n\therefore Y$ is \define{valid} if and only if there is no valuation $v$ such that all the premises, $X_1,\ldots,X_n$ are true relative to $v$ but $Y$ is false relative to $v$.}
+\factoidbox{A TFL-argument $X_1,\ldots,X_n\therefore Y$ is \define{valid} if and only if there is no valuation $v$ such that all the premises, $X_1,\ldots,X_n$ are true relative to $v$ but $Y$ is false relative to $v$.}
 
 
 
@@ -5263,8 +5255,3 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %\item if $X\eor\enot X\eif Y$ is true relative to a valuation, then $Y$ is a tautology.\myanswer{No}
 %\end{itemize}
 %\end{practiceproblems}
-
-
-
-
-

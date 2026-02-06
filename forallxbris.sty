@@ -750,6 +750,8 @@ for tree={
 		\cs_set_eq:NN \refstepcounter \stepcounter
 		\cs_if_exist:NT \phantomsection
 		{ \cs_set_eq:NN \phantomsection \prg_do_nothing: }
+		% avoid duplicate labels when replaying practice problems in appendix
+		\cs_set_eq:NN \label \use_none:n
 		
 		\showanswers
 		#2
