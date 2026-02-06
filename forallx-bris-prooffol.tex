@@ -4,7 +4,7 @@
 \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
 
 
-\chapter{Basic rules for FOL}\label{s:BasicFOL}
+\chapter{Basic rules for FOL}\label{sec:BasicFOL}
 
 FOL makes use of all of the connectives of TFL. So proofs in FOL will use all of the basic and derived rules from \cref{ch:NDTFL}. We will also use the proof-theoretic notions (particularly, the symbol `$\proves$') introduced there. However, we will also need some new basic rules to govern the quantifiers.
 
@@ -74,7 +74,7 @@ I should emphasize that (as with every elimination rule) you can only apply the 
 	\hypo{a}{\forall x Bx \eif Bk}
 	\have{c}{Bb \eif Bk}\by{naughtily attempting to invoke $\forall$E}{a}
 \end{fitchproof}
-This is illegitimate, since `$\forall x$' is not the main logical operator in line 1. (If you need a reminder as to why this sort of inference should be banned, reread \cref{s:MoreMonadic}.)
+This is illegitimate, since `$\forall x$' is not the main logical operator in line 1. (If you need a reminder as to why this sort of inference should be banned, reread \cref{sec:MoreMonadic}.)
 
 \section{Existential introduction}
 The following argument is valid:
@@ -111,8 +111,8 @@ Or even
 \end{fitchproof}We replaced the name, `$c$' with the variable `$z$' and added $\exists z$ at the beginning of the sentence.
 
 
-This rule will now allow us to carefully work through our brain teaser from \cref{s:orE}
-\label{s:ExistsE}
+This rule will now allow us to carefully work through our brain teaser from \cref{sec:orE}
+\label{sec:ExistsE}
 
 \begin{quote}
 Three people are standing in a row looking at eachother.
@@ -126,7 +126,7 @@ Three people are standing in a row looking at eachother.
 Alice is happy. Charlie is not happy. Is there someone who is happy who is looking at someone who is not happy?
 \end{quote}  Answer: Yes.
 
-We can formalise this argument as: $$Lab,\;Lbc,\;Ha,\;\enot Hc\;\therefore\;\exists x\exists y(Hx\eand (Lxy\eand\enot Hx)).$$ And we can show it is valid. In \cref{s:orE} we wrote this in a pseudo-formal style.
+We can formalise this argument as: $$Lab,\;Lbc,\;Ha,\;\enot Hc\;\therefore\;\exists x\exists y(Hx\eand (Lxy\eand\enot Hx)).$$ And we can show it is valid. In \cref{sec:orE} we wrote this in a pseudo-formal style.
 \begin{fitchproof}
 	\have{lem}{\text{Bob is either happy or he's not happy}}\LEM
 	\open
@@ -207,7 +207,7 @@ The following proof combines our two new rules for quantifiers:
 	\end{fitchproof}
 Could this be a bad proof? If anything exists at all, then certainly we can infer that something is F, from the fact that everything is F. But what if \emph{nothing} exists at all? Then it is surely vacuously true that everything is F; however, it does not following that something is F, for there is nothing to \emph{be} F. So if we claim that, as a matter of logic alone, `$\exists x Fx$' follows from `$\forall x Fx$', then we are claiming that, as a matter of \emph{logic alone}, there is something rather than nothing. This might strike us as a bit odd.
 
-Actually, we are already committed to this oddity. In \cref{s:FOLBuildingBlocks}, we stipulated that domains in FOL must have at least one member. We then defined a logical truth (of FOL) as a sentence which is true in every model. Since `$\exists x(Ax\eor\enot Ax)$' will be true in every model, this \emph{also} had the effect of stipulating that it is a matter of logic that there is something rather than nothing.
+Actually, we are already committed to this oddity. In \cref{sec:FOLBuildingBlocks}, we stipulated that domains in FOL must have at least one member. We then defined a logical truth (of FOL) as a sentence which is true in every model. Since `$\exists x(Ax\eor\enot Ax)$' will be true in every model, this \emph{also} had the effect of stipulating that it is a matter of logic that there is something rather than nothing.
 
 Since it is far from clear that logic should tell us that there must be something rather than nothing, we might well be cheating a bit here.
 
@@ -251,7 +251,7 @@ The crucial thought here is that `$a$' was just some \emph{arbitrary} name. Ther
 %	\meta{x} must not occur in $\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$
 	}
 It is important to appreciate that to apply the rule correctly \textbf{we must replace every occurrence of the name $c$ by the variable $x$}. A crucial aspect of this rule, though, is bound up in the first constraint. This constraint ensures that we are always reasoning at a sufficiently general level (the second constraint is one which avoids unintended instances such as $\exists x Fcx\therefore \forall x\exists x Fxx$. The conclusion is logically equivalent to $\exists x Fxx$ and it is an invalid argument.) 
-%\footnote{Recall from \cref{s:BasicTFL} that we are treating `$\ered$' as a canonical contradiction. But if it were the canonical contradiction as involving some \emph{constant}, it might interfere with the constraint mentioned here. To avoid such problems, we will treat `$\ered$' as a canonical contradiction \emph{that involves no particular names}.}
+%\footnote{Recall from \cref{sec:BasicTFL} that we are treating `$\ered$' as a canonical contradiction. But if it were the canonical contradiction as involving some \emph{constant}, it might interfere with the constraint mentioned here. To avoid such problems, we will treat `$\ered$' as a canonical contradiction \emph{that involves no particular names}.}
 
 To see the constraint in action, consider this terrible argument:
 	\begin{quote}
@@ -414,7 +414,7 @@ The following three proofs are missing their citations (rule and line numbers). 
 
 \problempart
 \label{pr:BarbaraEtc:proof1}
-In \cref{s:MoreMonadic} problem A, we considered fifteen syllogistic figures of Aristotelian logic. Provide proofs for each of the argument forms. NB: You will find it \emph{much} easier if you symbolize (for example) `No F is G' as `$\forall x (Fx \eif \enot Gx)$'.
+In \cref{sec:MoreMonadic} problem A, we considered fifteen syllogistic figures of Aristotelian logic. Provide proofs for each of the argument forms. NB: You will find it \emph{much} easier if you symbolize (for example) `No F is G' as `$\forall x (Fx \eif \enot Gx)$'.
 
 \
 
@@ -498,11 +498,11 @@ For each of the following arguments: If it is valid in FOL, give a proof. If it 
 \end{practiceproblems}
 
 
-\chapter{Conversion of quantifiers}\label{s:CQ}
+\chapter{Conversion of quantifiers}\label{sec:CQ}
 
 In this section, we will add some additional rules to the basic rules of the previous section. These govern the interaction of quantifiers and negation.
 
-In \cref{s:FOLBuildingBlocks}, we noted that $\enot\exists x\metaX$ is logically equivalent to $\forall x \enot\metaX$. We will add some rules to our proof system that govern this. In particular, we add:
+In \cref{sec:FOLBuildingBlocks}, we noted that $\enot\exists x\metaX$ is logically equivalent to $\forall x \enot\metaX$. We will add some rules to our proof system that govern this. In particular, we add:
 	\factoidbox{
 	\begin{fitchproof}
 		\have[m]{a}{\forall \meta{x} \enot\metaX}
@@ -545,7 +545,7 @@ Show that each pair of sentences is provably equivalent:
 \end{problemslist}
 
 \problempart
-In \cref{s:MoreMonadic}, we considered what happens when we move quantifiers `across' various logical operators. Show that each pair of sentences is provably equivalent:
+In \cref{sec:MoreMonadic}, we considered what happens when we move quantifiers `across' various logical operators. Show that each pair of sentences is provably equivalent:
 \begin{problemslist}
 \item $\forall x (Fx \eand Ga), \forall x Fx \eand Ga$
 \item $\exists x (Fx \eor Ga), \exists x Fx \eor Ga$
@@ -563,8 +563,8 @@ When all the quantifiers occur at the beginning of a sentence, that sentence is 
 \end{practiceproblems}
 
 
-\chapter{Derived rules}\label{s:DerivedFOL}
-As in the case of TFL, we first introduced some rules for FOL as basic (in \cref{s:BasicFOL}), and then added some further rules for conversion of quantifiers (in \cref{s:CQ}). In fact, the CQ rules should be regarded as \emph{derived} rules, for they can be derived from the  \emph{basic} rules of \cref{s:BasicFOL}. (The point here is as in \cref{s:Derived}.) Here is a justification for the first CQ rule:
+\chapter{Derived rules}\label{sec:DerivedFOL}
+As in the case of TFL, we first introduced some rules for FOL as basic (in \cref{sec:BasicFOL}), and then added some further rules for conversion of quantifiers (in \cref{sec:CQ}). In fact, the CQ rules should be regarded as \emph{derived} rules, for they can be derived from the  \emph{basic} rules of \cref{sec:BasicFOL}. (The point here is as in \cref{sec:Derived}.) Here is a justification for the first CQ rule:
 
 \begin{fitchproof}
 \hypo{1}{\forall x\enot Px}

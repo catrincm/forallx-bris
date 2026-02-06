@@ -4,7 +4,7 @@
 \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
 
 \chapter{A Prolegomenon to TFL}
-In this part the lecture notes we start developing our theory of validity and logical consequence, that is, we start introducing the logical language. In \cref{s:Valid} we already introduced the idea that an argument is valid if and only if the truth of the premises guarantees the truth of the conclusion in virtue of their logical form. It is this idea that suggest to spell out an account of validity in a formal language, that is, to conceive of the logical language as a formal language. This will enable us to single out arguments that are valid in virtue of their form and eventually make sense of the notion of an interpretation we used in our definition of validity in \cref{s:Valid}. We can then give a rigorous formal definition of validity of arguments in the formal language we shall devise. This language will be the language of Truth-functional logic (TFL).
+In this part the lecture notes we start developing our theory of validity and logical consequence, that is, we start introducing the logical language. In \cref{sec:Valid} we already introduced the idea that an argument is valid if and only if the truth of the premises guarantees the truth of the conclusion in virtue of their logical form. It is this idea that suggest to spell out an account of validity in a formal language, that is, to conceive of the logical language as a formal language. This will enable us to single out arguments that are valid in virtue of their form and eventually make sense of the notion of an interpretation we used in our definition of validity in \cref{sec:Valid}. We can then give a rigorous formal definition of validity of arguments in the formal language we shall devise. This language will be the language of Truth-functional logic (TFL).
 
 Before we introduce the language of TFL, let us take a look at why a formal language may be helpful for capturing validity of arguments, i.e., the validity of arguments in virtue of their form.
 
@@ -71,7 +71,7 @@ When one introduces a language there are (at least) two task: the first is to sp
 The vocabulary of TFL is very simple. There are three parts to the vocabulary: atomic sentences, connectives, and brackets. 
 
 \subsection{Atomic Sentences}
-\label{s:atomic sentences}
+\label{sec:atomic sentences}
 We started isolating the form of an argument by replacing  \emph{subsentences} of sentences with individual letters. Thus in the first example of this section, `it is raining outside' is a subsentence of `If it is raining outside, then Jenny is miserable', and we replaced this subsentence with `$A$'.
 
 Our artificial language, TFL, pursues this idea absolutely ruthlessly. We start with some \emph{atomic sentences}. These will be the basic building blocks out of which more complex sentences are built. We will use uppercase Roman letters for atomic sentences of TFL (except for $X$, $Y$, and $Z$ which we reserve for metavariables). There are only twenty-three letters $A$--$W$, but there is no limit to the number of atomic sentences that we might want to consider. By adding subscripts to letters, we obtain new atomic sentences. So, here are some different atomic sentences of TFL:
@@ -87,7 +87,7 @@ description={A sentence used to represent a basic sentence; a single letter in T
 }
 
 \subsection{Connectives}
-\label{s:TFLConnectives}
+\label{sec:TFLConnectives}
 
 The second category of the vocabulary of TFL is the connectives. They can be used to form new sentences out of old ones.
 
@@ -141,7 +141,7 @@ Brackets are the remaining component of the vocabulary of TFL. They will be used
 But, to start to understand the connectives we will ignore this for now and just focus on one connective applied to atomic sentences. 
 
 
-\chapter{The connectives}\label{s:Connectives}
+\chapter{The connectives}\label{sec:Connectives}
 Whilst this provides a gloss on our new symbols of TFL, their role in TFL in terms of their contribution to the truth conditions of a sentence is explicitly specified. 
 %In \cref{ch:syntfl} we introduced the idea that an argument is valid if there is no interpretation on which all premises of the argument are true but the conclusion false. Accordingly, if we wish to make a start on making this idea more precise, we need to say when a sentence of TFL is true according to an interpretation and when it is false. The target of this chapter is to give precise rules to this effect. 
 The important feature of truth functional logic is that the truth value of a sentence such as `$A\eand B$' is determined entirely by the truth value of `$A$' and the truth value of `$B$'. 
@@ -392,7 +392,7 @@ This material conditional says nothing about what the world \emph{would be like}
 
 There is a rich philosophical and logical investigation into conditionals, but for this unit, we will stick with the material conditional.
 The material conditional is the best that can be done to capture the conditional in a truth-functional way, where the truth can be determined simply from the truth values of its constituent parts. 
- See \url{https://plato.stanford.edu/entries/conditionals} and \cref{s:IndicativeSubjunctive} for further discussion
+ See \url{https://plato.stanford.edu/entries/conditionals} and \cref{sec:IndicativeSubjunctive} for further discussion
 
 As we highlighted, the order matters. So lets consider `$E\eif B$': if she is over eighteen then she is drinking beer. How does it differ from $B\eif E$? We can apply this rule, but we have to be careful which order to apply it in. To help make sure we apply it in the right order, it might be helpful to copy down the values for $E$ and $B$ before applying the rule: 
 \begin{center}
@@ -421,9 +421,9 @@ and we can then apply the rule. We will write the answer underneath the `$\eif$'
 
 
 
-\section{Truth rules}\label{s:Truth rules}
+\section{Truth rules}\label{sec:Truth rules}
 These are the rules associated with the connectives. They are motivated by the English uses, but are stipulated to be governed by these truth rules. 
-\begin{highlighted}\label{Truthint}
+\begin{highlighted}\label{def:Truthint}
 	% 	Let $v$ be a valuation. 
 	%	\begin{enumerate}
 		%		\item An atomic sentence $X$ is true relative to $v$, if and only if $v$ assigns the value T to $X$.
@@ -477,7 +477,7 @@ These are the rules associated with the connectives. They are motivated by the E
 
 
 
-If you want to capture an exclusive disjunction, you can use a more complex sentence of TFL. In fact, anything where the truth values of the sentence depends entirely on the truth of the component sentences is something that can be captured in truth-functional logic, possibly by a more complex sentence. Non-truth-functional notions, however, go beyond the resources of TFL. See \cref{s:TruthFunctionality}.
+If you want to capture an exclusive disjunction, you can use a more complex sentence of TFL. In fact, anything where the truth values of the sentence depends entirely on the truth of the component sentences is something that can be captured in truth-functional logic, possibly by a more complex sentence. Non-truth-functional notions, however, go beyond the resources of TFL. See \cref{sec:TruthFunctionality}.
 
 
 
@@ -534,7 +534,7 @@ If you want to capture an exclusive disjunction, you can use a more complex sent
 %
 %
 %\section{Conjunction}
-%\label{s:ConnectiveConjunction}
+%\label{sec:ConnectiveConjunction}
 %
 %\newglossaryentry{conjunction}{
 %	name=conjunction,
@@ -767,7 +767,7 @@ If you want to capture an exclusive disjunction, you can use a more complex sent
 %\begin{samplesent}
 %	\item\label{sent:kangaroo} If Kangaroos had no tails, they would topple over.
 %\end{samplesent}
-%%We will discuss conditional-sentences of this kind in \cref{s:IndicativeSubjunctive} and will look at some problems arising due to understanding $\eif$ in terms of material conditional in \cref{s:ParadoxesOfMaterialConditional}.
+%%We will discuss conditional-sentences of this kind in \cref{sec:IndicativeSubjunctive} and will look at some problems arising due to understanding $\eif$ in terms of material conditional in \cref{sec:ParadoxesOfMaterialConditional}.
 %%
 %For our purposes $\eif$-connective will be understood in terms of truth rules given in this section.
 
@@ -789,7 +789,7 @@ So far, we have only  focused on the application of the connectives to atomic se
 %For example, we already have that $\enot A$ is a sentence of TFL, we can combine this with a new atomic sentence, $C$, to form a complex sentence of TFL: $\enot A\eand C$. 
 %but connectives can be applied to all sorts of sentences not only atomic sentences. For example, as `$\enot A$' is a TFL sentence we can use `$\eand$' to conjoin it the sentence `$C$' to form the new sentence `$(\enot A\eand C)$'. Connectives can be applied to all TFL sentences, not only atomic sentences. It is time to say precisely what TFL sentences are.
 
-\section{Sentences}\label{s:TFLSentences}
+\section{Sentences}\label{sec:TFLSentences}
 \todo{This went through a major rewrite. Check it!!!}
 We have introduced the basic building blocks of truth-functional logic, the atomic sentences, and the connectives, which allow us to conjoin different sentences to form new sentences. The third component of the vocabulary of TFL is brackets. These play a role like punctuation marks. 
 
@@ -831,7 +831,7 @@ You might know this use of brackets from mathematics. Consider:
 Importantly, the language of TFL is designed to exclude any form of ambiguity. For example, $A\eand B\eor C$ will not be a sentence of TFL, as it would require disambiguation. Rather the syntactic/grammatical rules of the language of TFL will be such that only expressions that have a \emph{unique} reading can be sentences of TFL. To make this precise we now provide a formal definition of what it is to be a sentence in TFL.
 
 
-\begin{highlighted}\label{TFLsentences}
+\begin{highlighted}\label{def:TFLsentences}
 	
 	The {sentence letters} of TFL are the capital letters 
 	\begin{center}
@@ -869,7 +869,7 @@ The definition specifies rules according to which sentences of the language can 
 \begin{enumerate}
 \item[1.] Tells us that atomic sentences as discussed in \cref{sec:as} are sentence of TFL.
 \end{enumerate}
-Recall that any uppercase Roman letters $A$--$W$, or with subscripts, e.g., $A_1, B_3, A_{100}, J_{375}$, are atomic sentences of TFL. Notice $X$, $Y$, and $Z$ are not atomic sentences. They are so-called \define{metavariables} and used as place holders for sentences of TFL (see more on metavairables in \cref{s:UseMention}).
+Recall that any uppercase Roman letters $A$--$W$, or with subscripts, e.g., $A_1, B_3, A_{100}, J_{375}$, are atomic sentences of TFL. Notice $X$, $Y$, and $Z$ are not atomic sentences. They are so-called \define{metavariables} and used as place holders for sentences of TFL (see more on metavairables in \cref{sec:UseMention}).
 
 
 
@@ -1096,7 +1096,7 @@ For each of the following: (a) Is it a sentence of TFL, strictly speaking? (b) I
 \end{practiceproblems}
 
 
-\chapter{Use and mention}\label{s:UseMention}
+\chapter{Use and mention}\label{sec:UseMention}
 We have talked a lot \emph{about} sentences. So we should pause to explain an important, and very general, point.
 
 \section{Quotation conventions}
@@ -1166,8 +1166,8 @@ Equally, what we meant to say above is just:
 The general point is that, whenever we want to talk in English about some specific expression of TFL, we need to indicate that we are \emph{mentioning} the expression, rather than \emph{using} it. We can either deploy quotation marks, or we can adopt some similar convention, such as  placing it centrally in the page.
 
 
-\section{Metavariables}\label{s:Metavariables}
-However, we do not just want to talk about \emph{specific} expressions of TFL. We also want to be able to talk about \emph{any arbitrary} sentence of TFL. Indeed, we had to do this in \cref{s:TFLSentences}, when we presented the recursive definition of a sentence of TFL. We used uppercase script letters to do this, namely:
+\section{Metavariables}\label{sec:Metavariables}
+However, we do not just want to talk about \emph{specific} expressions of TFL. We also want to be able to talk about \emph{any arbitrary} sentence of TFL. Indeed, we had to do this in \cref{sec:TFLSentences}, when we presented the recursive definition of a sentence of TFL. We used uppercase script letters to do this, namely:
 	$$\metaX, \metaY, \metaZ,\metaX_1,\metaY_1,\metaZ_1\ldots$$
 These symbols do not belong to TFL. Rather, they are part of our (augmented) metalanguage that we use to talk about \emph{any} expression of TFL. To explain why we need them, recall the second clause of the recursive definition of a sentence of TFL:
 	\begin{itemize}
@@ -1264,7 +1264,7 @@ Is `Sharky' used or mentioned in the above sentence? Discuss.
 
 \chapter{Truth on a Valuation}
 
-In \cref{s:Truth rules} we gave truth rules for the connectives of TFL. Now we can apply them to complex sentences. 
+In \cref{sec:Truth rules} we gave truth rules for the connectives of TFL. Now we can apply them to complex sentences. 
 
 The truth rules associated with the connectives allow us to calculate the truth value of a complex sentences based on the truth values of its constituent parts. These may themselves be complex sentences. Ultimately we get to the atomic sentences and have to ask whether they are true or false. 
 A valuation is a specification of whether each atomic sentence is true or false.
@@ -1385,7 +1385,7 @@ Similarly for TFL, we use the valuation to set the values for our atomic sentenc
 
 Let us see an example. Consider 
 `$(\enot I\eand H)\eif H$'. 
-The formation tree will help us know what to do (see \cref{TFLsentences}):
+The formation tree will help us know what to do (see \cref{def:TFLsentences}):
 \begin{center}
 	\begin{forest}
 		[$(\enot I\eand H)\mainconnective{\eif} H$
@@ -1664,11 +1664,11 @@ For example:
 
 \chapter{Truth Tables}
 \section{Validity and truth tables, the idea}\label{sec:valtt}
-In \cref{s:Valid} we said that an argument was valid, if and only if there is no interpretation such that all premises are true but the conclusion false. At that point the definition was suggestive, but we lacked a clear understanding of `interpretation' and when a sentence is true relative to an interpretation. But for the language of TFL we can now turn the informal definition in a precise and rigorous definition as, for TFL, interpretations are given by valuations, assignments of truth values to the atomic sentences. 
+In \cref{sec:Valid} we said that an argument was valid, if and only if there is no interpretation such that all premises are true but the conclusion false. At that point the definition was suggestive, but we lacked a clear understanding of `interpretation' and when a sentence is true relative to an interpretation. But for the language of TFL we can now turn the informal definition in a precise and rigorous definition as, for TFL, interpretations are given by valuations, assignments of truth values to the atomic sentences. 
 
 Recall that an argument consisted of a number of premises together with a conclusion. A TFL-argument then can be written as $X_1,\ldots,X_n\therefore Y$ where $X_1,\ldots,X_n$ and $Y$ are sentences of TFL, and $X_1,\ldots,X_n$ are the premises and $Y$ the conclusion of the argument.
 
-\factoidbox{\label{TFLvalid}A TFL-argument is valid if and only if there is no valuation on which all the premises are true but the conclusion is false. 
+\factoidbox{\label{def:TFLvalid}A TFL-argument is valid if and only if there is no valuation on which all the premises are true but the conclusion is false. 
 	
 	That is, `$X_1,\ldots,X_n\therefore Y$' is \define{valid} if and only if there is no valuation $v$ such that $X_1$ is true relative to $v$ and $X_2$ is true relative to $v$, and so on, up to $X_n$ being true relative to $v$, but $Y$ is false relative to $v$.}
 
@@ -1813,7 +1813,7 @@ The valuations assign either the value ``True'' or ``False'' to each atomic sent
 \end{center}
 Our job is to fill out the truth values of `$(\enot I\eand H)\eif H$' on each of the four valuations.
 
-We have already shown how to do this on a particular valuation: one first writes down the formation tree of the sentence. (see \cref{TFLsentences}):
+We have already shown how to do this on a particular valuation: one first writes down the formation tree of the sentence. (see \cref{def:TFLsentences}):
 \begin{center}
 	\begin{forest}
 		[$(\enot I\eand H)\mainconnective{\eif} H$
@@ -2342,7 +2342,7 @@ You can provide your answer without explicitly providing the header row matching
 %
 %One must always highlight the column under the main connective of the overall sentence, which provides our final answer. You should feel free to use whichever method you find easier.
 
-There are tricks that mean you can miss out some of the gaps by using strategies such as: knowing that $\metaX$ is false is already enough to see that $\metaX\eand\metaY$ is false, so we don't need to continue to work out the truth value of $\metaY$. These ``shortcuts'' are discussed in \cref{s:PartialTruthTable}, but we won't read it in this course.
+There are tricks that mean you can miss out some of the gaps by using strategies such as: knowing that $\metaX$ is false is already enough to see that $\metaX\eand\metaY$ is false, so we don't need to continue to work out the truth value of $\metaY$. These ``shortcuts'' are discussed in \cref{sec:PartialTruthTable}, but we won't read it in this course.
 
 \begin{practiceproblems}\label{pr:TT:TTorC}
 	\problempart
@@ -3107,7 +3107,7 @@ Inconsistent collections have truth tables more like:
 
 
 
-\section{Tautologies and contradictions}\label{s:TautologiesAndContradictions}
+\section{Tautologies and contradictions}\label{sec:TautologiesAndContradictions}
 
 \factoidbox{
 	A sentence $\metaX$ of TFL is a \define{logical truth} or \define{tautology} if and only if it is true on every valuation.
@@ -3146,7 +3146,7 @@ Since there is a $T$ under the main connective on every line of the truth table,
 }
 
 We can determine whether a sentence is a contradiction just by using truth tables. If the sentence is false on every line of a complete truth table, then it is false on every valuation, so it is a contradiction.
-%In the example of \cref{s:CompleteTruthTables}, `$((C\eiff C) \eif C) \eand \enot(C \eif C)$' is a contradiction.
+%In the example of \cref{sec:CompleteTruthTables}, `$((C\eiff C) \eif C) \eand \enot(C \eif C)$' is a contradiction.
 
 Our core example of a contradiction is $A\eand\enot A$. Whether $A$ is true or false, $A\eand\enot A$ is false. This can again be checked using truth tables, observing that there is an F under the main connective in each line of the truth table.
 
@@ -3759,7 +3759,7 @@ We have been discussing shortcuts in testing for logically validity, but exactly
 	\end{problemslist}
 \end{practiceproblems}
 
-\chapter{Partial truth tables}\label{s:PartialTruthTable}\teachingnote{Not taught in course. This knowledge will not be needed for the exam. (Although you can use these techniques in the exam if you wish.)}
+\chapter{Partial truth tables}\label{sec:PartialTruthTable}\teachingnote{Not taught in course. This knowledge will not be needed for the exam. (Although you can use these techniques in the exam if you wish.)}
 
 Sometimes, we do not need to know what happens on every line of a truth table. Sometimes, just a line or two will do.
 
@@ -4389,7 +4389,7 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %\end{practiceproblems}
 
 %
-%\chapter{TFL vs English connectives }\label{s:ParadoxesOfMaterialConditional}
+%\chapter{TFL vs English connectives }\label{sec:ParadoxesOfMaterialConditional}
 %\teachingnote{Not covered in this course. This is just a taster for students who are interested.\\}
 %Consider the sentence:
 %\begin{earg}
@@ -4430,29 +4430,29 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %
 %$A\eor\enot A$ is true on both $v_1$ and $v_2$. The argument is valid. The conclusions of arguments with no premises are called \define{logical truths} or \define{tautologies}.
 %
-%\factoidbox{\label{logical truth}A TFL-sentence $X$ is called a \define{logical truth} or \define{tautology} if and only if the TFL-argument $\therefore X$ is valid.
+%\factoidbox{\label{def:logical truth}A TFL-sentence $X$ is called a \define{logical truth} or \define{tautology} if and only if the TFL-argument $\therefore X$ is valid.
 %
 %$X$ is a logical truth iff it is true on all valuations.}\todo{add in the true on all valuations!}
 %
 %A logical truth is a TFL-sentence that is true relative to every valuation. Alternatively, one can say that a TFL sentence is a logical truth if and only if it is a \define{logical consequence} of (\define{follows from}) any TFL sentence (Exercise: explain why).
 %
 %
-%\factoidbox{\label{TFLcons}$Y$ is a \define{logical consequence} of $X_1,\ldots,X_n$ if and only if the argument $X_1,\ldots,X_n\therefore Y$ is valid.}
+%\factoidbox{\label{def:TFLcons}$Y$ is a \define{logical consequence} of $X_1,\ldots,X_n$ if and only if the argument $X_1,\ldots,X_n\therefore Y$ is valid.}
 %
 %Notice one important  difference between validity and consequence: the former is a property of TFL-arguments while the latter is a property of TFL-sentences!
 %
 %A logical truth follows from every sentence. In contrast, every sentence  follows from a \define{logical contradiction}.
-%\factoidbox{\label{TFLcontra}$X$ is a \define{logical contradiction} if and only if there is no valuation $v$ such that X is true relative to $v$.}
+%\factoidbox{\label{def:TFLcontra}$X$ is a \define{logical contradiction} if and only if there is no valuation $v$ such that X is true relative to $v$.}
 %Every sentence $Y$ follows from a contradiction $X$, since $X\therefore Y$ is valid: there is no valuation on which $X$ is true (and $Y$ false).
 %
 %We end this section by introducing three further important logical notions: \define{consistency}, \define{contingency} and \define{logical equivalence}.
-%\factoidbox{\label{TFLconsist}A collection of TFL-sentences $X_1,\ldots,X_n$ (with possibly $n=1$) is \define{consistent} iff there is a valuation relative to which $X_1,\ldots,X_n$ are true. Otherwise the collection is \define{inconsistent}.}
+%\factoidbox{\label{def:TFLconsist}A collection of TFL-sentences $X_1,\ldots,X_n$ (with possibly $n=1$) is \define{consistent} iff there is a valuation relative to which $X_1,\ldots,X_n$ are true. Otherwise the collection is \define{inconsistent}.}
 %
-%\factoidbox{\label{TFLconting}A sentence of TFL  is called \define{contingent}. If it is part of a consistent collection and not a logical truth.}
+%\factoidbox{\label{def:TFLconting}A sentence of TFL  is called \define{contingent}. If it is part of a consistent collection and not a logical truth.}
 %Any collection of sentences that contains a logical contradiction is inconsistent, and so a logical contradiction is not a contingent sentence. A contingent sentence is a sentence for which we can find a valuation relative to which it is true, but we can also find a valuation relative to which it is false. (Exercise: every sentence of TFL is either a logical truth, a logical contradiction, or a contingent sentence. Why?) 
 %
 %The final notion we introduce is that of logical equivalence.
-%\factoidbox{\label{TFLequiv}$X$ and $Y$ are \define{logically equivalent} if and only if $X$ is a logical consequence of $Y$ and $Y$ a logical consequence of $X$.}
+%\factoidbox{\label{def:TFLequiv}$X$ and $Y$ are \define{logically equivalent} if and only if $X$ is a logical consequence of $Y$ and $Y$ a logical consequence of $X$.}
 %
 %In terms of truth tables, $X$ and $Y$ are logically equivalent if and only if, for every valuation, $v$: $X$ is true relative to $v$ if and only if $Y$ is true relative to $v$.
 %
@@ -4507,7 +4507,7 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %%
 %% The truth table then tells us that `$A\eand B$' is true relative to the valuation $v_1$, but false relative to the $v_2,v_3$, and $v_4$. We can generalize idea and give an inductive definition of when \define{a sentence of TFL is true relative to a given valuation}.  The definition specifies rules to compute the truth of sentence for every formation rule of the definition of a TFL sentence.
 %%
-%% \factoidbox{\label{Truthint}Let $v$ be a valuation. Then
+%% \factoidbox{\label{def:Truthint}Let $v$ be a valuation. Then
 %%	\begin{enumerate}
 %%		\item An atomic sentence $X$ is true relative to $v$, if and only if $v$ assigns the value T to $X$.
 %%		\item a sentence $\enot\metaX$ is true relative to $v$, if and only if $\metaX$ is not true relative to $v$.
@@ -4603,11 +4603,11 @@ To show that argument is \emph{invalid}, we must show that there is a valuation 
 %%By inspecting the truth table we see that `$A\eand(B\eor C)$' is true relative relative to an interpretation $v$ if and only if `$A$' is true relative relative to v and at least one of `$B$' and `$C$' is also true relative to $v$. To this effect we only need to check the lines 1,2, and 3 of the truth table, as these are the only lines in which `$A\eand(B\eor C)$' is true. Using the above strategy we can construct truth tables for all sentences of TFL. Given a truth table for some sentence of TFL it is easy to check under which conditions (valuations) the sentence is true (false). In \cref{sec:ctt} we will provide and discuss a \emph{How to guide} for constructing complete truth tables.
 %%
 %% \section{Validity and other logical notions}\label{sec:valtt}
-%% In \cref{s:Valid} we said that an argument was valid, if and only if there is no interpretation such that all premises are true but the conclusion false. At that point the definition was suggestive, but we lacked a clear understanding of `interpretation' and when a sentence is true relative to an interpretation. But for the language of TFL we can now turn the informal definition in a precise and rigorous definition.
+%% In \cref{sec:Valid} we said that an argument was valid, if and only if there is no interpretation such that all premises are true but the conclusion false. At that point the definition was suggestive, but we lacked a clear understanding of `interpretation' and when a sentence is true relative to an interpretation. But for the language of TFL we can now turn the informal definition in a precise and rigorous definition.
 %%
 %% Recall that an argument consisted of a number of premises together with a conclusion. A TFL-argument then can be written as $X_1,\ldots,X_n\therefore Y$ where $X_1,\ldots,X_n, Y$ are sentences of TFL, and $X_1,\ldots,X_n$ are the premises and $Y$ the conclusion of the argument.
 %%
-%% \factoidbox{\label{TFLvalid}A TFL-argument $X_1,\ldots,X_n\therefore Y$ is \define{valid} if and only if there is no valuation $v$ such that $X_1$ is true relative to $v$ and \ldots ~and $X_n$ is true relative to $v$, but $Y$ is false relative to $v$.}
+%% \factoidbox{\label{def:TFLvalid}A TFL-argument $X_1,\ldots,X_n\therefore Y$ is \define{valid} if and only if there is no valuation $v$ such that $X_1$ is true relative to $v$ and \ldots ~and $X_n$ is true relative to $v$, but $Y$ is false relative to $v$.}
 %%
 %% We can now investigate whether a TFL-argument is valid or not. The difficult bit is to show that there is no valuation on which all premises are true but the conclusion false. After all there are many different valuations. Fortunately, only the atomic sentences that occur in the premises and the conclusion of the argument will be relevant for deciding whether an argument is valid or not. Consider the argument:
 %% $$\enot B,A\eif B\therefore\enot A$$

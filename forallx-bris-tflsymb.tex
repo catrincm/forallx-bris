@@ -58,7 +58,7 @@ It is important to understand that whatever structure an English sentence might 
 Once we have fixed a symbolization key, the next step is to symbolize the complex sentences of the argument, that is, the sentences that conjoin different sentences into a new more complex sentence via conjunction words. This requires a closer look at the relation between specific conjunction words and the connectives of TFL.
 
 
-\section{Symbolizing Complex Sentences}\label{s:SymbolisingComplexTFL}
+\section{Symbolizing Complex Sentences}\label{sec:SymbolisingComplexTFL}
 We introduced our connectives giving their rough English meaning. This gives us some tools to know how to symbolise English sentences. As a general instruction:
 \factoidbox{
 	\begin{itemize}
@@ -163,7 +163,7 @@ In this form the sentence displays a potential ambiguity between:
 	\item It is not the case that: you will get soup and you will get salad.
 	\item It is not the case that you will get soup; and you will get salad.
 \end{itemize}
-As we have seen the first reading gets symbolized as $\enot(S_1\eand S_2)$, while the second reading should be symbolized as $(\enot S_1\eand S_2)$ (Exercise: check that this is the correct symbolization). These two symbolizations are of course very different and, thus, at the beginning of the symbolization process it is important to determine the precise structure of the sentence one wishes to symbolize. We discuss this issue some more in \cref{s:AmbiguityTFL}.
+As we have seen the first reading gets symbolized as $\enot(S_1\eand S_2)$, while the second reading should be symbolized as $(\enot S_1\eand S_2)$ (Exercise: check that this is the correct symbolization). These two symbolizations are of course very different and, thus, at the beginning of the symbolization process it is important to determine the precise structure of the sentence one wishes to symbolize. We discuss this issue some more in \cref{sec:AmbiguityTFL}.
 
 \section{Symbolizing Arguments}
 We have learned how to symbolize English sentences in TFL. But how does one symbolize arguments in TFL? The answer should not be to surprising: one simply needs to symbolize the premises and conclusion in TFL with the caveat that one must use one and the same symbolization key in this symbolization process. Let's look at a simple example (notice that the argument may not be sound):
@@ -184,7 +184,7 @@ Using our symbolization procedure we then obtain the following TFL-argument $$R\
 
 
 \chapter{On Truth-functional connectives}
-\label{s:TruthFunctionality}
+\label{sec:TruthFunctionality}
 %We now reflect on truth-functional logic and the connectives we've used.
 
 
@@ -204,7 +204,7 @@ Every connective in TFL is truth-functional. We were able to give rules to deter
 
 %The truth value of a negation is uniquely determined by the truth value of the unnegated sentence. The truth value of a conjunction is uniquely determined by the truth value of both conjuncts. The truth value of a disjunction is uniquely determined by the truth value of both disjuncts, and so on.
 
-%This then means that to determine the truth value of any TFL sentence, we only need to know the truth value of the atomic sentences it includes. We will see exactly how to do this in \cref{s:CompleteTruthTables}.
+%This then means that to determine the truth value of any TFL sentence, we only need to know the truth value of the atomic sentences it includes. We will see exactly how to do this in \cref{sec:CompleteTruthTables}.
 
 
 %The truth value of a non-atomic sentence of TFL, such as $A\eand B$ depends on the truth values of $A$ and $B$. But once the truth values of $A$, $B$ and $C$ are provided, the truth value of $A\eand B$ is fixed. Indeed, this is the characteristic feature of \emph{truth functional logic}.
@@ -223,7 +223,7 @@ Whereas it is necessary that $2 + 2 = 4$, it is not \emph{necessary} tthat Shost
 
 
 
-\subsection{Subjunctive conditionals}\label{s:IndicativeSubjunctive}
+\subsection{Subjunctive conditionals}\label{sec:IndicativeSubjunctive}
 
 
 
@@ -334,7 +334,7 @@ Consider these sentences:
 	\item Alice will come to the party \mainconnective{if and only if} Beth will. 
 \end{compactlist}
 
-In this chapter we will discuss how they should be symbolised in TFL.  The feature of TFL is that it can capture any \emph{truth functional} connective (recall \cref{s:TruthFunctionality}), possibly by a more complex sentence. 
+In this chapter we will discuss how they should be symbolised in TFL.  The feature of TFL is that it can capture any \emph{truth functional} connective (recall \cref{sec:TruthFunctionality}), possibly by a more complex sentence. 
 
 We will also discuss in more detail when it is appropriate to paraphrase in the cannonical ways and when it is not.
 
@@ -391,7 +391,7 @@ Sometimes even in symbolizing sentences that very much look like they are negati
 To some it may feel like Jane can be neither happy nor unhappy, and this may even be assumed in some argument. Jane is without emotions and in a state of blank indifference: she does not feel happy nor does she feel unhappy. If we were to symbolize \cref{sent:not8} by `$H$' and then \cref{sent:not9} by `$\enot H$', then we would rule out the possibility of Jane being neither happy nor unhappy. If we try to remain faithful to the idea that Jane can be neither happy nor unhappy then we need to symbolize \cref{sent:not9} using a new atomic sentence of TFL.
 
 \section{Conjunction}
-\label{s:ConnectiveConjunction}
+\label{sec:ConnectiveConjunction}
 
 The symbolization guideline for conjunction we introduced Section \cref{sec:tt} was:.
 
@@ -594,9 +594,9 @@ In fact, \cref{sent:if2} can be paraphrased as `If Jean is in France, then Jean 
 		\item\label{sent:ifthen3}  Alice is on shift \mainconnective{only if} Beth is.
 	\end{samplesent}
 
- At this point, a word of warning about the connective `\eif'  seems required: while the connectives like `\eand' and `\eor' arguable closely track our understanding of `\emph{and}' and `\emph{or}' in natural language, the situation is slightly more complicated with respect to `\eif' and `\emph{if\ldots, then\ldots}' as we discussed in \cref{s:IndicativeSubjunctive}.\todo{ and \cref{s:ParadoxesOfMaterialConditional}.}
+ At this point, a word of warning about the connective `\eif'  seems required: while the connectives like `\eand' and `\eor' arguable closely track our understanding of `\emph{and}' and `\emph{or}' in natural language, the situation is slightly more complicated with respect to `\eif' and `\emph{if\ldots, then\ldots}' as we discussed in \cref{sec:IndicativeSubjunctive}.\todo{ and \cref{sec:ParadoxesOfMaterialConditional}.}
 
-\section{Biconditional}\label{s:SymbolisingTFL:bicond}
+\section{Biconditional}\label{sec:SymbolisingTFL:bicond}
 In this textbook we have frequently used the English expression `\emph{if and only if}', as in: an atomic sentence $\metaX$ is true relative to a valuation $v$ \emph{if and only if} $v$ assigns the value T to $X$. `\emph{if and only if}' seems to be another conjunction word of English, that is, a way of composing two sentences into a new sentence. Is there a way to symbolize sentences of the form `\emph{\ldots if and only if\ldots}' in TFL?
 
 Consider the sentences:
@@ -663,7 +663,7 @@ We have discussed several conjunction-words and sentence constructions that can 
 
 In fact, TFL has the resources to express any \emph{truth-functional} connective of English, possibly by a more complex sentence, as we did for, for example, exclusive `or' or `if and only if'. 
 
-However, there are of course many more conjunction-words in English and some of them can be adequately symbolized in TFL. However, there are also many conjunction words that cannot be adequately symbolized in TFL. We shall discuss some examples in \cref{s:TruthFunctionality}.
+However, there are of course many more conjunction-words in English and some of them can be adequately symbolized in TFL. However, there are also many conjunction words that cannot be adequately symbolized in TFL. We shall discuss some examples in \cref{sec:TruthFunctionality}.
 
 
 
@@ -837,7 +837,7 @@ For each argument, write a symbolization key and symbolize the argument in TFL. 
 \end{problemslist}
 
 \problempart
-For each argument, write a symbolization key and translate the argument as well as possible into TFL. The part of the passage in italics is there to provide context for the argument, and doesn't need to be symbolized. Check for validity. Do these arguments use English connectives that cannot be symbolized appropriately in TFL (cf.~\cref{s:TruthFunctionality})
+For each argument, write a symbolization key and translate the argument as well as possible into TFL. The part of the passage in italics is there to provide context for the argument, and doesn't need to be symbolized. Check for validity. Do these arguments use English connectives that cannot be symbolized appropriately in TFL (cf.~\cref{sec:TruthFunctionality})
 \begin{problemslist}
 \item It is going to rain soon. I know because my leg is hurting, and my leg hurts if it's going to rain.
 
@@ -893,7 +893,7 @@ For each argument, write a symbolization key and translate the argument as well 
 
 
 
-\chapter{Ambiguity}\label{s:AmbiguityTFL}
+\chapter{Ambiguity}\label{sec:AmbiguityTFL}
 
 In English, sentences can be \define{ambiguous}, i.e., they can have more than one meaning.  There are many sources of ambiguity. One is \emph{lexical ambiguity:} a sentence can contain words which have more than one meaning.  For instance, `bank' can mean the bank of a river, or a financial institution. So I might say that `I went to the bank' when I took a stroll along the river, or when I went to deposit a check.  Depending on the situation, a different meaning of `bank' is intended, and so the sentence, when uttered in these different contexts, expresses different meanings.
 
@@ -980,7 +980,7 @@ The symbolization of \cref{sent:scamb3} is `$(S \eand D) \eor T$' and that of \c
 
 
 
-%\chapter{TFL vs English connectives }\label{s:ParadoxesOfMaterialConditional}
+%\chapter{TFL vs English connectives }\label{sec:ParadoxesOfMaterialConditional}
 %\teachingnote{Not covered in this course. This is just a taster for students who are interested.\\}
 %Consider the sentence:
 %	\begin{earg}

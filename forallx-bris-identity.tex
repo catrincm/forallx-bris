@@ -169,15 +169,15 @@ It might be tempting to add a predicate to our symbolization key, to symbolize t
 %\end{earg}
 
 \problempart Consider the sentence,
-\begin{problemslist}
-	\item[\ex{except2}] Every officer except Pavel owes money to Hikaru.
-\end{problemslist}
-Symbolize this sentence, using `$\atom{F}{x}$' for `\gap{x} is an officer'.  Are you confident that your symbolization is true if, and only if, sentence~\ref{except2} is true?  What happens if every officer owes money to Hikaru, Pavel does not, but Pavel isn't an officer? \myanswer{Most people, including most linguists thinking about `except', read sentence~\ref{except2} as entailing all three of the following:
-\begin{problemslist}
+\begin{samplesent}
+	\item\label{sent:exept2} Every officer except Pavel owes money to Hikaru.
+\end{samplesent}
+Symbolize this sentence, using `$\atom{F}{x}$' for `\gap{x} is an officer'.  Are you confident that your symbolization is true if, and only if, \cref{sent:except2} is true?  What happens if every officer owes money to Hikaru, Pavel does not, but Pavel isn't an officer? \myanswer{Most people, including most linguists thinking about `except', read \cref{sent:except2} as entailing all three of the following:
+\begin{samplesent}
 	\item No officer who is not Pavel owes money to Hikaru
 	\item Pavel does not owe money to Hikaru
 	\item Pavel is an officer
-\end{problemslist}
+\end{samplesent}
 So it can be symbolized as `$\forall x((\atom{F}{x} \eand \enot x = p) \eif \enot\atom{O}{x}{h}) \eand \enot \atom{O}{p,h} \eand \atom{F}{p}$'.}
 
 \problempart Explain why:
@@ -267,9 +267,9 @@ Note that we have made sure that the formula `$x \eid y$' falls within the scope
 \section{Empty definite descriptions}
 One of the nice features of Russell's analysis is that it allows us to handle \emph{empty} definite descriptions neatly.
 
-France has no king at present. Now, if we were to introduce a name, `$k$', to name the present King of France, then everything would go wrong: remember from \cref{s:FOLBuildingBlocks} that a name must always pick out  some object in the domain, and whatever we choose as our domain, it will contain no present kings of France.
+France has no king at present. Now, if we were to introduce a name, `$k$', to name the present King of France, then everything would go wrong: remember from \cref{sec:FOLBuildingBlocks} that a name must always pick out  some object in the domain, and whatever we choose as our domain, it will contain no present kings of France.
 
-Russell's analysis neatly avoids this problem. Russell tells us to treat definite descriptions using predicates and quantifiers, instead of names. Since predicates can be empty (see \cref{s:MoreMonadic}), this means that no difficulty now arises when the definite description is empty.
+Russell's analysis neatly avoids this problem. Russell tells us to treat definite descriptions using predicates and quantifiers, instead of names. Since predicates can be empty (see \cref{sec:MoreMonadic}), this means that no difficulty now arises when the definite description is empty.
 
 Indeed, Russell's analysis helpfully highlights two ways to go wrong in a claim involving a definite description. To adapt an example from Stephen Neale (1990),\footnote{Neale, \emph{Descriptions}, 1990, Cambridge: MIT Press.}  suppose Alex claims:
 	\begin{samplesent}
@@ -406,7 +406,7 @@ FOL with identity extends FOL as we presented it earlier.
 \section{Sentences of FOL with identity}When we add the identity symbol to FOL, we add a new kind of atomic sentence, for example $a\eid b$.
 
 We simply do this by adding a new kind of atomic sentence: \factoidbox{If $\meta{a}$ and $\meta{b}$ are names, then $\meta{a}\eid \meta{b}$ is an atomic sentence.}
-This is added to the other clauses of what it is to be a sentence as they were given in \cref{s:FOLSentences}
+This is added to the other clauses of what it is to be a sentence as they were given in \cref{sec:FOLSentences}
 
 We can now see that $\forall x (\enot\, x\eid p \eif Opx)$ is a sentence, as it could be constructed as follows:	\begin{center}
 	\begin{forest}

@@ -72,9 +72,9 @@ Our second reason is that a lot of fascinating philosophical discussion has focu
 
 
 \section{Alternative quantification rules}
-An alternative approach to the quantifiers is to take as basic the rules for $\forall$I and $\forall$E from \cref{s:BasicFOL}, and also two CQ rule which allow us to move from $\forall \meta{x} \enot \metaX$ to $\enot \exists \meta{x} \metaX$ and vice versa.\footnote{Warren Goldfarb follows this line in \emph{Deductive Logic}, 2003, Hackett Publishing Co.}  
+An alternative approach to the quantifiers is to take as basic the rules for $\forall$I and $\forall$E from \cref{sec:BasicFOL}, and also two CQ rule which allow us to move from $\forall \meta{x} \enot \metaX$ to $\enot \exists \meta{x} \metaX$ and vice versa.\footnote{Warren Goldfarb follows this line in \emph{Deductive Logic}, 2003, Hackett Publishing Co.}  
 
-Taking only these rules as basic, we could have derived the  $\exists$I and $\exists$E rules provided in \cref{s:BasicFOL}. To derive the $\exists$I rule is fairly simple. Suppose $\metaX$ contains the name $\meta{c}$, and contains no instances of the variable $\meta{x}$, and that we want to do the following:
+Taking only these rules as basic, we could have derived the  $\exists$I and $\exists$E rules provided in \cref{sec:BasicFOL}. To derive the $\exists$I rule is fairly simple. Suppose $\metaX$ contains the name $\meta{c}$, and contains no instances of the variable $\meta{x}$, and that we want to do the following:
 \begin{fitchproof}
 	\have[m]{a}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}
 	\have[k]{c}{\exists \meta{x} \metaX(\ldots \meta{x} \ldots \meta{c}\ldots)}
@@ -121,7 +121,7 @@ To derive the $\exists$E rule is rather more subtle. This is because the $\exist
 \end{fitchproof}\noindent
 We are permitted to use $\forall$I on line $k+3$ because $\meta{c}$ does not occur in any  undischarged assumptions or in $\metaY$. The entries on lines $k+4$ and $k+1$ contradict each other, because $\meta{c}$ does not occur in $\exists \meta{x} \metaX(\ldots \meta{x} \ldots \meta{x} \ldots)$.
 
-Armed with these derived rules, we could now go on to derive the two remaining CQ rules, exactly as in \cref{s:DerivedFOL}.
+Armed with these derived rules, we could now go on to derive the two remaining CQ rules, exactly as in \cref{sec:DerivedFOL}.
 
 So, why did we start with all of the quantifier rules as basic, and then derive the CQ rules? 
 

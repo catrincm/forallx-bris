@@ -485,13 +485,13 @@ $$\langle\text{Pooh, Eeyore, The trampoline}\rangle\in\Set{\langle o_1,o_2,o_3\r
 In the same way that a three-place predicate picks out a ternary relation, an $n$-place predicate picks out an \define{$n$-ary relation}, that is, a set of $n$-tuples $\langle o_1,o_2,\ldots,o_n\rangle$.
 
 
-%\chapter{Extensionality}\label{s:Interpretations}
+%\chapter{Extensionality}\label{sec:Interpretations}
 %
 %Recall that TFL is a truth-functional language. Its connectives are all truth-functional, and \emph{all} that we can do with TFL is key sentences to particular truth values. We can do this \emph{directly}. For example, we might stipulate that the TFL sentence $P$ is to be true. Alternatively, we can do this \emph{indirectly}, offering a symbolization key, e.g.:
 %	\begin{ekey}
 %		\item[P] Big Ben is in London
 %	\end{ekey}
-%Now recall from \cref{s:TruthFunctionality} that this should be taken to mean:
+%Now recall from \cref{sec:TruthFunctionality} that this should be taken to mean:
 %	\begin{ebullet}
 %		\item The TFL sentence $P$ is to take the same truth value as the English sentence `Big Ben is in London' (whatever that truth value may be)
 %	\end{ebullet}
@@ -570,9 +570,9 @@ In the same way that a three-place predicate picks out a ternary relation, an $n
 %
 %To make these ideas more precise, we would need to develop some \emph{set theory}. That would give us some precise tools for dealing with extensions and with ordered pairs (and ordered triples, etc.). However, set theory is not covered in this book, so we will leave these ideas at an imprecise level. Nevertheless, the general idea should be clear.
 
-\section{Models}\label{s:model}\todo{call it ``model''?}
+\section{Models}\label{sec:model}\todo{call it ``model''?}
 
-In \cref{s:TruthFOL}, we introduced the idea of a model but we did not include relations. Now we can extend it to give the proper definition of a  \define{model}. Sentences of FOL will be true or false \emph{on a model}.
+In \cref{sec:TruthFOL}, we introduced the idea of a model but we did not include relations. Now we can extend it to give the proper definition of a  \define{model}. Sentences of FOL will be true or false \emph{on a model}.
 
 {A model $\model$ provides \begin{itemize}
 		\item specifies a non-empty set as the domain, $\domain$;
@@ -925,7 +925,7 @@ Then $Ex$ will be true in this model under a variable assignment $\alpha$ that a
 
 
 
-We know from \cref{s:FOLSentences} that there are three kinds of formulas in FOL:
+We know from \cref{sec:FOLSentences} that there are three kinds of formulas in FOL:
 \begin{ebullet}
 	\item atomic formulas
 	\item formulas whose main logical operator is a sentential connective
@@ -974,7 +974,7 @@ With this final bit of terminology out of way we can state the truth conditions 
 
 
 \section{Sentential connectives}
-We saw in \cref{s:FOLSentences} that FOL formulas can be built up from simpler ones using the truth-functional connectives that were familiar from TFL. The rules governing these truth-functional connectives are \emph{exactly} the same as they were when we considered TFL. Here they are:
+We saw in \cref{sec:FOLSentences} that FOL formulas can be built up from simpler ones using the truth-functional connectives that were familiar from TFL. The rules governing these truth-functional connectives are \emph{exactly} the same as they were when we considered TFL. Here they are:
 \factoidbox{
 	$\enot \metaX$ is true in a model $\model$ under a variable assignment $\alpha$ \textbf{iff} \\$\metaX$ is false in $\model$ under $\alpha$.
 	
@@ -1117,7 +1117,7 @@ Is $\exists x\forall y Rxy$ true? Intuitively, the sentence is true iff there is
 What about `$\exists x \exists y(Rxy \eand Ryx)$'? To show that it is true we will want to choose an object $o$ that we can assign to $x$ such that `$\exists y (Rxy\eand Ryx)$' is true uunder the assignment $\varvariant{\alpha}{x}{o}$. Let's consider $x\mapsto 3$ (again I'm using my foresight of what will come to choose carefully). Now is `$\exists y (Rxy\eand Ryx)$'  true under the variable assignment $x\mapsto 3$ (i.e., $\varvariant{\alpha}{x}{3}$? We need to find $y$-variant of this assignment which chooses an object such that `$Rxy\eand Ryx$' is true. Consider $y\mapsto 3$. We now have a variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{3}$. $x$ and $y$ are different variables but there's nothing stopping them being assigned the same object. And we can then consider whether $Rxy\eand Ryx$ is true under this model. Well, `$Rxy$' is true: 3 does have an arrow to 3. And `$Ryx$' is also true: 3 does have an arrow to 3. So by our clause for $\eand$, `$Rxy\eand Ryx$' is true under the variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{3}$. And so `$\exists y(Rxy\eand Ryx)$' is true under the variable assignment $\varvariant{\alpha}{x}{3}$. And so $\exists x\exists y(Rxy\eand Ryx)$ is true in this model.
 
 
-One final example: $\forall x\forall y Rxy$. To check this we will need to consider all choices for $x$ and all choices for $y$ and check $Rxy$ is true on all of them. There are 16 such choices. But we won't have to go through them all: it'll be false. Consider $x\mapsto 1$ and $y\mapsto 4$. $Rxy$ is false under this variable assignment: there is no arrow from 1 to 4. Thus $\forall yRxy$ is false on the variable assignment $\varvariant{\alpha}{x}{1}$. And so $\forall x\forall y Rxy$ is false in the model under the variable assignment $\alpha$. However, $\alpha$ itself played no role in the evaluation of $\forall x\forall y Rxy$. All that mattered was the objects that were assigned to $x$ and $y$, and for $x$ and $y$ we considered the $x$-variants/$y$-variants. So $\forall x\forall y Rxy$ is not only true under the variable assignment $\alpha$ in this model but true under all variable assignments. This goes back to what we said at the end of \cref{s:traf}: the particular choice of an variable assignment is only relevant if we are evaluating the truth of formulas with free variables. $\forall x\forall y Rxy$ is a sentence, as it has no free variables.
+One final example: $\forall x\forall y Rxy$. To check this we will need to consider all choices for $x$ and all choices for $y$ and check $Rxy$ is true on all of them. There are 16 such choices. But we won't have to go through them all: it'll be false. Consider $x\mapsto 1$ and $y\mapsto 4$. $Rxy$ is false under this variable assignment: there is no arrow from 1 to 4. Thus $\forall yRxy$ is false on the variable assignment $\varvariant{\alpha}{x}{1}$. And so $\forall x\forall y Rxy$ is false in the model under the variable assignment $\alpha$. However, $\alpha$ itself played no role in the evaluation of $\forall x\forall y Rxy$. All that mattered was the objects that were assigned to $x$ and $y$, and for $x$ and $y$ we considered the $x$-variants/$y$-variants. So $\forall x\forall y Rxy$ is not only true under the variable assignment $\alpha$ in this model but true under all variable assignments. This goes back to what we said at the end of \cref{sec:traf}: the particular choice of an variable assignment is only relevant if we are evaluating the truth of formulas with free variables. $\forall x\forall y Rxy$ is a sentence, as it has no free variables.
 
 
 More generally, if we have a quantifier like $\exists x$ or $\forall x$ we ignore whatever our original variable assignment told us about $x$ but consider suitable $x$-variants. So when all our variables are bound by quantifiers, all the original components of our variable assignment are ignored. To summarise: Sentences are simply true or false in models, variable assignments don't matter.
@@ -1143,7 +1143,7 @@ We have now provided the full inductive definition of truth in a model under a v
 
 
 %
-%\section{Models}\label{s:model}\todo{call it ``model''?}
+%\section{Models}\label{sec:model}\todo{call it ``model''?}
 %We defined a \define{valuation} in TFL as any assignment of truth and falsity to atomic sentences. In FOL, we are going to define an \define{model}. Sentences of FOL will be true or false \emph{on a model}.
 %\factoidbox{A model $\model$ provides \begin{itemize}
 %		\item specifies a non-empty set as the domain, $\domain$;
@@ -1180,7 +1180,7 @@ We have now provided the full inductive definition of truth in a model under a v
 %%		\item if $P$ is the $n$-place predicate, then we write $\denote{P}$ to denote the $n$-ary relation assigned to $P$ by the model.
 %%	\end{ebullet}}
 %	
-%A model thus provides us with all the necessary information for interpreting the predicates and names, as well as, information about the range of the quantifiers. This will be enough to determine the truth value of all sentences of FOL, which we will turn to in \cref{s:TruthFOL}
+%A model thus provides us with all the necessary information for interpreting the predicates and names, as well as, information about the range of the quantifiers. This will be enough to determine the truth value of all sentences of FOL, which we will turn to in \cref{sec:TruthFOL}
 %
 %Importantly, we are not guaranteed that the denotation of an $n$-place predicate is nonempty, i.e., it is possible that $\emptyset$ is assigned to a predicate. In general, a convenient way of specifying a model is to supplement a given symbolization key (cf.~ \cref{ch:FOL}) with the relevant model of the names and predicates.
 %
@@ -1583,7 +1583,7 @@ Again, we want to show that this is invalid. To do this, we must make the premis
 	\end{interp}
 The premise is clearly true on this model. Anyone in the domain is a UK citizen in a civil partnership with some other UK citizen. That other citizen will also, then, be in the domain. So for everyone in the domain, there will be someone (else) in the domain with whom they are in a civil partnership. Hence `$\forall x \exists y Lxy$' is true. However, the conclusion is clearly false, for that would require that there is some single person who is in a civil partnership with everyone in the domain, and there is no such person, so the argument is invalid. We observe immediately that the sentences `$\forall x \exists y Lxy$ and $\enot\exists y \forall x Lxy$' are jointly consistent and that `$\exists y \forall x Lxy$, is not a logical consequence of `$\forall x \exists y Lxy$'.
 
-For our third example, we'll mix things up a bit. In \cref{s:model}, we described how we can present some models using diagrams. For example:
+For our third example, we'll mix things up a bit. In \cref{sec:model}, we described how we can present some models using diagrams. For example:
 \begin{center}
 \begin{tikzpicture}
 \node (atom1) at (0,2) {1};
@@ -1595,7 +1595,7 @@ For our third example, we'll mix things up a bit. In \cref{s:model}, we describe
 \draw[->, thick] (atom2) -- (atom3);
 \end{tikzpicture}
 \end{center}
-Using the conventions employed in \cref{s:model}, the domain of this model is the first three positive whole numbers, and $Rxy$ is true of x and y just in case there is an arrow from x to y in our diagram. Here are some sentences that the model makes true:
+Using the conventions employed in \cref{sec:model}, the domain of this model is the first three positive whole numbers, and $Rxy$ is true of x and y just in case there is an arrow from x to y in our diagram. Here are some sentences that the model makes true:
 	\begin{ebullet}
 		\item $\forall x \exists y Ryx$
 		\item $\exists x \forall y Rxy$ \hfill witness 1
@@ -1857,4 +1857,4 @@ entailment? & all models & one counter-model\\
 \end{center}
 \label{table:ModelOrArgument}
 
-This might usefully be compared with the table at the end of \cref{s:PartialTruthTable}. The key difference resides in the fact that TFL concerns truth tables, whereas FOL concerns models. This difference is deeply important, since each truth-table only ever has finitely many lines, so that a complete truth table is a relatively tractable object. By contrast, there are infinitely many models for any given sentence(s), so that reasoning about all models can be a deeply tricky business.
+This might usefully be compared with the table at the end of \cref{sec:PartialTruthTable}. The key difference resides in the fact that TFL concerns truth tables, whereas FOL concerns models. This difference is deeply important, since each truth-table only ever has finitely many lines, so that a complete truth table is a relatively tractable object. By contrast, there are infinitely many models for any given sentence(s), so that reasoning about all models can be a deeply tricky business.
