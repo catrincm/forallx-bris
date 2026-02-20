@@ -60,16 +60,16 @@ Once we have fixed a symbolization key, the next step is to symbolize the comple
 
 \section{Symbolizing Complex Sentences}\label{sec:SymbolisingTFL - simple connectives complex form}
 We introduced our connectives in \cref{sec:Connectives} giving their rough English meaning. This gives us some tools to know how to symbolise English sentences. As a general instruction:
-\factoidbox{
 	\begin{itemize}
 		\item If a sentence can be paraphrased as `it is not the case that \ldots'\\ it can be symbolised as $\enot\metaX$.
 		\item If a sentence can be paraphrased as `\ldots and \ldots'\\ it can be symbolised as $\metaX\eand \metaY$.
 		\item If a sentence can be paraphrased as `\ldots or \ldots'\\ it can be symbolised as $\metaX\eor \metaY$.
-		\item If a sentence can be paraphrased as `if \ldots, then \ldots'\\ it can be symbolised as $\metaX\eif \metaY$.
+		\item If a sentence can be paraphrased as `if \ldots$_\metaX$, then \ldots$_\metaY$'\\ it can be symbolised as $\metaX\eif \metaY$.
 	\end{itemize}
-}
 
-Usually, this process needs to be applied a number of times.
+By symbolising it with one of these connectives, the truth conditions for the sentence is determined in accordance with the truth rule. Symbolising it this way is appropriate when these are appropriate truth conditions; but these standard English paraphrasing is good guidance for when this is the case. 
+
+Typically one needs to apply this paraphrasing trick a number of times to result in the symbolisation for the sentence. 
 Let's go through an example to see how to apply the strategy. Consider:
 \begin{samplesent}
 	\item\label{sent:negcon1} You won't get both soup and salad.
@@ -383,12 +383,12 @@ While this is a good argument and perhaps a conceptually valid argument it is no
 
 If you wish to make the information that in the specific circumstances `bad' means that something is not good and vice versa available in TFL, you can add this as an additional premises when symbolizing the relevant argument in TFL. That, is if we think that \cref{sent:not7} is the negation of \cref{sent:not6} we should add the following premise (using truth tables check that the premise is true, if and only if, `$\enot G$' is true whenever `$B$' is true): $$(\enot G\eif B)\eand (B\eif \enot G).$$ If this premise is added to the above argument, then the argument is valid and rightly so!
 
-Sometimes even in symbolizing sentences that very much look like they are negations of each other one needs to be careful. Consider:
-	\begin{samplesent}
-		\item\label{sent:not8} Jane is happy.
-		\item\label{sent:not9} Jane is unhappy.
-	\end{samplesent}
-To some it may feel like Jane can be neither happy nor unhappy, and this may even be assumed in some argument. Jane is without emotions and in a state of blank indifference: she does not feel happy nor does she feel unhappy. If we were to symbolize \cref{sent:not8} by `$H$' and then \cref{sent:not9} by `$\enot H$', then we would rule out the possibility of Jane being neither happy nor unhappy. If we try to remain faithful to the idea that Jane can be neither happy nor unhappy then we need to symbolize \cref{sent:not9} using a new atomic sentence of TFL.
+%Sometimes even in symbolizing sentences that very much look like they are negations of each other one needs to be careful. Consider:
+%	\begin{samplesent}
+%		\item\label{sent:not8} Jane is happy.
+%		\item\label{sent:not9} Jane is unhappy.
+%	\end{samplesent}
+%To some it may feel like Jane can be neither happy nor unhappy, and this may even be assumed in some argument. Jane is without emotions and in a state of blank indifference: she does not feel happy nor does she feel unhappy. If we were to symbolize \cref{sent:not8} by `$H$' and then \cref{sent:not9} by `$\enot H$', then we would rule out the possibility of Jane being neither happy nor unhappy. If we try to remain faithful to the idea that Jane can be neither happy nor unhappy then we need to symbolize \cref{sent:not9} using a new atomic sentence of TFL.
 
 \section{Conjunction}
 \label{sec:ConnectiveConjunction}
@@ -407,8 +407,6 @@ Let's look at some more examples:
 	        \item\label{sent:and3}Adam is athletic, and Barbara is also athletic.
 		\item\label{sent:and4}Barbara is athletic and energetic.
 		\item\label{sent:and5}Barbara and Adam are both athletic.
-		\item\label{sent:and6}Although Barbara is energetic, she is not athletic.
-	\item\label{sent:and7}Adam is athletic, but Barbara is more athletic than him.
 	\end{samplesent}
 
 Let's fix the following symbolization key:
@@ -423,7 +421,13 @@ Let's fix the following symbolization key:
 
 \Cref{sent:and5} says one thing about two different subjects. It says of both Barbara and Adam that they are athletic, even though in English we use the word `athletic' only once. The sentence can be paraphrased as `Barbara is athletic, and Adam is athletic'. We can symbolize this in TFL as $(B\eand A)$, using the same symbolization key that we have been using.
 
-Are Sentences \ref{sent:and6} and \ref{sent:and7} conjuctions? The word `although' sets up a contrast between the first part of the sentence and the second part. Nevertheless, the sentence tells us both that Barbara is energetic and that she is not athletic. In order to make each of the conjuncts an atomic sentence, we need to replace `she' with `Barbara'. So we can paraphrase \cref{sent:and6} as, `Barbara is energetic, \emph{and} Barbara is not athletic'. The second conjunct contains a negation, so we paraphrase further: `Barbara is energetic \emph{and} \emph{it is not the case that} Barbara is athletic'. Now we can symbolize this with the TFL sentence $(C\eand\enot B)$. Note that we have lost all sorts of nuance in this symbolization. There is a distinct difference in tone between \cref{sent:and6} and `Both Barbara is energetic and it is not the case that Barbara is athletic'. TFL does not (and cannot) preserve these nuances.
+Now consider:
+	\begin{samplesent}
+	\item\label{sent:and6}Although Barbara is energetic, she is not athletic.
+	\item\label{sent:and7}Adam is athletic, but Barbara is more athletic than him.
+\end{samplesent}
+
+Are these conjuctions? The word `although' sets up a contrast between the first part of the sentence and the second part. Nevertheless, the sentence tells us both that Barbara is energetic and that she is not athletic. In order to make each of the conjuncts an atomic sentence, we need to replace `she' with `Barbara'. So we can paraphrase \cref{sent:and6} as, `Barbara is energetic, \emph{and} Barbara is not athletic'. The second conjunct contains a negation, so we paraphrase further: `Barbara is energetic \emph{and} \emph{it is not the case that} Barbara is athletic'. Now we can symbolize this with the TFL sentence $(C\eand\enot B)$. Note that we have lost all sorts of nuance in this symbolization. There is a distinct difference in tone between \cref{sent:and6} and `Both Barbara is energetic and it is not the case that Barbara is athletic'. TFL does not (and cannot) preserve these nuances.
 
 \Cref{sent:and7} raises similar issues. There is a contrastive structure, but this is not something that TFL can deal with. So we can paraphrase the sentence as `Adam is athletic, \emph{and} Barbara is more athletic than Adam'. (Notice that we once again replace the pronoun `him' with `Adam'.) How should we deal with the second conjunct? We already have the sentence letter $A$, which is being used to symbolize `Adam is athletic', and the sentence $B$ which is being used to symbolize `Barbara is athletic'; but neither of these concerns their relative athleticity. So, to symbolize the entire sentence, we need a new sentence letter. Let the TFL sentence $R$ symbolize the English sentence `Barbara is more athletic than Adam'. Now we can symbolize \cref{sent:and7} by $(A \eand R)$.
 

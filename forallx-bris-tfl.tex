@@ -166,14 +166,14 @@ Then `$\enot A$' will be used to symbolise the English sentence:
 \end{samplesent}
 Is this sentence true or false? It depends on whether Alice is happy. She either is or isn't happy, that is `Alice is happy' might be true or false:
 \begin{center}
-	\begin{tabular}{c}
-		$A$\\\hline\Tstrut
-		T\\
-		F
+	\begin{tabular}{cl}
+		$A$&\\\hline\Tstrut
+		T& Alice is happy\\
+		F& Alice is not happy
 	\end{tabular}
 \end{center}
 
-In which cases is `$\enot A$' true? Only when `$A$' is false: 
+In which cases is `$\enot A$' true? Just when `$A$' is false: 
 \begin{center}
 	\begin{tabular}{c|c}
 		$A$&$\enot A$\\\hline\Tstrut
@@ -252,6 +252,10 @@ If think of `$G$' and `$F$' as representing the English sentences
 \begin{samplesent}
 	\item She understands German or she understands French.
 \end{samplesent}
+Or, more concisely:
+\begin{samplesent}
+	\item She understands German or French.
+\end{samplesent}
 
 Again whether this is true will depend on $G$ and $F$. Here are the four possibilities:
 \begin{center}
@@ -295,7 +299,7 @@ That is `$G\eor F$' is true if and only if `$G$' is true or `$F$' is true (or bo
 
 If one wishes to capture the exclusive use of English, this will be perfectly possible in TFL, but for that, we'll have to use a more complex sentence. We will essentially make explicit the whispered ``but not both''. This will end up being symbolised as:
 $$(G\eor F)\eand\enot (G\eand F)$$
-She can understand German or French, and it's not the case that she can understand both. 
+She can understand German or French, and it's not the case that she can understand both German and French.  
 
 \section{Conditional}
 
@@ -785,13 +789,12 @@ If you want to capture an exclusive disjunction, you can use a more complex sent
 	\end{problemslist}
 \end{practiceproblems}
 \chapter{Syntax of TFL}\label{ch:syntfl}
-So far, we have only  focused on the application of the connectives to atomic sentences, but they can be applied to sentences which already contain connectives. 
+So far, we have only  focused on simple sentences of TFL; but more complex sentences can be obtained by adding additional connectives. 
+ 
 %For example, we already have that $\enot A$ is a sentence of TFL, we can combine this with a new atomic sentence, $C$, to form a complex sentence of TFL: $\enot A\eand C$. 
 %but connectives can be applied to all sorts of sentences not only atomic sentences. For example, as `$\enot A$' is a TFL sentence we can use `$\eand$' to conjoin it the sentence `$C$' to form the new sentence `$(\enot A\eand C)$'. Connectives can be applied to all TFL sentences, not only atomic sentences. It is time to say precisely what TFL sentences are.
 
-\section{Sentences}\label{sec:TFLSentences}
-\todo{This went through a major rewrite. Check it!!!}
-We have introduced the basic building blocks of truth-functional logic, the atomic sentences, and the connectives, which allow us to conjoin different sentences to form new sentences. The third component of the vocabulary of TFL is brackets. These play a role like punctuation marks. 
+%We have introduced the basic building blocks of truth-functional logic, the atomic sentences, and the connectives, which allow us to conjoin different sentences to form new sentences. The third component of the vocabulary of TFL is brackets. These play a role like punctuation marks. 
 
 We will now discuss the rules of grammar of TFL. Two important roles of grammar are to distinguish wellformed sentences from nonsense and to avoid ambiguity. It is in the grammar that brackets are vital parts of TFL. 
 
@@ -830,6 +833,9 @@ You might know this use of brackets from mathematics. Consider:
 
 Importantly, the language of TFL is designed to exclude any form of ambiguity. For example, $A\eand B\eor C$ will not be a sentence of TFL, as it would require disambiguation. Rather the syntactic/grammatical rules of the language of TFL will be such that only expressions that have a \emph{unique} reading can be sentences of TFL. To make this precise we now provide a formal definition of what it is to be a sentence in TFL.
 
+
+\section{Sentences of TFL}\label{sec:TFLSentences}
+\todo{This went through a major rewrite. Check it!!!}
 
 \begin{highlighted}\label{def:TFLsentences}
 	
@@ -977,7 +983,7 @@ In the case of $((\enot E \eor F) \eif \enot\enot G)$, the main connective is $\
 
 
 
-\subsection{Inductive Definition}
+\subsection{Inductive Definitions}
 The definition of a TFL-sentence is a so-called \emph{inductive} definition. Inductive definitions begin with some specifiable base elements, and then present ways to generate indefinitely many more elements by compounding together previously established ones. To give you a better idea of what an inductive definition is, we can give an inductive definition of the idea of \emph{an ancestor of mine}. We specify a base clause.
 	\begin{ebullet}
 		\item My parents are ancestors of mine.
@@ -1072,7 +1078,7 @@ For each of the following: (a) Is it a sentence of TFL, strictly speaking? (b) I
 \item $\enot \eand S$\hfill \myanswer{(a) no (b) no}
 \item $(G \eand \enot G)$\hfill \myanswer{(a) yes (b) yes}
 \item $(A \eif (A \eand \enot F)) \eor (D \eif E)$\hfill \myanswer{(a) no (b) yes}
-\item $((Z \eif S) \eif W) \eand (J \eor X)$\hfill \myanswer{(a) no (b) yes}
+\item $((A \eif S) \eif W) \eand (J \eor A)$\hfill \myanswer{(a) no (b) yes}
 \item $(F \eif \enot D \eif J) \eor (C \eand D)$\hfill \myanswer{(a) no (b) no}
 \end{problemslist}
 
@@ -1504,7 +1510,7 @@ Finally, the rule for $\eif$ tells us how the truth value of $(\enot I\eand H)\e
 \end{center}
 
 
-To keep track of the answer, we will present it on the truth table. 
+We will present this in a table:
 
 \begin{center}
 	\begin{tabular}{r c c| c c c c c c c c c}
@@ -1543,12 +1549,12 @@ $v:$ & F & T & & T & F & T & T & & \TTbf{T} & T \\
 		\tikzset{arrowformationtree/.style={-{Stealth[length=2.2mm,width=1.6mm]},gray,opacity=0.6}}
 		
 		% Row 2 -> Row 1
-		\draw[arrowformationtree] (r2_and) to[bend left=18] (r1_imp);
-		\draw[arrowformationtree] (r2_Hr)  to[bend right=18] (r1_imp);
+		\draw[arrowformationtree] (r2_and) to[bend right=18] (r1_imp);
+		\draw[arrowformationtree] (r2_Hr)  to[bend left=18] (r1_imp);
 		
 		% Row 3 -> Row 2
-		\draw[arrowformationtree] (r3_not) to[bend left=18] (r2_and);
-		\draw[arrowformationtree] (r3_Hl)  to[bend right=18] (r2_and);
+		\draw[arrowformationtree] (r3_not) to[bend right=18] (r2_and);
+		\draw[arrowformationtree] (r3_Hl)  to[bend left=18] (r2_and);
 		
 		% Row 4 -> Row 3
 		\draw[arrowformationtree] (r4_I) to[bend left=18] (r3_not);
@@ -1617,16 +1623,16 @@ For example:
 		\draw[arrowformationtree] (r2_bigor) to[bend left=18] (r1_outerneg);
 		
 		% Row 3 -> Row 2
-		\draw[arrowformationtree] (r3_C)        to[bend left=18] (r2_bigor);     
-		\draw[arrowformationtree] (r3_implies) to[bend right=18] (r2_bigor);  
+		\draw[arrowformationtree] (r3_C)        to[bend right=18] (r2_bigor);     
+		\draw[arrowformationtree] (r3_implies) to[bend left=18] (r2_bigor);  
 		
 		% Row 4 -> Row 3
-		\draw[arrowformationtree] (r4_D)       to[bend left=18] (r3_implies);    
-		\draw[arrowformationtree] (r4_inneror) to[bend right=18] (r3_implies);   
+		\draw[arrowformationtree] (r4_D)       to[bend right=18] (r3_implies);    
+		\draw[arrowformationtree] (r4_inneror) to[bend left=18] (r3_implies);   
 		
 		% Row 5 -> Row 4
-		\draw[arrowformationtree] (r5_A)   to[bend left=18] (r4_inneror);         
-		\draw[arrowformationtree] (r5_not) to[bend right=18] (r4_inneror);        
+		\draw[arrowformationtree] (r5_A)   to[bend right=18] (r4_inneror);         
+		\draw[arrowformationtree] (r5_not) to[bend left=18] (r4_inneror);        
 		
 		% Row 6 -> Row 5
 		\draw[arrowformationtree] (r6_D) to[bend left=18] (r5_not);               
