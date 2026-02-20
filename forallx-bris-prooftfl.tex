@@ -231,12 +231,13 @@ Consider the following argument:
 		If Jane is smart then she is fast. Jane is smart. \therefore~ Jane is fast.
 	\end{quote}
 This argument is certainly valid.
-In fact any argument of the form $$\metaX\eif \metaY,\metaX\;\therefore\metaY$$ is valid. We introduce a rule of natural deduction that encodes this idea. This is
-called \emph{Modus Ponens}.
+In fact any argument of the form $$\metaX\eif \metaY,\metaX\;\therefore\metaY$$ is valid. We introduce a rule of natural deduction that encodes this idea. This is sometimes
+called {Modus Ponens}.
 
-We introduce a rule of Natural Deduction which allows us to make this reasoning step. We will call it the ``Conditional Elimination'' rule ($\eif$E). This choice of name is because we {start} with something including the connective $\eif$ and we derive something without the connective, that is we have \emph{eliminated} the $\eif$ connective. For each connective we will have introduction and elimination rules, however we will wait until the next chapter to see Conditional Introduction.
+In our proof system, we choose a list of rules organised by the connectives. Each connective will have an introduction rule and an elimination rule. So instead of using the name Modus Ponens, we use the name ``Conditional Elimination'' or ``Arrow Elimination'', writing it as ``$\eif$-Elimination'', or, more concisely, $\eif$E. 
+It is an elimination rule because we {start} with something including the connective $\eif$ and we derive something without the connective, that is we have \emph{eliminated} the $\eif$ connective. 
 
-In a simple use of this rule, we might just use it to derive from the premises $S\eif F$ and $S$ the conclusion $F$:
+In a simple use of this rule, we might just use it to derive $F$ from the premises $S\eif F$ and $S$:
 \begin{fitchproof}
 	\hypo{ab}{S\eif F}
 	\hypo{a}{S}
@@ -280,7 +281,7 @@ We write our general rule as:
 	\have[\ ]{b}{\metaY} \ifE{ab,a}
 \end{fitchproof}}
 
-We can apply it to any $\metaX$ and $\metaY$.
+We can apply it to any sentences of TFL, $\metaX$ and $\metaY$.
 For example,
 \begin{fitchproof}
 	\hypo{ab}{(A\eor B)\eif \enot F}
@@ -288,6 +289,8 @@ For example,
 	\have{b}{\enot F} \ifE{ab,a}
 \end{fitchproof}
 In this, $\metaX$ is $(A\eor B)$, and $\metaY$ is $\enot F$.
+
+The two lines needed to apply this can come in either order. 
 
 %This rule is also sometimes called \emph{modus ponens}. Again, this is an elimination rule, because it allows us to obtain a sentence that may not contain `$\eif$', having started with a sentence that did contain `$\eif$'. Note that the conditional and the antecedent can be separated from one another, and they can appear in any order.
 %% However, in the citation for $\eif$E, we always cite the conditional first, followed by the antecedent.
@@ -330,17 +333,8 @@ More generally, here is our conjunction introduction rule:
 }
 
 
-Two things need emphasising.
-
-First `$\metaX$' and `\metaY' are metavariables. They are not particular sentences of TFL but are there to play the role of any particular sentence (see \cref{sec:UseMention}).
 
 
-
-
-Similarly, `$m$' is not a numeral that will appear on a proof. Rather, it is a symbol in the metalanguage, which we use when we want to talk about any line number of a proof. In an actual proof, the lines are numbered `$1$', `$2$', `$3$', and so forth. But when we define the rule, we use variables to underscore the point that the rule may be applied at any point.
-
-
-To be clear, the statement of the rule is \emph{schematic}. It is not itself a proof.  `$\metaX$' and `$\metaY$' are not sentences of TFL. Rather, they are symbols in the metalanguage, which we use when we want to talk about any sentence of TFL (see \cref{sec:UseMention}). Similarly, `$m$' and `$n$' are not a numerals that will appear on any actual proof. Rather, they are symbols in the metalanguage, which we use when we want to talk about any line number of any proof. In an actual proof, the lines are numbered `$1$', `$2$', `$3$', and so forth, but when we define the rule, we use variables to emphasize that the rule may be applied at any point. The rule requires only that we have both conjuncts available to us somewhere in the proof. They can be separated from one another, and they can appear in any order.
 
 The rule is called `conjunction \emph{introduction}' because it introduces the symbol `$\eand$' into our proof where it may have been absent.
 
@@ -363,28 +357,69 @@ and equally:
 \end{fitchproof}}
 The point is simply that, when you have a conjunction on some line of a proof, you can obtain either of the conjuncts by {\eand}E. (One point, might be worth emphasising: you can only apply this rule when conjunction is the main logical operator. So you cannot infer `$D$' just from `$C \eor (D \eand E)$'!)
 
+
+\todo{change this example! It's conceptually confusing.}
 Even with just these two rules, we can start to see some of the power of our formal proof system. Consider:
 \begin{earg}
-\prem $((A\eor B)\eif(C\eor D)) \eand \enot(E\eor F)$
-\conc $\enot(E\eor F) \eand ((A\eor B)\eif(C\eor D))$
+\prem $\enot A \eand (E\eor F)$
+\conc $(E\eor F) \eand \enot A$
 \end{earg}
-The main logical operator in both the premise and conclusion of this argument is `$\eand$'. In order to provide a proof, we begin by writing down the premise, which is our assumption. We draw a line below this: everything after this line must follow from our assumptions by (repeated applications of) our rules of inference. So the beginning of the proof looks like this:
+
+
+In order to provide a proof, we begin by writing down the premise, which is our assumption. We draw a line below this: everything after this line must follow from our assumptions by (repeated applications of) our rules of inference. So our proof will looks something like: 
 \begin{fitchproof}
-	\hypo{ab}{{[}(A\eor B)\eif(C\eor D){]} \eand \enot(E\eor F)}
+	\hypo{ab}{\enot A \eand (E\eor F)}
+	\have[\ ]{a}{\vdots \; ?}
+	\have[\ ]{ba}{(E\eor F) \eand \enot A} 
 \end{fitchproof}
+Our task is to fill out the `?'.
+
+If we look carefully at these sentences, they both have the form $\metaX\eand\metaY$. 
+
+\begin{center}
+	\begin{forest}
+		[$\ldots\mainconnective{\eand} \ldots$
+		[$\enot A$]
+		[$(E\eor F)$]
+		]
+	\end{forest}
+\end{center}
+
+So we have something like 
+\begin{fitchproof}
+	\hypo{ab}{\metaX\eand \metaY}
+\end{fitchproof}
+We should then look at our elimination rule for $\eand$ to see what follows from knowing something. And the answer is that both $\metaX$ and $\metaY$ follow.
+
+
 From the premise, we can get each of the conjuncts by {\eand}E. The proof now looks like this:
 \begin{fitchproof}
-	\hypo{ab}{{[}(A\eor B)\eif(C\eor D){]} \eand \enot(E\eor F)}
-	\have{a}{{[}(A\eor B)\eif(C\eor D){]}} \andE{ab}
-	\have{b}{\enot(E\eor F)} \andE{ab}
+	\hypo{ab}{\enot A \eand (E\eor F)}
+	\have{a}{\enot A} \andE{ab}
+	\have{b}{(E\eor F)} \andE{ab}
+		\have[\ ]{a}{\vdots \quad ?}
+	\have[\ ]{ba}{(E\eor F) \eand \enot A} 
 \end{fitchproof}
+
+Does this help?
+The conclusion also has the form $\metaX\eand\metaY$:
+\begin{center}
+	\begin{forest}
+		[$\ldots\mainconnective{\eand} \ldots$
+		[$(E\eor F) $]
+		[$\enot A$]
+		]
+	\end{forest}
+\end{center}
+
+
 So by applying the {\eand}I rule to lines 3 and 2 (in that order), we arrive at the desired conclusion. The finished proof looks like this:
 \begin{fitchproof}
-	\hypo{ab}{{[}(A\eor B)\eif(C\eor D){]} \eand \enot(E\eor F)}
+	\hypo{ab}{\enot A \eand (E\eor F)}
 
-	\have{a}{{[}(A\eor B)\eif(C\eor D){]}} \andE{ab}
-	\have{b}{\enot(E\eor F)} \andE{ab}
-	\have{ba}{\enot(E\eor F) \eand {[}(A\eor B)\eif(C\eor D){]}} \andI{b,a}
+	\have{a}{\enot A} \andE{ab}
+	\have{b}{(E\eor F)} \andE{ab}
+	\have{ba}{(E\eor F) \eand \enot A} \andI{b,a}
 \end{fitchproof}
 This is a very simple proof, but it shows how we can chain rules of proof together into longer proofs. In passing, note that investigating this argument with a truth table would have required a staggering 256 lines; our formal proof required only four lines.
 
@@ -579,6 +614,7 @@ Give a proof corresponding to each of the following arguments:
 		\have{bc}{B \eor C}\andE{prem}
 		\have{conj}{(B \eor C) \eand A}\andI{bc,a}
 \end{fitchproof}}
+\item $A\eif B, \; A\eif C,\; A\eand D\;\therefore\; B\eand C$
 \end{enumerate}
 
 
