@@ -358,105 +358,190 @@ and equally:
 The point is simply that, when you have a conjunction on some line of a proof, you can obtain either of the conjuncts by {\eand}E. (One point, might be worth emphasising: you can only apply this rule when conjunction is the main logical operator. So you cannot infer `$D$' just from `$C \eor (D \eand E)$'!)
 
 
-\todo{change this example! It's conceptually confusing.}
-Even with just these two rules, we can start to see some of the power of our formal proof system. Consider:
-\begin{earg}
-\prem $\enot A \eand (E\eor F)$
-\conc $(E\eor F) \eand \enot A$
-\end{earg}
+
+\section{Constructing proofs}
 
 
-In order to provide a proof, we begin by writing down the premise, which is our assumption. We draw a line below this: everything after this line must follow from our assumptions by (repeated applications of) our rules of inference. So our proof will looks something like: 
+
+
+\subsection{Strategies}
+We have a few more rules to introduce, but at this point we pause to mention a strategies to come up with proofs yourself:
+
+\paragraph{Work backwards from what you want.}
+The ultimate goal is to obtain the conclusion. Look at the conclusion and ask what the introduction rule is for its main logical operator. This gives you an idea of what should happen \emph{just before} the last line of the proof. Then you can treat this line as if it were your goal. Ask what you could do to get to this new goal.
+
+For example: If your conclusion is a conjunction $\metaX\eand\metaY$, plan to use the {\eand}I rule. This requires finding both $\metaX$ and $\metaY$.
+
+\paragraph{Work forwards from what you have.}
+When you are starting a proof, look at the premises; later, look at the sentences that you have obtained so far. Think about the elimination rules for the main operators of these sentences. These will often tell you what your options are.
+
+For a short proof, you might be able to eliminate the premises and introduce the conclusion. A long proof is formally just a number of short proofs linked together, so you can fill the gap by alternately working back from the conclusion and forward from the premises.
+
+Sometimes, though, this won't yet be possible. For that, we need to finish off our list of the basic rules of natural deduction.
+
+\subsection{Examples}
+
+
+Consider $$A\eif( B\eand C),\; A\eand \enot D\; \therefore C\eand \enot  D$$
+
+We know our proof will look something like 
 \begin{fitchproof}
-	\hypo{ab}{\enot A \eand (E\eor F)}
-	\have[\ ]{a}{\vdots \; ?}
-	\have[\ ]{ba}{(E\eor F) \eand \enot A} 
+	\hypo{ab}{A\eif( B\eand C)}
+	\hypo{ad}{A\eand \enot D}
+	\have[\ ]{a}{ ?}
+	\have[n]{ba}{C\eand \enot  D} \by{?}{}
 \end{fitchproof}
-Our task is to fill out the `?'.
+And our task is to fill out the `?'. 
 
-If we look carefully at these sentences, they both have the form $\metaX\eand\metaY$. 
 
-\begin{center}
-	\begin{forest}
-		[$\ldots\mainconnective{\eand} \ldots$
-		[$\enot A$]
-		[$(E\eor F)$]
-		]
-	\end{forest}
-\end{center}
-
-So we have something like 
+Our aim is to get to $C\eand \enot  D$. The main connective of this is $\eand$. So we look at the introduction rule for $\eand$. So it would be great if we'd be able to get both to $C$ and to $\enot D$ then we could use the $\eand$I rule to get to our conclusion. 
 \begin{fitchproof}
-	\hypo{ab}{\metaX\eand \metaY}
-\end{fitchproof}
-We should then look at our elimination rule for $\eand$ to see what follows from knowing something. And the answer is that both $\metaX$ and $\metaY$ follow.
-
-
-From the premise, we can get each of the conjuncts by {\eand}E. The proof now looks like this:
-\begin{fitchproof}
-	\hypo{ab}{\enot A \eand (E\eor F)}
-	\have{a}{\enot A} \andE{ab}
-	\have{b}{(E\eor F)} \andE{ab}
-		\have[\ ]{a}{\vdots \quad ?}
-	\have[\ ]{ba}{(E\eor F) \eand \enot A} 
+	\hypo{ab}{A\eif( B\eand C)}
+	\hypo{ad}{A\eand \enot D}
+	\have[\ ]{a}{ ?}
+	\have[n-2]{c}{C} \by{?}{}
+	\have[n-1]{d}{\enot D}\by{?}{}
+	\have[n]{ba}{C\eand \enot  D}\andI{c,d}
 \end{fitchproof}
 
-Does this help?
-The conclusion also has the form $\metaX\eand\metaY$:
-\begin{center}
-	\begin{forest}
-		[$\ldots\mainconnective{\eand} \ldots$
-		[$(E\eor F) $]
-		[$\enot A$]
-		]
-	\end{forest}
-\end{center}
+Let's look at our premises and see how they can be used to get to both $\enot D$ and to $C$. 
 
+%Look at the elimination rules for the connectives. 
 
-So by applying the {\eand}I rule to lines 3 and 2, we arrive at the desired conclusion. The finished proof looks like this:
+$\enot D$ is actually easy: we have a premise $A\eand\enot D$, so the $\eand$E rule immediately gets us $\enot D$. 
 \begin{fitchproof}
-	\hypo{ab}{\enot A \eand (E\eor F)}
-
-	\have{a}{\enot A} \andE{ab}
-	\have{b}{(E\eor F)} \andE{ab}
-	\have{ba}{(E\eor F) \eand \enot A} \andI{b,a}
+	\hypo{ab}{A\eif( B\eand C)}
+	\hypo{ad}{A\eand \enot D}
+	\have[\ ]{a}{ ?}
+	\have[n-2]{c}{C} \by{?}{}
+	\have[n-1]{d}{\enot D}\andE{ad}
+	\have[n]{ba}{C\eand \enot  D}\andI{c,d}
 \end{fitchproof}
-This is a very simple proof, but it shows how we can chain rules of proof together into longer proofs. In passing, note that investigating this argument with a truth table would have required a staggering 256 lines; our formal proof required only four lines.
 
-It is worth giving another example. This is a valid argument:
-	$$A \eand (B \eand C) \therefore (A \eand B) \eand C$$
-To provide a proof corresponding with this argument, we start by writing:
+But what about $C$? It's in premise 1, but the elimination rule for the main connective is 
 \begin{fitchproof}
-	\hypo{ab}{A \eand (B \eand C)}
+%	\ellipsesline
+	\have[m]{ab}{\metaX\eif\metaY}
+%	\ellipsesline
+	\have[n]{a}{\metaX}
+%	\ellipsesline
+	\have[\ ]{b}{\metaY} \ifE{ab,a}
 \end{fitchproof}
-From the premise, we can get each of the conjuncts by applying $\eand$E twice. We can then apply $\eand$E twice more, so our proof looks like:
+We can only use premise 1 if we also have $A$. Can we get $A$? Yes! By $\eand$E from premise. That'll allow us to close our gap and complete our proof:
 \begin{fitchproof}
-	\hypo{ab}{A \eand (B \eand C)}
-	\have{a}{A} \andE{ab}
-	\have{bc}{B \eand C} \andE{ab}
-	\have{b}{B} \andE{bc}
+	\hypo{ab}{A\eif( B\eand C)}
+	\hypo{ad}{A\eand \enot D}
+	\have{a}{A}\andE{ad}
+	\have{bc}{B\eand C}\ifE{ab,a}
 	\have{c}{C} \andE{bc}
+	\have{d}{\enot D}\andE{ad}
+	\have{ba}{C\eand \enot  D}\andI{c,d}
 \end{fitchproof}
-But now we can merrily reintroduce conjunctions in the order we wanted them, so that our final proof is:
-\begin{fitchproof}
-	\hypo{abc}{A \eand (B \eand C)}
-	\have{a}{A} \andE{abc}
-	\have{bc}{B \eand C} \andE{abc}
-	\have{b}{B} \andE{bc}
-	\have{c}{C} \andE{bc}
-	\have{ab}{A \eand B}\andI{a, b}
-	\have{con}{(A \eand B) \eand C}\andI{ab, c}
-\end{fitchproof}
-Recall that our official definition of sentences in TFL only allowed conjunctions with two conjuncts. The proof just given suggests that we could drop inner brackets in all of our proofs. However, this is not standard, and we will not do this. Instead, we will maintain our more austere bracketing conventions. (Though we will still allow ourselves to drop outermost brackets, for legibility.)
-
-Let me offer one final illustration. When using the $\eand$I rule, there is no requirement that it is applied to two different sentences. So we can formally prove `$A$' from `$A$' as follows:
-\begin{fitchproof}
-	\hypo{a}{A}
-	\have{aa}{A \eand A}\andI{a, a}
-	\have{a2}{A}\andE{aa}
-\end{fitchproof}
-Simple, but effective. In fact this shows that we didn't need to have the rule of Reiteration as we could always argue by $\eand$I then $\eand$E. But for ease we will allow Reiteration as a basic rule so you don't have to argue this way.
-
+%
+%\subsection{More examples}
+%
+%
+%
+%
+%\todo{change this example! It's conceptually confusing.}
+%Even with just these two rules, we can start to see some of the power of our formal proof system. Consider:
+%\begin{earg}
+%\prem $\enot A \eand (E\eor F)$
+%\conc $(E\eor F) \eand \enot A$
+%\end{earg}
+%
+%
+%In order to provide a proof, we begin by writing down the premise, which is our assumption. We draw a line below this: everything after this line must follow from our assumptions by (repeated applications of) our rules of inference. So our proof will looks something like: 
+%\begin{fitchproof}
+%	\hypo{ab}{\enot A \eand (E\eor F)}
+%	\have[\ ]{a}{\vdots \; ?}
+%	\have[\ ]{ba}{(E\eor F) \eand \enot A} 
+%\end{fitchproof}
+%Our task is to fill out the `?'.
+%
+%If we look carefully at these sentences, they both have the form $\metaX\eand\metaY$. 
+%
+%\begin{center}
+%	\begin{forest}
+%		[$\ldots\mainconnective{\eand} \ldots$
+%		[$\enot A$]
+%		[$(E\eor F)$]
+%		]
+%	\end{forest}
+%\end{center}
+%
+%So we have something like 
+%\begin{fitchproof}
+%	\hypo{ab}{\metaX\eand \metaY}
+%\end{fitchproof}
+%We should then look at our elimination rule for $\eand$ to see what follows from knowing something. And the answer is that both $\metaX$ and $\metaY$ follow.
+%
+%
+%From the premise, we can get each of the conjuncts by {\eand}E. The proof now looks like this:
+%\begin{fitchproof}
+%	\hypo{ab}{\enot A \eand (E\eor F)}
+%	\have{a}{\enot A} \andE{ab}
+%	\have{b}{(E\eor F)} \andE{ab}
+%		\have[\ ]{a}{\vdots \quad ?}
+%	\have[\ ]{ba}{(E\eor F) \eand \enot A} 
+%\end{fitchproof}
+%
+%Does this help?
+%The conclusion also has the form $\metaX\eand\metaY$:
+%\begin{center}
+%	\begin{forest}
+%		[$\ldots\mainconnective{\eand} \ldots$
+%		[$(E\eor F) $]
+%		[$\enot A$]
+%		]
+%	\end{forest}
+%\end{center}
+%
+%
+%So by applying the {\eand}I rule to lines 3 and 2, we arrive at the desired conclusion. The finished proof looks like this:
+%\begin{fitchproof}
+%	\hypo{ab}{\enot A \eand (E\eor F)}
+%
+%	\have{a}{\enot A} \andE{ab}
+%	\have{b}{(E\eor F)} \andE{ab}
+%	\have{ba}{(E\eor F) \eand \enot A} \andI{b,a}
+%\end{fitchproof}
+%This is a very simple proof, but it shows how we can chain rules of proof together into longer proofs. In passing, note that investigating this argument with a truth table would have required a staggering 256 lines; our formal proof required only four lines.
+%
+%It is worth giving another example. This is a valid argument:
+%	$$A \eand (B \eand C) \therefore (A \eand B) \eand C$$
+%To provide a proof corresponding with this argument, we start by writing:
+%\begin{fitchproof}
+%	\hypo{ab}{A \eand (B \eand C)}
+%\end{fitchproof}
+%From the premise, we can get each of the conjuncts by applying $\eand$E twice. We can then apply $\eand$E twice more, so our proof looks like:
+%\begin{fitchproof}
+%	\hypo{ab}{A \eand (B \eand C)}
+%	\have{a}{A} \andE{ab}
+%	\have{bc}{B \eand C} \andE{ab}
+%	\have{b}{B} \andE{bc}
+%	\have{c}{C} \andE{bc}
+%\end{fitchproof}
+%But now we can merrily reintroduce conjunctions in the order we wanted them, so that our final proof is:
+%\begin{fitchproof}
+%	\hypo{abc}{A \eand (B \eand C)}
+%	\have{a}{A} \andE{abc}
+%	\have{bc}{B \eand C} \andE{abc}
+%	\have{b}{B} \andE{bc}
+%	\have{c}{C} \andE{bc}
+%	\have{ab}{A \eand B}\andI{a, b}
+%	\have{con}{(A \eand B) \eand C}\andI{ab, c}
+%\end{fitchproof}
+%Recall that our official definition of sentences in TFL only allowed conjunctions with two conjuncts. The proof just given suggests that we could drop inner brackets in all of our proofs. However, this is not standard, and we will not do this. Instead, we will maintain our more austere bracketing conventions. (Though we will still allow ourselves to drop outermost brackets, for legibility.)
+%
+%Let me offer one final illustration. When using the $\eand$I rule, there is no requirement that it is applied to two different sentences. So we can formally prove `$A$' from `$A$' as follows:
+%\begin{fitchproof}
+%	\hypo{a}{A}
+%	\have{aa}{A \eand A}\andI{a, a}
+%	\have{a2}{A}\andE{aa}
+%\end{fitchproof}
+%Simple, but effective. In fact this shows that we didn't need to have the rule of Reiteration as we could always argue by $\eand$I then $\eand$E. But for ease we will allow Reiteration as a basic rule so you don't have to argue this way.
+%
 
 
 
@@ -559,22 +644,6 @@ Simple, but effective. In fact this shows that we didn't need to have the rule o
 %		\item We might regard `$\ered$', not as a symbol of TFL, but as something more like a \emph{punctuation mark} that appears in our proofs. (It is on a par with the line numbers and the vertical lines, say.)
 %	\end{ebullet}
 %There is something very philosophically attractive about the third option, but here we will \emph{officially} adopt the first. `$\ered$' is to be read as a sentence letter that is always false. This means that we can manipulate it, in our proofs, just like any other sentence.
-
-\section{Strategies}
-We have a few more rules to introduce, but at this point we pause to mention a strategies to come up with proofs yourself:
-
-\paragraph{Work backwards from what you want.}
-The ultimate goal is to obtain the conclusion. Look at the conclusion and ask what the introduction rule is for its main logical operator. This gives you an idea of what should happen \emph{just before} the last line of the proof. Then you can treat this line as if it were your goal. Ask what you could do to get to this new goal.
-
-For example: If your conclusion is a conjunction $\metaX\eand\metaY$, plan to use the {\eand}I rule. This requires finding both $\metaX$ and $\metaY$.
-
-\paragraph{Work forwards from what you have.}
-When you are starting a proof, look at the premises; later, look at the sentences that you have obtained so far. Think about the elimination rules for the main operators of these sentences. These will often tell you what your options are.
-
-For a short proof, you might be able to eliminate the premises and introduce the conclusion. A long proof is formally just a number of short proofs linked together, so you can fill the gap by alternately working back from the conclusion and forward from the premises.
-
-Sometimes, though, this won't yet be possible. For that, we need to finish off our list of the basic rules of natural deduction.
-
 
 
 %\newpage
@@ -1287,7 +1356,7 @@ When you are starting a proof, look at the premises; later, look at the sentence
 
 For a short proof, you might be able to eliminate the premises and introduce the conclusion. A long proof is formally just a number of short proofs linked together, so you can fill the gap by alternately working back from the conclusion and forward from the premises.
 
-\paragraph{Try proceeding indirectly.}
+\paragraph{Try a proof by contradiction.}
 If you cannot find a way to show $\metaX$ directly, try starting by assuming $\enot \metaX$. If a contradiction follows, then you will be able to obtain $\metaX$ by $\enot$E.
 
 \paragraph{Law of Excluded Middle.}
@@ -1298,6 +1367,81 @@ Try different things. If one approach fails, then try something else.
 
 If the argument is actually valid (which is defined using truth-tables) there will be a proof of it somehow\ldots
 
+
+
+\subsection{Example}
+
+Consider $C\therefore B\eif((A\eif B)\eand C)$
+How to come up with a proof of this? 
+		\begin{enumerate}
+			\item First step is always to just start organising the proof:	\begin{fitchproof}
+				\hypo{c}{C}
+				\have[\ ]{?}{?}
+				\have[n]{goal}{B\eif((A\eif B)\eand C)}\by{?}{}
+			\end{fitchproof}
+			\item We'll use introduction rule for the main connective in the conclusion: $\eif$Introduction\begin{fitchproof}
+				\hypo{c}{C}
+				\open
+				\hypo{b}{B}
+				\have[\ ]{?}{?}
+				\have[n-1]{conj}{(A\eif B)\eand C}\by{?}{}
+				\close
+				\have[n]{goal}{B\eif((A\eif B)\eand C)}\ifI{b-conj}
+			\end{fitchproof}
+			\item To fill out this, we'll use introduction rule for $\eand$. We already have $C$, it was our premise, so we just need to show $A\eif B$.\begin{fitchproof}
+				\hypo{c}{C}
+				\open
+				\hypo{b}{B}
+				\have[\ ]{?}{?}
+				\have[n-2]{ab}{A\eif B}\by{?}{}
+				\have[n-1]{conj}{(A\eif B)\eand C}\andI{ab,c}
+				\close
+				\have[n]{goal}{B\eif((A\eif B)\eand C)}\ifI{b-conj}
+			\end{fitchproof}
+			\item How to get $A\eif B$? Introduction rule for $\eif$\begin{fitchproof}
+				\hypo{c}{C}
+				\open
+				\hypo{b}{B}
+				\open
+				\hypo{a}{A}
+				\have[\ ]{?}{?}
+				\have[n-3]{b2}{B}\by{?}{}
+				\close
+				\have[n-2]{ab}{A\eif B}\ifI{a-b2}
+				\have[n-1]{conj}{(A\eif B)\eand C}\andI{ab,c}
+				\close
+				\have[n]{goal}{B\eif((A\eif B)\eand C)}\ifI{b-conj}
+			\end{fitchproof}
+			\item  How can we get to $B$ from what we have? Well we actually already have it! We have alredy assumed $B$, on line 2 (and that is still available to us, as we're within that vertical line still). So we can just use Reiteration. 
+			\begin{fitchproof}
+				\hypo{c}{C}
+				\open
+				\hypo{b}{B}
+				\open
+				\hypo{a}{A}
+				\have[\ ]{?}{\text{no more `?' to fill - we're done}}		
+				\have[n-3]{b2}{B}\by{R}{b}
+				\close
+				\have[n-2]{ab}{A\eif B}\ifI{a-b2}
+				\have[n-1]{conj}{(A\eif B)\eand C}\andI{ab,c}
+				\close
+				\have[n]{goal}{B\eif((A\eif B)\eand C)}\ifI{b-conj}
+			\end{fitchproof}
+			\item Just need to fill out the numbers properly now and we have our completed proof:	\begin{fitchproof}
+				\hypo{c}{C}
+				\open
+				\hypo{b}{B}
+				\open
+				\hypo{a}{A}
+				\have{b2}{B}\by{R}{b}
+				\close
+				\have{ab}{A\eif B}\ifI{a-b2}
+				\have{conj}{(A\eif B)\eand C}\andI{ab,c}
+				\close
+				\have{goal}{B\eif((A\eif B)\eand C)}\ifI{b-conj}
+			\end{fitchproof}
+		\end{enumerate}
+		
 
 \section{Proofs and Validity}
 The system of rules we have set up is not just a game. It helps us understand the validity of arguments.
