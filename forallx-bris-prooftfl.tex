@@ -1090,150 +1090,6 @@ A proof corresponding to this argument is:
 
 
 
-\subsection{Law of Excluded Middle}\label{sec:LEM}
-We will actually add another rule for how to introduce a disjunction. There are special kinds of disjunctions that don't need further justification: sentences of the form $\metaX\eor\enot\metaX$.
-In \cref{sec:TautologiesAndContradictions} we saw that $A\eor\enot A$ is a tautology: it is true on all valuations. More generally, any sentence of the form $\metaX\eor\enot\metaX$ is a tautology.
-The rule \emph{Law of Excluded Middle} encodes this fact: it simply says that you are always allowed to write $\metaX\eor\enot\metaX$:
-
-\factoidbox{
-	\begin{fitchproof}
-		\ellipsesline
-		\have[\ ]{lem}{\metaX\eor\enot\metaX}\LEM
-	\end{fitchproof}
-}
-
-As always, $\metaX$ can be whatever you want, e.g.~$(A\eand(B\eif C))$. Then the rule tells us, e.g.~that you can write $(A\eand(B\eif C))\eor\enot(A\eand(B\eif C))$ on any line of the proof.
-
-
-
-Consider the following brain teaser:\footnote{Originally by Hector Levesque.}
-\begin{quote}
-	Three people are standing in a row looking at each other.
-	\begin{center}
-		\begin{tikzpicture}[people/.style={minimum width=1.5cm}]
-			\node[people, alice] (alice) {Alice};
-			\node[people, bob, right=of alice] (bob) {Bob};
-			\node[people, charlie, right=of bob] (charlie) {Charlie};
-		\end{tikzpicture}
-	\end{center}
-	Alice is happy. Charlie is not happy. Is there someone who is happy who is looking at someone who is not happy?
-\end{quote} \ldots Think about it! \\\ldots Answer: Yes.
-Our Disjunction Elimination rule along with the Law of Excluded Middle allow us to show this.
-%They write up
-We can demonstrate this in the following argument, which we present in a pseudo-formal style.%
-\footnote{
-	Though, actually, this is most naturally formulated as a validity claim of First Order Logic. We'll walk through the formal proof as formulated in First Order Logic in  \cref{sec:ExistsE}.
-}
-
-
-\begin{fitchproof}
-	\have{lem}{\text{{Bob is either happy or he's not happy}}}%\LEM
-	\open
-	\hypo{b}{\text{{Suppose Bob is happy}}}
-	\have{ab}{{\text{Then happy Bob is looking at not-happy Charlie}}}
-	\have{abc}{{\text{So someone who is happy is looking at someone who is not}}}%\vspace*{1em}
-	\close
-	%\have{babc}{\parbox{.8\textwidth}{{If Bob is happy then someone who is happy is looking at someone who is not happy}}}\vspace*{1em}
-	\open
-	\hypo{b2}{\text{Suppose Bob is not happy}}
-	\have{ab2}{\text{Then happy Alice is looking at not-happy Bob}}
-	\have{abc}{\text{{So someone who is happy is looking at someone who is not}}}%\vspace*{1em}
-	\close
-	%\have{babc}{\parbox{.8\textwidth}{{If Bob is not happy then someone who is happy is looking at someone who is not happy}}}\vspace*{1em}
-	\have{con}{\text{Therefore, someone who is happy is looking at someone who is not.}}%\orE{lem,b-abc,b2-abc2}
-\end{fitchproof}
-
-Are you convinced now that someone who is happy is looking at someone who is not happy? If not, find a friend and work through it together. Sometimes it can really help to try walking through the argument together.
-
-Coming up with this sort of argument does just take that moment of inspiration to see how this argument will go (that's why it's a brain teaser). This is often the case with arguments that involve the law of excluded middle. We pick it out of nowhere and have to use our inspiration to see how it might be useful. But hopefully, with more examples you'll become familiar with cases where it might be of use. A strategy that might help is: it's a backup option if everything else fails. If it doesn't look like there's any elimination rules to use on your premises or any introduction rules that can get you to your conclusion, then perhaps LEM is the way forwards.
-
-
-%
-%Here is a slightly harder example. Consider:
-%	$$ A \eand (B \eor C) \therefore (A \eand B) \eor (A \eand C)$$
-%Here is a proof corresponding to this argument:
-%	\begin{fitchproof}
-	%		\hypo{aboc}{A \eand (B \eor C)}
-	%		\have{a}{A}\andE{aboc}
-	%		\have{boc}{B \eor C}\andE{aboc}
-	%		\open
-	%			\hypo{b}{B}
-	%			\have{ab}{A \eand B}\andI{a,b}
-	%			\have{abo}{(A \eand B) \eor (A \eand C)}\orI{ab}
-	%		\close
-	%%		\have{bconc}{B \eif ((A \eand B) \eor (A \eand C))}{\ifI{b-abo}}
-	%		\open
-	%			\hypo{c}{C}
-	%			\have{ac}{A \eand C}\andI{a,c}
-	%			\have{aco}{(A \eand B) \eor (A \eand C)}\orI{ac}
-	%		\close
-	%%	\have{cconc}{C \eif ((A \eand B) \eor (A \eand C))}{\ifI{c-aco}}
-	%\have{con}{(A \eand B) \eor (A \eand C)}\orE{boc, b-abo, c-aco}
-	%%\have{con}{(A \eand B) \eor (A \eand C)}\orE{boc, bconc, cconc}
-	%	\end{fitchproof}
-%Don't be alarmed if you think that you wouldn't have been able to come up with this proof yourself. The ability to come up with novel proofs will come with practice. The key question at this stage is whether, looking at the proof, you can see that it conforms with the rules that we have laid down. That just involves checking every line, and making sure that it is justified in accordance with the rules we have laid down.
-
-
-
-%Indeed, if we are going to try to create an automatic algorithm to do proofs for us, this becomes a challenge when LEM is used. Computer scientists often consider a weaker logic which doesn't accept LEM. And philosophers are interested in this,
-
-
-
-One more example:
-$$P \therefore (P \eand D) \eor (P \eand \enot D)$$
-Here is a proof corresponding with the argument:
-\begin{fitchproof}
-	\hypo{a}{P}
-	\have{lem}{D\eor\enot D}\LEM
-	\open
-	\hypo{b}{D}
-	\have{ab}{P \eand D}\andI{a, b}
-	\have{abo}{(P \eand D) \eor (P \eand \enot D)}\orI{ab}
-	\close
-	%\have{dconc}{D \eif ((P \eand D) \eor (P \eand \enot D))}{\ifI{b-abo}}
-	\open
-	\hypo{nb}{\enot D}
-	\have{anb}{P \eand \enot D}\andI{a, nb}
-	\have{anbo}{(P \eand D) \eor (P \eand \enot D)}\orI{anb}
-	\close
-	%\have{ndconc}{\enot D \eif ((P \eand D) \eor (P \eand \enot D))}{\ifI{b-abo}}
-	\have{con}{(P \eand D) \eor (P \eand \enot D)}\orE{lem,b-abo,nb-anbo}
-\end{fitchproof}
-%To see the rule in action, consider:
-%$$A\eif B,\enot A\eif B\;\therefore B$$
-%We can give the following proof to show this is valid:
-%\begin{fitchproof}
-%	\hypo{a}{A\eif B}
-%	\hypo{b}{\enot A\eif B}
-%	\have{lem}{A\eor\enot A}\LEM
-%	\have{conc}{B}\orE{a,b,lem}
-%\end{fitchproof}
-%The law of Excluded Middle is often used in combination with Disjunction Elimination. 
-%However, we will not yet introduce Disjunction Elimination. It will be introduced in \cref{sec:orE}. That's when we'll see the full power of the LEM rule. 
-
-
-%
-%
-%
-% It is much like the rule used in disjunction elimination, and it requires a little motivation.
-%
-%Suppose that we can show that if it's sunny outside, then Bill will have brought an umbrella (for fear of burning). Suppose we can also show that, if it's not sunny outside, then Bill will have brought an umbrella (for fear of rain). Well, there is no third way for the weather to be. So, \emph{whatever the weather}, Bill will have brought an umbrella.
-%
-%This line of thinking motivates the following rule:
-%\factoidbox{\begin{fitchproof}
-		%		\open
-		%			\hypo[i]{a}{\metaX}
-		%			\have[j]{c1}{\metaY}
-		%		\close
-		%		\open
-		%			\hypo[k]{b}{\enot\metaX}
-		%			\have[l]{c2}{\metaY}
-		%		\close
-		%		\have[\ ]{ab}{\metaY}\tnd{a-c1,b-c2}
-		%	\end{fitchproof}}
-%The rule is sometimes called \emph{tertium non datur}, which means `no third way'. There can be as many lines as you like between $i$ and $j$, and as many lines as you like between $k$ and $l$. Moreover, the subproofs can come in any order, and the second subproof does not need to come immediately after the first.
-
-
 
 \section{Biconditional}
 
@@ -1359,8 +1215,7 @@ For a short proof, you might be able to eliminate the premises and introduce the
 \paragraph{Try a proof by contradiction.}
 If you cannot find a way to show $\metaX$ directly, try starting by assuming $\enot \metaX$. If a contradiction follows, then you will be able to obtain $\metaX$ by $\enot$E.
 
-\paragraph{Law of Excluded Middle.}
-If you're hitting a blank, try seeing if there's some instance of LEM that might help you. These arguments do just need some inspiration to see the instance of LEM that'll be helpful.
+\paragraph{Law of Excluded Middle.} There's one more convenient approach, closely related to proof by contradiction: if you are allowed to use derived rules, then the rule LEM is sometimes very helpful \cref{sec:LEM}. It will never be necessary, instead a proof by contradiction would do the job instead, but it can be very convenient. 
 
 \paragraph{Persist.}
 Try different things. If one approach fails, then try something else.
@@ -1717,6 +1572,152 @@ We have introduced all the basic rules of our proof system for TFL. In this sect
 %%	\have{na3}{\enot A}\tnd{a-na, na1-na2}
 %%\end{fitchproof}
 %This is a fairly typical use of the R rule.
+
+\section{Law of Excluded Middle}\label{sec:LEM}
+We will actually add another rule for how to introduce a disjunction. There are special kinds of disjunctions that don't need further justification: sentences of the form $\metaX\eor\enot\metaX$.
+In \cref{sec:TautologiesAndContradictions} we saw that $A\eor\enot A$ is a tautology: it is true on all valuations. More generally, any sentence of the form $\metaX\eor\enot\metaX$ is a tautology.
+The rule \emph{Law of Excluded Middle} encodes this fact: it simply says that you are always allowed to write $\metaX\eor\enot\metaX$:
+
+\factoidbox{
+	\begin{fitchproof}
+		\ellipsesline
+		\have[\ ]{lem}{\metaX\eor\enot\metaX}\LEM
+	\end{fitchproof}
+}
+
+As always, $\metaX$ can be whatever you want, e.g.~$(A\eand(B\eif C))$. Then the rule tells us, e.g.~that you can write $(A\eand(B\eif C))\eor\enot(A\eand(B\eif C))$ on any line of the proof.
+
+
+
+Consider the following brain teaser:\footnote{Originally by Hector Levesque.}
+\begin{quote}
+	Three people are standing in a row looking at each other.
+	\begin{center}
+		\begin{tikzpicture}[people/.style={minimum width=1.5cm}]
+			\node[people, alice] (alice) {Alice};
+			\node[people, bob, right=of alice] (bob) {Bob};
+			\node[people, charlie, right=of bob] (charlie) {Charlie};
+		\end{tikzpicture}
+	\end{center}
+	Alice is happy. Charlie is not happy. Is there someone who is happy who is looking at someone who is not happy?
+\end{quote} \ldots Think about it! \\\ldots Answer: Yes.
+Our Disjunction Elimination rule along with the Law of Excluded Middle allow us to show this.
+%They write up
+We can demonstrate this in the following argument, which we present in a pseudo-formal style.%
+\footnote{
+	Though, actually, this is most naturally formulated as a validity claim of First Order Logic. We'll walk through the formal proof as formulated in First Order Logic in  \cref{sec:ExistsE}.
+}
+
+
+\begin{fitchproof}
+	\have{lem}{\text{{Bob is either happy or he's not happy}}}%\LEM
+	\open
+	\hypo{b}{\text{{Suppose Bob is happy}}}
+	\have{ab}{{\text{Then happy Bob is looking at not-happy Charlie}}}
+	\have{abc}{{\text{So someone who is happy is looking at someone who is not}}}%\vspace*{1em}
+	\close
+	%\have{babc}{\parbox{.8\textwidth}{{If Bob is happy then someone who is happy is looking at someone who is not happy}}}\vspace*{1em}
+	\open
+	\hypo{b2}{\text{Suppose Bob is not happy}}
+	\have{ab2}{\text{Then happy Alice is looking at not-happy Bob}}
+	\have{abc}{\text{{So someone who is happy is looking at someone who is not}}}%\vspace*{1em}
+	\close
+	%\have{babc}{\parbox{.8\textwidth}{{If Bob is not happy then someone who is happy is looking at someone who is not happy}}}\vspace*{1em}
+	\have{con}{\text{Therefore, someone who is happy is looking at someone who is not.}}%\orE{lem,b-abc,b2-abc2}
+\end{fitchproof}
+
+Are you convinced now that someone who is happy is looking at someone who is not happy? If not, find a friend and work through it together. Sometimes it can really help to try walking through the argument together.
+
+Coming up with this sort of argument does just take that moment of inspiration to see how this argument will go (that's why it's a brain teaser). This is often the case with arguments that involve the law of excluded middle. We pick it out of nowhere and have to use our inspiration to see how it might be useful. But hopefully, with more examples you'll become familiar with cases where it might be of use. A strategy that might help is: it's a backup option if everything else fails. If it doesn't look like there's any elimination rules to use on your premises or any introduction rules that can get you to your conclusion, then perhaps LEM is the way forwards.
+
+
+%
+%Here is a slightly harder example. Consider:
+%	$$ A \eand (B \eor C) \therefore (A \eand B) \eor (A \eand C)$$
+%Here is a proof corresponding to this argument:
+%	\begin{fitchproof}
+	%		\hypo{aboc}{A \eand (B \eor C)}
+	%		\have{a}{A}\andE{aboc}
+	%		\have{boc}{B \eor C}\andE{aboc}
+	%		\open
+	%			\hypo{b}{B}
+	%			\have{ab}{A \eand B}\andI{a,b}
+	%			\have{abo}{(A \eand B) \eor (A \eand C)}\orI{ab}
+	%		\close
+	%%		\have{bconc}{B \eif ((A \eand B) \eor (A \eand C))}{\ifI{b-abo}}
+	%		\open
+	%			\hypo{c}{C}
+	%			\have{ac}{A \eand C}\andI{a,c}
+	%			\have{aco}{(A \eand B) \eor (A \eand C)}\orI{ac}
+	%		\close
+	%%	\have{cconc}{C \eif ((A \eand B) \eor (A \eand C))}{\ifI{c-aco}}
+	%\have{con}{(A \eand B) \eor (A \eand C)}\orE{boc, b-abo, c-aco}
+	%%\have{con}{(A \eand B) \eor (A \eand C)}\orE{boc, bconc, cconc}
+	%	\end{fitchproof}
+%Don't be alarmed if you think that you wouldn't have been able to come up with this proof yourself. The ability to come up with novel proofs will come with practice. The key question at this stage is whether, looking at the proof, you can see that it conforms with the rules that we have laid down. That just involves checking every line, and making sure that it is justified in accordance with the rules we have laid down.
+
+
+
+%Indeed, if we are going to try to create an automatic algorithm to do proofs for us, this becomes a challenge when LEM is used. Computer scientists often consider a weaker logic which doesn't accept LEM. And philosophers are interested in this,
+
+
+
+One more example:
+$$P \therefore (P \eand D) \eor (P \eand \enot D)$$
+Here is a proof corresponding with the argument:
+\begin{fitchproof}
+	\hypo{a}{P}
+	\have{lem}{D\eor\enot D}\LEM
+	\open
+	\hypo{b}{D}
+	\have{ab}{P \eand D}\andI{a, b}
+	\have{abo}{(P \eand D) \eor (P \eand \enot D)}\orI{ab}
+	\close
+	%\have{dconc}{D \eif ((P \eand D) \eor (P \eand \enot D))}{\ifI{b-abo}}
+	\open
+	\hypo{nb}{\enot D}
+	\have{anb}{P \eand \enot D}\andI{a, nb}
+	\have{anbo}{(P \eand D) \eor (P \eand \enot D)}\orI{anb}
+	\close
+	%\have{ndconc}{\enot D \eif ((P \eand D) \eor (P \eand \enot D))}{\ifI{b-abo}}
+	\have{con}{(P \eand D) \eor (P \eand \enot D)}\orE{lem,b-abo,nb-anbo}
+\end{fitchproof}
+%To see the rule in action, consider:
+%$$A\eif B,\enot A\eif B\;\therefore B$$
+%We can give the following proof to show this is valid:
+%\begin{fitchproof}
+%	\hypo{a}{A\eif B}
+%	\hypo{b}{\enot A\eif B}
+%	\have{lem}{A\eor\enot A}\LEM
+%	\have{conc}{B}\orE{a,b,lem}
+%\end{fitchproof}
+%The law of Excluded Middle is often used in combination with Disjunction Elimination. 
+%However, we will not yet introduce Disjunction Elimination. It will be introduced in \cref{sec:orE}. That's when we'll see the full power of the LEM rule. 
+
+
+%
+%
+%
+% It is much like the rule used in disjunction elimination, and it requires a little motivation.
+%
+%Suppose that we can show that if it's sunny outside, then Bill will have brought an umbrella (for fear of burning). Suppose we can also show that, if it's not sunny outside, then Bill will have brought an umbrella (for fear of rain). Well, there is no third way for the weather to be. So, \emph{whatever the weather}, Bill will have brought an umbrella.
+%
+%This line of thinking motivates the following rule:
+%\factoidbox{\begin{fitchproof}
+		%		\open
+		%			\hypo[i]{a}{\metaX}
+		%			\have[j]{c1}{\metaY}
+		%		\close
+		%		\open
+		%			\hypo[k]{b}{\enot\metaX}
+		%			\have[l]{c2}{\metaY}
+		%		\close
+		%		\have[\ ]{ab}{\metaY}\tnd{a-c1,b-c2}
+		%	\end{fitchproof}}
+%The rule is sometimes called \emph{tertium non datur}, which means `no third way'. There can be as many lines as you like between $i$ and $j$, and as many lines as you like between $k$ and $l$. Moreover, the subproofs can come in any order, and the second subproof does not need to come immediately after the first.
+
+
+
 
 \section{Disjunctive syllogism}
 Here is a very natural argument form.
