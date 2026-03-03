@@ -2001,10 +2001,11 @@ You now want, on line $k$, to prove $\metaY$. You can do this with the rule of D
 			\hypo[k]{a}{\metaX}
 			\open
 			\hypo{a1}{\enot\metaY}
-			\have{a2}{\metaX}\Reiteration{a}
-			\have{a3}{\enot\metaX}\Reiteration{na}
+%			\have{a2}{\metaX}\Reiteration{a}
+%			\have{a3}{\enot\metaX}\Reiteration{na}
+			\have{a3}{\metaX\eand\enot\metaX}\andI{a,na}
 			\close
-			\have{b1}{\metaY}\pbc{a1-a3}
+			\have{b1}{\metaY}\notE{a1-a3}
 		\close
 %	\have{xtoy}{\metaX\eif\metaY}{\ifI{(a)-(b1)}}
 		\open
