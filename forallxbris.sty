@@ -320,6 +320,7 @@
 	
 	\@ifundefined{c@chapter}{}{%
 		\@addtoreset{samplesenti}{chapter}%
+		\AddToHook{cmd/chapter/before}{\restartlist{samplesent}}%
 	}
 	
 	
