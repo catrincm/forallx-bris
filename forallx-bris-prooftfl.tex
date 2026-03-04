@@ -1186,8 +1186,141 @@ The following three proofs are missing their citations (rule and line numbers). 
 %\end{fitchproof}
 \end{multicols}
 
-\solutions
+
+
+
+	
+	\problempart
+	\label{pr:solvedTFLproofs}
+	For each of the following arguments, give a proof using natural deduction.
+	\begin{problemslist}
+		\item $J\eif\enot J \therefore \enot J$
+		\myanswer{\begin{fitchproof}
+				\hypo{jimpnotj}{J \eif \enot J}
+				\open
+				\hypo{j}{J}
+				\have{notj}{\enot J} \ifE{jimpnotj, j}
+				\have{contradiction}{J \eand \enot J} \andI{j, notj}
+				\close
+				\have{notjfinal}{\enot J} \notI{j-contradiction}
+			\end{fitchproof}
+		}
+		\item $Q\eif(Q\eand\enot Q) \therefore \enot Q$
+		\myanswer{\begin{fitchproof}
+				\hypo{qimpcontradiction}{Q \eif (Q \eand \enot Q)}
+				\open
+				\hypo{q}{Q}
+				\have{qandnotq}{Q \eand \enot Q} \ifE{qimpcontradiction, q}
+				\have{notq}{\enot Q} \andE{qandnotq}
+				\have{contradiction}{Q \eand \enot Q} \andI{q, notq}
+				\close
+				\have{notqfinal}{\enot Q} \notI{q-contradiction}
+		\end{fitchproof}}
+		\item $A\eif (B\eif C) \therefore (A\eand B)\eif C$
+		\myanswer{\begin{fitchproof}
+				\hypo{aimpbic}{A \eif (B \eif C)}
+				\open
+				\hypo{aandb}{A \eand B}
+				\have{a}{A} \andE{aandb}
+				\have{b}{B} \andE{aandb}
+				\have{bic}{B \eif C} \ifE{aimpbic, a}
+				\have{c}{C} \ifE{bic, b}
+				\close
+				\have{aimpliesc}{(A \eand B) \eif C} \ifI{aandb-c}
+		\end{fitchproof}}
+		%\item $K\eand L \therefore K\eiff L$
+		\item $(C\eand D)\eor E \therefore E\eor D$\myanswer{\begin{fitchproof}
+				\hypo{prem}{(C \eand D) \eor E}
+				\open
+				\hypo{cd}{C \eand D}
+				\have{d}{D}\andE{cd}
+				\have{eord1}{E \eor D}\orI{d}
+				\close
+				\open
+				\hypo{e}{E}
+				\have{eord2}{E \eor D}\orI{e}
+				\close
+				\have{goal}{E \eor D}\orE{prem,cd-eord1,e-eord2}
+		\end{fitchproof}}
+		%\item $A\eiff B, B\eiff C \therefore A\eiff C$
+
+		\item $(Z\eand K) \eor (K\eand M), K \eif D \therefore D$
+		\myanswer{\begin{fitchproof}
+				\hypo{disj}{(Z \eand K) \eor (K \eand M)}
+				\hypo{kid}{K \eif D}
+				\open
+				\hypo{zk}{Z \eand K}
+				\have{k1}{K}\andE{zk}
+				\have{d1}{D}\ifE{kid,k1}
+				\close
+				\open
+				\hypo{km}{K \eand M}
+				\have{k2}{K}\andE{km}
+				\have{d2}{D}\ifE{kid,k2}
+				\close
+				\have{D}{D}\orE{disj,zk-d1,km-d2}
+		\end{fitchproof}}
+		\item $P \eand (Q\eor R), P\eif \enot R \therefore Q\eor E$
+		\myanswer{\begin{fitchproof}
+				\hypo{prem}{P \eand (Q \eor R)}
+				\hypo{p2nr}{P \eif \enot R}
+				\have{p}{P}\andE{prem}
+				\have{qorr}{Q \eor R}\andE{prem}
+				\open
+				\hypo{q}{Q}
+				\have{qe1}{Q \eor E}\orI{q}
+				\close
+				\open
+				\hypo{r}{R}
+				\have{nr}{\enot R}\ifE{p2nr,p}
+				\open
+				\hypo{nqe}{\enot(Q \eor E)}
+				\have{red}{R \eand \enot R}\andI{r,nr}
+				\close
+				\have{qe2}{Q \eor E}\notE{nqe-red}
+				\close
+				\have{goal}{Q \eor E}\orE{qorr,q-qe1,r-qe2}
+		\end{fitchproof}}
+		%\item $S\eiff T \therefore S\eiff (T\eor S)$
+		\item $\enot (P \eif Q) \therefore \enot Q$
+		\myanswer{\begin{fitchproof}
+				\hypo{nimp}{\enot (P \eif Q)}
+				\open
+				\hypo{q}{Q}
+				\open
+				\hypo{p}{P}
+				\have{q2}{Q}\Reiteration{q}
+				\close
+				\have{imp}{P \eif Q}\ifI{p-q2}
+				\have{red}{(P \eif Q)\eand\enot(P \eif Q)}\andI{imp,nimp}
+				\close
+				\have{nq}{\enot Q}\notI{q-red}
+		\end{fitchproof}}
+		\item $\enot (P \eif Q) \therefore P$
+		\myanswer{\begin{fitchproof}
+				\hypo{nimp2}{\enot (P \eif Q)}
+				\open
+				\hypo{np}{\enot P}
+				\open
+				\hypo{p}{P}
+				\open
+				\hypo{nq}{\enot Q}
+				\have{contr}{P \eand \enot P}\andI{p,np}
+				\close
+				\have{q}{Q}\notE{nq-contr}
+				\close
+				\have{imp}{P \eif Q}\ifI{p-q}
+				\have{red}{(P \eif Q)\eand\enot(P \eif Q)}\andI{imp,nimp2}
+				\close
+				\have{P}{P}\notE{np-red}
+		\end{fitchproof}}
+	\end{problemslist}
+	
+	
+	
 \end{practiceproblems}
+
+
 
 
 \chapter{Proofs and Validity}
@@ -1382,155 +1515,6 @@ So for every valid argument there will be some proof. This doesn't mean it is al
 
 
 
-
-
-\begin{practiceproblems}
-
-\problempart
-\label{pr:solvedTFLproofs}
-Show that each of the following arguments are valid using natural deduction:
-\begin{compactlist}
-\item $J\eif\enot J \therefore \enot J$
-\myanswer{\begin{fitchproof}
-		\hypo{jimpnotj}{J \eif \enot J}
-	\open
-	\hypo{j}{J}
-	\have{notj}{\enot J} \ifE{jimpnotj, j}
-	\have{contradiction}{J \eand \enot J} \andI{j, notj}
-	\close
-	\have{notjfinal}{\enot J} \notI{j-contradiction}
-	\end{fitchproof}
-}
-\item $Q\eif(Q\eand\enot Q) \therefore \enot Q$
-\myanswer{\begin{fitchproof}
-	\hypo{qimpcontradiction}{Q \eif (Q \eand \enot Q)}
-	\open
-	\hypo{q}{Q}
-	\have{qandnotq}{Q \eand \enot Q} \ifE{qimpcontradiction, q}
-	\have{notq}{\enot Q} \andE{qandnotq}
-	\have{contradiction}{Q \eand \enot Q} \andI{q, notq}
-	\close
-	\have{notqfinal}{\enot Q} \notI{q-contradiction}
-\end{fitchproof}}
-\item $A\eif (B\eif C) \therefore (A\eand B)\eif C$
-\myanswer{\begin{fitchproof}
-		\hypo{aimpbic}{A \eif (B \eif C)}
-		\open
-		\hypo{aandb}{A \eand B}
-		\have{a}{A} \andE{aandb}
-		\have{b}{B} \andE{aandb}
-		\have{bic}{B \eif C} \ifE{aimpbic, a}
-		\have{c}{C} \ifE{bic, b}
-		\close
-		\have{aimpliesc}{(A \eand B) \eif C} \ifI{aandb-c}
-\end{fitchproof}}
-%\item $K\eand L \therefore K\eiff L$
-\item $(C\eand D)\eor E \therefore E\eor D$\myanswer{\begin{fitchproof}
-		\hypo{prem}{(C \eand D) \eor E}
-		\open
-		\hypo{cd}{C \eand D}
-		\have{d}{D}\andE{cd}
-		\have{eord1}{E \eor D}\orI{d}
-		\close
-		\open
-		\hypo{e}{E}
-		\have{eord2}{E \eor D}\orI{e}
-		\close
-		\have{goal}{E \eor D}\orE{prem,cd-eord1,e-eord2}
-\end{fitchproof}}
-%\item $A\eiff B, B\eiff C \therefore A\eiff C$
-\item $\enot F\eif G, F\eif H \therefore G\eor H$
-\myanswer{\begin{fitchproof}
-		\hypo{nfig}{\enot F \eif G}
-		\hypo{fih}{F \eif H}
-		\have{lem}{F \eor \enot F}\LEM
-		\open
-		\hypo{f}{F}
-		\have{h}{H}\ifE{fih,f}
-		\have{gh1}{G \eor H}\orI{h}
-		\close
-		\open
-		\hypo{nf}{\enot F}
-		\have{g}{G}\ifE{nfig,nf}
-		\have{gh2}{G \eor H}\orI{g}
-		\close
-		\have{goal}{G \eor H}\orE{lem,f-gh1,nf-gh2}
-\end{fitchproof}}
-\item $(Z\eand K) \eor (K\eand M), K \eif D \therefore D$
-\myanswer{\begin{fitchproof}
-		\hypo{disj}{(Z \eand K) \eor (K \eand M)}
-		\hypo{kid}{K \eif D}
-		\open
-		\hypo{zk}{Z \eand K}
-		\have{k1}{K}\andE{zk}
-		\have{d1}{D}\ifE{kid,k1}
-		\close
-		\open
-		\hypo{km}{K \eand M}
-		\have{k2}{K}\andE{km}
-		\have{d2}{D}\ifE{kid,k2}
-		\close
-		\have{D}{D}\orE{disj,zk-d1,km-d2}
-\end{fitchproof}}
-\item $P \eand (Q\eor R), P\eif \enot R \therefore Q\eor E$
-\myanswer{\begin{fitchproof}
-		\hypo{prem}{P \eand (Q \eor R)}
-		\hypo{p2nr}{P \eif \enot R}
-		\have{p}{P}\andE{prem}
-		\have{qorr}{Q \eor R}\andE{prem}
-		\open
-		\hypo{q}{Q}
-		\have{qe1}{Q \eor E}\orI{q}
-		\close
-		\open
-		\hypo{r}{R}
-		\have{nr}{\enot R}\ifE{p2nr,p}
-		\open
-		\hypo{nqe}{\enot(Q \eor E)}
-		\have{red}{R \eand \enot R}\andI{r,nr}
-		\close
-		\have{qe2}{Q \eor E}\notE{nqe-red}
-		\close
-		\have{goal}{Q \eor E}\orE{qorr,q-qe1,r-qe2}
-\end{fitchproof}}
-%\item $S\eiff T \therefore S\eiff (T\eor S)$
-\item $\enot (P \eif Q) \therefore \enot Q$
-\myanswer{\begin{fitchproof}
-		\hypo{nimp}{\enot (P \eif Q)}
-		\open
-		\hypo{q}{Q}
-		\open
-		\hypo{p}{P}
-		\have{q2}{Q}\Reiteration{q}
-		\close
-		\have{imp}{P \eif Q}\ifI{p-q2}
-		\have{red}{(P \eif Q)\eand\enot(P \eif Q)}\andI{imp,nimp}
-		\close
-		\have{nq}{\enot Q}\notI{q-red}
-\end{fitchproof}}
-\item $\enot (P \eif Q) \therefore P$
-\myanswer{\begin{fitchproof}
-		\hypo{nimp2}{\enot (P \eif Q)}
-		\open
-		\hypo{np}{\enot P}
-		\open
-		\hypo{p}{P}
-		\open
-		\hypo{nq}{\enot Q}
-		\have{contr}{P \eand \enot P}\andI{p,np}
-		\close
-		\have{q}{Q}\notE{nq-contr}
-		\close
-		\have{imp}{P \eif Q}\ifI{p-q}
-		\have{red}{(P \eif Q)\eand\enot(P \eif Q)}\andI{imp,nimp2}
-		\close
-		\have{P}{P}\notE{np-red}
-\end{fitchproof}}
-\end{compactlist}
-
-
-
-\end{practiceproblems}
 
 
 
@@ -1954,12 +1938,29 @@ The following proofs are missing their citations (rule and line numbers). Add th
 
 \problempart
 Give a proof for each of these arguments:
-\begin{compactlist}
+\begin{enumerate}
+			\item $\enot F\eif G, F\eif H \therefore G\eor H$
+	\myanswer{\begin{fitchproof}
+			\hypo{nfig}{\enot F \eif G}
+			\hypo{fih}{F \eif H}
+			\have{lem}{F \eor \enot F}\LEM
+			\open
+			\hypo{f}{F}
+			\have{h}{H}\ifE{fih,f}
+			\have{gh1}{G \eor H}\orI{h}
+			\close
+			\open
+			\hypo{nf}{\enot F}
+			\have{g}{G}\ifE{nfig,nf}
+			\have{gh2}{G \eor H}\orI{g}
+			\close
+			\have{goal}{G \eor H}\orE{lem,f-gh1,nf-gh2}
+	\end{fitchproof}}
 \item $E\eor F$, $F\eor G$, $\enot F \therefore E \eand G$
 \item $M\eor(N\eif M) \therefore \enot M \eif \enot N$
 \item $(M \eor N) \eand (O \eor P)$, $N \eif P$, $\enot P \therefore M\eand O$
 \item $A\eand B)\eor(A\eand C)$, $\enot(A\eand D)$, $D\eor M$ \therefore $M$
-\end{compactlist}
+\end{enumerate}
 
 
 
@@ -2526,32 +2527,32 @@ consistent? & all possible proofs & one proof\\
 \begin{practiceproblems}
 \problempart
 Show that each of the following sentences is a theorem:
-\begin{compactlist}
+\begin{problemslist}
 \item $O \eif O$
 \item $N \eor \enot N$
 \item $J \eiff (J\eor (L\eand\enot L))$
 \item $((A \eif B) \eif A) \eif A$
-\end{compactlist}
+\end{problemslist}
 
 \problempart
 Provide proofs to show each of the following:
-\begin{compactlist}
+\begin{problemslist}
 \item $C\eif(E\eand G), \enot C \eif G \proves G$
 \item $M \eand (\enot N \eif \enot M) \proves (N \eand M) \eor \enot M$
 \item $(Z\eand K)\eiff(Y\eand M), D\eand(D\eif M) \proves Y\eif Z$
 \item $(W \eor X) \eor (Y \eor Z), X\eif Y, \enot Z \proves W\eor Y$
-\end{compactlist}
+\end{problemslist}
 
 \problempart
 Show that each of the following pairs of sentences are provably equivalent:
-\begin{compactlist}
+\begin{problemslist}
 \item $R \eiff E$, $E \eiff R$
 \item $G$, $\enot\enot\enot\enot G$
 \item $T\eif S$, $\enot S \eif \enot T$
 \item $U \eif I$, $\enot(U \eand \enot I)$
 \item $\enot (C \eif D), C \eand \enot D$
 \item $\enot G \eiff H$, $\enot(G \eiff H)$
-\end{compactlist}
+\end{problemslist}
 
 \problempart
 If you know that $\metaX\proves\metaY$, what can you say about $(\metaX\eand\metaZ)\proves\metaY$? What about $(\metaX\eor\metaZ)\proves\metaY$? Explain your answers.
