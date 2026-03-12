@@ -1448,7 +1448,125 @@ In FOL, the domain must always include at least one thing. Moreover, in English 
 %%\item[Bx]\gap{x} is badly behaved
 %%\end{ekey}
 
-
+\begin{practiceproblems}
+		\solutions
+	%Warning: some of these problems require you to use identity, which hasn't yet been introduced. See \cref{ch:identity}.
+	\problempart
+	Using this symbolization key:
+	\begin{ekey}
+		\item[\text{domain}]  animals
+		\item[\atom{A}{x}] \gap{x} is an alligator
+		\item[\atom{M}{x}] \gap{x} is a monkey
+		\item[\atom{R}{x}] \gap{x} is a reptile
+		\item[\atom{Z}{x}] \gap{x} lives at the zoo
+		\item[\atom{L}{x,y}] \gap{x} loves \gap{y}
+		\item[a] Amos
+		\item[b] Bouncer
+		\item[c] Cleo
+	\end{ekey}
+	symbolize each of the following sentences in FOL:
+	\begin{problemslist}
+		\item If Cleo loves Bouncer, then Bouncer is a monkey.
+		\item[] \myanswer{$\atom{L}{c,b} \eif \atom{M}{b}$}
+		\item If both Bouncer and Cleo are alligators, then Amos loves them both.
+		\item[] \myanswer{$(\atom{A}{b} \eand \atom{A}{c}) \eif (\atom{L}{a,b} \eand \atom{L}{a,c})$}
+		%\item Some reptile lives at the zoo.
+		%\item Every alligator is a reptile.
+		%\item Any animal that lives at the zoo is either a monkey or an alligator.
+		%\item There are reptiles which are not alligators.
+		\item Cleo loves a reptile.
+		\item[] \myanswer{$\exists x(\atom{R}{x} \eand \atom{L}{c,x})$\\Comment: this English expression is ambiguous; in some contexts, it can be read as a generic, along the lines of `Cleo loves reptiles'. (Compare `I do love a good pint'.) }
+		\item Bouncer loves all the monkeys that live at the zoo.
+		\item[] \myanswer{$\forall x ((\atom{M}{x} \eand \atom{Z}{x}) \eif \atom{L}{b,x})$}\item All the monkeys that Amos loves love him back.
+		\item[] \myanswer{$\forall x ((\atom{M}{x} \eand \atom{L}{a,x}) \eif \atom{L}{x,a})$}
+		%\item If any animal is an reptile, then Amos is.
+		%\item If any animal is an alligator, then it is a reptile.
+		\item Every monkey that Cleo loves is also loved by Amos.
+		\item[] \myanswer{$\forall x ((\atom{M}{x} \eand \atom{L}{c,x}) \eif \atom{L}{a,x})$}
+		\item There is a monkey that loves Bouncer, but sadly Bouncer does not reciprocate this love.
+		\item[] \myanswer{$\exists x (\atom{M}{x} \eand \atom{L}{x,b} \eand \enot \atom{L}{b,x})$}
+	\end{problemslist}
+	
+		\problempart
+	Using the following symbolization key:
+	\begin{ekey}
+		\item[\text{domain}] people and dishes at a potluck
+		\item[\atom{R}{x}] \gap{x} has run out.
+		\item[\atom{T}{x}] \gap{x} is on the table.
+		\item[\atom{F}{x}] \gap{x} is food.
+		\item[\atom{P}{x}] \gap{x} is a person.
+		\item[\atom{L}{x,y}] \gap{x} likes \gap{y}.
+		\item[e] Eli
+		\item[f] Francesca
+		\item[g] the guacamole
+	\end{ekey}
+	symbolize the following English sentences in FOL:
+	\begin{problemslist}
+		\item All the food is on the table.
+		\item[] \myanswer{$\forall x(\atom{F}{x} \eif \atom{T}{x})$}
+		\item If the guacamole has not run out, then it is on the table.
+		\item[] \myanswer{$\enot \atom{R}{g} \eif \atom{T}{g}$}
+		\item Everyone likes the guacamole.
+		\item[] \myanswer{$\forall x (\atom{P}{x} \eif \atom{L}{x,g})$}
+		\item If anyone likes the guacamole, then Eli does.
+		\item[] \myanswer{$\exists x (\atom{P}{x} \eand \atom{L}{x,g}) \eif \atom{L}{e,g}$}\item Francesca only likes the dishes that have run out.
+		\item[] \myanswer{$\forall x \bigl[(\atom{L}{f,x} \eand \atom{F}{x}) \eif \atom{R}{x}\bigr]$}
+%		\item Francesca likes no one, and no one likes Francesca.
+%		\item[] \myanswer{$\forall x\bigl[\atom{P}{x} \eif (\enot \atom{L}{f,x} \eand \enot \atom{L}{x,f})\bigr]$}
+		\item Eli likes anyone who likes the guacamole.
+		\item[] \myanswer{$\forall x ((\atom{P}{x} \eand \atom{L}{x,g}) \eif \atom{L}{e,x})$}
+		\item Eli likes anyone who likes the people that he likes.
+		\item[] \myanswer{$\forall x \bigl[\bigl(\atom{P}{x} \eand \forall y[(\atom{P}{y} \eand \atom{L}{e,y}) \eif \atom{L}{x,y}]\bigr) \eif \atom{L}{e,x}\bigr]$}
+		\item If there is a person on the table already, then all of the food must have run out.
+		\item[] \myanswer{$\exists x(\atom{P}{x} \eand \atom{T}{x}) \eif \forall x(\atom{F}{x} \eif \atom{R}{x})$}
+	\end{problemslist}
+	
+	\solutions
+	\problempart
+	\label{pr:FOLballet}
+	Using the following symbolization key:
+	\begin{ekey}
+		\item[\text{domain}] people
+		\item[\atom{D}{x}] \gap{x} dances ballet.
+		\item[\atom{F}{x}] \gap{x} is female.
+		\item[\atom{M}{x}] \gap{x} is male.
+		\item[\atom{C}{x,y}] \gap{x} is a child of \gap{y}.
+		\item[\atom{S}{x,y}] \gap{x} is a sibling of \gap{y}.
+		\item[e] Elmer
+		\item[j] Jane
+		\item[p] Patrick
+	\end{ekey}
+	symbolize the following sentences in FOL:
+	\begin{problemslist}
+		\item All of Patrick's children are ballet dancers.
+		\item[] \myanswer{$\forall x(\atom{C}{x,p} \eif \atom{D}{x})$}
+		\item Jane is Patrick's daughter.
+		\item[] \myanswer{$\atom{C}{j,p} \eand \atom{F}{j}$}
+		\item Patrick has a daughter.
+		\item[] \myanswer{$\exists x(\atom{C}{x,p} \eand \atom{F}{x})$}
+%		\item Jane is an only child.
+%		\item[] \myanswer{$\enot \exists x \atom{S}{x,j}$}
+		\item All of Patrick's sons dance ballet.
+		\item[] \myanswer{$\forall x\bigl[(\atom{C}{x,p} \eand \atom{M}{x}) \eif \atom{D}{x}\bigr]$}
+%		\item Patrick has no sons.
+%		\item[] \myanswer{$\enot \exists x(\atom{C}{x,p} \eand \atom{M}{x})$}
+		\item Jane is Elmer's niece.
+		\item[] \myanswer{$\exists x(\atom{S}{x,e} \eand \atom{C}{j,x} \eand \atom{F}{j})$}
+		\item Patrick is Elmer's brother.
+		\item[] \myanswer{$\atom{S}{p,e} \eand \atom{M}{p}$}
+%		\item Patrick's brothers have no children.
+%		\item[] \myanswer{$\forall x\bigl[(\atom{S}{p,x} \eand \atom{M}{x}) \eif \enot \exists y\, \atom{C}{y,x}\bigr]$}
+		\item Jane is an aunt.
+		\item[] \myanswer{$\atom{F}{j} \eand \exists x(\atom{S}{x,j} \eand \exists y \atom{C}{y,x})$}
+		\item Everyone who dances ballet has a brother who also dances ballet.
+		\item[] \myanswer{$\forall x\bigl[\atom{D}{x} \eif \exists y(\atom{M}{y} \eand \atom{S}{y,x} \eand \atom{D}{y})\bigr]$}
+		\item Every woman who dances ballet is the child of someone who dances ballet.
+		\item[] \myanswer{$\forall x\bigl[(\atom{F}{x} \eand \atom{D}{x}) \eif \exists y(\atom{C}{x,y} \eand \atom{D}{y})\bigr]$}
+	\end{problemslist}
+	
+	
+	
+\end{practiceproblems}
 
 \chapter{Sentences of FOL}\label{sec:FOLSentences}
 \todo[inline]{This section got moved above symbolising with one quantifier. But I actually think it might be better}
