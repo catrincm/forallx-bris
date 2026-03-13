@@ -3,7 +3,7 @@
 \label{ch:semantics}
 \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
 
-\chapter{FOL semantics part 1}
+\chapter[FOL semantics part 1]{FOL semantics Part 1 - Monadic sentences}
 \label{ch:FOL semantics informal - monadic}
 We have discussed the syntax of the language of first-order language and, using our intuitive understanding of the vocabulary of the language, proposed a guideline for symbolizing English sentences in the language of FOL. We now turn to the semantics, that is, we now want to spell out truth-conditions for sentences of the language. 
 
@@ -712,8 +712,8 @@ The following table summarises whether a single (counter-)model suffices, or whe
 
 This might usefully be compared with the table at the end of \cref{sec:PartialTruthTable}. The key difference resides in the fact that TFL concerns truth tables, whereas FOL concerns models. This difference is deeply important, since each truth-table only ever has finitely many lines, so that a complete truth table is a relatively tractable object. By contrast, there are infinitely many models for any given sentence(s), so that reasoning about all models can be a deeply tricky business.
 
-%\chapter{More symbolisation - `none'}
-\chapter{More symbolisation -- common quantifier phrases like `none'}
+
+\chapter[Symbolising `None']{More symbolisation -- common quantifier phrases like `none'}
 Consider these sentences:
 \begin{samplesent}
 	\item\label{sent:quan1} Every coin in my pocket is a quarter.
@@ -794,7 +794,7 @@ How should we symbolize this?  A good strategy is to consider when the sentence 
 		\item[\text{domain}] all animals
 		\item[\atom{D}{x}] \gap{x} is a dog
 		\item[\atom{S}{x}] \gap{x} likes samurai movies
-		\item[\atom{L}{x,y}] \gap{x} is larger than \gap{y}
+		\item[\atom{L}{xy}] \gap{x} is larger than \gap{y}
 		\item[r] Rave
 		\item[h] Shane
 		\item[d] Daisy
@@ -830,12 +830,12 @@ How should we symbolize this?  A good strategy is to consider when the sentence 
 		\item No dog is larger than itself.
 		\item[] \myanswer{$\forall x(\atom{D}{x} \eif \enot \atom{L}{x,x})$}
 		\item Every dog is larger than some dog.
-		\item[] \myanswer{$\forall x (\atom{D}{x} \eif \exists y(\atom{D}{y} \eand \atom{L}{x,y}))$\\
+		\item[] \myanswer{$\forall x (\atom{D}{x} \eif \exists y(\atom{D}{y} \eand \atom{L}{xy}))$\\
 			Comment: the English sentence is potentially ambiguous here. I have resolved the ambiguity by assuming it should be paraphrased by `for every dog, there is a dog smaller than it'.}
 		\item There is an animal that is smaller than every dog.
 		\item[] \myanswer{$\exists x \forall y(\atom{D}{y} \eif \atom{L}{y,x})$}
 		\item If there is an animal that is larger than any dog, then that animal does not like samurai movies.
-		\item[] \myanswer{$\forall x (\forall y (\atom{D}{y} \eif \atom{L}{x,y}) \eif \enot \atom{S}{x})$\\
+		\item[] \myanswer{$\forall x (\forall y (\atom{D}{y} \eif \atom{L}{xy}) \eif \enot \atom{S}{x})$\\
 			Comment: I have assumed that `larger than any dog' here means `larger than every dog'.}
 	\end{problemslist}
 	
@@ -848,7 +848,7 @@ How should we symbolize this?  A good strategy is to consider when the sentence 
 		\item[\atom{M}{x}] \gap{x} has marzipan in it.
 		\item[\atom{S}{x}] \gap{x} has sugar in it.
 		\item[\atom{T}{x}] Boris has tried \gap{x}.
-		\item[\atom{B}{x,y}] \gap{x} is better than \gap{y}.
+		\item[\atom{B}{xy}] \gap{x} is better than \gap{y}.
 	\end{ekey}
 	\begin{problemslist}
 		\item Boris has never tried any candy.
@@ -868,7 +868,7 @@ How should we symbolize this?  A good strategy is to consider when the sentence 
 \end{practiceproblems}
 
 
-\chapter{FOL semantics part 2 - relations and interacting quantifiers}
+\chapter[FOL semantics part 2]{FOL semantics part 2 - relations and interacting quantifiers}
 \label{ch:FOL semantics informal - relations and multiple quantifiers}
 
 
