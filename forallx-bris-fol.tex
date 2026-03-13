@@ -625,7 +625,7 @@ Take this sentence and try to find things filling out $\ldots$, things about $x$
 \end{samplesent}
 In this case: 
 \begin{samplesent}
-\item[]	For all $x$: if $x$ is an enthusiastic student, then $x$ is not tired. 
+\item[]	For all $x$: if \emph{$x$ is an enthusiastic student}, then \emph{$x$ is not tired}. 
 \end{samplesent}
 So when we're symbolising it we apply our symbolisation strategy and break it up in stages.
 \begin{center}
@@ -695,7 +695,7 @@ We paraphrase it as
 \end{center}
 
 
-When using the existential quantifier, $\exists$, we typically find it with $\eand$, unlike the universal quantifier, $\forall$, which typically comes paired with $\eif$. In WHERE we will show why this is right, for now, we simply motivate it with paraphrasing. 
+When using the existential quantifier, $\exists$, we typically find it with $\eand$, unlike the universal quantifier, $\forall$, which typically comes paired with $\eif$. Once we do FOL semantics we can see why this is right.  For now, we simply motivate it with paraphrasing. 
 
 
 	\factoidbox{
@@ -718,6 +718,10 @@ When using the existential quantifier, $\exists$, we typically find it with $\ea
 		]
 	\end{forest}
 \end{center}
+
+\begin{samplesent}
+	\item Some enthusiastic student is not tired.
+\end{samplesent}
 
 \begin{center}
 	\begin{forest}
@@ -892,7 +896,7 @@ We write it out in a symbolisation tree to help keeping track, and then work on 
 		There exists $x$:   \ldots and \ldots\\
 		$\exists x(\ldots\eand \ldots)$
 		[$x$ is a vet\\$Vx$]
-		[every animal likes $x$]
+		[every animal likes $x$\\?]
 		]
 	\end{forest}
 \end{center}
@@ -911,7 +915,7 @@ So far we have always jumped to using the variable $x$, but we have already got 
 In our symbolisation tree:
 \begin{center}
 	\begin{forest}
-		[$x$ likes every animal\\$\forall y(\ldots\eif\ldots)$
+		[$x$ likes every animal\\{For all $y$, if \ldots then \ldots}\\$\forall y(\ldots\eif\ldots)$
 		[$y$ is an animal\\$Ay$]
 		[$x$ likes $y$\\$Lxy$]
 		]
@@ -924,7 +928,7 @@ Putting these together:
 		There exists $x$:   \ldots and \ldots\\
 		$\exists x(\ldots\eand \ldots)$
 		[$x$ is a vet\\$Vx$]
-		[$x$ likes every animal\\$\forall y(\ldots\eif\ldots)$
+		[$x$ likes every animal\\{For all $y$, if \ldots then \ldots}\\$\forall y(\ldots\eif\ldots)$
 		[$y$ is an animal\\$Ay$]
 		[$x$ likes $y$\\$Lxy$]
 		]
@@ -999,13 +1003,52 @@ Consider:
 \begin{samplesent}
 	\item Some vet likes every animal. 
 \end{samplesent}
+
+Again we can manage to break it down by one step:
 \begin{center}
 	\begin{forest}
 		[Some vet likes every animal. \\
 		There exists $x$:   \ldots and \ldots\\
 		$\exists x(\ldots\eand \ldots)$
 		[$x$ is a vet\\$Vx$]
-		[$x$ likes every animal\\$\forall y(\ldots\eif\ldots)$
+		[$x$ likes every animal\\?
+%		[$y$ is an animal\\$Ay$]
+%		[$x$ likes $y$\\$Lxy$]
+		]
+		]
+	\end{forest}
+\end{center}
+So how to symbolise 
+\begin{samplesent}
+	\item $x$ likes every animal.
+\end{samplesent}
+We can paraphrase it as 
+\begin{samplesent}
+	\item[] For all things, if it is an animal, then $x$ likes it.
+	\item[] For all $y$, if $y$ is an animal then $x$ likes $y$. 
+\end{samplesent}
+Using $y$ because $x$ is already in use here. 
+\begin{center}
+	\begin{forest}
+		%		[Some vet likes every animal. \\
+		%		There exists $x$:   \ldots and \ldots\\
+		%		$\exists x(\ldots\eand \ldots)$
+		%		[$x$ is a vet\\$Vx$]
+		[$x$ likes every animal\\{For all $y$, if \ldots then \ldots}\\$\forall y(\ldots\eif\ldots)$
+		[$y$ is an animal\\$Ay$]
+		[$x$ likes $y$\\$Lxy$]
+		]
+		]
+	\end{forest}
+\end{center}
+Piecing these together we get:
+\begin{center}
+	\begin{forest}
+				[Some vet likes every animal. \\
+				There exists $x$:   \ldots and \ldots\\
+				$\exists x(\ldots\eand \ldots)$
+				[$x$ is a vet\\$Vx$]
+		[$x$ likes every animal\\{For all $y$, if \ldots then \ldots}\\$\forall y(\ldots\eif\ldots)$
 		[$y$ is an animal\\$Ay$]
 		[$x$ likes $y$\\$Lxy$]
 		]
@@ -1026,7 +1069,7 @@ Consider:
 		For all $x$:   if \ldots then \ldots\\
 		$\forall x(\ldots\eif \ldots)$
 		[$x$ is a vet\\$Vx$]
-		[$x$ likes some animal\\$\exists y(\ldots\eand\ldots)$
+		[$x$ likes some animal\\There exists $y$ \ldots and \ldots\\$\exists y(\ldots\eand\ldots)$
 		[$y$ is an animal\\$Ay$]
 		[$x$ likes $y$\\$Lxy$]
 		]
@@ -1046,7 +1089,7 @@ Consider
 		For all $x$:   if \ldots then \ldots\\
 		$\forall x(\ldots\eif \ldots)$
 		[$x$ is an animal\\$Ax$]
-		[$x$ is liked by some vet\\$\exists y(\ldots\eand\ldots)$
+		[$x$ is liked by some vet\\There exists $y$ \ldots and \ldots\\$\exists y(\ldots\eand\ldots)$
 		[$y$ is a vet\\$Vy$]
 		[$x$ likes $y$\\$Lxy$]
 		]
@@ -1065,7 +1108,7 @@ Consider
 		For all $x$:   if \ldots then \ldots\\
 		$\forall x(\ldots\eif \ldots)$
 		[$x$ is a happy vet\\$Hx\eand Vx$]
-		[$x$ likes all calm animals\\$\forall y(\ldots\eif\ldots)$
+		[$x$ likes all calm animals\\For all $y$ if \ldots then \ldots\\$\forall y(\ldots\eif\ldots)$
 		[$y$ is a calm animal\\$Cy\eand Ay$]
 		[$x$ likes $y$\\$Lxy$]
 		]
