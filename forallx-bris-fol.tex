@@ -1078,7 +1078,7 @@ Consider:
 \end{center}
 So we give: $$\forall x(Vx\eif\exists y(Ay\eand Lxy))$$
 
-Consider 
+
 \begin{samplesent}
 	\item Every animal is liked by some vet. 
 \end{samplesent}
@@ -1097,7 +1097,9 @@ Consider
 	\end{forest}
 \end{center}
 
+$$\forall x(Ax\eif\exists y (Vy\eand Lxy))$$
 
+%These strategies can be applied with more complicated case
 \begin{samplesent}
 	\item Every happy vet likes all calm animals.
 \end{samplesent}
@@ -1115,8 +1117,10 @@ Consider
 		]
 	\end{forest}
 \end{center}
-
-
+$$\forall x((Hx\eand Vx)\eif\forall y((Cy\eand Ay)\eif Lxy))$$
+With our rules for dropping brackets fully utilised we could just give:
+$$\forall x(Hx\eand Vx\eif\forall y(Cy\eand Ay\eif Lxy))$$
+The remaining brackets cannot be dropped. 
 
 These strategies of breaking down the sentence and working on symbolising the components separately using the symbolisation key can take you very far
 

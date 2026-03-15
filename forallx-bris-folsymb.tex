@@ -4,7 +4,7 @@
 \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
 
 
-	\chapter{FOL-Symbolisations}
+	\chapter{FOL symbolisation tips}
 	\label{sec:SymbolisingComplexFOL}
 	We have already seem the key idea of FOL symbolisation in \cref{sec:FOLBuildingBlocks} applied to sentences with limited logical complexity. Before moving to symbolise more complex sentences, we explicitly summarise our strategy for symbolising complex sentences. This extends the strategy that we used for TFL in \cref{sec:SymbolisingTFL - simple connectives complex form}
 	
@@ -43,32 +43,6 @@
 	
 	
 
-	
-	\subsection{Non-referring terms {\textnormal (Further philosophical interest)}}
-	
-	In FOL, each name must pick out exactly one member of the domain. A name cannot refer to more than one thing---it is a \emph{singular} term. Each name must still pick out \emph{something}. This is connected to a classic philosophical problem: the so-called problem of non-referring terms.
-	
-	Medieval philosophers typically used sentences about the \emph{chimera} to exemplify this problem. Chimera is a mythological creature; it does not really exist. Consider these two sentences:
-	\begin{samplesent}
-		\item\label{sent:chimera1} Chimera is angry.
-		\item\label{sent:chimera2} Chimera is not angry.
-	\end{samplesent}
-	It is tempting just to define a name to mean `chimera.' The symbolization key would look like this:
-	\begin{ekey}
-		\item[\text{domain}] creatures on Earth
-		\item[Ax] \gap{x} is angry.
-		\item[c] chimera
-	\end{ekey}
-	We could then symbolize \cref{sent:chimera1} as $Ac$ and \cref{sent:chimera2} as $\enot Ac$.
-	
-	Problems will arise when we ask whether these sentences are true or false.
-	
-	One option is to say that \cref{sent:chimera1} is not true, because there is no chimera. If \cref{sent:chimera1} is false because it talks about a non-existent thing, then \cref{sent:chimera2} is false for the same reason. Yet this would mean that $Ac$ and $\enot Ac$ would both be false. Given the truth conditions for negation, this cannot be the case, and contradict the Law of Excluded Middle.
-	
-	Since we cannot say that they are both false, what should we do? Another option is to say that \cref{sent:chimera1} is \emph{meaningless} because it talks about a non-existent thing. So $Ac$ would be a meaningful expression in FOL for some interpretations but not for others. Yet this would make our formal language hostage to particular interpretations. Since we are interested in logical form, we want to consider the logical force of a sentence like $Ac$ apart from any particular interpretation. If $Ac$ were sometimes meaningful and sometimes meaningless, we could not do that.
-	
-	This is the \emph{problem of non-referring terms} which is important problem in philosophical logic and the philosophy of language. For our purpose the important point is to appreciate that each name of FOL \emph{must} refer to something in the domain (although the domain can contain any things we like). If we want to symbolize arguments about mythological creatures, then we must define a domain that includes them. This option is important if we want to consider the logic of stories. We can symbolize a sentence like `Sherlock Holmes lived at 221B Baker Street' by including fictional characters like Sherlock Holmes in our domain.
-	
 	
 	
 	\section{Symbolisation with Many-Placed Predicates}
@@ -147,8 +121,162 @@
 		\end{forest}
 	\end{center}
 	
+	\chapter[Symbolising `None']{Common quantifier phrases like `none'}
+	Consider these sentences:
+	\begin{samplesent}
+		\item\label{sent:quan1} Every coin in my pocket is a quarter.
+		\item\label{sent:quan2} Some coin on the table is a dime.
+		\item\label{sent:quan3} Not all the coins on the table are dimes.
+		\item\label{sent:quan4} None of the coins in my pocket are dimes.
+	\end{samplesent}
+	In providing a symbolization key, we need to specify a domain. Since we are talking about coins in my pocket and on the table, the domain must at least contain all of those coins. Since we are not talking about anything besides coins, we let the domain be all coins. Since we are not talking about any specific coins, we do not need to deal with any names. So here is our key:
+	\begin{ekey}
+		\item[\text{domain}] all coins
+		\item[Px] \gap{x} is in my pocket
+		\item[Tx] \gap{x} is on the table
+		\item[Qx] \gap{x} is a quarter
+		\item[Dx] \gap{x} is a dime
+	\end{ekey}
+	\Cref{sent:quan1} is most naturally symbolized using a universal quantifier. The universal quantifier says something about everything in the domain, not just about the coins in my pocket. \Cref{sent:quan1} can be paraphrased as `for any coin, \emph{if} that coin is in my pocket \emph{then} it is a quarter'. So we can symbolize it as $\forall x(Px \eif Qx)$.
 	
-	\chapter{Domains}
+	Since \cref{sent:quan1} is about coins that are both in my pocket \emph{and} that are quarters, it might be tempting to symbolize it using a conjunction. However, the sentence $\forall x(Px \eand Qx)$ would symbolize the sentence `every coin is both a quarter and in my pocket'. This obviously means something very different than \cref{sent:quan1}. And so we see:
+	\factoidbox{
+		If a sentence can be paraphrased in English as \begin{center}
+			\begin{tabular}{l}`every F is G',\\`all Fs are Gs', or\\ `any F is a G',
+			\end{tabular}
+		\end{center} it can be symbolised as $$\forall x (\meta{F}x \eif \meta{G}x).$$
+	}
+	\Cref{sent:quan2} is most naturally symbolized using an existential quantifier. It can be paraphrased as `there is some coin which is both on the table and which is a dime'. So we can symbolize it as $\exists x(Tx \eand Dx)$.
+	
+	Notice that we needed to use a conditional with the universal quantifier, but we used a conjunction with the existential quantifier. Suppose we had instead written $\exists x(Tx \eif Dx)$. That would mean that there is some object in the domain of which $(Tx \eif Dx)$ is true. Recall that, in TFL, $\metaX \eif \metaY$ is logically equivalent (in TFL) to $\enot\metaX \eor \metaY$. This equivalence will also hold in FOL. So $\exists x(Tx \eif Dx)$ is true if there is some object in the domain, such that $(\enot Tx \eor Dx)$ is true of that object. That is, $\exists x (Tx \eif Dx)$ is true if some coin is \emph{either} not on the table \emph{or} is a dime. Of course there is a coin that is not on the table: there are coins lots of other places. So it is \emph{very easy} for $\exists x(Tx \eif Dx)$ to be true. A conditional will usually be the natural connective to use with a universal quantifier, but a conditional within the scope of an existential quantifier tends to say something very weak indeed. As a general rule of thumb, do not put conditionals in the scope of existential quantifiers unless you are sure that you need one.
+	\factoidbox{
+		If a sentence can be paraphrased in English as \begin{center}
+			\begin{tabular}{l}`some F is G',\\`there is some F that is G', \\`An F is G', or \\`there is at least one F that is a G'
+			\end{tabular}
+		\end{center} it can be symbolised as $$\exists x (\meta{F}x \eand \meta{G}x).$$
+	}
+	
+	\Cref{sent:quan3} can be paraphrased as, `It is not the case that every coin on the table is a dime'. So we can symbolize it by $\enot \forall x(Tx \eif Dx)$. You might look at \cref{sent:quan3} and paraphrase it instead as, `Some coin on the table is not a dime'. You would then symbolize it by $\exists x(Tx \eand \enot Dx)$. Although it is probably not immediately obvious yet, these two sentences are logically equivalent. (This is due to the logical equivalence between $\enot\forall x\metaX$ and $\exists x\enot\metaX$, mentioned in \cref{sec:FOLBuildingBlocks}, along with the equivalence between $\enot(\metaX\eif\metaY)$ and $\metaX\eand\enot\metaY$.)
+	\factoidbox{
+		If a sentence can be paraphrased in English as \begin{center}
+			`not all Fs are Gs',
+		\end{center} it can be symbolised as \begin{center}
+			\begin{tabular}{l}$\enot \forall x (\meta{F}x \eif \meta{G}x)$, or \\$\exists x(\meta{F}x\eand\enot \meta{G}x)$.
+			\end{tabular}
+		\end{center}
+	}
+	
+	\Cref{sent:quan4} can be paraphrased as, `It is not the case that there is some dime in my pocket'. This can be symbolized by $\enot\exists x(Px \eand Dx)$. It might also be paraphrased as, `Everything in my pocket is a non-dime', and then could be symbolized by $\forall x(Px \eif \enot Dx)$. Again the two symbolizations are logically equivalent; both are correct symbolizations of \cref{sent:quan4}.
+	\factoidbox{
+		If a sentence can be paraphrased in English as \begin{center}
+			`no Fs are Gs',
+		\end{center} it can be symbolised as  \begin{center}
+			\begin{tabular}{l}$\enot \exists x (\meta{F}x \eand \meta{G}x)$, or \\$\forall x(\meta{F}x\eif\enot \meta{G}x)$.
+			\end{tabular}
+		\end{center}
+	}
+	
+	
+	Finally, consider `only', as in:
+	\begin{samplesent}
+		\item\label{sent:quan5} Only dimes are on the table.
+	\end{samplesent}
+	How should we symbolize this?  A good strategy is to consider when the sentence would be false.  If we are saying that only dimes are on the table, we are excluding all the cases where something on the table is a non-dime.  So we can symbolize the sentence the same way we would symbolize `No non-dimes are on the table.' Remembering the lesson we just learned, and symbolizing `$x$ is a non-dime' as `$\enot \atom{D}{x}$', the possible symbolizations are: `$\enot\exists x(\atom{T}{x} \eand \enot \atom{D}{x})$', or alternatively: `$\forall x(\atom{T}{x} \eif \enot\enot \atom{D}{x})$'. Since double negations cancel out, the second is just as good as `$\forall x(\atom{T}{x} \eif \atom{D}{x})$'. In other words, `Only dimes are on the table' and `Everything on the table is a dime' are symbolized the same way.
+	
+	\factoidbox{
+		If a sentence can be paraphrased in English as \begin{center}
+			`only $F$s are $G$s',
+		\end{center} it can be symbolised as \begin{center}
+			\begin{tabular}{l}$\enot\exists x (\atom{\meta{G}}{x} \eand \enot\atom{\meta{F}}{x})$, or \\$\forall x (\atom{\meta{G}}{x} \eif \atom{\meta{F}}{x})$
+			\end{tabular}
+		\end{center}
+	}
+	
+	
+	\begin{practiceproblems}
+		
+		
+		\problempart 
+		Using the following symbolization key:
+		\begin{ekey}
+			\item[\text{domain}] all animals
+			\item[\atom{D}{x}] \gap{x} is a dog
+			\item[\atom{S}{x}] \gap{x} likes samurai movies
+			\item[\atom{L}{xy}] \gap{x} is larger than \gap{y}
+			\item[r] Rave
+			\item[h] Shane
+			\item[d] Daisy
+		\end{ekey}
+		symbolize the following sentences in FOL:
+		\begin{problemslist}
+			\item Rave is a dog who likes samurai movies.
+			\item[] \myanswer{$\atom{D}{r} \eand \atom{S}{r}$}
+			\item Rave, Shane, and Daisy are all dogs.
+			\item[] \myanswer{$\atom{D}{r} \eand \atom{D}{h} \eand \atom{D}{d}$}
+			\item Shane is larger than Rave, and Daisy is larger than Shane.
+			\item[] \myanswer{$\atom{L}{h,r} \eand \atom{L}{d,h}$}
+			\item All dogs like samurai movies.
+			\item[] \myanswer{$\forall x(\atom{D}{x} \eif \atom{S}{x})$}
+			\item Only dogs like samurai movies.
+			\item[] \myanswer{$\forall x(\atom{S}{x} \eif \atom{D}{x})$\\
+				Comment: the FOL sentence just written does not require that anyone likes samurai movies. The English sentence might suggest that at least some dogs \emph{do} like samurai movies?}
+			\item There is a dog that is larger than Shane.
+			\item[] \myanswer{$\exists x (\atom{D}{x} \eand \atom{L}{x,h})$}
+			\item If there is a dog larger than Daisy, then there is a dog larger than Shane.
+			\item[] \myanswer{$\exists x (\atom{D}{x} \eand \atom{L}{x}\emph{d}) \eif \exists x(\atom{D}{x} \eand \atom{L}{x,h})$}
+			\item No animal that likes samurai movies is larger than Shane.
+			\item[] \myanswer{$\forall x (\atom{S}{x} \eif \enot \atom{L}{x,h})$}
+			\item No dog is larger than Daisy.
+			\item[] \myanswer{$\forall x (\atom{D}{x} \eif \enot \atom{L}{x,d})$}
+			\item Any animal that dislikes samurai movies is larger than Rave.
+			\item[] \myanswer{$\forall x (\enot \atom{S}{x} \eif \atom{L}{x,r})$\\
+				Comment: this is very poor, though! For `dislikes' does not mean the same as `does not like'.}
+			\item There is an animal that is between Rave and Shane in size.
+			\item[] \myanswer{$\exists x((\atom{L}{b,x} \eand \atom{L}{x,h}) \eor (\atom{L}{h,x} \eand \atom{L}{x,r}))$}
+			\item There is no dog that is between Rave and Shane in size.
+			\item[] \myanswer{$\forall x \bigl(\atom{D}{x} \eif \enot\bigl[(\atom{L}{b,x} \eand \atom{L}{x,h}) \eor (\atom{L}{h,x} \eand \atom{L}{x,r})\bigr]\bigr)$}
+			\item No dog is larger than itself.
+			\item[] \myanswer{$\forall x(\atom{D}{x} \eif \enot \atom{L}{x,x})$}
+			\item Every dog is larger than some dog.
+			\item[] \myanswer{$\forall x (\atom{D}{x} \eif \exists y(\atom{D}{y} \eand \atom{L}{xy}))$\\
+				Comment: the English sentence is potentially ambiguous here. I have resolved the ambiguity by assuming it should be paraphrased by `for every dog, there is a dog smaller than it'.}
+			\item There is an animal that is smaller than every dog.
+			\item[] \myanswer{$\exists x \forall y(\atom{D}{y} \eif \atom{L}{y,x})$}
+			\item If there is an animal that is larger than any dog, then that animal does not like samurai movies.
+			\item[] \myanswer{$\forall x (\forall y (\atom{D}{y} \eif \atom{L}{xy}) \eif \enot \atom{S}{x})$\\
+				Comment: I have assumed that `larger than any dog' here means `larger than every dog'.}
+		\end{problemslist}
+		
+		\problempart
+		\label{pr:QLcandies}
+		Using the symbolization key given, translate each English-language sentence into FOL.
+		\begin{ekey}
+			\item[\text{domain}] candies
+			\item[\atom{C}{x}] \gap{x} has chocolate in it.
+			\item[\atom{M}{x}] \gap{x} has marzipan in it.
+			\item[\atom{S}{x}] \gap{x} has sugar in it.
+			\item[\atom{T}{x}] Boris has tried \gap{x}.
+			\item[\atom{B}{xy}] \gap{x} is better than \gap{y}.
+		\end{ekey}
+		\begin{problemslist}
+			\item Boris has never tried any candy.
+			\item Marzipan is always made with sugar.
+			\item Some candy is sugar-free.
+			\item The very best candy is chocolate.
+			\item No candy is better than itself.
+			\item Boris has never tried sugar-free chocolate.
+			\item Boris has tried marzipan and chocolate, but never together.
+			%\item Boris has tried nothing that is better than sugar-free marzipan.
+			\item Any candy with chocolate is better than any candy without it.
+			\item Any candy with chocolate and marzipan is better than any candy that lacks both.
+		\end{problemslist}
+		
+		
+		
+	\end{practiceproblems}
+	
+	
+	\chapter{Choosing a symbolisation key}
 	
 	%We now have all of the pieces of FOL.
 	%Symbolizing more complicated sentences will only be a matter of knowing the right way to combine predicates, names, quantifiers, and connectives. There is a knack to this, and there is no substitute for practice.
@@ -219,6 +347,34 @@
 	\factoidbox{
 		When $\meta{F}$ is an empty predicate, a sentence $\forall x (\meta{F}x \eif \ldots)$ will be vacuously true.
 	}
+	
+	\subsection{Non-referring terms {\textnormal (Further philosophical interest)}}
+	
+	In FOL, each name must pick out exactly one member of the domain. A name cannot refer to more than one thing---it is a \emph{singular} term. Each name must still pick out \emph{something}. This is connected to a classic philosophical problem: the so-called problem of non-referring terms.
+	
+	Medieval philosophers typically used sentences about the \emph{chimera} to exemplify this problem. Chimera is a mythological creature; it does not really exist. Consider these two sentences:
+	\begin{samplesent}
+		\item\label{sent:chimera1} Chimera is angry.
+		\item\label{sent:chimera2} Chimera is not angry.
+	\end{samplesent}
+	It is tempting just to define a name to mean `chimera.' The symbolization key would look like this:
+	\begin{ekey}
+		\item[\text{domain}] creatures on Earth
+		\item[Ax] \gap{x} is angry.
+		\item[c] chimera
+	\end{ekey}
+	We could then symbolize \cref{sent:chimera1} as $Ac$ and \cref{sent:chimera2} as $\enot Ac$.
+	
+	Problems will arise when we ask whether these sentences are true or false.
+	
+	One option is to say that \cref{sent:chimera1} is not true, because there is no chimera. If \cref{sent:chimera1} is false because it talks about a non-existent thing, then \cref{sent:chimera2} is false for the same reason. Yet this would mean that $Ac$ and $\enot Ac$ would both be false. Given the truth conditions for negation, this cannot be the case, and contradict the Law of Excluded Middle.
+	
+	Since we cannot say that they are both false, what should we do? Another option is to say that \cref{sent:chimera1} is \emph{meaningless} because it talks about a non-existent thing. So $Ac$ would be a meaningful expression in FOL for some interpretations but not for others. Yet this would make our formal language hostage to particular interpretations. Since we are interested in logical form, we want to consider the logical force of a sentence like $Ac$ apart from any particular interpretation. If $Ac$ were sometimes meaningful and sometimes meaningless, we could not do that.
+	
+	This is the \emph{problem of non-referring terms} which is important problem in philosophical logic and the philosophy of language. For our purpose the important point is to appreciate that each name of FOL \emph{must} refer to something in the domain (although the domain can contain any things we like). If we want to symbolize arguments about mythological creatures, then we must define a domain that includes them. This option is important if we want to consider the logic of stories. We can symbolize a sentence like `Sherlock Holmes lived at 221B Baker Street' by including fictional characters like Sherlock Holmes in our domain.
+	
+	
+	
 	
 	
 	

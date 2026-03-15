@@ -1,11 +1,11 @@
 %!TEX root = forallxbris.tex
-\part{FOL-Semantics}
+\part{First Order Logic Semantics}
 \label{ch:semantics}
 \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
 
-\chapter[FOL semantics part 1]{FOL semantics Part 1 - Monadic sentences}
-\label{ch:FOL semantics informal - monadic}
-We have discussed the syntax of the language of first-order language and, using our intuitive understanding of the vocabulary of the language, proposed a guideline for symbolizing English sentences in the language of FOL. We now turn to the semantics, that is, we now want to spell out truth-conditions for sentences of the language. 
+\chapter{Truth in a model}
+\label{ch:FOL semantics informal}
+We have discussed the syntax of the language of first-order language and, using our intuitive understanding of the vocabulary of the language, proposed a guideline for symbolizing English sentences in the language of FOL. We now turn to the semantics, that is, we now want to spell out truth-conditions for sentences of the language. This will be done with more care in \cref{ch:FOL semantics properly} but here we will introduce the ideas.
 
 In TFL, the notion of `interpretation' was spelled out by a valuation, which assigns a truth value to each atomic sentence. A valuation provides enough information to determine the truth values of all the sentences of TFL, by applying the rules associated with each of the connectives and working up the formation tree.
 
@@ -35,17 +35,17 @@ To evaluate whether it is true, one needs to work out who the philosophers are a
 
 If we have symbolised 
 \begin{samplesent}
-	\item Alice likes some philosopher.
+	\item Some philosopher likes Alice.
 \end{samplesent}
-as $\exists x(Lax\eand Px)$
-To evaluate whether it is true, one needs to work out who Alice is, who she likes, and whether they are a philosopher. 
+as $\exists x(Px\eand Lxa)$
+To evaluate whether it is true, one needs to work out who Alice is, who the philosophers are, and whether one of them likes Alice.
 
 
 The information needed to determine these matters is the following:
 \begin{itemize}
 	\item A domain. A collection of things/people.
 	\item A specification of who/what (in the domain) does each name refer to. Who is `Alice'?
-	\item A specification of who/what (in the domain) does each predicate apply to. Who is happy, who likes whom?
+	\item A specification of who/what (in the domain) does each predicate apply to. Who is happy? Who likes whom?
 \end{itemize}
 
 
@@ -124,6 +124,8 @@ As just discussed, sets are collections of objects, but weirdly there is also a 
 $$\Set{o \given o\neq o}=\emptyset.$$
 
 
+%The exact identity of the objects in the sets are irrelevant, our common examples will be that the sets are all sets of 
+
 
 \section{Truth of simple sentences}
 \label{sec:Truth FOL monadic}
@@ -134,6 +136,7 @@ A model $\model$ provides \begin{itemize}
 	\begin{itemize}
 		\item assigns exactly one object of the domain to every name (specifies the referent of the name);
 		\item assigns a subset of the domain to any one-placed predicate.
+		\item assigns \ldots to other predicates. [We'll talk about this in \cref{sec:model}.]
 		%		\item assigns a binary relation on the domain to every two-placed predicate.
 		%		\item assigns a ternary relation on the domain to every three-placed preciate.
 		%		\item \ldots
@@ -162,13 +165,13 @@ So, here is a model, $\model$: \begin{interp}
 	%\item[\denote{G}] nothing
 \end{interp}
 
-Is `$Ca$' true on this model? To answer this, we simply ask if the object the model assigns to `$a$', in this case the person/image {Alice}, is a member of the set that the model assigns to `$C$', in this case $\{\text{Alice, Cathy}\}$. That is, `$Ca$' is true on $\model$ iff $$\denote{a}_\model\in\denote{C}_\model.$$ On this model, that is the question of whether $\text{{Alice}}\in\Set{\text{{Alice, Cathy}}}$. Since she is, it is true.
+Is `$Ca$' true in this model? To answer this, we simply ask if the object the model assigns to `$a$', in this case the person/image {Alice}, is a member of the set that the model assigns to `$C$', in this case $\{\text{Alice, Cathy}\}$. That is, `$Ca$' is true in $\model$ iff $$\denote{a}_\model\in\denote{C}_\model.$$ On this model, that is the question of whether $\text{{Alice}}\in\Set{\text{{Alice, Cathy}}}$. Since she is, it is true.
 
 
 
-Is $Ha$ true on this model? It is true on $\model$ iff $$\denote{a}_\model\in\denote{H}_\model.$$ That is, iff 
+Is $Ha$ true in this model? It is true in $\model$ iff $$\denote{a}_\model\in\denote{H}_\model.$$ That is, iff 
 $\text{{Alice}}\in\Set{\text{{Bob}}}$
-Since $\text{{Alice}}\notin\Set{\text{{Bob}}}$, $Ha$ is false on $\model$. 
+Since $\text{{Alice}}\notin\Set{\text{{Bob}}}$, $Ha$ is false in $\model$. 
 
 What about `$Ha\eif Ca$'? 
 Just like in TFL, the truth of this conditional is determined by the truth of its constituent parts according to the truth rule for `$\eif$'.
@@ -249,7 +252,7 @@ But to evaluate $\forall x(Hx\eif Cx)$ we need to consider not only this variabl
 	\text{Ca}&&\false&\true&.\\
 	\text{De}&&\false&\true&.
 \end{array}\]
-So is $\forall x(Hx\eif Cx)$ true or false? There is someone for whom $Hx$ is true but $Cx$ is false. There is some possible choice of someone for $x$ which makes $Hx\eif Cx$ false. This means $\forall x(Hx\eif Cx)$ is false on $\model$. We can write it out like this in a table. Underneath the variable we write out the possible assignments of objects to the variable and then evaluate the sub-sentences on those variable assignments. 
+So is $\forall x(Hx\eif Cx)$ true or false? There is someone for whom $Hx$ is true but $Cx$ is false. There is some possible choice of someone for $x$ which makes $Hx\eif Cx$ false. This means $\forall x(Hx\eif Cx)$ is false in $\model$. We can write it out like this in a table. Underneath the variable we write out the possible assignments of objects to the variable and then evaluate the sub-sentences on those variable assignments. 
 \[\begin{array}{c|deeeeef}
 &	\mainconnective{\forall} &\mainconnective{x} &(&Hx&\eif &Cx&)\\
 	&&&&Hx&\mainconnective{\eif} &Cx\\
@@ -288,7 +291,7 @@ In fact, domains may be infinite and then there isn't even in principle a presen
 
 Here is the clause for $\forall$:
 \begin{itemize}
-	\item $\forall x\metaX$ is true on $\model$ iff for every $o\in\domain_\model$, $\metaX$ is true on $\model$ under the variable assignment $x\mapsto o$. 
+	\item $\forall x\metaX$ is true in $\model$ iff for every $o\in\domain_\model$, $\metaX$ is true in $\model$ under the variable assignment $x\mapsto o$. 
 \end{itemize}
 Once we have multiple variables interacting, we'll have to give a more general clause. 
 
@@ -307,7 +310,7 @@ It has the following formation tree:
 Just like for the universal quantifier, we need to consider possible assignments of objects from the domain to the variable $x$. 
 Here is the clause for $\exists$:
 \begin{itemize}
-	\item $\exists x\metaX$ is true on $\model$ iff for at least one $o\in\domain_\model$, $\metaX$ is true on $\model$ under the variable assignment $x\mapsto o$. 
+	\item $\exists x\metaX$ is true in $\model$ iff for at least one $o\in\domain_\model$, $\metaX$ is true in $\model$ under the variable assignment $x\mapsto o$. 
 \end{itemize}
 
 
@@ -528,352 +531,13 @@ Since models can be infinite there may not even theoretically be a table like th
 
 
 
-\chapter{Semantic concepts}
 
-Offering a precise definition of truth in FOL was more than a little fiddly, but now that we are done, we can define various central logical notions. These will look very similar to the definitions we offered for TFL. However, remember that they concern \emph{models}, rather than valuations.
-
-%We will use the symbol $\entails$ for FOL much as we did for TFL. So:
-\factoidbox{
-	$$\metaX_1, \metaX_2, \ldots, \metaX_n \therefore\metaZ$$ is \define{valid}
-iff there is no model in which all of $\metaX_1, \metaX_2, \ldots, \metaX_n$ are true and in which \metaZ is false. }
-%Derivatively,
-%	$$\entails\metaX$$
-%means that \metaX is true in every model.
-
-The other logical notions also have corresponding definitions in FOL:
-\factoidbox{
-\begin{itemize}
-\item An FOL sentence $\metaX$ is a \define{logical truth} iff $\metaX$ is true in every model.%; i.e.,  $\entails\metaX$.
-\newglossaryentry{logical truth}
-{
-name=logical truth,
-description={A \gls{sentence of FOL} that is true in every \gls{model}. Note that the equivalent notion for TFL is `tautology'}
-}
-
-\item $\metaX$ is a \define{contradiction} iff $\metaX$ is false in every model.%; i.e., $\entails\enot\metaX$.
-\newglossaryentry{contradiction of FOL}
-{
-  name=contradiction (of FOL),
-  text=contradiction,
-description={A \gls{sentence of FOL} that is false in every \gls{model}}
-}
-
-%\item $\metaX_1, \metaX_2, \ldots \metaX_n \therefore \metaZ$ is \define{valid in FOL} iff there is no model in which all of the premises are true and the conclusion is false; i.e., $\metaX_1,\metaX_2,\ldots \metaX_n \entails\metaZ$. It is \define{invalid in FOL} otherwise.
-%\newglossaryentry{logically valid in FOL}
-%{
-%  name=logical validity (in FOL),
-%  text = logically valid,
-%description={A property held by arguments if and only if no \gls{model} makes all premises true and the conclusion false}
-%}
-
-\item Two FOL sentences \metaX and \metaY are \define{logically equivalent} iff they are true in exactly the same models as each other.%r; i.e., both $\metaX\entails\metaY$ and $\metaY\entails\metaX$.
-
-\newglossaryentry{logically equivalent in FOL}
-{
-  name=logical equivalence (in FOL),
-  text = logically equivalent,
-description={A property held by pairs of \glspl{sentence of FOL} if and only if the sentences have the same truth value in every \gls{model}.}
-}
-
-\item The FOL sentences $\metaX_1,\metaX_2,\ldots, \metaX_n$ are \define{jointly logically consistent} iff there is some model in which all of the sentences are true. They are \define{jointly logically inconsistent} iff there is no such model.
-\newglossaryentry{logically consistent in FOL}
-{
-  name=logical consistency (in FOL),
-  text=jointly consistent,
-description={A property held by \glspl{sentence of FOL} if and only if some \gls{model} makes all the sentences true}
-}
-\end{itemize}
-}
-
-%\chapter{Using models}
-%\label{sec:UsingModels}
-
-\section{Logical truths and contradictions}
-Suppose we want to show that `$\exists xAxx \eif Bd$' is \emph{not} a logical truth. This requires showing that the sentence is not true in every model; i.e.,\ that it is false in some model. If we can provide just one model in which the sentence is false, then we will have shown that the sentence is not a logical truth.
-
-In order for `$\exists xAxx \eif Bd$' to be false, the antecedent ($\exists x Axx$) must be true, and the consequent ($Bd$) must be false. To construct such a model, we start by specifying a domain. Keeping the domain small makes it easier to specify what the predicates will be true of, so we will start with a domain that has just one member. For concreteness, let's say it is the city of Paris.
-	\begin{interp}
-		\item[\domain] $\Set{\emph{Paris}}$
-	\end{interp}
-The name $d$ must refer to something in the domain, so we have no option but:
-	\begin{interp}
-		\item[\denote{d}] \emph{Paris}
-	\end{interp}
-Recall that we want $\exists x Axx$ to be true, so we want all members of the domain to be paired with themselves in the extension of $A$. We can just offer:
-	\begin{interp}
-		\item[\denote{A}] $\Set{o \given  o=o}$
-	\end{interp}
-Now $Add$ is true, so it is surely true that $\exists x Axx$. Next, we want $Bd$ to be false, so the referent of $d$ must not be in the extension of $B$. We might simply offer:
-	\begin{interp}
-		\item[\denote{B}] $\Set{o \given \text{$o$ is in Germany}}$
-	\end{interp}
-Since Paris is not in Germany the set $\Set{o \given \text{$o$ is in Germany}}$ does no have any elements that are in the domain of the model. This means that we have a model where `$\exists x Axx$' is true, but where `$Bd$' is false. So there is a model where $\exists x Axx \eif Bd$ is false. So $\exists x Axx \eif Bd$ is not a logical truth.
-
-We can just as easily show that `$\exists xAxx \eif Bd$' is not a contradiction. We need only specify a model in which `$\exists xAxx \eif Bd$' is true; i.e., a model in which either `$\exists x Axx$' is false or `$Bd$' is true. Here is one:
-	\begin{interp}
-		\item[\domain] $\Set{\emph{Paris}}$
-		\item[\denote{d}] \emph{Paris}
-		\item[\denote{A}] $\Set{o \given o=o}$
-		\item[\denote{B}] $\Set{o \given \text{$o$ is in France}}$
-	\end{interp}
-This shows that there is a model where `$\exists xAxx \eif Bd$' is true. So `$\exists x Axx \eif Bd$' is not a contradiction.
-
-\section{Logical equivalence}
-Suppose we want to show that $\forall x Sx$ and $\exists x Sx$ are not logically equivalent. We need to construct a model in which the two sentences have different truth values; we want one of them to be true and the other to be false. We start by specifying a domain. Again, we make the domain small so that we can specify extensions easily. In this case, we will need at least two objects. (If we chose a domain with only one member, the two sentences would end up with the same truth value. In order to see why, try constructing some partial models with one-member domains.) For concreteness, let's take:
-	\begin{interp}
-		\item[\domain] $\Set{\text{\emph{Ornette Coleman, Miles Davis}}}$
-	\end{interp}
-We can make $\exists x Sx$ true by including something in the extension of $S$, and we can make $\forall x Sx$ false by leaving something out of the extension of $S$. For concreteness we will offer:
-	\begin{interp}
-		\item[\denote{S}] $\Set{o \given \text{$o$ plays saxophone}}$
-	\end{interp}
-Now `$\exists x Sx$' is true, because $Sx$ is true of \emph{Ornette Coleman}. Slightly more precisely, extend our model by allowing $c$ to name \emph{Ornette Coleman}.  `$Sc$' is true in this extended model, so `$\exists x Sx$' was true in the original model. Similarly, `$\forall x Sx$' is false, because \emph{Miles Davis}$\,\not\in\denote{S}$. Slightly more precisely, extend our model by allowing $d$ to name \emph{Miles Davis}. Then `$Sd$' is false in this extended model, so `$\forall x Sx$' was false in the original model. We have provided a counter-model to the claim that `$\forall x Sx$' and `$\exists x Sx$' are logically equivalent.
-	\factoidbox{
-		To show that $\metaX$ is not a logical truth, it suffices to find a model where $\metaX$ is false.
-
-		To show that $\metaX$ is not a contradiction, it suffices to find a model where $\metaX$ is true.
-
-		To show that $\metaX$ and $\metaY$ are not logically equivalent, it suffices to find a model where one is true and the other is false.
-	}
-
-\section{Validity, logical consequence and consistency}
-To test for validity, logical consequence, or consistency, we typically need to produce models that determine the truth value of several sentences simultaneously.
-
-Consider the following argument in FOL:
-$$\exists x(Gx \eif Ga) \therefore \exists x Gx \eif Ga$$
-To show that this is invalid, we must make the premise true and the conclusion false. The conclusion is a conditional, so to make it false, the antecedent must be true and the consequent must be false. Clearly, our domain must contain two objects. Let's try:
-	\begin{interp}
-		\item[\domain] $\Set{\text{\emph{Karl Marx, Ludwig von Mises}}}$
-		\item[\denote{G}] $\Set{o \given o\text{ hated communism}}$ (=$\Set{\emph{Ludwig von Mises}}$)
-		\item[\denote{a}] \emph{Karl Marx}
-	\end{interp}
-Given that Marx wrote \emph{The Communist Manifesto}, $Ga$ is plainly false in this model. But von Mises famously hated communism, so $\exists x Gx$ is true in this model. Hence `$\exists x Gx \eif Ga$' is false, as required.
-
-Does this model make the premise true? Yes it does! Note that $Ga \eif Ga$ is true. (Indeed, it is a logical truth.) But then certainly `$\exists x (Gx \eif Ga)$' is true, so the premise is true, and the conclusion is false, in this model. The argument is therefore invalid.
-
-In passing, note that we have also shown that $\exists x Gx \eif Ga$ is \emph{not} a logical consequence of $\exists x(Gx \eif Ga)$. Equally, we have shown that the sentences $\exists x (Gx \eif Ga)$ and $\enot (\exists x Gx \eif Ga)$ are jointly consistent.
+%\chapter[FOL semantics part 2]{FOL semantics part 2 - relations and interacting quantifiers}
+%\label{ch:FOL semantics informal - relations and multiple quantifiers}
 
 
 
-%\chapter{Reasoning about all models}
-
-\section{Logical truths and contradictions}
-We can show that a sentence is \emph{not} a logical truth just by providing one carefully specified model: a model in which the sentence is false. To show that something is a logical truth, on the other hand, it would not be enough to construct ten, one hundred, or even a thousand models in which the sentence is true. A sentence is only a logical truth if it is true in \emph{every} model, and there are infinitely many models. We need to reason about all of them, and we cannot do this by dealing with them one by one!
-
-Sometimes, we can reason about all models fairly easily. For example, we can offer a relatively simple argument that `$Raa\eif Raa$' is a logical truth:
-\begin{quote}
-	Any relevant model will give `$Raa$' a truth value. If `$Raa$' is true in a model, then `$Raa \eif Raa$' is true in that model. If $Raa$ is false in a model, then $Raa \eif Raa$ is true in that model. These are the only alternatives. So `$Raa \eiff Raa$' is true in every model. Therefore, it is a logical truth.
-\end{quote}
-This argument is valid, of course, and its conclusion is true. However, it is not an argument in FOL. Rather, it is an argument in English \emph{about} FOL: it is an argument in the metalanguage.
-
-Note another feature of the argument. Since the sentence in question contained no quantifiers, we did not need to think about how to interpret $a$ and $R$; the point was just that, however we interpreted them, $Raa$ would have some truth value or other. (We could ultimately have given the same argument concerning TFL sentences.)
-
-Here is another bit of reasoning. Consider the sentence $\forall x(Rxx\eif Rxx)$. Again, it should obviously be a logical truth, but to say precisely why is quite a challenge. We cannot say that $Rxx \eif Rxx$ is true in every model, since $Rxx \eif Rxx$ is not even a \emph{sentence} of FOL (remember that $x$ is a variable, not a name). So we have to be a bit cleverer.
-\begin{quote}
-	Consider some arbitrary model. Consider some arbitrary member of the domain, which, for convenience, we will call \emph{obbie}, and suppose we extend our original model by adding a new name, $c$, to name \emph{obbie}. Then either $Rcc$ will be true or it will be false. If $Rcc$ is true, then $Rcc \eiff Rcc$ is true. If $Rcc$ is false, then $Rcc \eif Rcc$ will be true. So either way, $Rcc \eif Rcc$ is true. Since there was nothing special about \emph{obbie}---we might have chosen any object---we see that no matter how we extend our original model by allowing $c$ to name some new object, $Rcc \eif Rcc$ will be true in the new model. So $\forall x (Rxx \eif Rxx)$ was true in the original model. But we chose our model arbitrarily, so $\forall x (Rxx \eif Rxx)$ is true in every model. It is therefore a logical truth.
-\end{quote}
-This is quite longwinded, but, as things stand, there is no alternative. In order to show that a sentence is a logical truth, we must reason about \emph{all} models.
-
-\section{Other cases}
-Similar points hold of other cases too. Thus, we must reason about all models if we want to show:
-\begin{ebullet}
-	\item that a sentence is a contradiction; for this requires that it is false in \emph{every} model.
-	\item that two sentences are logically equivalent; for this requires that they have the same truth value in \emph{every} model.
-	\item that some sentences are jointly inconsistent; for this requires that there is no model in which all of those sentences are true together; i.e.\ that, in \emph{every} model, at  least one of those sentences is false.
-	\item that an argument is valid; for this requires that the conclusion is true in \emph{every} model where the premises are true.
-	\item that some sentences entail another sentence.
-\end{ebullet}
-The problem is that, with the tools available to you so far, reasoning about all models is a serious challenge! Let's take just one more example. Here is an argument which is obviously valid:
-$$\forall x(Hx \eand Jx) \therefore \forall x Hx$$
-After all, if everything is both H and J, then everything is H. But we can only show that the argument is valid by considering what must be true in every model in which the premise is true. To show this, we would have to reason as follows:
-\begin{quote}
-	Consider an arbitrary model in which the premise $\forall x(Hx \eand Jx)$ is true. It follows that, however we expand the model with a new name, for example $c$, $Hc \eand Jc$ will be true in this new model. $Hc$ will, then, also be true in this new model. But since this held for \emph{any} way of expanding the model, it must be that $\forall x Hx$ is true in the old model. We've assumed nothing about the model except that it was one in which $\forall x(Hx \eand Jx)$  is true, so any model in which $\forall x(Hx \eand Jx)$ is true is one in which $\forall x Hx$ is true. The argument is valid!
-\end{quote}
-Even for a simple argument like this one, the reasoning is somewhat complicated. For longer arguments, the reasoning can be extremely torturous.
-
-The following table summarises whether a single (counter-)model suffices, or whether we must reason about all models.
-
-
-\begin{center}
-	\begin{tabular}{l l l}
-		%\cline{2-3}
-		& \textbf{Yes} & \textbf{No}\\
-		\hline
-		%\cline{2-3}
-		logical truth? & all models & one counter-model\\
-		contradiction? &  all models  & one counter-model\\
-		equivalent? & all models & one counter-model\\
-		consistent? & one model & all models\\
-		valid? & all models & one counter-model\\
-		entailment? & all models & one counter-model\\
-	\end{tabular}
-\end{center}
-\label{table:ModelOrArgument}
-
-This might usefully be compared with the table at the end of \cref{sec:PartialTruthTable}. The key difference resides in the fact that TFL concerns truth tables, whereas FOL concerns models. This difference is deeply important, since each truth-table only ever has finitely many lines, so that a complete truth table is a relatively tractable object. By contrast, there are infinitely many models for any given sentence(s), so that reasoning about all models can be a deeply tricky business.
-
-
-\chapter[Symbolising `None']{More symbolisation -- common quantifier phrases like `none'}
-Consider these sentences:
-\begin{samplesent}
-	\item\label{sent:quan1} Every coin in my pocket is a quarter.
-	\item\label{sent:quan2} Some coin on the table is a dime.
-	\item\label{sent:quan3} Not all the coins on the table are dimes.
-	\item\label{sent:quan4} None of the coins in my pocket are dimes.
-\end{samplesent}
-In providing a symbolization key, we need to specify a domain. Since we are talking about coins in my pocket and on the table, the domain must at least contain all of those coins. Since we are not talking about anything besides coins, we let the domain be all coins. Since we are not talking about any specific coins, we do not need to deal with any names. So here is our key:
-\begin{ekey}
-	\item[\text{domain}] all coins
-	\item[Px] \gap{x} is in my pocket
-	\item[Tx] \gap{x} is on the table
-	\item[Qx] \gap{x} is a quarter
-	\item[Dx] \gap{x} is a dime
-\end{ekey}
-\Cref{sent:quan1} is most naturally symbolized using a universal quantifier. The universal quantifier says something about everything in the domain, not just about the coins in my pocket. \Cref{sent:quan1} can be paraphrased as `for any coin, \emph{if} that coin is in my pocket \emph{then} it is a quarter'. So we can symbolize it as $\forall x(Px \eif Qx)$.
-
-Since \cref{sent:quan1} is about coins that are both in my pocket \emph{and} that are quarters, it might be tempting to symbolize it using a conjunction. However, the sentence $\forall x(Px \eand Qx)$ would symbolize the sentence `every coin is both a quarter and in my pocket'. This obviously means something very different than \cref{sent:quan1}. And so we see:
-\factoidbox{
-	If a sentence can be paraphrased in English as \begin{center}
-		\begin{tabular}{l}`every F is G',\\`all Fs are Gs', or\\ `any F is a G',
-		\end{tabular}
-	\end{center} it can be symbolised as $$\forall x (\meta{F}x \eif \meta{G}x).$$
-}
-\Cref{sent:quan2} is most naturally symbolized using an existential quantifier. It can be paraphrased as `there is some coin which is both on the table and which is a dime'. So we can symbolize it as $\exists x(Tx \eand Dx)$.
-
-Notice that we needed to use a conditional with the universal quantifier, but we used a conjunction with the existential quantifier. Suppose we had instead written $\exists x(Tx \eif Dx)$. That would mean that there is some object in the domain of which $(Tx \eif Dx)$ is true. Recall that, in TFL, $\metaX \eif \metaY$ is logically equivalent (in TFL) to $\enot\metaX \eor \metaY$. This equivalence will also hold in FOL. So $\exists x(Tx \eif Dx)$ is true if there is some object in the domain, such that $(\enot Tx \eor Dx)$ is true of that object. That is, $\exists x (Tx \eif Dx)$ is true if some coin is \emph{either} not on the table \emph{or} is a dime. Of course there is a coin that is not on the table: there are coins lots of other places. So it is \emph{very easy} for $\exists x(Tx \eif Dx)$ to be true. A conditional will usually be the natural connective to use with a universal quantifier, but a conditional within the scope of an existential quantifier tends to say something very weak indeed. As a general rule of thumb, do not put conditionals in the scope of existential quantifiers unless you are sure that you need one.
-\factoidbox{
-	If a sentence can be paraphrased in English as \begin{center}
-		\begin{tabular}{l}`some F is G',\\`there is some F that is G', \\`An F is G', or \\`there is at least one F that is a G'
-		\end{tabular}
-	\end{center} it can be symbolised as $$\exists x (\meta{F}x \eand \meta{G}x).$$
-}
-
-\Cref{sent:quan3} can be paraphrased as, `It is not the case that every coin on the table is a dime'. So we can symbolize it by $\enot \forall x(Tx \eif Dx)$. You might look at \cref{sent:quan3} and paraphrase it instead as, `Some coin on the table is not a dime'. You would then symbolize it by $\exists x(Tx \eand \enot Dx)$. Although it is probably not immediately obvious yet, these two sentences are logically equivalent. (This is due to the logical equivalence between $\enot\forall x\metaX$ and $\exists x\enot\metaX$, mentioned in \cref{sec:FOLBuildingBlocks}, along with the equivalence between $\enot(\metaX\eif\metaY)$ and $\metaX\eand\enot\metaY$.)
-\factoidbox{
-	If a sentence can be paraphrased in English as \begin{center}
-		`not all Fs are Gs',
-	\end{center} it can be symbolised as \begin{center}
-		\begin{tabular}{l}$\enot \forall x (\meta{F}x \eif \meta{G}x)$, or \\$\exists x(\meta{F}x\eand\enot \meta{G}x)$.
-		\end{tabular}
-	\end{center}
-}
-
-\Cref{sent:quan4} can be paraphrased as, `It is not the case that there is some dime in my pocket'. This can be symbolized by $\enot\exists x(Px \eand Dx)$. It might also be paraphrased as, `Everything in my pocket is a non-dime', and then could be symbolized by $\forall x(Px \eif \enot Dx)$. Again the two symbolizations are logically equivalent; both are correct symbolizations of \cref{sent:quan4}.
-\factoidbox{
-	If a sentence can be paraphrased in English as \begin{center}
-		`no Fs are Gs',
-	\end{center} it can be symbolised as  \begin{center}
-		\begin{tabular}{l}$\enot \exists x (\meta{F}x \eand \meta{G}x)$, or \\$\forall x(\meta{F}x\eif\enot \meta{G}x)$.
-		\end{tabular}
-	\end{center}
-}
-
-
-Finally, consider `only', as in:
-\begin{samplesent}
-	\item\label{sent:quan5} Only dimes are on the table.
-\end{samplesent}
-How should we symbolize this?  A good strategy is to consider when the sentence would be false.  If we are saying that only dimes are on the table, we are excluding all the cases where something on the table is a non-dime.  So we can symbolize the sentence the same way we would symbolize `No non-dimes are on the table.' Remembering the lesson we just learned, and symbolizing `$x$ is a non-dime' as `$\enot \atom{D}{x}$', the possible symbolizations are: `$\enot\exists x(\atom{T}{x} \eand \enot \atom{D}{x})$', or alternatively: `$\forall x(\atom{T}{x} \eif \enot\enot \atom{D}{x})$'. Since double negations cancel out, the second is just as good as `$\forall x(\atom{T}{x} \eif \atom{D}{x})$'. In other words, `Only dimes are on the table' and `Everything on the table is a dime' are symbolized the same way.
-
-\factoidbox{
-	If a sentence can be paraphrased in English as \begin{center}
-		`only $F$s are $G$s',
-	\end{center} it can be symbolised as \begin{center}
-		\begin{tabular}{l}$\enot\exists x (\atom{\meta{G}}{x} \eand \enot\atom{\meta{F}}{x})$, or \\$\forall x (\atom{\meta{G}}{x} \eif \atom{\meta{F}}{x})$
-		\end{tabular}
-	\end{center}
-}
-
-
-\begin{practiceproblems}
-
-	
-	\problempart 
-	Using the following symbolization key:
-	\begin{ekey}
-		\item[\text{domain}] all animals
-		\item[\atom{D}{x}] \gap{x} is a dog
-		\item[\atom{S}{x}] \gap{x} likes samurai movies
-		\item[\atom{L}{xy}] \gap{x} is larger than \gap{y}
-		\item[r] Rave
-		\item[h] Shane
-		\item[d] Daisy
-	\end{ekey}
-	symbolize the following sentences in FOL:
-	\begin{problemslist}
-		\item Rave is a dog who likes samurai movies.
-		\item[] \myanswer{$\atom{D}{r} \eand \atom{S}{r}$}
-		\item Rave, Shane, and Daisy are all dogs.
-		\item[] \myanswer{$\atom{D}{r} \eand \atom{D}{h} \eand \atom{D}{d}$}
-		\item Shane is larger than Rave, and Daisy is larger than Shane.
-		\item[] \myanswer{$\atom{L}{h,r} \eand \atom{L}{d,h}$}
-		\item All dogs like samurai movies.
-		\item[] \myanswer{$\forall x(\atom{D}{x} \eif \atom{S}{x})$}
-		\item Only dogs like samurai movies.
-		\item[] \myanswer{$\forall x(\atom{S}{x} \eif \atom{D}{x})$\\
-			Comment: the FOL sentence just written does not require that anyone likes samurai movies. The English sentence might suggest that at least some dogs \emph{do} like samurai movies?}
-		\item There is a dog that is larger than Shane.
-		\item[] \myanswer{$\exists x (\atom{D}{x} \eand \atom{L}{x,h})$}
-		\item If there is a dog larger than Daisy, then there is a dog larger than Shane.
-		\item[] \myanswer{$\exists x (\atom{D}{x} \eand \atom{L}{x}\emph{d}) \eif \exists x(\atom{D}{x} \eand \atom{L}{x,h})$}
-		\item No animal that likes samurai movies is larger than Shane.
-		\item[] \myanswer{$\forall x (\atom{S}{x} \eif \enot \atom{L}{x,h})$}
-		\item No dog is larger than Daisy.
-		\item[] \myanswer{$\forall x (\atom{D}{x} \eif \enot \atom{L}{x,d})$}
-		\item Any animal that dislikes samurai movies is larger than Rave.
-		\item[] \myanswer{$\forall x (\enot \atom{S}{x} \eif \atom{L}{x,r})$\\
-			Comment: this is very poor, though! For `dislikes' does not mean the same as `does not like'.}
-		\item There is an animal that is between Rave and Shane in size.
-		\item[] \myanswer{$\exists x((\atom{L}{b,x} \eand \atom{L}{x,h}) \eor (\atom{L}{h,x} \eand \atom{L}{x,r}))$}
-		\item There is no dog that is between Rave and Shane in size.
-		\item[] \myanswer{$\forall x \bigl(\atom{D}{x} \eif \enot\bigl[(\atom{L}{b,x} \eand \atom{L}{x,h}) \eor (\atom{L}{h,x} \eand \atom{L}{x,r})\bigr]\bigr)$}
-		\item No dog is larger than itself.
-		\item[] \myanswer{$\forall x(\atom{D}{x} \eif \enot \atom{L}{x,x})$}
-		\item Every dog is larger than some dog.
-		\item[] \myanswer{$\forall x (\atom{D}{x} \eif \exists y(\atom{D}{y} \eand \atom{L}{xy}))$\\
-			Comment: the English sentence is potentially ambiguous here. I have resolved the ambiguity by assuming it should be paraphrased by `for every dog, there is a dog smaller than it'.}
-		\item There is an animal that is smaller than every dog.
-		\item[] \myanswer{$\exists x \forall y(\atom{D}{y} \eif \atom{L}{y,x})$}
-		\item If there is an animal that is larger than any dog, then that animal does not like samurai movies.
-		\item[] \myanswer{$\forall x (\forall y (\atom{D}{y} \eif \atom{L}{xy}) \eif \enot \atom{S}{x})$\\
-			Comment: I have assumed that `larger than any dog' here means `larger than every dog'.}
-	\end{problemslist}
-	
-	\problempart
-	\label{pr:QLcandies}
-	Using the symbolization key given, translate each English-language sentence into FOL.
-	\begin{ekey}
-		\item[\text{domain}] candies
-		\item[\atom{C}{x}] \gap{x} has chocolate in it.
-		\item[\atom{M}{x}] \gap{x} has marzipan in it.
-		\item[\atom{S}{x}] \gap{x} has sugar in it.
-		\item[\atom{T}{x}] Boris has tried \gap{x}.
-		\item[\atom{B}{xy}] \gap{x} is better than \gap{y}.
-	\end{ekey}
-	\begin{problemslist}
-		\item Boris has never tried any candy.
-		\item Marzipan is always made with sugar.
-		\item Some candy is sugar-free.
-		\item The very best candy is chocolate.
-		\item No candy is better than itself.
-		\item Boris has never tried sugar-free chocolate.
-		\item Boris has tried marzipan and chocolate, but never together.
-		%\item Boris has tried nothing that is better than sugar-free marzipan.
-		\item Any candy with chocolate is better than any candy without it.
-		\item Any candy with chocolate and marzipan is better than any candy that lacks both.
-	\end{problemslist}
-	
-
-	
-\end{practiceproblems}
-
-
-\chapter[FOL semantics part 2]{FOL semantics part 2 - relations and interacting quantifiers}
-\label{ch:FOL semantics informal - relations and multiple quantifiers}
-
-
-
-\section{Relations}
+\section{Relations}\label{sec:Relations}
 Suppose we have specified as our domain $\domain$ the set of all animals, i.e.,
 $$\domain=\Set{o \given o\text{ is an animal}}.$$
 How are we to understand a predicate like `\gap{x}is a cat'? The predicate will pick out those animals from the domain that are cats, that is, the set of all cats. As we will see, the sentence `Tom is a cat' when symbolized in FOL will be true iff the object picked out by the name `Tom', that is, Tom is a member of the set
@@ -993,7 +657,7 @@ In the same way that a three-place predicate picks out a ternary relation, an $n
 
 In \cref{sec:Truth FOL monadic}, we introduced the idea of a model but we did not include relations. Now we can extend it to give the proper definition of a  \define{model}. Sentences of FOL will be true or false \emph{in a model}.
 
-{A model $\model$ provides \begin{itemize}
+\factoidbox{A model $\model$ provides \begin{itemize}
 		\item specifies a non-empty set as the domain, $\domain$;
 		\item specifies an interpretation of the FOL-names and FOL-predicates. 
 		\begin{itemize}
@@ -1044,7 +708,7 @@ Consider the following model:
 
 Is `$Aab$' true? This is answered by looking at whether the sequence of the objects that the model assigns as denotations of `$a$' and `$b$' are in the model's denotation of the relation `$A$', that is, whether $$\sequence{\denote{a}_\model,\denote{b}_\model}\in\denote{A}_\model.$$
 In this model, this is the question of whether  $$\sequence{\text{Alice, Bob}}\in\Set{\sequence{\text{Alice, Denny}},\sequence{\text{Alice, Cathy}}}\text{?}$$
-Since $\sequence{\text{Alice, Bob}}\notin\Set{\sequence{\text{Alice, Denny}},\sequence{\text{Alice, Cathy}}}$, `$Aab$' is false on $\model$. 
+Since $\sequence{\text{Alice, Bob}}\notin\Set{\sequence{\text{Alice, Denny}},\sequence{\text{Alice, Cathy}}}$, `$Aab$' is false in $\model$. 
 
 
 
@@ -1059,14 +723,14 @@ Is $\exists x Aax$ true? This works just like what we have done so far, we have 
 	&&\text{De}&\true\\\varassigncline{3-4} 
 \end{array}\]
 
-So, $\exists x Aax$ is true. There is some choice of an object for $x$ which makes $Aax$ true: there someone for whom there is an arrow from Alice to them. For example, $x\mapsto$Cathy makes $Aax$ true on $\model$; so $\exists x Aax$ is true on $\model$. 
+So, $\exists x Aax$ is true. There is some choice of an object for $x$ which makes $Aax$ true: there someone for whom there is an arrow from Alice to them. For example, $x\mapsto$Cathy makes $Aax$ true in $\model$; so $\exists x Aax$ is true in $\model$. 
 
 \section{Interacting quantifiers}
 
 
 How about $\exists x(Cx\eand \forall y(Sy\eif Axy))$. This says that there is some computer watcher who has an arrow to all sword-bearers.
 
-We need to consider the different possible variable assignments $x\mapsto o$ and evaluate whether $Cx\eand \forall y(Sy\eif Axy)$ is true on each of them. That's fine for $Cx$. And when $Cx$ is false, that's enough to know that the conjunction is false. But we need to know then whether $ \forall y(Sy\eif Axy)$ is true under the variable assignment, say $x\mapsto$Alice. 
+We need to consider the different possible variable assignments $x\mapsto o$ and evaluate whether $Cx\eand \forall y(Sy\eif Axy)$ is true under each of them. That's fine for $Cx$. And when $Cx$ is false, that's enough to know that the conjunction is false. But we need to know then whether $ \forall y(Sy\eif Axy)$ is true under the variable assignment, say $x\mapsto$Alice. 
 \[\begin{array}{c|deeeeeeeeeeeeeeef}
 	&	{\exists} &{x} &(&Cx&\eand &\forall& y&(& Sy&\eif& Axy&)&)\\\hline
 	\model &\TTbf{?} & &\\\varassigncline{3-14} 
@@ -1078,7 +742,7 @@ We need to consider the different possible variable assignments $x\mapsto o$ and
 	&&\text{De}&&\false&\false&.\\\varassigncline{3-14} 
 \end{array}\]
 
-To do this, we need to extend our variable assignment so it not only considers $x\mapsto$Alice but also considers a choice of who is $y$. A variable assignment in general assigns an object of the domain to every variable. So to evaluate $\forall y(Sy\eif Axy)$ under the variable assignment $x\mapsto$Alice, we consider the variable assignments $x\mapsto$Alice; $y\mapsto o$, for each $o$ in the domain. If $Sy\eif Axy$ is true on each such, then $\forall y(Sy\eif Axy)$ is true under $x\mapsto$Alice. But, $\forall y(Sy\eif Axy)$ is false under $x\mapsto$Alice because on $x\mapsto$Alice;$y\mapsto$Bob, $Sy\eif Axy$ is false. 
+To do this, we need to extend our variable assignment so it not only considers $x\mapsto$Alice but also considers a choice of who is $y$. A variable assignment in general assigns an object of the domain to every variable. So to evaluate $\forall y(Sy\eif Axy)$ under the variable assignment $x\mapsto$Alice, we consider the variable assignments $x\mapsto$Alice; $y\mapsto o$, for each $o$ in the domain. If $Sy\eif Axy$ is true under each such, then $\forall y(Sy\eif Axy)$ is true under $x\mapsto$Alice. But, $\forall y(Sy\eif Axy)$ is false under $x\mapsto$Alice because under $x\mapsto$Alice and $y\mapsto$Bob, $Sy\eif Axy$ is false. 
 
 
 \[\begin{array}{c|deeeeeeeeeeeeeeef}
@@ -1355,13 +1019,13 @@ We need to explain truth for all three kinds of formula.
 \section{Atomic formulas}
 We already described the clause for atomic sentences, for example: 
 \begin{itemize}
-	\item $Ca$ is true on $\model$ iff $$\denote{a}_\model\in\denote{C}_\model.$$ 
-	\item $Lab$ is true on $\model$ iff $$\sequence{\denote{a}_\model,\denote{b}_\model}\in\denote{L}_\model.$$
+	\item $Ca$ is true in $\model$ iff $$\denote{a}_\model\in\denote{C}_\model.$$ 
+	\item $Lab$ is true in $\model$ iff $$\sequence{\denote{a}_\model,\denote{b}_\model}\in\denote{L}_\model.$$
 \end{itemize}
 
 But we also need to describe a clause for atomic formulas which contain variables. 
 \begin{itemize}
-	\item $Cx$ is true on $\model$ under variable assignment $\alpha$ iff $$\alpha(x)\in\denote{C}_\model$$
+	\item $Cx$ is true in $\model$ under variable assignment $\alpha$ iff $$\alpha(x)\in\denote{C}_\model$$
 	\item
 	$Lxy$ is true in a model $\model$ under a variable assignment $\alpha$ iff $$\sequence{\alpha(x),\alpha(y)}\in\denote{L}_\model$$
 	\item
@@ -1535,7 +1199,7 @@ Is $\exists x\forall y Rxy$ true? Intuitively, the sentence is true iff there is
 What about `$\exists x \exists y(Rxy \eand Ryx)$'? To show that it is true we will want to choose an object $o$ that we can assign to $x$ such that `$\exists y (Rxy\eand Ryx)$' is true uunder the assignment $\varvariant{\alpha}{x}{o}$. Let's consider $x\mapsto 3$ (again I'm using my foresight of what will come to choose carefully). Now is `$\exists y (Rxy\eand Ryx)$'  true under the variable assignment $x\mapsto 3$ (i.e., $\varvariant{\alpha}{x}{3}$? We need to find $y$-variant of this assignment which chooses an object such that `$Rxy\eand Ryx$' is true. Consider $y\mapsto 3$. We now have a variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{3}$. $x$ and $y$ are different variables but there's nothing stopping them being assigned the same object. And we can then consider whether $Rxy\eand Ryx$ is true under this model. Well, `$Rxy$' is true: 3 does have an arrow to 3. And `$Ryx$' is also true: 3 does have an arrow to 3. So by our clause for $\eand$, `$Rxy\eand Ryx$' is true under the variable assignment $\varvariant{\varvariant{\alpha}{x}{3}}{y}{3}$. And so `$\exists y(Rxy\eand Ryx)$' is true under the variable assignment $\varvariant{\alpha}{x}{3}$. And so $\exists x\exists y(Rxy\eand Ryx)$ is true in this model.
 
 
-One final example: $\forall x\forall y Rxy$. To check this we will need to consider all choices for $x$ and all choices for $y$ and check $Rxy$ is true on all of them. There are 16 such choices. But we won't have to go through them all: it'll be false. Consider $x\mapsto 1$ and $y\mapsto 4$. $Rxy$ is false under this variable assignment: there is no arrow from 1 to 4. Thus $\forall yRxy$ is false on the variable assignment $\varvariant{\alpha}{x}{1}$. And so $\forall x\forall y Rxy$ is false in the model under the variable assignment $\alpha$. However, $\alpha$ itself played no role in the evaluation of $\forall x\forall y Rxy$. All that mattered was the objects that were assigned to $x$ and $y$, and for $x$ and $y$ we considered the $x$-variants/$y$-variants. So $\forall x\forall y Rxy$ is not only true under the variable assignment $\alpha$ in this model but true under all variable assignments. The particular choice of an variable assignment is only relevant if we are evaluating the truth of formulas with free variables. $\forall x\forall y Rxy$ is a sentence, as it has no free variables.
+One final example: $\forall x\forall y Rxy$. To check this we will need to consider all choices for $x$ and all choices for $y$ and check $Rxy$ is true underall of them. There are 16 such choices. But we won't have to go through them all: it'll be false. Consider $x\mapsto 1$ and $y\mapsto 4$. $Rxy$ is false under this variable assignment: there is no arrow from 1 to 4. Thus $\forall yRxy$ is false on the variable assignment $\varvariant{\alpha}{x}{1}$. And so $\forall x\forall y Rxy$ is false in the model under the variable assignment $\alpha$. However, $\alpha$ itself played no role in the evaluation of $\forall x\forall y Rxy$. All that mattered was the objects that were assigned to $x$ and $y$, and for $x$ and $y$ we considered the $x$-variants/$y$-variants. So $\forall x\forall y Rxy$ is not only true under the variable assignment $\alpha$ in this model but true under all variable assignments. The particular choice of an variable assignment is only relevant if we are evaluating the truth of formulas with free variables. $\forall x\forall y Rxy$ is a sentence, as it has no free variables.
 
 
 More generally, if we have a quantifier like $\exists x$ or $\forall x$ we ignore whatever our original variable assignment told us about $x$ but consider suitable $x$-variants. So when all our variables are bound by quantifiers, all the original components of our variable assignment are ignored. To summarise: Sentences are simply true or false in models, variable assignments don't matter.
@@ -1875,7 +1539,7 @@ Again, we want to show that this is invalid. To do this, we must make the premis
 	\item[\domain] $\Set{o \given o\text{ is a UK citizen currently in a civil partnership with another UK citizen}}$
 	\item[\denote{L}] $\Set{\langle o_1,o_2\rangle \given  o_1\text{ is in a civil partnership with }o_2}$
 \end{interp}
-The premise is clearly true on this model. Anyone in the domain is a UK citizen in a civil partnership with some other UK citizen. That other citizen will also, then, be in the domain. So for everyone in the domain, there will be someone (else) in the domain with whom they are in a civil partnership. Hence `$\forall x \exists y Lxy$' is true. However, the conclusion is clearly false, for that would require that there is some single person who is in a civil partnership with everyone in the domain, and there is no such person, so the argument is invalid. We observe immediately that the sentences `$\forall x \exists y Lxy$ and $\enot\exists y \forall x Lxy$' are jointly consistent and that `$\exists y \forall x Lxy$, is not a logical consequence of `$\forall x \exists y Lxy$'.
+The premise is clearly true in this model. Anyone in the domain is a UK citizen in a civil partnership with some other UK citizen. That other citizen will also, then, be in the domain. So for everyone in the domain, there will be someone (else) in the domain with whom they are in a civil partnership. Hence `$\forall x \exists y Lxy$' is true. However, the conclusion is clearly false, for that would require that there is some single person who is in a civil partnership with everyone in the domain, and there is no such person, so the argument is invalid. We observe immediately that the sentences `$\forall x \exists y Lxy$ and $\enot\exists y \forall x Lxy$' are jointly consistent and that `$\exists y \forall x Lxy$, is not a logical consequence of `$\forall x \exists y Lxy$'.
 
 For our third example, we'll mix things up a bit. In \cref{sec:model}, we described how we can present some models using diagrams. For example:
 \begin{center}
@@ -2093,4 +1757,193 @@ When you provide a model to refute a claim---to logical truth, say, or to entail
 	
 	
 \end{practiceproblems}
+
+
+
+
+
+\chapter{Semantic concepts}
+
+Offering a precise definition of truth in FOL was more than a little fiddly, but now that we are done, we can define various central logical notions. These will look very similar to the definitions we offered for TFL. However, remember that they concern \emph{models}, rather than valuations.
+
+%We will use the symbol $\entails$ for FOL much as we did for TFL. So:
+\factoidbox{
+	$$\metaX_1, \metaX_2, \ldots, \metaX_n \therefore\metaZ$$ is \define{valid}
+	iff there is no model in which all of $\metaX_1, \metaX_2, \ldots, \metaX_n$ are true and in which \metaZ is false. }
+%Derivatively,
+%	$$\entails\metaX$$
+%means that \metaX is true in every model.
+
+The other logical notions also have corresponding definitions in FOL:
+\factoidbox{
+	\begin{itemize}
+		\item An FOL sentence $\metaX$ is a \define{logical truth} iff $\metaX$ is true in every model.%; i.e.,  $\entails\metaX$.
+		\newglossaryentry{logical truth}
+		{
+			name=logical truth,
+			description={A \gls{sentence of FOL} that is true in every \gls{model}. Note that the equivalent notion for TFL is `tautology'}
+		}
+		
+		\item $\metaX$ is a \define{contradiction} iff $\metaX$ is false in every model.%; i.e., $\entails\enot\metaX$.
+		\newglossaryentry{contradiction of FOL}
+		{
+			name=contradiction (of FOL),
+			text=contradiction,
+			description={A \gls{sentence of FOL} that is false in every \gls{model}}
+		}
+		
+		%\item $\metaX_1, \metaX_2, \ldots \metaX_n \therefore \metaZ$ is \define{valid in FOL} iff there is no model in which all of the premises are true and the conclusion is false; i.e., $\metaX_1,\metaX_2,\ldots \metaX_n \entails\metaZ$. It is \define{invalid in FOL} otherwise.
+		%\newglossaryentry{logically valid in FOL}
+		%{
+			%  name=logical validity (in FOL),
+			%  text = logically valid,
+			%description={A property held by arguments if and only if no \gls{model} makes all premises true and the conclusion false}
+			%}
+		
+		\item Two FOL sentences \metaX and \metaY are \define{logically equivalent} iff they are true in exactly the same models as each other.%r; i.e., both $\metaX\entails\metaY$ and $\metaY\entails\metaX$.
+		
+		\newglossaryentry{logically equivalent in FOL}
+		{
+			name=logical equivalence (in FOL),
+			text = logically equivalent,
+			description={A property held by pairs of \glspl{sentence of FOL} if and only if the sentences have the same truth value in every \gls{model}.}
+		}
+		
+		\item The FOL sentences $\metaX_1,\metaX_2,\ldots, \metaX_n$ are \define{jointly logically consistent} iff there is some model in which all of the sentences are true. They are \define{jointly logically inconsistent} iff there is no such model.
+		\newglossaryentry{logically consistent in FOL}
+		{
+			name=logical consistency (in FOL),
+			text=jointly consistent,
+			description={A property held by \glspl{sentence of FOL} if and only if some \gls{model} makes all the sentences true}
+		}
+	\end{itemize}
+}
+
+%\chapter{Using models}
+%\label{sec:UsingModels}
+
+\section{Logical truths and contradictions}
+Suppose we want to show that `$\exists xAxx \eif Bd$' is \emph{not} a logical truth. This requires showing that the sentence is not true in every model; i.e.,\ that it is false in some model. If we can provide just one model in which the sentence is false, then we will have shown that the sentence is not a logical truth.
+
+In order for `$\exists xAxx \eif Bd$' to be false, the antecedent ($\exists x Axx$) must be true, and the consequent ($Bd$) must be false. To construct such a model, we start by specifying a domain. Keeping the domain small makes it easier to specify what the predicates will be true of, so we will start with a domain that has just one member. For concreteness, let's say it is the city of Paris.
+\begin{interp}
+	\item[\domain] $\Set{\emph{Paris}}$
+\end{interp}
+The name $d$ must refer to something in the domain, so we have no option but:
+\begin{interp}
+	\item[\denote{d}] \emph{Paris}
+\end{interp}
+Recall that we want $\exists x Axx$ to be true, so we want all members of the domain to be paired with themselves in the extension of $A$. We can just offer:
+\begin{interp}
+	\item[\denote{A}] $\Set{o \given  o=o}$
+\end{interp}
+Now $Add$ is true, so it is surely true that $\exists x Axx$. Next, we want $Bd$ to be false, so the referent of $d$ must not be in the extension of $B$. We might simply offer:
+\begin{interp}
+	\item[\denote{B}] $\Set{o \given \text{$o$ is in Germany}}$
+\end{interp}
+Since Paris is not in Germany the set $\Set{o \given \text{$o$ is in Germany}}$ does no have any elements that are in the domain of the model. This means that we have a model where `$\exists x Axx$' is true, but where `$Bd$' is false. So there is a model where $\exists x Axx \eif Bd$ is false. So $\exists x Axx \eif Bd$ is not a logical truth.
+
+We can just as easily show that `$\exists xAxx \eif Bd$' is not a contradiction. We need only specify a model in which `$\exists xAxx \eif Bd$' is true; i.e., a model in which either `$\exists x Axx$' is false or `$Bd$' is true. Here is one:
+\begin{interp}
+	\item[\domain] $\Set{\emph{Paris}}$
+	\item[\denote{d}] \emph{Paris}
+	\item[\denote{A}] $\Set{o \given o=o}$
+	\item[\denote{B}] $\Set{o \given \text{$o$ is in France}}$
+\end{interp}
+This shows that there is a model where `$\exists xAxx \eif Bd$' is true. So `$\exists x Axx \eif Bd$' is not a contradiction.
+
+\section{Logical equivalence}
+Suppose we want to show that $\forall x Sx$ and $\exists x Sx$ are not logically equivalent. We need to construct a model in which the two sentences have different truth values; we want one of them to be true and the other to be false. We start by specifying a domain. Again, we make the domain small so that we can specify extensions easily. In this case, we will need at least two objects. (If we chose a domain with only one member, the two sentences would end up with the same truth value. In order to see why, try constructing some partial models with one-member domains.) For concreteness, let's take:
+\begin{interp}
+	\item[\domain] $\Set{\text{\emph{Ornette Coleman, Miles Davis}}}$
+\end{interp}
+We can make $\exists x Sx$ true by including something in the extension of $S$, and we can make $\forall x Sx$ false by leaving something out of the extension of $S$. For concreteness we will offer:
+\begin{interp}
+	\item[\denote{S}] $\Set{o \given \text{$o$ plays saxophone}}$
+\end{interp}
+Now `$\exists x Sx$' is true, because $Sx$ is true of \emph{Ornette Coleman}. Slightly more precisely, extend our model by allowing $c$ to name \emph{Ornette Coleman}.  `$Sc$' is true in this extended model, so `$\exists x Sx$' was true in the original model. Similarly, `$\forall x Sx$' is false, because \emph{Miles Davis}$\,\not\in\denote{S}$. Slightly more precisely, extend our model by allowing $d$ to name \emph{Miles Davis}. Then `$Sd$' is false in this extended model, so `$\forall x Sx$' was false in the original model. We have provided a counter-model to the claim that `$\forall x Sx$' and `$\exists x Sx$' are logically equivalent.
+\factoidbox{
+	To show that $\metaX$ is not a logical truth, it suffices to find a model where $\metaX$ is false.
+	
+	To show that $\metaX$ is not a contradiction, it suffices to find a model where $\metaX$ is true.
+	
+	To show that $\metaX$ and $\metaY$ are not logically equivalent, it suffices to find a model where one is true and the other is false.
+}
+
+\section{Validity, logical consequence and consistency}
+To test for validity, logical consequence, or consistency, we typically need to produce models that determine the truth value of several sentences simultaneously.
+
+Consider the following argument in FOL:
+$$\exists x(Gx \eif Ga) \therefore \exists x Gx \eif Ga$$
+To show that this is invalid, we must make the premise true and the conclusion false. The conclusion is a conditional, so to make it false, the antecedent must be true and the consequent must be false. Clearly, our domain must contain two objects. Let's try:
+\begin{interp}
+	\item[\domain] $\Set{\text{\emph{Karl Marx, Ludwig von Mises}}}$
+	\item[\denote{G}] $\Set{o \given o\text{ hated communism}}$ (=$\Set{\emph{Ludwig von Mises}}$)
+	\item[\denote{a}] \emph{Karl Marx}
+\end{interp}
+Given that Marx wrote \emph{The Communist Manifesto}, $Ga$ is plainly false in this model. But von Mises famously hated communism, so $\exists x Gx$ is true in this model. Hence `$\exists x Gx \eif Ga$' is false, as required.
+
+Does this model make the premise true? Yes it does! Note that $Ga \eif Ga$ is true. (Indeed, it is a logical truth.) But then certainly `$\exists x (Gx \eif Ga)$' is true, so the premise is true, and the conclusion is false, in this model. The argument is therefore invalid.
+
+In passing, note that we have also shown that $\exists x Gx \eif Ga$ is \emph{not} a logical consequence of $\exists x(Gx \eif Ga)$. Equally, we have shown that the sentences $\exists x (Gx \eif Ga)$ and $\enot (\exists x Gx \eif Ga)$ are jointly consistent.
+
+
+
+%\chapter{Reasoning about all models}
+
+\section{Logical truths and contradictions}
+We can show that a sentence is \emph{not} a logical truth just by providing one carefully specified model: a model in which the sentence is false. To show that something is a logical truth, on the other hand, it would not be enough to construct ten, one hundred, or even a thousand models in which the sentence is true. A sentence is only a logical truth if it is true in \emph{every} model, and there are infinitely many models. We need to reason about all of them, and we cannot do this by dealing with them one by one!
+
+Sometimes, we can reason about all models fairly easily. For example, we can offer a relatively simple argument that `$Raa\eif Raa$' is a logical truth:
+\begin{quote}
+	Any relevant model will give `$Raa$' a truth value. If `$Raa$' is true in a model, then `$Raa \eif Raa$' is true in that model. If $Raa$ is false in a model, then $Raa \eif Raa$ is true in that model. These are the only alternatives. So `$Raa \eiff Raa$' is true in every model. Therefore, it is a logical truth.
+\end{quote}
+This argument is valid, of course, and its conclusion is true. However, it is not an argument in FOL. Rather, it is an argument in English \emph{about} FOL: it is an argument in the metalanguage.
+
+Note another feature of the argument. Since the sentence in question contained no quantifiers, we did not need to think about how to interpret $a$ and $R$; the point was just that, however we interpreted them, $Raa$ would have some truth value or other. (We could ultimately have given the same argument concerning TFL sentences.)
+
+Here is another bit of reasoning. Consider the sentence $\forall x(Rxx\eif Rxx)$. Again, it should obviously be a logical truth, but to say precisely why is quite a challenge. We cannot say that $Rxx \eif Rxx$ is true in every model, since $Rxx \eif Rxx$ is not even a \emph{sentence} of FOL (remember that $x$ is a variable, not a name). So we have to be a bit cleverer.
+\begin{quote}
+	Consider some arbitrary model. Consider some arbitrary member of the domain, which, for convenience, we will call \emph{obbie}, and suppose we extend our original model by adding a new name, $c$, to name \emph{obbie}. Then either $Rcc$ will be true or it will be false. If $Rcc$ is true, then $Rcc \eiff Rcc$ is true. If $Rcc$ is false, then $Rcc \eif Rcc$ will be true. So either way, $Rcc \eif Rcc$ is true. Since there was nothing special about \emph{obbie}---we might have chosen any object---we see that no matter how we extend our original model by allowing $c$ to name some new object, $Rcc \eif Rcc$ will be true in the new model. So $\forall x (Rxx \eif Rxx)$ was true in the original model. But we chose our model arbitrarily, so $\forall x (Rxx \eif Rxx)$ is true in every model. It is therefore a logical truth.
+\end{quote}
+This is quite longwinded, but, as things stand, there is no alternative. In order to show that a sentence is a logical truth, we must reason about \emph{all} models.
+
+\section{Other cases}
+Similar points hold of other cases too. Thus, we must reason about all models if we want to show:
+\begin{ebullet}
+	\item that a sentence is a contradiction; for this requires that it is false in \emph{every} model.
+	\item that two sentences are logically equivalent; for this requires that they have the same truth value in \emph{every} model.
+	\item that some sentences are jointly inconsistent; for this requires that there is no model in which all of those sentences are true together; i.e.\ that, in \emph{every} model, at  least one of those sentences is false.
+	\item that an argument is valid; for this requires that the conclusion is true in \emph{every} model where the premises are true.
+	\item that some sentences entail another sentence.
+\end{ebullet}
+The problem is that, with the tools available to you so far, reasoning about all models is a serious challenge! Let's take just one more example. Here is an argument which is obviously valid:
+$$\forall x(Hx \eand Jx) \therefore \forall x Hx$$
+After all, if everything is both H and J, then everything is H. But we can only show that the argument is valid by considering what must be true in every model in which the premise is true. To show this, we would have to reason as follows:
+\begin{quote}
+	Consider an arbitrary model in which the premise $\forall x(Hx \eand Jx)$ is true. It follows that, however we expand the model with a new name, for example $c$, $Hc \eand Jc$ will be true in this new model. $Hc$ will, then, also be true in this new model. But since this held for \emph{any} way of expanding the model, it must be that $\forall x Hx$ is true in the old model. We've assumed nothing about the model except that it was one in which $\forall x(Hx \eand Jx)$  is true, so any model in which $\forall x(Hx \eand Jx)$ is true is one in which $\forall x Hx$ is true. The argument is valid!
+\end{quote}
+Even for a simple argument like this one, the reasoning is somewhat complicated. For longer arguments, the reasoning can be extremely torturous.
+
+The following table summarises whether a single (counter-)model suffices, or whether we must reason about all models.
+
+
+\begin{center}
+	\begin{tabular}{l l l}
+		%\cline{2-3}
+		& \textbf{Yes} & \textbf{No}\\
+		\hline
+		%\cline{2-3}
+		logical truth? & all models & one counter-model\\
+		contradiction? &  all models  & one counter-model\\
+		equivalent? & all models & one counter-model\\
+		consistent? & one model & all models\\
+		valid? & all models & one counter-model\\
+		entailment? & all models & one counter-model\\
+	\end{tabular}
+\end{center}
+\label{table:ModelOrArgument}
+
+This might usefully be compared with the table at the end of \cref{sec:PartialTruthTable}. The key difference resides in the fact that TFL concerns truth tables, whereas FOL concerns models. This difference is deeply important, since each truth-table only ever has finitely many lines, so that a complete truth table is a relatively tractable object. By contrast, there are infinitely many models for any given sentence(s), so that reasoning about all models can be a deeply tricky business.
+
 
