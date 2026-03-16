@@ -380,7 +380,13 @@
 \newcolumntype{d}{ c@{\extracolsep{0.1em}}}
 \newcolumntype{e}{@{\extracolsep{0.1em}}c@{\extracolsep{0.1em}}}
 \newcolumntype{f}{@{\extracolsep{0.1em}}c }
-\newcommand*{\TTbf}[1]{\mainconnective{#1}}
+\newcommand*{\TTbf}[1]{	\begingroup
+	\ifmmode
+	\colorbox{yellow!50}{\textcolor{leadbeater}{\ensuremath{#1}}}%
+	\else
+	\colorbox{yellow!50}{\textcolor{leadbeater}{#1}}%
+	\fi
+	\endgroup}
 
 \RequirePackage[table]{xcolor}
 \newcommand{\varassigncline}[1]{\arrayrulecolor{gray!40}\cline{#1}\arrayrulecolor{black}}
