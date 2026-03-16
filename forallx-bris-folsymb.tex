@@ -691,145 +691,145 @@
 	The moral is: take great care with the order of quantification.
 	
 	
-	\section{Stepping-stones to symbolization}
-	Once we have the possibility of multiple quantifiers, representation in FOL can quickly start to become a bit tricky. When you are trying to symbolize a complex sentence, we recommend laying down several stepping stones. As usual, this idea is best illustrated by example. Consider this symbolisation key:
-	\begin{ekey}
-		\item[\text{domain}] people and dogs
-		\item[Dx] \gap{x} is a dog
-		\item[Fxy] \gap{x} is a friend of \gap{y}
-		\item[Oxy] \gap{x} owns \gap{y}
-		\item[g] Geraldo
-	\end{ekey}
-	
-	Now let's try to symbolise. Like in TFL and in FOL so far, our process is to break it up in stages. Can it be paraphrased in one of our canonical forms, in which case we can then replace that component with the relevant logic and then proceed to try to symbolise the component parts. 
-	
-	\begin{center}
-		\begin{forest}
-			[Gerardo is a dog owner\\There is a dog that Gerardo owns\\
-			\mainconnectivecolor{There is some $x$ such that} $x$ is a dog and $g$ owns $x$\\$\exists x\ldots$
-			[$x$ is a dog \mainconnectivecolor{and} $g$ owns $x$\\$\ldots {\eand} \ldots$
-			[$x$ is a dog\\${Dx}$]
-			[$g$ owns $x$\\${Ogx}$]
-			]
-			]
-		\end{forest}
-	\end{center}
-	
-	
-	
-	\begin{center}
-		\begin{forest}
-			[Every dog owner is a friend of a dog owner\\For every $x$: if $x$ is a dog owner then $x$ is friend of a dog owner\\
-			For every $x$: if $x$ is a dog owner then $x$ is a friend of a dog owner\\${\forall x}\ldots$
-			[if $x$ is a dog owner then $x$ is a friend of a dog owner\\$(\ldots {\eif} \ldots)$
-			[$x$ is a dog owner\\${\exists z}\ldots$
-			[$z$ is a dog and $x$ owns $z$\\$(\ldots {\eand} \ldots)$
-			[$z$ is a dog\\$Dz$]
-			[$x$ owns $z$\\$Oxz$]
-			]
-			]
-			[$x$ is a friend of a dog owner\\${\exists y}\ldots$
-			[$y$ is a dog owner {and} $x$ is a friend of $y$\\$(\ldots {\eand} \ldots)$
-			[$y$ is a dog owner\\${\exists z}\ldots$
-			[$z$ is a dog {and} $y$ owns $z$\\$(\ldots {\eand} \ldots)$
-			[$z$ is a dog\\$Dz$]
-			[$y$ owns $z$\\$Oyz$]
-			]
-			]
-			[$x$ is a friend of $y$\\$Fxy$]
-			]
-			]
-			]
-			]
-		\end{forest}
-	\end{center}
-	
-	
-	
-	
-	
-	
-	Now let's try to symbolize these sentences:
-	\begin{samplesent}
-		\item\label{sent:dog2} Geraldo is a dog owner.
-		\item\label{sent:dog3} Someone is a dog owner.
-		\item\label{sent:dog4} All of Geraldo's friends are dog owners.
-		\item\label{sent:dog5} Every dog owner is a friend of a dog owner.
-		\item\label{sent:dog6} Every dog owner's friend owns a dog of a friend.
-	\end{samplesent}
-	\Cref{sent:dog2} can be paraphrased as, `There is a dog that Geraldo owns'. This can be symbolized by $\exists x(Dx \eand Ogx)$.
-	
-	\Cref{sent:dog3} can be paraphrased as, `There is some y such that y is a dog owner'. Dealing with part of this, we might write $\exists y(y\text{ is a dog owner})$. Now the fragment we have left as `$y$ is a dog owner' is much like \cref{sent:dog2}, except that it is not specifically about Geraldo. So we can symbolize \cref{sent:dog3} by:
-	$$\exists y \exists x(Dx \eand Oyx)$$
-	We should pause to clarify something here. In working out how to symbolize the last sentence, we wrote down $\exists y(y\text{ is a dog owner})$. To be very clear: this is \emph{neither} an FOL sentence \emph{nor} an English sentence: it uses bits of FOL ($\exists$, $y$) and bits of English (`dog owner'). It is really is \emph{just a stepping-stone} on the way to symbolizing the entire English sentence with a FOL sentence. You should regard it as a bit of rough-working-out, on a par with the doodles that you might absent-mindedly draw in the margin of this book, whilst you are concentrating fiercely on some problem.
-	
-	\Cref{sent:dog4} can be paraphrased as, `Everyone who is a friend of Geraldo is a dog owner'. Using our stepping-stone tactic, we might write
-	$$\forall x \bigl(Fxg \eif x \text{ is a dog owner}\bigr)$$
-	Now the fragment that we have left to deal with, `$x$ is a dog owner', is structurally just like \cref{sent:dog2}. However, it would be a mistake for us simply to write
-	$$\forall x \bigl(Fxg \eif \exists x(Dx \eand Oxx)\bigr)$$
-	for we would here have a \emph{clash of variables}. While the scope of the universal quantifier, $\forall x$, is the entire conditional, the variable $x$ does not occur free in the consequent of the conditional : it is bound by the existential quantifier instead. This means that 
-	$$\forall x \bigl(Fxg \eif \exists x(Dx \eand Oxx)\bigr)$$
-	does not symbolize `Every friend of Gerald is a dog owner' but rather a rather something like:
-	\begin{itemize}
-		\item If everyone is a friend of Gerald, then there is a dog that owns itself.
-	\end{itemize}
-	That's clearly not what we wanted!
-	
-	To make sure that we get the intended outcome we need to see to it that the universal quantifier binds the owner position in the consequent of the conditional. To continue our symbolization, then, we must choose some different variable for our existential quantifier. What we want is something like:
-	$$\forall x\bigl(Fxg \eif\exists z(Dz \eand Oxz)\bigr)$$
-	This adequately symbolizes \cref{sent:dog4}, as the variable $x$ now occurs free in the consequent of the conditional and can be bound by the universal quatifier, which in turn guarantees that dog-owner must be friends of Gerald.
-	
-	\Cref{sent:dog5} can be paraphrased as `For any x that is a dog owner, there is a dog owner who x is a friend of'. Using our stepping-stone tactic, this becomes
-	$$\forall x\bigl(\mbox{$x$ is a dog owner}\eif\exists y(\mbox{$y$ is a dog owner}\eand Fxy)\bigr)$$
-	Completing the symbolization, we end up with
-	$$\forall x\bigl(\exists z(Dz \eand Oxz)\eif\exists y\bigl(\exists z(Dz \eand Oyz)\eand Fxy\bigr)\bigr)$$
-	Note that we have used the same letter, $z$, in both the antecedent and the consequent of the conditional, but that these are governed by two different quantifiers. This is ok: there is no clash here, because it is clear which quantifier that variable falls under. We might graphically represent the scope of the quantifiers thus:
-	$$\overbrace{\forall x\bigl(\overbrace{\exists z(Dz \eand Oxz)}^{\text{scope of 1st `}\exists z\text{'}}\eif \overbrace{\exists y(\overbrace{\exists z(Dz \eand Oyz)}^{\text{scope of 2nd `}\exists z\text{'}}\eand Fxy)\bigr)}^{\text{scope of `}\exists y\text{'}}}^{\text{scope of `}\forall x\text{'}}$$
-	This shows that no variable is being forced to serve two masters simultaneously.
-	
-	\Cref{sent:dog6} is the trickiest yet. First we paraphrase it as `For any x that is a friend of a dog owner, x owns a dog which is also owned by a friend of x'. Using our stepping-stone tactic, this becomes:
-	
-	\
-	\\$\forall x\bigl(x\text{ is a friend of a dog owner}\eif \phantom{x}$\\
-	\phantom{x}\hfill $x\text{ owns a dog which is owned by a friend of }x\bigr)$
-	
-	\
-	\\Breaking this down a bit more:
-	
-	\
-	\\$\forall x\bigl(\exists y(Fxy \eand y\text{ is a dog owner})\eif \phantom{x}$\\
-	\phantom{x}\hfill $\exists y(Dy \eand Oxy \eand y\text{ is owned by a friend of }x)\bigr)$
-	
-	\
-	\\And a bit more:
-	$$\forall x\bigl(\exists y(Fxy \eand \exists z(Dz \eand Oyz)) \eif \exists y(Dy \eand Oxy \eand \exists z(Fzx \eand Ozy))\bigr)$$
-	And we are done!
-	
-	
-	%Let's just give one more worked-example for symbolisation:
-	%Suppose we are given the English sentence ``Everyone likes someone who has no pet dog'' to symbolise. This is rather a complicated sentence. But just work through it in stages.
-	%
-	%First we look at what kinds of objects are talked about to fix our domain. Here we have people and dogs, so we will use the domain: people and dogs. The rest of the symbolisation key we will leave to work out as we go. But we need to do the domain first as it'll effect how we symbolise the quantifiers: whether we symbolise `everyone' as `for all' or we need to restrict the domain and say `for all people'.
-	%
-	%
-	%\begin{itemize}
-	%\item Everyone likes someone who has no pet dog.
-	%\item \textcolor{leadbeater}{For all x}, if x is a person, then x likes someone who has no pet dog.
-	%\item $\textcolor{leadbeater}{\forall x }(\text{if $x$ is a person, then $x$ likes someone who has no pet dog})$
-	%\item $\forall x(Px\eif \text{\textcolor{leadbeater}{there is some $y$}, where $y$ is a person and $x$ likes $y$ and $y$ has no pet dog})$
-	%\item $\forall x\textcolor{leadbeater}{\exists y }(\text{$x$ likes $y$ and $y$ has no pet dog})$
-	%\item $\forall x\exists y (\,\text{$x$ likes $y$}\,\textcolor{leadbeater}{\eand}\,\text{$y$ has no pet dog}\,)$
-	%\item $\forall x\exists y (\textcolor{leadbeater}{Lxy}\,\eand\,\text{$y$ has no pet dog}\,)$
-	%\item $\forall x\exists y (Lxy\,\eand\,\text{\textcolor{leadbeater}{it is not the case that} $y$ has a pet dog}\,)$
-	%\item $\forall x\exists y (Lxy\,\eand\textcolor{leadbeater}{\enot}(\text{$y$ has a pet dog}))$
-	%\item $\forall x\exists y (Lxy\,\eand\enot(\text{\textcolor{leadbeater}{there is some $z$}, where $z$ is $y$'s pet dog}))$
-	%\item $\forall x\exists y (Lxy\,\eand\enot\textcolor{leadbeater}{\exists z}(\text{$z$ is $y$'s pet dog}))$
-	%\item $\forall x\exists y (Lxy\,\eand\enot\exists z(\text{$z$ is $y$'s pet \textcolor{leadbeater}{and} $z$ is a dog}))$
-	%\item $\forall x\exists y (Lxy\,\eand\enot\exists z(\text{$z$ is $y$'s pet $\textcolor{leadbeater}{\eand}$ $z$ is a dog}))$
-	%\item $\forall x\exists y (Lxy\,\eand\enot\exists z(\textcolor{leadbeater}{Pzy}\eand \textcolor{leadbeater}{Dz}))$
-	%\end{itemize}
-	
-	
+%	\section{Stepping-stones to symbolization}
+%	Once we have the possibility of multiple quantifiers, representation in FOL can quickly start to become a bit tricky. When you are trying to symbolize a complex sentence, we recommend laying down several stepping stones. As usual, this idea is best illustrated by example. Consider this symbolisation key:
+%	\begin{ekey}
+%		\item[\text{domain}] people and dogs
+%		\item[Dx] \gap{x} is a dog
+%		\item[Fxy] \gap{x} is a friend of \gap{y}
+%		\item[Oxy] \gap{x} owns \gap{y}
+%		\item[g] Geraldo
+%	\end{ekey}
+%	
+%	Now let's try to symbolise. Like in TFL and in FOL so far, our process is to break it up in stages. Can it be paraphrased in one of our canonical forms, in which case we can then replace that component with the relevant logic and then proceed to try to symbolise the component parts. 
+%	
+%	\begin{center}
+%		\begin{forest}
+%			[Gerardo is a dog owner\\There is a dog that Gerardo owns\\
+%			\mainconnectivecolor{There is some $x$ such that} $x$ is a dog and $g$ owns $x$\\$\exists x\ldots$
+%			[$x$ is a dog \mainconnectivecolor{and} $g$ owns $x$\\$\ldots {\eand} \ldots$
+%			[$x$ is a dog\\${Dx}$]
+%			[$g$ owns $x$\\${Ogx}$]
+%			]
+%			]
+%		\end{forest}
+%	\end{center}
+%	
+%	
+%	
+%	\begin{center}
+%		\begin{forest}
+%			[Every dog owner is a friend of a dog owner\\For every $x$: if $x$ is a dog owner then $x$ is friend of a dog owner\\
+%			For every $x$: if $x$ is a dog owner then $x$ is a friend of a dog owner\\${\forall x}\ldots$
+%			[if $x$ is a dog owner then $x$ is a friend of a dog owner\\$(\ldots {\eif} \ldots)$
+%			[$x$ is a dog owner\\${\exists z}\ldots$
+%			[$z$ is a dog and $x$ owns $z$\\$(\ldots {\eand} \ldots)$
+%			[$z$ is a dog\\$Dz$]
+%			[$x$ owns $z$\\$Oxz$]
+%			]
+%			]
+%			[$x$ is a friend of a dog owner\\${\exists y}\ldots$
+%			[$y$ is a dog owner {and} $x$ is a friend of $y$\\$(\ldots {\eand} \ldots)$
+%			[$y$ is a dog owner\\${\exists z}\ldots$
+%			[$z$ is a dog {and} $y$ owns $z$\\$(\ldots {\eand} \ldots)$
+%			[$z$ is a dog\\$Dz$]
+%			[$y$ owns $z$\\$Oyz$]
+%			]
+%			]
+%			[$x$ is a friend of $y$\\$Fxy$]
+%			]
+%			]
+%			]
+%			]
+%		\end{forest}
+%	\end{center}
+%	
+%	
+%	
+%	
+%	
+%	
+%	Now let's try to symbolize these sentences:
+%	\begin{samplesent}
+%		\item\label{sent:dog2} Geraldo is a dog owner.
+%		\item\label{sent:dog3} Someone is a dog owner.
+%		\item\label{sent:dog4} All of Geraldo's friends are dog owners.
+%		\item\label{sent:dog5} Every dog owner is a friend of a dog owner.
+%		\item\label{sent:dog6} Every dog owner's friend owns a dog of a friend.
+%	\end{samplesent}
+%	\Cref{sent:dog2} can be paraphrased as, `There is a dog that Geraldo owns'. This can be symbolized by $\exists x(Dx \eand Ogx)$.
+%	
+%	\Cref{sent:dog3} can be paraphrased as, `There is some y such that y is a dog owner'. Dealing with part of this, we might write $\exists y(y\text{ is a dog owner})$. Now the fragment we have left as `$y$ is a dog owner' is much like \cref{sent:dog2}, except that it is not specifically about Geraldo. So we can symbolize \cref{sent:dog3} by:
+%	$$\exists y \exists x(Dx \eand Oyx)$$
+%	We should pause to clarify something here. In working out how to symbolize the last sentence, we wrote down $\exists y(y\text{ is a dog owner})$. To be very clear: this is \emph{neither} an FOL sentence \emph{nor} an English sentence: it uses bits of FOL ($\exists$, $y$) and bits of English (`dog owner'). It is really is \emph{just a stepping-stone} on the way to symbolizing the entire English sentence with a FOL sentence. You should regard it as a bit of rough-working-out, on a par with the doodles that you might absent-mindedly draw in the margin of this book, whilst you are concentrating fiercely on some problem.
+%	
+%	\Cref{sent:dog4} can be paraphrased as, `Everyone who is a friend of Geraldo is a dog owner'. Using our stepping-stone tactic, we might write
+%	$$\forall x \bigl(Fxg \eif x \text{ is a dog owner}\bigr)$$
+%	Now the fragment that we have left to deal with, `$x$ is a dog owner', is structurally just like \cref{sent:dog2}. However, it would be a mistake for us simply to write
+%	$$\forall x \bigl(Fxg \eif \exists x(Dx \eand Oxx)\bigr)$$
+%	for we would here have a \emph{clash of variables}. While the scope of the universal quantifier, $\forall x$, is the entire conditional, the variable $x$ does not occur free in the consequent of the conditional : it is bound by the existential quantifier instead. This means that 
+%	$$\forall x \bigl(Fxg \eif \exists x(Dx \eand Oxx)\bigr)$$
+%	does not symbolize `Every friend of Gerald is a dog owner' but rather a rather something like:
+%	\begin{itemize}
+%		\item If everyone is a friend of Gerald, then there is a dog that owns itself.
+%	\end{itemize}
+%	That's clearly not what we wanted!
+%	
+%	To make sure that we get the intended outcome we need to see to it that the universal quantifier binds the owner position in the consequent of the conditional. To continue our symbolization, then, we must choose some different variable for our existential quantifier. What we want is something like:
+%	$$\forall x\bigl(Fxg \eif\exists z(Dz \eand Oxz)\bigr)$$
+%	This adequately symbolizes \cref{sent:dog4}, as the variable $x$ now occurs free in the consequent of the conditional and can be bound by the universal quatifier, which in turn guarantees that dog-owner must be friends of Gerald.
+%	
+%	\Cref{sent:dog5} can be paraphrased as `For any x that is a dog owner, there is a dog owner who x is a friend of'. Using our stepping-stone tactic, this becomes
+%	$$\forall x\bigl(\mbox{$x$ is a dog owner}\eif\exists y(\mbox{$y$ is a dog owner}\eand Fxy)\bigr)$$
+%	Completing the symbolization, we end up with
+%	$$\forall x\bigl(\exists z(Dz \eand Oxz)\eif\exists y\bigl(\exists z(Dz \eand Oyz)\eand Fxy\bigr)\bigr)$$
+%	Note that we have used the same letter, $z$, in both the antecedent and the consequent of the conditional, but that these are governed by two different quantifiers. This is ok: there is no clash here, because it is clear which quantifier that variable falls under. We might graphically represent the scope of the quantifiers thus:
+%	$$\overbrace{\forall x\bigl(\overbrace{\exists z(Dz \eand Oxz)}^{\text{scope of 1st `}\exists z\text{'}}\eif \overbrace{\exists y(\overbrace{\exists z(Dz \eand Oyz)}^{\text{scope of 2nd `}\exists z\text{'}}\eand Fxy)\bigr)}^{\text{scope of `}\exists y\text{'}}}^{\text{scope of `}\forall x\text{'}}$$
+%	This shows that no variable is being forced to serve two masters simultaneously.
+%	
+%	\Cref{sent:dog6} is the trickiest yet. First we paraphrase it as `For any x that is a friend of a dog owner, x owns a dog which is also owned by a friend of x'. Using our stepping-stone tactic, this becomes:
+%	
+%	\
+%	\\$\forall x\bigl(x\text{ is a friend of a dog owner}\eif \phantom{x}$\\
+%	\phantom{x}\hfill $x\text{ owns a dog which is owned by a friend of }x\bigr)$
+%	
+%	\
+%	\\Breaking this down a bit more:
+%	
+%	\
+%	\\$\forall x\bigl(\exists y(Fxy \eand y\text{ is a dog owner})\eif \phantom{x}$\\
+%	\phantom{x}\hfill $\exists y(Dy \eand Oxy \eand y\text{ is owned by a friend of }x)\bigr)$
+%	
+%	\
+%	\\And a bit more:
+%	$$\forall x\bigl(\exists y(Fxy \eand \exists z(Dz \eand Oyz)) \eif \exists y(Dy \eand Oxy \eand \exists z(Fzx \eand Ozy))\bigr)$$
+%	And we are done!
+%	
+%	
+%	%Let's just give one more worked-example for symbolisation:
+%	%Suppose we are given the English sentence ``Everyone likes someone who has no pet dog'' to symbolise. This is rather a complicated sentence. But just work through it in stages.
+%	%
+%	%First we look at what kinds of objects are talked about to fix our domain. Here we have people and dogs, so we will use the domain: people and dogs. The rest of the symbolisation key we will leave to work out as we go. But we need to do the domain first as it'll effect how we symbolise the quantifiers: whether we symbolise `everyone' as `for all' or we need to restrict the domain and say `for all people'.
+%	%
+%	%
+%	%\begin{itemize}
+%	%\item Everyone likes someone who has no pet dog.
+%	%\item \textcolor{leadbeater}{For all x}, if x is a person, then x likes someone who has no pet dog.
+%	%\item $\textcolor{leadbeater}{\forall x }(\text{if $x$ is a person, then $x$ likes someone who has no pet dog})$
+%	%\item $\forall x(Px\eif \text{\textcolor{leadbeater}{there is some $y$}, where $y$ is a person and $x$ likes $y$ and $y$ has no pet dog})$
+%	%\item $\forall x\textcolor{leadbeater}{\exists y }(\text{$x$ likes $y$ and $y$ has no pet dog})$
+%	%\item $\forall x\exists y (\,\text{$x$ likes $y$}\,\textcolor{leadbeater}{\eand}\,\text{$y$ has no pet dog}\,)$
+%	%\item $\forall x\exists y (\textcolor{leadbeater}{Lxy}\,\eand\,\text{$y$ has no pet dog}\,)$
+%	%\item $\forall x\exists y (Lxy\,\eand\,\text{\textcolor{leadbeater}{it is not the case that} $y$ has a pet dog}\,)$
+%	%\item $\forall x\exists y (Lxy\,\eand\textcolor{leadbeater}{\enot}(\text{$y$ has a pet dog}))$
+%	%\item $\forall x\exists y (Lxy\,\eand\enot(\text{\textcolor{leadbeater}{there is some $z$}, where $z$ is $y$'s pet dog}))$
+%	%\item $\forall x\exists y (Lxy\,\eand\enot\textcolor{leadbeater}{\exists z}(\text{$z$ is $y$'s pet dog}))$
+%	%\item $\forall x\exists y (Lxy\,\eand\enot\exists z(\text{$z$ is $y$'s pet \textcolor{leadbeater}{and} $z$ is a dog}))$
+%	%\item $\forall x\exists y (Lxy\,\eand\enot\exists z(\text{$z$ is $y$'s pet $\textcolor{leadbeater}{\eand}$ $z$ is a dog}))$
+%	%\item $\forall x\exists y (Lxy\,\eand\enot\exists z(\textcolor{leadbeater}{Pzy}\eand \textcolor{leadbeater}{Dz}))$
+%	%\end{itemize}
+%	
+%	
 	\section{Suppressed quantifiers}
 	
 	Logic can often help to get clear on the meanings of English claims,
