@@ -788,69 +788,57 @@ If you want to capture an exclusive disjunction, you can use a more complex sent
 		\item Suppose $\metaX$ is false, what can you say about $\metaX\eif \metaY$?
 	\end{problemslist}
 \end{practiceproblems}
-\chapter{Syntax of TFL}\label{ch:syntfl}
-So far, we have only  focused on simple sentences of TFL; but more complex sentences can be obtained by adding additional connectives. 
- 
-%For example, we already have that $\enot A$ is a sentence of TFL, we can combine this with a new atomic sentence, $C$, to form a complex sentence of TFL: $\enot A\eand C$. 
-%but connectives can be applied to all sorts of sentences not only atomic sentences. For example, as `$\enot A$' is a TFL sentence we can use `$\eand$' to conjoin it the sentence `$C$' to form the new sentence `$(\enot A\eand C)$'. Connectives can be applied to all TFL sentences, not only atomic sentences. It is time to say precisely what TFL sentences are.
-
-%We have introduced the basic building blocks of truth-functional logic, the atomic sentences, and the connectives, which allow us to conjoin different sentences to form new sentences. The third component of the vocabulary of TFL is brackets. These play a role like punctuation marks. 
-
-We will now discuss the rules of grammar of TFL. Two important roles of grammar are to distinguish wellformed sentences from nonsense and to avoid ambiguity. It is in the grammar that brackets are vital parts of TFL. 
-
-We wish to have rules that guarantee that
-$$(A\eor (B\eand C))$$ and $$\enot (A\eand B)$$
-are wellformed sentences of the language of truth-functional logic, while
-$$\enot))A\eand()\enot\eor B\eif$$
-is not. It is merely a sequence of symbols of TFL --- an \emph{expression} but not a \emph{sentence}. It is gibberish. 
-In this respect it is like the following sequence of English words:
-\begin{ebullet}
-\item Green quickly the without ran ideas.
-\item Not; John is happy and, not or Sue is tall only if
-\end{ebullet}
-These are nonsense: a string of meaningful words, but not a grammatical English sentence.
 
 
+\chapter{Complex sentences of TFL}
 
-The second purpose is to avoid ambiguity. In English we use commas to distinguish between two sentences
+We have introduced our new connectives and specified how the truth of a sentence like $\enot A$, $A\eand B$, $A\eor B$ and $A\eif B$ depends on the truth of $A$ and the truth of $B$. 
+
+We can use TFL to consider sentences with more complex logical structure. 
+For example:
+\begin{gather*}
+	\enot(A\eand B)\\
+	(A\eor B)\eand\enot(A\eand B)\\
+	(A\eand B)\eor C\\
+	 A\eif \enot  B
+\end{gather*}
+
+These are sentences which we will use to symbolise:
 \begin{samplesent}
-\item\label{sent:engamb1} John's tired, and Sue's tall or Rob's short.
-\item\label{sent:engamb2} John's tired and Sue's tall, or Rob's short.
-\end{samplesent}
-and without a comma it would be unclear which of the two sentences we intend to convey. In TFL this job of punctuation marks is assumed by brackets, that is, we distinguish between:
-$$A\eand(B\eor C)$$
-$$(A\eand B)\eor C$$
-You can think of the former TFL-sentence as representing the English sentence 1, whereas the latter as representing the English sentence 2.
-
-You might know this use of brackets from mathematics. Consider:
-\begin{samplesent}
-\item\label{sent:mathamb} $9 + 3 \times 4$
-\end{samplesent}One could add brackets to this equation to obtain: 
-\begin{samplesent}
-\item\label{sent:mathamb1} $9 + (3 \times 4) \qquad(=9+12=21)$
-\item\label{sent:mathamb2} $(9+3) \times 4 \qquad(=12\times 4=48)$
+	\item It is not the case that both Alice and Beth are happy.
+	\item \label{sent:exclAB}Alice or Beth is happy, and not both.
+	\item Either Alice and Beth are both happy, or Charlie is happy. 
+	\item If Alice is happy, then Beth is not happy.
 \end{samplesent}
 
-Importantly, the language of TFL is designed to exclude any form of ambiguity. For example, $A\eand B\eor C$ will not be a sentence of TFL, as it would require disambiguation. Rather the syntactic/grammatical rules of the language of TFL will be such that only expressions that have a \emph{unique} reading can be sentences of TFL. To make this precise we now provide a formal definition of what it is to be a sentence in TFL.
+We gave truth-rules for each of our connectives telling us how the truth value of a sentence depends on the truth-values of its component parts. This can be iterated to apply to more complex sentences. This will allow us to determine the truth value of complex sentences such as `$(A\eor B)\eand\enot(A\eand B)$' from knowing the truth value of $A$ and of $B$. To do this, it needs to be clear which order to apply the truth rules and this is the value of brackets. 
 
+Brackets play a similar role in mathematics to tell you which order to apply your operations. 
+\begin{samplesent}
+	\item\label{sent:mathamb1} $9 + (3 \times 4) \qquad(=9+12=21)$
+	\item\label{sent:mathamb2} $(9+3) \times 4 \qquad(=12\times 4=48)$
+\end{samplesent}
 
-\section{Sentences of TFL}\label{sec:TFLSentences}
-\todo{This went through a major rewrite. Check it!!!}
+Importantly, the language of TFL is designed to exclude any form of ambiguity. For example, $$A\eand B\eor C$$ will not be a sentence of TFL, brackets must be included. The syntactic/grammatical rules of the language of TFL will be such that only expressions that have a \emph{unique} reading can be sentences of TFL. To make this precise we now provide a formal definition of what it is to be a sentence in TFL.
 
 \begin{highlighted}\label{def:TFLsentences}
 	
-	The {sentence letters} of TFL are the capital letters 
-	\begin{center}
-		$A$, $B$, $C$,\ldots $W$,
-	\end{center}
-	Plus these capital letters subscripted by a number, $$A_{1}, A_2, C_{37}, F_{102},\ldots$$
-	Excluding `$X$', `$Y$', `$Z$', which are reserved for metavariables.
+%	The {sentence letters} of TFL are the capital letters 
+%	\begin{center}
+%		$A$, $B$, $C$,\ldots $W$,
+%	\end{center}
+%	Plus these capital letters subscripted by a number, $$A_{1}, A_2, C_{37}, F_{102},\ldots$$
+%	Excluding `$X$', `$Y$', `$Z$', which are reserved for metavariables.
 	
-
 	
-	\medskip Sentences of TFL are given by the following rules:
+	
+ Sentences of TFL are given by the following rules:
 	\begin{enumerate}
-		\item Sentence letters are sentences of TFL; they are called the \define{atomic sentences}.
+		\item The \define{atomic sentences} of TFL are the capital letters
+			\begin{center}
+					$A$, $B$, $C$,\ldots $W$,
+			\end{center}
+			Plus these subscripted by a number, $A_{1}, A_2, C_{37}, F_{102},\ldots$
 		\item If \metaX is a sentence of TFL, then $\enot\metaX$ is a sentence of TFL.
 		\item If \metaX and \metaY are sentences of TFL, then $(\metaX\eand\metaY)$ is a sentence of TFL.
 		\item If \metaX and \metaY are sentences of TFL, then $(\metaX\eor\metaY)$ is a sentence of TFL.
@@ -858,170 +846,435 @@ Importantly, the language of TFL is designed to exclude any form of ambiguity. F
 		%\item If \metaX and \metaY are sentences of TFL, then $(\metaX\eiff\metaY)$ is a sentence of TFL.
 		\item 	Nothing else is a sentence of TFL.
 	\end{enumerate}
-
+	
 \end{highlighted}
 
 
-	\newglossaryentry{sentence of TFL}
+\newglossaryentry{sentence of TFL}
 {
-name=sentence of TFL,
-description={A string of symbols in TFL that can be built up according to the recursive rules given on p.~\pageref{TFLsentences}}
+	name=sentence of TFL,
+	description={A string of symbols in TFL that can be built up according to the recursive rules given on p.~\pageref{TFLsentences}}
 }
 
-The definition specifies rules according to which sentences of the language can be formed. To understand this definition let us pick it apart and consider the rules individually.
+The definition specifies rules according to which sentences of the language can be formed. 
 
 
-
-\begin{enumerate}
-\item[1.] Tells us that atomic sentences are sentence of TFL.
-\end{enumerate}
-Recall that any uppercase Roman letters $A$--$W$, or with subscripts, e.g., $A_1, B_3, A_{100}, J_{375}$, are atomic sentences of TFL. Notice $X$, $Y$, and $Z$ are not atomic sentences. They are so-called \define{metavariables} and used as place holders for sentences of TFL (see more on metavairables in \cref{sec:UseMention}).
-
-
-
-Our second rule says:
-\begin{enumerate}
-\item[2.]
-If $\metaX$ is a sentence of TFL, then so is $\enot \metaX$.
-\end{enumerate}
-By rule 1, we know that $A$ is a sentence. Rule 2 then allows us to conclude that $\enot A$ is also a sentence. We could then apply it again and conclude that $\enot\enot A$ is also a sentence. More generally, if, by whatever rule we have constructed a sentence \metaX, Rule 2 tells us that $\enot X$ will also be a sentence of TFL.
-
-\define{Formation trees} help us keep track of this process. For the case of $\enot\enot A$ this would be:
-\begin{center}
-\begin{forest}
-	[$\mainconnective{\enot}\enot A$
-		[$\mainconnective{\enot}A$
-			[$A$]
-		]
-	]
-\end{forest}
-\end{center}
-
-Our third rule says:
-\begin{enumerate}
-\item[3.] If \metaX and \metaY are sentences, then so is $(\metaX\eand\metaY)$.
-\end{enumerate}
-By rule 1, $B_1$ and $D$ are both sentences. So rule 3 allows us to conclude that $(B_1\eand D)$ is a sentence. We might then apply rule 2 to conclude that $\enot(B_1\eand D)$ is also a sentence.
-\begin{center}
-\begin{forest}
-	[$\mainconnective{\enot} (B_1 \eand D)$
-		[$(B_1\mainconnective{\eand} D)$
-			[$B_1$]
-			[$D$]
-		]
-	]
-\end{forest}
-\end{center}
-
-The rules 4 and 5 then tell us how the $\eor$- and $\eif$-connective respectively can be used to produce new sentences of TFL. Rule 6, in contrast, tells us that sentences of TFL must be formed using the rules 1-5: if an expression cannot be obtained by consecutively applying rules 1-5, then the expression is not a sentence of TFL. Again formation trees are helpful to understand this: rule 7 tells us that all nodes of the formation tree must be sentences of TFL.
-
-For example, consider $(A \eand (B \eor C))$ we can check this is a sentence by drawing the following formation tree:
-\begin{center}
-\begin{forest}
-	[$(A\mainconnective{\eand} (B\eor C))$
-		[$A$]
-		[$(B\mainconnective{\eor} C)$
-			[$B$]
-			[$C$]
-		]
-	]
-\end{forest}
-\end{center}
-Each of the steps here tracks one of the rules of what it is to be a sentence. So we can conclude that this is a sentence of TFL. This also helps us see how to read it.
-It has a different formation tree from $((A\eand B)\eor C)$:
-\begin{center}
-\begin{forest}
-	[$((A{\eand} B)\mainconnective{\eor} C))$
-		[$(A\mainconnective{\eand} B)$
-			[$A$]
-			[$B$]
-		]
-		[$C$]
-	]
-\end{forest}
-\end{center}
-The different formations will be important for determining the truth values of the sentences on different valuations. $((A\eand B)\eor C)$ and $(A\eand (B\eor C))$ will differ in when they are true.
-
-
-One more example: consider $\enot (P \eand \enot (\enot Q \eor P))$ we can check this is a sentence by drawing the following formation tree:
-\label{S:formationtree}
-\begin{center}
-\begin{forest}
-	[$\mainconnective{\enot}\,  (P \eand \enot (\enot Q \eor P))$
-		[$(P \,\mainconnective{\eand}\,  \enot (\enot Q \eor P))$
-			[$P$]
-			[$\mainconnective{\enot}\,   (\enot Q\eor P)$
-				[$\mainconnective{\enot}\,   Q$
-					[$Q$]
-				]
-				[$P$]
-			]
-		]
-	]
-\end{forest}
-\end{center}
-each of the steps here tracks one of the rules of what it is to be a sentence. So we can conclude that this is a sentence of TFL. The sentences further up the tree are formed by one of the formation rules from the sentences further down the tree.
-
-When drawing these trees we have highlighted a particular connective on each of our nodes. We call that connective the \define{main connective} of the sentence.
-\factoidbox{The \define{main connective} of sentence is the last connective that was introduced in the construction of the sentence.}
-
-In the case of $((\enot E \eor F) \eif \enot\enot G)$, the main connective is $\eif$. Here we can see that the whole sentence can be described in the form $(\metaX\eif\metaY)$ with both $\metaX$ and $\metaY$ being complete sentences (put $\metaX=(\enot E\eor F)$ and $\metaY=\enot\enot G$). That's enough to see that $\eif$ is the main connective. In the case of $\enot\enot\enot D$, the main connective is the very first $\enot$ sign. This is because we can see the sentence as having the form $\enot\metaX$ with $\metaX$ being the complete sentence $\enot\enot D$. In the case of $(P \eand \enot (\enot Q \eor R))$, the main connective is $\eand$: it's an $(\metaX\eand\metaY)$ with $\metaX$ as $P$ and $\metaY$ as $\enot (\enot Q \eor R)$.
-
-\newglossaryentry{main connective}
-{
-	name=main connective,
-	description={The last connective that you add when you assemble a sentence using the recursive definition.}
-}
-
-\newglossaryentry{formation tree}
-{
-	name=formation tree,
-	description={A tree showing the structure of a sentence and its subsentences.}
-}
-
-
-
-
-
-\subsection{Inductive Definitions}
-The definition of a TFL-sentence is a so-called \emph{inductive} definition. Inductive definitions begin with some specifiable base elements, and then present ways to generate indefinitely many more elements by compounding together previously established ones. To give you a better idea of what an inductive definition is, we can give an inductive definition of the idea of \emph{an ancestor of mine}. We specify a base clause.
-	\begin{ebullet}
-		\item My parents are ancestors of mine.
-	\end{ebullet}
-and then offer further clauses like:
-	\begin{ebullet}
-		\item If x is an ancestor of mine, then x's parents are ancestors of mine.
-		\item Nothing else is an ancestor of mine.
-	\end{ebullet}
-Using this definition, we can easily check to see whether someone is my ancestor: just check whether she is the parent of the parent of\ldots one of my parents. And the same is true for our inductive definition of sentences of TFL. Just as the inductive definition allows complex sentences to be built up from simpler parts, the definition allows us to decompose sentences into their simpler parts. Once we get down to atomic sentences, then we know we are ok.
-
-\section{Bracketing conventions}
-\label{TFLconventions}
-\subsection{Outer brackets}
-
-Strictly speaking, $A\eand B$ is not a sentence of TFL. When we introduce a connective $\eand,\eor$ or $\eif$, strictly speaking, we must include brackets. Only $(A\eand B)$ is strictly speaking a sentence of TFL. 
-%The reason for this rule is that we might use $(A\eand B)$ as a subsentence in a more complicated sentence. For example, we might want to negate $(A\eand B)$, obtaining $\enot(A\eand B)$. If we just had $A \eand B$ without the brackets and put a negation in front of it, we would have $\enot A \eand B$. It is most natural to read this as meaning the same thing as $(\enot A \eand B)$, but this may be very different from $\enot(A\eand B)$.
-
-When working with TFL, however, it will make our lives easier if we are sometimes a little less than strict. So, here is a convenient convention.
-\begin{enumerate}
-\item We can remove \emph{outermost} brackets of a sentence. 
-%\item It can be a bit painful to stare at long sentences with many nested pairs of brackets. To make things a bit easier on the eyes, we will  allow ourselves to use square brackets, `[' and `]', instead of rounded ones. So there is no logical difference between $(P\eor Q)$ and $(P\eor Q)$, for example.
-\end{enumerate}
-Thus we allow ourselves to write $A\eand B$ instead of the sentence $(A\eand B)$. However, we must remember to put the brackets back in, when we want to embed the sentence into a more complicated sentence!
-
-So we can write $$A\eand(B\eor C)$$ dropping the outer brackets from the strictly speaking formation $$(A\eand (B\eor C))$$ But we cannot drop the brackets in the inner `$(B\eor C)$'. This would result in $$A\eand B\eor C$$ which would be dangerously ambiguous.
-
-An important example is $$\enot A\eor B$$
-Here, this can be understood as the outer brackets being dropped from $$(\enot A\eor B)$$ The main connective of $\enot A\eor B$ is $\eor$ not $\enot$. It has the following formation tree: 
+\section{A first example: introducing formation trees and the main connective}
+When given a TFL sentence, say $\enot (A\eand B)$, one can work out the order that the connectives were applied. We call this a \define{formation tree}. 
 \begin{center}
 	\begin{forest}
-	[$\enot A\mainconnective{\eor}B$
-	[$\mainconnective{\enot} A$[$A$]]
-	[$B$]
-	]
-\end{forest}
+		[$\mainconnective{\enot} (A\eand B)$
+		[$( A\mainconnective{\eand}B)$
+		[$\atomicstage{A}$][$\atomicstage{B}$]
+		]
+		]
+	\end{forest}
 \end{center}
-To instead have $\enot$ as the main connective, one must include brackets: $\enot(A\eor B)$. These brackets cannot be dropped because they are inner brackets. 
+$A$ and $B$ are both sentences of TFL according to our rule for atomic sentences; then $(A\eand B)$ is a sentence of TFL, according to the rule for $\eand$; then $\enot(A\eand B)$ is a sentence of TFL according to the rule for $\enot$. 
+
+This formation tree tells us in what order to read and apply the connectives. In fact, for every sentence of TFL, we will always be able to uniquely determine the order in which the connectives were introduced and thus the order that we need to calculate the truth value in. 
+We can link to English again:
+\begin{center}
+	\begin{forest}
+		[$\mainconnective{\enot} (A\eand B)$\\It is not the case that \ldots
+		[$( A\mainconnective{\eand}B)$\\\ldots and \ldots
+		[$\atomicstage{A}$\\Alice is happy][$\atomicstage{B}$\\Beth is happy]
+		]
+		]
+	\end{forest}
+	
+
+\end{center}
+
+We will use the sentence $\enot (A\eand B)$ to be the symbolisation of and English sentence:
+\begin{samplesent}
+	\item 	It is not the case that both Alice and Beth are happy.
+\end{samplesent}
+
+
+When drawing these trees we have highlighted a particular connective on each of our nodes. We call that connective the \define{main connective} of the sentence at that node.
+\factoidbox{The \define{main connective} of a sentence is the last connective that was introduced in the construction of the sentence.}
+
+This will then be important to know in what order to calculate the truth value of $\enot(A\eand B)$. 
+
+Whether $A\eand B$ is true depends on whether Alice is happy and whether Beth is happy.
+We said that there are four possibilities: 
+\begin{center}
+	\begin{tabular}{rcc|c}
+	&	$A$&$B$&$A\eand B$\\\hline
+	$v_1$&	T&T&T\\
+	$v_2$&	T&F&F\\
+	$v_3$&	F&T&F\\
+	$v_4$&	F&F&F
+	\end{tabular}
+\end{center}
+
+What about $\enot(A\eand B)$? This will make use of our truth rule for $\enot$, the only difference now is that it is applied not to an atomic sentence but something that is more complicated. Recall the truth rule for $\enot$: 
+\begin{center}
+	\begin{tabular}{ccc}
+	If \metaX is:&&then $\enot\metaX$ is:\\
+	T &$\leadsto$& F\\
+	F &$\leadsto$& T
+\end{tabular}
+\end{center}
+
+So suppose we are in a case where neither Alice nor Beth are happy ($v_4$). Then $(A\eand B)$ is false. So $\enot(A\eand B)$ is true. To keep track of this reasoning in the four possibilities, we write the truth value of the sentence underneath its main connective, in this case, $\enot$. 
+\begin{center}
+	\begin{tabular}{rcc|df}
+		&&&\tikzmarknode{r2_not}{$\mainconnective{\enot}$}&$(A\eand B)$\\[0.8em]
+		&	$A$&$B$&&$(A\,\tikzmarknode{r2_and}{\eand} \, B)$\\\hline\Tstrut
+		$v_1$&	T&T&F&T\\
+		$v_2$&	T&F&T&F\\
+		$v_3$&	F&T&T&F\\
+		$v_4$&	F&F&T&F
+	\end{tabular}
+		\begin{tikzpicture}[remember picture, overlay]
+		\tikzset{
+			arrowformationtree/.style={
+				-{Stealth[length=2.2mm,width=1.6mm]},
+				gray,
+				opacity=0.6
+			}
+		}
+		
+		% lower right conjunction -> negation
+		\draw[arrowformationtree] (r2_and) to[bend left=18] (r2_not);
+	\end{tikzpicture}
+\end{center}
+
+\section{A second example}
+Now consider 
+$$(A\eor B)\eand \enot(A\eand B)$$
+This sentence was formed as follows:
+\begin{center}
+	\begin{forest}
+		[$(A\eor B)\mainconnective{\eand} \enot(A\eand B)$
+		[$(A\mainconnective{\eor} B)$[$\atomicstage{A}$][$\atomicstage{B}$]]
+		[$\mainconnective{\enot}(A\eand B)$
+		[$(A\mainconnective{\eand} B)$[$\atomicstage{A}$][$\atomicstage{B}$]]
+		]
+				]
+	\end{forest}
+\end{center}
+
+With some English reminders it is:
+\begin{center}
+	\begin{forest}
+		[$(A\eor B)\mainconnective{\eand} \enot(A\eand B)$\\\ldots and \ldots
+		[$(A\mainconnective{\eor} B)$\\\ldots or \ldots[$\atomicstage{A}$\\Alice is happy][$\atomicstage{B}$\\Beth is happy]]
+		[$\mainconnective{\enot}(A\eand B)$\\It is not the case that \ldots
+		[$(A\mainconnective{\eand} B)$\\\ldots and \ldots [$\atomicstage{A}$\\Alice is happy][$\atomicstage{B}$\\Beth is happy]]
+		]
+		]
+	\end{forest}
+\end{center}
+This will be an appropriate symbolisation for: 
+\begin{samplesent}
+\item	Alice or Beth are happy, and it is not the case that both Alice and Beth are happy.
+\end{samplesent}
+Or, more concisely put:
+\begin{samplesent}
+	\item Alice or Beth are happy, and not both. 
+\end{samplesent}
+
+Whether it is true or false depends on whether Alice is happy and whether Beth is happy. This is specified precisely in our formal language and that is what explains why our sentence of logic, $(A\eor B)\eand \enot(A\eand B)$ is an appropriate symbolisation of this sentence.
+
+The truth value for sentences of TFL are determined by applying the truth rules for the relevant connectives to the constituent parts. 
+
+So the overall truth value for $(A\eor B)\eand \enot(A\eand B)$ will be determined according to the rule for $\eand$, depending on the truth values of $(A\eor B)$ and $\enot(A\eand B)$. The truth value for $A\eor B$ is simply determined by the truth values for $A$ and for $B$ using the rule for $\eor$; and the truth value for $\enot(A\eand B)$ also depends just on the truth value for $A$ and for $B$, as we've just calculated. 
+
+Recall the truth rule for $\eand$:
+\begin{center}
+	\begin{tabular}{cccc}
+		If \metaX is:&and \metaY is:&&then $\metaX\eand\metaY$ is:\\
+		T & T &$\leadsto$& T\\
+		T & F &$\leadsto$& F\\
+		F & T &$\leadsto$& F\\
+		F & F &$\leadsto$& F
+	\end{tabular}
+\end{center}
+
+We now apply this truth rule to the values calculated for $(A\eor B)$ along with the value calculated for $\enot(A\eand B)$. 
+
+ In $v_2$ and $v_3$ where just one of them is happy, then $(A\eor B)$ is true, and so is $\enot(A\eand B)$, and thus, $(A\eor B)\eand\enot(A\eand B)$ is true. 
+
+ 
+In $v_1$ where they are both happy, then $\enot(A\eand B)$ is false, so the overall sentence $(A\eor B)\eand\enot(A\eand B)$  is false.
+
+In $v_4$, where neither of them is happy, then $(A\eor B)$ is false, so also $(A\eor B)\eand\enot(A\eand B)$  is false. 
+
+This is described more carefully in the following table: 
+
+
+%\begin{center}
+%	\begin{tabular}{rcc|deeeeeef}
+%		&&&$(A$ &$\eor$&$B)$&$\mainconnective{\eand}$& $\enot$& $(A$ & $\eand$ & $B)$\\
+%		&&&$(A$&{$\eor$} &$B)$&& $\mainconnective{\enot}$& $(A$ & $\eand$ & $B)$\\
+%	&	$A$ & $B$ & &&&& & $(A$ & $\eand$ & $B)$\\\hline
+%	$v_1$&	T & T &   & T &   & {F} & F &   & T &  \\
+%	$v_2$&	T & F &   & T &   & {T} & T &   & F &  \\
+%	$v_3$&	F & T &   & T &   & {T} & T &   & F &  \\
+%	$v_4$&	F & F &   & F &   &{F} & T &   & F &  \\
+%	\end{tabular}
+%\end{center}
+
+
+\begin{center}
+	\begin{tabular}{rcc|deeeeeef}
+		&&&
+		$(A$ & \tikzmarknode{r1_or}{$\eor$} & $B)$ &
+		\tikzmarknode{r1_and}{$\mainconnective{\eand}$} &
+		\tikzmarknode{r1_not}{$\enot$} &
+		$(A$ & $\eand$ & $B)$ \\[0.8em]
+		
+		&&&
+		$(A$ & {\tikzmarknode{r2_or}{$\eor$}} & $B)$ &&
+		\multicolumn{1}{c}{\tikzmarknode{r2_not}{$\mainconnective{\enot}$}} &
+		$(A$ &$\eand$& $B)$ \\[0.8em]
+		
+		& $A$ & $B$ & &&&&& $(A$ &  \tikzmarknode{r2_and}{$\eand$} & $B)$\\\hline
+		
+		$v_1$& T & T &   & T &   & F & F &   & T &  \\
+		$v_2$& T & F &   & T &   & T & T &   & F &  \\
+		$v_3$& F & T &   & T &   & T & T &   & F &  \\
+		$v_4$& F & F &   & F &   & F & T &   & F &  \\
+	\end{tabular}
+	
+	\begin{tikzpicture}[remember picture, overlay]
+		\tikzset{
+			arrowformationtree/.style={
+				-{Stealth[length=2.2mm,width=1.6mm]},
+				gray,
+				opacity=0.6
+			}
+		}
+		
+		% row 2 -> row 1
+		\draw[arrowformationtree] (r2_or)  to[bend left=18]  (r1_and);
+		\draw[arrowformationtree] (r2_not) to[bend right=18] (r1_and);
+		
+		% lower right conjunction -> negation
+		\draw[arrowformationtree] (r2_and) to[bend left=18] (r2_not);
+	\end{tikzpicture}
+\end{center}
+
+\section{An example with more atomic sentences}
+Consider
+	$$(A\eand B)\eor C$$
+Its main connective is $\eor$. It has the form $\metaX\eor\metaY$, with $\metaX$ as `$(A\eand B)$' and $\metaY$ as `$C$'.
+	\begin{center}
+		\begin{forest}
+			[$(A\eand B)\mainconnective{\eor} C$
+			[$(A\mainconnective{\eand} B)$[$\atomicstage{A}$][$\atomicstage{B}$]]
+			[$\atomicstage{C}$]
+			]
+		\end{forest}
+	\end{center}
+	
+With some English guidance this can be understood as:
+		\begin{center}
+		\begin{forest}
+			[$(A\eand B)\mainconnective{\eor} C$\\\ldots or \ldots
+			[$(A\mainconnective{\eand} B)$\\\ldots and \ldots[$\atomicstage{A}$\\Alice is happy][$\atomicstage{B}$\\Beth is happy]]
+			[$\atomicstage{C}$\\Charlie is happy]
+			]
+		\end{forest}
+	\end{center}
+	
+When giving English sentences we have to give some mechanisms to indicate which order to read it. Commas, or pauses when speaking, or words like `both' holding components of the sentence together. This is a sentence which might naturally be symbolised as $(A\eand B)\eor C$:
+\begin{samplesent}
+	\item  \label{sent:andor} Alice and Beth are both happy, or Charlie is happy
+\end{samplesent}
+	English, however, can be ambiguous. Indeed that is part of the value of offering such symbolisations: no ambiguity is possible. Consider: 
+		\begin{samplesent}
+		\item  Alice and Beth or Charlie is happy
+	\end{samplesent}
+	Or, more plainly, 
+			\begin{samplesent}
+		\item  Alice is happy and Beth is happy or Charlie is happy
+	\end{samplesent}
+	Here it is not at all clear whether it should be symbolised as $(A\eand B)\eor C$ or as $A\eand(B\eor C)$. Moreover, this isn't a purely stylistic choice: they mean different things and are true in different circumstances. They are not logically equivalent. The sentence is simply ambiguous. In logic, there is no ambiguity possible. You will not be allowed to write $A \eand B\eor C$. Instead, you have to either choose $(A\eand B)\eor C$ or $A\eand(B\eor C)$. 
+	
+
+	
+	Now, to determine the truth value of $(A\eand B)\eor C$ we will need to apply the rule for $\eor$ combining the truth value for $A\eand B$ with the truth value for $C$. 
+	Whether $A\eand B$ is true or false depends on the value of $A$ and that of $B$. So whether $(A\eand B)\eor C$ is true or false will depend on the value of $A$, $B$ and $C$. 
+	Whether 
+	\begin{samplesent}
+		\item[\ref{sent:andor}.]  Alice and Beth are both happy, or Charlie is happy
+	\end{samplesent}
+	is true or false depends on whether Alice is happy, whether Beth is happy and whether Charlie is happy. 
+	Now there are eight possibilities. There are eight possible combinations of whether these three people are happy or not. 
+	
+	The corresponding truth table is:
+	\begin{center}
+		\begin{tabular}{rccc|deeef}
+			&&&&
+			$(A$ & $\eand$ & $B)$ & \tikzmarknode{r3_or}{$\mainconnective{\eor}$} & $C$ \\[0.8em]
+			
+	& $A$ & $B$ & $C$ &
+			$(A$ &\tikzmarknode{r4_and}{$\mainconnective{\eand}$} & $B)$ &&\tikzmarknode{r4_C}{${C}$} \\\hline\Tstrut
+			
+			
+			$v_1$ & T & T & T &   & T &   & T & T \\
+			$v_2$ & T & T & F &   & T &   & T & F \\
+			$v_3$ & T & F & T &   & F &   & T &  T\\
+			$v_4$ & T & F & F &   & F &   & F &  F\\
+			$v_5$ & F & T & T &   & F &   & T &  T\\
+			$v_6$ & F & T & F &   & F &   & F &  F\\
+			$v_7$ & F & F & T &   & F &   & T & T \\
+			$v_8$ & F & F & F &   & F &   & F &  F\\
+		\end{tabular}
+		
+		\begin{tikzpicture}[remember picture, overlay]
+			\tikzset{
+				arrowformationtree/.style={
+					-{Stealth[length=2.2mm,width=1.6mm]},
+					gray,
+					opacity=0.6
+				}
+			}
+			
+			\draw[arrowformationtree] (r4_and) to[bend left=18] (r3_or);
+			\draw[arrowformationtree] (r4_C) to[bend right=18] (r3_or);
+		\end{tikzpicture}
+	\end{center}
+	
+	\section{No brackets with negation}
+	
+	Consider $$A\eif \enot B$$
+	
+	This would be an appropriate symbolisation of:
+	\begin{samplesent}
+			\item If Alice is happy, then Beth is not happy.
+	\end{samplesent}
+	Its formation tree is: 
+	\begin{center}
+		\begin{forest}
+			[$A\mainconnective{\eif}\enot B$
+			[$A$][$\mainconnective{\enot}B$[$B$]]]
+		\end{forest}
+	\end{center}
+	
+	Which we can add some guiding English to as:
+		\begin{center}
+		\begin{forest}
+			[$A\mainconnective{\eif}\enot B$\\If\ldots then \ldots
+			[$A$\\Alice is happy]
+			[$\mainconnective{\enot}B$\\It is not the case that \ldots[$B$\\Beth is happy]]]
+		\end{forest}
+	\end{center}
+	
+	
+	The corresponding truth table is:
+	\begin{center}
+		\begin{tabular}{rcc|deeef}
+			&&&
+			$A$ & \tikzmarknode{r1_if}{$\mainconnective{\eif}$} & \tikzmarknode{r1_not}{$\enot$} & $B$ \\[0.8em]
+			
+			& $A$ &&\tikzmarknode{r2_A}{{$A$}}&& \tikzmarknode{r2_not}{${\enot}$} &$B$  \\\hline\Tstrut
+			
+			$v_1$ & T & T & T  & F & F  \\
+			$v_2$ & T & F &  T & T & T  \\
+			$v_3$ & F & T &  F & T & F  \\
+			$v_4$ & F & F &  F & T & T  \\
+		\end{tabular}
+		
+		\begin{tikzpicture}[remember picture, overlay]
+			\tikzset{
+				arrowformationtree/.style={
+					-{Stealth[length=2.2mm,width=1.6mm]},
+					gray,
+					opacity=0.6
+				}
+			}
+			
+			\draw[arrowformationtree] (r2_not) to[bend left=18] (r1_if);
+			\draw[arrowformationtree] (r2_A) to[bend left=28] (r1_if);
+		\end{tikzpicture}
+	\end{center}
+	
+	
+		You might notice here that we have not got any brackets in the sentence. You might be tempted to write:
+	
+	$$A\eif(\enot B)\qquad\leadsto \text{wrong!}$$
+	
+	That will not be a sentence of TFL. Negations do not introduce brackets.
+	
+	
+	\section{Let's get careful about brackets}
+
+	We use brackets to identify how to read the sentence, but to know where they belong they come from the formation rules for the sentences of TFL. 
+	
+	When we were combining two sentences with one of our connectives, we are told to add brackets. Here were three of our rules for what counts as a sentence of TFL: 
+	\begin{itemize}
+		\item [3.-5.] If \metaX and \metaY are sentences then so are $(\metaX\eand\metaY)$, $(\metaX\eor\metaY)$ and $(\metaX\eif\metaY)$. 
+	\end{itemize}
+	But the rule for negation did not include brackets: 
+		\begin{itemize}
+		\item [2.] If \metaX is a sentence, then so is $\enot\metaX$.
+	\end{itemize}
+	
+Applying these rules we get:
+\begin{center}
+	\begin{forest}
+		[$\mainconnective{\enot} (A\eand B)$
+		[$\mainconnectivecolor{(} A\mainconnective{\eand}B\mainconnectivecolor{)}$
+		[$\atomicstage{A}$][$\atomicstage{B}$]
+		]
+		]
+	\end{forest}
+\end{center}
+
+What about $A\eif\enot B$. We start with the atomic sentence $B$. Then we add a negation symbol in front of it to get $\enot B$ -- no brackets included. Then we combine it with $A$ to get  $(A\eif\enot B)$
+	\begin{center}
+	\begin{forest}
+		[$\mainconnectivecolor{(}A\mainconnective{\eif}\enot B\mainconnectivecolor{)}$
+		[$A$][$\mainconnective{\enot}B$[$B$]]]
+	\end{forest}
+\end{center}
+
+This, however, gives us $(A\eif\enot B)$ rather than what we wrote, which was $A\eif\enot B$. 
+Many of the sentences we have written so far are not strictly speaking sentences of TFL. Even $A\eand B$ isn't, strictly speaking, a sentence of TFL. Strictly speaking, only $(A\eand B)$ is a sentence of TFL. 
+
+We adopt a useful convention which allows us to write $A\eand B$ instead of the more cumbersome $(A\eand B)$; and $A\eif \enot B$ instead of $(A\eif \enot B)$:
+\begin{itemize}
+	\item One is allowed to drop the outermost brackets of a sentence. 
+\end{itemize}
+An alternative way of thinking about it: the brackets should always be there, but we are allowed to write them in invisible ink. 
+
+
+Thus we allow ourselves to write $A\eand B$ instead of the strict sentence $(A\eand B)$. However, we must remember to put the brackets back in, when we want to embed the sentence into a more complicated sentence!
+
+
+\begin{center}
+	\begin{forest}
+		[$\textcolor{lightgray}{(} (A\eand B)\mainconnective{\eor} C\textcolor{lightgray}{)} $
+		[$\textcolor{lightgray}{(} A\mainconnective{\eand} B\textcolor{lightgray}{)} $[$\atomicstage{A}$][$\atomicstage{B}$]]
+		[$\atomicstage{C}$]
+		]
+	\end{forest}
+\end{center}
+
+So we can write $$(A\eand B)\eor C$$ dropping the outer brackets from the strictly speaking formation $$((A\eand B)\eor C)$$ But we cannot drop the brackets in the inner `$(A\eand B)$'. This would result in $$A\eand B\eor C$$ which would be dangerously ambiguous.
+
+
+
+\subsection{Negation and connectives}
+An important example is $$\enot A\eor B$$ The main connective of the sentence is $\eor$. It 
+has the following formation tree: 
+\begin{center}
+	\begin{forest}
+		[$\enot A\mainconnective{\eor}B$
+		[$\mainconnective{\enot} A$[$A$]]
+		[$B$]
+		]
+	\end{forest}
+\end{center}
+
+We can see this because it can be obtained from dropping the outer brackets from the sentence $$\textcolor{gray}{(}\enot A\eor B\textcolor{gray}{)}$$ 
+
+To instead have $\enot$ as the main connective, one must include brackets: $$\enot(A\eor B).$$ These brackets cannot be dropped because they are inner brackets. 
 \begin{center}
 	\begin{forest}
 		[$\mainconnective{\enot} (A\eor B)$
@@ -1032,75 +1285,410 @@ To instead have $\enot$ as the main connective, one must include brackets: $\eno
 	\end{forest}
 \end{center}
 
-%Combining these two conventions, we can rewrite the unwieldy sentence
-%$$(((H \eif I) \eor (I \eif H)) \eand (J \eor K))$$
-%rather more clearly as follows:
-%$$\bigl((H \eif I) \eor (I \eif H)\bigr) \eand (J \eor K)$$
-%The scope of each connective is now much easier to pick out.
+One way you might want to think about it: $\enot$ binds more strongly than the other connectives. You should do it first, unless there's brackets telling you explicitly to first do something else. 
 
+Similarly $$\enot(A\eand B)\eif C$$
+Here, $\eif$ is the main connective. It has the following formation tree: 
+\begin{center}
+	\begin{forest}
+		[$\enot (A\eand B)\mainconnective{\eif}C$
+		[$\mainconnective{\enot} (A\eand B)$[$A\eand B$[$A$][$B$]]]
+		[$C$]
+		]
+	\end{forest}
+\end{center}
+
+One more example: consider $$\enot (\enot (\enot Q\eif (R\eand S))\eand \enot \enot (P\eor Q))$$ This has the formation tree:
+\begin{center}
+	\begin{forest}
+		[{$\mainconnective{\enot} (\enot (\enot Q\eif (R\eand S))\eand \enot \enot (P\eor Q))$}
+			[{$\textcolor{lightgray}{(}\enot (\enot Q\eif (R\eand S))\mainconnective{\eand} \enot \enot (P\eor Q)\textcolor{lightgray}{)}$}
+				[{$\mainconnective{\enot} (\enot Q\eif (R\eand S))$}
+					[{$\textcolor{lightgray}{(}\enot Q\mainconnective{\eif}(R\eand S)\textcolor{lightgray}{)}$}
+						[{$\mainconnective{\enot} Q$}
+							[{$Q$}]
+						]
+						[{$\textcolor{lightgray}{(}R\mainconnective{\eand}S\textcolor{lightgray}{)}$}
+							[{$R$}]
+							[{$S$}]
+						]
+					]
+				]
+				[{$\mainconnective{\enot}\enot (P\eor Q)$}
+					[{$\mainconnective{\enot} (P\eor Q)$}
+						[{$\textcolor{lightgray}{(}P\mainconnective{\eor}Q\textcolor{lightgray}{)}$}
+							[{$P$}]
+							[{$Q$}]
+						]
+					]
+				]
+			]
+		]
+	\end{forest}
+\end{center}
+
+
+\section{More bracketing rules}\label{TFLconventions}
 \subsection{Binding strength}
-One further rule:
-$\eand$ and $\eor$ will be said to bind more strongly than $\eif$. This is like in arithmetic where $\times$ binds stronger than $+$. In $2+3\times 4$ you learn to treat it as $2+(3\times 4)$. 
+We give another rule for brackets. 
+$\eand$ and $\eor$ will be said to bind more strongly than $\eif$. This is like in arithmetic where $\times$ binds stronger than $+$. In arithmetic, you learn to treat $2+3\times 4$ as $2+(3\times 4)$. 
 
-So $A\eand B\eif C$ is to be understood as shorthand for $(A\eand B)\eif C$, or, even more carefully: $((A\eand B)\eif C)$. Similarly $A\eand B \eif C\eor D$ is shorthand for $(A\eand B)\eif (C\eor D)$. 
+So $$A\eand B\eif C$$ is to be understood as shorthand for $$(A\eand B)\eif C$$ or, even more carefully: $((A\eand B)\eif C)$. Similarly $$A\eand B \eif C\eor D$$ is shorthand for $$(A\eand B)\eif (C\eor D).$$ 
 
 There is no rule that tells us which of $\eand$ or $\eor$ is stronger. So $A\eand B\eor C$ is dangerously ambiguous: $(A\eand B)\eor C$ or $A\eand (B\eor C)$. 
-%\subsection{Strings }
+
+\subsection{Brackets in strings of conjunctions or disjunctions}
+There is one final bracketing rule which we will use, although we will not properly talk about it until later: 
+Brackets in strings of $\eand$ may be dropped. When you read a sentence with a string of $\eand$ and no brackets, one can read it as an abbreviation for the sentence adding brackets back towards the left. 
+
+$P\eand Q\eand R$ abbreviates $(P\eand Q)\eand R$.
+The reason that this is a sensible rule, is that it doesn't actually matter which order we compute this. $(P\eand Q)\eand R$ is logically equivalent to $P\eand(Q\eand R)$. (We will introduce the notion of logical equivalence in \cref{sec:logical equivalent}).
+
+Similarly for $\eor$: 
+$P\eor Q\eor R$ abbreviates $(P\eor Q)\eor R$. 
+
+There is however no rule for mixing $\eand$ and $\eor$. 
+$P\eand Q\eor R$ is not allowed to be written. 
+
+There is also no analogous rule for $\eif$: You must not write $P\eif Q\eif R$. 
+%We do this because $(P\eif Q)\eif R$ is not logically equivalent to $P\eif(Q\eif R)$. 
+
+
+\subsection{Summarising our bracketing rules}
+\begin{highlighted}
+	\begin{itemize}
+		\item Outer brackets may be dropped.\\
+		$P\eand Q$ abbreviates $(P\eand Q)$.
+		\item $\eand$ and $\eor$ bind more strongly than $\eif$.\\
+		$P\eand Q\eif R\eor S$ abbreviates $(P\eand Q)\eif (R\eor S)$
+		\item Brackets in strings of $\eand$ or $\eor$ may be dropped. A sentence with such brackets dropped is an abbreviation of one where they are added to the left.\\
+		$P\eand Q\eand R$ abbreviates $(P\eand Q)\eand R$.\\
+		$P\eor Q\eor R$ abbreviates $(P\eor Q)\eor R$.\\
+	\end{itemize} 
+\end{highlighted}
+
+
+
+\section{Inductive Definitions}
+We make one final comment about the syntax of TFL: a reflection on the kind of way we have defined what counts as a sentence of TFL
+
+The definition of a TFL-sentence is a so-called \emph{inductive} definition. Inductive definitions begin with some specifiable base elements, and then present ways to generate indefinitely many more elements by compounding together previously established ones. To give you a better idea of what an inductive definition is, we can give an inductive definition of the idea of \emph{an ancestor of mine}. We specify a base clause.
+\begin{ebullet}
+	\item My parents are ancestors of mine.
+\end{ebullet}
+and then offer further clauses like:
+\begin{ebullet}
+	\item If x is an ancestor of mine, then x's parents are ancestors of mine.
+	\item Nothing else is an ancestor of mine.
+\end{ebullet}
+Using this definition, we can easily check to see whether someone is my ancestor: just check whether she is the parent of the parent of\ldots one of my parents. And the same is true for our inductive definition of sentences of TFL. Just as the inductive definition allows complex sentences to be built up from simpler parts, the definition allows us to decompose sentences into their simpler parts. Once we get down to atomic sentences, then we know we are ok.
+
 
 
 \begin{practiceproblems}
-
-\solutions
-
-\problempart 
-Add brackets to form a sentence of TFL.
-\begin{center}
-	\begin{tabular}{>{\centering}p{.5em}>{\centering}p{.5em}>{\centering}p{.5em}>{\centering}p{.5em}>{\centering}p{.5em}>{\centering}p{.5em}>{\centering}p{.5em}>{\centering}p{.5em}>{\centering}p{.5em}}
-		\enot &$P$&\eor &$Q$&\eif &\enot &$P_2$&\eand &$R$
-	\end{tabular}
-\end{center}
-
-\begin{problemslist}
-	\item Where the `$\eif$' is the main connective
-	\item Where the `$\eor$' is the main connective.
-	\item Where the left `$\enot$' is the main connective. 
-	\item Can it be done so that the right `$\enot$' is the main connective?
-\end{problemslist}
-
-
-\problempart
-\label{pr:wiffTFL}
-For each of the following: (a) Is it a sentence of TFL, strictly speaking? (b) Is it a sentence of TFL, allowing for our relaxed bracketing conventions? (c) If the answer to (b) is yes, write down the formation tree of each sentence and determin the main connective at each node (if there is one). Is there a main connective for every node of the formation tree of a sentence.
-\begin{problemslist}
-\item $(A)$\hfill \myanswer{(a) no (b) no}
-\item $J_{374} \eor \enot J_{374}$\hfill \myanswer{(a) no (b) yes}
-\item $\enot \enot \enot \enot F$\hfill \myanswer{(a) yes (b) yes}
-\item $\enot \eand S$\hfill \myanswer{(a) no (b) no}
-\item $(G \eand \enot G)$\hfill \myanswer{(a) yes (b) yes}
-\item $(A \eif (A \eand \enot F)) \eor (D \eif E)$\hfill \myanswer{(a) no (b) yes}
-\item $((A \eif S) \eif W) \eand (J \eor A)$\hfill \myanswer{(a) no (b) yes}
-\item $(F \eif \enot D \eif J) \eor (C \eand D)$\hfill \myanswer{(a) no (b) no}
-\end{problemslist}
-
-
-\problempart
-\begin{problemslist}
-	\item  Does $\enot A\eor B$ have the form $\metaX\eor\metaY$?
-	\item Does $\enot(A\eor B)$ have the form $\metaX\eor \metaY$?
-	\item Does $(A\eand B)\eor C$ have the form $\metaX\eor\metaY$?
+	
+	\solutions
+	
+	\problempart 
+	Add brackets to form a sentence of TFL.
+	\begin{center}
+		\begin{tabular}{>{\centering}p{.5em}>{\centering}p{.5em}>{\centering}p{.5em}>{\centering}p{.5em}>{\centering}p{.5em}>{\centering}p{.5em}>{\centering}p{.5em}>{\centering}p{.5em}>{\centering}p{.5em}}
+			\enot &$P$&\eor &$Q$&\eif &\enot &$P_2$&\eand &$R$
+		\end{tabular}
+	\end{center}
+	
+	\begin{problemslist}
+		\item Where the `$\eif$' is the main connective
+		\item Where the `$\eor$' is the main connective.
+		\item Where the left `$\enot$' is the main connective. 
+		\item Can it be done so that the right `$\enot$' is the main connective?
+	\end{problemslist}
+	
+	
+	\problempart
+	\label{pr:wiffTFL}
+	For each of the following: (a) Is it a sentence of TFL, strictly speaking? (b) Is it a sentence of TFL, allowing for our relaxed bracketing conventions? (c) If the answer to (b) is yes, write down the formation tree of each sentence and determin the main connective at each node (if there is one). Is there a main connective for every node of the formation tree of a sentence.
+	\begin{problemslist}
+		\item $(A)$\hfill \myanswer{(a) no (b) no}
+		\item $J_{374} \eor \enot J_{374}$\hfill \myanswer{(a) no (b) yes}
+		\item $\enot \enot \enot \enot F$\hfill \myanswer{(a) yes (b) yes}
+		\item $\enot \eand S$\hfill \myanswer{(a) no (b) no}
+		\item $(G \eand \enot G)$\hfill \myanswer{(a) yes (b) yes}
+		\item $(A \eif (A \eand \enot F)) \eor (D \eif E)$\hfill \myanswer{(a) no (b) yes}
+		\item $((A \eif S) \eif W) \eand (J \eor A)$\hfill \myanswer{(a) no (b) yes}
+		\item $(F \eif \enot D \eif J) \eor (C \eand D)$\hfill \myanswer{(a) no (b) no}
+	\end{problemslist}
+	
+	
+	\problempart
+	\begin{problemslist}
+		\item  Does $\enot A\eor B$ have the form $\metaX\eor\metaY$?
+		\item Does $\enot(A\eor B)$ have the form $\metaX\eor \metaY$?
+		\item Does $(A\eand B)\eor C$ have the form $\metaX\eor\metaY$?
 		\item Does $(A\eand B)\eor C$ have the form $\metaX\eand\metaY$?
-\end{problemslist}
-\problempart
-\begin{problemslist}
-	\item Can there be a sentence of TFL of the form $(\metaX\eand\metaY)$ that includes three different connectives (the connectives are $\enot,\eand,\eor,\eif$)? If so, give an example, if not explain why not.
-	\myanswer{\\ yes, for example $(\enot A\eand(B\eor C))$}
-	\item Are there any sentences of TFL that contain no atomic sentences? Explain your answer.
-	\\\myanswer{No. Atomic sentences contain atomic sentences (trivially). And every more complicated sentence is built up out of less complicated sentences, that were in turn built out of less complicated sentences, \ldots, that were ultimately built out of atomic sentences.}
-			\item Are there sentences of TFL that don't have a main connective? Explain your answer.\myanswer{Yes, atomic sentences don't have a main connective.}
-\end{problemslist}
-
+	\end{problemslist}
+	\problempart
+	\begin{problemslist}
+		\item Can there be a sentence of TFL of the form $(\metaX\eand\metaY)$ that includes three different connectives (the connectives are $\enot,\eand,\eor,\eif$)? If so, give an example, if not explain why not.
+		\myanswer{\\ yes, for example $(\enot A\eand(B\eor C))$}
+		\item Are there any sentences of TFL that contain no atomic sentences? Explain your answer.
+		\\\myanswer{No. Atomic sentences contain atomic sentences (trivially). And every more complicated sentence is built up out of less complicated sentences, that were in turn built out of less complicated sentences, \ldots, that were ultimately built out of atomic sentences.}
+		\item Are there sentences of TFL that don't have a main connective? Explain your answer.\myanswer{Yes, atomic sentences don't have a main connective.}
+	\end{problemslist}
+	
 \end{practiceproblems}
-
+%
+%\begin{color}{red}
+%
+%\chapter{Syntax of TFL}\label{ch:syntfl}
+%So far, we have only  focused on simple sentences of TFL; but more complex sentences can be obtained by adding additional connectives. 
+% 
+%%For example, we already have that $\enot A$ is a sentence of TFL, we can combine this with a new atomic sentence, $C$, to form a complex sentence of TFL: $\enot A\eand C$. 
+%%but connectives can be applied to all sorts of sentences not only atomic sentences. For example, as `$\enot A$' is a TFL sentence we can use `$\eand$' to conjoin it the sentence `$C$' to form the new sentence `$(\enot A\eand C)$'. Connectives can be applied to all TFL sentences, not only atomic sentences. It is time to say precisely what TFL sentences are.
+%
+%%We have introduced the basic building blocks of truth-functional logic, the atomic sentences, and the connectives, which allow us to conjoin different sentences to form new sentences. The third component of the vocabulary of TFL is brackets. These play a role like punctuation marks. 
+%
+%We will now discuss the rules of grammar of TFL. Two important roles of grammar are to distinguish wellformed sentences from nonsense and to avoid ambiguity. It is in the grammar that brackets are vital parts of TFL. 
+%
+%We wish to have rules that guarantee that
+%$$(A\eor (B\eand C))$$ and $$\enot (A\eand B)$$
+%are wellformed sentences of the language of truth-functional logic, while
+%$$\enot))A\eand()\enot\eor B\eif$$
+%is not. It is merely a sequence of symbols of TFL --- an \emph{expression} but not a \emph{sentence}. It is gibberish. 
+%In this respect it is like the following sequence of English words:
+%\begin{ebullet}
+%\item Green quickly the without ran ideas.
+%\item Not; John is happy and, not or Sue is tall only if
+%\end{ebullet}
+%These are nonsense: a string of meaningful words, but not a grammatical English sentence.
+%
+%
+%
+%The second purpose is to avoid ambiguity. In English we use commas to distinguish between two sentences
+%\begin{samplesent}
+%\item\label{sent:engamb1} John's tired, and Sue's tall or Rob's short.
+%\item\label{sent:engamb2} John's tired and Sue's tall, or Rob's short.
+%\end{samplesent}
+%and without a comma it would be unclear which of the two sentences we intend to convey. In TFL this job of punctuation marks is assumed by brackets, that is, we distinguish between:
+%$$A\eand(B\eor C)$$
+%$$(A\eand B)\eor C$$
+%You can think of the former TFL-sentence as representing the English sentence 1, whereas the latter as representing the English sentence 2.
+%
+%You might know this use of brackets from mathematics. Consider:
+%\begin{samplesent}
+%\item\label{sent:mathamb} $9 + 3 \times 4$
+%\end{samplesent}One could add brackets to this equation to obtain: 
+%\begin{samplesent}
+%\item\label{sent:mathamb1} $9 + (3 \times 4) \qquad(=9+12=21)$
+%\item\label{sent:mathamb2} $(9+3) \times 4 \qquad(=12\times 4=48)$
+%\end{samplesent}
+%
+%Importantly, the language of TFL is designed to exclude any form of ambiguity. For example, $A\eand B\eor C$ will not be a sentence of TFL, as it would require disambiguation. Rather the syntactic/grammatical rules of the language of TFL will be such that only expressions that have a \emph{unique} reading can be sentences of TFL. To make this precise we now provide a formal definition of what it is to be a sentence in TFL.
+%
+%
+%\section{Sentences of TFL}\label{sec:TFLSentences}
+%\todo{This went through a major rewrite. Check it!!!}
+%
+%\begin{highlighted}\label{def:TFLsentences}
+%	
+%	The {sentence letters} of TFL are the capital letters 
+%	\begin{center}
+%		$A$, $B$, $C$,\ldots $W$,
+%	\end{center}
+%	Plus these capital letters subscripted by a number, $$A_{1}, A_2, C_{37}, F_{102},\ldots$$
+%	Excluding `$X$', `$Y$', `$Z$', which are reserved for metavariables.
+%	
+%
+%	
+%	\medskip Sentences of TFL are given by the following rules:
+%	\begin{enumerate}
+%		\item Sentence letters are sentences of TFL; they are called the \define{atomic sentences}.
+%		\item If \metaX is a sentence of TFL, then $\enot\metaX$ is a sentence of TFL.
+%		\item If \metaX and \metaY are sentences of TFL, then $(\metaX\eand\metaY)$ is a sentence of TFL.
+%		\item If \metaX and \metaY are sentences of TFL, then $(\metaX\eor\metaY)$ is a sentence of TFL.
+%		\item If \metaX and \metaY are sentences of TFL, then $(\metaX\eif\metaY)$ is a sentence of TFL.
+%		%\item If \metaX and \metaY are sentences of TFL, then $(\metaX\eiff\metaY)$ is a sentence of TFL.
+%		\item 	Nothing else is a sentence of TFL.
+%	\end{enumerate}
+%
+%\end{highlighted}
+%
+%
+%	\newglossaryentry{sentence of TFL}
+%{
+%name=sentence of TFL,
+%description={A string of symbols in TFL that can be built up according to the recursive rules given on p.~\pageref{TFLsentences}}
+%}
+%
+%The definition specifies rules according to which sentences of the language can be formed. To understand this definition let us pick it apart and consider the rules individually.
+%
+%
+%
+%\begin{enumerate}
+%\item[1.] Tells us that atomic sentences are sentence of TFL.
+%\end{enumerate}
+%Recall that any uppercase Roman letters $A$--$W$, or with subscripts, e.g., $A_1, B_3, A_{100}, J_{375}$, are atomic sentences of TFL. Notice $X$, $Y$, and $Z$ are not atomic sentences. They are so-called \define{metavariables} and used as place holders for sentences of TFL (see more on metavairables in \cref{sec:UseMention}).
+%
+%
+%
+%Our second rule says:
+%\begin{enumerate}
+%\item[2.]
+%If $\metaX$ is a sentence of TFL, then so is $\enot \metaX$.
+%\end{enumerate}
+%By rule 1, we know that $A$ is a sentence. Rule 2 then allows us to conclude that $\enot A$ is also a sentence. We could then apply it again and conclude that $\enot\enot A$ is also a sentence. More generally, if, by whatever rule we have constructed a sentence \metaX, Rule 2 tells us that $\enot X$ will also be a sentence of TFL.
+%
+%\define{Formation trees} help us keep track of this process. For the case of $\enot\enot A$ this would be:
+%\begin{center}
+%\begin{forest}
+%	[$\mainconnective{\enot}\enot A$
+%		[$\mainconnective{\enot}A$
+%			[$A$]
+%		]
+%	]
+%\end{forest}
+%\end{center}
+%
+%Our third rule says:
+%\begin{enumerate}
+%\item[3.] If \metaX and \metaY are sentences, then so is $(\metaX\eand\metaY)$.
+%\end{enumerate}
+%By rule 1, $B_1$ and $D$ are both sentences. So rule 3 allows us to conclude that $(B_1\eand D)$ is a sentence. We might then apply rule 2 to conclude that $\enot(B_1\eand D)$ is also a sentence.
+%\begin{center}
+%\begin{forest}
+%	[$\mainconnective{\enot} (B_1 \eand D)$
+%		[$(B_1\mainconnective{\eand} D)$
+%			[$B_1$]
+%			[$D$]
+%		]
+%	]
+%\end{forest}
+%\end{center}
+%
+%The rules 4 and 5 then tell us how the $\eor$- and $\eif$-connective respectively can be used to produce new sentences of TFL. Rule 6, in contrast, tells us that sentences of TFL must be formed using the rules 1-5: if an expression cannot be obtained by consecutively applying rules 1-5, then the expression is not a sentence of TFL. Again formation trees are helpful to understand this: rule 7 tells us that all nodes of the formation tree must be sentences of TFL.
+%
+%For example, consider $(A \eand (B \eor C))$ we can check this is a sentence by drawing the following formation tree:
+%\begin{center}
+%\begin{forest}
+%	[$(A\mainconnective{\eand} (B\eor C))$
+%		[$A$]
+%		[$(B\mainconnective{\eor} C)$
+%			[$B$]
+%			[$C$]
+%		]
+%	]
+%\end{forest}
+%\end{center}
+%Each of the steps here tracks one of the rules of what it is to be a sentence. So we can conclude that this is a sentence of TFL. This also helps us see how to read it.
+%It has a different formation tree from $((A\eand B)\eor C)$:
+%\begin{center}
+%\begin{forest}
+%	[$((A{\eand} B)\mainconnective{\eor} C))$
+%		[$(A\mainconnective{\eand} B)$
+%			[$A$]
+%			[$B$]
+%		]
+%		[$C$]
+%	]
+%\end{forest}
+%\end{center}
+%The different formations will be important for determining the truth values of the sentences on different valuations. $((A\eand B)\eor C)$ and $(A\eand (B\eor C))$ will differ in when they are true.
+%
+%
+%One more example: consider $\enot (P \eand \enot (\enot Q \eor P))$ we can check this is a sentence by drawing the following formation tree:
+%\label{S:formationtree}
+%\begin{center}
+%\begin{forest}
+%	[$\mainconnective{\enot}\,  (P \eand \enot (\enot Q \eor P))$
+%		[$(P \,\mainconnective{\eand}\,  \enot (\enot Q \eor P))$
+%			[$P$]
+%			[$\mainconnective{\enot}\,   (\enot Q\eor P)$
+%				[$\mainconnective{\enot}\,   Q$
+%					[$Q$]
+%				]
+%				[$P$]
+%			]
+%		]
+%	]
+%\end{forest}
+%\end{center}
+%each of the steps here tracks one of the rules of what it is to be a sentence. So we can conclude that this is a sentence of TFL. The sentences further up the tree are formed by one of the formation rules from the sentences further down the tree.
+%
+%When drawing these trees we have highlighted a particular connective on each of our nodes. We call that connective the \define{main connective} of the sentence.
+%\factoidbox{The \define{main connective} of sentence is the last connective that was introduced in the construction of the sentence.}
+%
+%In the case of $((\enot E \eor F) \eif \enot\enot G)$, the main connective is $\eif$. Here we can see that the whole sentence can be described in the form $(\metaX\eif\metaY)$ with both $\metaX$ and $\metaY$ being complete sentences (put $\metaX=(\enot E\eor F)$ and $\metaY=\enot\enot G$). That's enough to see that $\eif$ is the main connective. In the case of $\enot\enot\enot D$, the main connective is the very first $\enot$ sign. This is because we can see the sentence as having the form $\enot\metaX$ with $\metaX$ being the complete sentence $\enot\enot D$. In the case of $(P \eand \enot (\enot Q \eor R))$, the main connective is $\eand$: it's an $(\metaX\eand\metaY)$ with $\metaX$ as $P$ and $\metaY$ as $\enot (\enot Q \eor R)$.
+%
+%\newglossaryentry{main connective}
+%{
+%	name=main connective,
+%	description={The last connective that you add when you assemble a sentence using the recursive definition.}
+%}
+%
+%\newglossaryentry{formation tree}
+%{
+%	name=formation tree,
+%	description={A tree showing the structure of a sentence and its subsentences.}
+%}
+%
+%
+%
+%
+%
+%\section{Bracketing conventions}
+%\label{TFLconventions}
+%\subsection{Outer brackets}
+%
+%Strictly speaking, $A\eand B$ is not a sentence of TFL. When we introduce a connective $\eand,\eor$ or $\eif$, strictly speaking, we must include brackets. Only $(A\eand B)$ is strictly speaking a sentence of TFL. 
+%%The reason for this rule is that we might use $(A\eand B)$ as a subsentence in a more complicated sentence. For example, we might want to negate $(A\eand B)$, obtaining $\enot(A\eand B)$. If we just had $A \eand B$ without the brackets and put a negation in front of it, we would have $\enot A \eand B$. It is most natural to read this as meaning the same thing as $(\enot A \eand B)$, but this may be very different from $\enot(A\eand B)$.
+%
+%When working with TFL, however, it will make our lives easier if we are sometimes a little less than strict. So, here is a convenient convention.
+%\begin{enumerate}
+%\item We can remove \emph{outermost} brackets of a sentence. 
+%%\item It can be a bit painful to stare at long sentences with many nested pairs of brackets. To make things a bit easier on the eyes, we will  allow ourselves to use square brackets, `[' and `]', instead of rounded ones. So there is no logical difference between $(P\eor Q)$ and $(P\eor Q)$, for example.
+%\end{enumerate}
+%Thus we allow ourselves to write $A\eand B$ instead of the sentence $(A\eand B)$. However, we must remember to put the brackets back in, when we want to embed the sentence into a more complicated sentence!
+%
+%So we can write $$A\eand(B\eor C)$$ dropping the outer brackets from the strictly speaking formation $$(A\eand (B\eor C))$$ But we cannot drop the brackets in the inner `$(B\eor C)$'. This would result in $$A\eand B\eor C$$ which would be dangerously ambiguous.
+%
+%An important example is $$\enot A\eor B$$
+%Here, this can be understood as the outer brackets being dropped from $$(\enot A\eor B)$$ The main connective of $\enot A\eor B$ is $\eor$ not $\enot$. It has the following formation tree: 
+%\begin{center}
+%	\begin{forest}
+%	[$\enot A\mainconnective{\eor}B$
+%	[$\mainconnective{\enot} A$[$A$]]
+%	[$B$]
+%	]
+%\end{forest}
+%\end{center}
+%To instead have $\enot$ as the main connective, one must include brackets: $\enot(A\eor B)$. These brackets cannot be dropped because they are inner brackets. 
+%\begin{center}
+%	\begin{forest}
+%		[$\mainconnective{\enot} (A\eor B)$
+%		[$\textcolor{lightgray}{(} A\mainconnective{\eor}B\textcolor{lightgray}{)} $
+%		[$A$][$B$]
+%		]
+%		]
+%	\end{forest}
+%\end{center}
+%
+%%Combining these two conventions, we can rewrite the unwieldy sentence
+%%$$(((H \eif I) \eor (I \eif H)) \eand (J \eor K))$$
+%%rather more clearly as follows:
+%%$$\bigl((H \eif I) \eor (I \eif H)\bigr) \eand (J \eor K)$$
+%%The scope of each connective is now much easier to pick out.
+%
+%\subsection{Binding strength}
+%One further rule:
+%$\eand$ and $\eor$ will be said to bind more strongly than $\eif$. This is like in arithmetic where $\times$ binds stronger than $+$. In $2+3\times 4$ you learn to treat it as $2+(3\times 4)$. 
+%
+%So $A\eand B\eif C$ is to be understood as shorthand for $(A\eand B)\eif C$, or, even more carefully: $((A\eand B)\eif C)$. Similarly $A\eand B \eif C\eor D$ is shorthand for $(A\eand B)\eif (C\eor D)$. 
+%
+%There is no rule that tells us which of $\eand$ or $\eor$ is stronger. So $A\eand B\eor C$ is dangerously ambiguous: $(A\eand B)\eor C$ or $A\eand (B\eor C)$. 
+%%\subsection{Strings }
+%
+%\end{color}
+%
 
 \chapter{Use and mention}\label{sec:UseMention}
 We have talked a lot \emph{about} sentences. So we should pause to explain an important, and very general, point.
@@ -3226,7 +3814,7 @@ Our core example of a contradiction is $A\eand\enot A$. Whether $A$ is true or f
 	%	Otherwise \textbf{contingent}.
 \end{highlighted}
 
-\section{Logical equivalence}
+\section{Logical equivalence}\label{sec:logical equivalent}
 Here is another useful notion:
 \factoidbox{
 	$\metaX$ and $\metaY$ are \define{logically equivalent} iff they are true on exactly the same valuations.
