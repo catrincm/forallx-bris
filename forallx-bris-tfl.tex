@@ -865,7 +865,7 @@ When given a TFL sentence, say $\enot (A\eand B)$, one can work out the order th
 	\begin{forest}
 		[$\mainconnective{\enot} (A\eand B)$
 		[$( A\mainconnective{\eand}B)$
-		[$\atomicstage{A}$][$\atomicstage{B}$]
+		[$A$][$B$]
 		]
 		]
 	\end{forest}
@@ -878,7 +878,7 @@ We can link to English again:
 	\begin{forest}
 		[$\mainconnective{\enot} (A\eand B)$\\It is not the case that \ldots
 		[$( A\mainconnective{\eand}B)$\\\ldots and \ldots
-		[$\atomicstage{A}$\\Alice is happy][$\atomicstage{B}$\\Beth is happy]
+		[$A$\\Alice is happy][$B$\\Beth is happy]
 		]
 		]
 	\end{forest}
@@ -923,10 +923,10 @@ So suppose we are in a case where neither Alice nor Beth are happy ($v_4$). Then
 	\begin{tabular}{rcc|df}
 		&&&\tikzmarknode{r2_not}{$\mainconnective{\enot}$}&$(A\eand B)$\\[0.8em]
 		&	$A$&$B$&&$(A\,\tikzmarknode{r2_and}{\eand} \, B)$\\\hline\Tstrut
-		$v_1$&	T&T&F&T\\
-		$v_2$&	T&F&T&F\\
-		$v_3$&	F&T&T&F\\
-		$v_4$&	F&F&T&F
+		$v_1$&	T&T&\TTbf{F}&T\\
+		$v_2$&	T&F&\TTbf{T}&F\\
+		$v_3$&	F&T&\TTbf{T}&F\\
+		$v_4$&	F&F&\TTbf{T}&F
 	\end{tabular}
 		\begin{tikzpicture}[remember picture, overlay]
 		\tikzset{
@@ -949,9 +949,9 @@ This sentence was formed as follows:
 \begin{center}
 	\begin{forest}
 		[$(A\eor B)\mainconnective{\eand} \enot(A\eand B)$
-		[$(A\mainconnective{\eor} B)$[$\atomicstage{A}$][$\atomicstage{B}$]]
+		[$(A\mainconnective{\eor} B)$[$A$][$B$]]
 		[$\mainconnective{\enot}(A\eand B)$
-		[$(A\mainconnective{\eand} B)$[$\atomicstage{A}$][$\atomicstage{B}$]]
+		[$(A\mainconnective{\eand} B)$[$A$][$B$]]
 		]
 				]
 	\end{forest}
@@ -961,9 +961,9 @@ With some English reminders it is:
 \begin{center}
 	\begin{forest}
 		[$(A\eor B)\mainconnective{\eand} \enot(A\eand B)$\\\ldots and \ldots
-		[$(A\mainconnective{\eor} B)$\\\ldots or \ldots[$\atomicstage{A}$\\Alice is happy][$\atomicstage{B}$\\Beth is happy]]
+		[$(A\mainconnective{\eor} B)$\\\ldots or \ldots[$A$\\Alice is happy][$B$\\Beth is happy]]
 		[$\mainconnective{\enot}(A\eand B)$\\It is not the case that \ldots
-		[$(A\mainconnective{\eand} B)$\\\ldots and \ldots [$\atomicstage{A}$\\Alice is happy][$\atomicstage{B}$\\Beth is happy]]
+		[$(A\mainconnective{\eand} B)$\\\ldots and \ldots [$A$\\Alice is happy][$B$\\Beth is happy]]
 		]
 		]
 	\end{forest}
@@ -1034,10 +1034,10 @@ This is described more carefully in the following table:
 		
 		& $A$ & $B$ & &&&&& $(A$ &  \tikzmarknode{r2_and}{$\eand$} & $B)$\\\hline
 		
-		$v_1$& T & T &   & T &   & F & F &   & T &  \\
-		$v_2$& T & F &   & T &   & T & T &   & F &  \\
-		$v_3$& F & T &   & T &   & T & T &   & F &  \\
-		$v_4$& F & F &   & F &   & F & T &   & F &  \\
+		$v_1$& T & T &   & T &   & \TTbf{F} & F &   & T &  \\
+		$v_2$& T & F &   & T &   & \TTbf{T} & T &   & F &  \\
+		$v_3$& F & T &   & T &   & \TTbf{T} & T &   & F &  \\
+		$v_4$& F & F &   & F &   & \TTbf{F} & T &   & F &  \\
 	\end{tabular}
 	
 	\begin{tikzpicture}[remember picture, overlay]
@@ -1065,8 +1065,8 @@ Its main connective is $\eor$. It has the form $\metaX\eor\metaY$, with $\metaX$
 	\begin{center}
 		\begin{forest}
 			[$(A\eand B)\mainconnective{\eor} C$
-			[$(A\mainconnective{\eand} B)$[$\atomicstage{A}$][$\atomicstage{B}$]]
-			[$\atomicstage{C}$]
+			[$(A\mainconnective{\eand} B)$[$A$][$B$]]
+			[$C$]
 			]
 		\end{forest}
 	\end{center}
@@ -1075,8 +1075,8 @@ With some English guidance this can be understood as:
 		\begin{center}
 		\begin{forest}
 			[$(A\eand B)\mainconnective{\eor} C$\\\ldots or \ldots
-			[$(A\mainconnective{\eand} B)$\\\ldots and \ldots[$\atomicstage{A}$\\Alice is happy][$\atomicstage{B}$\\Beth is happy]]
-			[$\atomicstage{C}$\\Charlie is happy]
+			[$(A\mainconnective{\eand} B)$\\\ldots and \ldots[$A$\\Alice is happy][$B$\\Beth is happy]]
+			[$C$\\Charlie is happy]
 			]
 		\end{forest}
 	\end{center}
@@ -1116,14 +1116,14 @@ When giving English sentences we have to give some mechanisms to indicate which 
 			$(A$ &\tikzmarknode{r4_and}{$\mainconnective{\eand}$} & $B)$ &&\tikzmarknode{r4_C}{${C}$} \\\hline\Tstrut
 			
 			
-			$v_1$ & T & T & T &   & T &   & T & T \\
-			$v_2$ & T & T & F &   & T &   & T & F \\
-			$v_3$ & T & F & T &   & F &   & T &  T\\
-			$v_4$ & T & F & F &   & F &   & F &  F\\
-			$v_5$ & F & T & T &   & F &   & T &  T\\
-			$v_6$ & F & T & F &   & F &   & F &  F\\
-			$v_7$ & F & F & T &   & F &   & T & T \\
-			$v_8$ & F & F & F &   & F &   & F &  F\\
+			$v_1$ & T & T & T &   & T &   & \TTbf{T} & T \\
+			$v_2$ & T & T & F &   & T &   & \TTbf{T} & F \\
+			$v_3$ & T & F & T &   & F &   & \TTbf{T} &  T\\
+			$v_4$ & T & F & F &   & F &   & \TTbf{F} &  F\\
+			$v_5$ & F & T & T &   & F &   & \TTbf{T} &  T\\
+			$v_6$ & F & T & F &   & F &   & \TTbf{F} &  F\\
+			$v_7$ & F & F & T &   & F &   & \TTbf{T} & T \\
+			$v_8$ & F & F & F &   & F &   & \TTbf{F} &  F\\
 		\end{tabular}
 		
 		\begin{tikzpicture}[remember picture, overlay]
@@ -1174,10 +1174,10 @@ When giving English sentences we have to give some mechanisms to indicate which 
 			
 			& $A$ &&\tikzmarknode{r2_A}{{$A$}}&& \tikzmarknode{r2_not}{${\enot}$} &$B$  \\\hline\Tstrut
 			
-			$v_1$ & T & T & T  & F & F  \\
-			$v_2$ & T & F &  T & T & T  \\
-			$v_3$ & F & T &  F & T & F  \\
-			$v_4$ & F & F &  F & T & T  \\
+			$v_1$ & T & T & T  & \TTbf{F} & F  \\
+			$v_2$ & T & F &  T & \TTbf{T} & T  \\
+			$v_3$ & F & T &  F & \TTbf{T} & F  \\
+			$v_4$ & F & F &  F & \TTbf{T} & T  \\
 		\end{tabular}
 		
 		\begin{tikzpicture}[remember picture, overlay]
@@ -1197,7 +1197,7 @@ When giving English sentences we have to give some mechanisms to indicate which 
 	
 		You might notice here that we have not got any brackets in the sentence. You might be tempted to write:
 	
-	$$A\eif(\enot B)\qquad\leadsto \text{wrong!}$$
+	$$A\eif(\enot B)\qquad\leftsquigarrow \text{wrong!}$$
 	
 	That will not be a sentence of TFL. Negations do not introduce brackets.
 	
@@ -1220,7 +1220,7 @@ Applying these rules we get:
 	\begin{forest}
 		[$\mainconnective{\enot} (A\eand B)$
 		[$\mainconnectivecolor{(} A\mainconnective{\eand}B\mainconnectivecolor{)}$
-		[$\atomicstage{A}$][$\atomicstage{B}$]
+		[$A$][$B$]
 		]
 		]
 	\end{forest}
@@ -1250,8 +1250,8 @@ Thus we allow ourselves to write $A\eand B$ instead of the strict sentence $(A\e
 \begin{center}
 	\begin{forest}
 		[$\textcolor{lightgray}{(} (A\eand B)\mainconnective{\eor} C\textcolor{lightgray}{)} $
-		[$\textcolor{lightgray}{(} A\mainconnective{\eand} B\textcolor{lightgray}{)} $[$\atomicstage{A}$][$\atomicstage{B}$]]
-		[$\atomicstage{C}$]
+		[$\textcolor{lightgray}{(} A\mainconnective{\eand} B\textcolor{lightgray}{)} $[$A$][$B$]]
+		[$C$]
 		]
 	\end{forest}
 \end{center}
@@ -1964,11 +1964,11 @@ Or, it might be more similar to this maths question: Setting $x=7$, $y=5$ and $z
 \begin{center}
 	\begin{forest}
 		[{$x\mainconnective{+}(y\times\sqrt{}z)$}, label=right:{\scriptsize $=17$}
-		[$\atomicstage{x}$, label=left:{\scriptsize $7=$}]
+		[$x$, label=left:{\scriptsize $7=$}]
 		[{$y\mainconnective{\times}\sqrt{}z$}, label=right:{\scriptsize $=10$}
-		[$\atomicstage{y}$, label=left:{\scriptsize $5=$}]
+		[$y$, label=left:{\scriptsize $5=$}]
 		[{$\mainconnective{\sqrt{}}z$}, label=right:{\scriptsize $=2$}
-		[$\atomicstage{z}$, label=right:{\scriptsize $=4$}]
+		[$z$, label=right:{\scriptsize $=4$}]
 		]
 		]
 		]
@@ -1985,11 +1985,11 @@ The formation tree will help us know what to do (see \cref{def:TFLsentences}):
 		[$(\enot I\eand H)\mainconnective{\eif} H$
 		[$(\enot I\mainconnective{\eor} H)$
 		[$\mainconnective{\enot} I$
-		[$\atomicstage{I}$]
+		[$I$]
 		]
-		[$\atomicstage{H}$]
+		[$H$]
 		]
-		[$\atomicstage{H}$]
+		[$H$]
 		]
 	\end{forest}
 \end{center}
@@ -1999,16 +1999,16 @@ The formation tree will help us know what to do (see \cref{def:TFLsentences}):
 %\begin{center}
 %	\begin{tabular}{c c d e e ee e e f}
 %		
-%		&	& $($ & $\enot$ & $\atomicstage{I}$ & $\eor$ & $\atomicstage{H}$ & $)$ & $\mainconnective{\eif}$ & $\atomicstage{H}$ \\
+%		&	& $($ & $\enot$ & $I$ & $\eor$ & $H$ & $)$ & $\mainconnective{\eif}$ & $H$ \\
 %		%&&&&&&&&T&
 %		\\[1ex]
-%		& & $\mainconnectivecolor{(}$ & $\enot$ & $\atomicstage{I}$ & $\mainconnective{\eor}$ & $\atomicstage{H}$ & $\mainconnectivecolor{)}$ & &$\atomicstage{H}$ \\
+%		& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & $\mainconnective{\eor}$ & $H$ & $\mainconnectivecolor{)}$ & &$H$ \\
 %%			&&&&&T&&&&F
 %			\\[1ex]
-%		& & & $\mainconnective{\enot}$ & $\atomicstage{I}$ & & $\atomicstage{H}$ & & &\\
+%		& & & $\mainconnective{\enot}$ & $I$ & & $H$ & & &\\
 %%			&&&F&&&F&&&
 %			\\[1ex]
-%		& & & & $\atomicstage{I}$ & & & & &  \\
+%		& & & & $I$ & & & & &  \\
 %%			&&&&T&&&&&
 %	\end{tabular}
 %\end{center}
@@ -2027,11 +2027,11 @@ The lowest point on the tree is ${I}$. For the truth of this, we just consult th
 	[$(\enot I\eand H)\mainconnective{\eif} H$
 	[$(\enot I\mainconnective{\eor} H)$
 	[$\mainconnective{\enot} I$
-	[$\atomicstage{I}$\\False on $v$]
+	[$I$\\False on $v$]
 	]
-	[$\atomicstage{H}$]
+	[$H$]
 	]
-	[$\atomicstage{H}$]
+	[$H$]
 	]
 \end{forest}
 \end{center}
@@ -2059,11 +2059,11 @@ Since ${I}$ is false on valuation $v$, by consulting the truth rule for $\neg$ w
 		[$(\enot I\eand H)\mainconnective{\eif} H$
 		[$(\enot I\mainconnective{\eand} H)$
 		[$\mainconnective{\enot} I$\\True on $v$
-		[$\atomicstage{I}$\\False on $v$]
+		[$I$\\False on $v$]
 		]
-		[$\atomicstage{H}$\\True on $v$]
+		[$H$\\True on $v$]
 		]
-		[$\atomicstage{H}$]
+		[$H$]
 		]
 	\end{forest}
 \end{center}
@@ -2074,11 +2074,11 @@ Then the rule for $\eand$ tells us how the truth value of $\enot I\eand H$ depen
 		[$(\enot I\eand H)\mainconnective{\eif} H$\\
 		[$(\enot I\mainconnective{\eand} H)$\\True on $v$
 		[$\mainconnective{\enot} I$\\True on $v$
-		[$\atomicstage{I}$\\False on $v$]
+		[$I$\\False on $v$]
 		]
-		[$\atomicstage{H}$\\True on $v$]
+		[$H$\\True on $v$]
 		]
-		[$\atomicstage{H}$\\True on $v$]
+		[$H$\\True on $v$]
 		]
 	\end{forest}
 \end{center}
@@ -2088,11 +2088,11 @@ Finally, the rule for $\eif$ tells us how the truth value of $(\enot I\eand H)\e
 		[$(\enot I\eand H)\mainconnective{\eif} H$\\True on $v$
 		[$(\enot I\mainconnective{\eand} H)$\\True on $v$
 		[$\mainconnective{\enot} I$\\True on $v$
-		[$\atomicstage{I}$\\False on $v$]
+		[$I$\\False on $v$]
 		]
-		[$\atomicstage{H}$\\True on $v$]
+		[$H$\\True on $v$]
 		]
-		[$\atomicstage{H}$\\True on $v$]
+		[$H$\\True on $v$]
 		]
 	\end{forest}
 \end{center}
@@ -2111,13 +2111,13 @@ We will present this in a table:
 		\mainconnectivecolor{(}
 		& {\enot} & $I$ & \tikzmarknode{r2_and}{$\mainconnective{\eand}$} & $H$
 		& \mainconnectivecolor{)} & &
-		\tikzmarknode{r2_Hr}{$\atomicstage{H}$} & \\[.2em]
+		\tikzmarknode{r2_Hr}{$H$} & \\[.2em]
 		
 		% Row 3: children of Row 2 (left side)
-		&& & & \tikzmarknode{r3_not}{$\mainconnective{\enot}$} & $I$ & & \tikzmarknode{r3_Hl}{$\atomicstage{H}$} & & & \\[.2em]
+		&& & & \tikzmarknode{r3_not}{$\mainconnective{\enot}$} & $I$ & & \tikzmarknode{r3_Hl}{$H$} & & & \\[.2em]
 		
 		% Row 4: child of Row 3 (for the negation)
-		Valuation & $I$ & $H$ & & & \tikzmarknode{r4_I}{$\atomicstage{I}$} & & & && & \\[.2em]\hline
+		Valuation & $I$ & $H$ & & & \tikzmarknode{r4_I}{$I$} & & & && & \\[.2em]\hline
 		
 % % v1: I=T, H=T
 %$v_1:$ & T & T & & F & T & F & T & & \TTbf{T} & T \\
@@ -2171,7 +2171,7 @@ For example:
 		
 		% Row 3: children of Row 2; parents of Row 4
 		& & & &
-		& & \tikzmarknode{r3_C}{$\atomicstage{C}$}
+		& & \tikzmarknode{r3_C}{$C$}
 		& &{\mainconnectivecolor{$($ }}
 		& $D$ & \tikzmarknode{r3_implies}{$\mainconnective{\eif}$}
 		& $( $ & $A$ & $\eor$ & ${\enot}$ & $D$
@@ -2179,19 +2179,19 @@ For example:
 		
 		% Row 4: children of Row 3; parents of Row 5
 		& & & & & & & & &
-		\tikzmarknode{r4_D}{$\atomicstage{D}$}
+		\tikzmarknode{r4_D}{$D$}
 		& & & $A$ & \tikzmarknode{r4_inneror}{$\mainconnective{\eor}$}
 		& $\enot$ & $D$ & & & \\[1em]
 		
 		% Row 5: children of Row 4; parent of Row 6
 		& & & & & & & & & & & &
-		\tikzmarknode{r5_A}{$\atomicstage{A}$}
+		\tikzmarknode{r5_A}{$A$}
 		& & \tikzmarknode{r5_not}{$\mainconnective{\enot}$}
 		& ${D}$ & & & \\[1em]
 		
 		% Row 6: child of Row 5
 		Valuation&$A$ &$C$ &$D$ & & & & & & & & & & & &
-		\tikzmarknode{r6_D}{$\atomicstage{D}$}
+		\tikzmarknode{r6_D}{$D$}
 		& & & \\[.2em]\hline
 		
 %		$v_1:$ & T & T & T & \TTbf{F} & & T & T & & T & T & & T & T & F & T & & & \\
@@ -2413,11 +2413,11 @@ We have already shown how to do this on a particular valuation: one first writes
 		[$(\enot I\eand H)\mainconnective{\eif} H$
 		[$(\enot I\mainconnective{\eand} H)$
 		[$\mainconnective{\enot} I$
-		[$\atomicstage{I}$]
+		[$I$]
 		]
-		[$\atomicstage{H}$]
+		[$H$]
 		]
-		[$\atomicstage{H}$]
+		[$H$]
 		]
 	\end{forest}
 \end{center}
@@ -2429,9 +2429,9 @@ So we will somewhat recreate the formation tree in the header of the truth table
 \begin{center}
 	\begin{tabular}{r c c| d e e ee e e f}
 \multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eand$ & $H$ & $)$ & \tikzmarknode{tt1_imp}{$\mainconnective{\eif}$} & $H$ \\[.4em]
-	&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & \tikzmarknode{tt1_and}{$\mainconnective{\eand}$} & $H$ & $\mainconnectivecolor{)}$ & &\tikzmarknode{tt1_Hr}{$\atomicstage{H}$} \\[.4em]
-	&	& & & \tikzmarknode{tt1_not}{$\mainconnective{\enot}$} & $I$  & & \tikzmarknode{tt1_Hl}{$\atomicstage{H}$} & & &\\[.4em]
-	&	& & & & \tikzmarknode{tt1_I}{$\atomicstage{I}$}& & & & &  \\\hline 
+	&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & \tikzmarknode{tt1_and}{$\mainconnective{\eand}$} & $H$ & $\mainconnectivecolor{)}$ & &\tikzmarknode{tt1_Hr}{$H$} \\[.4em]
+	&	& & & \tikzmarknode{tt1_not}{$\mainconnective{\enot}$} & $I$  & & \tikzmarknode{tt1_Hl}{$H$} & & &\\[.4em]
+	&	& & & & \tikzmarknode{tt1_I}{$I$}& & & & &  \\\hline 
 	$v_1:$&T&T&\\
 	$v_2:$&T&F&\\
 	$v_3:$&F&T\\
@@ -2454,9 +2454,9 @@ In the bottom line we just have `$I$', whose truth value is just specified by th
 \begin{center}
 	\begin{tabular}{r c c| d e e ee e e fc}
 		\multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eand$ & $H$ & $)$ & \tikzmarknode{tt2_imp}{$\mainconnective{\eif}$} & $H$ \\[.4em]
-		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & \tikzmarknode{tt2_and}{$\mainconnective{\eand}$} & $H$ & $\mainconnectivecolor{)}$ & &\tikzmarknode{tt2_Hr}{$\atomicstage{H}$} \\[.4em]
-		&	& & & \tikzmarknode{tt2_not}{$\mainconnective{\enot}$} & $I$  & & \tikzmarknode{tt2_Hl}{$\atomicstage{H}$} & & &\\[.4em]
-		&	& & & & \tikzmarknode{tt2_I}{$\atomicstage{I}$}& & & & & &$\star$ \\\hline 
+		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & \tikzmarknode{tt2_and}{$\mainconnective{\eand}$} & $H$ & $\mainconnectivecolor{)}$ & &\tikzmarknode{tt2_Hr}{$H$} \\[.4em]
+		&	& & & \tikzmarknode{tt2_not}{$\mainconnective{\enot}$} & $I$  & & \tikzmarknode{tt2_Hl}{$H$} & & &\\[.4em]
+		&	& & & & \tikzmarknode{tt2_I}{$I$}& & & & & &$\star$ \\\hline 
 		$v_1:$&T&T& & &T& & & & &\\
 		$v_2:$&T&F& & &F& & & & &\\
 		$v_3:$&F&T& & &T& & & & &\\
@@ -2479,9 +2479,9 @@ The next line is to include the truth value for `$\enot I$' and the truth value 
 \begin{center}
 	\begin{tabular}{r c c| d e e ee e e f c}
 		\multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eand$ & $H$ & $)$ & \tikzmarknode{tt3_imp}{$\mainconnective{\eif}$} & $H$ &  \\[.4em]
-		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & \tikzmarknode{tt3_and}{$\mainconnective{\eand}$} & $H$ & $\mainconnectivecolor{)}$ & &\tikzmarknode{tt3_Hr}{$\atomicstage{H}$} & \\[.4em]
-		&	& & & \tikzmarknode{tt3_not}{$\mainconnective{\enot}$} & $I$  & & \tikzmarknode{tt3_Hl}{$\atomicstage{H}$} & & & & $\star$ \\[.4em]
-		&	& & & & \tikzmarknode{tt3_I}{$\atomicstage{I}$}& & & & &  & \\\hline 
+		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & \tikzmarknode{tt3_and}{$\mainconnective{\eand}$} & $H$ & $\mainconnectivecolor{)}$ & &\tikzmarknode{tt3_Hr}{$H$} & \\[.4em]
+		&	& & & \tikzmarknode{tt3_not}{$\mainconnective{\enot}$} & $I$  & & \tikzmarknode{tt3_Hl}{$H$} & & & & $\star$ \\[.4em]
+		&	& & & & \tikzmarknode{tt3_I}{$I$}& & & & &  & \\\hline 
 		$v_1:$&T&T& & &T& &T& & & &\\
 		$v_2:$&T&F& & &F& &T& & & &\\
 		$v_3:$&F&T& & &T& &F& & & &\\
@@ -2514,9 +2514,9 @@ This results in:
 \begin{center}
 	\begin{tabular}{r c c| d e e ee e e fc}
 		\multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eand$ & $H$ & $)$ & \tikzmarknode{tt4_imp}{$\mainconnective{\eif}$} & $H$ \\[.4em]
-		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & \tikzmarknode{tt4_and}{$\mainconnective{\eand}$} & $H$ & $\mainconnectivecolor{)}$ & &\tikzmarknode{tt4_Hr}{$\atomicstage{H}$} \\[.4em]
-		&	& & & \tikzmarknode{tt4_not}{$\mainconnective{\enot}$} & $I$  & & \tikzmarknode{tt4_Hl}{$\atomicstage{H}$} & & &&$\star$\\[.4em]
-		&	& & & & \tikzmarknode{tt4_I}{$\atomicstage{I}$}& & & & &  \\\hline 
+		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & \tikzmarknode{tt4_and}{$\mainconnective{\eand}$} & $H$ & $\mainconnectivecolor{)}$ & &\tikzmarknode{tt4_Hr}{$H$} \\[.4em]
+		&	& & & \tikzmarknode{tt4_not}{$\mainconnective{\enot}$} & $I$  & & \tikzmarknode{tt4_Hl}{$H$} & & &&$\star$\\[.4em]
+		&	& & & & \tikzmarknode{tt4_I}{$I$}& & & & &  \\\hline 
 		$v_1:$&T&T& &F&T& &T& & &\\
 		$v_2:$&T&F& &T&F& &T& & &\\
 		$v_3:$&F&T& &F&T& &F& & &\\
@@ -2559,9 +2559,9 @@ So we take the truth value for `$\enot I$', as recorded underneath `$\enot$', an
 \begin{center}
 	\begin{tabular}{r c c| d e e ee e e f c}
 		\multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eand$ & $H$ & $)$ & \tikzmarknode{tt5_imp}{$\mainconnective{\eif}$} & $H$ \\[.4em]
-		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & \tikzmarknode{tt5_and}{$\mainconnective{\eand}$} & $H$ & $\mainconnectivecolor{)}$ & &\tikzmarknode{tt5_Hr}{$\atomicstage{H}$}&$\star$ \\[.4em]
-		&	& & & \tikzmarknode{tt5_not}{$\mainconnective{\enot}$} & $I$  & & \tikzmarknode{tt5_Hl}{$\atomicstage{H}$} & & &\\[.4em]
-		&	& & & & \tikzmarknode{tt5_I}{$\atomicstage{I}$}& & & & &  \\\hline 
+		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & \tikzmarknode{tt5_and}{$\mainconnective{\eand}$} & $H$ & $\mainconnectivecolor{)}$ & &\tikzmarknode{tt5_Hr}{$H$}&$\star$ \\[.4em]
+		&	& & & \tikzmarknode{tt5_not}{$\mainconnective{\enot}$} & $I$  & & \tikzmarknode{tt5_Hl}{$H$} & & &\\[.4em]
+		&	& & & & \tikzmarknode{tt5_I}{$I$}& & & & &  \\\hline 
 		$v_1:$&T&T& &F&T&F&T& &&T\\
 		$v_2:$&T&F& &T&F&T&T& &&T\\
 		$v_3:$&F&T& &F&T&F&F& &&F\\
@@ -2605,9 +2605,9 @@ recording the answer underneath `$\eif$'. As this is the final stage, we have de
 \begin{center}
 	\begin{tabular}{r c c| d e e ee e e fc}
 		\multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eand$ & $H$ & $)$ & \tikzmarknode{tt6_imp}{$\mainconnective{\eif}$} & $H$&$\star$ \\[.4em]
-		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & \tikzmarknode{tt6_and}{$\mainconnective{\eand}$} & $H$ & $\mainconnectivecolor{)}$ & &\tikzmarknode{tt6_Hr}{$\atomicstage{H}$} \\[.4em]
-		&	& & & \tikzmarknode{tt6_not}{$\mainconnective{\enot}$} & $I$  & & \tikzmarknode{tt6_Hl}{$\atomicstage{H}$} & & &\\[.4em]
-		&	& & & & \tikzmarknode{tt6_I}{$\atomicstage{I}$}& & & & &  \\\hline 
+		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & \tikzmarknode{tt6_and}{$\mainconnective{\eand}$} & $H$ & $\mainconnectivecolor{)}$ & &\tikzmarknode{tt6_Hr}{$H$} \\[.4em]
+		&	& & & \tikzmarknode{tt6_not}{$\mainconnective{\enot}$} & $I$  & & \tikzmarknode{tt6_Hl}{$H$} & & &\\[.4em]
+		&	& & & & \tikzmarknode{tt6_I}{$I$}& & & & &  \\\hline 
 		$v_1:$&T&T& &F&T&F&T& &\TTbf{T}&T\\
 		$v_2:$&T&F& &T&F&T&T& &\TTbf{T}&T\\
 		$v_3:$&F&T& &F&T&F&F& &\TTbf{T}&F\\
@@ -2778,13 +2778,13 @@ recording the answer underneath `$\eif$'. As this is the final stage, we have de
 	%& $\mainconnectivecolor{(}$ & $C$ & $\mainconnective{\eor}$ & $( $ & $D$ & ${\eif}$ & $( $ & $A$ & $\eor$ & ${\enot}$ & $D$ & $)$ & ${)}$ & $\mainconnectivecolor{)}$ \\[.2em]
 	%		
 	%		& & & & 
-	%		& & $\atomicstage{C}$ & & $\mainconnectivecolor{( }$ & $D$ & $\mainconnective{\eif}$ & $( $ & $A$ & $\eor$ & ${\enot}$ & $D$ & $)$ & $\mainconnectivecolor{)}$ & \\[.2em]
+	%		& & $C$ & & $\mainconnectivecolor{( }$ & $D$ & $\mainconnective{\eif}$ & $( $ & $A$ & $\eor$ & ${\enot}$ & $D$ & $)$ & $\mainconnectivecolor{)}$ & \\[.2em]
 	%		
-	%		& & & & & & & & & $\atomicstage{D}$ & & & $A$ & $\mainconnective{\eor}$ & $\enot$& $D$ & & & \\[.2em]
+	%		& & & & & & & & & $D$ & & & $A$ & $\mainconnective{\eor}$ & $\enot$& $D$ & & & \\[.2em]
 	%		
-	%				& & & & & & & & & & & & $\atomicstage{A}$& &$\mainconnective{\enot}$ & ${D}$ & & & \\[.2em]
+	%				& & & & & & & & & & & & $A$& &$\mainconnective{\enot}$ & ${D}$ & & & \\[.2em]
 	%				
-	%		& & & & & & & & & & & & & & & $\atomicstage{D}$ & & & \\[.2em]\hline
+	%		& & & & & & & & & & & & & & & $D$ & & & \\[.2em]\hline
 	%		
 	%		
 	%		$v_1:$ & T & T & T & \TTbf{F} & & T & T & & T & T & & T & T & F & T & & & \\
@@ -2818,7 +2818,7 @@ Here's another example.
 		
 		% Row 3: children of Row 2; parents of Row 4
 		& & & &
-		& & \tikzmarknode{r3_C}{$\atomicstage{C}$}
+		& & \tikzmarknode{r3_C}{$C$}
 		& &{\mainconnectivecolor{$($ }}
 		& $D$ & \tikzmarknode{r3_implies}{$\mainconnective{\eif}$}
 		& $( $ & $A$ & $\eor$ & ${\enot}$ & $D$
@@ -2826,19 +2826,19 @@ Here's another example.
 		
 		% Row 4: children of Row 3; parents of Row 5
 		& & & & & & & & &
-		\tikzmarknode{r4_D}{$\atomicstage{D}$}
+		\tikzmarknode{r4_D}{$D$}
 		& & & $A$ & \tikzmarknode{r4_inneror}{$\mainconnective{\eor}$}
 		& $\enot$ & $D$ & & & \\[1em]
 		
 		% Row 5: children of Row 4; parent of Row 6
 		& & & & & & & & & & & &
-		\tikzmarknode{r5_A}{$\atomicstage{A}$}
+		\tikzmarknode{r5_A}{$A$}
 		& & \tikzmarknode{r5_not}{$\mainconnective{\enot}$}
 		& ${D}$ & & & \\[1em]
 		
 		% Row 6: child of Row 5
 		& & & & & & & & & & & & & & &
-		\tikzmarknode{r6_D}{$\atomicstage{D}$}
+		\tikzmarknode{r6_D}{$D$}
 		& & & \\[.2em]\hline
 		
 		$v_1:$ & T & T & T & \TTbf{F} & & T & T & & T & T & & T & T & F & T & & & \\
@@ -2962,9 +2962,9 @@ You can provide your answer without explicitly providing the header row matching
 %	\begin{tabular}{c c | deeeeeeeeeef}
 %		\multirow{5}{*}{$A$} & \multirow{5}{*}{$B$} & $\mainconnective{\enot}$ & $($ & $B$ & $\eand$ & $($ & $\enot$ & $B$ & $\eif$ & $\enot$ & $A$ & $)$ & $)$ \\[.2em]
 %	&     &         & $\mainconnectivecolor{(}$ & $B$ & $\mainconnective{\eand}$ & $($ & $\enot$ & $B$ & $\eif$ & $\enot$ & $A$ & $)$ & $\mainconnectivecolor{)}$ \\[.2em]
-%	&     &         &     & $\atomicstage{B}$ &          & $\mainconnectivecolor{(}$ & $\enot$ & $B$ & $\mainconnective{\eif}$ & $\enot$ & $A$ & $\mainconnectivecolor{)}$ &  \\[.2em]
+%	&     &         &     & $B$ &          & $\mainconnectivecolor{(}$ & $\enot$ & $B$ & $\mainconnective{\eif}$ & $\enot$ & $A$ & $\mainconnectivecolor{)}$ &  \\[.2em]
 %	&     &         &     &     &          &     & $\mainconnective{\enot}$ & $B$ &        & $\mainconnective{\enot}$ & $A$ &     &     \\[.2em]
-%	&     &         &     &     &          &     &         & $\atomicstage{B}$ &        &         & $\atomicstage{A}$ &     &     \\[.2em]\hline
+%	&     &         &     &     &          &     &         & $B$ &        &         & $A$ &     &     \\[.2em]\hline
 %	T & T & \TTbf{F }&   & \textcolor{gray}{T} & T &   & F & \textcolor{gray}{T} & T & F & \textcolor{gray}{T} &   &   \\
 %	T & F & \TTbf{T} &   & \textcolor{gray}{F} & F &   & T & \textcolor{gray}{F} & F & F & \textcolor{gray}{T} &   &   \\
 %	F & T & \TTbf{F} &   & \textcolor{gray}{T} & F &   & F & \textcolor{gray}{T} & T & T & \textcolor{gray}{F} &   &   \\
@@ -3371,11 +3371,11 @@ The result will be:
 		& $\mainconnective{\enot}$ & $J$
 		& $\mainconnectivecolor{(}$ & $\enot$ & $L$ & $\mainconnective{\eif}$ & $J$ & $\mainconnectivecolor{)}$ \\[.3em]
 		&&& & $\mainconnective{\enot}$ & $L$ & & $\mainconnectivecolor{(}$ & $J$ & $\mainconnective{\eor}$ & $L$ & $\mainconnectivecolor{)}$ & 
-		& & $\atomicstage{J}$
-		&& $\mainconnective{\enot}$ & $L$ & & $\atomicstage{J}$ & \\[.3em]
-		&&& & & $\atomicstage{L}$ & & & $\atomicstage{J}$ & & $\atomicstage{L}$ & & 
+		& & $J$
+		&& $\mainconnective{\enot}$ & $L$ & & $J$ & \\[.3em]
+		&&& & & $L$ & & & $J$ & & $L$ & & 
 		&& 
-		&& &$\atomicstage{L}$ & &  & \\[.3em]
+		&& &$L$ & &  & \\[.3em]
 		\hline
 		$v_1:$ & T & T &
 		& F & \textcolor{gray!50}{T} & \TTbf{T} & & \textcolor{gray!50}{T} & T & \textcolor{gray!50}{T} & & &
@@ -3450,7 +3450,7 @@ $D\eif V,\;\enot D\;\therefore\;\enot V$
 	\begin{tabular}{r c c | def | df | df}
 		&&&\multicolumn{3}{c}{Premise 1}&\multicolumn{2}{c}{Premise 2}&\multicolumn{2}{c}{Conclusion}\\
 		Valuation & $D$ & $V$ & $D$ & $\mainconnective{\eif}$ & $V$ & $\mainconnective{\enot}$ & $D$ & $\mainconnective{\enot}$ & $V$\\[.3em]
-		%		Valuation & $D$ & $V$ & $\atomicstage{D}$ & &$\atomicstage{V}$& & $\atomicstage{D}$ &  & $\atomicstage{V}$\\
+		%		Valuation & $D$ & $V$ & $D$ & &$V$& & $D$ &  & $V$\\
 		\hline
 		$v_1:$ & T & T & T & \TTbf{T} & T & \TTbf{F} & T & \TTbf{F} & T\\
 		$v_2:$ & T & F & T & \TTbf{F} & F & \TTbf{F} & T & \TTbf{T} & F\\
@@ -3469,8 +3469,8 @@ $D\eif V,\;D\;\therefore\;V$
 \begin{center}
 	\begin{tabular}{r c c | def | c | c}
 		&&&\multicolumn{3}{c}{Premise 1}&\multicolumn{1}{c}{Premise 2}&\multicolumn{1}{c}{Conclusion}\\
-		Valuation & $D$ & $V$ & $D$ & $\mainconnective{\eif}$ & $V$ & $\atomicstage{D}$  & $\atomicstage{V}$ \\[.3em]
-		%		Valuation & $D$ & $V$ & $\atomicstage{D}$ & & $\atomicstage{V}$ &  & \\
+		Valuation & $D$ & $V$ & $D$ & $\mainconnective{\eif}$ & $V$ & $D$  & $V$ \\[.3em]
+		%		Valuation & $D$ & $V$ & $D$ & & $V$ &  & \\
 		\hline
 		$v_1:$ & T & T & T & \TTbf{T} & T & \TTbf{T} &\TTbf{T}\\
 		$v_2:$ & T & F & T & \TTbf{F} & F & \TTbf{T} & \TTbf{F}\\
@@ -3499,9 +3499,9 @@ $P\eif(C\eor D)\,,\,\enot C\;\therefore P\eif D$
 		& $\mainconnectivecolor{(}$ & $P$ & $\mainconnective{\eif}$ & $D$ & $\mainconnectivecolor{)}$ \\[.3em]
 		%		% Row 2: children of Row 1
 		%		&&&
-		%		& $\atomicstage{P}$ &  & $\mainconnectivecolor{(}$ & $C$ & $\mainconnective{\eor}$ & $D$ & $\mainconnectivecolor{)}$
-		%		&  & $\atomicstage{C}$
-		%		&  & $\atomicstage{P}$ &  & $\atomicstage{D}$ &  \\[.3em]
+		%		& $P$ &  & $\mainconnectivecolor{(}$ & $C$ & $\mainconnective{\eor}$ & $D$ & $\mainconnectivecolor{)}$
+		%		&  & $C$
+		%		&  & $P$ &  & $D$ &  \\[.3em]
 		\hline
 		% v1
 		$v_1:$ & T & T & T
@@ -3629,12 +3629,12 @@ On $v_5$, premises are both true but conclusion is false. The argument is invali
 	%		& $\mainconnectivecolor{(}$ & $\enot$ & $R$ & $\mainconnective{\eif}$ & $J$ & $\mainconnectivecolor{)}$ \\[.3em]
 	%		% Row 2: children of Row 1; parent of Row 3
 	%		&&& & $\mainconnective{\enot}$ & $R$ & & $\mainconnectivecolor{(}$ & $J$ & $\mainconnective{\eor}$ & $R$ & $\mainconnectivecolor{)}$ & 
-	%		& & $\atomicstage{J}$
-	%		&& $\mainconnective{\enot}$ & $R$ & & $\atomicstage{J}$ & \\[.3em]
+	%		& & $J$
+	%		&& $\mainconnective{\enot}$ & $R$ & & $J$ & \\[.3em]
 	%		% Row 3: children of Row 2; parent of Row 4. Also includes valuation as its the last row.
-	%		Valuation&$J$&$R$& & & $\atomicstage{R}$ & & & $\atomicstage{J}$ & & $\atomicstage{R}$ & & 
+	%		Valuation&$J$&$R$& & & $R$ & & & $J$ & & $R$ & & 
 	%		&& 
-	%		&& &$\atomicstage{R}$ & &  & \\[.3em]
+	%		&& &$R$ & &  & \\[.3em]
 	%		\hline
 	%		% Row 4: valuation v1
 	%		$v_1:$ & T & T &
