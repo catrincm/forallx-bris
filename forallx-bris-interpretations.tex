@@ -199,8 +199,8 @@ Observe that the truth value of $Ca$ is irrelevant here: once you know that $Ha$
 \[\begin{array}{c|def}
 	&Ha&\eif &Ca\\
 	&Ha&&Ca\\\hline
-	\model &\false&\TTbf{\true}&\cdot\\\hline
-\end{array}\]
+	\model &\false&\TTbf{\true}&\TTcross\\\hline
+\end{array}\]\TTcross
 
 A closely related observation is that if $Ha$ is false, then you don't need to consult the truth value of $Ca$ to determine the truth value for $Ha\eand Ca$. 
 		\begin{center}
@@ -216,7 +216,7 @@ A closely related observation is that if $Ha$ is false, then you don't need to c
 \[\begin{array}{c|def}
 	&Ha&\eand &Ca\\
 	&Ha&&Ca\\\hline
-	\model &\false&\TTbf{\false}&\cdot\\\hline
+	\model &\false&\TTbf{\false}&\TTcross\\\hline
 \end{array}\]
 
 \section{Universal quantifier}
@@ -240,17 +240,17 @@ To evaluate $Cx$, then we will need  an additional component: a variable assignm
 	x &(&Hx&\eif &Cx&)\\
 	&&Hx&\mainconnective{\eif} &Cx\\
 	&&\atomicstage{Hx}&&\atomicstage{Cx}\\\hline
-	\text{Alice}&&\false&\true&.
+	\text{Alice}&&\false&\true&\TTcross
 \end{array}\]
 But to evaluate $\forall x(Hx\eif Cx)$ we need to consider not only this variable assignment, but all the possible assignments of objects to the variable $x$. 
 \[\begin{array}{c|deeeef}
 	x &(&Hx&\eif &Cx&)\\
 	&&Hx&\mainconnective{\eif} &Cx\\
 	&&\atomicstage{Hx}&&\atomicstage{Cx}\\\hline
-	\text{Al}&&\false&\true&.\\
+	\text{Al}&&\false&\true&\TTcross\\
 	\text{Bo}&&\true&\false&\false\\
-	\text{Ca}&&\false&\true&.\\
-	\text{De}&&\false&\true&.
+	\text{Ca}&&\false&\true&\TTcross\\
+	\text{De}&&\false&\true&\TTcross
 \end{array}\]
 So is $\forall x(Hx\eif Cx)$ true or false? There is someone for whom $Hx$ is true but $Cx$ is false. There is some possible choice of someone for $x$ which makes $Hx\eif Cx$ false. This means $\forall x(Hx\eif Cx)$ is false in $\model$. We can write it out like this in a table. Underneath the variable we write out the possible assignments of objects to the variable and then evaluate the sub-sentences on those variable assignments. 
 \[\begin{array}{c|deeeeef}
@@ -258,10 +258,10 @@ So is $\forall x(Hx\eif Cx)$ true or false? There is someone for whom $Hx$ is tr
 	&&&&Hx&\mainconnective{\eif} &Cx\\
 	&&&&\atomicstage{Hx}&&\atomicstage{Cx}\\\hline
 \model &\false &	\\\varassigncline{3-8} 
-&& \text{Al}&&\false&\true&.\\\varassigncline{3-8}
+&& \text{Al}&&\false&\true&\TTcross\\\varassigncline{3-8}
 &&	\text{Bo}&&\true&\false&\false\\\varassigncline{3-8}
-&&	\text{Ca}&&\false&\true&.\\\varassigncline{3-8}
-&&	\text{De}&&\false&\true&.\\\varassigncline{3-8}
+&&	\text{Ca}&&\false&\true&\TTcross\\\varassigncline{3-8}
+&&	\text{De}&&\false&\true&\TTcross\\\varassigncline{3-8}
 \end{array}\]
 
 Since we only need to consider the variable assignment $x\mapsto\text{Bo}$ we could just give:
@@ -270,10 +270,10 @@ Since we only need to consider the variable assignment $x\mapsto\text{Bo}$ we co
 %	&&&&Hx&\mainconnective{\eif} &Cx\\
 %	&&&&\atomicstage{Hx}&&\atomicstage{Cx}\\\hline
 	\model &\TTbf{\false} &	\\\varassigncline{3-8} 
-%	&& \text{Al}&&\false&\true&.\\\varassigncline{3-8}
+%	&& \text{Al}&&\false&\true&\TTcross\\\varassigncline{3-8}
 	&&	\text{Bo}&&\true&\false&\false\\\varassigncline{3-8}
-%	&&	\text{Ca}&&\false&\true&.\\\varassigncline{3-8}
-%	&&	\text{De}&&\false&\true&.\\\varassigncline{3-8}
+%	&&	\text{Ca}&&\false&\true&\TTcross\\\varassigncline{3-8}
+%	&&	\text{De}&&\false&\true&\TTcross\\\varassigncline{3-8}
 \end{array}\]
 
 But if the model makes $\forall x \metaX$ true, then you can only see that by checking every instance, so need to include all the variable assignments. 
@@ -321,8 +321,8 @@ Here is the clause for $\exists$:
 	\model &\TTbf{\true} &	\\\varassigncline{3-8} 
 	&& \text{Al}&&\true&\true&\true\\\varassigncline{3-8}
 	&&	\text{Bo}&&\true&\false&\false\\\varassigncline{3-8}
-	&&	\text{Ca}&&\false&\false&.\\\varassigncline{3-8}
-	&&	\text{De}&&\false&\false&.\\\varassigncline{3-8}
+	&&	\text{Ca}&&\false&\false&\TTcross\\\varassigncline{3-8}
+	&&	\text{De}&&\false&\false&\TTcross\\\varassigncline{3-8}
 \end{array}\]
 
 Since we only need to consider the variable assignment $x\mapsto\text{Al}$ we could just give:
@@ -333,8 +333,8 @@ Since we only need to consider the variable assignment $x\mapsto\text{Al}$ we co
 	\model &\TTbf{\true} &	\\\varassigncline{3-8} 
 	&& \text{Al}&&\true&\true&\true\\\varassigncline{3-8}
 %	&&	\text{Bo}&&\true&\false&\false\\\varassigncline{3-8}
-%	&&	\text{Ca}&&\false&\false&.\\\varassigncline{3-8}
-%	&&	\text{De}&&\false&\false&.\\\varassigncline{3-8}
+%	&&	\text{Ca}&&\false&\false&\TTcross\\\varassigncline{3-8}
+%	&&	\text{De}&&\false&\false&\TTcross\\\varassigncline{3-8}
 \end{array}\]
 
 But if the model makes $\exists x \metaX$ false, then you can only see that by checking every instance, so need to include all the variable assignments. 
@@ -359,10 +359,10 @@ Note that we can still then apply all the connectives. For example:
 	%	&&&&&Hx&\mainconnective{\eif} &Cx\\
 	%	&&&&&\atomicstage{Hx}&&\atomicstage{Cx}\\\hline
 	\model &\TTbf{\true}&\false &	\\\varassigncline{4-9} 
-	%	&&& \text{Al}&&\false&\true&.\\\varassigncline{4-9} 
+	%	&&& \text{Al}&&\false&\true&\TTcross\\\varassigncline{4-9} 
 	&&&	\text{Bo}&&\true&\false&\false\\\varassigncline{4-9} 
-	%	&&&	\text{Ca}&&\false&\true&.\\\varassigncline{4-9} 
-	%	&&&	\text{De}&&\false&\true&.\\\varassigncline{4-9} 
+	%	&&&	\text{Ca}&&\false&\true&\TTcross\\\varassigncline{4-9} 
+	%	&&&	\text{De}&&\false&\true&\TTcross\\\varassigncline{4-9} 
 \end{array}\]
 
 
@@ -372,10 +372,10 @@ or
 	%	&&&&&Hx&\mainconnective{\eif} &Cx\\
 	%	&&&&&\atomicstage{Hx}&&\atomicstage{Cx}\\\hline
 	\model &\true&\TTbf{\true}&\true&\false &	\\\varassigncline{6-11} 
-	%	&&& \text{Al}&&\false&\true&.\\\varassigncline{4-9} 
+	%	&&& \text{Al}&&\false&\true&\TTcross\\\varassigncline{4-9} 
 	&&&&&	\text{Bo}&&\true&\false&\false\\\varassigncline{6-11} 
-	%	&&&	\text{Ca}&&\false&\true&.\\\varassigncline{4-9} 
-	%	&&&	\text{De}&&\false&\true&.\\\varassigncline{4-9} 
+	%	&&&	\text{Ca}&&\false&\true&\TTcross\\\varassigncline{4-9} 
+	%	&&&	\text{De}&&\false&\true&\TTcross\\\varassigncline{4-9} 
 \end{array}\]
 
 We can also combine multiple sentences which both include variables. 
@@ -401,7 +401,7 @@ The main connective is $\eand$. The truth of the sentence overall just depends o
 Actually, it doesn't matter what the truth value of $ \forall x Hx$ since we already know that $\forall x(Hx\eif Cx)$ is false:
 
 \[\begin{array}{c|deeeeeeeeef}	&\forall x &Hx&{\eand} &	{\forall} &{x} &(&Hx&\eif &Cx&)\\\hline
-	\model &.&&\false&\TTbf{\false} &	\\\varassigncline{6-11} 
+	\model &\TTcross&&\false&\TTbf{\false} &	\\\varassigncline{6-11} 
 	&&&&	&\text{Bo}&&\true&\false&\false\\\varassigncline{6-11} 
 \end{array}\]
 
@@ -484,7 +484,7 @@ Although one doesn't need to fill out all the values, once you have found one va
 	
 	\varassigncline{4-5} 		\varassigncline{8-12} 
 	&  & & 1 & \true &&&1&&\false&\true&\true\\
-	&  & & &  &&&2&&\true&\true&.\\
+	&  & & &  &&&2&&\true&\true&\TTcross\\
 	\hline
 \end{array}
 \]
@@ -516,7 +516,7 @@ $\enot\exists x Cx$ separately from $\forall x(Cx\eor Sx)$, and then combine the
 	
 	\varassigncline{4-5} 		\varassigncline{8-12} 
 	&  & & 1 & \true &&&1&&\false&\true&\true\\
-	&  & & &  &&&2&&\true&\true&.\\
+	&  & & &  &&&2&&\true&\true&\TTcross\\
 	\hline
 \end{array}
 \]
@@ -736,10 +736,10 @@ We need to consider the different possible variable assignments $x\mapsto o$ and
 	\model &\TTbf{?} & &\\\varassigncline{3-14} 
 	&&\text{Al}&&\true&?&?& &&&&\\
 	\varassigncline{3-14} 
-	&&\text{Bo}&&\false&\false&.\\\varassigncline{3-14} 
+	&&\text{Bo}&&\false&\false&\TTcross\\\varassigncline{3-14} 
 	&&\text{Ca}&&\true&?&?\\
 	\varassigncline{3-14} 
-	&&\text{De}&&\false&\false&.\\\varassigncline{3-14} 
+	&&\text{De}&&\false&\false&\TTcross\\\varassigncline{3-14} 
 \end{array}\]
 
 To do this, we need to extend our variable assignment so it not only considers $x\mapsto$Alice but also considers a choice of who is $y$. A variable assignment in general assigns an object of the domain to every variable. So to evaluate $\forall y(Sy\eif Axy)$ under the variable assignment $x\mapsto$Alice, we consider the variable assignments $x\mapsto$Alice; $y\mapsto o$, for each $o$ in the domain. If $Sy\eif Axy$ is true under each such, then $\forall y(Sy\eif Axy)$ is true under $x\mapsto$Alice. But, $\forall y(Sy\eif Axy)$ is false under $x\mapsto$Alice because under $x\mapsto$Alice and $y\mapsto$Bob, $Sy\eif Axy$ is false. 
@@ -749,19 +749,19 @@ To do this, we need to extend our variable assignment so it not only considers $
 	&	{\exists} &{x} &(&Cx&\eand &\forall& y&(& Sy&\eif& Axy&)&)\\\hline
 	\model &\TTbf{\false} & &\\\varassigncline{3-14} 
 	&&\text{Al}&&\true&\false&\false& &&&&\\\varassigncline{8-13}
-	&&&&&&& \text{Al}&&\false&\true&.&\\\varassigncline{8-13}
+	&&&&&&& \text{Al}&&\false&\true&\TTcross&\\\varassigncline{8-13}
 	&&&&&&& \text{Bo}&&\true&\false&\false\\\varassigncline{8-13}
-	&&&&&&& \text{Ca}&&\false&\true&.&\\\varassigncline{8-13}
+	&&&&&&& \text{Ca}&&\false&\true&\TTcross&\\\varassigncline{8-13}
 	&&&&&&& \text{De}&&\true&\true&\true\\\varassigncline{8-13}
 	\varassigncline{3-14} 
-	&&\text{Bo}&&\false&\false&.\\\varassigncline{3-14} 
-	&&\text{Ca}&&\true&\false&\false\\
-	&&&&&&& \text{Al}&&\false&\true&.&\\\varassigncline{8-13}
+	&&\text{Bo}&&\false&\false&\TTcross\\\varassigncline{3-14} 
+	&&\text{Ca}&&\true&\false&\false\\\varassigncline{8-13}
+	&&&&&&& \text{Al}&&\false&\true&\TTcross&\\\varassigncline{8-13}
 	&&&&&&& \text{Bo}&&\true&\false&\false\\\varassigncline{8-13}
-	&&&&&&& \text{Ca}&&\false&\true&.&\\\varassigncline{8-13}
+	&&&&&&& \text{Ca}&&\false&\true&\TTcross&\\\varassigncline{8-13}
 	&&&&&&& \text{De}&&\true&\false&\false\\\varassigncline{8-13}
 	\varassigncline{3-14} 
-	&&\text{De}&&\false&\false&.\\\varassigncline{3-14} 
+	&&\text{De}&&\false&\false&\TTcross\\\varassigncline{3-14} 
 \end{array}\]
 
 

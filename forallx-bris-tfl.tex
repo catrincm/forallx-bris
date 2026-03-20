@@ -3424,7 +3424,7 @@ The only valuation on which both `$\enot L \eif (J \eor L)$' and `$\enot J$' are
 	
 	If there is no such row, then it is \emph{valid}. 
 \end{highlighted}
-(In fact, for full marks to it is invalid, one only needs to give such a counterexample valuation, not complete truth tables.)
+
 
 We will also say:
 \begin{highlighted}
@@ -3884,12 +3884,13 @@ Here is another useful notion:
 	\begin{tabular}{c c|d e e f |d e e e f}
 		$P$&$Q$&\enot&$(P$&\eor&$Q)$&\enot&$P$&\eand&\enot&$Q$\\
 		\hline
-		T & T & \TTbf{F} & T & T & T & F & T & \TTbf{F} & F & T\\
-		T & F & \TTbf{F} & T & T & F & F & T & \TTbf{F} & T & F\\
-		F & T & \TTbf{F} & F & T & T & T & F & \TTbf{F} & F & T\\
-		F & F & \TTbf{T} & F & F & F & T & F & \TTbf{T} & T & F
+		T & T & \TTbf{F} &   & T &   & F &   & \TTbf{F} & F &  \\
+		T & F & \TTbf{F} &   & T &   & F &   & \TTbf{F} & T &  \\
+		F & T & \TTbf{F} &   & T &   & T &   & \TTbf{F} & F &  \\
+		F & F & \TTbf{T} &   & F &   & T &   & \TTbf{T} & T & 
 	\end{tabular}
 \end{center}
+
 Look at the columns for the main logical operators; negation for the first sentence, conjunction for the second. On the first three rows, both are false. On the final row, both are true. Since they match on every row, the two sentences are logically equivalent.
 
 
@@ -4144,9 +4145,9 @@ You also know for sure that a disjunction is true whenever one of the disjuncts 
 		$P$&$Q$& $(\enot$ & $P$&\eor&\enot&$Q)$&\eor&\enot&$P$\\
 		\hline
 		T & T & F & & F & F& & \TTbf{F} & F\\
-		T & F &  F & & T& T& &  \TTbf{T} & F\\
-		F & T & & &  & & & \TTbf{T} & T\\
-		F & F & & & & & &\TTbf{T} & T
+		T & F &  F & & T&\TTcross & &  \TTbf{T} & \TTcross\\
+		F & T &  & & \TTcross &  & & \TTbf{T} & T\\
+		F & F &  & & \TTcross & & &\TTbf{T} & T
 	\end{tabular}
 \end{center}
 Equally, you know for sure that a conjunction is false whenever one of the conjuncts is false. So if you find a false conjunct, there is no need to work out the truth value of the other conjunct. Thus you might offer:
@@ -4154,8 +4155,8 @@ Equally, you know for sure that a conjunction is false whenever one of the conju
 	\begin{tabular}{c c|d e e e e e e f}
 		$P$&$Q$&\enot &$(P$&\eand&\enot&$Q)$&\eand&\enot&$P$\\
 		\hline
-		T & T &  &  & &  & & \TTbf{F} & F\\
-		T & F &   &  &&  & & \TTbf{F} & F\\
+		T & T &  \TTcross &  & &   & & \TTbf{F} & F\\
+		T & F &   \TTcross &  &&   & & \TTbf{F} & F\\
 		F & T & T &  & F &  & & \TTbf{T} & T\\
 		F & F & T &  & F & & & \TTbf{T} & T
 	\end{tabular}
@@ -4165,8 +4166,8 @@ A similar short cut is available for conditionals. You immediately know that a c
 	\begin{tabular}{c c|d e e e e e f}
 		$P$&$Q$& $((P$&\eif&$Q$)&\eif&$P)$&\eif&$P$\\
 		\hline
-		T & T & &  & & & & \TTbf{T} & \\
-		T & F &  &  & && & \TTbf{T} & \\
+		T & T &  &  &  & \TTcross & & \TTbf{T} & \\
+		T & F &   &  &  & \TTcross & & \TTbf{T} & \\
 		F & T & & T & & F & & \TTbf{T} & \\
 		F & F & & T & & F & &\TTbf{T} &
 	\end{tabular}
@@ -4189,13 +4190,13 @@ The \emph{first} thing we should do is evaluate the conclusion. If we find that 
 		$J$&$L$&\enot&$L$&\eif&$(J$&\eor&$L)$&\enot&$L$&$J$\\
 		\hline
 		%J   L   -   L      ->     (J   v   L)
-		T & T & &&&&&&&& {T}\\
-		T & F & &&&&&&&& {T}\\
+			T & T & &&   \TTcross&& & &\TTcross & & {T}\\
+			T & F & &&   \TTcross && & &\TTcross & & {T}\\
 		F & T & &&?&&&&?&& {F}\\
 		F & F & &&?&&&&?&& {F}
 	\end{tabular}
 \end{center}
-where the blanks indicate that we are not going to bother doing any more investigation (since the line is not bad) and the question-marks indicate that we need to keep investigating.
+where the `$\TTcross$' marks indicate entries that we are not going to bother filling in (since the line is already known not to be bad), and the question-marks indicate that we still need to keep investigating.
 
 The easiest premise to evaluate is the second, so we next do that:
 \begin{center}
@@ -4203,9 +4204,9 @@ The easiest premise to evaluate is the second, so we next do that:
 		$J$&$L$&\enot&$L$&\eif&$(J$&\eor&$L)$&\enot&$L$&$J$\\
 		\hline
 		%J   L   -   L      ->     (J   v   L)
-		T & T & &&&&&&&& {T}\\
-		T & F & &&&&&&&& {T}\\
-		F & T & &&&&&&{F}&& {F}\\
+			T & T && & \TTcross& & & & \TTcross  & & {T}\\
+			T & F && & \TTcross& & & & \TTcross  & & {T}\\
+		F & T & &&\TTcross&&&&{F}&& {F}\\
 		F & F & &&?&&&&{T}&& {F}
 	\end{tabular}
 \end{center}
@@ -4215,12 +4216,13 @@ Note that we no longer need to consider the third line on the table: it will not
 		$J$&$L$&\enot&$L$&\eif&$(J$&\eor&$L)$&\enot&$L$&$J$\\
 		\hline
 		%J   L   -   L      ->     (J   v   L)
-		T & T & &&&&&&&& {T}\\
-		T & F & &&&&&&&& {T}\\
-		F & T & &&&&&&{F}& & {F}\\
+		T & T & & & \TTcross & & &  &\TTcross & & {T}\\
+		T & F & & & \TTcross & & &  &\TTcross & & {T}\\
+		F & T & &&\TTcross&&&&{F}& & {F}\\
 		F & F & T &  & \TTbf{F} &  & F & & {T} & & {F}
 	\end{tabular}
 \end{center}
+
 The truth table has no bad lines, so the argument is valid. (Any valuation on which all the premises are true is a valuation on which the conclusion is true.)
 
 It might be worth illustrating the tactic again. Let us check whether the following argument is valid
@@ -4230,24 +4232,25 @@ At the first stage, we determine the truth value of the conclusion. Since this i
 	\begin{tabular}[t]{c c c c | c|c|c|d e e f }
 		$A$ & $B$ & $C$ & $D$ & $A\eor B$ & $\enot (A\eand C)$ & $\enot (B\eand \enot D)$ & $(\enot$ &$C$& $\eor$ & $D)$\\
 		\hline
-		T & T & T & T & & & & &  &  \TTbf{T} & \\
+		T & T & T & T &  & & & &  &  \TTbf{T} & \\
 		T & T & T & F & ? & ? & ? & F & &  \TTbf{F} & \\
-		T & T & F & T &  & &   & & &  \TTbf{T} & \\
-		T & T & F & F &  &  &   & T & &  \TTbf{T} &\\
-		T & F & T & T &  &  &  & & &  \TTbf{T} & \\
-		T & F & T & F & ? & ? & ?  & F &  &  \TTbf{F} &\\
-		T & F & F & T & & & & & & \TTbf{T} &\\
-		T & F & F & F & & & & T &  & \TTbf{T} & \\
-		F & T & T & T & & & & & & \TTbf{T} & \\
+		T & T & F & T &  & & & & &  \TTbf{T} & \\
+		T & T & F & F &  & & & T & &  \TTbf{T} &\\
+		T & F & T & T &  & & & & &  \TTbf{T} & \\
+		T & F & T & F & ? & ? & ? & F &  &  \TTbf{F} &\\
+		T & F & F & T &  & & & & & \TTbf{T} &\\
+		T & F & F & F &  & & & T &  & \TTbf{T} & \\
+		F & T & T & T &  & & & & & \TTbf{T} & \\
 		F & T & T & F & ? & ? & ? & F &  & \TTbf{F} &\\
-		F & T & F & T & & &  & & & \TTbf{T} & \\
-		F & T & F & F & & & &T & & \TTbf{T} & \\
-		F & F & T & T & & & & & & \TTbf{T} & \\
+		F & T & F & T &  & & & & & \TTbf{T} & \\
+		F & T & F & F &  & & & T & & \TTbf{T} & \\
+		F & F & T & T &  & & & & & \TTbf{T} & \\
 		F & F & T & F & ? & ? & ? & F & & \TTbf{F} & \\
-		F & F & F & T & & & & & & \TTbf{T} & \\
-		F & F & F & F & & & & T& & \TTbf{T} & \\
+		F & F & F & T &  & & & & & \TTbf{T} & \\
+		F & F & F & F &  & & & T& & \TTbf{T} & \\
 	\end{tabular}
 \end{center}
+
 We must now evaluate the premises. We use shortcuts where we can:
 \begin{center}
 	\begin{tabular}[t]{c c c c | d e f |d e e f |d e e e f |d e e f }
