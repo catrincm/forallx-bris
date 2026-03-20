@@ -274,11 +274,11 @@ We can also symbolise more complex sentences, for example:
 \item\label{sent:folcomplex} If Joe is not happy then Katie or Billy is sad.
 \begin{center}
 	\begin{forest}
-		[If Joe is not happy then Katie or Billy is sad\\\mainconnectivecolor{If} Joe is not happy \mainconnectivecolor{then} Katie or Billy is sad.\\$\ldots {\eif} \ldots$
-		[Joe is not happy\\\mainconnectivecolor{It is not the case that} Joe is happy\\${\enot} \ldots$
+		[If Joe is not happy then Katie or Billy is sad\\If \ldots then \ldots\\$\ldots {\eif} \ldots$
+		[Joe is not happy\\It is not the case that \ldots\\${\enot} \ldots$
 		[Joe is happy\\$Hj$]
 		]
-		[Katie or Billy is sad\\Katie is sad \mainconnectivecolor{or} Billy is sad\\$\ldots {\eor} \ldots$
+		[Katie or Billy is sad\\\ldots or \ldots\\$\ldots {\eor} \ldots$
 		[Katie is sad\\$Sk$]
 		[Billy is sad\\$Sb$]
 		]
@@ -686,7 +686,7 @@ We paraphrase it as
 		[Some logician wears a funny hat. \\
 		There exists $x$: \ldots\\
 		$\forall x\ldots$
-		[$x$ is a logician who wears a funny hat\\$(\ldots\eand\ldots)$
+		[$x$ is a logician who wears a funny hat\\\ldots and \ldots\\$(\ldots\eand\ldots)$
 		[$x$ is a logician\\$Lx$]
 		[$x$ wears a funny hat\\$Hx$]
 		]
@@ -2009,4 +2009,3 @@ Identify which variables are bound and which are free.
 %	\item[\ex{q.a}] Everyone is happy.
 %\end{earg}
 %But we also have dogs in our domain because we also want to symbolise
-
