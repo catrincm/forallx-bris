@@ -129,22 +129,41 @@ Definition of being a sentence of TFL:
 		
 		
 
-\label{appendix:quickref:symbolization}
-\subsubsection*{Sentential Connectives}
-\begin{center}\begin{tabular*}{\textwidth}{ll}
-It is not the case that P & $\enot P$\\
-P or Q & $(P \eor Q)$\\
-P and Q & $(P \eand Q)$\\
-If P, then Q & $(P \eif Q)$\\
-P if and only if Q & $(P \eiff Q)$\\
-\end{tabular*}\end{center}Further symbolisation help:\begin{center}
-\begin{tabular*}{\textwidth}{ll}
-Neither P nor Q & $\enot(P \eor Q)$\ or \ $(\enot P \eand \enot Q)$\\
-P but Q & $(P \eand Q)$\\
-P unless Q & $(P \eor Q)$\\
-P only if Q & $(P \eif Q)$
-\end{tabular*}
-\end{center}
+
+\section{Symbolisation strategy}\label{appendix:quickref:symbolization}
+
+\begin{enumerate}
+	\item Can it be paraphrased in accordance with out symbolisation guide?
+	Make sure that the `$\ldots$' are complete (declarative) sentences. 
+	\item If so, do that and then move to consider how to symbolise the constituant sentences, the `$\ldots$'.
+	\item If not, we need to use an atomic sentence.  
+	\begin{itemize}
+		\item If you already have an appropriate atomic sentence in your symbolisation key, use it.
+		\item If not, choose a new atomic TFL sentence. 
+	\end{itemize}
+\end{enumerate}
+
+
+\section{Symbolisation guide}
+
+\begin{tabular}{c|l}
+	\textbf{Paraphrased as} & \textbf{Symbolised as}\\[.5em]
+	\hline
+	It is not the case that \ldots & $\enot\metaX$\\[.4em]
+	\ldots and \ldots & $\metaX \eand \metaY$\\[.4em]
+	Both \ldots and \ldots & $\metaX \eand \metaY$\\[.4em]
+	Although \ldots, \ldots & $\metaX \eand \metaY$\\[.4em]
+	\ldots but \ldots & $\metaX \eand \metaY$\\[.4em]
+	\ldots or \ldots & $\metaX \eor \metaY$\\[.4em]
+	Either \ldots or \ldots (and not both) & $(\metaX \eor \metaY) \eand \enot(\metaX \eand \metaY)$\\[.4em]
+	Neither \ldots nor \ldots & $\enot(\metaX \eor \metaY)$ or $\enot\metaX \eand \enot\metaY$\\[.4em]
+	If $\ldots_{\metaX}$, then $\ldots_{\metaY}$ & $\metaX \eif \metaY$\\[.4em]
+	$\ldots_{\metaY}$ if $\ldots_{\metaX}$ & $\metaX \eif \metaY$\\[.4em]
+	$\ldots_{\metaX}$ only if $\ldots_{\metaY}$ & $\metaX \eif \metaY$\\[.4em]
+	$\ldots_{\metaX}$ if and only if $\ldots_{\metaY}$ & $(\metaX \eif \metaY)\eand(\metaY\eif \metaX)$ \\& \emph{(can be shortened to $\metaX\eiff\metaY$)}\\[.4em]
+	Unless $\ldots_{\metaX}$, $\ldots_{\metaY}$ & $\metaX \eor \metaY$ or $\enot X\eif Y$ or $\enot Y\eif X$\\
+\end{tabular}
+
 \subsubsection*{Predicates}
 \begin{center}
 \begin{tabular*}{\textwidth}{ll}

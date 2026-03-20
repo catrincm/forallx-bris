@@ -19,8 +19,8 @@ We determined that the argument was of the form:
 \conc $B$
 \end{earg}
 
- We might symbolize the argument in TFL as follows:
- $$A,A\eif B\therefore B.$$
+ We will symbolize the argument in TFL as follows:
+ $$A,\;A\eif B\;\therefore\; B.$$
 And, on the face of it, this seems to be a pretty good symbolization.  We us the sentence letters `$A$' and `$B$' to stand for the declarative sentences `it is raining outside' and `Jenny is miserable' respectively, and the `if\ldots, then \ldots' in terms of the conditional connective. Recall that we introduced the conditional with the `if\ldots, then\ldots' reading in mind and that we motivated the truth table for the conditional using this understanding. Of course, now that we have a symbolization of the argument it is straightforward to test whether the argument is valid or not: we simply build a truth table.
 
 Now, let's look at the argument
@@ -59,15 +59,21 @@ Once we have fixed a symbolization key, the next step is to symbolize the comple
 
 
 \section{Symbolizing Complex Sentences}\label{sec:SymbolisingTFL - simple connectives complex form}
-We introduced our connectives in \cref{sec:Connectives} giving their rough English meaning. This gives us some tools to know how to symbolise English sentences. As a general instruction:
+We introduced our connectives in \cref{sec:Connectives} giving their rough English meaning. This gives us some tools to know how to symbolise English sentences. 
+As a general instruction:
 	\begin{itemize}
 		\item If a sentence can be paraphrased as `it is not the case that \ldots'\\ it can be symbolised as $\enot\metaX$.
 		\item If a sentence can be paraphrased as `\ldots and \ldots'\\ it can be symbolised as $\metaX\eand \metaY$.
 		\item If a sentence can be paraphrased as `\ldots or \ldots'\\ it can be symbolised as $\metaX\eor \metaY$.
 		\item If a sentence can be paraphrased as `if \ldots$_\metaX$, then \ldots$_\metaY$'\\ it can be symbolised as $\metaX\eif \metaY$.
 	\end{itemize}
+	
+	Our task when given a sentence: can you find something to fill out the $\ldots$ to understand it in one of these ways. 
+	By symbolising it with one of our connectives, we are specifying that the truth value of the overall sentence should be governed by the truth rule for that connective. So the truth value of the overall sentence should depend on the truth values of the sentences you pick to fill out $\ldots$ in the way governed by that connective. If it does not, then you need to think about a different paraphrasing or simply use an atomic sentence. 
+%	The things filling out the $\ldots$ must be complete (declarative) sentences, and the truth value of the overall sentence ultimately should be determined in accordance with the truth rule for the chosen connective depending on the truth values of the 
 
-By symbolising it with one of these connectives, the truth conditions for the sentence is determined in accordance with the truth rule. Symbolising it this way is appropriate when these are appropriate truth conditions; but these standard English paraphrasing is good guidance for when this is the case. 
+By symbolising it with one of these connectives, the truth conditions for the sentence is determined in accordance with the truth rule. 
+Symbolising it this way is appropriate when these are appropriate truth conditions; but these standard English paraphrasing is good guidance for when this is the case. 
 
 Typically one needs to apply this paraphrasing trick a number of times to result in the symbolisation for the sentence. 
 Let's go through an example to see how to apply the strategy. Consider:
@@ -75,35 +81,64 @@ Let's go through an example to see how to apply the strategy. Consider:
 	\item\label{sent:negcon1} You won't get both soup and salad.
 	%\item\label{sent:negcon2} You will not get soup but you will get salad.
 \end{samplesent}
-Let's start with the symbolization procedure. 
+
+Our first task: identify its main logical form. For this sentence we can find something to fill out $\ldots$ where the sentence is paraphrased as 
+\begin{samplesent}
+	\item[] It is not the case that \ldots
+\end{samplesent}
+In particular: 
+\begin{samplesent}
+	\item[] It is not the case that \underline{you will get both soup and salad}.
+\end{samplesent}
+`You won't get both soup and salad' is true if and only if `you will get both soup and salad' is false. It is governed by the truth rule for $\enot$ depending on the truth of `you will get both soup and salad'. 
+
+We will keep track of the stages of our symbolisation in a tree form, which bears a close relationship to the formation tree we've seen already.
 \begin{center}
 	\begin{forest}
-		[You won't get both soup and salad.\\\mainconnective{It's not the case that} you will get both soup and salad\\$\mainconnective{\enot}\ldots$
-		[You will get both soup and salad]
+		[You won't get both soup and salad.\\It is not the case that \ldots\\$\enot\ldots$
+		[You will get both soup and salad\\?]]
+	\end{forest}
+\end{center}
+This should be read as: we take our initial sentence `You won't get both soup and salad.' and we paraphrase it as `it is not the case that \ldots', with what fills out the $\ldots$ being placed underneath. We then know that we'll give a symbolisation of the overall sentence as $\enot \ldots$, where however we symbolise `You will get both soup and salad' fills out the $\ldots$. 
+
+So, how to symbolise `You will get both soup and salad'? We can paraphrase it as the form \begin{samplesent}
+	\item[]\ldots and $\ldots$
+\end{samplesent}
+In particular: 
+\begin{samplesent}
+	\item[] \underline{you will get soup} and \underline{you will get salad}
+\end{samplesent}
+With the sentence `You will get both soup and salad' being true if and only if both `you will get soup' and `you will get salad' are true. It is appropriately governed by $\eand$. 
+\begin{center}
+	\begin{forest}
+		[You will get both soup and salad\\\ldots and \ldots\\$\textcolor{lightgray}{(}\ldots {\eand} \ldots\textcolor{lightgray}{)}$
+		[You will get soup\\?]
+		[You will get salad\\?]
 		]
 	\end{forest}
 \end{center}
-Our next stage is to aim to symbolise `you will get both soup and salad'
-\begin{center}
-	\begin{forest}
-		[You won't get both soup and salad.\\\mainconnective{It's not the case that} you will get both soup and salad\\$\mainconnective{\enot}\ldots$
-		[You will get both soup and salad\\You will get soup \mainconnective{and} you will get salad\\$\ldots \mainconnective{\eand} \ldots$
-		[You will get soup]
-		[You will get salad]
-		]
-		]
-	\end{forest}
-\end{center}
-Both `You will get soup' and `You will get salad' cannot be paraphrased in any of our standard forms so we have to use an atomic TFL-sentence. As we haven't already introduced any atomic TFL-sentences, we need to introduce new ones. Let's say 
+Both `You will get soup' and `You will get salad' cannot be paraphrased in any of our standard forms so we have to use an atomic TFL-sentence. As we haven't already introduced any atomic TFL-sentences, we need to introduce new ones. We can chose from $A$-$W$ or with numerical subscripts. Let's choose. 
 \begin{ekey}
 	\item[S_1] You will get soup
 	\item[S_2] You will get salad
 \end{ekey}
-So we can replace these leaves of the symbolisation tree with the atomic sentences, and then work the way back up to determine the symbolisation of the original sentence. 
+
+We can then build our symbolisation tree:
 \begin{center}
 	\begin{forest}
-		[You won't get both soup and salad.\\\mainconnective{It's not the case that} you will get both soup and salad\\$\mainconnective{\enot}(S_1 {\eand} S_2)$
-		[You will get both soup and salad\\You will get soup \mainconnective{and} you will get salad\\$S_1 \mainconnective{\eand} S_2$
+		[You won't get both soup and salad.\\It is not the case that \ldots\\$\enot\ldots$
+[You will get both soup and salad\\\ldots and \ldots\\$\textcolor{lightgray}{(}\ldots {\eand} \ldots\textcolor{lightgray}{)}$
+[You will get soup\\$S_1$]
+[You will get salad\\$S_2$]
+]
+]
+	\end{forest}
+\end{center}
+Now to obtain the symbolisation of our overall sentence we just need to work back up the tree, replacing \ldots with the determined symbolisation. 
+\begin{center}
+	\begin{forest}
+		[You won't get both soup and salad.\\It is not the case that \ldots\\$\mainconnective{\enot}\textcolor{blue}{(S_1\eand S_2)}$
+		[You will get both soup and salad\\\ldots and \ldots\\$\textcolor{lightgray}{(}\textcolor{blue}{S_1} \mainconnective{\eand} \textcolor{blue}{S_2} \textcolor{lightgray}{)}$
 		[You will get soup\\$S_1$]
 		[You will get salad\\$S_2$]
 		]
@@ -111,11 +146,14 @@ So we can replace these leaves of the symbolisation tree with the atomic sentenc
 	\end{forest}
 \end{center}
 
-More generally, here's our strategy:
+
+
+
+Here's a description of this strategy:
 \begin{highlighted}
 	\begin{enumerate}
-		\item\label{bpr} Consider whether the sentence can be paraphrased as sentences in one of our standard forms. 
-			\begin{center}
+		\item\label{bpr} Consider whether the sentence can be paraphrased as sentences in one of our standard forms, and governed by the associated truth rule. 
+		\begin{center}
 			\begin{tabular}{l l}
 				\textbf{paraphrased as} & \textbf{symbolised as}\\[.2em]
 				\hline
@@ -128,42 +166,164 @@ More generally, here's our strategy:
 		If the answer is no, go to Step \ref{epr}. If the answer is yes, go to Step \ref{cpr}.
 		\item\label{cpr} Symbolize the sentence in accordance with the symbolization guideline with the component sentences in the place of the metavariables. For each of the component sentences, repeat the procedure, that is, go back to Step \ref{bpr}.
 		\item\label{epr} Check the symbolization key to see if we already have already chosen an atomic TFL-sentence to symbolise that English sentence. 
-			\begin{itemize}
-				\item If so, replace the English sentence by that atomic TFL-sentence.
-				\item Otherwise, choose a new atomic TFL-sentence to symbolize the sentence, extend the symbolization key accordingly and replace the English sentence by the atomic TFL sentence.
-			\end{itemize}
+		\begin{itemize}
+			\item If so, replace the English sentence by that atomic TFL-sentence.
+			\item Otherwise, choose a new atomic TFL-sentence to symbolize the sentence, extend the symbolization key accordingly and replace the English sentence by the atomic TFL sentence.
+		\end{itemize}
 	\end{enumerate}
 \end{highlighted}
-\todo{add symbolisation tree}
+
+
+Consider:
+\begin{samplesent}
+	\item If John has a pet, then he has a cat or a dog. 
+\end{samplesent}
+
+We apply this strategy to break the sentence down:
+\begin{center}
+	\begin{forest}
+		[If John has a pet then he has a cat or a dog\\If \ldots then \ldots\\$\ldots\eif\ldots$
+		[John has a pet\\$P$]
+		[John has a cat or a dog\\\ldots or \ldots\\$\ldots\eor\ldots$
+		[John has a cat\\$C$]
+		[John has a dog\\$D$]
+		]]
+	\end{forest}
+\end{center}
+Which, when we put back together as:
+\begin{center}
+	\begin{forest}
+		[If John has a pet then he has a cat or a dog\\$\textcolor{blue}{P}\mainconnective{\eif}\textcolor{blue}{(C\eor D)}$
+		[John has a pet\\$P$]
+		[John has a cat or a dog\\$\textcolor{lightgray}{(}\textcolor{blue}{C}\mainconnective{\eor}\textcolor{blue}{D}\textcolor{lightgray}{)}$
+		[John has a cat\\$C$]
+		[John has a dog\\$D$]
+		]]
+	\end{forest}
+\end{center}
+So we obtain our symbolisation: $$P\eif (C\eor D)$$
+with a symbolisation key:\begin{ekey}
+	\item[P] John has a pet
+	\item[C] John has a cat
+	\item[D] John has a dog
+\end{ekey}
+
+
+Consider 
+\begin{samplesent}
+	\item If Harry had cake then either Joe or Carl did not. 
+\end{samplesent}
+We can break the sentence down as follows:
+\begin{center}
+	\begin{forest}
+		[If Harry had cake then either Joe or Carl did not\\If \ldots then \ldots\\$\ldots\eif\ldots$
+		[Harry had cake\\$H$]
+		[Either Joe or Carl did not have cake\\\ldots or \ldots\\$\textcolor{lightgray}{(}\ldots\eor\ldots\textcolor{lightgray}{)}$
+		[Joe did not have cake\\It is not the case that \ldots\\$\enot\ldots$[Joe had cake\\$J$]]
+		[Carl did not have cake\\It is not the case that \ldots\\$\enot\ldots$[Carl had cake\\$C$]]
+		]]
+	\end{forest}
+\end{center}
+obtaining a symbolisation $$H\eif(\enot J\eor\enot C)$$
+with a symbolisation key:\begin{ekey}
+	\item[H] Harry had cake
+	\item[J] Joe had cake
+	\item[C] Carl had cake
+\end{ekey}
+
+
 
 %
+%
+%Let's start with the symbolization procedure. 
+%\begin{center}
+%	\begin{forest}
+%		[You won't get both soup and salad.\\\mainconnective{It's not the case that} you will get both soup and salad\\$\mainconnective{\enot}\ldots$
+%		[You will get both soup and salad]
+%		]
+%	\end{forest}
+%\end{center}
+%Our next stage is to aim to symbolise `you will get both soup and salad'
+%\begin{center}
+%	\begin{forest}
+%		[You won't get both soup and salad.\\\mainconnective{It's not the case that} you will get both soup and salad\\$\mainconnective{\enot}\ldots$
+%		[You will get both soup and salad\\You will get soup \mainconnective{and} you will get salad\\$\ldots \mainconnective{\eand} \ldots$
+%		[You will get soup]
+%		[You will get salad]
+%		]
+%		]
+%	\end{forest}
+%\end{center}
+%Both `You will get soup' and `You will get salad' cannot be paraphrased in any of our standard forms so we have to use an atomic TFL-sentence. As we haven't already introduced any atomic TFL-sentences, we need to introduce new ones. Let's say 
+%\begin{ekey}
+%	\item[S_1] You will get soup
+%	\item[S_2] You will get salad
+%\end{ekey}
+%So we can replace these leaves of the symbolisation tree with the atomic sentences, and then work the way back up to determine the symbolisation of the original sentence. 
+%\begin{center}
+%	\begin{forest}
+%		[You won't get both soup and salad.\\\mainconnective{It's not the case that} you will get both soup and salad\\$\mainconnective{\enot}(S_1 {\eand} S_2)$
+%		[You will get both soup and salad\\You will get soup \mainconnective{and} you will get salad\\$S_1 \mainconnective{\eand} S_2$
+%		[You will get soup\\$S_1$]
+%		[You will get salad\\$S_2$]
+%		]
+%		]
+%	\end{forest}
+%\end{center}
+%
+%More generally, here's our strategy:
+%\begin{highlighted}
+%	\begin{enumerate}
+%		\item\label{bpr} Consider whether the sentence can be paraphrased as sentences in one of our standard forms, and governed by the associated truth rule. 
+%			\begin{center}
+%			\begin{tabular}{l l}
+%				\textbf{paraphrased as} & \textbf{symbolised as}\\[.2em]
+%				\hline
+%				`It is not the case that \ldots' & $\enot\metaX$\\
+%				`\ldots and\ldots' & $(\metaX\eand\metaY)$\\
+%				`\ldots or\ldots' & $(\metaX\eand\metaY)$\\
+%				`If $\ldots_X$ then $\ldots_Y$' & $(\metaX\eif\metaY)$
+%			\end{tabular}
+%		\end{center} 
+%		If the answer is no, go to Step \ref{epr}. If the answer is yes, go to Step \ref{cpr}.
+%		\item\label{cpr} Symbolize the sentence in accordance with the symbolization guideline with the component sentences in the place of the metavariables. For each of the component sentences, repeat the procedure, that is, go back to Step \ref{bpr}.
+%		\item\label{epr} Check the symbolization key to see if we already have already chosen an atomic TFL-sentence to symbolise that English sentence. 
+%			\begin{itemize}
+%				\item If so, replace the English sentence by that atomic TFL-sentence.
+%				\item Otherwise, choose a new atomic TFL-sentence to symbolize the sentence, extend the symbolization key accordingly and replace the English sentence by the atomic TFL sentence.
+%			\end{itemize}
+%	\end{enumerate}
+%\end{highlighted}
+%\todo{add symbolisation tree}
+%
+%%
+%%\begin{itemize}
+%%\item Per above we see that the sentence can be constructed from other sentences by means of conjunction words. We move to Step \ref{cpr}.
+%%\item Applying the instructions in Step \ref{cpr} we obtain:
+%%$$\enot\text{you will get soup and you will get salad}.$$
+%%\item Still per instruction of Step \ref{cpr}, we move to Step \ref{bpr} to start the symbolization procedure for the sentence  `you will get soup and you will get salad.'
+%%\item The sentence is clearly a conjunction so we move to Step \ref{cpr}. By following the symbolization guidelines and the constructions of Step \ref{cpr}, we obtain:
+%%$$\enot(\text{ you will get soup }\eand\text{ you will get salad}).$$
+%%\item Now per instruction of Step \ref{cpr} we need to start the symbolization procedure for both, the sentence `you will get soup' and the sentence `you will get salad' starting with the former one, and got to Step \ref{bpr}
+%%\item `you will get soup' cannot be paraphrased as being constructed from other sentences, so we are instructed to go to Step \ref{epr}.
+%%\item we choose the atomic sentence $S_1$ as the symbolization of `you will get soup', and obtain
+%%$$\enot(S_1\eand\text{ you will get salad}).$$
+%%\item Equally, the sentence `you will get salad' cannot be paraphrased as being constructed from other sentences, so we are instructed to go to Step \ref{epr}.
+%%\item we choose the atomic sentence $S_2$ as the symbolization of `you will get salad', and obtain
+%%$$\enot(S_1\eand S_2).$$
+%%\item The TFL-sentence `$\enot(S_1\eand S_2)$' is the symbolization of the English sentence `It's not the case that you will get both soup and salad'.
+%%\end{itemize}
+%
+%This process may seem very tedious and, of course, very often we can determine a correct symbolization of an English sentence without sticking painstakingly to this step by step process. However, by sticking to the process we make sure not to move too quickly. So if you are unsure of how to symbolize a sentence, the process provides a safety net. Yet before starting with the symbolization process one should determine the precise sentential structure of the sentence under consideration. Consider a slight variant of \Cref{sent:negcon1}:
 %\begin{itemize}
-%\item Per above we see that the sentence can be constructed from other sentences by means of conjunction words. We move to Step \ref{cpr}.
-%\item Applying the instructions in Step \ref{cpr} we obtain:
-%$$\enot\text{you will get soup and you will get salad}.$$
-%\item Still per instruction of Step \ref{cpr}, we move to Step \ref{bpr} to start the symbolization procedure for the sentence  `you will get soup and you will get salad.'
-%\item The sentence is clearly a conjunction so we move to Step \ref{cpr}. By following the symbolization guidelines and the constructions of Step \ref{cpr}, we obtain:
-%$$\enot(\text{ you will get soup }\eand\text{ you will get salad}).$$
-%\item Now per instruction of Step \ref{cpr} we need to start the symbolization procedure for both, the sentence `you will get soup' and the sentence `you will get salad' starting with the former one, and got to Step \ref{bpr}
-%\item `you will get soup' cannot be paraphrased as being constructed from other sentences, so we are instructed to go to Step \ref{epr}.
-%\item we choose the atomic sentence $S_1$ as the symbolization of `you will get soup', and obtain
-%$$\enot(S_1\eand\text{ you will get salad}).$$
-%\item Equally, the sentence `you will get salad' cannot be paraphrased as being constructed from other sentences, so we are instructed to go to Step \ref{epr}.
-%\item we choose the atomic sentence $S_2$ as the symbolization of `you will get salad', and obtain
-%$$\enot(S_1\eand S_2).$$
-%\item The TFL-sentence `$\enot(S_1\eand S_2)$' is the symbolization of the English sentence `It's not the case that you will get both soup and salad'.
+%	\item It is not the case that you will get soup and you will get salad.
 %\end{itemize}
-
-This process may seem very tedious and, of course, very often we can determine a correct symbolization of an English sentence without sticking painstakingly to this step by step process. However, by sticking to the process we make sure not to move too quickly. So if you are unsure of how to symbolize a sentence, the process provides a safety net. Yet before starting with the symbolization process one should determine the precise sentential structure of the sentence under consideration. Consider a slight variant of \Cref{sent:negcon1}:
-\begin{itemize}
-	\item It is not the case that you will get soup and you will get salad.
-\end{itemize}
-In this form the sentence displays a potential ambiguity between:
-\begin{itemize}
-	\item It is not the case that: you will get soup and you will get salad.
-	\item It is not the case that you will get soup; and you will get salad.
-\end{itemize}
-As we have seen the first reading gets symbolized as $\enot(S_1\eand S_2)$, while the second reading should be symbolized as $(\enot S_1\eand S_2)$ (Exercise: check that this is the correct symbolization). These two symbolizations are of course very different and, thus, at the beginning of the symbolization process it is important to determine the precise structure of the sentence one wishes to symbolize. We discuss this issue some more in \cref{sec:AmbiguityTFL}.
+%In this form the sentence displays a potential ambiguity between:
+%\begin{itemize}
+%	\item It is not the case that: you will get soup and you will get salad.
+%	\item It is not the case that you will get soup; and you will get salad.
+%\end{itemize}
+%As we have seen the first reading gets symbolized as $\enot(S_1\eand S_2)$, while the second reading should be symbolized as $(\enot S_1\eand S_2)$ (Exercise: check that this is the correct symbolization). These two symbolizations are of course very different and, thus, at the beginning of the symbolization process it is important to determine the precise structure of the sentence one wishes to symbolize. We discuss this issue some more in \cref{sec:AmbiguityTFL}.
 
 \section{Symbolizing Arguments}
 We have learned how to symbolize English sentences in TFL. But how does one symbolize arguments in TFL? The answer should not be to surprising: one simply needs to symbolize the premises and conclusion in TFL with the caveat that one must use one and the same symbolization key in this symbolization process. Let's look at a simple example (notice that the argument may not be sound):
@@ -183,9 +343,204 @@ with the following symbolization key:
 Using our symbolization procedure we then obtain the following TFL-argument $$R\eor L,\enot R\therefore L$$ which can be checked for logical validity (Check!).
 
 
+%\chapter{When is it appropriate to symbolise using the connectives}
+
+
+
+\section{Does the symbolisation give the right truth-conditions?}
+
+We have already had to apply some analysis to determine how to split a sentence up. 
+
+Consider:
+\begin{samplesent}
+	\item Lotta and Karl had cake
+\end{samplesent}
+We will expand this out to:
+\begin{samplesent}
+	\item[] \underline{Lotta had cake} and \underline{Karl had cake}
+\end{samplesent}
+\begin{center}
+	\begin{forest}
+		[Lotta and Karl had cake\\\ldots and \ldots\\$\ldots \eand \ldots$
+		[Lotta had cake\\$L$][Karl had cake\\$K$]]
+	\end{forest}
+\end{center}
+We judge that it is correct that `Lotta and Karl had cake' is determined in accordance the rule for $\eand$:
+\begin{center}
+	\begin{tabular}{cc|c}
+	Lotta had cake&Karl had cake&Lotta and Karl had cake\\
+	$L$&$K$&$L\eand K$\Bstrut\\\hline\Tstrut
+	T&T&T\\
+	T&F&F\\
+	F&T&F\\
+	F&F&F
+\end{tabular}
+\end{center}
+
+This was appropriate. But is it always appropriate? 
+
+Consider
+\begin{samplesent}
+	\item Fluffy is black and white.
+\end{samplesent}
+This has `and' in it, but it is not appropriately paraphrased as:
+\begin{samplesent}
+	\item \underline{Fluffy is black} and \underline{Fluffy is white}
+\end{samplesent}
+We might try to symbolise it as $$B\eand W$$
+
+	\begin{center}
+		\begin{forest}
+			[Fluffy is black and white\\\ldots and \ldots\\$\ldots \eand \ldots$
+			[Fluffy is black\\$B$][Fluffy is white\\$W$]]
+		\end{forest}
+	\end{center}
+	
+	\begin{center}
+		\begin{tabular}{cc|c}
+			Fluffy is black&Fluffy is white&Fluffy is a black and white cat\\
+			$B$&$W$&$B\eand W$\Bstrut\\\hline\Tstrut
+			T&T&T\\
+			T&F&F\\
+			F&T&F\\
+			F&F&F
+		\end{tabular}
+	\end{center}
+
+Similarly, consider:
+	\begin{samplesent}
+		\item Adina likes fish and chips.
+	\end{samplesent}
+	One might try to break it down as: 
+	\begin{center}
+		\begin{forest}
+			[Adina likes fish and chips\\\ldots and \ldots\\$\ldots \eand \ldots$
+			[Adina likes fish\\$F$][Adina likes chips\\$C$]]
+		\end{forest}
+	\end{center}
+	which is governed by:
+	\begin{center}
+		\begin{tabular}{cc|c}
+			Adina likes fish&Adina likes chips&Adina likes fish and chips\\
+			$F$&$C$&$F\eand C$\Bstrut\\\hline\Tstrut
+			T&T&T\\
+			T&F&F\\
+			F&T&F\\
+			F&F&F
+		\end{tabular}
+	\end{center}
+but the problem is that probably the author of this sentence meant that she likes eating fish-and-chips, rather than giving two separate facts, that she likes fish and that she likes chips. 
+
+Sometimes it is a matter of judgement, though. What about:
+\begin{samplesent}
+	\item Priya likes nuts and cheese.
+\end{samplesent}
+What does the author of the sentence mean?
+\begin{samplesent}
+		\item Priya likes nuts and cheese (together)
+		\item {Priya likes nuts} and {Priya likes cheese}
+\end{samplesent}
+Only the latter is to be sy
+If we symbolise it as $N\eand C$ it will be given by the truth conditions: 
+\begin{center}
+	\begin{tabular}{cc|c}
+		Priya likes nuts&Priya likes cheese&Priya likes nuts and cheese\\
+		$N$&$C$&$N\eand C$\Bstrut\\\hline\Tstrut
+		T&T&T\\
+		T&F&F\\
+		F&T&F\\
+		F&F&F
+	\end{tabular}
+\end{center}
+
+\factoidbox{When symbolizing sentences, make sure the paraphrasing matches the truth conditions}
+
+\section{How much paraphrasing is appropriate?}
+
+Consider the following sentence:
+\begin{samplesent}
+	\item\label{sent:not5} The information is irretrievable.
+\end{samplesent}
+Even though the sentence does not explicitly include `not', it does have `ir-' which indicates a negation.
+We will paraphrase it as \begin{samplesent}
+	\item It is not the case that \underline{the information is retrievable}
+\end{samplesent}
+
+\begin{center}
+	\begin{forest}
+		[The information is irretrievable\\It is not the case that \ldots
+		[The information is retrievable\\$R$]]
+	\end{forest}
+\end{center}
+So we symbolise it as `$\enot R$' with
+\begin{ekey}
+	\item[R] The information is retrievable.
+\end{ekey}
+
+In English we can also express negation using prefixes such as `\emph{ir}' or `\emph{un}'. There are still further ways of expressing negation, for example, sometimes this may be done using  the prefix `\emph{dis}' as in honest/dishonest. In these cases, we should expect to paraphrase it as `it is not the case that \ldots' and use $\enot$ in the symbolisation. 
+
+Consider:
+\begin{samplesent}
+	\item\label{sent:good} That action is good.
+	\item\label{sent:bad} That action is bad.
+\end{samplesent}
+Let's symbolise \cref{sent:good} with an atomic sentence, giving a symbolisation key with:
+\begin{ekey}
+	\item[G] That action is good.
+\end{ekey}
+Should we paraphrase \cref{sent:bad} as 
+\begin{samplesent}
+	\item It is not the case that \underline{that action is good}
+\end{samplesent}
+symbolising it as $\enot G$. 
+
+There are two reasons we will not do this. 
+
+For one, while we may all agree that stealing is not a good thing to do, we may think that it is perhaps not exactly bad, if someone who is on the verge of starvation steels some food. In other words, there may be things that are neither good nor bad. However,  in TFL if `$G$' is false, then `$\enot G$' is true and we would not have the option so say that something, e.g.~stealing, is neither good nor bad. If we symbolize \cref{sent:bad} using a new sentence letter, say `$B$', then we can allow for that option. 
+
+For another, there is no syntactic marker such as a prefix, a word like `not', etc.~that suggests that the sentences \cref{sent:good} and \cref{sent:bad} are negations of each other. There is nothing in the structure of the two sentences that suggests that one negates the other.  But recall that one principal goal for symbolization is to check whether a given argument is valid and consider the argument:
+\begin{earg}
+	\prem Steeling is good or donating for charity is good.
+	\prem Steeling is bad.
+	\conc Donating for charity is good.
+\end{earg}
+While this is a good argument and perhaps a conceptually valid argument it is not valid in the strict sense because it not valid in virtue of its form: it requires understanding `bad' as `not good'. So, if we were to symbolize \cref{sent:bad} as `$\neg G$ we would stipulate some logical structure that the English sentence does not display and would wrongly deem the argument to be valid.
+
+\factoidbox{When symbolizing sentences, only introduce logical structure that is displayed by the English sentence}
+
+If you wish to make the information that in the specific circumstances `bad' means that something is not good and vice versa available in TFL, you can add this as an additional premises when symbolizing the relevant argument in TFL. That, is if we think that \cref{sent:bad} is the negation of \cref{sent:good} we should add the following premise (using truth tables check that the premise is true, if and only if, `$\enot G$' is true whenever `$B$' is true): $$(\enot G\eif B)\eand (B\eif \enot G).$$ If this premise is added to the above argument, then the argument is valid and rightly so!
+
+%Sometimes even in symbolizing sentences that very much look like they are negations of each other one needs to be careful. Consider:
+%	\begin{samplesent}
+	%		\item\label{sent:not8} Jane is happy.
+	%		\item\label{sent:not9} Jane is unhappy.
+	%	\end{samplesent}
+%To some it may feel like Jane can be neither happy nor unhappy, and this may even be assumed in some argument. Jane is without emotions and in a state of blank indifference: she does not feel happy nor does she feel unhappy. If we were to symbolize \cref{sent:not8} by `$H$' and then \cref{sent:not9} by `$\enot H$', then we would rule out the possibility of Jane being neither happy nor unhappy. If we try to remain faithful to the idea that Jane can be neither happy nor unhappy then we need to symbolize \cref{sent:not9} using a new atomic sentence of TFL.
+
+
+
+
 \chapter{On Truth-functional connectives}
 \label{sec:TruthFunctionality}
 %We now reflect on truth-functional logic and the connectives we've used.
+
+
+Often English sentences come with different ways of joining sentences than our standard `and', `or', `not' or `if'. 
+
+Consider these sentences:
+\begin{compactlist}
+%	\item \mainconnective{Although} Alice will come to the party, Beth will not.  
+%	\item Alice will come to the party, \mainconnective{but} Beth will not.  
+	\item \mainconnective{Neither} Alice \mainconnective{nor} Beth will come to the party.  
+%	\item \mainconnective{Either} Alice \mainconnective{or} Beth will come to the party \mainconnective{\emph{(and not both)}}.  
+	\item Alice won't come to the party \mainconnective{unless} Beth comes. 
+	\item Alice will come to the party \mainconnective{only if} Beth will too.
+	\item Alice will come to the party \mainconnective{if} Beth will too.
+	\item Alice will come to the party \mainconnective{if and only if} Beth will. 
+\end{compactlist}
+
+These are all sentences whose truth values depend on whether Alice and Beth come to the party. The highlighted connectives are components of English which join together two simpler sentences so that the truth value of the overall sentence just depends on the truth values of the simpler sentences which are combined. 
+
 
 
 \section{Truth-functionality}
@@ -317,80 +672,38 @@ This is a general fact about TFL and the reason it is called ``Truth-functional 
 \end{practiceproblems}
 
 
+\chapter{Expanding our Symbolisation Guide}\label{sec:symbcon}
+We have our standard symbolisation guide: 
+	\begin{itemize}
+	\item If a sentence can be paraphrased as `it is not the case that \ldots'\\ it can be symbolised as $\enot\metaX$.
+	\item If a sentence can be paraphrased as `\ldots and \ldots'\\ it can be symbolised as $\metaX\eand \metaY$.
+	\item If a sentence can be paraphrased as `\ldots or \ldots'\\ it can be symbolised as $\metaX\eor \metaY$.
+	\item If a sentence can be paraphrased as `if \ldots$_\metaX$, then \ldots$_\metaY$'\\ it can be symbolised as $\metaX\eif \metaY$.
+\end{itemize}
 
-
-\chapter{Conjunction-words and TFL-Connectives}\label{sec:symbcon}
-
-
-Consider these sentences:
+But often sentences of English aren't neatly given in one of these forms. Consider these sentences:
 \begin{compactlist}
-	\item \mainconnective{Although} Alice will come to the party, Beth will not.  
+	\item \mainconnective{Although} Alice will come to the party\mainconnective{,} Beth will not.  
 	\item Alice will come to the party, \mainconnective{but} Beth will not.  
 	\item \mainconnective{Either} Alice \mainconnective{or} Beth will come to the party \mainconnective{\emph{(and not both)}}.  
-	\item \mainconnective{Unless} Alice will come to the party, Beth will not.  
+	\item \mainconnective{Unless} Alice will come to the party\mainconnective{,} Beth will not.  
+	\item Beth won't come to the party \mainconnective{unless} Alice comes.
 	\item \mainconnective{Neither} Alice \mainconnective{nor} Beth will come to the party.  
 	\item Alice will come to the party \mainconnective{only if} Beth will too.
 	\item Alice will come to the party \mainconnective{if} Beth will too.
 	\item Alice will come to the party \mainconnective{if and only if} Beth will. 
 \end{compactlist}
 
-In this chapter we will discuss how they should be symbolised in TFL.  The feature of TFL is that it can capture any \emph{truth functional} connective (recall \cref{sec:TruthFunctionality}), possibly by a more complex sentence. 
-
-We will also discuss in more detail when it is appropriate to paraphrase in the cannonical ways and when it is not.
+In this chapter we will discuss how they should be symbolised in TFL. 
 
 
-%Certain conjunction words and expressions motivated the semantics, that is, the truth tables for the connectives of TFL. But there are further expressions in English that allow us to conjoin sentences together: some can be symbolized by one of the connectives of TFL we discussed, while others might need to be symbolized by appealing to a complex TFL-sentence (recall our discussion of the \emph{exclusive or} in \cref{sec:tt}). 
-%As we shall see, there are still others that cannot be symbolized in TFL. 
+The feature of TFL is that it can capture any \emph{truth functional} connective (recall \cref{sec:TruthFunctionality}), possibly by a more complex sentence. 
+
+We will expand our symbolisation guide to give instructions about how to treat a variety of English sentences whose logical form isn't presented in a nicely canonical way. The completed symbolisation guide can be found in \cref{appendix:quickref:symbolization}. 
 
 %Let's first have a look which conjunction words and expressions can be directly symbolized by one of the TFL-connectives.
 
-\section{Negation}
-Let's start by recalling the guideline we proposed in \cref{sec:SymbolisingTFL - simple connectives complex form}.
-\factoidbox{
-If a sentence can be paraphrased as `it is not the case that \ldots'\\ it can be symbolised as $\enot\metaX$.
-}
-How are we to understand this guideline? Consider the following sentences:
- \begin{samplesent}
-		\item\label{sent:not4} The information is retrievable.
-		\item\label{sent:not4b} The information is not be retrievable.
-		\item\label{sent:not5} The information is irretrievable.
-		\item\label{sent:not5b} The information is not irretrievable.
-	\end{samplesent}
-Let us use the following representation key:
-	\begin{ekey}
-		\item[R] The information is retrievable.
-	\end{ekey}
-\Cref{sent:not4} can now be symbolized by $R$. Moving on to \cref{sent:not5}: saying that the information is irretrievable means that it is not the case that the information is retrievable. So even though \cref{sent:not5} does not contain the word `not', we will symbolize it as `$\enot R$'.
-
-\Cref{sent:not5b} can be paraphrased as `It is not the case that the information is irretrievable.' Which can again be paraphrased as `It is not the case that it is not the case that the information is retrievable'. So we might symbolize this English sentence with the TFL sentence `$\enot\enot R$'. In other words, in English we can also express negation using prefixes such as `\emph{ir}' or `\emph{un}'. There are still further ways of expressing negation, for example, sometimes this may be done using  the prefix `\emph{dis}' as in honest/dishonest.
-
-But some care is needed when handling negations. For example, one might think that \cref{sent:not6,sent:not7} negate each other and that if we symbolize \cref{sent:not6} with $G$, then we should symbolize \cref{sent:not7} as $\enot G$.
-
-\begin{samplesent}
-		\item\label{sent:not6} Stealing is good.
-		\item\label{sent:not7} Stealing is bad.
-		\end{samplesent}
-
-There are two reasons why that would not be a good symbolization. For one, while we may all agree that stealing is not a good thing to do, we may think that it is perhaps not exactly bad, if someone who is on the verge of starvation steels some food. In other words, there may be things that are neither good nor bad. However,  in TFL if `$G$' is false, then `$\enot G$' is true and we would not have the option so say that something, e.g.~stealing, is neither good nor bad. If we symbolize \cref{sent:not7} using a new sentence letter, say `$B$', then we can allow for that option. For another, there is no syntactic marker such as a prefix, a word like `not', etc.~that suggests that the sentences \cref{sent:not6} and \cref{sent:not7} are negations of each other. There is nothing in the structure of the two sentences that suggests that one negates the other.  But recall that one principal goal for symbolization is to check whether a given argument is valid and consider the argument:
-\begin{earg}
-\prem Steeling is good or donating for charity is good.
-\prem Steeling is bad.
-\conc Donating for charity is good.
-\end{earg}
-While this is a good argument and perhaps a conceptually valid argument it is not valid in the strict sense because it not valid in virtue of its form: it requires understanding `bad' as `not good'. So, if we were to symbolize \cref{sent:not7} as `$\neg G$ we would stipulate some logical structure that the English sentence does not display and would wrongly deem the argument to be valid.
-
-\factoidbox{When symbolizing sentences do only introduce logical structure that is displayed by the English sentence}
-
-If you wish to make the information that in the specific circumstances `bad' means that something is not good and vice versa available in TFL, you can add this as an additional premises when symbolizing the relevant argument in TFL. That, is if we think that \cref{sent:not7} is the negation of \cref{sent:not6} we should add the following premise (using truth tables check that the premise is true, if and only if, `$\enot G$' is true whenever `$B$' is true): $$(\enot G\eif B)\eand (B\eif \enot G).$$ If this premise is added to the above argument, then the argument is valid and rightly so!
-
-%Sometimes even in symbolizing sentences that very much look like they are negations of each other one needs to be careful. Consider:
-%	\begin{samplesent}
-%		\item\label{sent:not8} Jane is happy.
-%		\item\label{sent:not9} Jane is unhappy.
-%	\end{samplesent}
-%To some it may feel like Jane can be neither happy nor unhappy, and this may even be assumed in some argument. Jane is without emotions and in a state of blank indifference: she does not feel happy nor does she feel unhappy. If we were to symbolize \cref{sent:not8} by `$H$' and then \cref{sent:not9} by `$\enot H$', then we would rule out the possibility of Jane being neither happy nor unhappy. If we try to remain faithful to the idea that Jane can be neither happy nor unhappy then we need to symbolize \cref{sent:not9} using a new atomic sentence of TFL.
-
-\section{Conjunction}
+\section{Ways of expressing conjunction}
 \label{sec:ConnectiveConjunction}
 
 The symbolization guideline for conjunction we introduced Section \cref{sec:SymbolisingTFL - simple connectives complex form} was:.
@@ -402,46 +715,124 @@ The symbolization guideline for conjunction we introduced Section \cref{sec:Symb
 
 %Notice that we make no attempt to symbolize the word `also' in \cref{sent:and3}. Words like `both' and `also' function to draw our attention to the fact that two things are being conjoined. Maybe they affect the emphasis of a sentence, but we will not (and cannot) symbolize such things in TFL.
 
-Let's look at some more examples:
-	\begin{samplesent}
-	        \item\label{sent:and3}Adam is athletic, and Barbara is also athletic.
-		\item\label{sent:and4}Barbara is athletic and energetic.
-		\item\label{sent:and5}Barbara and Adam are both athletic.
-	\end{samplesent}
 
-Let's fix the following symbolization key:
-	\begin{ekey}
-		\item[A] Adam is athletic.
-		\item[B] Barbara is athletic.
-		\item[C] Barbara ie energetic.
-	\end{ekey}
-\Cref{sent:and3}-\ref{sent:and5} are obviously conjunctions. Notice that we make no attempt to symbolize the word `also' in \cref{sent:and3} and `both' in \cref{sent:and5}. Words like `both' and `also' function to draw our attention to the fact that two things are being conjoined. Maybe they affect the emphasis of a sentence, but we will not (and cannot) symbolize such things in TFL. With this caveat, given the above symbolization key, we can symbolize the \Cref{sent:and3} by the TFL-sentence `$A\eand B$'.
+\begin{samplesent}
+	\item Adam and Barbara are both athletic. 
+\end{samplesent}
 
-\Cref{sent:and4} says two things (about Barbara). In English, it is permissible to refer to Barbara only once. It \emph{might} be tempting to think that we need to symbolize \cref{sent:and4} with something along the lines of `$B$ and energetic'. This would be a mistake. Once we symbolize part of a sentence as $B$, any further structure is lost, as $B$ is an atomic sentence of TFL. Conversely, `energetic' is not an English sentence at all. What we are aiming for is something like `$B$ and Barbara is energetic'. Given our symbolization key we should thus symbolize \ref{sent:and4} as $(B\eand C)$.
+We will appropriately paraphrase it as 
+\begin{samplesent}
+	\item \underline{Adam is athletic} and \underline{Barbara is athletic}.
+\end{samplesent}
+In our symbolisation tree format:
+\begin{center}
+	\begin{forest}
+		[Adam and Barbara are both athletic\\\ldots and \ldots\\$\ldots\eand\ldots$
+		[Adam is athletic\\$A$]
+		[Barbara is athletic\\$B$]
+		]
+	\end{forest}
+\end{center}
+Giving a symbolisation $$A\eand B$$ 
+with a symbolisation key:
+\begin{ekey}
+	\item[A] Adam is athletic.
+	\item[B] Barbara is athletic.
+\end{ekey}
 
-\Cref{sent:and5} says one thing about two different subjects. It says of both Barbara and Adam that they are athletic, even though in English we use the word `athletic' only once. The sentence can be paraphrased as `Barbara is athletic, and Adam is athletic'. We can symbolize this in TFL as $(B\eand A)$, using the same symbolization key that we have been using.
+This appropriately captures the truth conditions of the original sentence. It is true just if Adam is athletic and Barbara is athletic, i.e., if both $A$ and $B$ are true. 
+
+%
+%
+%How about 
+%\begin{samplesent}
+%	\item Although Adam is athletic, Barbara is not. 
+%\end{samplesent}
+%
+%
+%
+%Let's look at some more examples:
+%	\begin{samplesent}
+%	        \item\label{sent:and3}Adam is athletic, and Barbara is also athletic.
+%		\item\label{sent:and4}Barbara is athletic and energetic.
+%		\item\label{sent:and5}Barbara and Adam are both athletic.
+%	\end{samplesent}
+%
+%
+%
+%
+%Let's fix the following symbolization key:
+%	\begin{ekey}
+%		\item[A] Adam is athletic.
+%		\item[B] Barbara is athletic.
+%		\item[C] Barbara ie energetic.
+%	\end{ekey}
+%\Cref{sent:and3}-\ref{sent:and5} are obviously conjunctions. Notice that we make no attempt to symbolize the word `also' in \cref{sent:and3} and `both' in \cref{sent:and5}. Words like `both' and `also' function to draw our attention to the fact that two things are being conjoined. Maybe they affect the emphasis of a sentence, but we will not (and cannot) symbolize such things in TFL. With this caveat, given the above symbolization key, we can symbolize the \Cref{sent:and3} by the TFL-sentence `$A\eand B$'.
+%
+%\todo{This discussion needs moving to the earlier paraphrasing}
+%\Cref{sent:and4} says two things (about Barbara). In English, it is permissible to refer to Barbara only once. It \emph{might} be tempting to think that we need to symbolize \cref{sent:and4} with something along the lines of `$B$ and energetic'. This would be a mistake. Once we symbolize part of a sentence as $B$, any further structure is lost, as $B$ is an atomic sentence of TFL. Conversely, `energetic' is not an English sentence at all. What we are aiming for is something like `$B$ and Barbara is energetic'. Given our symbolization key we should thus symbolize \ref{sent:and4} as $(B\eand C)$.
+%
+%\Cref{sent:and5} says one thing about two different subjects. It says of both Barbara and Adam that they are athletic, even though in English we use the word `athletic' only once. The sentence can be paraphrased as `Barbara is athletic, and Adam is athletic'. We can symbolize this in TFL as $(B\eand A)$, using the same symbolization key that we have been using.
 
 Now consider:
 	\begin{samplesent}
-	\item\label{sent:and6}Although Barbara is energetic, she is not athletic.
-	\item\label{sent:and7}Adam is athletic, but Barbara is more athletic than him.
+%	\item\label{sent:and6}Although Adam is athletic, Barbara is not.
+	\item\label{sent:and7}Adam is athletic but Barbara is not.
 \end{samplesent}
 
-Are these conjuctions? The word `although' sets up a contrast between the first part of the sentence and the second part. Nevertheless, the sentence tells us both that Barbara is energetic and that she is not athletic. In order to make each of the conjuncts an atomic sentence, we need to replace `she' with `Barbara'. So we can paraphrase \cref{sent:and6} as, `Barbara is energetic, \emph{and} Barbara is not athletic'. The second conjunct contains a negation, so we paraphrase further: `Barbara is energetic \emph{and} \emph{it is not the case that} Barbara is athletic'. Now we can symbolize this with the TFL sentence $(C\eand\enot B)$. Note that we have lost all sorts of nuance in this symbolization. There is a distinct difference in tone between \cref{sent:and6} and `Both Barbara is energetic and it is not the case that Barbara is athletic'. TFL does not (and cannot) preserve these nuances.
+	Are these conjunctions? The word `but' sets up a contrast between the first part of the sentence and the second part. Nevertheless, it still tells us two things: that Adam is athletic, and that Barbara is not athletic. 
+	
+	We will treat it as just another way of expressing a conjunction `and': 
+	\begin{center}
+		\begin{forest}
+			[Adam is athletic but Barbara is not.\\\ldots and \ldots\\$\ldots\eand\ldots$
+			[Adam is athletic\\$A$]
+			[Barbara is not athletic\\It is not the case that \ldots\\$\enot\ldots$
+			[Barbara is athletic\\$B$]]
+			]
+		\end{forest}
+	\end{center}
+	So we give $$A\eand\enot B$$
+	
+	There is a difference in tone between these two sentences, but no difference in truth conditions. 
+	\begin{samplesent}
+		\item Adam is athletic but Barbara is not.
+		\item Adam is athletic and Barbara is not athletic.
+	\end{samplesent}
+They are both true just when Adam is athletic and Barbara is not athletic: 
+	\begin{center}
+	\begin{tabular}{cc|def}
+		$A$&$B$&$A$&$\eand$&$\enot B$\Bstrut\\\hline\Tstrut
+		T&T&T&\TTbf{F}&F\\
+		T&F&T&\TTbf{T}&T\\
+		F&T&F&\TTbf{F}&F\\
+		F&F&F&\TTbf{F}&T
+	\end{tabular}
+	\end{center}
 
-\Cref{sent:and7} raises similar issues. There is a contrastive structure, but this is not something that TFL can deal with. So we can paraphrase the sentence as `Adam is athletic, \emph{and} Barbara is more athletic than Adam'. (Notice that we once again replace the pronoun `him' with `Adam'.) How should we deal with the second conjunct? We already have the sentence letter $A$, which is being used to symbolize `Adam is athletic', and the sentence $B$ which is being used to symbolize `Barbara is athletic'; but neither of these concerns their relative athleticity. So, to symbolize the entire sentence, we need a new sentence letter. Let the TFL sentence $R$ symbolize the English sentence `Barbara is more athletic than Adam'. Now we can symbolize \cref{sent:and7} by $(A \eand R)$.
+We have lost some nuance in this symbolisation, but TFL does not (and cannot) preserve that nuance. 
+The word `but' often carries an additional suggestion of contrast or unexpectedness between the two clauses. This is not part of the literal truth-conditions of the sentence, but arises from what is called a conversational implicature: something suggested or conveyed by the way a sentence is used in conversation, rather than by its strict logical content.
+If there was no surprise in the difference between the facts, then we would still say that the sentence combined with `but' is infelicitous or misleading but is nonetheless true.
+
+A similar point can be made about `although':
+	\begin{samplesent}
+		\item\label{sent:and6}Although Adam is athletic, Barbara is not.
+		\item\label{sent:and8} Adam is athletic although Barbara is not. 
+%	\item\label{sent:and7}Adam is athletic but Barbara is not.
+\end{samplesent}
+This raises the same sort of issue. The word `although' indicates a contrast, but that is not something TFL can represent. As far as truth conditions go, the sentence again tells us that Adam is athletic and that Barbara is not athletic. We will symbolise these sentences as $A\eand \enot B$.
 
 We can add these to our toolbox for symbolisation:
 	\factoidbox{
 		If a sentence can be paraphrased as \begin{itemize}
 		\item `\ldots and \ldots'
-		\item `\ldots but \ldots'
 		\item `Both\ldots and \ldots'
+		\item `\ldots but \ldots'
 		\item `Although \ldots, \ldots'
 		\end{itemize} it can be symbolised as $\metaX\eand\metaY$.
 	}
 
-\section{Disjunction}
+\section{Exclusive Disjunction}
 In \cref{sec:SymbolisingTFL - simple connectives complex form}, we proposed that:
 \factoidbox{
 If a sentence can be paraphrased as `\ldots or \ldots' \\it can be symbolised as $(\metaX\eor\metaY)$.
@@ -462,19 +853,17 @@ In \cref{sec:connectives-intro:disjunction} we already point out that here are t
 
 For \Cref{sent:or2} the inclusive reading is available and using the above symbolization key it can be symbolized as $F\eor O$. For \Cref{sent:or1} it seems that the salient understanding of the sentence points to the exclusive reading: presumably Fatima cannot play videogames and watch movies at the same time. In fact the reason why we tend to understand \Cref{sent:or1} in that way is, arguably, precisely because we think that Fatima cannot do two things at once, and not because of our understanding of `or'. As a consequence when, in the context of an argument, we symbolize the \Cref{sent:or1} it is still preferable to symbolize it using the inclusive `or' as `$F\eor M$' and to add the additional premise that she does not do both, that is `$\enot(F\eand M)$'.
 
-In contrast consider the sentence:
+Sometimes in English we use `either\ldots or\ldots' in a way which indicates that it should be read exclusively, consider, for example:
 \begin{samplesent}
 		\item\label{sent:eor1} Either Fatima will play videogames, or she will watch movies.
 		\item\label{sent:eor2} Either Fatima will play videogames or Omar will play videogames.
 	\end{samplesent}
-
-It seems that `\emph{either\ldots or\ldots}' in contrast to simple disjunction with `\emph{or}', encourages an exclusive reading. 
-
-However, sometimes it's not so clear
+However, this is not always the case. 
+Consider
 \begin{samplesent}
 	\item\label{sent:egsent:excl in cond} If either Fatima or Omar play videogames, then the house will remain a mess.
 \end{samplesent}
-Here it's not so clear that an exclusive disjunction is being indicated. 
+Here it's not so clear that an exclusive disjunction is being indicated. Often `either' is introduced in the English to play something like the role of brackets. It helps indicate what is being held together. 
 
 We suggest to always capture `or' or `either\ldots or\ldots' with a simple inclusive reading by symbolising it as `$\eor$', however, bear in mind that when evaluating validity of arguments that the exclusive reading might be needed, or encouraged by adding an implicit premise. 
 
@@ -499,7 +888,7 @@ So it is true just when exactly one of Fatima or Oma play video games. It captur
 
 
 \factoidbox{
-If a sentence can be paraphrased in English as `\emph{either \ldots or \ldots}', \\it can be symbolised as $((\metaX\eor\metaY)\eand\enot(\metaX\eand\metaY))$.
+If a sentence can be paraphrased in English as `\emph{either \ldots or \ldots (and not both)}', \\it can be symbolised as $(\metaX\eor\metaY)\eand\enot(\metaX\eand\metaY)$.
 	}
 
 
@@ -507,24 +896,35 @@ If a sentence can be paraphrased in English as `\emph{either \ldots or \ldots}',
 \section{Neither-nor}
 Consider these sentences, which are all paraphrases of one another. Their main (in fact, only) English connective is `\emph{neither\ldots nor\ldots}'. 
 \begin{samplesent}
-	\item Neither Fatima nor Omar will play videogames.
-	\item Neither Fatima will play videogames nor Omar will play videogames.
-	\item  Neither Fatima will play videogames nor will Omar.
+	\item Neither Fatima nor Omar will do their homework.
+%	\item Neither Fatima will play videogames nor Omar will play videogames.
+%	\item  Neither Fatima will play videogames nor will Omar.
 \end{samplesent}
 
-`\emph{neither\ldots nor\ldots}'.  is also a truth-functional English connective, whose truth depends just on the truth of the components. But it is not directly captured with one of our TFL connectives. Instead we need to use a more complex sentence of TFL. 
+`\emph{neither\ldots nor\ldots}'  is also a truth-functional English connective, whose truth depends just on the truth of the components. But it is not directly captured with one of our TFL connectives. Instead we need to use a more complex sentence of TFL. 
 
-We can paraphrase this as
-\begin{samplesent}
-	\item It is not the case that Fatima or Omar will play videogames.
-\end{samplesent}
-and thus symbolise it as $$\enot(F\eor O)$$
+Here is a way to paraphrase it and break it down into our standard connectives:
+\begin{center}
+	\begin{forest}
+		[Neither Fatima nor Omar will do their homework\\It is not the case that \ldots\\$\enot\ldots$
+		[Fatima or Omar will do their homework\\\ldots or \ldots \\$\ldots\eor\ldots$
+		[Fatima will do her homework\\$F$][Omar will do his homework\\$O$]]]
+	\end{forest}
+\end{center}
+Giving the symbolisation: $$\enot(F\eor O)$$
 
-For `neither-nor', we will also permit another symbolization 
-\begin{samplesent}
- 	\item It is not the case that Fatima will play video games, and it is not the case that Omar will play video games. 
-\end{samplesent}
-and symbolise it as $$\enot F\eand\enot O$$
+There is a completely different but also entirely adequate way to paraphrase it and break it down: 
+\begin{center}
+	\begin{forest}
+		[Neither Fatima nor Omar will do their homework\\\ldots and \ldots\\$\ldots\eand \ldots$
+		[Fatima will not do her homework\\It is not the case that \ldots\\$\enot \ldots$
+		[Fatima will do her homework\\$F$]]
+		[Omar will not do his homework\\It is not the case that \ldots\\$\enot \ldots$
+		[Omar will do his homework\\$O$]]
+		]
+	\end{forest}
+\end{center}
+Giving the symbolisation $$\enot F\eand\enot O$$
 
 We can check that these are logically equivalent and match the intended reading of `neither-nor'. 
 
@@ -548,9 +948,9 @@ Symbolisation in TFL aims to capture the \emph{structure} of an English sentence
 Whilst in general you are not allowed to substitute in any logically equivalent sentence, for neither-nor this alternative way of capturing the logical form is permitted.
 
 \factoidbox{
-	If a sentence can be paraphrased in English as\\`\emph{neither \ldots nor \ldots}', it can be symbolised as $\enot(\metaX\eor\metaY)$ or $\enot \metaX\eand\enot \metaY$.}
+	If a sentence can be paraphrased in English as `\emph{neither \ldots nor \ldots}',\\ it can be symbolised as $\enot(\metaX\eor\metaY)$ or as $\enot \metaX\eand\enot \metaY$.}
 
-\section{Conditional}
+\section{Conditionals}
 Let us again recall the symbolization guideline that we introduced in \Cref{sec:SymbolisingTFL - simple connectives complex form}:
 	\factoidbox{
 	 If a sentence can be paraphrased as \\`\emph{If \ldots, then \ldots}' it can be symbolised as $(\metaX\eif\metaY)$.
@@ -625,7 +1025,7 @@ description={The symbol \eiff, used to represent words and phrases that function
 
 
 \factoidbox{
-If a sentence can be paraphrased as `$\ldots_x$ if and only if $\ldots_y$'\\ it can be symbolised as $((\metaX\eif\metaY)\eand(\metaY\eif\metaX))$.
+If a sentence can be paraphrased as `$\ldots_X$ if and only if $\ldots_Y$'\\ it can be symbolised as $((\metaX\eif\metaY)\eand(\metaY\eif\metaX))$.
 	}
 The expression `if and only if' occurs a lot especially in philosophy, mathematics, and logic. For brevity, we can abbreviate it with the snappier word `iff'. We will follow this practice. So `if' with only \emph{one} `f' is the English conditional. But `iff' with \emph{two} `f's is the English biconditional. Because the biconditional occurs so often, we will sometimes abbreviate the lengthy `$(\metaX\eif\metaY)\eand(\metaY\eif\metaX)$' and write $\metaX\eiff\metaY$ instead. However, officially the symbol `\eiff' is not a symbol of the language of TFL. It is merely used as a convenient way to state a biconditional and it is good to keep that in mind.
 
@@ -662,12 +1062,38 @@ All three are correct symbolizations. Indeed, in you may wish to check that all 
 	}
 Again, though, there is a little complication. `Unless' can be symbolized as a conditional; but as we said above, people often use the conditional (on its own) when they mean to use the biconditional. Equally, `unless' can be symbolized as a disjunction; but there are two kinds of disjunction (exclusive and inclusive). So it will not surprise you to discover that ordinary speakers of English often use `unless' to mean something more like the biconditional, or like exclusive disjunction. Suppose someone says: `I will go running unless it rains'. They probably mean something like `I will go running iff it does not rain' (i.e.\ the biconditional), or  `either I will go running or it will rain, but not both' (i.e.\ exclusive disjunction). Again: be aware of this when interpreting what other people have said, but be precise in your writing.
 
-\section{More on Connectives in English}
-We have discussed several conjunction-words and sentence constructions that can be aptly symbolized in TFL. 
+
+\section{Summary}
+
+\begin{highlighted}
+	\textbf{Symbolisation Guide}
+	
+	\smallskip 
+	
+	\begin{tabular}{c|l}
+		\textbf{Paraphrased as} & \textbf{Symbolised as}\\[.5em]
+		\hline
+		It is not the case that \ldots & $\enot\metaX$\\[.4em]
+		\ldots and \ldots & $\metaX \eand \metaY$\\[.4em]
+		Both \ldots and \ldots & $\metaX \eand \metaY$\\[.4em]
+		Although \ldots, \ldots & $\metaX \eand \metaY$\\[.4em]
+		\ldots but \ldots & $\metaX \eand \metaY$\\[.4em]
+		\ldots or \ldots & $\metaX \eor \metaY$\\[.4em]
+		Either \ldots or \ldots (and not both) & $(\metaX \eor \metaY) \eand \enot(\metaX \eand \metaY)$\\[.4em]
+		Neither \ldots nor \ldots & $\enot(\metaX \eor \metaY)$ or $\enot\metaX \eand \enot\metaY$\\[.4em]
+		If $\ldots_{\metaX}$, then $\ldots_{\metaY}$ & $\metaX \eif \metaY$\\[.4em]
+		$\ldots_{\metaY}$ if $\ldots_{\metaX}$ & $\metaX \eif \metaY$\\[.4em]
+		$\ldots_{\metaX}$ only if $\ldots_{\metaY}$ & $\metaX \eif \metaY$\\[.4em]
+		$\ldots_{\metaX}$ if and only if $\ldots_{\metaY}$ & $(\metaX \eif \metaY)\eand(\metaY\eif \metaX)$ \\&\quad \emph{(can be shortened to $\metaX\eiff\metaY$)}\\[.4em]
+		Unless $\ldots_{\metaX}$, $\ldots_{\metaY}$ & $\metaX \eor \metaY$ or $\enot X\eif Y$ or $\enot Y\eif X$\\
+	\end{tabular}
+\end{highlighted}
+
+
 
 In fact, TFL has the resources to express any \emph{truth-functional} connective of English, possibly by a more complex sentence, as we did for, for example, exclusive `or' or `if and only if'. 
 
-However, there are of course many more conjunction-words in English and some of them can be adequately symbolized in TFL. However, there are also many conjunction words that cannot be adequately symbolized in TFL. We shall discuss some examples in \cref{sec:TruthFunctionality}.
+However, there are of course many more conjunction-words in English and some of them can be adequately symbolized in TFL. However, there are also many conjunction words that cannot be adequately symbolized in TFL. We discussed some examples in \cref{sec:TruthFunctionality}.
 
 
 
@@ -972,15 +1398,7 @@ We can use the following symbolization key:
 \end{ekey}
 The symbolization of \cref{sent:scamb3} is `$(S \eand D) \eor T$' and that of \cref{sent:scamb4} is `$S \eand (D \eor T)$'. In the first, \eand is in the scope of \eor, and in the second \eor is in the scope of \eand.
 
-\begin{practiceproblems}
-\solutions
-\problempart The following sentences are ambiguous. Give symbolization keys for each and symbolize the different readings.
-\begin{problemslist}
-	\item Haskell is a birder and enjoys watching cranes.
-	\item The zoo has lions or tigers and bears.
-	\item The flower is not red or fragrant.
-\end{problemslist}
-\end{practiceproblems}
+
 
 
 
@@ -1019,3 +1437,18 @@ All of the connectives of TFL are truth-functional, but more than that: they rea
 All of the above sentences will be symbolized with the same TFL sentence, perhaps `$L \eand N$'. This does not mean that there are no subtle differences between those sentences. It just means that from the perspective of TFL, they should be symbolized by the same TFL-sentence and that TFL is ignorant of these subtle differences.
 
 %We keep saying that we use TFL sentences to \emph{symbolize} English sentences.
+
+
+
+
+
+
+\begin{practiceproblems}
+	\solutions
+	\problempart The following sentences are ambiguous. Give symbolization keys for each and symbolize the different readings. Show that they are not logically equivalent. 
+	\begin{problemslist}
+		\item Haskell is a birder and enjoys watching cranes.
+		\item The zoo has lions or tigers and bears.
+		\item The flower is not red or fragrant.
+	\end{problemslist}
+\end{practiceproblems}
