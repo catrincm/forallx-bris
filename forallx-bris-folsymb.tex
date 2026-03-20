@@ -580,7 +580,7 @@
 	
 	Suppose instead that we want to symbolize this argument:
 	\begin{quote}
-		The hospital will only hire a skilled surgeon. All surgeons are greedy. Billy is a surgeon, but is not skilled. Therefore, Billy is greedy, but the hospital will not hire him.
+		The hospital will only hire a surgeon if they are skilled. All surgeons are greedy. Billy is a surgeon, but is not skilled. Therefore, Billy is greedy, but the hospital will not hire him.
 	\end{quote}
 	We need to distinguish being a \emph{skilled surgeon} from merely being a \emph{surgeon}. So we define this symbolization key:
 	\begin{ekey}
@@ -595,7 +595,7 @@
 	Now the argument can be symbolized in this way:
 	\begin{earg}
 		\label{surgeon2}
-		\prem $\forall x\bigl(\enot (Rx \eand Kx) \eif \enot Hx\bigr)$
+		\prem $\forall x\bigl(Hx\eif  (Rx \eand Kx)\bigr)$
 		\prem $\forall x(Rx \eif Gx)$
 		\prem $Rb \eand \enot Kb$
 		\conc $Gb \eand \enot Hb$
