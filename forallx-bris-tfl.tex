@@ -1361,7 +1361,7 @@ There is also no analogous rule for $\eif$: You must not write $P\eif Q\eif R$.
 		$P\eand Q$ abbreviates $(P\eand Q)$.
 		\item $\eand$ and $\eor$ bind more strongly than $\eif$.\\
 		$P\eand Q\eif R\eor S$ abbreviates $(P\eand Q)\eif (R\eor S)$
-		\item Brackets in strings of $\eand$ or $\eor$ may be dropped. A sentence with such brackets dropped is an abbreviation of one where they are added to the left.\\
+		\item Brackets in strings of $\eand$ or $\eor$ may be dropped. \\A sentence with such brackets dropped is an abbreviation of one where they are added to the left.\\
 		$P\eand Q\eand R$ abbreviates $(P\eand Q)\eand R$.\\
 		$P\eor Q\eor R$ abbreviates $(P\eor Q)\eor R$.\\
 	\end{itemize} 
@@ -2424,14 +2424,14 @@ We have already shown how to do this on a particular valuation: one first writes
 The idea is that we work ourselves from \define{leaves} of the tree (the atomic sentence) to the \define{root} of the formation tree (the sentence that has been constructed). The truth rule for $\enot$ tells us how the truth value of $\enot I$ depends on the truth of $I$. Then the rule for $\eand$ tells us how the truth value of $\enot I\eand H$ depends on the truths of $\enot I$ and $H$; and finally, the rule for $\eif$ tells us how the truth value of $(\enot I\eand H)\eif H$ depends on those of $\enot I\eand H$ and $H$.
 
 
-We will record the truth value of each subsentence underneath its main connective. 
+We will record the truth value of each sub-sentence underneath its main connective. 
 So we will somewhat recreate the formation tree in the header of the truth table. 
 \begin{center}
 	\begin{tabular}{r c c| d e e ee e e f}
-\multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eand$ & $H$ & $)$ & $\mainconnective{\eif}$ & $H$ \\[.2em]
-	&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & $\mainconnective{\eand}$ & $H$ & $\mainconnectivecolor{)}$ & &$\atomicstage{H}$ \\[.2em]
-	&	& & & $\mainconnective{\enot}$ & $I$  & & $\atomicstage{H}$ & & &\\[.2em]
-	&	& & & & $\atomicstage{I}$& & & & &  \\\hline 
+\multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eand$ & $H$ & $)$ & \tikzmarknode{tt1_imp}{$\mainconnective{\eif}$} & $H$ \\[.4em]
+	&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & \tikzmarknode{tt1_and}{$\mainconnective{\eand}$} & $H$ & $\mainconnectivecolor{)}$ & &\tikzmarknode{tt1_Hr}{$\atomicstage{H}$} \\[.4em]
+	&	& & & \tikzmarknode{tt1_not}{$\mainconnective{\enot}$} & $I$  & & \tikzmarknode{tt1_Hl}{$\atomicstage{H}$} & & &\\[.4em]
+	&	& & & & \tikzmarknode{tt1_I}{$\atomicstage{I}$}& & & & &  \\\hline 
 	$v_1:$&T&T&\\
 	$v_2:$&T&F&\\
 	$v_3:$&F&T\\
@@ -2439,15 +2439,24 @@ So we will somewhat recreate the formation tree in the header of the truth table
 	\end{tabular}
 \end{center}
 
+\begin{tikzpicture}[remember picture,overlay]
+	\tikzset{arrowformationtree/.style={-{Stealth[length=2.2mm,width=1.6mm]},gray,opacity=0.6}}
+	\draw[arrowformationtree] (tt1_and) to[bend right=18] (tt1_imp);
+	\draw[arrowformationtree] (tt1_Hr)  to[bend left=18] (tt1_imp);
+	\draw[arrowformationtree] (tt1_not) to[bend right=18] (tt1_and);
+	\draw[arrowformationtree] (tt1_Hl)  to[bend left=18] (tt1_and);
+	\draw[arrowformationtree] (tt1_I)   to[bend left=18] (tt1_not);
+\end{tikzpicture}
+
 We will work our way up the formation tree, as displayed in the header of the table. 
 In the bottom line we just have `$I$', whose truth value is just specified by the valuation. So we can fill that out
 
 \begin{center}
 	\begin{tabular}{r c c| d e e ee e e fc}
-		\multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eand$ & $H$ & $)$ & $\mainconnective{\eif}$ & $H$ \\[.2em]
-		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & $\mainconnective{\eand}$ & $H$ & $\mainconnectivecolor{)}$ & &$\atomicstage{H}$ \\[.2em]
-		&	& & & $\mainconnective{\enot}$ & $I$  & & $\atomicstage{H}$ & & &\\[.2em]
-		&	& & & & $\atomicstage{I}$& & & & & &$\star$ \\\hline 
+		\multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eand$ & $H$ & $)$ & \tikzmarknode{tt2_imp}{$\mainconnective{\eif}$} & $H$ \\[.4em]
+		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & \tikzmarknode{tt2_and}{$\mainconnective{\eand}$} & $H$ & $\mainconnectivecolor{)}$ & &\tikzmarknode{tt2_Hr}{$\atomicstage{H}$} \\[.4em]
+		&	& & & \tikzmarknode{tt2_not}{$\mainconnective{\enot}$} & $I$  & & \tikzmarknode{tt2_Hl}{$\atomicstage{H}$} & & &\\[.4em]
+		&	& & & & \tikzmarknode{tt2_I}{$\atomicstage{I}$}& & & & & &$\star$ \\\hline 
 		$v_1:$&T&T& & &T& & & & &\\
 		$v_2:$&T&F& & &F& & & & &\\
 		$v_3:$&F&T& & &T& & & & &\\
@@ -2456,14 +2465,23 @@ In the bottom line we just have `$I$', whose truth value is just specified by th
 	\end{tabular}
 \end{center}
 
+\begin{tikzpicture}[remember picture,overlay]
+	\tikzset{arrowformationtree/.style={-{Stealth[length=2.2mm,width=1.6mm]},gray,opacity=0.6}}
+	\draw[arrowformationtree] (tt2_and) to[bend right=18] (tt2_imp);
+	\draw[arrowformationtree] (tt2_Hr)  to[bend left=18] (tt2_imp);
+	\draw[arrowformationtree] (tt2_not) to[bend right=18] (tt2_and);
+	\draw[arrowformationtree] (tt2_Hl)  to[bend left=18] (tt2_and);
+	\draw[arrowformationtree] (tt2_I)   to[bend left=18] (tt2_not);
+\end{tikzpicture}
+
 The next line is to include the truth value for `$\enot I$' and the truth value for `$H$'. The truth value for `$H$' is just specified by the valuation so that can be copied across. 
 
 \begin{center}
 	\begin{tabular}{r c c| d e e ee e e f c}
-		\multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eand$ & $H$ & $)$ & $\mainconnective{\eif}$ & $H$ &  \\[.2em]
-		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & $\mainconnective{\eand}$ & $H$ & $\mainconnectivecolor{)}$ & &$\atomicstage{H}$ & \\[.2em]
-		&	& & & $\mainconnective{\enot}$ & $I$  & & $\atomicstage{H}$ & & & & $\star$ \\[.2em]
-		&	& & & & $\atomicstage{I}$& & & & &  & \\\hline 
+		\multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eand$ & $H$ & $)$ & \tikzmarknode{tt3_imp}{$\mainconnective{\eif}$} & $H$ &  \\[.4em]
+		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & \tikzmarknode{tt3_and}{$\mainconnective{\eand}$} & $H$ & $\mainconnectivecolor{)}$ & &\tikzmarknode{tt3_Hr}{$\atomicstage{H}$} & \\[.4em]
+		&	& & & \tikzmarknode{tt3_not}{$\mainconnective{\enot}$} & $I$  & & \tikzmarknode{tt3_Hl}{$\atomicstage{H}$} & & & & $\star$ \\[.4em]
+		&	& & & & \tikzmarknode{tt3_I}{$\atomicstage{I}$}& & & & &  & \\\hline 
 		$v_1:$&T&T& & &T& &T& & & &\\
 		$v_2:$&T&F& & &F& &T& & & &\\
 		$v_3:$&F&T& & &T& &F& & & &\\
@@ -2471,6 +2489,15 @@ The next line is to include the truth value for `$\enot I$' and the truth value 
 		&&&&&&&$\star$&&&&
 	\end{tabular}
 \end{center}
+
+\begin{tikzpicture}[remember picture,overlay]
+	\tikzset{arrowformationtree/.style={-{Stealth[length=2.2mm,width=1.6mm]},gray,opacity=0.6}}
+	\draw[arrowformationtree] (tt3_and) to[bend right=18] (tt3_imp);
+	\draw[arrowformationtree] (tt3_Hr)  to[bend left=18] (tt3_imp);
+	\draw[arrowformationtree] (tt3_not) to[bend right=18] (tt3_and);
+	\draw[arrowformationtree] (tt3_Hl)  to[bend left=18] (tt3_and);
+	\draw[arrowformationtree] (tt3_I)   to[bend left=18] (tt3_not);
+\end{tikzpicture}
 
 
 The truth value for `$\enot I$' is determined using the truth rule for negation:
@@ -2486,10 +2513,10 @@ This results in:
 
 \begin{center}
 	\begin{tabular}{r c c| d e e ee e e fc}
-		\multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eand$ & $H$ & $)$ & $\mainconnective{\eif}$ & $H$ \\[.2em]
-		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & $\mainconnective{\eand}$ & $H$ & $\mainconnectivecolor{)}$ & &$\atomicstage{H}$ \\[.2em]
-		&	& & & $\mainconnective{\enot}$ & $I$  & & $\atomicstage{H}$ & & &&$\star$\\[.2em]
-		&	& & & & $\atomicstage{I}$& & & & &  \\\hline 
+		\multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eand$ & $H$ & $)$ & \tikzmarknode{tt4_imp}{$\mainconnective{\eif}$} & $H$ \\[.4em]
+		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & \tikzmarknode{tt4_and}{$\mainconnective{\eand}$} & $H$ & $\mainconnectivecolor{)}$ & &\tikzmarknode{tt4_Hr}{$\atomicstage{H}$} \\[.4em]
+		&	& & & \tikzmarknode{tt4_not}{$\mainconnective{\enot}$} & $I$  & & \tikzmarknode{tt4_Hl}{$\atomicstage{H}$} & & &&$\star$\\[.4em]
+		&	& & & & \tikzmarknode{tt4_I}{$\atomicstage{I}$}& & & & &  \\\hline 
 		$v_1:$&T&T& &F&T& &T& & &\\
 		$v_2:$&T&F& &T&F& &T& & &\\
 		$v_3:$&F&T& &F&T& &F& & &\\
@@ -2497,6 +2524,15 @@ This results in:
 		&&&&\tikzmarknode{negI}{$\star$}&\tikzmark{I}
 	\end{tabular}
 \end{center}
+
+\begin{tikzpicture}[remember picture,overlay]
+	\tikzset{arrowformationtree/.style={-{Stealth[length=2.2mm,width=1.6mm]},gray,opacity=0.6}}
+	\draw[arrowformationtree] (tt4_and) to[bend right=18] (tt4_imp);
+	\draw[arrowformationtree] (tt4_Hr)  to[bend left=18] (tt4_imp);
+	\draw[arrowformationtree] (tt4_not) to[bend right=18] (tt4_and);
+	\draw[arrowformationtree] (tt4_Hl)  to[bend left=18] (tt4_and);
+	\draw[arrowformationtree] (tt4_I)   to[bend left=18] (tt4_not);
+\end{tikzpicture}
 
 \begin{tikzpicture}[remember picture,overlay]
 	\draw[-Stealth] (pic cs:I) to[bend left=35] (negI.south);
@@ -2522,10 +2558,10 @@ So we take the truth value for `$\enot I$', as recorded underneath `$\enot$', an
 
 \begin{center}
 	\begin{tabular}{r c c| d e e ee e e f c}
-		\multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eand$ & $H$ & $)$ & $\mainconnective{\eif}$ & $H$ \\[.2em]
-		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & $\mainconnective{\eand}$ & $H$ & $\mainconnectivecolor{)}$ & &$\atomicstage{H}$&$\star$ \\[.2em]
-		&	& & & $\mainconnective{\enot}$ & $I$  & & $\atomicstage{H}$ & & &\\[.2em]
-		&	& & & & $\atomicstage{I}$& & & & &  \\\hline 
+		\multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eand$ & $H$ & $)$ & \tikzmarknode{tt5_imp}{$\mainconnective{\eif}$} & $H$ \\[.4em]
+		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & \tikzmarknode{tt5_and}{$\mainconnective{\eand}$} & $H$ & $\mainconnectivecolor{)}$ & &\tikzmarknode{tt5_Hr}{$\atomicstage{H}$}&$\star$ \\[.4em]
+		&	& & & \tikzmarknode{tt5_not}{$\mainconnective{\enot}$} & $I$  & & \tikzmarknode{tt5_Hl}{$\atomicstage{H}$} & & &\\[.4em]
+		&	& & & & \tikzmarknode{tt5_I}{$\atomicstage{I}$}& & & & &  \\\hline 
 		$v_1:$&T&T& &F&T&F&T& &&T\\
 		$v_2:$&T&F& &T&F&T&T& &&T\\
 		$v_3:$&F&T& &F&T&F&F& &&F\\
@@ -2534,6 +2570,15 @@ So we take the truth value for `$\enot I$', as recorded underneath `$\enot$', an
 
 	\end{tabular}
 \end{center}
+
+\begin{tikzpicture}[remember picture,overlay]
+	\tikzset{arrowformationtree/.style={-{Stealth[length=2.2mm,width=1.6mm]},gray,opacity=0.6}}
+	\draw[arrowformationtree] (tt5_and) to[bend right=18] (tt5_imp);
+	\draw[arrowformationtree] (tt5_Hr)  to[bend left=18] (tt5_imp);
+	\draw[arrowformationtree] (tt5_not) to[bend right=18] (tt5_and);
+	\draw[arrowformationtree] (tt5_Hl)  to[bend left=18] (tt5_and);
+	\draw[arrowformationtree] (tt5_I)   to[bend left=18] (tt5_not);
+\end{tikzpicture}
 
 	\begin{tikzpicture}[remember picture,overlay]
 	\draw[-Stealth] (negI) to[bend right=35] (andStar.south);
@@ -2559,10 +2604,10 @@ recording the answer underneath `$\eif$'. As this is the final stage, we have de
 
 \begin{center}
 	\begin{tabular}{r c c| d e e ee e e fc}
-		\multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eand$ & $H$ & $)$ & $\mainconnective{\eif}$ & $H$&$\star$ \\[.2em]
-		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & $\mainconnective{\eand}$ & $H$ & $\mainconnectivecolor{)}$ & &$\atomicstage{H}$ \\[.2em]
-		&	& & & $\mainconnective{\enot}$ & $I$  & & $\atomicstage{H}$ & & &\\[.2em]
-		&	& & & & $\atomicstage{I}$& & & & &  \\\hline 
+		\multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eand$ & $H$ & $)$ & \tikzmarknode{tt6_imp}{$\mainconnective{\eif}$} & $H$&$\star$ \\[.4em]
+		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & \tikzmarknode{tt6_and}{$\mainconnective{\eand}$} & $H$ & $\mainconnectivecolor{)}$ & &\tikzmarknode{tt6_Hr}{$\atomicstage{H}$} \\[.4em]
+		&	& & & \tikzmarknode{tt6_not}{$\mainconnective{\enot}$} & $I$  & & \tikzmarknode{tt6_Hl}{$\atomicstage{H}$} & & &\\[.4em]
+		&	& & & & \tikzmarknode{tt6_I}{$\atomicstage{I}$}& & & & &  \\\hline 
 		$v_1:$&T&T& &F&T&F&T& &\TTbf{T}&T\\
 		$v_2:$&T&F& &T&F&T&T& &\TTbf{T}&T\\
 		$v_3:$&F&T& &F&T&F&F& &\TTbf{T}&F\\
@@ -2570,6 +2615,15 @@ recording the answer underneath `$\eif$'. As this is the final stage, we have de
 		&&&&&&\tikzmark{wedge}&&&\tikzmarknode{arrow}{$\star$}&\tikzmark{H2}&		
 		\end{tabular}
 	\end{center}
+
+\begin{tikzpicture}[remember picture,overlay]
+	\tikzset{arrowformationtree/.style={-{Stealth[length=2.2mm,width=1.6mm]},gray,opacity=0.6}}
+	\draw[arrowformationtree] (tt6_and) to[bend right=18] (tt6_imp);
+	\draw[arrowformationtree] (tt6_Hr)  to[bend left=18] (tt6_imp);
+	\draw[arrowformationtree] (tt6_not) to[bend right=18] (tt6_and);
+	\draw[arrowformationtree] (tt6_Hl)  to[bend left=18] (tt6_and);
+	\draw[arrowformationtree] (tt6_I)   to[bend left=18] (tt6_not);
+\end{tikzpicture}
 
 \begin{tikzpicture}[remember picture,overlay]
 \draw[-Stealth] (pic cs:wedge) to[bend right=35] (arrow.south);
