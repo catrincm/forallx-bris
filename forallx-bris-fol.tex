@@ -569,9 +569,9 @@ The examples we have seen so far have a common pattern, and it is a typical one 
 \end{samplesent}
 
 We will always consider this to be given by: 
-\begin{center}
-	For all $x$: if $x$ is like \emph{this}, then $x$ is like \emph{that}. 
-\end{center}
+\begin{samplesent}
+	\item[] For all $x$: if \underline{$x$ is like \emph{this}}, then \underline{$x$ is like \emph{that}}. 
+\end{samplesent}
 
 So the common pattern is that when you see $\forall$ you often see it paired with $\eif$. 
 
@@ -588,7 +588,7 @@ So we expect to be able to paraphrase it as:
 \end{itemize}
 We just need to think about English ways of filling out these `\ldots'. In this case: `$x$ is a dog' and `$x$ is energetic' seem to do the job. This is an appropriate paraphrase of the original sentence. 
 \begin{samplesent}
-	\item[] For all $x$: if \emph{$x$ is a dog} then \emph{$x$ is energetic}.
+	\item[] For all $x$: if \underline{$x$ is a dog} then \underline{$x$ is energetic}.
 \end{samplesent}
 So to symbolise it, we use $\forall x(\ldots\eif \ldots)$, filling the gaps with how we will symbolise `$x$ is a dog' ($Dx$) and `$x$ is energetic' ($Ex$). In our symbolisation tree presentation:
 \begin{center}
@@ -625,7 +625,7 @@ Take this sentence and try to find things filling out $\ldots$, things about $x$
 \end{samplesent}
 In this case: 
 \begin{samplesent}
-\item[]	For all $x$: if \emph{$x$ is an enthusiastic student}, then \emph{$x$ is not tired}. 
+\item[]	For all $x$: if \underline{$x$ is an enthusiastic student}, then \underline{$x$ is not tired}. 
 \end{samplesent}
 So when we're symbolising it we apply our symbolisation strategy and break it up in stages.
 \begin{center}
@@ -646,11 +646,14 @@ This can also apply when things get complicated. We make use of all of our symbo
 		[All enthusiastic students are neither tired nor bored\\
 		For all $x$: if \ldots then \ldots\\
 		$\forall x(\ldots\eif\ldots)$
-		[$x$ is an enthusiastic student\\$(Ex\eand Sx)$]
+		[$x$ is an enthusiastic student\\$Ex\eand Sx$]
 		[$x$ is neither tired nor bored\\$\enot Tx\eand\enot Bx$\\\emph{or: $\enot(Tx\eor Bx)$}]
 		]
 	\end{forest}
 \end{center}
+Giving us $$\forall x((Ex\eand Sx)\eif (\enot Tx\eand\enot Bx))$$
+Recalling our bracketing rules, we can also drop some brackets:
+$$\forall x(Ex\eand Sx\eif \enot Tx\eand\enot Bx)$$
 
 
 \section{Existential Quantifier}
@@ -694,6 +697,8 @@ We paraphrase it as
 	\end{forest}
 \end{center}
 
+giving $$\forall x(Lx\eand Hx)$$
+
 
 When using the existential quantifier, $\exists$, we typically find it with $\eand$, unlike the universal quantifier, $\forall$, which typically comes paired with $\eif$. Once we do FOL semantics we can see why this is right.  For now, we simply motivate it with paraphrasing. 
 
@@ -728,7 +733,7 @@ When using the existential quantifier, $\exists$, we typically find it with $\ea
 		[Some enthusiastic student is not tired\\
 		There exists $x$:  \ldots and \ldots\\
 		$\exists x(\ldots\eand \ldots)$
-		[$x$ is an enthusiastic student\\$(Ex\eand Sx)$]
+		[$x$ is an enthusiastic student\\$Ex\eand Sx$]
 		[$x$ is not tired\\$\enot Tx$]
 		]
 	\end{forest}
@@ -749,7 +754,7 @@ This sentence has the form `\ldots but \ldots', which we treat as `\ldots and \l
 	\begin{forest}
 		[{
 			Finley is not quiet, but some dog is\\\ldots and \ldots\\$\ldots {\eand}\ldots$}
-		[Finley is not quiet\\\enot Qf]
+		[Finley is not quiet\\$\enot Qf$]
 		[Some dog is quiet\\There exists $x$: \ldots and \ldots\\${\exists x}(\ldots\eand\ldots)$
 %		[$x$ is a dog \mainconnectivecolor{and} $x$ is quiet\\$\ldots {\eand} \ldots$
 		[$x$ is a dog\\$Dx$]
@@ -769,7 +774,7 @@ giving the symbolisation key
 \end{ekey}
 
 
-Consider also 
+Very similarly, consider:
 \begin{samplesent}
 	\item\label{sent:q:dog2}Some dog is quiet but Finley is not
 \end{samplesent}
@@ -788,6 +793,7 @@ Consider also
 \end{center}
 So we result in: $\exists x(Dx \eand Qx) {\eand} \enot Qf$
 
+Here the $\exists x$ is at the beginning of the sentence, but it is not the main logical operator, that is $\eand$. 
 
 Consider:
 \begin{samplesent}
@@ -856,7 +862,7 @@ This sentence doesn't start with `every' or `all'. But since it includes `every'
 Here's a suggestion: 
 \begin{samplesent}
 	\item[] For everything, if it is an animal, then Charlie likes it.
-	\item[] For all $x$, if $x$ is an animal then Charlie likes $x$. 
+	\item[] For all $x$, if \underline{$x$ is an animal} then \underline{Charlie likes $x$}. 
 \end{samplesent}
 So we give:
 \begin{center}
@@ -887,7 +893,7 @@ Can we paraphrase it as:
 \end{samplesent}
 Yes:
 \begin{samplesent}
-	\item[] There exists $x$: \emph{$x$ is a vet} and \emph{every animal likes $x$}.
+	\item[] There exists $x$: \underline{$x$ is a vet} and \underline{every animal likes $x$}.
 \end{samplesent}
 We write it out in a symbolisation tree to help keeping track, and then work on symbolising each component. 
 \begin{center}
@@ -908,7 +914,7 @@ We can paraphrase it as:
 \begin{samplesent}
 	\item[] For all things: if it is an animal, then it likes $x$.
 \end{samplesent}
-So far we have always jumped to using the variable $x$, but we have already got variable $x$ in play -- it's the vet -- so we should choose a different variable, such as $y$. 
+Now, we have already got variable $x$ in play -- it's the vet -- so we should choose a different variable, such as $y$. 
 \begin{samplesent}
 	\item[] For all $y$: if $y$ is an animal then $y$ likes $x$.
 \end{samplesent}
@@ -1004,44 +1010,44 @@ Consider:
 	\item Some vet likes every animal. 
 \end{samplesent}
 
-Again we can manage to break it down by one step:
-\begin{center}
-	\begin{forest}
-		[Some vet likes every animal. \\
-		There exists $x$:   \ldots and \ldots\\
-		$\exists x(\ldots\eand \ldots)$
-		[$x$ is a vet\\$Vx$]
-		[$x$ likes every animal\\?
+Again we can manage to break it down step by step:
+%\begin{center}
+%	\begin{forest}
+%		[Some vet likes every animal. \\
+%		There exists $x$:   \ldots and \ldots\\
+%		$\exists x(\ldots\eand \ldots)$
+%		[$x$ is a vet\\$Vx$]
+%		[$x$ likes every animal\\?
+%%		[$y$ is an animal\\$Ay$]
+%%		[$x$ likes $y$\\$Lxy$]
+%		]
+%		]
+%	\end{forest}
+%\end{center}
+%So how to symbolise 
+%\begin{samplesent}
+%	\item $x$ likes every animal.
+%\end{samplesent}
+%We can paraphrase it as 
+%\begin{samplesent}
+%	\item[] For all things, if it is an animal, then $x$ likes it.
+%	\item[] For all $y$, if $y$ is an animal then $x$ likes $y$. 
+%\end{samplesent}
+%Using $y$ because $x$ is already in use here. 
+%\begin{center}
+%	\begin{forest}
+%		%		[Some vet likes every animal. \\
+%		%		There exists $x$:   \ldots and \ldots\\
+%		%		$\exists x(\ldots\eand \ldots)$
+%		%		[$x$ is a vet\\$Vx$]
+%		[$x$ likes every animal\\{For all $y$, if \ldots then \ldots}\\$\forall y(\ldots\eif\ldots)$
 %		[$y$ is an animal\\$Ay$]
 %		[$x$ likes $y$\\$Lxy$]
-		]
-		]
-	\end{forest}
-\end{center}
-So how to symbolise 
-\begin{samplesent}
-	\item $x$ likes every animal.
-\end{samplesent}
-We can paraphrase it as 
-\begin{samplesent}
-	\item[] For all things, if it is an animal, then $x$ likes it.
-	\item[] For all $y$, if $y$ is an animal then $x$ likes $y$. 
-\end{samplesent}
-Using $y$ because $x$ is already in use here. 
-\begin{center}
-	\begin{forest}
-		%		[Some vet likes every animal. \\
-		%		There exists $x$:   \ldots and \ldots\\
-		%		$\exists x(\ldots\eand \ldots)$
-		%		[$x$ is a vet\\$Vx$]
-		[$x$ likes every animal\\{For all $y$, if \ldots then \ldots}\\$\forall y(\ldots\eif\ldots)$
-		[$y$ is an animal\\$Ay$]
-		[$x$ likes $y$\\$Lxy$]
-		]
-		]
-	\end{forest}
-\end{center}
-Piecing these together we get:
+%		]
+%		]
+%	\end{forest}
+%\end{center}
+%Piecing these together we get:
 \begin{center}
 	\begin{forest}
 				[Some vet likes every animal. \\

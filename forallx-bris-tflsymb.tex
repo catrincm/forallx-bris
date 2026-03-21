@@ -42,8 +42,10 @@ Recall that we introduced the negation connective in terms of `not' or `it is no
 Our informal procedure for symbolizing English arguments can be summarized as follows: identify the form of the argument; identify the English (sub)sentence appearing in the argument with sentence letters, that is, atomic sentences of TFL and symbolize the conjunction words by the matching connective. But what precisely is the matching connective? The answer to this question might have been straightforward in the arguments above, but that's not always the case. It is worth tackling the idea of symbolization more systematically. %\textcolor{red}{First, however, we need to address the problem of ambiguity in English.}
 
 \chapter{Symbolization}
-\section{Atomic sentences}
-The starting point of symbolizing arguments in TFL was to identify (sub)sentences that were the \emph{building blocks} of the argument and to symbolize them in TFL using certain sentence letters, e.g. in the previous chapter we used:
+\section{Atomic sentences}\todo{That's not how they should go about it!}
+
+Symbolisations will be relative to a symbolisation key. For example:
+%The starting point of symbolizing arguments in TFL was to identify (sub)sentences that were the \emph{building blocks} of the argument and to symbolize them in TFL using certain sentence letters, e.g. in the previous chapter we used:
 \begin{ekey}
 \item[A]It's raining outside.
 \item[B]Jenny is miserable.
@@ -211,24 +213,24 @@ with a symbolisation key:\begin{ekey}
 
 Consider 
 \begin{samplesent}
-	\item If Harry had cake then either Joe or Carl did not. 
+	\item If Harry had cake then either Lotta or Karl did not. 
 \end{samplesent}
 We can break the sentence down as follows:
 \begin{center}
 	\begin{forest}
-		[If Harry had cake then either Joe or Carl did not\\If \ldots then \ldots\\$\ldots\eif\ldots$
+		[If Harry had cake then either Lotta or Karl did not\\If \ldots then \ldots\\$\ldots\eif\ldots$
 		[Harry had cake\\$H$]
-		[Either Joe or Carl did not have cake\\\ldots or \ldots\\$\textcolor{lightgray}{(}\ldots\eor\ldots\textcolor{lightgray}{)}$
-		[Joe did not have cake\\It is not the case that \ldots\\$\enot\ldots$[Joe had cake\\$J$]]
-		[Carl did not have cake\\It is not the case that \ldots\\$\enot\ldots$[Carl had cake\\$C$]]
+		[Either Lotta or Karl did not have cake\\\ldots or \ldots\\$\textcolor{lightgray}{(}\ldots\eor\ldots\textcolor{lightgray}{)}$
+		[Lotta did not have cake\\It is not the case that \ldots\\$\enot\ldots$[Lotta had cake\\$L$]]
+		[Karl did not have cake\\It is not the case that \ldots\\$\enot\ldots$[Karl had cake\\$K$]]
 		]]
 	\end{forest}
 \end{center}
-obtaining a symbolisation $$H\eif(\enot J\eor\enot C)$$
+obtaining a symbolisation $$H\eif(\enot L\eor\enot K)$$
 with a symbolisation key:\begin{ekey}
 	\item[H] Harry had cake
-	\item[J] Joe had cake
-	\item[C] Carl had cake
+	\item[L] Lotta had cake
+	\item[K] Karl had cake
 \end{ekey}
 
 
@@ -396,9 +398,11 @@ We might try to symbolise it as $$B\eand W$$
 		\end{forest}
 	\end{center}
 	
+	This clearly does not capture the intended truth conditions of `Fluffy is black and white'. 
+	
 	\begin{center}
 		\begin{tabular}{cc|c}
-			Fluffy is black&Fluffy is white&Fluffy is a black and white cat\\
+			Fluffy is black&Fluffy is white&Fluffy is black and white \\
 			$B$&$W$&$B\eand W$\Bstrut\\\hline\Tstrut
 			T&T&T\\
 			T&F&F\\
@@ -535,8 +539,8 @@ Consider these sentences:
 %	\item \mainconnective{Either} Alice \mainconnective{or} Beth will come to the party \mainconnective{\emph{(and not both)}}.  
 	\item Alice won't come to the party \mainconnective{unless} Beth comes. 
 	\item Alice will come to the party \mainconnective{only if} Beth will too.
-	\item Alice will come to the party \mainconnective{if} Beth will too.
-	\item Alice will come to the party \mainconnective{if and only if} Beth will. 
+%	\item Alice will come to the party \mainconnective{if} Beth will too.
+%	\item Alice will come to the party \mainconnective{if and only if} Beth will. 
 \end{compactlist}
 
 These are all sentences whose truth values depend on whether Alice and Beth come to the party. The highlighted connectives are components of English which join together two simpler sentences so that the truth value of the overall sentence just depends on the truth values of the simpler sentences which are combined. 
@@ -780,7 +784,7 @@ Now consider:
 	\item\label{sent:and7}Adam is athletic but Barbara is not.
 \end{samplesent}
 
-	Are these conjunctions? The word `but' sets up a contrast between the first part of the sentence and the second part. Nevertheless, it still tells us two things: that Adam is athletic, and that Barbara is not athletic. 
+The word `but' sets up a contrast between the first part of the sentence and the second part. Nevertheless, it still tells us two things: that Adam is athletic, and that Barbara is not athletic. 
 	
 	We will treat it as just another way of expressing a conjunction `and': 
 	\begin{center}
@@ -817,10 +821,10 @@ If there was no surprise in the difference between the facts, then we would stil
 A similar point can be made about `although':
 	\begin{samplesent}
 		\item\label{sent:and6}Although Adam is athletic, Barbara is not.
-		\item\label{sent:and8} Adam is athletic although Barbara is not. 
+		\item\label{sent:and8} Barbara is not athletic, although Adam is. 
 %	\item\label{sent:and7}Adam is athletic but Barbara is not.
 \end{samplesent}
-This raises the same sort of issue. The word `although' indicates a contrast, but that is not something TFL can represent. As far as truth conditions go, the sentence again tells us that Adam is athletic and that Barbara is not athletic. We will symbolise these sentences as $A\eand \enot B$.
+This raises the same sort of issue. The word `although' indicates a contrast, but that is not something TFL can represent. As far as truth conditions go, the sentence again is true just if Adam is athletic and Barbara is not athletic. We will symbolise these sentences as $A\eand \enot B$.
 
 We can add these to our toolbox for symbolisation:
 	\factoidbox{
@@ -1071,8 +1075,7 @@ Again, though, there is a little complication. `Unless' can be symbolized as a c
 	\smallskip 
 	
 	\begin{tabular}{c|l}
-		\textbf{Paraphrased as} & \textbf{Symbolised as}\\[.5em]
-		\hline
+		\textbf{Paraphrased as} & \textbf{Symbolised as}\\\hline[.5em]
 		It is not the case that \ldots & $\enot\metaX$\\[.4em]
 		\ldots and \ldots & $\metaX \eand \metaY$\\[.4em]
 		Both \ldots and \ldots & $\metaX \eand \metaY$\\[.4em]
