@@ -6,7 +6,7 @@
 
 	\chapter{FOL symbolisation tips}
 	\label{sec:SymbolisingComplexFOL}
-	We have already seem the key idea of FOL symbolisation in \cref{sec:FOLBuildingBlocks} applied to sentences with limited logical complexity. Before moving to symbolise more complex sentences, we explicitly summarise our strategy for symbolising complex sentences. This extends the strategy that we used for TFL in \cref{sec:SymbolisingTFL - simple connectives complex form}
+	We have already seem the key idea of FOL symbolisation in \cref{sec:FOLBuildingBlocks}. Our strategy for symbolising sentences extends the strategy that we used for TFL in \cref{sec:SymbolisingTFL - simple connectives complex form}
 	
 	\begin{highlighted}
 		\begin{enumerate}
@@ -37,8 +37,27 @@
 		\end{center}
 	\end{highlighted}
 	
-	Also remember that there were various further tricks from \ref{ch:TFL}, such as `\metaX only if \metaY' as $(\metaX\eif\metaY)$ and `Unless \metaX, \metaY' as $(\metaX\eor\metaY)$. These still apply in the FOL setting. We will also see some more such tricks later.
+	Also remember that there were various further tricks from \ref{ch:TFL}, such as `\metaX only if \metaY' as $(\metaX\eif\metaY)$ and `Unless \metaX, \metaY' as $(\metaX\eor\metaY)$. These still apply in the FOL setting. 
 	
+	What we will now do is discuss further symbolisation tricks to add to our symbolisation guide. 
+	
+	\section{Restricted quantifiers}
+	We have already discussed two of them: 
+	
+		\factoidbox{
+		If a sentence can be paraphrased in English as \begin{center}
+			\begin{tabular}{l}`every F is G',\\`all Fs are Gs', or\\ `any F is a G',
+			\end{tabular}
+		\end{center} it can be symbolised as $$\forall x (\meta{F}x \eif \meta{G}x).$$
+		
+		If a sentence can be paraphrased in English as \begin{center}
+			\begin{tabular}{l}`some F is G',\\`there is some F that is G', \\`An F is G', or \\`there is at least one F that is a G'
+			\end{tabular}
+		\end{center} it can be symbolised as $$\exists x (\meta{F}x \eand \meta{G}x).$$
+	}
+	
+		Notice that we needed to use a conditional with the universal quantifier, but we used a conjunction with the existential quantifier. Suppose we had instead written $\exists x(Tx \eif Dx)$. That would mean that there is some object in the domain of which $(Tx \eif Dx)$ is true. Recall that, in TFL, $\metaX \eif \metaY$ is logically equivalent (in TFL) to $\enot\metaX \eor \metaY$. This equivalence will also hold in FOL. So $\exists x(Tx \eif Dx)$ is true if there is some object in the domain, such that $(\enot Tx \eor Dx)$ is true of that object. That is, $\exists x (Tx \eif Dx)$ is true if some coin is \emph{either} not on the table \emph{or} is a dime. Of course there is a coin that is not on the table: there are coins lots of other places. So it is \emph{very easy} for $\exists x(Tx \eif Dx)$ to be true. A conditional will usually be the natural connective to use with a universal quantifier, but a conditional within the scope of an existential quantifier tends to say something very weak indeed. As a general rule of thumb, do not put conditionals in the scope of existential quantifiers unless you are sure that you need one.
+		
 	\todo[inline]{This has all been reorganised. Now give some worked examples!!}
 	
 %	And we can add to our symbolisation guide a useful pattern with quantifiers in FOL: 
@@ -135,40 +154,42 @@
 %	
 
 	
-	\section{Restricted quantifiers}
-	Consider these sentences:
-	\begin{samplesent}
-		\item\label{sent:quan1} Every coin in my pocket is a quarter.
-		\item\label{sent:quan2} Some coin on the table is a dime.
-	\end{samplesent}
-	In providing a symbolization key, we need to specify a domain. Since we are talking about coins in my pocket and on the table, the domain must at least contain all of those coins. Since we are not talking about anything besides coins, we let the domain be all coins. Since we are not talking about any specific coins, we do not need to deal with any names. So here is our key:
-	\begin{ekey}
-		\item[\text{domain}] all coins
-		\item[Px] \gap{x} is in my pocket
-		\item[Tx] \gap{x} is on the table
-		\item[Qx] \gap{x} is a quarter
-		\item[Dx] \gap{x} is a dime
-	\end{ekey}
-	\Cref{sent:quan1} is most naturally symbolized using a universal quantifier. The universal quantifier says something about everything in the domain, not just about the coins in my pocket. \Cref{sent:quan1} can be paraphrased as `for any coin, \emph{if} that coin is in my pocket \emph{then} it is a quarter'. So we can symbolize it as $\forall x(Px \eif Qx)$.
-	
-	Since \cref{sent:quan1} is about coins that are both in my pocket \emph{and} that are quarters, it might be tempting to symbolize it using a conjunction. However, the sentence $\forall x(Px \eand Qx)$ would symbolize the sentence `every coin is both a quarter and in my pocket'. This obviously means something very different than \cref{sent:quan1}. And so we see:
-	\factoidbox{
-		If a sentence can be paraphrased in English as \begin{center}
-			\begin{tabular}{l}`every F is G',\\`all Fs are Gs', or\\ `any F is a G',
-			\end{tabular}
-		\end{center} it can be symbolised as $$\forall x (\meta{F}x \eif \meta{G}x).$$
-	}
-	\Cref{sent:quan2} is most naturally symbolized using an existential quantifier. It can be paraphrased as `there is some coin which is both on the table and which is a dime'. So we can symbolize it as $\exists x(Tx \eand Dx)$.
-	
-	Notice that we needed to use a conditional with the universal quantifier, but we used a conjunction with the existential quantifier. Suppose we had instead written $\exists x(Tx \eif Dx)$. That would mean that there is some object in the domain of which $(Tx \eif Dx)$ is true. Recall that, in TFL, $\metaX \eif \metaY$ is logically equivalent (in TFL) to $\enot\metaX \eor \metaY$. This equivalence will also hold in FOL. So $\exists x(Tx \eif Dx)$ is true if there is some object in the domain, such that $(\enot Tx \eor Dx)$ is true of that object. That is, $\exists x (Tx \eif Dx)$ is true if some coin is \emph{either} not on the table \emph{or} is a dime. Of course there is a coin that is not on the table: there are coins lots of other places. So it is \emph{very easy} for $\exists x(Tx \eif Dx)$ to be true. A conditional will usually be the natural connective to use with a universal quantifier, but a conditional within the scope of an existential quantifier tends to say something very weak indeed. As a general rule of thumb, do not put conditionals in the scope of existential quantifiers unless you are sure that you need one.
-	\factoidbox{
-		If a sentence can be paraphrased in English as \begin{center}
-			\begin{tabular}{l}`some F is G',\\`there is some F that is G', \\`An F is G', or \\`there is at least one F that is a G'
-			\end{tabular}
-		\end{center} it can be symbolised as $$\exists x (\meta{F}x \eand \meta{G}x).$$
-	}
-	
-	
+%	\section{Restricted quantifiers}
+%	Consider these sentences:
+%	\begin{samplesent}
+%		\item\label{sent:quan1} Every coin in my pocket is a quarter.
+%		\item\label{sent:quan2} Some coin on the table is a dime.
+%	\end{samplesent}
+%	In providing a symbolization key, we need to specify a domain. Since we are talking about coins in my pocket and on the table, the domain must at least contain all of those coins. Since we are not talking about anything besides coins, we let the domain be all coins. Since we are not talking about any specific coins, we do not need to deal with any names. So here is our key:
+%	\begin{ekey}
+%		\item[\text{domain}] all coins
+%		\item[Px] \gap{x} is in my pocket
+%		\item[Tx] \gap{x} is on the table
+%		\item[Qx] \gap{x} is a quarter
+%		\item[Dx] \gap{x} is a dime
+%	\end{ekey}
+%	\Cref{sent:quan1} is most naturally symbolized using a universal quantifier. The universal quantifier says something about everything in the domain, not just about the coins in my pocket. \Cref{sent:quan1} can be paraphrased as `for any coin, \emph{if} that coin is in my pocket \emph{then} it is a quarter'. So we can symbolize it as $\forall x(Px \eif Qx)$.
+%	
+%	Since \cref{sent:quan1} is about coins that are both in my pocket \emph{and} that are quarters, it might be tempting to symbolize it using a conjunction. However, the sentence $\forall x(Px \eand Qx)$ would symbolize the sentence `every coin is both a quarter and in my pocket'. This obviously means something very different than \cref{sent:quan1}. And so we see:
+%	\factoidbox{
+%		If a sentence can be paraphrased in English as \begin{center}
+%			\begin{tabular}{l}`every F is G',\\`all Fs are Gs', or\\ `any F is a G',
+%			\end{tabular}
+%		\end{center} it can be symbolised as $$\forall x (\meta{F}x \eif \meta{G}x).$$
+%	}
+%	\Cref{sent:quan2} is most naturally symbolized using an existential quantifier. It can be paraphrased as `there is some coin which is both on the table and which is a dime'. So we can symbolize it as $\exists x(Tx \eand Dx)$.
+%	
+%	Notice that we needed to use a conditional with the universal quantifier, but we used a conjunction with the existential quantifier. Suppose we had instead written $\exists x(Tx \eif Dx)$. That would mean that there is some object in the domain of which $(Tx \eif Dx)$ is true. Recall that, in TFL, $\metaX \eif \metaY$ is logically equivalent (in TFL) to $\enot\metaX \eor \metaY$. This equivalence will also hold in FOL. So $\exists x(Tx \eif Dx)$ is true if there is some object in the domain, such that $(\enot Tx \eor Dx)$ is true of that object. That is, $\exists x (Tx \eif Dx)$ is true if some coin is \emph{either} not on the table \emph{or} is a dime. Of course there is a coin that is not on the table: there are coins lots of other places. So it is \emph{very easy} for $\exists x(Tx \eif Dx)$ to be true. A conditional will usually be the natural connective to use with a universal quantifier, but a conditional within the scope of an existential quantifier tends to say something very weak indeed. As a general rule of thumb, do not put conditionals in the scope of existential quantifiers unless you are sure that you need one.
+%	\factoidbox{
+%		If a sentence can be paraphrased in English as \begin{center}
+%			\begin{tabular}{l}`some F is G',\\`there is some F that is G', \\`An F is G', or \\`there is at least one F that is a G'
+%			\end{tabular}
+%		\end{center} it can be symbolised as $$\exists x (\meta{F}x \eand \meta{G}x).$$
+%	}
+%	
+%	
+
+
 		\section{Other common quantifier phrases}
 		\subsection{Not all}
 			\begin{samplesent}
