@@ -1620,7 +1620,17 @@ The other logical notions also have corresponding definitions in FOL:
 	$\metaX$ and $\metaY$ are \define{logically equivalent} iff they are true on exactly the same valuations.
 }
 
-
+An important example of logical equivalence is the close relationship between the two quantifiers:
+\begin{itemize}
+	\item $\enot\exists x\metaX$ and $\forall x\enot \metaX$ are logically equivalent.
+	\begin{itemize}
+		\item They are true in a model $\model$ under variable assignment $\alpha$ iff for every $o\in\domain_\model$, $\metaX$ is false in $\model$ under $\varvariant{\alpha}{x}{o}$. 
+	\end{itemize}
+	\item $\enot\forall x\metaX$ and $\exists x\enot \metaX$ are logically equivalent.
+		\begin{itemize}
+		\item They are true in a model $\model$ under variable assignment $\alpha$ iff there is some $o\in\domain_\model$ such that $\metaX$ is false in $\model$ under $\varvariant{\alpha}{x}{o}$. 
+	\end{itemize}
+\end{itemize}
 
 
 \factoidbox{
@@ -2034,7 +2044,7 @@ This might usefully be compared with the table at the end of \cref{sec:PartialTr
 	
 	
 	\problempart
-	Show that the following sentences are jointly satisfiable:
+	Show that the following sentences are (jointly) consistent:
 	\begin{problemslist}
 		\item $\atom{M}{a}, \enot \atom{N}{a}, Pa, \enot \atom{Q}{a}$
 		\item $\atom{L}{e,e}, \atom{L}{e,g}, \enot \atom{L}{g,e}, \enot \atom{L}{g,g}$

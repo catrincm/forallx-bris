@@ -56,8 +56,63 @@
 		\end{center} it can be symbolised as $$\exists x (\meta{F}x \eand \meta{G}x).$$
 	}
 	
-		Notice that we needed to use a conditional with the universal quantifier, but we used a conjunction with the existential quantifier. Suppose we had instead written $\exists x(Tx \eif Dx)$. That would mean that there is some object in the domain of which $(Tx \eif Dx)$ is true. Recall that, in TFL, $\metaX \eif \metaY$ is logically equivalent (in TFL) to $\enot\metaX \eor \metaY$. This equivalence will also hold in FOL. So $\exists x(Tx \eif Dx)$ is true if there is some object in the domain, such that $(\enot Tx \eor Dx)$ is true of that object. That is, $\exists x (Tx \eif Dx)$ is true if some coin is \emph{either} not on the table \emph{or} is a dime. Of course there is a coin that is not on the table: there are coins lots of other places. So it is \emph{very easy} for $\exists x(Tx \eif Dx)$ to be true. A conditional will usually be the natural connective to use with a universal quantifier, but a conditional within the scope of an existential quantifier tends to say something very weak indeed. As a general rule of thumb, do not put conditionals in the scope of existential quantifiers unless you are sure that you need one.
+	So we symbolise 
+		\begin{samplesent}
+		\item Every dog is energetic. 
+	\end{samplesent}
+	as $$\forall x(Dx\eif Ex)$$
+	and 
+		\begin{samplesent}
+		\item Some dog is energetic. 
+	\end{samplesent}
+	as $$\exists x(Dx\eand Ex)$$
+	
+		Notice that we needed to use a conditional with the universal quantifier, but we used a conjunction with the existential quantifier. 
 		
+		Suppose we had instead written $\exists x(Dx\eif Ex)$. So long as there is a non-dog, $o$, in the model, then $Dx\eif Ex$ is true under $x\mapsto o$. After all, a conditional with a false antecedent is always true. So it would be far too easy to make $\exists x(Dx\eif Ex)$ true: it would be true in any model which contains non-dogs. 
+		
+		Similarly, suppose we had instead written $\forall x(Dx\eand Ex)$. So long as there is a non-dog, $o$, in the model, then $Dx\eand Ex$ is false under $x\mapsto o$. So it would be far too hard to make $\exists x (Dx\eand Ex)$ true. It would be false in any model which contains non-dogs. 
+		
+		
+		
+		Recall that this is a general strategy which can also be applied with more complex sentences
+		\begin{samplesent}
+			\item Every enthusiastic student is not tired. 
+		\end{samplesent}
+		\begin{center}
+			\begin{forest}
+				[Every enthusiastic student is not tired\\
+				For all $x$: if \ldots then \ldots\\
+				$\forall x(\ldots\eif\ldots)$
+				[$x$ is an enthusiastic student\\$(Ex\eand Sx)$]
+				[$x$ is not tired\\$\enot Tx$]
+				]
+			\end{forest}
+		\end{center}$$\forall x((Ex\eand Sx)\eif\enot Tx)$$		
+		or which can be iterated
+		\begin{samplesent}
+			\item Every vet likes some animal.
+		\end{samplesent}
+		
+		\begin{center}
+			\begin{forest}
+				[Every vet likes some animal. \\
+				For all $x$:   if \ldots then \ldots\\
+				$\forall x(\ldots\eif \ldots)$
+				[$x$ is a vet\\$Vx$]
+				[$x$ likes some animal\\There exists $y$ \ldots and \ldots\\$\exists y(\ldots\eand\ldots)$
+				[$y$ is an animal\\$Ay$]
+				[$x$ likes $y$\\$Lxy$]
+				]
+				]
+			\end{forest}
+		\end{center}
+		So we give: $$\forall x(Vx\eif\exists y(Ay\eand Lxy))$$
+		
+		
+		These are just new tools which we add to our symbolisation toolbox. 
+		
+		Now, we will provide some additional  symbolisation guidance.
 	\todo[inline]{This has all been reorganised. Now give some worked examples!!}
 	
 %	And we can add to our symbolisation guide a useful pattern with quantifiers in FOL: 
@@ -191,12 +246,81 @@
 
 
 		\section{Other common quantifier phrases}
+	
+	
+	\subsection{None}
+	\begin{samplesent}
+		\item No dog is energetic
+	\end{samplesent}
+	
+	It can be paraphrased in two different ways: 
+		\begin{samplesent}
+		\item Every dog is not energetic.
+		\item It is not the case that there exists an energetic dog.
+	\end{samplesent}
+	These different paraphrasing will give different symbolisations
+	
+	
+	\begin{center}
+		\begin{forest}
+			[No dog is energetic\\for all $x$: if\ldots then \ldots\\
+			$\forall x(\ldots\eif\ldots)$
+			[$x$ is a dog\\$Dx$]
+			[$x$ is not energetic\\$\enot Ex$]
+			]
+		\end{forest}
+	\end{center}
+	Giving $$\forall x(Dx\eif \enot Ex)$$
+	
+		\begin{center}
+		\begin{forest}
+			[No dog is energetic\\It is not the case that\ldots\\$\enot\ldots$
+			[there exists an energetic dog\\$\exists x(\ldots\eand \ldots)$
+			[$x$ is a dog\\$Dx$]
+			[$x$ is energetic\\$Ex$]
+			]
+			]
+		\end{forest}
+	\end{center}
+	Giving $$\enot\exists  x(Dx\eand Ex)$$
+	
+	These two sentences are logically equivalent and both appropriate symbolisations. 
+	
+	This is because, on any variable assignment, $x\mapsto o$, $Dx\eand Ex$ is true iff $Dx\eif\enot Ex$ is false.  
+	Then we can reason as follows:
+	\begin{center}
+		\begin{tabular}{@{}r@{\ }l@{}}
+			&$\enot\exists x(Dx\eand Ex)$ is true in a model $\model$ \\
+			iff & there is no $o\in\domain_\model$ such that $Dx\eand Ex$ is true under $x\mapsto o$ \\
+			iff & there is no $o\in\domain_\model$ such that $Dx\eif\enot Ex$ is false under $x\mapsto o$ \\
+			iff & for every $o\in\domain_\model$, $Dx\eif\enot Ex$ is true under $x\mapsto o$ \\
+			iff & $\forall x(Dx\eif\enot Ex)$ is true in $\model$.
+		\end{tabular}
+	\end{center}
+	
+
+	
+	\factoidbox{
+		If a sentence can be paraphrased in English as \begin{center}
+			`no Fs are Gs',
+		\end{center} it can be symbolised as  \begin{center}
+			\begin{tabular}{l}$\enot \exists x (\meta{F}x \eand \meta{G}x)$, or \\$\forall x(\meta{F}x\eif\enot \meta{G}x)$.
+			\end{tabular}
+		\end{center}
+	}
+	
 		\subsection{Not all}
-			\begin{samplesent}
-			\item\label{sent:quan3} Not all the coins on the table are dimes.
-		\end{samplesent}
 		
-	\Cref{sent:quan3} can be paraphrased as, `It is not the case that every coin on the table is a dime'. So we can symbolize it by $\enot \forall x(Tx \eif Dx)$. You might look at \cref{sent:quan3} and paraphrase it instead as, `Some coin on the table is not a dime'. You would then symbolize it by $\exists x(Tx \eand \enot Dx)$. Although it is probably not immediately obvious yet, these two sentences are logically equivalent. (This is due to the logical equivalence between $\enot\forall x\metaX$ and $\exists x\enot\metaX$, mentioned in \cref{sec:FOLBuildingBlocks}, along with the equivalence between $\enot(\metaX\eif\metaY)$ and $\metaX\eand\enot\metaY$.)
+		There is one final structure to complete our selection: we have $\forall$, $\exists$, $\enot\exists = \forall\enot$; the final structure to see is $\enot\forall = \exists \enot$. 
+		
+
+	\begin{samplesent}
+		\item\label{sent:quan3} Not all dogs are enthusiastic. 
+	\end{samplesent}
+	$$\enot\forall x(Dx\eif Ex)$$
+	
+	In fact, this is logically equivalent to $\exists x(Dx\eand\enot Ex)$: there is some dog which is not enthusiastic. Symbolising it this alternative way would be marked correctly in an exam, but it is perhaps less natural than $\enot\forall$. 
+	
 	\factoidbox{
 		If a sentence can be paraphrased in English as \begin{center}
 			`not all Fs are Gs',
@@ -207,26 +331,21 @@
 	}
 	
 	
-			\subsection{None}
-	\begin{samplesent}
-		\item\label{sent:quan4} None of the coins in my pocket are dimes.
-	\end{samplesent}
-	\Cref{sent:quan4} can be paraphrased as, `It is not the case that there is some dime in my pocket'. This can be symbolized by $\enot\exists x(Px \eand Dx)$. It might also be paraphrased as, `Everything in my pocket is a non-dime', and then could be symbolized by $\forall x(Px \eif \enot Dx)$. Again the two symbolizations are logically equivalent; both are correct symbolizations of \cref{sent:quan4}.
-	\factoidbox{
-		If a sentence can be paraphrased in English as \begin{center}
-			`no Fs are Gs',
-		\end{center} it can be symbolised as  \begin{center}
-			\begin{tabular}{l}$\enot \exists x (\meta{F}x \eand \meta{G}x)$, or \\$\forall x(\meta{F}x\eif\enot \meta{G}x)$.
-			\end{tabular}
-		\end{center}
-	}
-	
-	
-			\subsection{Only}
+	\subsection{Only}
 	\begin{samplesent}
 		\item\label{sent:quan5} Only dimes are on the table.
 	\end{samplesent}
-	How should we symbolize this?  A good strategy is to consider when the sentence would be false.  If we are saying that only dimes are on the table, we are excluding all the cases where something on the table is a non-dime.  So we can symbolize the sentence the same way we would symbolize `No non-dimes are on the table.' Remembering the lesson we just learned, and symbolizing `$x$ is a non-dime' as `$\enot \atom{D}{x}$', the possible symbolizations are: `$\enot\exists x(\atom{T}{x} \eand \enot \atom{D}{x})$', or alternatively: `$\forall x(\atom{T}{x} \eif \enot\enot \atom{D}{x})$'. Since double negations cancel out, the second is just as good as `$\forall x(\atom{T}{x} \eif \atom{D}{x})$'. In other words, `Only dimes are on the table' and `Everything on the table is a dime' are symbolized the same way.
+	We will paraphrase this as:
+	\begin{samplesent}
+		\item Everything on this table is a dime. 
+		\item Nothing on this table is a non-dime.
+	\end{samplesent}
+	
+	We can offer symbolisation options:\begin{gather*}
+		\forall x(Tx\eif Dx)\\
+		\enot\exists x(Tx\eand \enot Dx)
+	\end{gather*}
+	
 	
 	\factoidbox{
 		If a sentence can be paraphrased in English as \begin{center}
