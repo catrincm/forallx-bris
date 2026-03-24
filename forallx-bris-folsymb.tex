@@ -368,11 +368,11 @@ We have resulted in four things we might say about whether dogs are enthusiastic
 			\node[squareopp] (E) at (7,3.2) {No Fs are Gs\\$\enot\exists x(\meta{F}x\eand \meta{G}x)$\\$\forall x(\meta{F}x\eif\enot\meta{G}x))$};
 			\node[squareopp] (I) at (0,0) {Some Fs are Gs\\$\exists x(\meta{F}x\eand \meta{G}x)$};
 					\node[below=0cm of I]{$=\enot\forall x(\meta{F}x\eif \enot\meta{G}x)$};
-			\node[squareopp] (O) at (7,0) {Not all Fs are Gs\\$\enot\forall x(\meta{F}x\eif\meta{G}x)$\\Some Fs are not Gs\\$\exists x(\meta{F}x\eand \enot\meta{G}x)$};
+			\node[squareopp] (O) at (7,0) {Not all Fs are Gs\\$\enot\forall x(\meta{F}x\eif\meta{G}x)$\\Some Fs are non-Gs\\$\exists x(\meta{F}x\eand \enot\meta{G}x)$};
 			
 
-				\draw[squareoppline] (A) -- node[squareopplabel, sloped, above, pos=.3]{negation} (O);
-				\draw[squareoppline] (I) -- node[squareopplabel, sloped, below, pos=.5]{negation} (E);
+				\draw[squareoppline] (A) -- node[squareopplabel, sloped, above, pos=.3]{not:} (O);
+				\draw[squareoppline] (I) -- node[squareopplabel, sloped, below, pos=.5]{not:} (E);
 				
 				\draw[squareoppline,blue] (A) -- node[squareopplabel, left]{log conseq,\\assuming $\exists xFx$} (I);
 				\draw[squareoppline,blue] (E) -- node[squareopplabel, right]{log conseq,\\assuming $\exists xFx$} (O);
@@ -387,22 +387,38 @@ We have resulted in four things we might say about whether dogs are enthusiastic
 	
 	
 	\subsection{Only}
-	\begin{samplesent}
-		\item\label{sent:quan5} Only dimes are on the table.
+
+	
+		\begin{samplesent}
+		\item Only dogs are enthusiastic
 	\end{samplesent}
 	We will paraphrase this as:
 	\begin{samplesent}
-		\item Everything on this table is a dime. 
-		\item Nothing on this table is a non-dime.
+		\item Everything which is enthusiastic is a dog.
+		\item Nothing which is enthusiastic is non-dog.
 	\end{samplesent}
 	
 	We can offer symbolisation options:
 	\begin{gather*}
-		\forall x(Tx\eif Dx)\\
-		\enot\exists x(Tx\eand \enot Dx)
+		\forall x(Ex\eif Dx)\\
+		\enot\exists x(Ex\eand \enot Dx)
 	\end{gather*}
 	
-	
+Compare this to:
+			\begin{samplesent}
+		\item All dogs are enthusiastic
+	\end{samplesent}
+	is symbolised as 
+		\begin{gather*}
+		\forall x(Dx\eif Ex)\\
+		\enot\exists x(Dx\eand \enot Ex)
+	\end{gather*}
+	It can only be made false due to a dog who is not enthusiastic
+	\begin{samplesent}
+		\item Only dogs are enthusiastic
+	\end{samplesent}
+		can only be made false due to a non-dog who is enthusiastic
+		
 	\factoidbox{
 		If a sentence can be paraphrased in English as \begin{center}
 			`only $F$s are $G$s',
