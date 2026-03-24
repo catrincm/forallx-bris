@@ -309,6 +309,35 @@
 		\end{center}
 	}
 	
+	This can also be embedded in more complex sentences
+	\begin{samplesent}
+		\item No cat owner likes every dog.
+	\end{samplesent}
+
+	\begin{center}
+	\begin{forest}
+		[No cat owner likes every dog.\\It is not the case that there exists some $x$ which \ldots and \ldots\\
+		$\enot\exists x(\ldots\eand\ldots)$
+		[$x$ is a cat owner\\ $x$ owns a cat\\$\exists y(Cy\eand Oxy)$]
+		[$x$ likes every dog\\$\forall y(Dy\eif Lxy)$]]
+		]
+	\end{forest}
+\end{center}
+	$$\enot \exists x(\exists y(Cy\eand Oxy)\eand\forall y(Dy\eif Lxy))$$
+	Alternatively:
+	\begin{center}
+		\begin{forest}
+			[No cat owner likes every dog.\\For all $x$: if \ldots then not \ldots\\
+			$\forall x(\ldots\eif\enot\ldots)$
+			[$x$ is a cat owner\\$\exists y(Cy\eand Oxy)$]
+			[$x$ likes every dog\\$\forall y(Dy\eif Lxy)$]]
+			]
+		\end{forest}
+	\end{center}
+	offering $$\forall x(\exists y(Cy\eand Oxy)\eif \enot\forall y(Dy\eif Lxy))$$
+
+
+	
 		\subsection{Not all}
 		
 		There is one final structure to complete our selection: we have $\forall$, $\exists$, $\enot\exists = \forall\enot$; the final structure to see is $\enot\forall = \exists \enot$. 
@@ -341,7 +370,8 @@
 		\item Nothing on this table is a non-dime.
 	\end{samplesent}
 	
-	We can offer symbolisation options:\begin{gather*}
+	We can offer symbolisation options:
+	\begin{gather*}
 		\forall x(Tx\eif Dx)\\
 		\enot\exists x(Tx\eand \enot Dx)
 	\end{gather*}
