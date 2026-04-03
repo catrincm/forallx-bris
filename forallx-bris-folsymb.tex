@@ -4,7 +4,7 @@
 \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
 
 
-	\chapter{FOL symbolisation tips}
+	\chapter{Common quantifier phrases}
 	\label{sec:SymbolisingComplexFOL}
 	We have already seem the key idea of FOL symbolisation in \cref{sec:FOLBuildingBlocks}. Our strategy for symbolising sentences extends the strategy that we used for TFL in \cref{sec:SymbolisingTFL - simple connectives complex form}
 	
@@ -114,6 +114,7 @@
 		
 		Now, we will provide some additional  symbolisation guidance.
 	\todo[inline]{This has all been reorganised. Now give some worked examples!!}
+
 	
 %	And we can add to our symbolisation guide a useful pattern with quantifiers in FOL: 
 %	\factoidbox{
@@ -245,15 +246,14 @@
 %	
 
 
-		\section{Other common quantifier phrases}
+%		\section{Other common quantifier phrases}
 	
 	
-	\subsection{None}
+	\section{None}
 	\begin{samplesent}
 		\item No dog is energetic
 	\end{samplesent}
-	
-	It can be paraphrased in two different ways: 
+	We have to paraphrase this sentence using the operators that we have. There are two different ways to do this:
 		\begin{samplesent}
 		\item Every dog is not energetic.
 		\item It is not the case that there exists an energetic dog.
@@ -263,7 +263,7 @@
 	
 	\begin{center}
 		\begin{forest}
-			[No dog is energetic\\for all $x$: if\ldots then \ldots\\
+			[No dog is energetic\\Every dog is not energetic\\for all $x$: if\ldots then \ldots\\
 			$\forall x(\ldots\eif\ldots)$
 			[$x$ is a dog\\$Dx$]
 			[$x$ is not energetic\\$\enot Ex$]
@@ -286,17 +286,27 @@
 	
 	These two sentences are logically equivalent and both appropriate symbolisations. 
 	
-	This is because, on any variable assignment, $x\mapsto o$, $Dx\eand Ex$ is true iff $Dx\eif\enot Ex$ is false.  
+	\begin{quote}
+		We give an example of semantic reasoning to show that they are logically equivalent. 
+	
+	Observe that in any model, $\model$, and any variable assignment, $\alpha$,
+	\begin{align*}
+		Dx\eand Ex \text{ is true in } \model \text{ under } \alpha
+		&\text{ iff both } Dx \text{ and } Ex \text{ are true in } \model \text{ under } \alpha\\
+		&\text{ iff $Dx$ is true in $\model$ under $\alpha$ and $Ex$ is false in $\model$ under $\alpha$}\\
+		&\text{ iff } Dx\eif\enot Ex \text{ is false in } \model \text{ under } \alpha.
+	\end{align*}
 	Then we can reason as follows:
-	\begin{center}
-		\begin{tabular}{@{}r@{\ }l@{}}
-			&$\enot\exists x(Dx\eand Ex)$ is true in a model $\model$ \\
-			iff & there is no $o\in\domain_\model$ such that $Dx\eand Ex$ is true under $x\mapsto o$ \\
-			iff & there is no $o\in\domain_\model$ such that $Dx\eif\enot Ex$ is false under $x\mapsto o$ \\
-			iff & for every $o\in\domain_\model$, $Dx\eif\enot Ex$ is true under $x\mapsto o$ \\
-			iff & $\forall x(Dx\eif\enot Ex)$ is true in $\model$.
-		\end{tabular}
-	\end{center}
+	\begin{align*}
+		&\enot\exists x(Dx\eand Ex) \text{ is true in } \model\\
+		&\text{ iff there is no } o\in\domain_\model \\
+		&\qquad \text{ such that } Dx\eand Ex \text{ is true in } \model \text{ under } x\mapsto o \\
+		&\text{ iff there is no } o\in\domain_\model \\
+		&\qquad \text{ such that } Dx\eif\enot Ex \text{ is false in } \model \text{ under } x\mapsto o \\
+		&\text{ iff for every } o\in\domain_\model,\ Dx\eif\enot Ex \text{ is true in } \model \text{ under } x\mapsto o \\
+		&\text{ iff } \forall x(Dx\eif\enot Ex) \text{ is true in } \model.
+	\end{align*}
+	\end{quote}
 	
 
 	
@@ -338,7 +348,7 @@
 
 
 	
-		\subsection{Not all}
+		\section{Not all}
 		
 		There is one final structure to complete our selection: we have $\forall$, $\exists$, $\enot\exists = \forall\enot$; the final structure to see is $\enot\forall = \exists \enot$. 
 		
@@ -386,7 +396,7 @@ We have resulted in four things we might say about whether dogs are enthusiastic
 	
 	
 	
-	\subsection{Only}
+	\section{Only}\label{sec:SymboliseFOLOnly}
 
 	
 		\begin{samplesent}
@@ -429,7 +439,8 @@ Compare this to:
 	}
 	
 	
-%	\chapter{Choosing a symbolisation key}
+
+	
 	
 	%We now have all of the pieces of FOL.
 	%Symbolizing more complicated sentences will only be a matter of knowing the right way to combine predicates, names, quantifiers, and connectives. There is a knack to this, and there is no substitute for practice.
@@ -1175,15 +1186,19 @@ Compare this to:
 			%
 			%\end{practiceproblems}
 			
-			\chapter{Ambiguity}
+				\chapter{Choosing a symbolisation}
 			
-				\section{Ambiguous predicates}
+			\section{How to split a predicate}
 			
 			Suppose we just want to symbolize this sentence:
 			\begin{samplesent}
 				\item\label{sent:surgeon1} Adina is a skilled surgeon.
 			\end{samplesent}
-			Let the domain be people, let $Kx$ mean `$x$ is a skilled surgeon', and let $a$ mean Adina. \Cref{sent:surgeon1} is simply $Ka$.
+			As in \cref{sec:SymbTruthConds}, we should not understand it as 
+						\begin{samplesent}
+				\item\label{sent:surgeon1} Adina is skilled and she is a surgeon.
+			\end{samplesent}
+		Instead, we would rather use a single predicate, $Kx$, for `$x$ is a skilled surgeon', and let $a$ mean Adina. \Cref{sent:surgeon1} is simply $Ka$.
 			
 			
 			Suppose instead that we want to symbolize this argument:
@@ -1233,7 +1248,11 @@ Compare this to:
 			
 			Must we always distinguish between different ways of being skilled, good, bad, or big? No. As the argument about Billy shows, sometimes we only need to talk about one kind of skill. If you are symbolizing an argument that is just about dogs, it is fine to define a predicate that means `$x$ is big.' If the domain includes dogs and mice, however, it is probably best to make the predicate mean `$x$ is big for a dog.'
 			
-			\todo[inline]{Add a section on the ``common mistakes'' in giving sentences. Catrin loves everyone. Billy and Joe are happy. Where brackets are needed. }
+
+			
+			\chapter{Ambiguity}
+			
+			
 			
 			\section{Scope ambiguity}
 			
@@ -1260,25 +1279,8 @@ Compare this to:
 				\item $\exists x(F{x} \eand \enot {G}{x})$
 			\end{itemize}
 			
-			In chapter~{sec:SymbolisingSimpleFOL} we discussed how to symbolize sentences involving `only'. Consider the sentence:
-			\begin{samplesent}
-				\item\label{sent:onlyamb} Only young cats are playful.
-			\end{samplesent}
-			According to our schema, we would symbolize it this way:
-			\begin{itemize}
-				\item $\forall x({P}{x} \eif ({Y}{x} \eand {C}{x}))$
-			\end{itemize}
-			The meaning of this sentence of FOL is something like, `If an animal is playful, it is a young cat'. (Assuming that the domain is animals, of course.) This is probably not what's intended in uttering \cref{sent:onlyamb}, however. It's more likely that we want to say that old cats are not playful. In other words, what we mean to say is that if something is a cat and playful, it must be young. This would be symbolized as:
-			\begin{itemize}
-				\item $\forall x(({C}{x} \eand {P}{x}) \eif {Y}{x})$
-			\end{itemize}
-			There is even a third reading! Suppose we're talking about young animals and their characteristics. And suppose you wanted to say that of all the young animals, only the cats are playful. You could symbolize this reading as:
-			\begin{itemize}
-				\item $\forall x(({Y}{x} \eand {P}{x}) \eif {C}{x})$
-			\end{itemize}
-			Each of the last two readings can be made salient in English by placing the stress appropriately. For instance, to suggest the last reading, you would say `Only young \emph{cats} are playful', and to get the other reading you would say `Only \emph{young} cats are playful'.  The very first reading can be indicate by stressing both `young' and `cats': `Only \emph{young cats} are playful' (but not old cats, or dogs of any age).
-			
-			In \cref{sec:MultipleGenerality} we discussed the importance of the order of quantifiers.  This is relevant here because, in English, the order of quantifiers is sometimes not completely determined.  When both universal (`all') and existential (`some', `a') quantifiers are  involved, this can result in scope ambiguities. Consider:
+			\section{Ambiguous quantifier order}\todo{sections repeated here!}
+		In English, the order of quantifiers is sometimes not completely determined.  When both universal (`all') and existential (`some', `a') quantifiers are  involved, this can result in scope ambiguities. Consider:
 			\begin{samplesent}
 				\item\label{sent:everya} Everyone went to see a movie.
 			\end{samplesent}
@@ -1295,6 +1297,15 @@ Compare this to:
 			\end{ekey}
 			In the first reading, we say that the existential quantifier has \emph{wide scope} (and its scope contains the universal quantifier, which has \emph{narrow scope}), and the other way round in the second.
 			
+			To see that these are not logically equivalent consider this model:
+			\begin{interp}
+				\item[\domain] $\{1,2,3,4\}$
+				\item[\denote{P}] $\{1,2\}$
+				\item[\denote{M}] $\{3,4\}$
+				\item[\denote{W}] $\{\langle 1,3\rangle,\langle 2,4\rangle\}$
+			\end{interp}
+			The premise is true (person $1$ went to see movie $3$, person $2$ went to see movie $4$), but the conclusion is false (no single movie was seen by both people).
+			
 			%In chapter~\ref{subsec:defdesc}, we encountered another scope ambiguity, arising from definite descriptions interacting with negation.  Consider Russell's own example:
 			%\begin{earg}
 			%	\item[\ex{thenot}] The King of France is not bald.
@@ -1304,7 +1315,7 @@ Compare this to:
 			
 			
 			
-				\section{The order of the quantifiers}\label{sec:MultipleGenerality}
+%				\section{The order of the quantifiers}\label{sec:MultipleGenerality}
 			%So far, we have only considered sentences that require one-place predicates and one quantifier. The full power of FOL really comes out when we start to use many-place predicates and multiple quantifiers. For this insight, we largely have Gottlob Frege (1879) to thank, but also C.S.~Peirce.
 			
 			%	
@@ -1327,15 +1338,15 @@ Compare this to:
 			%	
 			%	In the earlier examples we always used $x$ as our variables; but we here had to use $y$ because $x$ is already taken. We don't want to say $\exists x\forall xLxx$ as it's not clear how one should read this sentence as we need to identify which variables come with which quantifiers.
 			%	
-			
-			Consider the sentence `everyone loves someone'. This is potentially ambiguous. It might mean either of the following:
-			\begin{samplesent}
-				\item\label{sent:lovecycle} For every person x, there is some person that x loves
-				\item\label{sent:loveconverge} There is some particular person whom every person loves
-			\end{samplesent}
-			\Cref{sent:lovecycle} can be symbolized by $\forall x \exists y Lxy$, and would be true of a love-triangle. For example, suppose that our domain of discourse is restricted to Imre, Juan and Karl. Suppose also that Karl loves Imre but not Juan, that Imre loves Juan but not Karl, and that Juan loves Karl but not Imre. Then \cref{sent:lovecycle} is true.
-			
-			\Cref{sent:loveconverge} is symbolized by $\exists y \forall x Lxy$. \Cref{sent:loveconverge} is \emph{not} true in the situation just described. Again, suppose that our domain of discourse is restricted to Imre, Juan and Karl. This requires that all of Juan, Imre and Karl converge on (at least) one object of love.
+%			
+%			Consider the sentence `everyone loves someone'. This is potentially ambiguous. It might mean either of the following:
+%			\begin{samplesent}
+%				\item\label{sent:lovecycle} For every person x, there is some person that x loves
+%				\item\label{sent:loveconverge} There is some particular person whom every person loves
+%			\end{samplesent}
+%			\Cref{sent:lovecycle} can be symbolized by $\forall x \exists y Lxy$, and would be true of a love-triangle. For example, suppose that our domain of discourse is restricted to Imre, Juan and Karl. Suppose also that Karl loves Imre but not Juan, that Imre loves Juan but not Karl, and that Juan loves Karl but not Imre. Then \cref{sent:lovecycle} is true.
+%			
+%			\Cref{sent:loveconverge} is symbolized by $\exists y \forall x Lxy$. \Cref{sent:loveconverge} is \emph{not} true in the situation just described. Again, suppose that our domain of discourse is restricted to Imre, Juan and Karl. This requires that all of Juan, Imre and Karl converge on (at least) one object of love.
 			
 			The point of the example is to illustrate that the order of the quantifiers matters a great deal. Indeed, to switch them around is called a \emph{quantifier shift fallacy}. Here is an example, which comes up in various forms throughout the philosophical literature:
 			\begin{earg}
@@ -1362,7 +1373,31 @@ Compare this to:
 			%\end{itemize}
 			
 			The moral is: take great care with the order of quantification.
-				\section{Suppressed quantifiers}
+			
+
+
+			\section{Generic uses of indefinites}
+		
+			Consider
+			\begin{samplesent}
+				\item A lion is dangerous.
+			\end{samplesent}
+			Despite starting with `a', where we might think we need to symbolise with `exists', instead the most natural paraphrase for this sentence is: 
+			\begin{samplesent}
+				\item Every lion is dangerous.
+			\end{samplesent} 
+			which we would symbolise as $\forall x(Lx\eif Dx)$
+			Sometimes the English indefinite article, `a', is used generically, which we best capture with `for all'. 
+
+		
+			This can create ambiguity, where context isn't clear enough to determine how to symbolise it. 
+			\begin{samplesent}
+				\item A philosopher is happy. 
+			\end{samplesent}
+			Should it be understood to say that every philosopher is happy, $\forall x(Px\eif Hx)$ or that there exists a philosopher who is happy, $\exists x(Px\eand Hx)$? It might be ambiguous. 
+
+			
+			\section{Suppressed quantifiers}
 			
 			Logic can often help to get clear on the meanings of English claims,
 			especially where the quantifiers are left implicit or their order is
@@ -1440,6 +1475,26 @@ Compare this to:
 			treason against the Queen!
 			
 			
+			
+			\section{Ambiguity with `only'}
+			
+			In \cref{sec:SymboliseFOLOnly} we discussed how to symbolize sentences involving `only'. Consider the sentence:
+			\begin{samplesent}
+				\item\label{sent:onlyamb} Only young cats are playful.
+			\end{samplesent}
+			According to our schema, we would symbolize it this way:
+			\begin{itemize}
+				\item $\forall x({P}{x} \eif ({Y}{x} \eand {C}{x}))$
+			\end{itemize}
+			The meaning of this sentence of FOL is something like, `If an animal is playful, it is a young cat'. (Assuming that the domain is animals, of course.) This is probably not what's intended in uttering \cref{sent:onlyamb}, however. It's more likely that we want to say that old cats are not playful. In other words, what we mean to say is that if something is a cat and playful, it must be young. This would be symbolized as:
+			\begin{itemize}
+				\item $\forall x(({C}{x} \eand {P}{x}) \eif {Y}{x})$
+			\end{itemize}
+			There is even a third reading! Suppose we're talking about young animals and their characteristics. And suppose you wanted to say that of all the young animals, only the cats are playful. You could symbolize this reading as:
+			\begin{itemize}
+				\item $\forall x(({Y}{x} \eand {P}{x}) \eif {C}{x})$
+			\end{itemize}
+			Each of the last two readings can be made salient in English by placing the stress appropriately. For instance, to suggest the last reading, you would say `Only young \emph{cats} are playful', and to get the other reading you would say `Only \emph{young} cats are playful'.  The very first reading can be indicate by stressing both `young' and `cats': `Only \emph{young cats} are playful' (but not old cats, or dogs of any age).
 			
 			\begin{practiceproblems}
 				\problempart
