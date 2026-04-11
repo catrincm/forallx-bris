@@ -1185,69 +1185,77 @@ Compare this to:
 			%
 			%
 			%\end{practiceproblems}
+%			
+%				\chapter{Choosing a symbolisation}
+%			
+%			\section{How to split a predicate}
+%			
+%			Suppose we just want to symbolize this sentence:
+%			\begin{samplesent}
+%				\item\label{sent:surgeon1} Adina is a skilled surgeon.
+%			\end{samplesent}
+%			
+%			Should this be simply symbolised as $Ka$ using a predicate 
+%				\begin{ekey}
+%					\item[Kx] \gap{x} is a skilled surgeon				
+%				\end{ekey}
+%				
+%				Or should we split it up into 
 			
-				\chapter{Choosing a symbolisation}
-			
-			\section{How to split a predicate}
-			
-			Suppose we just want to symbolize this sentence:
-			\begin{samplesent}
-				\item\label{sent:surgeon1} Adina is a skilled surgeon.
-			\end{samplesent}
-			As in \cref{sec:SymbTruthConds}, we should not understand it as 
-						\begin{samplesent}
-				\item\label{sent:surgeon1} Adina is skilled and she is a surgeon.
-			\end{samplesent}
-		Instead, we would rather use a single predicate, $Kx$, for `$x$ is a skilled surgeon', and let $a$ mean Adina. \Cref{sent:surgeon1} is simply $Ka$.
-			
-			
-			Suppose instead that we want to symbolize this argument:
-			\begin{quote}
-				The hospital will only hire a surgeon if they are skilled. All surgeons are greedy. Billy is a surgeon, but is not skilled. Therefore, Billy is greedy, but the hospital will not hire him.
-			\end{quote}
-			We need to distinguish being a \emph{skilled surgeon} from merely being a \emph{surgeon}. So we define this symbolization key:
-			\begin{ekey}
-				\item[\text{domain}] people
-				\item[Gx] \gap{x} is greedy.
-				\item[Hx] The hospital will hire \gap{x}.
-				\item[Rx] \gap{x} is a surgeon.
-				\item[Kx] \gap{x} is skilled.
-				\item[b] Billy
-			\end{ekey}
-			
-			Now the argument can be symbolized in this way:
-			\begin{earg}
-				\label{surgeon2}
-				\prem $\forall x\bigl(Hx\eif  (Rx \eand Kx)\bigr)$
-				\prem $\forall x(Rx \eif Gx)$
-				\prem $Rb \eand \enot Kb$
-				\conc $Gb \eand \enot Hb$
-			\end{earg}
-			
-			Next suppose that we want to symbolize this argument:
-			\begin{quote}
-				\label{surgeon3}
-				Carol is a skilled surgeon and a tennis player. Therefore, Carol is a skilled tennis player.
-			\end{quote}
-			If we start with the symbolization key we used for the previous argument, we could add a predicate (let $Tx$ mean `$x$ is a tennis player') and a name (let $c$ mean Carol). Then the argument becomes:
-			\begin{earg}
-				\prem $(Rc \eand Kc) \eand Tc$
-				\conc $Tc \eand Kc$
-			\end{earg}
-			This symbolization is a disaster! It takes what in English is a terrible argument and symbolizes it as a valid argument in FOL. The problem is that there is a difference between being \emph{skilled as a surgeon} and \emph{skilled as a tennis player}. Symbolizing this argument correctly requires two separate predicates, one for each type of skill. If we let $K_1x$ mean `$x$ is skilled as a surgeon' and $K_2x$ mean `$x$ is skilled as a tennis player,' then we can symbolize the argument in this way:
-			\begin{earg}
-				\label{surgeon3correct}
-				\prem $(Rc \eand K_1c) \eand Tc$
-				\conc $Tc \eand K_2c$
-			\end{earg}
-			Like the English language argument it symbolizes, this is invalid. %\nix{Notice that there is no logical connection between $K_1c$ and $Rc$. As symbols of FOL, they might be any one-place predicates. In English there is a connection between being a \emph{surgeon} and being a \emph{skilled surgeon}: Every skilled surgeon is a surgeon. In order to capture this connection, we symbolize `Carol is a skilled surgeon' as $Rc \eand K_1c$. This means: `Carol is a surgeon and is skilled as a surgeon.'}
-			
-			The moral of these examples is that you need to be careful of symbolizing predicates in an ambiguous way. Similar problems can arise with predicates like \emph{good}, \emph{bad}, \emph{big}, and \emph{small}. Just as skilled surgeons and skilled tennis players have different skills, big dogs, big mice, and big problems are big in different ways.
-			
-			Is it enough to have a predicate that means `$x$ is a skilled surgeon', rather than two predicates `$x$ is skilled' and `$x$ is a surgeon'? Sometimes. As \cref{sent:surgeon1} shows, sometimes we do not need to distinguish between skilled surgeons and other surgeons.
-			
-			Must we always distinguish between different ways of being skilled, good, bad, or big? No. As the argument about Billy shows, sometimes we only need to talk about one kind of skill. If you are symbolizing an argument that is just about dogs, it is fine to define a predicate that means `$x$ is big.' If the domain includes dogs and mice, however, it is probably best to make the predicate mean `$x$ is big for a dog.'
-			
+%			As in \cref{sec:SymbTruthConds}, we should not understand it as 
+%						\begin{samplesent}
+%				\item\label{sent:surgeon1} Adina is skilled and Adina is a surgeon.
+%			\end{samplesent}
+%		Instead, we would rather use a single predicate, $Kx$, for `$x$ is a skilled surgeon', and let $a$ mean Adina. \Cref{sent:surgeon1} is simply $Ka$.
+%			
+%			
+%			Suppose instead that we want to symbolize this argument:
+%			\begin{quote}
+%				The hospital will only hire a surgeon if they are skilled. All surgeons are greedy. Billy is a surgeon, but is not skilled. Therefore, Billy is greedy, but the hospital will not hire him.
+%			\end{quote}
+%			We need to distinguish being a \emph{skilled surgeon} from merely being a \emph{surgeon}. So we define this symbolization key:
+%			\begin{ekey}
+%				\item[\text{domain}] people
+%				\item[Gx] \gap{x} is greedy.
+%				\item[Hx] The hospital will hire \gap{x}.
+%				\item[Rx] \gap{x} is a surgeon.
+%				\item[Kx] \gap{x} is skilled.
+%				\item[b] Billy
+%			\end{ekey}
+%			
+%			Now the argument can be symbolized in this way:
+%			\begin{earg}
+%				\label{surgeon2}
+%				\prem $\forall x\bigl(Hx\eif  (Rx \eand Kx)\bigr)$
+%				\prem $\forall x(Rx \eif Gx)$
+%				\prem $Rb \eand \enot Kb$
+%				\conc $Gb \eand \enot Hb$
+%			\end{earg}
+%			
+%			Next suppose that we want to symbolize this argument:
+%			\begin{quote}
+%				\label{surgeon3}
+%				Carol is a skilled surgeon and a tennis player. Therefore, Carol is a skilled tennis player.
+%			\end{quote}
+%			If we start with the symbolization key we used for the previous argument, we could add a predicate (let $Tx$ mean `$x$ is a tennis player') and a name (let $c$ mean Carol). Then the argument becomes:
+%			\begin{earg}
+%				\prem $(Rc \eand Kc) \eand Tc$
+%				\conc $Tc \eand Kc$
+%			\end{earg}
+%			This symbolization is a disaster! It takes what in English is a terrible argument and symbolizes it as a valid argument in FOL. The problem is that there is a difference between being \emph{skilled as a surgeon} and \emph{skilled as a tennis player}. Symbolizing this argument correctly requires two separate predicates, one for each type of skill. If we let $K_1x$ mean `$x$ is skilled as a surgeon' and $K_2x$ mean `$x$ is skilled as a tennis player,' then we can symbolize the argument in this way:
+%			\begin{earg}
+%				\label{surgeon3correct}
+%				\prem $(Rc \eand K_1c) \eand Tc$
+%				\conc $Tc \eand K_2c$
+%			\end{earg}
+%			Like the English language argument it symbolizes, this is invalid. %\nix{Notice that there is no logical connection between $K_1c$ and $Rc$. As symbols of FOL, they might be any one-place predicates. In English there is a connection between being a \emph{surgeon} and being a \emph{skilled surgeon}: Every skilled surgeon is a surgeon. In order to capture this connection, we symbolize `Carol is a skilled surgeon' as $Rc \eand K_1c$. This means: `Carol is a surgeon and is skilled as a surgeon.'}
+%			
+%			The moral of these examples is that you need to be careful of symbolizing predicates in an ambiguous way. Similar problems can arise with predicates like \emph{good}, \emph{bad}, \emph{big}, and \emph{small}. Just as skilled surgeons and skilled tennis players have different skills, big dogs, big mice, and big problems are big in different ways.
+%			
+%			Is it enough to have a predicate that means `$x$ is a skilled surgeon', rather than two predicates `$x$ is skilled' and `$x$ is a surgeon'? Sometimes. As \cref{sent:surgeon1} shows, sometimes we do not need to distinguish between skilled surgeons and other surgeons.
+%			
+%			Must we always distinguish between different ways of being skilled, good, bad, or big? No. As the argument about Billy shows, sometimes we only need to talk about one kind of skill. If you are symbolizing an argument that is just about dogs, it is fine to define a predicate that means `$x$ is big.' If the domain includes dogs and mice, however, it is probably best to make the predicate mean `$x$ is big for a dog.'
+%			
 
 			
 			\chapter{Ambiguity}
