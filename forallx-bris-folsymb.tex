@@ -69,7 +69,7 @@
 	
 		Notice that we needed to use a conditional with the universal quantifier, but we used a conjunction with the existential quantifier. 
 		
-		Suppose we had instead written $\exists x(Dx\eif Ex)$. So long as there is a non-dog, $o$, in the model, then $Dx\eif Ex$ is true under $x\mapsto o$. After all, a conditional with a false antecedent is always true. So it would be far too easy to make $\exists x(Dx\eif Ex)$ true: it would be true in any model which contains non-dogs. 
+		Suppose we had instead written $\exists x(Dx\eif Ex)$. So long as there is a non-dog, $o$, in the model, then $Dx\eif Ex$ is true under $x\mapsto o$. After all, a conditional with a false antecedent is always true. So it would be far too easy to make $\exists x(Dx\eif Ex)$ true: it would be true in any model which contains a non-dog. 
 		
 		Similarly, suppose we had instead written $\forall x(Dx\eand Ex)$. So long as there is a non-dog, $o$, in the model, then $Dx\eand Ex$ is false under $x\mapsto o$. So it would be far too hard to make $\exists x (Dx\eand Ex)$ true. It would be false in any model which contains non-dogs. 
 		
@@ -285,13 +285,12 @@
 	Giving $$\enot\exists  x(Dx\eand Ex)$$
 	
 	These two sentences are logically equivalent and both appropriate symbolisations. 
-	
-	\begin{quote}
+		
 		We give an example of semantic reasoning to show that they are logically equivalent. 
-	
+	\begin{quote}
 	Observe that in any model, $\model$, and any variable assignment, $\alpha$,
 	\begin{align*}
-		Dx\eand Ex \text{ is true in } \model \text{ under } \alpha
+		&Dx\eand Ex \text{ is true in } \model \text{ under } \alpha\\
 		&\text{ iff both } Dx \text{ and } Ex \text{ are true in } \model \text{ under } \alpha\\
 		&\text{ iff $Dx$ is true in $\model$ under $\alpha$ and $Ex$ is false in $\model$ under $\alpha$}\\
 		&\text{ iff } Dx\eif\enot Ex \text{ is false in } \model \text{ under } \alpha.
@@ -332,7 +331,7 @@
 		[$x$ likes every dog\\$\forall y(Dy\eif Lxy)$]]
 		]
 	\end{forest}
-\end{center}
+\end{center}offering:
 	$$\enot \exists x(\exists y(Cy\eand Oxy)\eand\forall y(Dy\eif Lxy))$$
 	Alternatively:
 	\begin{center}
@@ -344,7 +343,7 @@
 			]
 		\end{forest}
 	\end{center}
-	offering $$\forall x(\exists y(Cy\eand Oxy)\eif \enot\forall y(Dy\eif Lxy))$$
+	offering: $$\forall x(\exists y(Cy\eand Oxy)\eif \enot\forall y(Dy\eif Lxy))$$
 
 
 	

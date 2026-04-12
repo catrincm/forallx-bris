@@ -147,9 +147,9 @@ $$\forall x(Lx\eif Hx),\; \exists x Lx\;\therefore\; \exists x Hx$$
 \section{Names and Predicates}
 
 Consider
-\begin{quote}
- Alice is a logician.
-\end{quote}
+\begin{samplesent}
+\item Alice is a logician.
+\end{samplesent}
 In TFL we used an atomic sentence to represent this. In FOL we will break it into two components: a name and a predicate.
 
 \begin{quote}
@@ -290,7 +290,7 @@ We can also symbolise more complex sentences, for example:
 \end{samplesent}
 so giving the symbolisation: $$Hj\eif(Sk\eor Sb)$$
 
-One final example. To symbolise:
+To symbolise:
 \begin{samplesent}
 \item\label{sent:folredcar} Herbie is a red car
 \end{samplesent}
@@ -310,6 +310,32 @@ using
 \item[h] Herbie
 \end{ekey}
 Since this latter symbolisation extracts more of the information from the original sentence, it is generally going to be better.
+
+However, just like with TFL, we have to be careful. 
+To symbolise:
+\begin{samplesent}
+	\item\label{sent:skilledsurgeon} Adina is a skilled surgeon
+\end{samplesent}
+Should one simply symbolise it as
+$$Ka$$
+using
+\begin{ekey}
+	\item[Kx] \gap{x} is a skilled surgeon
+	\item[a] Adina
+\end{ekey}
+Or should one split it into
+$$La\eand Sa$$
+using
+\begin{ekey}
+	\item[Lx]\gap{x} is skilled
+	\item[Sx] \gap{x} is a surgeon
+	\item[a] Adina
+\end{ekey}
+This symbolisation would naturally lead to a symbolisation of this argument which would make it valid:
+\begin{quote}
+	Adina is a skilled surgeon. She also plays tennis. Therefore, Adina is a skilled tennis player.
+\end{quote}
+by symbolising it as $$La\eand Sa,\; Ta\;\therefore\; La\eand Ta$$
 
 
 %\section{Names}
@@ -659,7 +685,7 @@ $$\forall x(Ex\eand Sx\eif \enot Tx\eand\enot Bx)$$
 
 
 \section{Existential Quantifier}
-The Universal Quantifier, $\forall$, allows us to capture English notions like ``everything''. The final component of FOL is the Existential Quantifier, $\exists$. This allows us to capture ``something'' or``there exists''.
+The Universal Quantifier, $\forall$, allows us to capture English notions like ``everything''. The final component of FOL is the Existential Quantifier, $\exists$. This allows us to capture ``something'' or ``there exists''.
 
 \begin{highlighted}
 	$\exists x\ldots$ is read as:
@@ -690,7 +716,7 @@ We paraphrase it as
 	\begin{forest}
 		[Some logician wears a funny hat. \\
 		There exists $x$: \ldots\\
-		$\forall x\ldots$
+		$\exists x\ldots$
 		[$x$ is a logician who wears a funny hat\\\ldots and \ldots\\$(\ldots\eand\ldots)$
 		[$x$ is a logician\\$Lx$]
 		[$x$ wears a funny hat\\$Hx$]
@@ -699,7 +725,7 @@ We paraphrase it as
 	\end{forest}
 \end{center}
 
-giving $$\forall x(Lx\eand Hx)$$
+giving $$\exists x(Lx\eand Hx)$$
 
 
 When using the existential quantifier, $\exists$, we typically find it with $\eand$, unlike the universal quantifier, $\forall$, which typically comes paired with $\eif$. Once we do FOL semantics we can see why this is right.  For now, we simply motivate it with paraphrasing. 
@@ -793,9 +819,9 @@ Very similarly, consider:
 		]
 	\end{forest}
 \end{center}
-So we result in: $\exists x(Dx \eand Qx) {\eand} \enot Qf$
+So we result in: $$\exists x(Dx \eand Qx) {\eand} \enot Qf$$
 
-Here the $\exists x$ is at the beginning of the sentence, but it is not the main logical operator, that is $\eand$. 
+Here the $\exists x$ is at the beginning of the sentence, but it is not the main logical operator. The main logical operator is $\eand$. 
 
 Consider:
 \begin{samplesent}
@@ -908,7 +934,7 @@ We write it out in a symbolisation tree to help keeping track, and then work on 
 		]
 	\end{forest}
 \end{center}
-`$x$ is a vet' can be symbolised as $Vx$. How should I symbolise `every animal likes $x$'? 
+`$x$ is a vet' can be symbolised as $Vx$. How should we symbolise `every animal likes $x$'? 
 %\begin{samplesent}
 %	\item Every animal likes $x$
 %\end{samplesent}
@@ -923,9 +949,9 @@ Now, we have already got variable $x$ in play -- it's the vet -- so we should ch
 In our symbolisation tree:
 \begin{center}
 	\begin{forest}
-		[$x$ likes every animal\\{For all $y$, if \ldots then \ldots}\\$\forall y(\ldots\eif\ldots)$
+		[every animal likes $x$\\{For all $y$, if \ldots then \ldots}\\$\forall y(\ldots\eif\ldots)$
 		[$y$ is an animal\\$Ay$]
-		[$x$ likes $y$\\$Lxy$]
+		[$x$ likes $y$\\$Lyx$]
 		]
 	\end{forest}
 \end{center}
@@ -936,15 +962,15 @@ Putting these together:
 		There exists $x$:   \ldots and \ldots\\
 		$\exists x(\ldots\eand \ldots)$
 		[$x$ is a vet\\$Vx$]
-		[$x$ likes every animal\\{For all $y$, if \ldots then \ldots}\\$\forall y(\ldots\eif\ldots)$
+		[every animal likes $x$\\{For all $y$, if \ldots then \ldots}\\$\forall y(\ldots\eif\ldots)$
 		[$y$ is an animal\\$Ay$]
-		[$x$ likes $y$\\$Lxy$]
+		[$x$ likes $y$\\$Lyx$]
 		]
 		]
 	\end{forest}
 \end{center}
 
-So we give: $$\exists x(Vx\eand\forall y(Ay\eif Lxy))$$
+So we give: $$\exists x(Vx\eand\forall y(Ay\eif Lyx))$$
 
 
 Consider 
@@ -970,9 +996,9 @@ And our task which we should now focus on is how to symbolise
 \end{samplesent}
 We can see it has an existential form: ``there exists something''. We can paraphrase it as:
 \begin{samplesent}
-	\item [] There exists something which is an animal and $x$ likes.
+	\item [] There exists something which is an animal and which $x$ likes.
 \end{samplesent}
-But again, $x$ is our vet; so we need to use a different variable, such as $y$. 
+But again, $x$ is our vet; so we need to use a different variable, lets use $y$. 
 \begin{samplesent}
 	\item [] There exists $y$: $y$ is an animal and $x$ likes $y$. 
 \end{samplesent}
@@ -1107,7 +1133,7 @@ So we give: $$\forall x(Vx\eif\exists y(Ay\eand Lxy))$$
 
 $$\forall x(Ax\eif\exists y (Vy\eand Lxy))$$
 
-%These strategies can be applied with more complicated case
+These strategies can be applied with more complicated case
 \begin{samplesent}
 	\item Every happy vet likes all calm animals.
 \end{samplesent}
@@ -1130,7 +1156,33 @@ With our rules for dropping brackets fully utilised we could just give:
 $$\forall x(Hx\eand Vx\eif\forall y(Cy\eand Ay\eif Lxy))$$
 The remaining brackets cannot be dropped. 
 
-These strategies of breaking down the sentence and working on symbolising the components separately using the symbolisation key can take you very far
+\begin{samplesent}
+	\item Every vet who likes some animal which is not calm likes every calm animal.
+\end{samplesent}
+
+\begin{center}
+	\begin{forest}
+		[Every vet who likes some animal which is not calm likes every calm animal.\\
+		For all $x$:   if \ldots then \ldots\\
+		$\forall x(\ldots\eif \ldots)$
+		[$x$ is vet who likes some animal\\\ldots and \ldots\\$\ldots\eand\ldots$
+		[$x$ is a vet\\$Vx$]
+		[$x$ likes some animal\\there exists $y$:\ldots and \ldots\\$\exists y(\ldots\eand \ldots)$
+		[$y$ is an animal\\$Ay$]
+		[$x$ likes $y$\\$Lxy$]]
+		]
+		[$x$ likes every calm animal\\For all $y$ if \ldots then \ldots\\$\forall y(\ldots\eif\ldots)$
+		[$y$ is a calm animal\\$Cy\eand Ay$]
+		[$x$ likes $y$\\$Lxy$]
+		]
+		]
+	\end{forest}
+\end{center}
+
+
+These strategies of breaking down the sentence and working on symbolising the components separately using the symbolisation key can take you very far.
+
+Let us now return to more carefully see the syntax of the language of FOL. How to read a sentence? Where do brackets go? 
 
 \section{Domains}
 \label{sec:domain}
@@ -1704,8 +1756,10 @@ with subscripts, as needed $x_1, y_1, z_1, x_2,\ldots$. $u,v,w$ may also be used
 In \cref{sec:TFLSentences}, we went straight from the presentation of the vocabulary of TFL to the definition of a sentence of TFL. In FOL, we will have to go via an intermediary stage, that is, we first need to introduce \define{formulas} of FOL. The intuitive idea is that a formula is any sentence, or anything which can be turned into a sentence by adding quantifiers out front. But this will take some unpacking.
 
 As we did for TFL, we will  present a inductive definition of a formula of FOL. The starting point of this is the notion of an \emph{atomic formula}. In TFL we started our definition with the notion of an atomic sentence, which were just given to us in our vocabulary. In FOL, the starting point of our definition is the notion of an atomic formula. Atomic formulas will be given by the following definition:
-\factoidbox{ If $\metaPredicate$ is an $n$-place predicate and $\metaterm_1,\ldots\metaterm_n$ are either variables or names, then $\metaPredicate\metaterm_1\ldots\metaterm_n$ is an \define{atomic formula}.\footnotemark}
+\begin{quote}
+	{ If $\metaPredicate$ is an $n$-place predicate and $\metaterm_1,\ldots\metaterm_n$ are either variables or names, then $\metaPredicate\metaterm_1\ldots\metaterm_n$ is an \define{atomic formula}.\footnotemark}
 \footnotetext{In FOL variables and names are both called (singular) terms. Notice that in the above definition $\metaPredicate$ and $\metaterm$ are metavariables ranging over names of predicates and names of terms respectively.}
+\end{quote}
 
 For example, if $D$ is a one-place predicate (we might have introduced it to symbolise `\gap{x} is a dog'), and $L$ is a two-place predicate (we might have introduced it to symbolise `\gap{x} loves \gap{y}'), then the following are atomic formulas:
 \begin{center}
