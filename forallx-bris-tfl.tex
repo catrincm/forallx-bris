@@ -897,7 +897,7 @@ We will use the sentence $\enot (A\eand B)$ to be the symbolisation of the Engli
 
 
 When drawing these trees we have highlighted a particular connective on each of our nodes. We call that connective the \define{main connective} of the sentence at that node.
-\factoidbox{The \define{main connective} of a sentence is the last connective that was introduced in the construction of the sentence.}
+\begin{highlighted}The \define{main connective} of a sentence is the last connective that was introduced in the construction of the sentence.\end{highlighted}
 
 This will then be important to know in what order to calculate the truth value of $\enot(A\eand B)$. 
 
@@ -1776,8 +1776,8 @@ This talks about \emph{arbitrary} sentences. If we had instead offered:
 		\item[2$'$.] If `$A$' is a sentence, then `$\enot A$' is a sentence.
 	\end{itemize}
 this would not have allowed us to determine whether `$\enot B$' is a sentence. To emphasize:
-	\factoidbox{
-	  `$\metaX$',  is a symbol (called a \define{metavariable}) in augmented English, which we use to talk about expressions of TFL. 	`$A$' is a particular sentence letter of TFL.}
+	\begin{highlighted}
+	  `$\metaX$',  is a symbol (called a \define{metavariable}) in augmented English, which we use to talk about expressions of TFL. 	`$A$' is a particular sentence letter of TFL.\end{highlighted}
 
         \newglossaryentry{metavariables}
 {
@@ -1873,9 +1873,9 @@ A valuation is a specification of whether each atomic sentence is true or false.
 %
 %But how do we determine whether a given atomic sentence is true? This is where the notion of an \emph{interpretation} comes into the picture. An interpretation will stipulate (assign) truth values of particular atomic sentences. Let `$B$' stand for the English sentence `Ben is happy'. Then there is one interpretation according to which this is true, that is, $B$ will be assigned the value ``True'' on this interpretation. There is another interpretation according to which Ben is not happy, that is, $B$ is assigned the value ``False'' on this interpretation. In TFL an interpretation of the atomic sentences is called a \define{valuation}:
 
-\factoidbox{
+\begin{highlighted}
 		A \define{valuation} is any assignment of truth values (true or false) to the atomic sentences of TFL.
-	}
+	\end{highlighted}
 
         \newglossaryentry{valuation}
 {
@@ -1895,7 +1895,7 @@ For example a valuation $v$ might assign:
 If you give me a valuation, I can then use the rules to calculate the truth value of any sentence. 
 Sentences of TFL are true or false \emph{relative to a valuation}. 
 The valuation determines the truth values of the atomic sentences, and complex sentences are determined using the truth rules:
-\factoidbox{Let $v$ be a valuation. Then
+\begin{highlighted}Let $v$ be a valuation. Then
 	\begin{enumerate}
 		\item An atomic sentence $X$ is true relative to $v$, if and only if $v$ assigns the value T to $X$.
 		\item For a sentence $\enot\metaX$, $(\metaX\eand\metaY)$, $(\metaX\eor\metaY)$, $(\metaX\eif\metaY)$, whether it is true or false relative to $v$ can be determined by applying the appropriate truth rule depending on whether $\metaX$ and $\metaY$ are true or false relative to $v$:
@@ -1944,7 +1944,7 @@ The valuation determines the truth values of the atomic sentences, and complex s
 		%\item If \metaX and \metaY are sentences, then $(\metaX\eiff\metaY)$ is a sentence.
 		%\item Nothing else is a sentence.
 	\end{enumerate}
-}
+\end{highlighted}
 
 Consider 
 `$(\enot I\eand H)\eif H$'. We will determine whether it is true or false on the valuation given. 
@@ -2266,9 +2266,9 @@ In \cref{sec:Valid} we said that an argument was valid, if and only if there is 
 
 Recall that an argument consisted of a number of premises together with a conclusion. A TFL-argument then can be written as $X_1,\ldots,X_n\therefore Y$ where $X_1,\ldots,X_n$ and $Y$ are sentences of TFL, and $X_1,\ldots,X_n$ are the premises and $Y$ the conclusion of the argument.
 
-\factoidbox{\label{def:TFLvalid}A TFL-argument is valid if and only if there is no valuation on which all the premises are true but the conclusion is false. 
+\begin{highlighted}\label{def:TFLvalid}A TFL-argument is valid if and only if there is no valuation on which all the premises are true but the conclusion is false. 
 	
-	That is, `$X_1,\ldots,X_n\therefore Y$' is \define{valid} if and only if there is no valuation $v$ such that $X_1$ is true relative to $v$ and $X_2$ is true relative to $v$, and so on, up to $X_n$ being true relative to $v$, but $Y$ is false relative to $v$.}
+	That is, `$X_1,\ldots,X_n\therefore Y$' is \define{valid} if and only if there is no valuation $v$ such that $X_1$ is true relative to $v$ and $X_2$ is true relative to $v$, and so on, up to $X_n$ being true relative to $v$, but $Y$ is false relative to $v$.\end{highlighted}
 
 So to determine whether a TFL-argument is valid or not, we should show whether or not there is a valuation on which all premises are true but the conclusion false. 
 
@@ -2365,7 +2365,7 @@ There are $2^n$ ways to assign truth values to $n$ atomic sentences. Using truth
 
 
 Here's one strategy that some people find useful for listing all the valuations. 
-\factoidbox{
+\begin{highlighted}
 \begin{itemize}
 	\item 	For $n$ atomic sentences, there are $2^n$ valuations. 
 	
@@ -2386,7 +2386,7 @@ Here's one strategy that some people find useful for listing all the valuations.
 \item	And so on until you get to the first atomic sentence.
 \end{itemize}
 \end{itemize}
-	}
+	\end{highlighted}
 	
 \section{Complete truth tables for a sentence}
 
@@ -2883,7 +2883,7 @@ Here's another example.
 With this example in mind let us try to give a general instruction for constructing a truth table for a sentence $X$.
 
 
-\factoidbox{
+\begin{highlighted}
 	\begin{enumerate}
 		\item Write down the formation tree of $X$. Set up the header of the truth table with lines matching the formation tree. 
 		\item Consider any atomic sentences which appear in \metaX. If you are doing a truth table for multiple sentences, you'll need to also consider those appearing in the other sentences. Write all these atomic sentences in the header row, at the beginning of the table. 
@@ -2894,7 +2894,7 @@ With this example in mind let us try to give a general instruction for construct
 			\item If it is a complex sentence, apply the relevant truth rule to its consituatnt parts, remembering that their truth values are written underneath their main connectives.
 		\end{itemize}
 		\item Highlight or boldface the column under the main connective of the overall sentence, which provides our final answer.
-\end{enumerate}}
+\end{enumerate}\end{highlighted}
 
 If you follow these outlines, you should be able to construct truth tables for arbitrary TFL sentences. Of course, the more complicated the sentences are, and the more atomic sentence letters they contain the longer and tedious the truth table---but the more important it becomes to painstakingly stick to the guidelines we have given.
 
@@ -3338,7 +3338,7 @@ If you want additional practice, you can construct truth tables for any of the s
 \chapter{Validity and the method of truth tables}
 \section{Validity}
 
-\factoidbox{A TFL-argument $X_1,\ldots,X_n\therefore Y$ is \define{valid} if and only if there is no valuation $v$ such that all the premises, $X_1,\ldots,X_n$ are true relative to $v$ but $Y$ is false relative to $v$.}
+\begin{highlighted}A TFL-argument $X_1,\ldots,X_n\therefore Y$ is \define{valid} if and only if there is no valuation $v$ such that all the premises, $X_1,\ldots,X_n$ are true relative to $v$ but $Y$ is false relative to $v$.\end{highlighted}
 
 
 
@@ -3761,9 +3761,9 @@ Inconsistent collections have truth tables more like:
 
 \section{Tautologies and contradictions}\label{sec:TautologiesAndContradictions}
 
-\factoidbox{
+\begin{highlighted}
 	A sentence $\metaX$ of TFL is a \define{logical truth} or \define{tautology} if and only if it is true on every valuation.
-}
+\end{highlighted}
 
 \newglossaryentry{tautology}
 {
@@ -3787,9 +3787,9 @@ Our main example of a tautology is $A\eor\enot A$. Whatever the weather is like 
 Since there is a $T$ under the main connective on every line of the truth table, $A\eor \enot A$ is true, whatever the valuation is, i.e.~whether $A$ is true or false.
 
 
-\factoidbox{
+\begin{highlighted}
 	$\metaX$ is a \define{contradiction} iff it is false on every valuation.
-}
+\end{highlighted}
 \newglossaryentry{contradiction of TFL}
 {
 	name=contradiction (of TFL),
@@ -3811,9 +3811,9 @@ Our core example of a contradiction is $A\eand\enot A$. Whether $A$ is true or f
 \end{center}
 
 
-\factoidbox{
+\begin{highlighted}
 	$\metaX$ is \define{contingent} iff it is neither a tautology nor a contradiction.
-}
+\end{highlighted}
 
 
 
@@ -3874,9 +3874,9 @@ Our core example of a contradiction is $A\eand\enot A$. Whether $A$ is true or f
 
 \section{Logical equivalence}\label{sec:logical equivalent}
 Here is another useful notion:
-\factoidbox{
+\begin{highlighted}
 	$\metaX$ and $\metaY$ are \define{logically equivalent} iff they are true on exactly the same valuations.
-}
+\end{highlighted}
 \newglossaryentry{logically equivalent}
 {
 	name=logical equivalence (in TFL),

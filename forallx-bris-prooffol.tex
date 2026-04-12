@@ -62,11 +62,11 @@ We can now give our general rule: whenever you have a sentence $\forall \meta{x}
 %We obtained line 2 here by dropping the universal quantifier and replacing every instance of `$x$' with `$d$'. We could have done the same with any other name we wanted.
 
 Here is the formal specification of the universal elimination rule ($\forall$E):
-\factoidbox{
+\begin{highlighted}
 \begin{fitchproof}
 	\have[m]{a}{\forall \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)}
 	\have[\ ]{c}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)} \forallE{a}
-\end{fitchproof}}
+\end{fitchproof}\end{highlighted}
 The point is that you can obtain any \emph{substitution instance} of a universally quantified formula: \textbf{replace every instance of the quantified variable with any name you like}. (Of course, you need to replace every free occurrence of $x$ in $X$ by the same name.)
 
 I should emphasize that (as with every elimination rule) you can only apply the $\forall$E rule when the universal quantifier is the main logical operator. Thus the following is outright banned:
@@ -178,13 +178,13 @@ Consider the following example:
 \end{fitchproof} This shows us that we do not have to replace \emph{all} instances of the name with the variable. Though of course we can if we wish: we could also deduce there is someone who loves himself.
 
 To give our rule in general we need to introduce some new notation for this ability to replace just some of our instances of the name: If $\metaX$ is a sentence containing the name $\meta{c}$, we can emphasize this by writing `$\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$'. \textbf{We will write `$\metaX(\ldots \meta{x} \ldots \meta{c}\ldots)$' to indicate any formula obtained by replacing \emph{some or all} of the instances of the name \meta{c} with the variable \meta{x}}. Armed with this, our introduction rule is:
-\factoidbox{
+\begin{highlighted}
 \begin{fitchproof}
 	\have[m]{a}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}
 	\have[\ ]{c}{\exists \meta{x}\metaX(\ldots \meta{x} \ldots \meta{c}\ldots)} \existsI{a}
 \end{fitchproof}
 Can only replace instances of $c$ which are not already bound by $\forall \meta{x}$ or $\exists \meta{x}$ in $\metaX$.
-}
+\end{highlighted}
 %All the cases we've seen in this section follow this rule.
 
 You might have noticed the additional constraint that's added to the rule. 
@@ -241,7 +241,7 @@ We have proved `$Fa$'. And, of course, nothing stops us from using the same just
 	\have{y}{\forall y Fy} \Ai{a}
 \end{fitchproof}
 The crucial thought here is that `$a$' was just some \emph{arbitrary} name. There was nothing special about it---we might have chosen any other name---and still the proof would be fine. And this crucial thought motivates the universal introduction rule ($\forall$I):
-\factoidbox{
+\begin{highlighted}
 \begin{fitchproof}
 	\have[m]{a}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}
 	\have[\ ]{c}{\forall \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)} \Ai{a}
@@ -249,7 +249,7 @@ The crucial thought here is that `$a$' was just some \emph{arbitrary} name. Ther
 	\meta{c} must not occur in any undischarged assumption or premise.\\
 	\meta{c} must not already be bound by $\forall \meta{x}$ or $\exists \meta{x}$ in $\metaX$.
 %	\meta{x} must not occur in $\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$
-	}
+	\end{highlighted}
 It is important to appreciate that to apply the rule correctly \textbf{we must replace every occurrence of the name $c$ by the variable $x$}. A crucial aspect of this rule, though, is bound up in the first constraint. This constraint ensures that we are always reasoning at a sufficiently general level (the second constraint is one which avoids unintended instances such as $\exists x Fcx\therefore \forall x\exists x Fxx$. The conclusion is logically equivalent to $\exists x Fxx$ and it is an invalid argument.) 
 %\footnote{Recall from \cref{sec:BasicTFL} that we are treating `$\ered$' as a canonical contradiction. But if it were the canonical contradiction as involving some \emph{constant}, it might interfere with the constraint mentioned here. To avoid such problems, we will treat `$\ered$' as a canonical contradiction \emph{that involves no particular names}.}
 
@@ -300,7 +300,7 @@ We might try to capture this reasoning pattern in a proof as follows:
 Breaking this down: we started by writing down our assumptions. At line 3, we made an additional assumption: `$Fo$'. This was just a substitution instance of `$\exists x Fx$'. On this assumption, we established `$\exists x Gx$'. Note that we had made no \emph{special} assumptions about the object named by `$o$'; we had \emph{only} assumed that it satisfies `$Fx$'. So nothing depends upon which object it is. And line 1 told us that \emph{something} satisfies `$Fx$', so our reasoning pattern was perfectly general. We can discharge the specific assumption `$Fo$', and simply infer `$\exists x Gx$' on its own.
 
 Putting this together, we obtain the existential elimination rule ($\exists$E):
-\factoidbox{
+\begin{highlighted}
 \begin{fitchproof}
 	\have[m]{a}{\exists \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)}
 	\open
@@ -312,7 +312,7 @@ Putting this together, we obtain the existential elimination rule ($\exists$E):
 \end{fitchproof}
 \meta{c} must be new to the proof: it does not occur in any line $< i$;\\
 \meta{c} must not occur in \metaY.
-}
+\end{highlighted}
 As with universal introduction, the constraints are extremely important. To see why, consider the following terrible argument:
 	\begin{quote}
 		Tim Button is a lecturer. There is someone who is not a lecturer. So Tim Button is both a lecturer and not a lecturer.
@@ -503,29 +503,29 @@ For each of the following arguments: If it is valid in FOL, give a proof. If it 
 In this section, we will add some additional rules to the basic rules of the previous section. These govern the interaction of quantifiers and negation.
 
 In \cref{sec:FOLBuildingBlocks}, we noted that $\enot\exists x\metaX$ is logically equivalent to $\forall x \enot\metaX$. We will add some rules to our proof system that govern this. In particular, we add:
-	\factoidbox{
+	\begin{highlighted}
 	\begin{fitchproof}
 		\have[m]{a}{\forall \meta{x} \enot\metaX}
 		\have[\ ]{con}{\enot \exists \meta{x} \metaX}\cq{a}
-	\end{fitchproof}}
+	\end{fitchproof}\end{highlighted}
 and
-\factoidbox{
+\begin{highlighted}
 	\begin{fitchproof}
 		\have[m]{a}{ \enot \exists \meta{x} \metaX}
 		\have[\ ]{con}{\forall  \meta{x} \enot \metaX}\cq{a}
-	\end{fitchproof}}
+	\end{fitchproof}\end{highlighted}
 Equally, we add:
-\factoidbox{
+\begin{highlighted}
 	\begin{fitchproof}
 		\have[m]{a}{\exists \meta{x}\enot \metaX}
 		\have[\ ]{con}{\enot \forall \meta{x} \metaX}\cq{a}
-	\end{fitchproof}}
+	\end{fitchproof}\end{highlighted}
 and
-\factoidbox{
+\begin{highlighted}
 	\begin{fitchproof}
 		\have[m]{a}{\enot \forall \meta{x} \metaX}
 		\have[\ ]{con}{\exists \meta{x} \enot \metaX}\cq{a}
-	\end{fitchproof}}
+	\end{fitchproof}\end{highlighted}
 
 \begin{practiceproblems}
 \problempart

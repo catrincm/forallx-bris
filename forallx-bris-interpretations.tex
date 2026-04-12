@@ -657,7 +657,7 @@ In the same way that a three-place predicate picks out a ternary relation, an $n
 
 In \cref{sec:Truth FOL monadic}, we introduced the idea of a model but we did not include relations. Now we can extend it to give the proper definition of a  \define{model}. Sentences of FOL will be true or false \emph{in a model}.
 
-\factoidbox{A model $\model$ provides \begin{itemize}
+\begin{highlighted}A model $\model$ provides \begin{itemize}
 		\item specifies a non-empty set as the domain, $\domain$;
 		\item specifies an interpretation of the FOL-names and FOL-predicates. 
 		\begin{itemize}
@@ -674,7 +674,7 @@ In \cref{sec:Truth FOL monadic}, we introduced the idea of a model but we did no
 				%		\item \ldots
 				%		\end{itemize}
 		\end{itemize}
-\end{itemize}}
+\end{itemize}\end{highlighted}
 
 {For a model, $\model$, we denote its assignment to $\eta$ as $\denote{\eta}_\model$. 
 	
@@ -930,7 +930,7 @@ This is a lot to fill out. But the guidance is that you take shortcuts: don't ca
 
 \chapter{Truth in a model, more carefully}\label{ch:FOL semantics properly}
 Sentences of FOL are true or false in a model. 
-\factoidbox{A model $\model$ provides \begin{itemize}
+\begin{highlighted}A model $\model$ provides \begin{itemize}
 		\item specifies a non-empty set as the domain, $\domain$;
 		\item specifies an interpretation of the FOL-names and FOL-predicates. 
 		\begin{itemize}
@@ -947,16 +947,16 @@ Sentences of FOL are true or false in a model.
 				%		\item \ldots
 				%		\end{itemize}
 		\end{itemize}
-\end{itemize}}
+\end{itemize}\end{highlighted}
 \newglossaryentry{model}{
 	name = {model},
 	description = {a specification of a \gls{domain} together with the objects the \glspl{name} pick out and the sets and relations assigned to the different \glspl{predicate}}
 }
 
 
-\factoidbox{For a model, $\model$, we denote its assignment to $\eta$ as $\denote{\eta}_\model$. 
+\begin{highlighted}For a model, $\model$, we denote its assignment to $\eta$ as $\denote{\eta}_\model$. 
 	
-	We will often drop the explicit reference to $\model$ and simply describe a model by providing a domain and $\denote{\eta}$ for each name and predicate.}
+	We will often drop the explicit reference to $\model$ and simply describe a model by providing a domain and $\denote{\eta}$ for each name and predicate.\end{highlighted}
 
 
 For example $\model$ might be:
@@ -985,7 +985,7 @@ Since, among other things, models tell us how we are to understand FOL-predicate
 But we defined what a sentence was by first specifying what a formula is. Formulas like $Ex$ aren't the sorts of things that are true or false in a model. Only \emph{sentences} are true or false. But if we provide extra information we can determine the truth of $Ex$: we need to specify what object $x$ stands for. This is done by using a variable assignment: 
 
 
-\factoidbox{A \define{variable assignment} assigns to each variable an object of the domain.}
+\begin{highlighted}A \define{variable assignment} assigns to each variable an object of the domain.\end{highlighted}
 
 For example, if our domain is the set of characters in Winnie the Pooh, a variable assignment $\alpha$ might be:
 \begin{center}
@@ -1033,7 +1033,7 @@ But we also need to describe a clause for atomic formulas which contain variable
 \end{itemize}
 
 To write these out more precisely, we unify the terminology:
-\factoidbox{A \define{term} is either a name or a variable. 
+\begin{highlighted}A \define{term} is either a name or a variable. 
 	%CCM rewrote from JS. check.
 	\begin{itemize}
 		\item If $t$ is a name, then $\denote{t}^\alpha_\model$ is just $\denote{t}_\model$, the object of the domain assigned to the FOL-name $t$ by $\model$.
@@ -1041,23 +1041,23 @@ To write these out more precisely, we unify the terminology:
 	\end{itemize}
 	%	If $t$ is a term then the \define{denotation of the term} in the model under an variable assignment $\alpha$, $\denote{t}^\alpha$ is the object pick out by the model, if $t$ is a name and $\alpha(t)$ otherwise:
 	%\begin{align*}\denote{t}^\alpha=\begin{cases}\denote{t},&\text{ if $t$ is name;}\\\alpha(t),&\text{  if $t$ is a variable.}\end{cases}\end{align*} 
-}
+\end{highlighted}
 
 
 
 With this final bit of terminology out of way we can state the truth conditions for atomic formuals. 
 
-\factoidbox{For \meta{R} an $n$-place predicate, $\metaterm_1,\,\metaterm_2\ldots\metaterm_{n}$ terms
+\begin{highlighted}For \meta{R} an $n$-place predicate, $\metaterm_1,\,\metaterm_2\ldots\metaterm_{n}$ terms
 	
 	$\meta{R}\metaterm_1\metaterm_2\ldots\metaterm_{n}$ is true in a model $\model$ under a variable assignment $\alpha$ \textbf{iff}\\
 	$$\langle\denote{t_1}^\alpha_\model,\ldots,\denote{t_n}^\alpha_\model\rangle\in\denote{\meta{R}}_\model$$
-}
+\end{highlighted}
 
 
 
 \section{Sentential connectives}
 We saw in \cref{sec:FOLSentences} that FOL formulas can be built up from simpler ones using the truth-functional connectives that were familiar from TFL. The rules governing these truth-functional connectives are \emph{exactly} the same as they were when we considered TFL. Here they are:
-\factoidbox{
+\begin{highlighted}
 	$\enot \metaX$ is true in a model $\model$ under a variable assignment $\alpha$ \textbf{iff} \\$\metaX$ is false in $\model$ under $\alpha$.
 	
 	\
@@ -1072,7 +1072,7 @@ We saw in \cref{sec:FOLSentences} that FOL formulas can be built up from simpler
 	
 	%\
 	%\\$\metaX \eiff \metaY$ is true in a model $\model$ under a variable assignment $\alpha$ \textbf{iff} \\$\metaX$ has the same truth value as $\metaY$ in $\model$ under $\alpha$
-}
+\end{highlighted}
 This is just another presentation of the truth rules we gave for the connectives in TFL; it just does so in a slightly different way. Some examples will probably help to illustrate the idea. On 	\begin{interp}
 	\item[\domain]$\Set{o \given o\text{ is a person born before before 2000\textsc{ce}}}$)
 	\item[\denote{a}] \emph{Aristotle}
@@ -1116,7 +1116,7 @@ Consider the following model:
 
 Before we give a general definition of whether a formula is true or false \emph{under a variable assignment} in a give model, we need to introduce one further useful bit of terminology.
 
-\factoidbox{Let $\alpha$ be a variable assignment and $\metav$ a variable. \\
+\begin{highlighted}Let $\alpha$ be a variable assignment and $\metav$ a variable. \\
 	\define{$\varvariant{\alpha}{\metav}{o}$} is a variable assignment which assigns to the variables other than $\metav$ the same objects as $\alpha$ does and it assigns $o$ to $\metav$. \\
 	That is, $\varvariant{\alpha}{\metav}{o}(\metav')=
 	\begin{cases}
@@ -1126,7 +1126,7 @@ Before we give a general definition of whether a formula is true or false \emph{
 	
 	
 	$\varvariant{\alpha}{\metav}{o}$ is called an \define{$\metav$-variant} of $\alpha$.\\
-}
+\end{highlighted}
 
 Notice that $\metav$ is metavariable for variables of FOL, so that it can be done for any variable. 
 \todo{is this the right formulation??}
@@ -1205,7 +1205,7 @@ One final example: $\forall x\forall y Rxy$. To check this we will need to consi
 More generally, if we have a quantifier like $\exists x$ or $\forall x$ we ignore whatever our original variable assignment told us about $x$ but consider suitable $x$-variants. So when all our variables are bound by quantifiers, all the original components of our variable assignment are ignored. To summarise: Sentences are simply true or false in models, variable assignments don't matter.
 
 Now for our formal definition:
-\factoidbox{
+\begin{highlighted}
 	$\forall \metav\metaX$ is true in the model $\model$ under a variable assignment $\alpha$\\
 	\textbf{iff} for every $o\in \domain$, $\metaX$ is true in $\model$ under the variable assignment $\varvariant{\alpha}{\metav}{o}$.
 	
@@ -1213,7 +1213,7 @@ Now for our formal definition:
 	
 	$\exists \metav\metaX$ is true in the model $\model$ under a variable assignment $\alpha$\\
 	\textbf{iff} for some $o\in \domain$, $\metaX$ is true in $\model$ under the variable assignment $\varvariant{\alpha}{\metav}{o}$.
-}
+\end{highlighted}
 %To be clear: all this is doing is formalizing the intuitive idea expressed in our examples. The result is a bit ugly, and the final definition might look a bit opaque. Hopefully, though, the \emph{spirit} of the idea is clear.
 
 
@@ -1540,7 +1540,7 @@ We have now provided the full inductive definition of truth in a model under a v
 Offering a precise definition of truth in FOL was more than a little fiddly, but now that we are done, we can define various central logical notions. These will look very similar to the definitions we offered for TFL. However, remember that they concern \emph{models}, rather than valuations.
 \section{Validity}
 %We will use the symbol $\entails$ for FOL much as we did for TFL. So:
-\factoidbox{A FOL-argument $X_1,\ldots,X_n\therefore Y$ is \define{valid} if and only if there is no model $\model$ such that all the premises, $X_1,\ldots,X_n$ are true in $\model$ but $Y$ is false in $\model$.}
+\begin{highlighted}A FOL-argument $X_1,\ldots,X_n\therefore Y$ is \define{valid} if and only if there is no model $\model$ such that all the premises, $X_1,\ldots,X_n$ are true in $\model$ but $Y$ is false in $\model$.\end{highlighted}
 %Derivatively,
 %	$$\entails\metaX$$
 %means that \metaX is true in every model.
@@ -1616,9 +1616,9 @@ The other logical notions also have corresponding definitions in FOL:
 	\metaY is a \define{logical consequence} of $\metaX_1,\ldots,\metaX_n$ if and only if $X_1,\ldots,X_n\therefore Y$ is {valid}. That is, iff there is no model where $\metaX_1,\ldots, \metaX_n$ are true and $\metaY$ is false. 
 \end{highlighted}
 
-\factoidbox{
+\begin{highlighted}
 	$\metaX$ and $\metaY$ are \define{logically equivalent} iff they are true on exactly the same valuations.
-}
+\end{highlighted}
 
 An important example of logical equivalence is the close relationship between the two quantifiers:
 \begin{itemize}
@@ -1633,16 +1633,16 @@ An important example of logical equivalence is the close relationship between th
 \end{itemize}
 
 
-\factoidbox{
+\begin{highlighted}
 	A sentence $\metaX$ of TFL is a \define{logical truth} if and only if it is true in every model.
-}
+\end{highlighted}
 
 
 ``Tautology'' is a name which was specific to TFL. The notion of being a ``logical truth'' is broader and also applies in FOL
 
-\factoidbox{
+\begin{highlighted}
 	$\metaX$ is a \define{contradiction} iff it is false in every model.
-}
+\end{highlighted}
 
 
 \begin{highlighted}

@@ -405,7 +405,7 @@ Explain why these would be equally good symbolizations.
 FOL with identity extends FOL as we presented it earlier.
 \section{Sentences of FOL with identity}When we add the identity symbol to FOL, we add a new kind of atomic sentence, for example $a\eid b$.
 
-We simply do this by adding a new kind of atomic sentence: \factoidbox{If $\meta{a}$ and $\meta{b}$ are names, then $\meta{a}\eid \meta{b}$ is an atomic sentence.}
+We simply do this by adding a new kind of atomic sentence: \begin{highlighted}If $\meta{a}$ and $\meta{b}$ are names, then $\meta{a}\eid \meta{b}$ is an atomic sentence.\end{highlighted}
 This is added to the other clauses of what it is to be a sentence as they were given in \cref{sec:FOLSentences}
 
 We can now see that $\forall x (\enot\, x\eid p \eif Opx)$ is a sentence, as it could be constructed as follows:	\begin{center}
@@ -441,9 +441,9 @@ Sometimes you might come across cases where you might feel tempted to write some
 %\end{ekey} then a sentence $a\eid c$ is true.
 
 Now that we have added the identity symbol to FOL, we simply need to expand our notion of truth from \cref{ch:semantics} to also account for atomic sentences like $a\eid b$. Our clause that we add is:
-\factoidbox{
+\begin{highlighted}
 $\meta{a}\eid\meta{b}$ is true \textbf{iff} $\meta{a}$ and $\meta{b}$ name the same object in that model.
-}
+\end{highlighted}
 So on our go-to model from \cref{ch:semantics},
 \begin{ekey}
 		\item[\text{domain}] all people born before 2000\textsc{ce}
@@ -514,17 +514,17 @@ If two names refer to the same object, then swapping one name for another will n
 	\end{align*}
 
 We capture this idea in our elimination rule. If you have established `$a\eid b$', then anything that is true of the object named by `$a$' must also be true of the object named by `$b$'. For any sentence with `$a$' in it, you can replace some or all of the occurrences of `$a$' with `$b$' and produce an equivalent sentence. For example, from `$Raa$' and `$a \eid  b$', you are justified in inferring `$Rab$', `$Rba$' or `$Rbb$'. More generally:
-\factoidbox{\begin{fitchproof}
+\begin{highlighted}\begin{fitchproof}
 	\have[m]{e}{\meta{a}\eid \meta{b}}
 	\have[n]{a}{\metaX(\ldots \meta{a} \ldots \meta{a}\ldots)}
 	\have[\ ]{ea1}{\metaX(\ldots \meta{b} \ldots \meta{a}\ldots)} \by{\eid E}{e,a}
-\end{fitchproof}}
+\end{fitchproof}\end{highlighted}
 The notation here is as for $\exists$I. So $\metaX(\ldots \meta{a} \ldots \meta{a}\ldots)$ is a formula containing the name $\meta{a}$, and $\metaX(\ldots \meta{b} \ldots \meta{a}\ldots)$ is a formula obtained by replacing one or more instances of the name $\meta{a}$ with the name $\meta{b}$. Lines $m$ and $n$ can occur in either order, and do not need to be adjacent, but we always cite the statement of identity first. Symmetrically, we allow:
-\factoidbox{\begin{fitchproof}
+\begin{highlighted}\begin{fitchproof}
 	\have[m]{e}{\meta{a}\eid \meta{b}}
 	\have[n]{a}{\metaX(\ldots \meta{b} \ldots \meta{b}\ldots)}
 	\have[\ ]{ea2}{\metaX(\ldots \meta{a} \ldots \meta{b}\ldots)} \by{\eid E}{e,a}
-\end{fitchproof}}
+\end{fitchproof}\end{highlighted}
 This rule is sometimes called \emph{Leibniz's Law}, after Gottfried Leibniz.
 
 Some philosophers have believed the reverse of this claim. That is, they have believed that when exactly the same sentences (not containing `$\eid $') are true of two objects, then they are really just one and the same object after all. This is a highly controversial philosophical claim (sometimes called the \emph{identity of indiscernibles}) and our logic will not subscribe to it; we allow that exactly the same things might be true of two \emph{distinct} objects.
@@ -543,10 +543,10 @@ Since we are not subscribing to the thesis of identity of indiscernibles, no mat
 The consequence of this, for our proof system, is that there are no sentences that do not already contain the identity predicate that could justify the conclusion `$a\eid b$'. This means that the identity introduction rule will not justify `$a\eid b$', or any other identity claim containing two different names.
 
 However, every object is identical to itself. No premises, then, are required in order to conclude that something is identical to itself. So this will be the identity introduction rule:
-\factoidbox{
+\begin{highlighted}
 \begin{fitchproof}
 	\have[\ \,\,\,]{x}{\meta{c}\eid \meta{c}} \by{\eid I}{}
-\end{fitchproof}}
+\end{fitchproof}\end{highlighted}
 Notice that like the Law of Excluded Middle, this rule does not require referring to any prior lines of the proof. For any name \meta{c}, you can write $\meta{c}\eid \meta{c}$ on any point, with only the {\eid }I rule as justification.
 
 

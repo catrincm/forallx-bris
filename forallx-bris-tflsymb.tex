@@ -457,7 +457,7 @@ If we symbolise it as $N\eand C$ it will be given by the truth conditions:
 	\end{tabular}
 \end{center}
 
-\factoidbox{When symbolizing sentences, make sure the paraphrasing matches the truth conditions}
+\begin{highlighted}When symbolizing sentences, make sure the paraphrasing matches the truth conditions\end{highlighted}
 
 \section{How much paraphrasing is appropriate?}
 
@@ -510,7 +510,7 @@ For another, there is no syntactic marker such as a prefix, a word like `not', e
 \end{earg}
 While this is a good argument and perhaps a conceptually valid argument it is not valid in the strict sense because it not valid in virtue of its form: it requires understanding `bad' as `not good'. So, if we were to symbolize \cref{sent:bad} as `$\neg G$ we would stipulate some logical structure that the English sentence does not display and would wrongly deem the argument to be valid.
 
-\factoidbox{When symbolizing sentences, only introduce logical structure that is displayed by the English sentence}
+\begin{highlighted}When symbolizing sentences, only introduce logical structure that is displayed by the English sentence\end{highlighted}
 
 If you wish to make the information that in the specific circumstances `bad' means that something is not good and vice versa available in TFL, you can add this as an additional premises when symbolizing the relevant argument in TFL. That, is if we think that \cref{sent:bad} is the negation of \cref{sent:good} we should add the following premise (using truth tables check that the premise is true, if and only if, `$\enot G$' is true whenever `$B$' is true): $$(\enot G\eif B)\eand (B\eif \enot G).$$ If this premise is added to the above argument, then the argument is valid and rightly so!
 
@@ -550,9 +550,9 @@ These are all sentences whose truth values depend on whether Alice and Beth come
 \section{Truth-functionality}
 %%%%because???
 Let's introduce an important idea.
-\factoidbox{
+\begin{highlighted}
 	A connective is \define{truth-functional} iff the truth value of a sentence with that connective as its main connective is uniquely determined by the truth value(s) of the constituent sentence(s).
-}
+\end{highlighted}
 \newglossaryentry{truth-functional connective}
 {
 	name=truth-functional connective,
@@ -712,10 +712,10 @@ We will expand our symbolisation guide to give instructions about how to treat a
 
 The symbolization guideline for conjunction we introduced Section \cref{sec:SymbolisingTFL - simple connectives complex form} was:.
 
-	\factoidbox{
+	\begin{highlighted}
 %		A sentence can be symbolized as $(\metaX\eand\metaY)$ if it can be paraphrased in English as `Both\ldots, and\ldots', or as `\ldots, but \ldots', or as `although \ldots, \ldots'.
 		If a sentence can be paraphrased as `\ldots and \ldots' \\it can be symbolised as $(\metaX\eand\metaY)$.
-	}
+	\end{highlighted}
 
 %Notice that we make no attempt to symbolize the word `also' in \cref{sent:and3}. Words like `both' and `also' function to draw our attention to the fact that two things are being conjoined. Maybe they affect the emphasis of a sentence, but we will not (and cannot) symbolize such things in TFL.
 
@@ -827,20 +827,20 @@ A similar point can be made about `although':
 This raises the same sort of issue. The word `although' indicates a contrast, but that is not something TFL can represent. As far as truth conditions go, the sentence again is true just if Adam is athletic and Barbara is not athletic. We will symbolise these sentences as $A\eand \enot B$.
 
 We can add these to our toolbox for symbolisation:
-	\factoidbox{
+	\begin{highlighted}
 		If a sentence can be paraphrased as \begin{itemize}
 		\item `\ldots and \ldots'
 		\item `Both\ldots and \ldots'
 		\item `\ldots but \ldots'
 		\item `Although \ldots, \ldots'
 		\end{itemize} it can be symbolised as $\metaX\eand\metaY$.
-	}
+	\end{highlighted}
 
 \section{Exclusive Disjunction}
 In \cref{sec:SymbolisingTFL - simple connectives complex form}, we proposed that:
-\factoidbox{
+\begin{highlighted}
 If a sentence can be paraphrased as `\ldots or \ldots' \\it can be symbolised as $(\metaX\eor\metaY)$.
-	}
+	\end{highlighted}
 Let's consider some examples again
 \begin{samplesent}
 		\item\label{sent:or1} Fatima will play videogames, or she will watch movies.
@@ -891,9 +891,9 @@ This has the truth table
 So it is true just when exactly one of Fatima or Oma play video games. It captures an exclusive disjunction. 
 
 
-\factoidbox{
+\begin{highlighted}
 If a sentence can be paraphrased in English as `\emph{either \ldots or \ldots (and not both)}', \\it can be symbolised as $(\metaX\eor\metaY)\eand\enot(\metaX\eand\metaY)$.
-	}
+	\end{highlighted}
 
 
 
@@ -951,14 +951,14 @@ Symbolisation in TFL aims to capture the \emph{structure} of an English sentence
 
 Whilst in general you are not allowed to substitute in any logically equivalent sentence, for neither-nor this alternative way of capturing the logical form is permitted.
 
-\factoidbox{
-	If a sentence can be paraphrased in English as `\emph{neither \ldots nor \ldots}',\\ it can be symbolised as $\enot(\metaX\eor\metaY)$ or as $\enot \metaX\eand\enot \metaY$.}
+\begin{highlighted}
+	If a sentence can be paraphrased in English as `\emph{neither \ldots nor \ldots}',\\ it can be symbolised as $\enot(\metaX\eor\metaY)$ or as $\enot \metaX\eand\enot \metaY$.\end{highlighted}
 
 \section{Conditionals}
 Let us again recall the symbolization guideline that we introduced in \Cref{sec:SymbolisingTFL - simple connectives complex form}:
-	\factoidbox{
+	\begin{highlighted}
 	 If a sentence can be paraphrased as \\`\emph{If \ldots, then \ldots}' it can be symbolised as $(\metaX\eif\metaY)$.
-	}
+	\end{highlighted}
 
 
 \noindent Now consider the sentences
@@ -985,14 +985,14 @@ Now consider
 
 % In \cref{sent:if1}--\cref{sent:if4} we took as an antecedent the part of sentence that immediately succeeded the word `if'. It might then be tempting to do the same here and symbolize this as $(P\eif F)$. That would be a mistake. Your knowledge of geography tells you that \cref{sent:if1} is unproblematically true: there is no way for Jean to be in Paris that doesn't involve Jean being in France. But \cref{sent:if2} is not so straightforward: were  Jean in Dieppe, Lyons, or Toulouse, Jean would be in France without being in Paris, thereby rendering \cref{sent:if2} false. Since geography alone dictates the truth of \cref{sent:if1}, whereas travel plans (say) are needed to know the truth of \cref{sent:if2}, they must mean different things.
 In fact, \cref{sent:if2} can be paraphrased as `If Jean is in France, then Jean is in Paris'. So we can symbolize it by $(F \eif P)$: the other way around to \cref{sent:if1}.
-	\factoidbox{
+	\begin{highlighted}
 	 If a sentence can be paraphrased as \begin{itemize}
 	 \item `If $\ldots_{X}$, then $\ldots_{Y}$'
 	 \item `If $\ldots_{X}$, $\ldots_{Y}$'
 	 \item `$\ldots_{Y}$ if $\ldots_{X}$'
 	 \item `$\ldots_{X}$ only if $\ldots_{Y}$'
 	 \end{itemize} it can be symbolized as $(\metaX\eif\metaY)$ such that $X$ assumes the position of $\ldots_X$ and $Y$ that of $\ldots_Y$.
-	}
+	\end{highlighted}
 	
 	
 	\noindent Following this guidance, we symbolise all the following as `$A\eif B$':
@@ -1028,9 +1028,9 @@ name=biconditional,
 description={The symbol \eiff, used to represent words and phrases that function like the English phrase ``if and only if''; or a sentence formed using this connective.}}
 
 
-\factoidbox{
+\begin{highlighted}
 If a sentence can be paraphrased as `$\ldots_X$ if and only if $\ldots_Y$'\\ it can be symbolised as $((\metaX\eif\metaY)\eand(\metaY\eif\metaX))$.
-	}
+	\end{highlighted}
 The expression `if and only if' occurs a lot especially in philosophy, mathematics, and logic. For brevity, we can abbreviate it with the snappier word `iff'. We will follow this practice. So `if' with only \emph{one} `f' is the English conditional. But `iff' with \emph{two} `f's is the English biconditional. Because the biconditional occurs so often, we will sometimes abbreviate the lengthy `$(\metaX\eif\metaY)\eand(\metaY\eif\metaX)$' and write $\metaX\eiff\metaY$ instead. However, officially the symbol `\eiff' is not a symbol of the language of TFL. It is merely used as a convenient way to state a biconditional and it is good to keep that in mind.
 
 \begin{highlighted}
@@ -1061,9 +1061,9 @@ And we know how to symbolise these sentences. We will use the symbolization key:
 All three are correct symbolizations. Indeed, in you may wish to check that all three symbolizations are equivalent in TFL.
 % TODO: it might be useful to reference exercise 11.F.3 explicitly
 % here, since the point is not discussed in the main text
-	\factoidbox{
+	\begin{highlighted}
 		If a sentence can be paraphrased as `\emph{Unless \ldots, \ldots}', \\then it can be symbolized as $(\metaX\eor\metaY)$.
-	}
+	\end{highlighted}
 Again, though, there is a little complication. `Unless' can be symbolized as a conditional; but as we said above, people often use the conditional (on its own) when they mean to use the biconditional. Equally, `unless' can be symbolized as a disjunction; but there are two kinds of disjunction (exclusive and inclusive). So it will not surprise you to discover that ordinary speakers of English often use `unless' to mean something more like the biconditional, or like exclusive disjunction. Suppose someone says: `I will go running unless it rains'. They probably mean something like `I will go running iff it does not rain' (i.e.\ the biconditional), or  `either I will go running or it will rain, but not both' (i.e.\ exclusive disjunction). Again: be aware of this when interpreting what other people have said, but be precise in your writing.
 
 

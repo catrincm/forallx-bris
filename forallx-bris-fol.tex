@@ -632,12 +632,12 @@ Resulting in: $$\forall x(Dx\eif Ex).$$
 
 Here is the general instruction:
 
-\factoidbox{
+\begin{highlighted}
 	If a sentence can be paraphrased in English as \begin{center}
 		\begin{tabular}{l}`every F is G',\\`all Fs are Gs', or\\ `any F is a G',
 		\end{tabular}
 	\end{center} it can be symbolised as $$\forall x (\meta{F}x \eif \meta{G}x).$$
-}
+\end{highlighted}
 
 This will be used also for more complicated sentences. 
 Consider:
@@ -731,12 +731,12 @@ giving $$\exists x(Lx\eand Hx)$$
 When using the existential quantifier, $\exists$, we typically find it with $\eand$, unlike the universal quantifier, $\forall$, which typically comes paired with $\eif$. Once we do FOL semantics we can see why this is right.  For now, we simply motivate it with paraphrasing. 
 
 
-	\factoidbox{
+	\begin{highlighted}
 	If a sentence can be paraphrased in English as \begin{center}
 		\begin{tabular}{l}`some F is G',\\`there is some F that is G', \\`An F is G', or \\`there is at least one F that is a G'
 		\end{tabular}
 	\end{center} it can be symbolised as $$\exists x (\meta{F}x \eand \meta{G}x).$$
-}
+\end{highlighted}
 
 \begin{samplesent}
 	\item There's a coin in my pocket.
@@ -1307,13 +1307,13 @@ In general, the universal quantifier can be used to symbolize the English expres
 
 In FOL, the domain must always include at least one thing. Moreover, in English we can infer `something is angry' from `Gregor is angry'. In FOL, then, we will want to be able to infer $\exists x Ax$ from $Ag$. So we will insist that each name must pick out exactly one thing in the domain.	
 
-\factoidbox{
+\begin{highlighted}
 	A domain must have {at least} one member. 
 	
 	A name must pick out \emph{exactly} one member of the domain, but a member of the domain may be picked out by one name, many names, or none at all.
 	
 	Predicates must identify properties or relations of objects in the domain. 
-}
+\end{highlighted}
 
 
 
@@ -1774,7 +1774,7 @@ For example, if $D$ is a one-place predicate (we might have introduced it to sym
 Formulas are constructed by starting with these and using either our TFL connectives or our quantifiers.
 
 We now give the inductive definition of what it is to be a formula of FOL.
-	\factoidbox{\label{FOLformula}
+	\begin{highlighted}\label{FOLformula}
 	\begin{enumerate}
 		\item If $\metaPredicate$ is an $n$-place predicate and $\metaterm_1,\ldots\metaterm_n$ are either variables or names, then $\metaPredicate\metaterm_1\ldots\metaterm_n$ is a formula.\\These are called \define{atomic formulas}.
 		\item If \metaX is a formula, then $\enot\metaX$ is a formula.
@@ -1791,7 +1791,7 @@ We now give the inductive definition of what it is to be a formula of FOL.
 		 \end{enumerate}
 		\item Nothing else is a formula.
 	\end{enumerate}
-	}
+	\end{highlighted}
 	\newglossaryentry{formula}
 	{
 	name=formula of FOL,
@@ -1865,13 +1865,13 @@ We now give the inductive definition of what it is to be a formula of FOL.
 
  The notions of scope and main logical operators that were given in \ref{sec:TFLSentences} equally applies to FOL but now the main logical operator might be a quantifier. These were:
 % In fact, we can now give a formal definition of scope which incorporates the definition of the scope of a quantifier. Here we follow the case of TFL, though we note that a logical operator can be either a connective or a quantifier:
-	\factoidbox{
+	\begin{highlighted}
 		The \define{main logical operator} in a sentence is the operator that was introduced last when that sentence was constructed using the recursion rules.
 
 \bigskip
 
 		The \define{scope} of a logical operator in a sentence is the formula for which that operator is the main logical operator.
-	}\todo{formula is undefined}
+	\end{highlighted}\todo{formula is undefined}
 We can graphically illustrate scopes as follows:
 $$
 \overbrace{\exists z
@@ -1905,22 +1905,22 @@ Consider the atomic formula $Lzz$. Can it be true or false? You might think that
 Of course, if we put an existential quantifier out front, obtaining $\exists zLzz$, then this would be true iff someone loves herself. Equally, if we wrote $\forall z Lzz$, this would be true iff everyone loves themself. The point is that we need a quantifier to tell us how to deal with a variable.
 
 To make this precise, we can use the construction of a formula. 
-\factoidbox{An occurrance of a variable being \define{free} is defined as follows:
+\begin{highlighted}An occurrance of a variable being \define{free} is defined as follows:
 	\begin{itemize}
 		\item In an atomic formula, every occurance of a variable is free. 
 		\item An occurrance of a variable which is free in $\metaX$ or $\metaY$ is also free in $\enot\metaX$, $\metaX\eand\metaY$, $\metaX\eor\metaY$ and $\metaX\eif\metaY$. 
 		\item In $\forall v\metaX$ and $\exists v \metaX$, every occurrance of $v$ is now \define{bound}, any remaining occurrances of variables which were free are still free. 
 	\end{itemize}
-}
+\end{highlighted}
 
 We can also use the notion of scope to characterise this. 
-	\factoidbox{
+	\begin{highlighted}
 		An occurrence of a variable \metav is bound if it is within the scope of either $\forall\metav$ or $\exists\metav$.
 
 		\bigskip
 
 		An occurrence of a variable \metav is free if it is not within the scope of either $\forall\metav$ or $\exists\metav$.
-	}
+	\end{highlighted}
 
 \newglossaryentry{bound variable}{
   name = bound variable,
@@ -1938,9 +1938,9 @@ For example, consider the formula
 The scope of the universal quantifier $\forall x$ is $\forall x (Ex \eor Dy)$, so the first $x$ is bound by the universal quantifier. However, the second and third occurrence of $x$ are free. Equally, the $y$ is free. The scope of the existential quantifier $\exists z$ is $(Ex \eif Lzx)$, so $z$ is bound.
 
 Finally we can say what a sentence of FOL is
-	\factoidbox{
+	\begin{highlighted}
 		A \define{sentence} of FOL is any formula of FOL that contains no free variables.
-	}
+	\end{highlighted}
 
 \newglossaryentry{sentence of FOL}{
   name = sentence of FOL,

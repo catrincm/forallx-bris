@@ -271,7 +271,7 @@ It also can be that they appear in a different order, or that one appears in the
 \end{fitchproof}
 
 We write our general rule as:
-\factoidbox{
+\begin{highlighted}
 \begin{fitchproof}
 	\ellipsesline
 	\have[m]{ab}{\metaX\eif\metaY}
@@ -279,7 +279,7 @@ We write our general rule as:
 	\have[n]{a}{\metaX}
 	\ellipsesline
 	\have[\ ]{b}{\metaY} \ifE{ab,a}
-\end{fitchproof}}
+\end{fitchproof}\end{highlighted}
 
 We can apply it to any sentences of TFL, $\metaX$ and $\metaY$.
 For example,
@@ -321,7 +321,7 @@ Note that every line of our proof must either be an assumption, or must be justi
 %\end{fitchproof}
 %with the citation reverse, to reflect the order of the conjuncts.
 More generally, here is our conjunction introduction rule:
-\factoidbox{
+\begin{highlighted}
 \begin{fitchproof}
 	\ellipsesline
 	\have[m]{a}{\metaX}
@@ -330,7 +330,7 @@ More generally, here is our conjunction introduction rule:
 		\ellipsesline
 	\have[\ ]{c}{\metaX\eand\metaY} \andI{a, b}
 \end{fitchproof}
-}
+\end{highlighted}
 
 
 
@@ -340,21 +340,21 @@ The rule is called `conjunction \emph{introduction}' because it introduces the s
 
 \section{Conjunction Elimination}
 Correspondingly, we have a rule that \emph{eliminates} that symbol.  Suppose you have shown that Alice and Beth both came to the party. You are entitled to conclude that Alice came to the party. Equally, you are entitled to conclude that Beth came to the party. Putting this together, we obtain our conjunction elimination rule(s):
-\factoidbox{
+\begin{highlighted}
 \begin{fitchproof}
 	\ellipsesline
 	\have[m]{ab}{\metaX\eand\metaY}
 	\ellipsesline
 	\have[\ ]{a}{\metaX} \andE{ab}
-\end{fitchproof}}
+\end{fitchproof}\end{highlighted}
 and equally:
-\factoidbox{
+\begin{highlighted}
 \begin{fitchproof}
 \ellipsesline
 	\have[m]{ab}{\metaX\eand\metaY}
 	\ellipsesline
 	\have[\ ]{b}{\metaY} \andE{ab}
-\end{fitchproof}}
+\end{fitchproof}\end{highlighted}
 The point is simply that, when you have a conjunction on some line of a proof, you can obtain either of the conjuncts by {\eand}E. (One point, might be worth emphasising: you can only apply this rule when conjunction is the main logical operator. So you cannot infer `$D$' just from `$C \eor (D \eand E)$'!)
 
 
@@ -748,7 +748,7 @@ So we have now shown that, on the additional assumption, `$B$', we can obtain `$
 Observe that we have dropped back to using one vertical line.  We have \emph{discharged} the additional assumption, `$B$', since the conditional itself follows just from our original assumption, `$A$'.
 
 The general pattern at work here is the following. We first make an additional assumption, \metaX; and from that additional assumption, we prove \metaY. In that case, we know the following: If \metaX, then \metaY. This is wrapped up in the rule for conditional introduction:
-\factoidbox{
+\begin{highlighted}
 	\begin{fitchproof}
 	\open
 		\hypo[m]{a}{\metaX}
@@ -756,7 +756,7 @@ The general pattern at work here is the following. We first make an additional a
 		\have[n]{b}{\metaY}
 	\close
 	\have[\ ]{ab}{\metaX\eif\metaY}\ifI{a-b}
-	\end{fitchproof}}
+	\end{fitchproof}\end{highlighted}
 There can be as many or as few lines as you like between lines $m$ and $n$.
 
 It will help to offer a second  illustration of $\eif$I in action. Suppose we want to consider the following:
@@ -846,11 +846,11 @@ If we were allowed to do this, it would be a disaster. It would allow us to prov
 We can describe the process of making an additional assumption as one of performing a \emph{subproof}: a subsidiary proof within the main proof. When we start a subproof, we draw another vertical line to indicate that we are no longer in the main proof. Then we write in the assumption upon which the subproof will be based. A subproof can be thought of as essentially posing this question: \emph{what could we show, if we also make this additional assumption?}
 
 When we are working within the subproof, we can refer to the additional assumption that we made in introducing the subproof, and to anything that we obtained from our original assumptions. (After all, those original assumptions are still in effect.) At some point though, we will want to stop working with the additional assumption: we will want to return from the subproof to the main proof. To indicate that we have returned to the main proof, the vertical line for the subproof comes to an end. At this point, we say that the subproof is {closed}:
-\factoidbox{A subproof is \define{closed} when the vertical line for the subproof comes to an end. At that point we say the assumption has been \define{discharged}} We typically do this when we use one of our rules that involve subproofs, such as $\eif$I. We introduced the assumption $\meta{X}$ to allow us to conclude $\meta{Y}$; and this reasoning allows us to close the subproof and conclude $\meta{X}\eif\meta{Y}$, which no longer relies on the assumption $\meta{X}$.
+\begin{highlighted}A subproof is \define{closed} when the vertical line for the subproof comes to an end. At that point we say the assumption has been \define{discharged}\end{highlighted} We typically do this when we use one of our rules that involve subproofs, such as $\eif$I. We introduced the assumption $\meta{X}$ to allow us to conclude $\meta{Y}$; and this reasoning allows us to close the subproof and conclude $\meta{X}\eif\meta{Y}$, which no longer relies on the assumption $\meta{X}$.
 Having closed a subproof, we have set aside the additional assumption, so it will be illegitimate to draw upon anything that depends upon that additional assumption. Thus we stipulate:
-\factoidbox{Any rule whose citation requires mentioning individual lines can mention any earlier lines, \emph{except} for those lines which occur within a closed subproof.
+\begin{highlighted}Any rule whose citation requires mentioning individual lines can mention any earlier lines, \emph{except} for those lines which occur within a closed subproof.
 	
-	Put another way: you cannot refer back to anything that was obtained using discharged assumptions}
+	Put another way: you cannot refer back to anything that was obtained using discharged assumptions\end{highlighted}
 This stipulation rules out the disastrous attempted proof above. The rule of $\eif$E requires that we cite two individual lines from earlier in the proof. In the purported proof, above, one of these lines (namely, line 4) occurs within a subproof that has (by line 6) been closed. This is illegitimate.
 
 Subproofs, then, allow us to think about what we could show, if we made additional assumptions. The point to take away from this is not surprising---in the course of a proof, we have to keep very careful track of what assumptions we are making, at any given moment. Our proof system does this very graphically. (Indeed, that's precisely why we have chosen to use \emph{this} proof system.)
@@ -887,7 +887,7 @@ Again, though, we need to keep careful track of what we are assuming at any give
 This would be awful. If we tell you that Anne is smart, you should not be able to infer that, if Cath is smart (symbolized by `$C$') then \emph{both} Anne is smart and Queen Boudica stood 20-feet tall! But this is just what such a proof would suggest, if it were permissible.
 
 The essential problem is that the subproof that began with the assumption `$C$' depended crucially on the fact that we had assumed `$B$' on line 2. By line 6, we have \emph{discharged} the assumption `$B$': we have stopped asking ourselves what we could show, if we also assumed `$B$'. So it is simply cheating, to try to help ourselves (on line 7) to the subproof that began with the assumption `$C$'. Thus we stipulate, much as before:
-\factoidbox{Any rule whose citation requires mentioning an entire subproof can mention any earlier subproof, \emph{except} for those subproofs which occur within some \emph{other} closed subproof.}
+\begin{highlighted}Any rule whose citation requires mentioning an entire subproof can mention any earlier subproof, \emph{except} for those subproofs which occur within some \emph{other} closed subproof.\end{highlighted}
 The attempted disastrous proof violates this stipulation. The subproof of lines 3--4 occurs within a subproof that ends on line 5. So it cannot be invoked in line 7.
 
 It is always permissible to open a subproof with any assumption. However, there is some strategy involved in picking a useful assumption. Starting a subproof with an arbitrary, wacky assumption would just waste lines of the proof. In order to obtain a conditional by {\eif}I, for instance, you must assume the antecedent of the conditional in a subproof.
@@ -901,7 +901,7 @@ Equally, it is always permissible to close a subproof and discharge its assumpti
 If assuming something leads you to a contradiction, then the assumption must be wrong. 
 %We have a contradiction when we both have $\metaY$ and $\enot\metaY$ for some sentence $\metaY$. So if assuming $\metaX$ leads to both $\metaY$ and $\enot\metaY$, then $\metaX$ must be false.  
 This thought motivates the following rule:
-\factoidbox{\begin{fitchproof}
+\begin{highlighted}\begin{fitchproof}
 		\open
 		\hypo[m]{a}{\metaX}
 		\ellipsesline
@@ -912,7 +912,7 @@ This thought motivates the following rule:
 		\have[\ ]{na}{\enot\metaX}\notI{a-bot}
 		%\have[m]{axx}{\metaX \eif \ered}
 		%\have[\ ]{na}{\enot\metaX}\notI{axx}
-\end{fitchproof}}
+\end{fitchproof}\end{highlighted}
 %There can be as many lines between $i$ and $j$ as you like.
 It does not matter whether in the subproof you first derive $\metaY$ and then derive $\enot\metaY$ or whether you first derive $\enot\metaY$ and the derive $\metaY$. It is only important that in the subproof you derive both $\metaY$ and $\enot\metaY$.
 
@@ -948,7 +948,7 @@ The negation elimination rule is quite similar.
 %
 We motivate the rule by the following thought:
 If assuming that something is false leads you to a contradiction, then that assumption must be wrong --- and so that `something' must in fact be true. In other words, if we assume $\enot\metaX$ and derive a contradiction, then we can conclude $\metaX$: we eliminate the negation.
-\factoidbox{\begin{fitchproof}
+\begin{highlighted}\begin{fitchproof}
 		\open
 		\hypo[m]{a}{\enot\metaX}
 		\ellipsesline
@@ -959,7 +959,7 @@ If assuming that something is false leads you to a contradiction, then that assu
 		\have[\ ]{na}{\metaX}\notE{a-y}
 		%\have[m]{axx}{\metaX \eif \ered}
 		%\have[\ ]{na}{\enot\metaX}\notI{axx}
-\end{fitchproof}}
+\end{fitchproof}\end{highlighted}
 Formally, the rule is very similar to $\enot$I, but they are different.\footnote{There are logicians who accept $\enot$I but reject $\enot$E. They are called ``intuitionists.'' Intuitionists reject the law of excluded middle. They don't buy our basic assumption that every sentence has one of two truth values, true or false. For intuitionists, $\metaX$ and $\enot\enot\metaX$ are not equivalent. 
 	%To get the system of intuitionist logic, we reject $\enot$E and LEM. We then need to add the rule of explosion as a basic rule. This rule is derivable in our system.
 } They switch $\metaX$ and $\enot\metaX$. 
@@ -1009,7 +1009,7 @@ Suppose Alice came to the party. Then Alice or Beth came to the party. After all
 Let me emphasize this point. Suppose Alice came to the party. It follows that Alice came to the party \emph{or} I am the Queen of England. Equally, it follows that Alice or the Queen came to the party.  Equally, it follows that Alice came to the party \emph{or} that God is dead. Many of these are strange inferences to draw, but there is nothing \emph{logically} wrong with them (even if they maybe violate all sorts of implicit conversational norms).
 
 Armed with all this, we present the disjunction introduction rule(s):
-\factoidbox{\begin{fitchproof}
+\begin{highlighted}\begin{fitchproof}
 		\ellipsesline
 		\have[m]{a}{\metaX}
 		\ellipsesline
@@ -1021,7 +1021,7 @@ Armed with all this, we present the disjunction introduction rule(s):
 		\have[m]{a}{\metaX}
 		\ellipsesline
 		\have[\ ]{ba}{\metaY\eor\metaX}\orI{a}
-\end{fitchproof}}
+\end{fitchproof}\end{highlighted}
 Notice that \metaY can be \emph{any} sentence whatsoever, so the following is a perfectly acceptable proof:
 \begin{fitchproof}
 	\hypo{m}{M}
@@ -1035,7 +1035,7 @@ The disjunction elimination rule also makes use of subproofs.
 Suppose that  Alice came to the party or Beth came to the party. What can you conclude? Not that Alice came to the party; it might be that Beth came to the party instead. Equally, not that Beth came to the party; for it might be that only Alice came. Disjunctions, just by themselves, are hard to work with.
 
 But suppose that we could somehow show both of the following: first, that Alice coming to the party entails that it was fun: second, that Beth coming to the party entails that it was fun. Then if we know that Alice or Beth came to the party, then we know that either way, it was fun. This insight can be expressed in the following rule, which is our disjunction elimination ($\eor$E) rule:
-\factoidbox{
+\begin{highlighted}
 	\begin{fitchproof}
 		\have[m]{ab}{\metaX\eor\metaY}
 %		\have[i]{i}{\metaX\to\metaZ}
@@ -1052,7 +1052,7 @@ But suppose that we could somehow show both of the following: first, that Alice 
 			\have[l]{c2}{\metaZ}
 		\close
 		\have[\ ]{c}{\metaZ} \orE{ab,a-c1,b-c2}
-	\end{fitchproof}}
+	\end{fitchproof}\end{highlighted}
 This is obviously a bit clunkier to write down than our previous rules, but the point is fairly simple. Suppose we have some disjunction, $\metaX \eor \metaY$. Suppose we have two
 subproofs,
 showing us that $\metaZ$ follows from
@@ -1097,7 +1097,7 @@ We strictly speaking have not got the biconditional `$\eiff$' in our language of
 
 We then have rules in our natural deduction system that let you exchange $\metaX\eiff\metaY$ for its explicit form. 
 
-\factoidbox{
+\begin{highlighted}
 	\begin{fitchproof}
 		\ellipsesline
 		\have[m]{ab}{\metaX\eiff\metaY}
@@ -1110,7 +1110,7 @@ We then have rules in our natural deduction system that let you exchange $\metaX
 		\ellipsesline
 		\have[\ ]{ab}{\metaX\eiff\metaY}\iffI{a}
 	\end{fitchproof}
-}
+\end{highlighted}
 
 
 
@@ -1562,12 +1562,12 @@ We will actually add another rule for how to introduce a disjunction. There are 
 In \cref{sec:TautologiesAndContradictions} we saw that $A\eor\enot A$ is a tautology: it is true on all valuations. More generally, any sentence of the form $\metaX\eor\enot\metaX$ is a tautology.
 The rule \emph{Law of Excluded Middle} encodes this fact: it simply says that you are always allowed to write $\metaX\eor\enot\metaX$:
 
-\factoidbox{
+\begin{highlighted}
 	\begin{fitchproof}
 		\ellipsesline
 		\have[\ ]{lem}{\metaX\eor\enot\metaX}\LEM
 	\end{fitchproof}
-}
+\end{highlighted}
 
 As always, $\metaX$ can be whatever you want, e.g.~$(A\eand(B\eif C))$. Then the rule tells us, e.g.~that you can write $(A\eand(B\eif C))\eor\enot(A\eand(B\eif C))$ on any line of the proof.
 
@@ -1709,17 +1709,17 @@ Here is a very natural argument form.
 		Elizabeth is in Massachusetts or in DC. She is not in DC. So, she is in Massachusetts.
 	\end{quote}
 This inference pattern is called \emph{disjunctive syllogism}. We add it to our proof system as follows:
-\factoidbox{\begin{fitchproof}
+\begin{highlighted}\begin{fitchproof}
 	\have[m]{ab}{\metaX \eor \metaY}
 	\have[n]{nb}{\enot \metaX}
 	\have[\ ]{con}{\metaY}\by{DS}{ab, nb}
-\end{fitchproof}}
+\end{fitchproof}\end{highlighted}
 and
-\factoidbox{\begin{fitchproof}
+\begin{highlighted}\begin{fitchproof}
 	\have[m]{ab}{\metaX \eor \metaY}
 	\have[n]{nb}{\enot \metaY}
 	\have[\ ]{con}{\metaX}\by{DS}{ab, nb}
-\end{fitchproof}}
+\end{fitchproof}\end{highlighted}
 As usual, the disjunction and the negation of one disjunct may occur in either order and need not be adjacent.
 %However, we always cite the disjunction first.
 
@@ -1729,11 +1729,11 @@ Another useful pattern of inference is embodied in the following argument:
 		If Mitt has won the election, then he is in the White House. He is not in the White House. So he has not won the election.
 	\end{quote}
 This inference pattern is called \emph{modus tollens}. The corresponding rule is:
-\factoidbox{\begin{fitchproof}
+\begin{highlighted}\begin{fitchproof}
 	\have[m]{ab}{\metaX\eif\metaY}
 	\have[n]{a}{\enot\metaY}
 	\have[\ ]{b}{\enot\metaX}\mt{ab,a}
-\end{fitchproof}}
+\end{fitchproof}\end{highlighted}
 As usual, the premises may occur in either order.
 %, but we always cite the conditional first.
 
@@ -1809,11 +1809,11 @@ From a contradiction anything follows. This is called the rule of explosion. It 
 
 %Our elimination rule for `$\ered$' is known as \emph{ex falso quod libet}, or \emph{explosion}. This means `anything follows from a contradiction', and the idea is precisely that: if we obtained a contradiction, symbolized by `$\ered$', then we can infer whatever we like. How can this be motivated, as a rule of argumentation? Well, consider the English rhetorical device `\ldots and if \emph{that's} true, I'll eat my hat'. Since contradictions simply cannot be true, if one \emph{i}s true then not only will I eat my hat, I'll have it too.\footnote{Thanks to Adam Caulton for this.} Here is the formal rule:
 
-\factoidbox{\begin{fitchproof}
+\begin{highlighted}\begin{fitchproof}
 	\have[m]{x}{\metaX}
 	\have[n]{nx}{\enot \metaX}
 	\have[\ ]{y}{\metaY}\by{Explosion}{x,nx}
-\end{fitchproof}}
+\end{fitchproof}\end{highlighted}
 
 %
 %%\subsection{Proof by contradiction}
@@ -1832,25 +1832,25 @@ From a contradiction anything follows. This is called the rule of explosion. It 
 Our final additional rules are called De Morgan's Laws. (These are named after Augustus De Morgan.) The shape of the rules should be familiar from truth tables.
 
 The first De Morgan rule is:
-\factoidbox{\begin{fitchproof}
+\begin{highlighted}\begin{fitchproof}
 	\have[m]{ab}{\enot (\metaX \eand \metaY)}
 	\have[\ ]{dm}{\enot \metaX \eor \enot \metaY}\dem{ab}
-\end{fitchproof}}
+\end{fitchproof}\end{highlighted}
 The second De Morgan is the reverse of the first:
-\factoidbox{\begin{fitchproof}
+\begin{highlighted}\begin{fitchproof}
 	\have[m]{ab}{\enot \metaX \eor \enot \metaY}
 	\have[\ ]{dm}{\enot (\metaX \eand \metaY)}\dem{ab}
-\end{fitchproof}}
+\end{fitchproof}\end{highlighted}
 The third De Morgan rule is the \emph{dual} of the first:
-\factoidbox{\begin{fitchproof}
+\begin{highlighted}\begin{fitchproof}
 	\have[m]{ab}{\enot (\metaX \eor \metaY)}
 	\have[\ ]{dm}{\enot \metaX \eand \enot \metaY}\dem{ab}
-\end{fitchproof}}
+\end{fitchproof}\end{highlighted}
 And the fourth is the reverse of the third:
-\factoidbox{\begin{fitchproof}
+\begin{highlighted}\begin{fitchproof}
 	\have[m]{ab}{\enot \metaX \eand \enot \metaY}
 	\have[\ ]{dm}{\enot (\metaX \eor \metaY)}\dem{ab}
-\end{fitchproof}}
+\end{fitchproof}\end{highlighted}
 \bigskip
 
 
@@ -2455,9 +2455,9 @@ Validity 				& Derive the conclusion from the premises & Find no line in the tru
 
 
 Armed with our `$\proves$' symbol, we can introduce some new terminology.
-	\factoidbox{\label{def:syntactic_tautology_in_sl}
+	\begin{highlighted}\label{def:syntactic_tautology_in_sl}
 		$\metaX$ is a \define{theorem} iff $\proves \metaX$
-	}
+	\end{highlighted}
 \newglossaryentry{theorem}
 {
 name=theorem,
@@ -2479,9 +2479,9 @@ We have therefore proved `$\enot (A \eand \enot A)$' on no (undischarged) assump
 To show that something is a theorem, you just have to find a suitable proof. It is typically much harder to show that something is \emph{not} a theorem. To do this, you would have to demonstrate, not just that certain proof strategies fail, but that \emph{no} proof is possible. Even if you fail in trying to prove a sentence in a thousand different ways, perhaps the proof is just too long and complex for you to make out. Perhaps you just didn't try hard enough.
 
 Here is another new bit of terminology:
-	\factoidbox{
+	\begin{highlighted}
 		Two sentences \metaX and \metaY are \define{provably equivalent} iff each can be proved from the other; i.e., both $\metaX\proves\metaY$ and $\metaY\proves\metaX$.
-	}
+	\end{highlighted}
 
 \newglossaryentry{provably equivalent}
 {
@@ -2494,9 +2494,9 @@ description={A property held by pairs of statements if and only if there is a de
 As in the case of showing that a sentence is a theorem, it is relatively easy to show that two sentences are provably equivalent: it just requires a pair of proofs. Showing that sentences are \emph{not} provably equivalent would be much harder: it is just as hard as showing that a sentence is not a theorem.
 
 Here is a third, related, bit of terminology:
-	\factoidbox{
+	\begin{highlighted}
 		The sentences $\metaX_1,\metaX_2,\ldots, \metaX_n$ are \define{provably inconsistent} iff a contradiction can be proved from them, i.e.\ $\metaX_1,\metaX_2,\ldots, \metaX_n \proves \metaY\eand\enot\metaY$ for some $\metaY$. If they are not \define{inconsistent}, we call them \define{provably consistent}.
-	}
+	\end{highlighted}
 
 \newglossaryentry{provably inconsistent}
 {    name={provable inconsistency},
