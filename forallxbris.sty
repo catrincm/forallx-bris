@@ -284,6 +284,11 @@
 		\setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!20!bg, fg=black}
 	}
 	\newenvironment{highlighted}{\begin{block}{}}{\end{block}}
+	\newenvironment{definition}{%
+		\begin{highlighted}\textbf{Definition}\par
+	}{%
+		\end{highlighted}
+	}
 	
 	\newcommand{\factoidbox}[1]{\begin{highlighted}
 			#1
@@ -304,6 +309,11 @@
 			colframe={leadbeater},colback={vltleadbeater}]}{
 	\end{tcolorbox}}
 	\newenvironment{highlighted}{\factoidboxe}{\endfactoidboxe}
+	\newenvironment{definition}{%
+		\begin{highlighted}\textbf{Definition}\par
+	}{%
+		\end{highlighted}
+	}
 
 
 	% --- textbook-core (shared by textbook/handout/exam/problemsheets) ---

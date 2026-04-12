@@ -319,9 +319,9 @@ We will then represent \cref{sent:cond: beer then eighteen} as `$B\eif E$' and \
 
 
 Since it matters which order they come in, we is valuable to give a name to indicate which part goes where:
-\begin{highlighted}
+\begin{definition}
 	In $\metaX\eif\metaY$, \metaX is called the \define{antecedent}, and \metaY is called the \define{consequent}.
-\end{highlighted}
+\end{definition}
 
 \newglossaryentry{antecedent}
 {
@@ -427,7 +427,7 @@ and we can then apply the rule. We will write the answer underneath the `$\eif$'
 
 \section{Truth rules}\label{sec:Truth rules}
 These are the rules associated with the connectives. They are motivated by the English uses, but are stipulated to be governed by these truth rules. 
-\begin{highlighted}\label{def:Truthint}
+\begin{definition}\label{def:Truthint}
 	% 	Let $v$ be a valuation. 
 	%	\begin{enumerate}
 		%		\item An atomic sentence $X$ is true relative to $v$, if and only if $v$ assigns the value T to $X$.
@@ -477,7 +477,7 @@ These are the rules associated with the connectives. They are motivated by the E
 		%\item If \metaX and \metaY are sentences, then $(\metaX\eiff\metaY)$ is a sentence.
 		%\item Nothing else is a sentence.
 		%	\end{enumerate}
-\end{highlighted}
+\end{definition}
 
 
 
@@ -825,7 +825,7 @@ Brackets play a similar role in mathematics to tell you which order to apply you
 
 Importantly, the language of TFL is designed to exclude any form of ambiguity. For example, $$A\eand B\eor C$$ will not be a sentence of TFL, brackets must be included. The syntactic/grammatical rules of the language of TFL will be such that only expressions that have a \emph{unique} reading can be sentences of TFL. To make this precise we now provide a formal definition of what it is to be a sentence in TFL.
 
-\begin{highlighted}\label{def:TFLsentences}
+\begin{definition}\label{def:TFLsentences}
 	
 %	The {sentence letters} of TFL are the capital letters 
 %	\begin{center}
@@ -851,7 +851,7 @@ Importantly, the language of TFL is designed to exclude any form of ambiguity. F
 		\item 	Nothing else is a sentence of TFL.
 	\end{enumerate}
 	
-\end{highlighted}
+\end{definition}
 
 
 \newglossaryentry{sentence of TFL}
@@ -897,7 +897,7 @@ We will use the sentence $\enot (A\eand B)$ to be the symbolisation of the Engli
 
 
 When drawing these trees we have highlighted a particular connective on each of our nodes. We call that connective the \define{main connective} of the sentence at that node.
-\begin{highlighted}The \define{main connective} of a sentence is the last connective that was introduced in the construction of the sentence.\end{highlighted}
+\begin{definition}The \define{main connective} of a sentence is the last connective that was introduced in the construction of the sentence.\end{definition}
 
 This will then be important to know in what order to calculate the truth value of $\enot(A\eand B)$. 
 
@@ -1358,18 +1358,18 @@ There is also no analogous rule for $\eif$: You must not write $P\eif Q\eif R$.
 %We do this because $(P\eif Q)\eif R$ is not logically equivalent to $P\eif(Q\eif R)$. 
 
 
-\subsection{Summarising our bracketing rules}
-\begin{highlighted}
+\subsection{Summarising our bracketing rules}\label{sec:TFLBrackets}
+\begin{definition}
 	\begin{itemize}
 		\item Outer brackets may be dropped.\\
-		$P\eand Q$ abbreviates $(P\eand Q)$.
+		$P\eand Q$ is an abbreviation of $(P\eand Q)$.
 		\item $\eand$ and $\eor$ bind more strongly than $\eif$.\\
-		$P\eand Q\eif R\eor S$ abbreviates $(P\eand Q)\eif (R\eor S)$
+		$P\eand Q\eif R\eor S$  is an abbreviation of  $(P\eand Q)\eif (R\eor S)$
 		\item Brackets in strings of $\eand$ or $\eor$ may be dropped. \\A sentence with such brackets dropped is an abbreviation of one where they are added to the left.\\
-		$P\eand Q\eand R$ abbreviates $(P\eand Q)\eand R$.\\
-		$P\eor Q\eor R$ abbreviates $(P\eor Q)\eor R$.\\
+		$P\eand Q\eand R$  is an abbreviation of  $(P\eand Q)\eand R$.\\
+		$P\eor Q\eor R$  is an abbreviation of  $(P\eor Q)\eor R$.\\
 	\end{itemize} 
-\end{highlighted}
+\end{definition}
 
 
 
@@ -1873,9 +1873,9 @@ A valuation is a specification of whether each atomic sentence is true or false.
 %
 %But how do we determine whether a given atomic sentence is true? This is where the notion of an \emph{interpretation} comes into the picture. An interpretation will stipulate (assign) truth values of particular atomic sentences. Let `$B$' stand for the English sentence `Ben is happy'. Then there is one interpretation according to which this is true, that is, $B$ will be assigned the value ``True'' on this interpretation. There is another interpretation according to which Ben is not happy, that is, $B$ is assigned the value ``False'' on this interpretation. In TFL an interpretation of the atomic sentences is called a \define{valuation}:
 
-\begin{highlighted}
+\begin{definition}
 		A \define{valuation} is any assignment of truth values (true or false) to the atomic sentences of TFL.
-	\end{highlighted}
+	\end{definition}
 
         \newglossaryentry{valuation}
 {
@@ -1895,7 +1895,7 @@ For example a valuation $v$ might assign:
 If you give me a valuation, I can then use the rules to calculate the truth value of any sentence. 
 Sentences of TFL are true or false \emph{relative to a valuation}. 
 The valuation determines the truth values of the atomic sentences, and complex sentences are determined using the truth rules:
-\begin{highlighted}Let $v$ be a valuation. Then
+\begin{definition}Let $v$ be a valuation. Then
 	\begin{enumerate}
 		\item An atomic sentence $X$ is true relative to $v$, if and only if $v$ assigns the value T to $X$.
 		\item For a sentence $\enot\metaX$, $(\metaX\eand\metaY)$, $(\metaX\eor\metaY)$, $(\metaX\eif\metaY)$, whether it is true or false relative to $v$ can be determined by applying the appropriate truth rule depending on whether $\metaX$ and $\metaY$ are true or false relative to $v$:
@@ -1944,7 +1944,7 @@ The valuation determines the truth values of the atomic sentences, and complex s
 		%\item If \metaX and \metaY are sentences, then $(\metaX\eiff\metaY)$ is a sentence.
 		%\item Nothing else is a sentence.
 	\end{enumerate}
-\end{highlighted}
+\end{definition}
 
 Consider 
 `$(\enot I\eand H)\eif H$'. We will determine whether it is true or false on the valuation given. 
@@ -2266,9 +2266,9 @@ In \cref{sec:Valid} we said that an argument was valid, if and only if there is 
 
 Recall that an argument consisted of a number of premises together with a conclusion. A TFL-argument then can be written as $X_1,\ldots,X_n\therefore Y$ where $X_1,\ldots,X_n$ and $Y$ are sentences of TFL, and $X_1,\ldots,X_n$ are the premises and $Y$ the conclusion of the argument.
 
-\begin{highlighted}\label{def:TFLvalid}A TFL-argument is valid if and only if there is no valuation on which all the premises are true but the conclusion is false. 
+\begin{definition}\label{def:TFLvalid}A TFL-argument is valid if and only if there is no valuation on which all the premises are true but the conclusion is false. 
 	
-	That is, `$X_1,\ldots,X_n\therefore Y$' is \define{valid} if and only if there is no valuation $v$ such that $X_1$ is true relative to $v$ and $X_2$ is true relative to $v$, and so on, up to $X_n$ being true relative to $v$, but $Y$ is false relative to $v$.\end{highlighted}
+	That is, `$X_1,\ldots,X_n\therefore Y$' is \define{valid} if and only if there is no valuation $v$ such that $X_1$ is true relative to $v$ and $X_2$ is true relative to $v$, and so on, up to $X_n$ being true relative to $v$, but $Y$ is false relative to $v$.\end{definition}
 
 So to determine whether a TFL-argument is valid or not, we should show whether or not there is a valuation on which all premises are true but the conclusion false. 
 
@@ -2392,9 +2392,9 @@ Here's one strategy that some people find useful for listing all the valuations.
 
 
 
-\begin{highlighted}
+\begin{definition}
 	A \define{complete truth table} for a sentence has a line for each valuation for the atomic sentences appearing in the sentence, and displays the truth value of the sentence on each of the valuations. 
-\end{highlighted}
+\end{definition}
 
 
 Consider the sentence `$(\enot I\eand H)\eif H$'. We will give a \emph{truth table} which lists all the valuations and says whether this sentence is true or false on each of them.
@@ -2894,7 +2894,8 @@ With this example in mind let us try to give a general instruction for construct
 			\item If it is a complex sentence, apply the relevant truth rule to its consituatnt parts, remembering that their truth values are written underneath their main connectives.
 		\end{itemize}
 		\item Highlight or boldface the column under the main connective of the overall sentence, which provides our final answer.
-\end{enumerate}\end{highlighted}
+\end{enumerate}
+\end{highlighted}
 
 If you follow these outlines, you should be able to construct truth tables for arbitrary TFL sentences. Of course, the more complicated the sentences are, and the more atomic sentence letters they contain the longer and tedious the truth table---but the more important it becomes to painstakingly stick to the guidelines we have given.
 
@@ -3338,7 +3339,7 @@ If you want additional practice, you can construct truth tables for any of the s
 \chapter{Validity and the method of truth tables}
 \section{Validity}
 
-\begin{highlighted}A TFL-argument $X_1,\ldots,X_n\therefore Y$ is \define{valid} if and only if there is no valuation $v$ such that all the premises, $X_1,\ldots,X_n$ are true relative to $v$ but $Y$ is false relative to $v$.\end{highlighted}
+\begin{definition}A TFL-argument $X_1,\ldots,X_n\therefore Y$ is \define{valid} if and only if there is no valuation $v$ such that all the premises, $X_1,\ldots,X_n$ are true relative to $v$ but $Y$ is false relative to $v$.\end{definition}
 
 
 
@@ -3431,9 +3432,9 @@ The only valuation on which both `$\enot L \eif (J \eor L)$' and `$\enot J$' are
 
 
 We will also say:
-\begin{highlighted}
+\begin{definition}
 	\metaY is a \define{logical consequence} of $\metaX_1,\ldots,\metaX_n$ if and only if $X_1,\ldots,X_n\therefore Y$ is {valid}
-\end{highlighted}
+\end{definition}
 
 One needs to check every valuation to see if there is one which is a counterexample valuation. 
 
@@ -3697,9 +3698,9 @@ We can make a more general observation: any argument with premises that are \emp
 We have just seen an example where the premises are inconsistent: Here's the careful definition of this:
 
 
-\begin{highlighted}
+\begin{definition}
 	A collection of TFL-sentences $X_1,\ldots,X_n$ (with possibly $n=1$) is \define{consistent} iff there is a valuation relative to which $X_1,\ldots,X_n$ are true. Otherwise the collection is \define{inconsistent}.
-\end{highlighted}
+\end{definition}
 
 \newglossaryentry{consistency in TFL}
 {
@@ -3761,9 +3762,9 @@ Inconsistent collections have truth tables more like:
 
 \section{Tautologies and contradictions}\label{sec:TautologiesAndContradictions}
 
-\begin{highlighted}
+\begin{definition}
 	A sentence $\metaX$ of TFL is a \define{logical truth} or \define{tautology} if and only if it is true on every valuation.
-\end{highlighted}
+\end{definition}
 
 \newglossaryentry{tautology}
 {
@@ -3787,9 +3788,9 @@ Our main example of a tautology is $A\eor\enot A$. Whatever the weather is like 
 Since there is a $T$ under the main connective on every line of the truth table, $A\eor \enot A$ is true, whatever the valuation is, i.e.~whether $A$ is true or false.
 
 
-\begin{highlighted}
+\begin{definition}
 	$\metaX$ is a \define{contradiction} iff it is false on every valuation.
-\end{highlighted}
+\end{definition}
 \newglossaryentry{contradiction of TFL}
 {
 	name=contradiction (of TFL),
@@ -3811,9 +3812,9 @@ Our core example of a contradiction is $A\eand\enot A$. Whether $A$ is true or f
 \end{center}
 
 
-\begin{highlighted}
+\begin{definition}
 	$\metaX$ is \define{contingent} iff it is neither a tautology nor a contradiction.
-\end{highlighted}
+\end{definition}
 
 
 
@@ -3874,9 +3875,9 @@ Our core example of a contradiction is $A\eand\enot A$. Whether $A$ is true or f
 
 \section{Logical equivalence}\label{sec:logical equivalent}
 Here is another useful notion:
-\begin{highlighted}
+\begin{definition}
 	$\metaX$ and $\metaY$ are \define{logically equivalent} iff they are true on exactly the same valuations.
-\end{highlighted}
+\end{definition}
 \newglossaryentry{logically equivalent}
 {
 	name=logical equivalence (in TFL),

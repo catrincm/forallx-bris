@@ -1485,7 +1485,7 @@ But \begin{fitchproof}
 \end{fitchproof}
 counts as a proof corresponding to $A\therefore B\eif B$ as the subproof has been closed on line 4.
 
-So we have now said when we have a proof in our natural deduction system that corresponds to a particular argument. If we can find a proof then we know that the argument is valid.
+So we have now said when we have a proof in our natural deduction system that corresponds to a particular argument. If we can find a proof then we know that the argument is valid.\todo{call it `fact'}
 \begin{highlighted}
 If there is a proof in natural deduction corresponding to the argument $\metaX_1\ldots\metaX_n\,\therefore\,\metaY$, then this argument $\metaX_1\ldots\metaX_n\,\therefore\,\metaY$ is valid.
 \end{highlighted}
@@ -2455,9 +2455,9 @@ Validity 				& Derive the conclusion from the premises & Find no line in the tru
 
 
 Armed with our `$\proves$' symbol, we can introduce some new terminology.
-	\begin{highlighted}\label{def:syntactic_tautology_in_sl}
+	\begin{definition}\label{def:syntactic_tautology_in_sl}
 		$\metaX$ is a \define{theorem} iff $\proves \metaX$
-	\end{highlighted}
+	\end{definition}
 \newglossaryentry{theorem}
 {
 name=theorem,
@@ -2479,9 +2479,9 @@ We have therefore proved `$\enot (A \eand \enot A)$' on no (undischarged) assump
 To show that something is a theorem, you just have to find a suitable proof. It is typically much harder to show that something is \emph{not} a theorem. To do this, you would have to demonstrate, not just that certain proof strategies fail, but that \emph{no} proof is possible. Even if you fail in trying to prove a sentence in a thousand different ways, perhaps the proof is just too long and complex for you to make out. Perhaps you just didn't try hard enough.
 
 Here is another new bit of terminology:
-	\begin{highlighted}
+	\begin{definition}
 		Two sentences \metaX and \metaY are \define{provably equivalent} iff each can be proved from the other; i.e., both $\metaX\proves\metaY$ and $\metaY\proves\metaX$.
-	\end{highlighted}
+	\end{definition}
 
 \newglossaryentry{provably equivalent}
 {
@@ -2494,9 +2494,9 @@ description={A property held by pairs of statements if and only if there is a de
 As in the case of showing that a sentence is a theorem, it is relatively easy to show that two sentences are provably equivalent: it just requires a pair of proofs. Showing that sentences are \emph{not} provably equivalent would be much harder: it is just as hard as showing that a sentence is not a theorem.
 
 Here is a third, related, bit of terminology:
-	\begin{highlighted}
+	\begin{definition}
 		The sentences $\metaX_1,\metaX_2,\ldots, \metaX_n$ are \define{provably inconsistent} iff a contradiction can be proved from them, i.e.\ $\metaX_1,\metaX_2,\ldots, \metaX_n \proves \metaY\eand\enot\metaY$ for some $\metaY$. If they are not \define{inconsistent}, we call them \define{provably consistent}.
-	\end{highlighted}
+	\end{definition}
 
 \newglossaryentry{provably inconsistent}
 {    name={provable inconsistency},

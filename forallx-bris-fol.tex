@@ -1213,7 +1213,7 @@ then I do not mean to say that every person in the world has done the problem sh
 
 
 This provides the link between the formal language and English and determines how to read sentences of FOL in English. 
-
+\todo{is it a defn?}
 \begin{highlighted}
 	A \define{symbolisation key} for FOL specifies:\begin{itemize}
 		\item A domain (what the quantifiers range over)
@@ -1686,6 +1686,7 @@ We have now informally introduced the basic building blocks of sentences of FOL.
 \section{Vocabulary of FOL}
 We'll start by summarising, a bit more formally, the vocabulary of FOL:
 
+\begin{definition}
 \begin{description}
 \item[Predicates] $A,B,C,\ldots,W$,
 with subscripts, as needed: $A_1, Z_2,A_{25},J_{375},\ldots$.\footnote{Each predicate will have a number of places associated with it. We should thus really introduce:\begin{description}
@@ -1707,7 +1708,8 @@ with subscripts, as needed $x_1, y_1, z_1, x_2,\ldots$. $u,v,w$ may also be used
 \item[Brackets] ( , )
 \item[Quantifiers]  $\forall, \exists$
 \end{description}
-%We define an \define{expression of FOL} as any string of symbols of FOL. Take any of the symbols of FOL and write them down, in any order, and you have an expression.
+We define an \define{expression of FOL} as any string of symbols of FOL. Take any of the symbols of FOL and write them down, in any order, and you have an expression.
+\end{definition}
 
 %\section{Terms and formulas}
 %\label{sec:TermsFormulas}
@@ -1753,9 +1755,14 @@ with subscripts, as needed $x_1, y_1, z_1, x_2,\ldots$. $u,v,w$ may also be used
 %Once we know what atomic formulas are, we can offer recursion clauses to define arbitrary formulas. The first few clauses are exactly the same as for TFL.
 
 \section{Formulas}
-In \cref{sec:TFLSentences}, we went straight from the presentation of the vocabulary of TFL to the definition of a sentence of TFL. In FOL, we will have to go via an intermediary stage, that is, we first need to introduce \define{formulas} of FOL. The intuitive idea is that a formula is any sentence, or anything which can be turned into a sentence by adding quantifiers out front. But this will take some unpacking.
+In \cref{sec:TFLSentences}, we went straight from the presentation of the vocabulary of TFL to the definition of a sentence of TFL. In FOL, we will have to go via an intermediary stage, that is, we first need to introduce \define{formulas} of FOL. 
 
-As we did for TFL, we will  present a inductive definition of a formula of FOL. The starting point of this is the notion of an \emph{atomic formula}. In TFL we started our definition with the notion of an atomic sentence, which were just given to us in our vocabulary. In FOL, the starting point of our definition is the notion of an atomic formula. Atomic formulas will be given by the following definition:
+During our symbolisation strategy we have stages like symbolising ``$x$ is happy'' or ``$x$ likes someone''. These are not the sorts of things that are true or false outright. They are not sentences of English. To determine if they are true or false, not only do you need to know what the world is like (be given a model), you also need a specification of who $x$ is. 
+
+These are symbolised in FOL as $Hx$ or $\exists y Lxy$. They are not \emph{sentences} of FOL, but they are well-formed \emph{formulas}. Formulas are the sorts of things that form sentences when you put quantifiers in front of them. Sentences are special kinds of formulas, those which have no so-called free-variables. No additional specification of who $x$ is is needed in $\forall x Hx$. It is a sentence. 
+
+What counts as a formula of FOL is given by an inductive definition similar to that which we gave for TFL. 
+The starting point of this is the notion of an \emph{atomic formula}. In TFL we started our definition with the notion of an atomic sentence, which were just given to us in our vocabulary. In FOL, the starting point of our definition is the notion of an atomic formula. Atomic formulas will be given by the following definition:
 \begin{quote}
 	{ If $\metaPredicate$ is an $n$-place predicate and $\metaterm_1,\ldots\metaterm_n$ are either variables or names, then $\metaPredicate\metaterm_1\ldots\metaterm_n$ is an \define{atomic formula}.\footnotemark}
 \footnotetext{In FOL variables and names are both called (singular) terms. Notice that in the above definition $\metaPredicate$ and $\metaterm$ are metavariables ranging over names of predicates and names of terms respectively.}
@@ -1773,8 +1780,8 @@ For example, if $D$ is a one-place predicate (we might have introduced it to sym
 
 Formulas are constructed by starting with these and using either our TFL connectives or our quantifiers.
 
-We now give the inductive definition of what it is to be a formula of FOL.
-	\begin{highlighted}\label{FOLformula}
+%We now give the inductive definition of what it is to be a formula of FOL.
+	\begin{definition}\label{FOLformula}A \define{formula of FOL} is defined inductively as follows:
 	\begin{enumerate}
 		\item If $\metaPredicate$ is an $n$-place predicate and $\metaterm_1,\ldots\metaterm_n$ are either variables or names, then $\metaPredicate\metaterm_1\ldots\metaterm_n$ is a formula.\\These are called \define{atomic formulas}.
 		\item If \metaX is a formula, then $\enot\metaX$ is a formula.
@@ -1791,7 +1798,7 @@ We now give the inductive definition of what it is to be a formula of FOL.
 		 \end{enumerate}
 		\item Nothing else is a formula.
 	\end{enumerate}
-	\end{highlighted}
+	\end{definition}
 	\newglossaryentry{formula}
 	{
 	name=formula of FOL,
@@ -1865,13 +1872,13 @@ We now give the inductive definition of what it is to be a formula of FOL.
 
  The notions of scope and main logical operators that were given in \ref{sec:TFLSentences} equally applies to FOL but now the main logical operator might be a quantifier. These were:
 % In fact, we can now give a formal definition of scope which incorporates the definition of the scope of a quantifier. Here we follow the case of TFL, though we note that a logical operator can be either a connective or a quantifier:
-	\begin{highlighted}
+	\begin{definition}
 		The \define{main logical operator} in a sentence is the operator that was introduced last when that sentence was constructed using the recursion rules.
 
 \bigskip
 
 		The \define{scope} of a logical operator in a sentence is the formula for which that operator is the main logical operator.
-	\end{highlighted}\todo{formula is undefined}
+	\end{definition}
 We can graphically illustrate scopes as follows:
 $$
 \overbrace{\exists z
@@ -1905,13 +1912,13 @@ Consider the atomic formula $Lzz$. Can it be true or false? You might think that
 Of course, if we put an existential quantifier out front, obtaining $\exists zLzz$, then this would be true iff someone loves herself. Equally, if we wrote $\forall z Lzz$, this would be true iff everyone loves themself. The point is that we need a quantifier to tell us how to deal with a variable.
 
 To make this precise, we can use the construction of a formula. 
-\begin{highlighted}An occurrance of a variable being \define{free} is defined as follows:
+\begin{definition}An occurrance of a variable being \define{free} is defined as follows:
 	\begin{itemize}
 		\item In an atomic formula, every occurance of a variable is free. 
 		\item An occurrance of a variable which is free in $\metaX$ or $\metaY$ is also free in $\enot\metaX$, $\metaX\eand\metaY$, $\metaX\eor\metaY$ and $\metaX\eif\metaY$. 
 		\item In $\forall v\metaX$ and $\exists v \metaX$, every occurrance of $v$ is now \define{bound}, any remaining occurrances of variables which were free are still free. 
 	\end{itemize}
-\end{highlighted}
+\end{definition}
 
 We can also use the notion of scope to characterise this. 
 	\begin{highlighted}
@@ -1938,9 +1945,9 @@ For example, consider the formula
 The scope of the universal quantifier $\forall x$ is $\forall x (Ex \eor Dy)$, so the first $x$ is bound by the universal quantifier. However, the second and third occurrence of $x$ are free. Equally, the $y$ is free. The scope of the existential quantifier $\exists z$ is $(Ex \eif Lzx)$, so $z$ is bound.
 
 Finally we can say what a sentence of FOL is
-	\begin{highlighted}
+	\begin{definition}
 		A \define{sentence} of FOL is any formula of FOL that contains no free variables.
-	\end{highlighted}
+	\end{definition}
 
 \newglossaryentry{sentence of FOL}{
   name = sentence of FOL,
@@ -1951,7 +1958,7 @@ Finally we can say what a sentence of FOL is
 
 \section{Bracketing conventions}
 
-We will adopt the same notational conventions governing brackets that we did for TFL (see \cref{sec:TFLSentences}):  we may omit the outermost brackets of a formula.
+We will adopt the same notational conventions governing brackets that we did for TFL (see \cref{sec:TFLBrackets}):  we may omit the outermost brackets of a formula.
 
 %First, we may omit the outermost brackets of a formula.
 
