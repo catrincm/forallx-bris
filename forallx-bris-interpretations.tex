@@ -1546,7 +1546,7 @@ Offering a precise definition of truth in FOL was more than a little fiddly, but
 %means that \metaX is true in every model.
 
 
-Consider \[\exists x(Px\eand Hx)\; \therefore; \forall x(Px\eif Hx)\]
+Consider \[\exists x(Px\eand Hx)\; \therefore\; \forall x(Px\eif Hx)\]
 This argument is invalid. 
 
 We might be interested in this as a symbolisation of someone's argument: 
@@ -1583,12 +1583,16 @@ Consider
 Every person likes some book (1 bears $L$ to $3$ and 2 bears $L$ to $4$), even though there is no particular book which everyone likes (for $3$, 2 does not like it; for $4$, 1 does not like it). 
 This is a model on which the premise is true but the conclusion is false. 
 
-What about 
+What about the converse, that is, the argument: 
+\begin{earg}
+	\prem There is some book which everyone likes.
+	\conc Everyone likes some book
+\end{earg}
+Symbolised as: 
 \[\exists y(By\eand \forall x(Px\eif Lxy))\;\therefore\; \forall x(Px\eif \exists y(By\eand Lxy))\]
-This argument is valid, but to show this, one needs to reason about every possible model. 
+This argument is valid, but to show this, one needs to reason about every possible model. We need to demonstrate that there is no model where the premise is true and the conclusion is false. That on any model where the premise is true, the conclusion is also true. 
 
-Unlike for TFL, there is no finite list of all the possible models. We cannot even in principle list them all out to show that there is no counterexample model. 
-In this unit, we will not teach you to undertake semantic reasoning about all possible models, instead we will instruct you to show that it is valid by giving a proof in the natural deduction system which we will give in \cref{ch:NDFOL}. 
+In TFL, we simply listed all the valuations and checked whether there was such a counterexample valuation. This is not even in principle possible in FOL as there are infinitely many models. Instead one needs to undertake semantic reasoning. Alternatively, one can give a proof in the natural deduction system which we will give in \cref{ch:NDFOL}. 
 %\begin{quotation}
 %	Suppose $M$ is a model which makes $\exists y(By\eand \forall x(Px\eif Lxy))$ true. 
 %
