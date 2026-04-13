@@ -285,9 +285,9 @@
 	}
 	\newenvironment{highlighted}{\begin{block}{}}{\end{block}}
 	\newenvironment{definition}{%
-		\begin{highlighted}\textbf{Definition}\par
+		\begin{block}{Definition}
 	}{%
-		\end{highlighted}
+		\end{block}
 	}
 	
 	\newcommand{\factoidbox}[1]{\begin{highlighted}
@@ -299,7 +299,7 @@
 	% \factoidbox{...} produces an inset paragraph of text with a line around it
 	% Neither for lists nor an environment, but it really didn't
 	% belong anywhere else.
-	\RequirePackage{tcolorbox}
+	\RequirePackage[most]{tcolorbox}
 	\newcommand{\factoidbox}[1]{\begin{factoidboxe}#1\end{factoidboxe}}
 	\newenvironment{factoidboxe}{%
 		\begin{tcolorbox}[%width=.9\textwidth,
@@ -310,9 +310,20 @@
 	\end{tcolorbox}}
 	\newenvironment{highlighted}{\factoidboxe}{\endfactoidboxe}
 	\newenvironment{definition}{%
-		\begin{highlighted}\textbf{Definition}\par
+		\begin{tcolorbox}[enhanced,
+			%width=.9\textwidth,
+			%      leftright skip=.05\textwidth,
+			sharp corners=downhill,
+			beforeafter skip=.7em,
+			colframe={leadbeater},colback={vltleadbeater},
+			colbacktitle=leadbeater,
+			coltitle=white,
+			fonttitle=\bfseries,
+			attach boxed title to top left={yshift=-2mm,xshift=4mm},
+			boxed title style={sharp corners=downhill,boxrule=0pt},
+			title={Definition}]
 	}{%
-		\end{highlighted}
+		\end{tcolorbox}
 	}
 
 
