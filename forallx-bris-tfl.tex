@@ -335,14 +335,14 @@ Since it matters which order they come in, we is valuable to give a name to indi
 }
 
 
-In what cases is `$B\eif E$' true or false?
+In what cases is `$B\eif E$' true or false? Here are the four cases:
 \begin{center}
 	\begin{tabular}{rccl}
 		&$B$&$E$\\\hline
 		$v_1$&T&T&She is drinking beer and is over eighteen\\
-		$v_2$&T&F&She is drinking beer and is under eighteen\\
+		$v_2$&T&F&She is drinking beer and is not over eighteen\\
 		$v_3$&F&T&She is not drinking beer and she is over eighteen\\
-		$v_4$&F&F&She is not drinking beer and she is under eighteen\\
+		$v_4$&F&F&She is not drinking beer and she is not over eighteen\\
 	\end{tabular}
 \end{center}
 In $v_2$ it is false, and in $v_1$ it is true. 
@@ -427,7 +427,7 @@ and we can then apply the rule. We will write the answer underneath the `$\eif$'
 
 \section{Truth rules}\label{sec:Truth rules}
 These are the rules associated with the connectives. They are motivated by the English uses, but are stipulated to be governed by these truth rules. 
-\begin{definition}\label{def:Truthint}
+\begin{highlighted}\label{def:Truthint}
 	% 	Let $v$ be a valuation. 
 	%	\begin{enumerate}
 		%		\item An atomic sentence $X$ is true relative to $v$, if and only if $v$ assigns the value T to $X$.
@@ -477,7 +477,7 @@ These are the rules associated with the connectives. They are motivated by the E
 		%\item If \metaX and \metaY are sentences, then $(\metaX\eiff\metaY)$ is a sentence.
 		%\item Nothing else is a sentence.
 		%	\end{enumerate}
-\end{definition}
+\end{highlighted}
 
 
 
@@ -1208,7 +1208,7 @@ When giving English sentences we have to give some mechanisms to indicate which 
 	
 	\section{Let's get careful about brackets}
 
-	We use brackets to identify how to read the sentence, but to know where they belong they come from the formation rules for the sentences of TFL. 
+	We use brackets to identify how to read the sentence, but where they should be used is officially determined according to our precise rules for what counts as a sentence of TFL.
 	
 	When we were combining two sentences with one of our connectives, we are told to add brackets. Here were three of our rules for what counts as a sentence of TFL: 
 	\begin{itemize}
@@ -1744,7 +1744,7 @@ description={The language logicians use to talk about the object language. In th
 For the most part, the object language in this chapter has been the formal language that we have been developing: TFL. The metalanguage is English. Not conversational English exactly, but English supplemented with some additional vocabulary to help us get along.
 
 Now, we have used uppercase letters as sentence letters of TFL:
-	$$A, B, C, Z, A_1, B_4, A_{25}, J_{375},\ldots$$
+	$$A, B, C, P, Q, A_1, B_4, A_{25}, J_{375},\ldots$$
 These are sentences of the object language (TFL). They are not sentences of English. So we must not say, for example:
 	\begin{itemize}
 		\item $D$ is a sentence letter of TFL.
@@ -2108,7 +2108,7 @@ We will present this in a table:
 	\begin{tabular}{r c c| c c c c c c c c c}
 		&&
 		
-		& \mainconnectivecolor{(} & {\enot} & $I$ & {\eand} & $H$ & \mainconnectivecolor{)} & \tikzmarknode{r1_imp}{$\mainconnective{\eif}$}& $H$  \\[.2em]
+		& {(} & {\enot} & $I$ & {\eand} & $H$ & {)} & \tikzmarknode{r1_imp}{$\mainconnective{\eif}$}& $H$  \\[.2em]
 		
 		% Row 2: children of Row 1
 		&& &
@@ -2201,8 +2201,8 @@ For example:
 %		$v_1:$ & T & T & T & \TTbf{F} & & T & T & & T & T & & T & T & F & T & & & \\
 %		$v_2:$ & T & T & F & \TTbf{F} & & T & T & & F & T & & T & T & T & F & & & \\
 %		$v_3:$ & T & F & T & \TTbf{F} & & F & T & & T & T & & T & T & F & T & & & \\
-		$v_1:$ & T & F & F & \TTbf{F} & & F & T & & F & T & & T & T & T & F & & & \\
-		$v_2:$ & F & T & T & \TTbf{F} & & T & T & & T & F & & F & F & F & T & & & \\
+		$v:$ & T & F & F & \TTbf{F} & & F & T & & F & T & & T & T & T & F & & & \\
+		$v':$ & F & T & T & \TTbf{F} & & T & T & & T & F & & F & F & F & T & & & \\
 %		$v_6:$ & F & T & F & \TTbf{F} & & T & T & & F & T & & F & F & T & F & & & \\
 %		$v_7:$ & F & F & T & \TTbf{T} & & F & F & & T & F & & F & F & F & T & & & \\
 %		$v_8:$ & F & F & F & \TTbf{F} & & F & T & & F & T & & F & F & T & F & & & \\
@@ -2354,18 +2354,18 @@ If we are also interested in a further atomic sentence, say $C$, we further spli
 
 
 What if we add a further atomic sentence, say $P_{235}$? We want to consider the valuations for atomic sentences $A,B,C,P_{235}$.
-Again we need to split each of our valuations for $A,B,C$ into one which assigns $P_{235}$ as true and another which assigns it as false. 
+For each valuation for $A,B,C$ there is a version of it where $P_{235}$ is true, and another where $P_{235}$ is false. We thus duplicate each line of the table so far and add these two possible truth values for $P_{235}$ in the two variants. 
 
 \begin{center} \begin{tabular}{cccc} $A$ & $B$ & $C$ & $P_{235}$\\\hline T & T & T & T\\ T & T & T & F\\ T & T & F & T\\ T & T & F & F\\ T & F & T & T\\ T & F & T & F\\ T & F & F & T\\ T & F & F & F\\ F & T & T & T\\ F & T & T & F\\ F & T & F & T\\ F & T & F & F\\ F & F & T & T\\ F & F & T & F\\ F & F & F & T\\ F & F & F & F \end{tabular} \end{center}
 
 
-The list of all possible valuations gets very big very fast.
+The list of all possible valuations gets very big very fast. It doubles for each new atomic sentence. 
 
 There are $2^n$ ways to assign truth values to $n$ atomic sentences. Using truth tables to determine validity thus becomes quite difficult and it is one reason we consider an alternative method: that of proofs, which we will see in \cref{ch:NDTFL}.
 
 
 Here's one strategy that some people find useful for listing all the valuations. 
-\begin{highlighted}
+
 \begin{itemize}
 	\item 	For $n$ atomic sentences, there are $2^n$ valuations. 
 	
@@ -2386,7 +2386,7 @@ Here's one strategy that some people find useful for listing all the valuations.
 \item	And so on until you get to the first atomic sentence.
 \end{itemize}
 \end{itemize}
-	\end{highlighted}
+
 	
 \section{Complete truth tables for a sentence}
 
