@@ -27,8 +27,8 @@ This isn't restricted to simple properties. Consider the following argument:
 \end{earg}
 This is a valid argument. And it will be allowed by our rule $\forall$E:
 \begin{fitchproof}
-	\hypo{a}{\forall x(Cx\eif Sx)}
-	\have{c}{Cf\eif Sf} \forallE{a}
+	\hypo{a}{\mainconnective{\forall x}(C\yellowbox{x}\eif S\yellowbox{x})}
+	\have{c}{C\yellowbox{f}\eif S\yellowbox{f}} \forallE{a}
 \end{fitchproof}
 Note here that we have to replace two instances of `$x$' with our name: `$f$' or Fluffy. Indeed it would have been fine to do with any name. We can even do it with names we already have. Consider the following:
 \begin{earg}
@@ -40,7 +40,7 @@ We we symbolise this as:
 \prem $\forall x Opx$
 \conc $Opp$
 \end{earg}
-This is valid: the premise says \emph{everything} in the domain owes money to Pavel; and Pavel is something in the domain. So it implies that Pavel owes money to himself.
+This is valid: the premise says \emph{everything} in the domain owes money to Pavel; and names refer to things in the domain. So it implies that Pavel owes money to himself.
 
 %A closely related sentence is: \begin{earg}
 %\item Pavel owes money to everyone \emph{else}.
@@ -48,8 +48,8 @@ This is valid: the premise says \emph{everything} in the domain owes money to Pa
 
 This argument is also directly allowed by our rule $\forall$E:
 \begin{fitchproof}
-	\hypo{a}{\forall xOpx}
-	\have{c}{Opp} \forallE{a}
+	\hypo{a}{\mainconnective{\forall x}Op\yellowbox{x}}
+	\have{c}{Op\yellowbox{p}} \forallE{a}
 \end{fitchproof}
 
 We can now give our general rule: whenever you have a sentence $\forall \meta{x}\metaX(\ldots \meta{x} \ldots\meta{x}\ldots)$, for example $\forall x Fx$, $\forall x (Cx\eif Sx)$, $\forall x Opx$; one can conclude that we have the sentence which is obtained by stripping of the quantifier and replacing every free occurrence of the variable by a name, be it $a,b,c\ldots$. So we could derive $Fa$, $Cf\eif Sf$ or $Opp$.
@@ -85,8 +85,8 @@ The following argument is valid:
 
 This is the idea of our existential introduction rule: from the claim that some particular thing is F, you can infer that something is F:
 \begin{fitchproof}
-	\hypo{a}{Fa}
-	\have{c}{\exists x Fx} \existsI{a}
+	\hypo{a}{F\yellowbox{a}}
+	\have{c}{\mainconnective{\exists x} F\yellowbox{x}} \existsI{a}
 \end{fitchproof}
 We obtained line 2 by replacing the name `$a$' with the variable `$x$' and adding $\exists x$ in front of the sentence. This will be permissible by our rule of $\exists$I.
 
@@ -96,8 +96,8 @@ This isn't restricted to simple properties.
 \conc There is a monkey who knows sign language.
 \end{earg}
 \begin{fitchproof}
-	\hypo{a}{Mb\eand Sb}
-	\have{c}{\exists x (Mx\eand Sx)} \existsI{a}
+	\hypo{a}{M\yellowbox{b}\eand S\yellowbox{b}}
+	\have{c}{\mainconnective{\exists x} (M\yellowbox{x}\eand S\yellowbox{x})} \existsI{a}
 \end{fitchproof}
 
 Or even
@@ -106,8 +106,8 @@ Or even
 \conc Someone is friends with someone who is friends with everyone.
 \end{earg}
 \begin{fitchproof}
-	\hypo{a}{\exists x (Fcx\eand\forall y Fxy)}
-	\have{c}{\exists z\exists x(Fzx\eand \forall y Fxy)} \existsI{a}
+	\hypo{a}{\exists x (F\yellowbox{c}x\eand\forall y Fxy)}
+	\have{c}{\mainconnective{\exists z}\exists x(F\yellowbox{z}x\eand \forall y Fxy)} \existsI{a}
 \end{fitchproof}We replaced the name, `$c$' with the variable `$z$' and added $\exists z$ at the beginning of the sentence.
 
 
@@ -181,7 +181,7 @@ To give our rule in general we need to introduce some new notation for this abil
 \begin{highlighted}
 \begin{fitchproof}
 	\have[m]{a}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}
-	\have[\ ]{c}{\exists \meta{x}\metaX(\ldots \meta{x} \ldots \meta{c}\ldots)} \existsI{a}
+	\have[\ ]{c}{\exists \meta{x}\,\metaX(\ldots \meta{x} \ldots \meta{c}\ldots)} \existsI{a}
 \end{fitchproof}
 Can only replace instances of $c$ which are not already in the scope of a $\forall \meta{x}$ or $\exists \meta{x}$ in $\metaX$.
 \end{highlighted}

@@ -569,6 +569,8 @@ for tree={
 %\newcommand{\mainconnective}[1]{\,\mainconnectivecolor{#1}\,}
 \newcommand{\mainconnectivecolor}[1]{\textcolor{leadbeater}{#1}}
 
+
+
 \newcommand{\mainconnective}[1]{%
 	\begingroup
 	\ifmmode
@@ -580,6 +582,10 @@ for tree={
 }
 
 \newcommand{\atomicstage}[1]{%
+	\yellowbox{#1}%
+}
+
+\newcommand{\yellowbox}[1]{%
 	\begingroup
 	\setlength{\fboxsep}{1.5pt}%
 	\mainconnective{#1}%
