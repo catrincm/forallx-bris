@@ -67,7 +67,7 @@ Here is the formal specification of the universal elimination rule ($\forall$E):
 	\have[m]{a}{\forall \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)}
 	\have[\ ]{c}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)} \forallE{a}
 \end{fitchproof}\end{highlighted}
-The point is that you can obtain any \emph{substitution instance} of a universally quantified formula: \textbf{replace every instance of the quantified variable with any name you like}. (Of course, you need to replace every free occurrence of $x$ in $X$ by the same name.)
+The point is that you can obtain any \emph{substitution instance} of a universally quantified formula: \textbf{replace every (free) instance of the quantified variable with any name you like}. (Of course, you need to replace every free occurrence of $x$ in $X$ by the same name.)
 
 I should emphasize that (as with every elimination rule) you can only apply the $\forall$E rule when the universal quantifier is the main logical operator. Thus the following is outright banned:
 \begin{fitchproof}
@@ -183,7 +183,7 @@ To give our rule in general we need to introduce some new notation for this abil
 	\have[m]{a}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}
 	\have[\ ]{c}{\exists \meta{x}\metaX(\ldots \meta{x} \ldots \meta{c}\ldots)} \existsI{a}
 \end{fitchproof}
-Can only replace instances of $c$ which are not already bound by $\forall \meta{x}$ or $\exists \meta{x}$ in $\metaX$.
+Can only replace instances of $c$ which are not already in the scope of a $\forall \meta{x}$ or $\exists \meta{x}$ in $\metaX$.
 \end{highlighted}
 %All the cases we've seen in this section follow this rule.
 
@@ -247,7 +247,7 @@ The crucial thought here is that `$a$' was just some \emph{arbitrary} name. Ther
 	\have[\ ]{c}{\forall \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)} \Ai{a}
 \end{fitchproof}
 	\meta{c} must not occur in any undischarged assumption or premise.\\
-	\meta{c} must not already be bound by $\forall \meta{x}$ or $\exists \meta{x}$ in $\metaX$.
+	\meta{c} must not already be in the scope of $\forall \meta{x}$ or $\exists \meta{x}$ in $\metaX$.
 %	\meta{x} must not occur in $\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$
 	\end{highlighted}
 It is important to appreciate that to apply the rule correctly \textbf{we must replace every occurrence of the name $c$ by the variable $x$}. A crucial aspect of this rule, though, is bound up in the first constraint. This constraint ensures that we are always reasoning at a sufficiently general level (the second constraint is one which avoids unintended instances such as $\exists x Fcx\therefore \forall x\exists x Fxx$. The conclusion is logically equivalent to $\exists x Fxx$ and it is an invalid argument.) 

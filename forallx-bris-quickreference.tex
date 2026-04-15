@@ -491,7 +491,7 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 	\have[\ ]{c}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)} \forallE{a}
 \end{fitchproof}
 \begin{itemize}
-	\item $c$ not already bound by $\forall x$ or $\exists x$ in $X$. 
+	\item $c$ not already in the scope of $\forall x$ or $\exists x$ in $X$. 
 \end{itemize}
 
 \subsubsection*{Universal introduction}
@@ -503,7 +503,7 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 
  \begin{itemize}
 	\item 	\meta{c} must not occur in any undischarged assumption
-	\item \meta{c} must not already be bound by $\forall x$ or $\exists x$ in $\metaX$.
+	\item \meta{c} must not already be in the scope of $\forall x$ or $\exists x$ in $\metaX$.
 %\meta{x} must not occur in $\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$
 \end{itemize}
 
@@ -519,7 +519,7 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 \end{fitchproof}
 
 \begin{itemize}
-	\item Instances of $c$ bound by $\forall x$ or $\exists x$ in $X$ must not be replaced. 
+	\item Instances of $c$ in the scope of $\forall x$ or $\exists x$ in $X$ must not be replaced. 
 \end{itemize}
 %\noindent \meta{x} must not occur in $\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$
 %\noindent You can replace one or more instance of \meta{c} with \meta{x}.
