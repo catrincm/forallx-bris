@@ -431,9 +431,8 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 		\have[\ ]{c}{\forall \metav\metaX} \forallI{a}
 	\end{fitchproof}
 	
-	\begin{itemize}
-		\item 	\meta{c} must not occur in any premise or undischarged assumption
-	\end{itemize}
+	\meta{c} must not occur in any premise or undischarged assumption
+
 	&
 	
 	\begin{fitchproof}
@@ -457,10 +456,9 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 		\have[\ ]{d}{\metaY} \Ee{a,b-c}
 	\end{fitchproof}
 	
-	\begin{itemize}
-		\item \meta{c} must be new to the proof: it does not occur in any line before $i$;
-		\item 	\meta{c} must not occur in \metaY.
-	\end{itemize}\\\hline
+\meta{c} must be new to the proof: it must not occur in any line before $i$;\newline
+		 	\meta{c} must not occur in \metaY.
+\\\hline
 \end{tabular}
 
 
