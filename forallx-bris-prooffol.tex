@@ -15,8 +15,8 @@ FOL makes use of all of the connectives of TFL. So proofs in FOL will use all of
 \conc Catrin is happy.
 \end{earg} This is a valid argument. Generally, then, from the claim that everything is F, you can infer that any particular thing is F. You name it; it's F. So the following should be fine:
 \begin{fitchproof}
-	\hypo{a}{\forall xFx}
-	\have{c}{Fa} \forallE{a}
+	\hypo{a}{\mainconnective{\forall x}F\yellowbox{x}}
+	\have{c}{F\yellowbox{a}} \forallE{a}
 \end{fitchproof}
 We obtained line 2 by dropping the universal quantifier and replacing `$x$' with `$a$'.
 
@@ -30,7 +30,44 @@ This is a valid argument. And it will be allowed by our rule $\forall$E:
 	\hypo{a}{\mainconnective{\forall x}(C\yellowbox{x}\eif S\yellowbox{x})}
 	\have{c}{C\yellowbox{f}\eif S\yellowbox{f}} \forallE{a}
 \end{fitchproof}
-Note here that we have to replace two instances of `$x$' with our name: `$f$' or Fluffy. Indeed it would have been fine to do with any name. We can even do it with names we already have. Consider the following:
+Note here that we have to replace two instances of `$x$' with our name: `$f$' or Fluffy. 
+
+The more complex thing we're saying may itself already have quantifiers. 
+\begin{earg}
+	\prem Fluffy is a cat.
+		\prem Every cat has a toy.
+	\conc Fluffy has a toy.
+\end{earg}
+This is a valid argument. And it will be allowed by our rule $\forall$E:
+\begin{fitchproof}
+	\hypo{b}{Cf}
+		\hypo{a}{\mainconnective{\forall x}(C\yellowbox{x}\eif \exists y (Ty\eand H\yellowbox{x}y)}
+	\have{c}{C\yellowbox{f}\eif \exists y (Ty\eand H\yellowbox{f}y)} \forallE{a}\forallE{a}
+	\have{d}{\exists y (Ty\eand Hfy)}\ifE{b,c}
+\end{fitchproof}
+We replace all instances of the variable, $x$ with the name, $f$. 
+
+We can apply the rule twice:
+\begin{earg}
+	\prem Every vet likes all animals
+	\prem Charlie is a vet 
+	\prem Snowball is an animal.
+	\conc Charlie likes Snowball.
+\end{earg}
+
+\begin{fitchproof}
+	\hypo{a}{\mainconnective{\forall x}(V\yellowbox{x}\eif \forall y (Ay\eif L\yellowbox{x}y)}
+	\hypo{b}{Vc}
+	\hypo{c}{As}
+	\have{d}{V\yellowbox{c}\eif \forall y (Ay\eif L\yellowbox{c}y)}\forallE{a}
+	\have{e}{\bluebox{\forall y }(A\bluebox{y}\eif Lc\bluebox{y})}\ifE{d,b}
+	\have{f}{A\bluebox{s}\eif Lc\bluebox{s}}\forallE{e}
+	\have{g}{Lcs}\ifE{f,c}
+\end{fitchproof}
+
+
+
+Consider the following:
 \begin{earg}
 \prem Pavel owes everyone money.
 \conc Pavel owes himself money.
@@ -40,8 +77,7 @@ We we symbolise this as:
 \prem $\forall x Opx$
 \conc $Opp$
 \end{earg}
-This is valid: the premise says \emph{everything} in the domain owes money to Pavel; and names refer to things in the domain. So it implies that Pavel owes money to himself.
-
+This is valid: the premise says \emph{everything} in the domain owes money to Pavel; and names refer to things in the domain. So it implies that Pavel owes money to himself. 
 %A closely related sentence is: \begin{earg}
 %\item Pavel owes money to everyone \emph{else}.
 %\end{earg}and that will not be symbolised as $\forall x Oxx$; however, we do not yet have the resources to symbolise at. In \cref{ch:identity} we will introduce identity which will allow us to formalise it properly.
@@ -52,7 +88,66 @@ This argument is also directly allowed by our rule $\forall$E:
 	\have{c}{Op\yellowbox{p}} \forallE{a}
 \end{fitchproof}
 
-We can now give our general rule: whenever you have a sentence $\forall \meta{x}\metaX(\ldots \meta{x} \ldots\meta{x}\ldots)$, for example $\forall x Fx$, $\forall x (Cx\eif Sx)$, $\forall x Opx$; one can conclude that we have the sentence which is obtained by stripping of the quantifier and replacing every free occurrence of the variable by a name, be it $a,b,c\ldots$. So we could derive $Fa$, $Cf\eif Sf$ or $Opp$.
+If you think that this isn't right, perhaps you instead think that this isn't the right symbolisation of `Pavel owes everyone money', you might think that it means: `Pavel owes everyone else money', that is, for everyone who is not identical to Pavel, he owes them money. To symbolise this, we would need the identity symbol. It is something which one can easily add to FOL, but we won't cover it in this unit. 
+
+
+
+
+
+
+To give the general rule, we introduce some particular notation:
+\begin{definition}
+	For a formula of FOL, $\metaX$, a variable $\metav$ and a constant $\metac$, we define  a formula: $$\metaX[\metac/\metav]$$ which is the formula which results from replacing every free occurrence of $\metav$ with $\metac$. 
+\end{definition}
+
+All the examples of the $\forall$E rule we have used so far have this form: 
+\begin{fitchproof}
+	\have[m]{a}{\forall \metav \metaX}
+	\have[\ ]{c}{\metaX[\metac/\metav]} \forallE{a}
+\end{fitchproof}
+
+\begin{itemize}
+			\item \begin{fitchproof}
+		\have[1]{a}{\mainconnective{\forall x}F\yellowbox{x}}
+		\have[\ ]{c}{F\yellowbox{a}} \forallE{a}
+	\end{fitchproof}
+	\item \begin{fitchproof}
+		\have[1]{a}{\mainconnective{\forall x}(C\yellowbox{x}\eif S\yellowbox{x})}
+		\have[\ ]{c}{C\yellowbox{f}\eif S\yellowbox{f}} \forallE{a}
+	\end{fitchproof}
+	\item 
+	\begin{fitchproof}
+		\have[2]{a}{\mainconnective{\forall x}(C\yellowbox{x}\eif \exists y (Ty\eand H\yellowbox{x}y)}
+		\have[\ ]{c}{C\yellowbox{f}\eif \exists y (Ty\eand H\yellowbox{f}y)} \forallE{a}
+	\end{fitchproof}
+	\item \begin{fitchproof}
+		\have[1]{a}{\mainconnective{\forall x}(V\yellowbox{x}\eif \forall y (Ay\eif L\yellowbox{x}y)}
+		\have[\ ]{d}{V\yellowbox{c}\eif \forall y (Ay\eif L\yellowbox{c}y)}\forallE{a}
+	\end{fitchproof}
+	\item \begin{fitchproof}
+		\have[5]{a}{\mainconnective{\forall y} (A\yellowbox{y}\eif Lc\yellowbox{y})}
+		\have[\ ]{d}{A\yellowbox{s}\eif Lc\yellowbox{s})}\forallE{a}
+	\end{fitchproof}
+	\item 
+		\begin{fitchproof}
+			\have[1]{a}{\mainconnective{\forall x}Op\yellowbox{x}}
+			\have[\ ]{c}{Op\yellowbox{p}} \forallE{a}
+		\end{fitchproof}
+
+\end{itemize}
+
+This is our first basic rule of natural deduction for FOL: 
+\begin{highlighted}
+	\begin{fitchproof}
+		\have[m]{a}{\forall \metav \metaX}
+		\have[\ ]{c}{\metaX[\metac/\metav]} \forallE{a}
+	\end{fitchproof}
+\end{highlighted}
+
+
+
+
+We can now give our general rule: whenever you have a sentence $\forall \meta{v}\metaX(\ldots \meta{v} \ldots\meta{v}\ldots)$, for example $\forall x Fx$, $\forall x (Cx\eif Sx)$, $\forall x Opx$; one can conclude that we have the sentence which is obtained by stripping of the quantifier and replacing every free occurrence of the variable by a name, be it $a,b,c\ldots$. So we could derive $Fa$, $Cf\eif Sf$ or $Opp$.
 
 %We obtained line 2 by dropping the universal quantifier and replacing every instance of `$x$' with `$a$'. Equally, the following should be allowed:
 %\begin{fitchproof}
@@ -61,20 +156,23 @@ We can now give our general rule: whenever you have a sentence $\forall \meta{x}
 %\end{fitchproof}
 %We obtained line 2 here by dropping the universal quantifier and replacing every instance of `$x$' with `$d$'. We could have done the same with any other name we wanted.
 
-Here is the formal specification of the universal elimination rule ($\forall$E):
-\begin{highlighted}
-\begin{fitchproof}
-	\have[m]{a}{\forall \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)}
-	\have[\ ]{c}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)} \forallE{a}
-\end{fitchproof}\end{highlighted}
-The point is that you can obtain any \emph{substitution instance} of a universally quantified formula: \textbf{replace every (free) instance of the quantified variable with any name you like}. (Of course, you need to replace every free occurrence of $x$ in $X$ by the same name.)
+%Here is the formal specification of the universal elimination rule ($\forall$E):
+%\begin{highlighted}
+%\begin{fitchproof}
+%	\have[m]{a}{\forall \meta{v}\metaX(\ldots \meta{v} \ldots \meta{v}\ldots)}
+%	\have[\ ]{c}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)} \forallE{a}
+%\end{fitchproof}
+%\end{highlighted}
+%The point is that you can obtain any \emph{substitution instance} of a universally quantified formula: \textbf{replace every (free) instance of the quantified variable with any name you like}. (Of course, you need to replace every free occurrence of $x$ in $X$ by the same name.)
 
-I should emphasize that (as with every elimination rule) you can only apply the $\forall$E rule when the universal quantifier is the main logical operator. Thus the following is outright banned:
+As with every elimination rule, you can only apply the $\forall$E rule when the universal quantifier is the main logical operator. Thus the following is outright banned:
 \begin{fitchproof}
 	\hypo{a}{\forall x Bx \eif Bk}
 	\have{c}{Bb \eif Bk}\by{naughtily attempting to invoke $\forall$E}{a}
 \end{fitchproof}
 This is illegitimate, since `$\forall x$' is not the main logical operator in line 1. (If you need a reminder as to why this sort of inference should be banned, reread \cref{sec:MoreMonadic}.)
+
+
 
 \section{Existential introduction}
 The following argument is valid:
@@ -99,16 +197,30 @@ This isn't restricted to simple properties.
 	\hypo{a}{M\yellowbox{b}\eand S\yellowbox{b}}
 	\have{c}{\mainconnective{\exists x} (M\yellowbox{x}\eand S\yellowbox{x})} \existsI{a}
 \end{fitchproof}
-
-Or even
+The more complex thing we're saying may itself already have quantifiers. 
 \begin{earg}
-\prem Catrin is friends with someone who is friends with everyone.
-\conc Someone is friends with someone who is friends with everyone.
+	\prem Fluffy is a cat.
+	\prem Fluffy has a toy.
+	\conc Some cat has a toy. 
 \end{earg}
+This is a valid argument. And it will be allowed by our rule $\forall$E:
 \begin{fitchproof}
-	\hypo{a}{\exists x (F\yellowbox{c}x\eand\forall y Fxy)}
-	\have{c}{\mainconnective{\exists z}\exists x(F\yellowbox{z}x\eand \forall y Fxy)} \existsI{a}
-\end{fitchproof}We replaced the name, `$c$' with the variable `$z$' and added $\exists z$ at the beginning of the sentence.
+	\hypo{b}{Cf}
+	\hypo{c}{ \exists y (Ty\eand Hfy)}
+	\have{bc}{C\yellowbox{f}\eand \exists y(Ty\eand H\yellowbox{f}y)}\andI{b,c}
+	\have{a}{\mainconnective{\exists x}(C\yellowbox{x}\eand \exists y (Ty\eand H\yellowbox{x}y)}\existsI{bc}
+\end{fitchproof}
+We replace all instances of the variable, $x$ with the name, $f$. 
+
+%Or even
+%\begin{earg}
+%\prem Catrin is friends with someone who is friends with everyone.
+%\conc Someone is friends with someone who is friends with everyone.
+%\end{earg}
+%\begin{fitchproof}
+%	\hypo{a}{\exists x (F\yellowbox{c}x\eand\forall y Fxy)}
+%	\have{c}{\mainconnective{\exists z}\exists x(F\yellowbox{z}x\eand \forall y Fxy)} \existsI{a}
+%\end{fitchproof}We replaced the name, `$c$' with the variable `$z$' and added $\exists z$ at the beginning of the sentence.
 
 
 This rule will now allow us to carefully work through our brain teaser from \cref{sec:orE}
@@ -166,36 +278,84 @@ We can now fill out the details of this to see that it's a formal proof:
 			\have{con}{\exists x\exists y(Hx\eand Lxy\eand\enot Hx)}\orE{lem,b-abc,b2-abc2}
 \end{fitchproof}
 
-\bigskip
-Consider the following example:
-\begin{earg}
-\prem Narcissus loves himeself.
-\conc There is someone who loves Narcissus.
-\end{earg}This is a valid argument. The formalised version, which will be allowed by our rule is:
-\begin{fitchproof}
-	\hypo{a}{Lnn}
-	\have{c}{\exists x Lxn} \existsI{a}
-\end{fitchproof} This shows us that we do not have to replace \emph{all} instances of the name with the variable. Though of course we can if we wish: we could also deduce there is someone who loves himself.
 
-To give our rule in general we need to introduce some new notation for this ability to replace just some of our instances of the name: If $\metaX$ is a sentence containing the name $\meta{c}$, we can emphasize this by writing `$\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$'. \textbf{We will write `$\metaX(\ldots \meta{x} \ldots \meta{c}\ldots)$' to indicate any formula obtained by replacing \emph{some or all} of the instances of the name \meta{c} with the variable \meta{x}}. Armed with this, our introduction rule is:
+Here is our general rule, using the notation as we used for $\forall$E:
 \begin{highlighted}
-\begin{fitchproof}
-	\have[m]{a}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}
-	\have[\ ]{c}{\exists \meta{x}\,\metaX(\ldots \meta{x} \ldots \meta{c}\ldots)} \existsI{a}
-\end{fitchproof}
-Can only replace instances of $c$ which are not already in the scope of a $\forall \meta{x}$ or $\exists \meta{x}$ in $\metaX$.
+	\begin{fitchproof}
+		\have[m]{a}{\metaX[\metac/\metav]}
+		\have[\ ]{c}{\exists \metav\metaX} \forallE{a}
+	\end{fitchproof}
 \end{highlighted}
-%All the cases we've seen in this section follow this rule.
 
-You might have noticed the additional constraint that's added to the rule. 
-%It is {part} of the rule; so if you are asked to write the rule $\exists$I  you {must} include this constraint. However, you will not need to worry about it in practice. It's simply there to guarantee that applications of the rule yield sentences of FOL.
-%You shouldn't need to
- If the rule were not there we would be allowed to argue as follows:
+Consider the following example: 
+\begin{earg}
+	\prem Narcissus loves himself. $Lnn$
+	\conc Narcissus loves somebody. $\exists x Lnx$
+\end{earg} 
+
+$Lnn$ tells us something about Narcissus. But it tells us various different things:
+\begin{itemize}
+	\item That he loves himself
+	\begin{itemize}
+		\item $x\mapsto$Narcissus satisfies $Lxx$
+	\end{itemize}
+	\item That he loves Narcissus: \begin{itemize}
+		\item $x\mapsto$Narcissus satisfies $Lxn$
+	\end{itemize}
+	\item That he is loved by Narcissus: \begin{itemize}
+		\item $x\mapsto$Narcissus satisfies $Lnx$
+	\end{itemize}
+\end{itemize}
+
+Three formulas: $Lxx$, $Lnx$ and $Lxn$ each result in the same sentence: $Lnn$ when we replace the occurrences of $x$ with $n$. The existential introduction rule will allow us to obtain any of $\exists x Lxx,\; \exists x Lxn,\; \exists x Lnx$ from $Lnn$.
+
+\begin{center}
+	\begin{tabular}{c|c|c}
+	Formula $\metaX$&$\metaX[n/x]$&$\exists x \metaX$\\\hline
+	$Lxx$&$Lnn$&$\exists x Lxx$\\
+	$Lnx$&$Lnn$&$\exists x Lnx$\\
+	$Lxn$&$Lnn$&$\exists x Lxn$
+\end{tabular}
+\end{center}
+
+For example: 
 \begin{fitchproof}
-	\hypo{a}{\exists xLnx}
-	\have{e}{\exists x \exists x Lxx}\by{naughtily attempting to invoke $\exists$I}{a}
+	\hypo{a}{L\yellowbox{n}n}
+	\have{c}{\mainconnective{\exists x }Ln\yellowbox{x}n} \existsI{a}
 \end{fitchproof}
-$\exists x \exists x Lxx$ is in fact a sentence of FOL, although a confusing one. It's a sentence which should be avoided when symbolising. If one very carefully works through the definitions, it can be seen to be logically equivalent to $\exists x Lxx$. But $\exists x Lnx\therefore\exists x Lxx$ is clearly invalid. 
+
+Usually one can simply replace any (or all) occurrence of a name with your selected variable $\metav$ and add $\exists \metav$ at the front. 
+The only time that care needs to be taken is if $\metaX$ already contains the variable $\metav$. For example $$\exists x\forall x(Bx\eif Lxx)$$
+This is a sentence which you should never use when symbolising in FOL. As long as you never consider sentences which have quantifier whose scope already contains a quantifier using that variable, you don't need to worry and can simply replace your names with the new variable. 
+
+Strictly speaking, however, it is a formula of FOL, and to ensure our proof system is \emph{complete}, that is, proves every valid argument, we need to ensure that it does appropriately apply to such sentences. For this unit, we won't ever ask about such cases and you can ignore such care. 
+
+\subsection*{Care in applying the rule when we have clashing quantifiers}
+Consider the following argument: 
+\begin{fitchproof}
+	\hypo{a}{\forall x(Bx\eif Lax)}
+	\have{e}{\exists x\forall x(Bx\eif Lxx)}\by{naughtily attempting to invoke $\exists$I}{a}
+\end{fitchproof}
+In fact, this final formula is logically equivalent to $\forall x(Bx\eif Lxx)$. Here's the semantic reasoning:
+\begin{quote}
+	To evaluate $\exists x\forall x(Bx\eif Lxx)$, one must consider variable assignments $x\mapsto o$ and whether 
+	$\forall x(Bx\eif Lxx)$ is true under that variable assignment. But $\forall x(Bx\eif Lxx)$ is a sentence with no free variables. Whether it is true or false is independent of any variable assignment, it simply depends on the model. So the quantifier $\exists x$ at the front is unimportant. 
+\end{quote}
+
+The argument is then equivalent to \begin{earg}
+	\prem Alice likes every biologist.
+	\conc Every biologist likes themselves. 	
+	\end{earg}
+	which is clearly invalid. 
+	
+This is blocked by taking care in our notation $\metaX[\metac/\metav]$. 
+The rule permits: 
+	\begin{fitchproof}
+	\have[m]{a}{\metaX[\metac/\metav]}
+	\have[\ ]{c}{\exists \metav\metaX} \forallE{a}
+\end{fitchproof}
+Since the conclusion of our application of the rule is $\exists x\forall x(Bx\eif Lxx)$, here $\metaX$ is $\forall x(Bx\eif Lxx)$. But then $\metaX[a/x]$ is to replace any \emph{free} occurences of the variable $x$ with the name $a$. But there are no free occurrences, so  $\metaX[a/x]$ is simply $\forall x(Bx\eif Lxx)$
+
 
 
 \section{Empty domains}
@@ -243,15 +403,12 @@ We have proved `$Fa$'. And, of course, nothing stops us from using the same just
 The crucial thought here is that `$a$' was just some \emph{arbitrary} name. There was nothing special about it---we might have chosen any other name---and still the proof would be fine. And this crucial thought motivates the universal introduction rule ($\forall$I):
 \begin{highlighted}
 \begin{fitchproof}
-	\have[m]{a}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}
-	\have[\ ]{c}{\forall \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)} \Ai{a}
+	\have[m]{a}{\metaX[\metac/\metav]}
+	\have[\ ]{c}{\forall \metav\metaX} \forallI{a}
 \end{fitchproof}
 	\meta{c} must not occur in any undischarged assumption or premise.\\
-	\meta{c} must not already be in the scope of $\forall \meta{x}$ or $\exists \meta{x}$ in $\metaX$.
-%	\meta{x} must not occur in $\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$
 	\end{highlighted}
-It is important to appreciate that to apply the rule correctly \textbf{we must replace every occurrence of the name $c$ by the variable $x$}. A crucial aspect of this rule, though, is bound up in the first constraint. This constraint ensures that we are always reasoning at a sufficiently general level (the second constraint is one which avoids unintended instances such as $\exists x Fcx\therefore \forall x\exists x Fxx$. The conclusion is logically equivalent to $\exists x Fxx$ and it is an invalid argument.) 
-%\footnote{Recall from \cref{sec:BasicTFL} that we are treating `$\ered$' as a canonical contradiction. But if it were the canonical contradiction as involving some \emph{constant}, it might interfere with the constraint mentioned here. To avoid such problems, we will treat `$\ered$' as a canonical contradiction \emph{that involves no particular names}.}
+
 
 To see the constraint in action, consider this terrible argument:
 	\begin{quote}
@@ -269,14 +426,18 @@ This is not allowed, because `$k$' occurred already in an undischarged assumptio
 
 Although the name may not occur in any \emph{undischarged} assumption, it may occur as a discharged assumption. That is, it may occur in a subproof that we have already closed. For example:
 \begin{fitchproof}
+	\hypo{a}{\forall x(Gx\eif Hx)}
+	\hypo{a2}{\forall x(Hx\eif Ex)}
 	\open
 		\hypo{f1}{Gd}
-		\have{f2}{Gd}\by{R}{f1}
+		\have{b}{Gd\eif Hd}\forallE{a}
+		\have{f2}{Hd}\ifE{b,f1}
+		\have{b2}{Hd\eif Ed}\forallE{a2}
+		\have{c}{Ed}\ifE{f2,b2}
 	\close
-	\have{ff}{Gd \eif Gd}\ifI{f1-f2}
-	\have{zz}{\forall z(Gz \eif Gz)}\Ai{ff}
+	\have{ff}{G\yellowbox{d} \eif E\yellowbox{d}}\ifI{f1-f2}
+	\have{zz}{\mainconnective{\forall z}(G\yellowbox{z} \eif E\yellowbox{z})}\forallI{ff}
 \end{fitchproof}
-This tells us that `$\forall z (Gz \eif Gz)$' is a \emph{theorem}. And that is as it should be.
 
 \section{Existential elimination}
 Suppose we know that \emph{something} is F. The problem is that simply knowing this does not tell us which thing is F. So it would seem that from `$\exists x Fx$' we cannot immediately conclude `$Fa$', `$Fe_{23}$', or any other substitution instance of the sentence. What can we do?
@@ -287,24 +448,24 @@ Suppose we know that something is F, and that everything which is F is G. In (al
 	\end{quote}
 We might try to capture this reasoning pattern in a proof as follows:
 \begin{fitchproof}
-	\hypo{es}{\exists x Fx}
+	\hypo{es}{\mainconnective{\exists x} F\yellowbox{x}}
 	\hypo{ast}{\forall x(Fx \eif Gx)}
 	\open
-		\hypo{s}{Fo}
+		\hypo{s}{F\yellowbox{o}}
 		\have{st}{Fo \eif Go}\forallE{ast}
 		\have{t}{Go} \ifE{st, s}
-		\have{et1}{\exists x Gx}\existsI{t}
+		\have{et1}{\customcoloredbox[blue!10]{\exists x Gx}}\existsI{t}
 	\close
-	\have{et2}{\exists x Gx}\existsE{es,s-et1}
+	\have{et2}{\customcoloredbox[blue!10]{\exists x Gx}}\existsE{es,s-et1}
 \end{fitchproof}\noindent
 Breaking this down: we started by writing down our assumptions. At line 3, we made an additional assumption: `$Fo$'. This was just a substitution instance of `$\exists x Fx$'. On this assumption, we established `$\exists x Gx$'. Note that we had made no \emph{special} assumptions about the object named by `$o$'; we had \emph{only} assumed that it satisfies `$Fx$'. So nothing depends upon which object it is. And line 1 told us that \emph{something} satisfies `$Fx$', so our reasoning pattern was perfectly general. We can discharge the specific assumption `$Fo$', and simply infer `$\exists x Gx$' on its own.
 
 Putting this together, we obtain the existential elimination rule ($\exists$E):
 \begin{highlighted}
 \begin{fitchproof}
-	\have[m]{a}{\exists \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)}
+	\have[m]{a}{\exists \metav\metaX}
 	\open
-		\hypo[i]{b}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}
+		\hypo[i]{b}{\metaX[\metac/\metav]}
 		\ellipsesline
 		\have[j]{c}{\metaY}
 	\close
@@ -322,23 +483,23 @@ $$Lb, \exists x \enot Lx \therefore Lb \eand \enot Lb$$
 Now, suppose we tried to offer a proof that vindicates this argument:
 \begin{fitchproof}
 	\hypo{f}{Lb}
-	\hypo{nf}{\exists x \enot Lx}
+	\hypo{nf}{\mainconnective{\exists x }\enot L\yellowbox{x}}
 	\open
-		\hypo{na}{\enot Lb}
-		\have{con}{Lb \eand \enot Lb}\andI{f, na}
+		\hypo{na}{\enot L\yellowbox{b}}
+		\have{con}{\bluebox{Lb \eand \enot Lb}}\andI{f, na}
 	\close
-	\have{econ1}{Lb \eand \enot Lb}\by{naughtily attempting to invoke $\exists$E }{nf, na-con}
+	\have{econ1}{\bluebox{Lb \eand \enot Lb}}\by{naughtily attempting to invoke $\exists$E }{nf, na-con}
 \end{fitchproof}
-The last line of the proof is not allowed. The name that we used in our substitution instance for `$\exists x \enot Lx$' on line 3, namely `$b$', occurs in line 4. The following proof would be no better:
+The last line of the proof is not allowed. The name that we used in our substitution instance for `$\exists x \enot Lx$' is still present on line 3, namely `$b$', occurs in line 4. The following proof would be no better:
 \begin{fitchproof}
 	\hypo{f}{Lb}
-	\hypo{nf}{\exists x \enot Lx}
+	\hypo{nf}{\mainconnective{\exists x }\enot L\yellowbox{x}}
 	\open
-		\hypo{na}{\enot Lb}
+	\hypo{na}{\enot L\yellowbox{b}}
 		\have{con}{Lb \eand \enot Lb}\andI{f, na}
-		\have{con1}{\exists x (Lx \eand \enot Lx)}\existsI{con}
+		\have{con1}{\bluebox{\exists x (Lx \eand \enot Lx)}}\existsI{con}
 	\close
-	\have{econ1}{\exists x (Lx \eand \enot Lx)}\by{naughtily attempting to invoke $\exists$E }{nf, na-con1}
+	\have{econ1}{\bluebox{\exists x (Lx \eand \enot Lx)}}\by{naughtily attempting to invoke $\exists$E }{nf, na-con1}
 \end{fitchproof}
 The last line of the proof would still not be allowed. For the name that we used in our substitution instance for `$\exists x \enot Lx$', namely `$b$', occurs in an undischarged assumption, namely line 1.
 
@@ -505,26 +666,26 @@ In this section, we will add some additional rules to the basic rules of the pre
 In \cref{sec:FOLBuildingBlocks}, we noted that $\enot\exists x\metaX$ is logically equivalent to $\forall x \enot\metaX$. We will add some rules to our proof system that govern this. In particular, we add:
 	\begin{highlighted}
 	\begin{fitchproof}
-		\have[m]{a}{\forall \meta{x} \enot\metaX}
-		\have[\ ]{con}{\enot \exists \meta{x} \metaX}\cq{a}
+		\have[m]{a}{\forall \meta{v} \enot\metaX}
+		\have[\ ]{con}{\enot \exists \meta{v} \metaX}\cq{a}
 	\end{fitchproof}\end{highlighted}
 and
 \begin{highlighted}
 	\begin{fitchproof}
-		\have[m]{a}{ \enot \exists \meta{x} \metaX}
-		\have[\ ]{con}{\forall  \meta{x} \enot \metaX}\cq{a}
+		\have[m]{a}{ \enot \exists \meta{v} \metaX}
+		\have[\ ]{con}{\forall  \meta{v} \enot \metaX}\cq{a}
 	\end{fitchproof}\end{highlighted}
 Equally, we add:
 \begin{highlighted}
 	\begin{fitchproof}
-		\have[m]{a}{\exists \meta{x}\enot \metaX}
-		\have[\ ]{con}{\enot \forall \meta{x} \metaX}\cq{a}
+		\have[m]{a}{\exists \meta{v}\enot \metaX}
+		\have[\ ]{con}{\enot \forall \meta{v} \metaX}\cq{a}
 	\end{fitchproof}\end{highlighted}
 and
 \begin{highlighted}
 	\begin{fitchproof}
-		\have[m]{a}{\enot \forall \meta{x} \metaX}
-		\have[\ ]{con}{\exists \meta{x} \enot \metaX}\cq{a}
+		\have[m]{a}{\enot \forall \meta{v} \metaX}
+		\have[\ ]{con}{\exists \meta{v} \enot \metaX}\cq{a}
 	\end{fitchproof}\end{highlighted}
 
 \begin{practiceproblems}

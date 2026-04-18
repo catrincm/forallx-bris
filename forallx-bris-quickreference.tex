@@ -244,305 +244,225 @@ One way to say `there are exactly $n$ Fs' is to conjoin two of the symbolization
 	{\noindent\par\noindent\small$\begin{nd}}
 	{\end{nd}$\noindent\normalsize\ignorespacesafterend}
 	
-\vspace{-5pt}
-%{\LARGE \textbf{Basic Rules of Proof}}
-\newcommand{\separatepfs}{\vspace{-10pt}\hrulefill\vspace{-5pt}}
-% Conjunction section with two-column layout
-\begin{multicols}{2}
-\subsubsection*{Conjunction}
-
-\begin{fitchproof}
-	\have[m]{x}{\metaX}
-	\have[n]{y}{\metaY}
-	\have[\ ]{xy}{\metaX \eand \metaY} \andI{x,y}
-\end{fitchproof}
-
-\vfill\null
-\columnbreak
-
-\begin{fitchproof}
-	\have[m]{xy}{\metaX \eand \metaY}
-	\have[\ ]{x}{\metaX} \andE{xy}
-\end{fitchproof}
-\smallskip
-\begin{fitchproof}
-	\have[m]{xy}{\metaX \eand \metaY}
-	\have[\ ]{y}{\metaY} \andE{xy}
-\end{fitchproof}
-\end{multicols}
-
-\separatepfs
-% Disjunction section with two-column layout
-\begin{multicols}{2}
-\subsubsection*{Disjunction}
-
-\begin{fitchproof}
-	\have[m]{x}{\metaX}
-	\have[\ ]{xy}{\metaX \eor \metaY}\orI{x}
-\end{fitchproof}
-\smallskip
-\begin{fitchproof}
-	\have[m]{x}{\metaX}
-	\have[\ ]{xy}{\metaY \eor \metaX}\orI{x}
-\end{fitchproof}
-
-\vfill\null
-\columnbreak
-
-\begin{fitchproof}
-	\have[m]{xy}{\metaX \eor \metaY}
-	\open
-		\hypo[i]{x}{\metaX}
-		\ellipsesline
-		\have[j]{z1}{\metaZ}
-	\close
-	\open
-		\hypo[k]{y}{\metaY}
-		\ellipsesline
-		\have[l]{z2}{\metaZ}
-	\close
-	\have[\ ]{z}{\metaZ} \orE{xy,x-z1,y-z2}
-\end{fitchproof}
-\end{multicols}
-
-\separatepfs
-% Conditional section with two-column layout
-\begin{multicols}{2}
-\subsubsection*{Conditional}
-
-\begin{fitchproof}
-	\open
-		\hypo[m]{x}{\metaX}
-		\ellipsesline
-		\have[n]{y}{\metaY}
-	\close
-	\have[\ ]{xy}{\metaX \eif \metaY}\ifI{x-y}
-\end{fitchproof}
-
-\vfill\null
-\columnbreak
-
-\begin{fitchproof}
-	\have[m]{xy}{\metaX \eif \metaY}
-	\have[n]{x}{\metaX}
-	\have[\ ]{y}{\metaY} \ifE{xy,x}
-\end{fitchproof}
-\end{multicols}
-
-\separatepfs
-% Negation section with two-column layout
-\begin{multicols}{2}
-\subsubsection*{Negation}
-
-\begin{fitchproof}
-\open
-	\hypo[m]{x}{\metaX}
-	\ellipsesline
-	\have[k]{red}{\metaY\eand\enot\metaY}
-\close
-\have[\ ]{nx}{\enot\metaX}\notI{x-red}
-\end{fitchproof}
-
-\columnbreak
-
-\begin{fitchproof}
-\open
-	\hypo[m]{nx}{\enot\metaX}
-	\ellipsesline
-	\have[k]{red}{\metaY\eand\enot\metaY}
-\close
-\have[\ ]{x}{\metaX}\notE{nx-red}
-\end{fitchproof}
-\end{multicols}
-
-\separatepfs
-\begin{multicols}{2}
-	\subsubsection*{Biconditional}
-	
-	
-	\begin{fitchproof}
-		\ellipsesline
-		\have[m]{a}{(\metaX\eif\metaY)\eand (\metaY\eif\metaX)}
-		\ellipsesline
-		\have[\ ]{ab}{\metaX\eiff\metaY}\iffI{a}
-	\end{fitchproof}
-	
-	\vfill\null
-	\columnbreak
-	
-	
-	
-	\begin{fitchproof}
-		\ellipsesline
-		\have[m]{ab}{\metaX\eiff\metaY}
-		\ellipsesline
-		\have[\ ]{b}{(\metaX\eif\metaY)\eand(\metaY\eiff\metaX)}\iffE{ab}
-	\end{fitchproof}
-\end{multicols}
-
-\separatepfs
-% Reiteration and Law of Excluded Middle section with two-column layout
-\begin{multicols}{2}
-\subsubsection*{Reiteration}
-
+\subsection*{Reiteration}
 \begin{fitchproof}
 	\have[m]{x}{\metaX}
 	\have[\ ]{x2}{\metaX} \Reiteration{x}
 \end{fitchproof}
 
-\subsubsection*{Law of Excluded Middle}
-\begin{fitchproof}
-	\have[\ ]{lem}{\metaX \eor \enot\metaX}\LEM
-\end{fitchproof}
-\end{multicols}
+\subsection*{Rules for connectives - introduction and elimination}
+\begin{tabular}{|l|c|c|}\hline
+	&Introduction&Elimination\\\hline\Tstrut
+	$\eand$&	\begin{fitchproof}
+		\have[m]{x}{\metaX}
+		\have[n]{y}{\metaY}
+		\have[\ ]{xy}{\metaX \eand \metaY} \andI{x,y}
+	\end{fitchproof}
+	&
+	\begin{tabular}{c}
+		\begin{fitchproof}
+			\have[m]{xy}{\metaX \eand \metaY}
+			\have[\ ]{x}{\metaX} \andE{xy}
+		\end{fitchproof}
+		\\\smallskip
+		\begin{fitchproof}
+			\have[m]{xy}{\metaX \eand \metaY}
+			\have[\ ]{y}{\metaY} \andE{xy}
+		\end{fitchproof}
+	\end{tabular}
+	\Bstrut\\\hline\Tstrut
+	$\eif$&	
+	\begin{fitchproof}
+		\open
+		\hypo[m]{x}{\metaX}
+		\ellipsesline
+		\have[n]{y}{\metaY}
+		\close
+		\have[\ ]{xy}{\metaX \eif \metaY}\ifI{x-y}
+	\end{fitchproof}
+	&
+	\begin{fitchproof}
+		\have[m]{x}{\metaX\eif \metaY}
+		\have[n]{y}{\metaX}
+		\have[\ ]{xy}{\metaY} \ifE{x,y}
+	\end{fitchproof}	\Bstrut\\\hline\Tstrut
+	$\enot$&	\begin{fitchproof}
+		\open
+		\hypo[m]{x}{\metaX}
+		\ellipsesline
+		\have[k]{red}{\metaY\eand\enot\metaY}
+		\close
+		\have[\ ]{nx}{\enot\metaX}\notI{x-red}
+	\end{fitchproof}&	\begin{fitchproof}
+		\open
+		\hypo[m]{x}{\enot\metaX}
+		\ellipsesline
+		\have[k]{red}{\metaY\eand\enot\metaY}
+		\close
+		\have[\ ]{nx}{\metaX}\notE{x-red}
+	\end{fitchproof}	\Bstrut\\\hline\Tstrut
+	$\eor$&	\begin{tabular}{c}
+		\begin{fitchproof}
+			\have[m]{xy}{\metaX}
+			\have[\ ]{y}{\metaX\eor\metaY} \orI{xy}
+		\end{fitchproof}
+		\\  
+		\begin{fitchproof}
+			\have[m]{xy}{\metaY}
+			\have[\ ]{y}{\metaX\eor\metaY} \orI{xy}
+		\end{fitchproof}
+	\end{tabular}&	\begin{fitchproof}
+		\have[m]{xy}{\metaX \eor \metaY}
+		\open
+		\hypo[i]{x}{\metaX}
+		\ellipsesline
+		\have[j]{z1}{\metaZ}
+		\close
+		\open
+		\hypo[k]{y}{\metaY}
+		\ellipsesline
+		\have[l]{z2}{\metaZ}
+		\close
+		\have[\ ]{z}{\metaZ} \orE{xy,x-z1,y-z2}
+	\end{fitchproof}\\\hline
+\end{tabular}
 
 
-
-\newpage
 \section{Derived rules for TFL}
 \begin{multicols}{2}
-\subsubsection*{Disjunctive syllogism}
-\begin{fitchproof}
-	\have[m]{ab}{\metaX \eor \metaY}
-	\have[n]{nb}{\enot \metaX}
-	\have[\ ]{con}{\metaY}\by{DS}{ab, nb}
-
-	\have[m]{ab}{\metaX \eor \metaY}
-\\	\have[n]{nb}{\enot \metaY}
-	\have[\ ]{con}{\metaX}\by{DS}{ab, nb}
-\end{fitchproof}
-
-%\subsubsection*{Reiteration}
-%
-%\begin{fitchproof}
-%	\have[m]{a}{\metaX}
-%	\have[\ ]{c}{\metaX} \by{R}{a}
-%\end{fitchproof}
-
-\subsubsection*{Modus Tollens}
-
-\begin{fitchproof}
-	\have[m]{ab}{\metaX\eif\metaY}
-	\have[n]{a}{\enot\metaY}
-	\have[\ ]{b}{\enot\metaX} \by{MT}{ab,a}
-\end{fitchproof}
-
-\subsubsection*{Double-negation elimination}
+	
+	\subsubsection*{Disjunctive syllogism}
+	\begin{fitchproof}
+		\have[m]{ab}{\metaX \eor \metaY}
+		\have[n]{nb}{\enot \metaX}
+		\have[\ ]{con}{\metaY}\by{DS}{ab, nb}
+		
+		\have[m]{ab}{\metaX \eor \metaY}
+		\\	\have[n]{nb}{\enot \metaY}
+		\have[\ ]{con}{\metaX}\by{DS}{ab, nb}
+	\end{fitchproof}
+	
+	%\subsubsection*{Reiteration}
+	%
+	%\begin{fitchproof}
+	%	\have[m]{a}{\metaX}
+	%	\have[\ ]{c}{\metaX} \by{R}{a}
+	%\end{fitchproof}
+	
+	\subsubsection*{Modus Tollens}
+	
+	\begin{fitchproof}
+		\have[m]{ab}{\metaX\eif\metaY}
+		\have[n]{a}{\enot\metaY}
+		\have[\ ]{b}{\enot\metaX} \by{MT}{ab,a}
+	\end{fitchproof}
+	
+	\subsubsection*{Double-negation}
 	\begin{fitchproof}
 		\have[m]{dna}{\enot \enot \metaX}
 		\have[ ]{a}{\metaX}\dne{dna}
+		
+		\have[m]{dna}{ \metaX}\\
+		\have[ ]{a}{\enot\enot\metaX}\by{DNI}{dna}
 	\end{fitchproof}
-
-
-%\subsubsection*{Proof by Contradiction}
-%	\begin{fitchproof}
-%		\open
-%			\hypo[m]{na}{\enot\metaX}
-%			\ellipsesline
-%			\have[n]{red}{\ered}
-%		\close
-%		\have[ ]{a}{\metaX}\by{IP}{na-red}
-%	\end{fitchproof}
-
-
-
-\subsubsection*{Explosion}
+	
+	%\subsubsection*{Proof by Contradiction}
+	%	\begin{fitchproof}
+		%		\open
+		%			\hypo[m]{na}{\enot\metaX}
+		%			\ellipsesline
+		%			\have[n]{red}{\ered}
+		%		\close
+		%		\have[ ]{a}{\metaX}\by{IP}{na-red}
+		%	\end{fitchproof}
+	
+	\subsubsection*{Law of Excluded Middle}
 	\begin{fitchproof}
-	\have[m]{ab}{\metaX}
-	\have[n]{a}{\enot\metaX}
-	\have[\ ]{b}{\metaY} \by{Explosion}{ab,a}
+		\have[\ ]{lem}{\metaX \eor \enot\metaX}\LEM
 	\end{fitchproof}
-
-
-%
-%\subsubsection*{Hypothetical Syllogism}
-%
-%\begin{fitchproof}
-%	\have[m]{ab}{\metaX\eif\metaY}
-%	\have[n]{bc}{\metaY\eif\metaZ}
-%	\have[\ ]{ac}{\metaX\eif\metaZ}\by{HS}{ab,bc}
-%\end{fitchproof}
-
-\subsubsection*{De Morgan Rules}
-\begin{fitchproof}
-	\have[m]{ab}{\enot (\metaX \eor \metaY)}
-	\have[\ ]{dm}{\enot \metaX \eand \enot \metaY}\dem{ab}
-
-	\have[m]{ab}{\enot \metaX \eand \enot \metaY}
-\\	\have[\ ]{dm}{\enot (\metaX \eor \metaY)}\dem{ab}
-
-	\have[m]{ab}{\enot (\metaX \eand \metaY)}
-\\	\have[\ ]{dm}{\enot \metaX \eor \enot \metaY}\dem{ab}
-
-	\have[m]{ab}{\enot \metaX \eor \enot \metaY}
-\\	\have[\ ]{dm}{\enot (\metaX \eand \metaY)}\dem{ab}
-\end{fitchproof}
+	
+	
+	\subsubsection*{Explosion}
+	\begin{fitchproof}
+		\have[m]{ab}{\metaX}
+		\have[n]{a}{\enot\metaX}
+		\have[\ ]{b}{\metaY} \by{Explosion}{ab,a}
+	\end{fitchproof}
+	
+	
+	%
+	%\subsubsection*{Hypothetical Syllogism}
+	%
+	%\begin{fitchproof}
+	%	\have[m]{ab}{\metaX\eif\metaY}
+	%	\have[n]{bc}{\metaY\eif\metaZ}
+	%	\have[\ ]{ac}{\metaX\eif\metaZ}\by{HS}{ab,bc}
+	%\end{fitchproof}
+	
+	\subsubsection*{De Morgan Rules}
+	\begin{fitchproof}
+		\have[m]{ab}{\enot (\metaX \eor \metaY)}
+		\have[\ ]{dm}{\enot \metaX \eand \enot \metaY}\dem{ab}
+		
+		\have[m]{ab}{\enot \metaX \eand \enot \metaY}
+		\\	\have[\ ]{dm}{\enot (\metaX \eor \metaY)}\dem{ab}
+		
+		\have[m]{ab}{\enot (\metaX \eand \metaY)}
+		\\	\have[\ ]{dm}{\enot \metaX \eor \enot \metaY}\dem{ab}
+		
+		\have[m]{ab}{\enot \metaX \eor \enot \metaY}
+		\\	\have[\ ]{dm}{\enot (\metaX \eand \metaY)}\dem{ab}
+	\end{fitchproof}
+	
 \end{multicols}
-
 \newpage
 
 \section{Basic deduction rules for FOL}
 
-\begin{multicols}{2}
-\subsubsection*{Universal elimination}
 
-\begin{fitchproof}
-	\have[m]{a}{\forall \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)}
-	\have[\ ]{c}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)} \forallE{a}
-\end{fitchproof}
-\begin{itemize}
-	\item $c$ not already in the scope of $\forall x$ or $\exists x$ in $X$. 
-\end{itemize}
-
-\subsubsection*{Universal introduction}
-
-\begin{fitchproof}
-	\have[m]{a}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}
-	\have[\ ]{c}{\forall \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)} \forallI{a}
-\end{fitchproof}
-
- \begin{itemize}
-	\item 	\meta{c} must not occur in any undischarged assumption
-	\item \meta{c} must not already be in the scope of $\forall x$ or $\exists x$ in $\metaX$.
-%\meta{x} must not occur in $\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$
-\end{itemize}
-
-
-\end{multicols}
-\begin{multicols}{2}
-
-\subsubsection*{Existential introduction}
-
-\begin{fitchproof}
-	\have[m]{a}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}
-	\have[\ ]{c}{\exists \meta{x}\metaX(\ldots \meta{x} \ldots \meta{c}\ldots)} \Ei{a}
-\end{fitchproof}
-
-\begin{itemize}
-	\item Instances of $c$ in the scope of $\forall x$ or $\exists x$ in $X$ must not be replaced. 
-\end{itemize}
-%\noindent \meta{x} must not occur in $\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)$
-%\noindent You can replace one or more instance of \meta{c} with \meta{x}.
-
-\subsubsection*{Existential elimination}
-
-\begin{fitchproof}
-	\have[m]{a}{\exists \meta{x}\metaX(\ldots \meta{x} \ldots \meta{x}\ldots)}
-	\open	
-		\hypo[i]{b}{\metaX(\ldots \meta{c} \ldots \meta{c}\ldots)}
+\begin{tabular}{|l|p{0.42\linewidth}|p{0.42\linewidth}|}
+	\hline
+	& Introduction & Elimination \\\hline
+	
+	$\forall$
+	&
+	\begin{fitchproof}
+		\have[m]{a}{\metaX[c/\metav]}
+		\have[\ ]{c}{\forall \metav\metaX} \forallI{a}
+	\end{fitchproof}
+	
+	\begin{itemize}
+		\item 	\meta{c} must not occur in any premise or undischarged assumption
+	\end{itemize}
+	&
+	
+	\begin{fitchproof}
+		\have[m]{a}{\forall \metav\metaX}
+		\have[\ ]{c}{\metaX[c/\metav]} \forallE{a}
+	\end{fitchproof}
+	\\\hline
+	$\exists$&
+	\begin{fitchproof}
+		\have[m]{a}{\metaX[\metac/\metav]}
+		\have[\ ]{c}{\exists\metav\metaX} \Ei{a}
+	\end{fitchproof}
+	&
+	\begin{fitchproof}
+		\have[m]{a}{\exists \metav\metaX}
+		\open	
+		\hypo[i]{b}{\metaX[\metac/\metav]}
 		\ellipsesline
 		\have[j]{c}{\metaY}
-	\close
-	\have[\ ]{d}{\metaY} \Ee{a,b-c}
-\end{fitchproof}
+		\close
+		\have[\ ]{d}{\metaY} \Ee{a,b-c}
+	\end{fitchproof}
+	
+	\begin{itemize}
+		\item \meta{c} must be new to the proof: it does not occur in any line before $i$;
+		\item 	\meta{c} must not occur in \metaY.
+	\end{itemize}\\\hline
+\end{tabular}
 
-\begin{itemize}
-	\item \meta{c} must be new to the proof: it does not occur in any line before $i$;
-	\item 	\meta{c} must not occur in \metaY.
-\end{itemize}
-%\vfill\columnbreak
-
-\end{multicols}
 
 
 

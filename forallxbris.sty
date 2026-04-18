@@ -139,6 +139,7 @@
 \newcommand{\metaY}{\ensuremath{Y}\xspace}
 \newcommand{\metaZ}{\ensuremath{Z}\xspace}
 \newcommand{\metav}{\ensuremath{v}\xspace}
+\newcommand{\metac}{\ensuremath{c}\xspace}
 \newcommand{\metaPredicate}{\ensuremath{P}\xspace}
 \newcommand{\metaterm}{\ensuremath{t}\xspace}
 
@@ -570,15 +571,26 @@ for tree={
 \newcommand{\mainconnectivecolor}[1]{\textcolor{leadbeater}{#1}}
 
 
-
-\newcommand{\mainconnective}[1]{%
+\NewDocumentCommand{\customcoloredbox}{O{yellow!50} O{wide} m}{%
 	\begingroup
+	\ifthenelse{\equal{#2}{wide}}%
+		{\setlength{\fboxsep}{2.5pt}}%
+		{\setlength{\fboxsep}{1.5pt}}%
 	\ifmmode
-	\colorbox{yellow!50}{\textcolor{leadbeater}{\ensuremath{#1}}}%
+		\colorbox{#1}{\textcolor{leadbeater}{\ensuremath{#3}}}%
 	\else
-	\colorbox{yellow!50}{\textcolor{leadbeater}{#1}}%
+		\colorbox{#1}{\textcolor{leadbeater}{#3}}%
 	\fi
 	\endgroup
+}
+
+\NewDocumentCommand{\coloredbox}{O{wide} m}{%
+	\customcoloredbox[yellow!50][#1]{#2}%
+}
+
+
+\newcommand{\mainconnective}[1]{%
+	\customcoloredbox{#1}%
 }
 
 \newcommand{\atomicstage}[1]{%
@@ -586,12 +598,12 @@ for tree={
 }
 
 \newcommand{\yellowbox}[1]{%
-	\begingroup
-	\setlength{\fboxsep}{1.5pt}%
-	\mainconnective{#1}%
-	\endgroup
+	\customcoloredbox[yellow!50][narrow]{#1}%
 }
 
+\newcommand{\bluebox}[1]{%
+	\customcoloredbox[blue!10][narrow]{#1}%
+}
 
 \newcommand\pr{\ensuremath{p}}
 
