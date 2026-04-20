@@ -1877,16 +1877,38 @@ Formulas are constructed by starting with these and using either our TFL connect
 
 \bigskip
 
-		The \define{scope} of a logical operator in a sentence is the formula for which that operator is the main logical operator.
+		The \define{scope} of a logical operator in a sentence is the sub-formula for which that operator is the main logical operator.
 	\end{definition}
-We can graphically illustrate scopes as follows:
-$$
-\overbrace{\exists z
-\underbrace{\forall y 
-(\overbrace{\exists x Qx}^{\text{scope of $\exists x$}}
-\eand Ryz)}_{\text{scope of $\forall y$}}
-}^{\text{scope of $\exists z$}}
-$$
+	
+In the formation tree of the sentence, the scope of a connective or quantifier is the sub-tree where it is the main logical operator of the formula at the top. Only that subtree is relevant to determining the truth value of that formula under each variable assignment. In this example we have two quantifiers using the variable $y$, $\exists y$ and $\forall y$
+
+\begin{center}
+	\begin{forest}
+		[$\mainconnective{\enot}\exists z(\exists y(\forall x Rxy\eand Ryz)\eand \forall y Rzy)$
+		[{$\customcoloredbox[teal!20]{\exists z}(\exists y(\forall x Rxy\eand Ryz)\eand \forall y Rzy)$},tikz={\node [draw,inner sep=7pt,teal,fit to=tree,thick,rounded corners]{};}
+			[$(\exists y(\forall x Rxy\eand Ryz)\mainconnective{\eand}\exists y Rzy)$
+				[{$\customcoloredbox[blue!10]{\exists y}(\forall x Rxy\eand Ryz)$},tikz={\node [draw,blue,inner sep=3pt,fit to=tree,thick,rounded corners]{};}
+					[$(\forall x Rxy\mainconnective{\eand} Ryz)$
+						[{$\customcoloredbox[green!10]{\forall x}Rxy$},tikz={\node [draw,green,inner sep=0,fit to=tree,thick,rounded corners]{};}
+							[$Rxy$]
+						]
+						[$Ryz$]
+					]
+				]
+				[{$\customcoloredbox[red!10]{\forall y} Rzy$},tikz={\node [draw,red,inner sep=0,fit to=tree,thick,rounded corners]{};}
+					[$Rzy$]
+				]
+			]
+		]
+		]
+	\end{forest}
+\end{center}
+
+We can also present this linearly:
+
+\[
+\enot \overbrace{\exists z\bigl(\underbrace{\exists y(\overbrace{\forall x Rxy}^{\textcolor{green}{\text{scope of }\forall x}}\eand Ryz)}_{\textcolor{blue}{\text{scope of }\exists y}}\eand \underbrace{\forall y Rzy}_{\textcolor{red}{\text{scope of }\forall y}}\bigr)}^{\textcolor{teal}{\text{scope of }\exists z}}
+\]
 
 
 \newglossaryentry{main logical operator}{

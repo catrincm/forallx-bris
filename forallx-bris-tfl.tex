@@ -790,7 +790,7 @@ If you want to capture an exclusive disjunction, you can use a more complex sent
 \end{practiceproblems}
 
 
-\chapter{Complex sentences of TFL}
+\chapter{Complex sentences of TFL}\label{sec:TFLSentences}
 
 We have introduced our new connectives and specified how the truth of a sentence like $\enot A$, $A\eand B$, $A\eor B$ and $A\eif B$ depends on the truth of $A$ and the truth of $B$. 
 
@@ -1253,8 +1253,8 @@ Thus we allow ourselves to write $A\eand B$ instead of the strict sentence $(A\e
 
 \begin{center}
 	\begin{forest}
-		[$\textcolor{lightgray}{(} (A\eand B)\mainconnective{\eor} C\textcolor{lightgray}{)} $
-		[$\textcolor{lightgray}{(} A\mainconnective{\eand} B\textcolor{lightgray}{)} $[$A$][$B$]]
+		[$\almostinvisibleopenbracket (A\eand B)\mainconnective{\eor} C\almostinvisibleclosebracket $
+		[$\almostinvisibleopenbracket A\mainconnective{\eand} B\almostinvisibleclosebracket $[$A$][$B$]]
 		[$C$]
 		]
 	\end{forest}
@@ -1282,7 +1282,7 @@ To instead have $\enot$ as the main connective, one must include brackets: $$\en
 \begin{center}
 	\begin{forest}
 		[$\mainconnective{\enot} (A\eor B)$
-		[$\textcolor{lightgray}{(} A\mainconnective{\eor}B\textcolor{lightgray}{)} $
+		[$\almostinvisibleopenbracket A\mainconnective{\eor}B\almostinvisibleclosebracket $
 		[$A$][$B$]
 		]
 		]
@@ -1296,7 +1296,7 @@ Here, $\eif$ is the main connective. It has the following formation tree:
 \begin{center}
 	\begin{forest}
 		[$\enot (A\eand B)\mainconnective{\eif}C$
-		[$\mainconnective{\enot} (A\eand B)$[$A\eand B$[$A$][$B$]]]
+		[$\mainconnective{\enot} (A\eand B)$[$A\mainconnective{\eand} B$[$A$][$B$]]]
 		[$C$]
 		]
 	\end{forest}
@@ -1306,13 +1306,13 @@ One more example: consider $$\enot (\enot (\enot Q\eif (R\eand S))\eand \enot \e
 \begin{center}
 	\begin{forest}
 		[{$\mainconnective{\enot} (\enot (\enot Q\eif (R\eand S))\eand \enot \enot (P\eor Q))$}
-			[{$\textcolor{lightgray}{(}\enot (\enot Q\eif (R\eand S))\mainconnective{\eand} \enot \enot (P\eor Q)\textcolor{lightgray}{)}$}
+			[{$\almostinvisibleopenbracket\enot (\enot Q\eif (R\eand S))\mainconnective{\eand} \enot \enot (P\eor Q)\almostinvisibleclosebracket$}
 				[{$\mainconnective{\enot} (\enot Q\eif (R\eand S))$}
-					[{$\textcolor{lightgray}{(}\enot Q\mainconnective{\eif}(R\eand S)\textcolor{lightgray}{)}$}
+					[{$\almostinvisibleopenbracket\enot Q\mainconnective{\eif}(R\eand S)\almostinvisibleclosebracket$}
 						[{$\mainconnective{\enot} Q$}
 							[{$Q$}]
 						]
-						[{$\textcolor{lightgray}{(}R\mainconnective{\eand}S\textcolor{lightgray}{)}$}
+						[{$\almostinvisibleopenbracket R\mainconnective{\eand}S\almostinvisibleclosebracket$}
 							[{$R$}]
 							[{$S$}]
 						]
@@ -1320,7 +1320,7 @@ One more example: consider $$\enot (\enot (\enot Q\eif (R\eand S))\eand \enot \e
 				]
 				[{$\mainconnective{\enot}\enot (P\eor Q)$}
 					[{$\mainconnective{\enot} (P\eor Q)$}
-						[{$\textcolor{lightgray}{(}P\mainconnective{\eor}Q\textcolor{lightgray}{)}$}
+						[{$\almostinvisibleopenbracket P\mainconnective{\eor}Q\almostinvisibleclosebracket$}
 							[{$P$}]
 							[{$Q$}]
 						]
@@ -1331,6 +1331,52 @@ One more example: consider $$\enot (\enot (\enot Q\eif (R\eand S))\eand \enot \e
 	\end{forest}
 \end{center}
 
+
+\section{Scope}
+
+
+To add to our notion of  \gls{main connective}, we introduce the notion of \gls{scope}. 
+
+\begin{definition}The \define{scope} of a connective in a sentence is the sub-sentence for which that connective is the main connective.
+\end{definition}
+
+In the formation tree of a sentence, the scope of a connective is the subtree whose top node is the formula in which that connective is the main connective. Only that subtree is relevant to determining the truth value of that formula under a valuation.
+
+For example, consider the sentence
+\[
+\almostinvisibleopenbracket(P \eand Q)\eor (\enot R \eif S))\almostinvisibleclosebracket
+\]
+
+Its formation tree is:
+\begin{center}
+	\begin{forest}
+		[$\almostinvisibleopenbracket(P \eand Q){\customcoloredbox[yellow]{\eor}} (\enot R \eif S))\almostinvisibleclosebracket$,tikz={\node [draw,inner sep=7pt,yellow,fit to=tree,thick,rounded corners]{};}
+		[$\almostinvisibleopenbracket P{\customcoloredbox[blue!20]{\eand}}  Q\almostinvisibleclosebracket$,tikz={\node [draw,inner sep=0pt,blue,fit to=tree,thick,rounded corners]{};}[$P$][$Q$]]
+		[$\almostinvisibleopenbracket\enot R {\customcoloredbox[red!20]{\eif}}  S\almostinvisibleclosebracket$,tikz={\node [draw,inner sep=3pt,red,fit to=tree,thick,rounded corners]{};}
+		[${\customcoloredbox[teal!20]{\enot}}R$,tikz={\node [draw,inner sep=0pt,teal,fit to=tree,thick,rounded corners]{};}
+		[$R$]]
+		[$S$]
+		]
+		]
+	\end{forest}
+\end{center}
+
+We can also indicate these scopes linearly:
+\[\overbrace{\almostinvisibleopenbracket \underbrace{(P \eand Q)}_{\textcolor{blue}{\text{scope of }\eand}}\eor \underbrace{(\overbrace{\enot R}_{\textcolor{teal}{\text{scope of }\enot}}\eif S)}^{\textcolor{red}{\text{scope of }\eif}}\almostinvisibleclosebracket}^{\textcolor{yellow!80!black}{\text{scope of }\eor}}
+\]
+
+In this sentence, the scope of $\eor$ is the whole sentence, as it is the main connective of that whole sentence: it was the connective which was introduced last.  The scope of $\eand$ is $(P \eand Q)$, the scope of $\eif$ is $(\enot R \eif S)$, and the scope of $\enot$ is $\enot R$. 
+
+
+\newglossaryentry{main connective}{
+	name = main connective,
+	description = {the connective introduced last in the construction of a \gls{sentence of TFL}}
+}
+
+\newglossaryentry{scope}{
+	name = scope,
+	description = {the formula or formulae to which a connective is applied in the construction of a \gls{sentence of TFL}}
+}
 
 \section{More bracketing rules}\label{TFLconventions}
 \subsection{Binding strength}
@@ -1669,7 +1715,7 @@ Using this definition, we can easily check to see whether someone is my ancestor
 %\begin{center}
 %	\begin{forest}
 %		[$\mainconnective{\enot} (A\eor B)$
-%		[$\textcolor{lightgray}{(} A\mainconnective{\eor}B\textcolor{lightgray}{)} $
+%		[$\almostinvisibleopenbracket A\mainconnective{\eor}B\almostinvisibleclosebracket $
 %		[$A$][$B$]
 %		]
 %		]
