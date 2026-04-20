@@ -1759,7 +1759,7 @@ In \cref{sec:TFLSentences}, we went straight from the presentation of the vocabu
 
 During our symbolisation strategy we have stages like symbolising ``$x$ is happy'' or ``$x$ likes someone''. These are not the sorts of things that are true or false outright. They are not sentences of English. To determine if they are true or false, not only do you need to know what the world is like (be given a model), you also need a specification of who $x$ is. 
 
-These are symbolised in FOL as $Hx$ or $\exists y Lxy$. They are not \emph{sentences} of FOL, but they are well-formed \emph{formulas}. Formulas are the sorts of things that form sentences when you put quantifiers in front of them. Sentences are special kinds of formulas, those which have no so-called free-variables. No additional specification of who $x$ is is needed in $\forall x Hx$. It is a sentence. 
+These are symbolised in FOL as $H\yellowbox{x}$ or $\exists y L\yellowbox{x}y$. They are not \emph{sentences} of FOL, but they are well-formed \emph{formulas}. Formulas are the sorts of things that form sentences when you put quantifiers in front of them. Sentences are special kinds of formulas, those which have no so-called free-variables. No additional specification of who $x$ is is needed in $\forall x\, Hx$. It is a sentence. 
 
 What counts as a formula of FOL is given by an inductive definition similar to that which we gave for TFL. 
 The starting point of this is the notion of an \emph{atomic formula}. In TFL we started our definition with the notion of an atomic sentence, which were just given to us in our vocabulary. In FOL, the starting point of our definition is the notion of an atomic formula. Atomic formulas will be given by the following definition:
@@ -1793,8 +1793,8 @@ Formulas are constructed by starting with these and using either our TFL connect
 		\end{enumerate}
 		\item\label{item:quantifiers}
 		 If $\metaX$ is a formula, $\metav$ is a variable , then \begin{enumerate}
-		 \item $\forall \metav\metaX$ is a formula
-		 \item $\exists\metav\metaX$ is a formula.
+		 \item $\forall \metav\,\metaX$ is a formula
+		 \item $\exists\metav\,\metaX$ is a formula.
 		 \end{enumerate}
 		\item Nothing else is a formula.
 	\end{enumerate}
@@ -1805,12 +1805,12 @@ Formulas are constructed by starting with these and using either our TFL connect
 	description={A string of symbols in FOL that can be built up according to the recursive rules given on p.~\pageref{FOLformula}}
 	}
 	
-	As in TFL, we can display the construction of formulas using our formation trees (\cref{sec:TFLSentences}).
+	As in TFL, we can display the construction of formulas using our formation trees (\cref{sec:TFLSentences}). Like in TFL, we will write outer brackets in invisible ink, which here is displayed in gray. Such outer brackets can be dropped when the formula is written by itself but must be included once it is embedded in a further formula. 
 		\begin{center}
 		\begin{forest}
-		[$(\enot(Dx\eand Db)\mainconnective{\eif} Lxy)$
+		[$\almostinvisibleopenbracket\enot(Dx\eand Db)\mainconnective{\eif} Lxy\almostinvisibleclosebracket$
 		[$\mainconnective{\enot}(Dx\eand Db)$
-		[$(Dx \mainconnective{\eand} Db)$
+		[$\almostinvisibleopenbracket Dx \mainconnective{\eand} Db\almostinvisibleclosebracket$
 		[$Dx$]
 		[$Db$]
 		]
@@ -1838,7 +1838,7 @@ FOL also allows us to add quantifiers with variables in the front of a formula w
 	\end{forest}
 \end{center}
 
-Note that the quantifier phrase, $\forall x$ does not itself add any new brackets. Brackets are only introduced with the binary connectives: $\eand,\eor,\eif$. 
+Note that the quantifier phrase, $\forall x$, does not itself add any new brackets. Brackets are only introduced with the binary connectives: $\eand,\eor,\eif$. 
 
 If our sentence only includes quantifiers and negations and none of these binary connectives, then there are no brackets: 
 
@@ -1870,7 +1870,7 @@ We can also add existential quantifiers, and mix up the variables in use, for ex
 			]
 		\end{forest}
 	\end{center}
-	Again, if no binary connectives are used, the quantifiers just get stacked on top of one another without any brackets being written.
+If no binary connectives are used, the quantifiers just get stacked on top of one another without no brackets.
 		\begin{center}
 		\begin{forest}
 			[$\mainconnective{\exists z}\forall y (Ryz\eand \exists x Qx)$
