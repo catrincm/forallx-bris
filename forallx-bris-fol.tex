@@ -1676,7 +1676,7 @@ In FOL, the domain must always include at least one thing. Moreover, in English 
 \end{practiceproblems}
 
 \chapter{Sentences of FOL}\label{sec:FOLSentences}
-\todo[inline]{This section got moved above symbolising with one quantifier. But I actually think it might be better}
+
 We have now informally introduced the basic building blocks of sentences of FOL. We will now carefully introduce what it is to be a sentence of FOL.
 
 %This is important so that when we know what complex sentence of FOL can look like, and so when symbolising complex sentences of English how to do it.
@@ -1804,57 +1804,62 @@ Formulas are constructed by starting with these and using either our TFL connect
 	name=formula of FOL,
 	description={A string of symbols in FOL that can be built up according to the recursive rules given on p.~\pageref{FOLformula}}
 	}
-	Note that brackets are only introduced with the binary connectives: $\eand,\eor,\eif$. 
 	
-	As for TFL, we start out with some formulas, such as $Dx$ or $Db$, and we can construct more complicated formulas with our connectives, e.g. \begin{center}
-	$(Dx\eand Db)$, \\
-	$\enot (Dx\eand Db)$\\
-	$(\enot(Dx\eand Db)\eif Lxy)$
-	\end{center}And we can display their construction using our formation trees, as in 	\cref{S:formationtree}.
+	As in TFL, we can display the construction of formulas using our formation trees (\cref{sec:TFLSentences}).
 		\begin{center}
 		\begin{forest}
-			[$(\enot(Dx\eand Db)\eif Lxy)$
-				[$\enot (Dx\eand Db)$
-					[$(Dx\eand Db)$
-						[$Dx$]
-						[$Db$]
-					]
-				]
-				[$Lxy$]
-			]
+		[$(\enot(Dx\eand Db)\mainconnective{\eif} Lxy)$
+		[$\mainconnective{\enot}(Dx\eand Db)$
+		[$(Dx \mainconnective{\eand} Db)$
+		[$Dx$]
+		[$Db$]
+		]
+		]
+		[$Lxy$]
+		]
 		\end{forest}
-		\end{center}This is exactly as in the case of TFL, the only difference is that the ``leaves'' of the tree have more structure to them: they're predicates applied to names or variables rather than simply the single atomic sentences that we had in TFL.
+		\end{center}
+		This is exactly as in the case of TFL, the only difference is that the ``leaves'' of the tree have more structure to them: they're predicates applied to names or variables rather than simply the single atomic sentences that we had in TFL.
 
-		The new clauses here are in \ref{item:quantifiers}. This lets us put $\forall x$ in front of a formula, e.g.~$Bx$ to construct a formula $\forall xBx$. We can also add quantifiers when the formula was already more complicated, e.g., we can construct a formula $$\forall x(\enot(Dx\eand Db)\eif Lxy).$$ We could also have added an existential quantifier, $\exists$ to construct $$\exists x(\enot(Dx\eand Db)\eif Lxy).$$ We can also do it with other variables, e.g. $$\forall y(\enot(Dx\eand Db)\eif Lxy).$$ We can then add further quantifiers to \emph{these} new formula, to construct, e.g.~$$\exists y\forall x(\enot(Dx\eand Db)\eif Lxy).$$
+FOL also allows us to add quantifiers with variables in the front of a formula we have. We can, for example, give:
+\begin{center}
+	\begin{forest}
+	[$\mainconnective{\forall x}(\enot(Dx\eand Db)\eif Lxy)$
+	[$\almostinvisibleopenbracket\enot(Dx\eand Db)\mainconnective{\eif} Lxy\almostinvisibleclosebracket$
+	[$\mainconnective{\enot}(Dx\eand Db)$
+	[$\almostinvisibleopenbracket Dx \mainconnective{\eand} Db\almostinvisibleclosebracket$
+	[$Dx$]
+	[$Db$]
+	]
+	]
+	[$Lxy$]
+	]
+	]
+	\end{forest}
+\end{center}
 
-	We can again display the structure and construction of the sentence perspicuously by presenting a formation tree:
+Note that the quantifier phrase, $\forall x$ does not itself add any new brackets. Brackets are only introduced with the binary connectives: $\eand,\eor,\eif$. 
+
+If our sentence only includes quantifiers and negations and none of these binary connectives, then there are no brackets: 
 
 \begin{center}
 	\begin{forest}
-		[$\mainconnective{\exists y}\forall x(\enot(Dx\eand Db)\eif Lxy)$
-			[$\mainconnective{\forall x}(\enot(Dx\eand Db)\eif Lxy)$
-				[$(\enot(Dx\eand Db)\mainconnective{\eif} Lxy)$
-					[$\mainconnective{\enot}(Dx\eand Db)$
-						[$(Dx \mainconnective{\eand} Db)$
-							[$Dx$]
-							[$Db$]
-						]
-					]
-					[$Lxy$]
-				]
-			]
+		[$\mainconnective{\enot}\forall x\enot Hx$
+		[$\mainconnective{\forall x}\enot Hx$
+		[$\mainconnective{\enot}Hx$
+		[$Hx$]]
+		]
 		]
 	\end{forest}
 \end{center}
 
-
-			One more example:
+We can also add existential quantifiers, and mix up the variables in use, for example: 
 
 	\begin{center}
 	\begin{forest}
 		[$\mainconnective{\exists z}\forall y (Ryz\eand \exists x Qx)$
 			[$\mainconnective{\forall y }(Ryz\eand\exists x Qx)$
-				[$(Ryz\mainconnective{\eand} \exists x Qx)$
+				[$\almostinvisibleopenbracket Ryz\mainconnective{\eand} \exists x Qx\almostinvisibleclosebracket$
 					[$Ryz$]
 					[$\mainconnective{\exists x} Qx$
 						[$Qx$]
@@ -1864,24 +1869,43 @@ Formulas are constructed by starting with these and using either our TFL connect
 		]
 	\end{forest}
 	\end{center}
+	or 
+		\begin{center}
+		\begin{forest}
+			[$\mainconnective{\exists z}(Hz\eand\forall y (Ryz\eand \exists x Qx))$
+			[$\almostinvisibleopenbracket Hz\mainconnective{\eand}\forall y (Ryz\eand \exists x Qx)\almostinvisibleclosebracket$
+			[$\mainconnective{\forall y }(Ryz\eand\exists x Qx)$
+			[$\almostinvisibleopenbracket Ryz\mainconnective{\eand} \exists x Qx\almostinvisibleclosebracket$
+			[$Ryz$]
+			[$\mainconnective{\exists x} Qx$
+			[$Qx$]
+			]
+			]
+			]
+			]
+			]
+		\end{forest}
+	\end{center}
+	
 	Moving up the formation tree is following one of the rules of the recursive specification of what it is to be a sentence.
 
 
 
 %Why in \ref{item:quantifiers} did we have the restriction that $\exists \metav$ or $\forall \metav$ is not already in $\metaX$? This is to ensure that variables only serve one master at any one time (see \cref{sec:MultipleGenerality}).Otherwise we could see that $\forall x Rxx$ is a sentence and then conclude that $\exists x\forall x Rxx$, which is not a good sentence.  However, note that $\exists x Cx\;\eor\;\forall x Bx$ is a sentence. Here the variable $x$ is used in both quantifiers, but there's no ambiguity because the sentence was constructed by combing the two sentences $\exists x Cx$ and $\forall xBx$ with a connective, $\eor$. The \emph{scope} of $\exists x$ is just $\exists x Cx$; it doesn't look ``over'' the connective to where $\forall x$ is used. So the two uses of $x$ are kept separate and no problems arise. However, to avoid any potential worries it is generally a good idea to use different variables when symbolising sentences; in this case one could equally well give $\exists x Cx\;\eor\;\forall y By$ as a symbolisation.
 
- The notions of scope and main logical operators that were given in \ref{sec:TFLSentences} equally applies to FOL but now the main logical operator might be a quantifier. These were:
+ The notions of scope and main logical operators that were given in \cref{sec:TFLSentences} equally applies to FOL but now the main logical operator might be a quantifier. These were:
 % In fact, we can now give a formal definition of scope which incorporates the definition of the scope of a quantifier. Here we follow the case of TFL, though we note that a logical operator can be either a connective or a quantifier:
 	\begin{definition}
-		The \define{main logical operator} in a sentence is the operator that was introduced last when that sentence was constructed using the recursion rules.
+The \define{main logical operator} of a formula is the last logical operator ($\enot$, $\eand$, $\eor$, $\eif$, $\exists \metav$ or $\forall \metav$) that was introduced in the construction of the formula.
 
 \bigskip
 
 		The \define{scope} of a logical operator in a sentence is the sub-formula for which that operator is the main logical operator.
 	\end{definition}
 	
-In the formation tree of the sentence, the scope of a connective or quantifier is the sub-tree where it is the main logical operator of the formula at the top. Only that subtree is relevant to determining the truth value of that formula under each variable assignment. In this example we have two quantifiers using the variable $y$, $\exists y$ and $\forall y$
+In the formation tree of the sentence, the scope of a connective or quantifier is the sub-tree where it is the main logical operator of the formula at the top. Only that subtree is relevant to determining the truth value of that formula under each variable assignment.
 
+We give an example identifying the scope of each quantifier in this sentence:
 \begin{center}
 	\begin{forest}
 		[$\mainconnective{\enot}\exists z(\exists y(\forall x Rxy\eand Ryz)\eand \forall y Rzy)$
@@ -1909,6 +1933,8 @@ We can also present this linearly:
 \[
 \enot \overbrace{\exists z\bigl(\underbrace{\exists y(\overbrace{\forall x Rxy}^{\textcolor{green}{\text{scope of }\forall x}}\eand Ryz)}_{\textcolor{blue}{\text{scope of }\exists y}}\eand \underbrace{\forall y Rzy}_{\textcolor{red}{\text{scope of }\forall y}}\bigr)}^{\textcolor{teal}{\text{scope of }\exists z}}
 \]
+
+Since there is no interaction between the scope of $\exists y$ and $\forall y$ the same variable $y$ can be used in both places without confusion or danger, the evaluation is done entirely separately. 
 
 
 \newglossaryentry{main logical operator}{
