@@ -898,6 +898,11 @@ We will use the sentence $\enot (A\eand B)$ to be the symbolisation of the Engli
 
 When drawing these trees we have highlighted a particular connective on each of our nodes. We call that connective the \define{main connective} of the sentence at that node.
 \begin{definition}The \define{main connective} of a sentence is the last connective that was introduced in the construction of the sentence.\end{definition}
+\newglossaryentry{main connective}{
+	name = main connective,
+	description = {the connective introduced last in the construction of a \gls{sentence of TFL}}
+}
+
 
 This will then be important to know in what order to calculate the truth value of $\enot(A\eand B)$. 
 
@@ -1336,8 +1341,12 @@ One more example: consider $$\enot (\enot (\enot Q\eif (R\eand S))\eand \enot \e
 
 \section{Scope}
 
+\newglossaryentry{scope}{
+	name = scope,
+	description = {the formula or formulae to which a connective is applied in the construction of a \gls{sentence of TFL}}
+}
 
-To add to our notion of  \gls{main connective}, we introduce the notion of \gls{scope}. 
+To add to our notion of main connective, we introduce the notion of \define{scope}.
 
 \begin{definition}The \define{scope} of an occurrence of a connective in a sentence is the sub-sentence for which that connective is the main connective.
 \end{definition}
@@ -1373,19 +1382,6 @@ In this sentence, the scope of $\eor$ is the whole sentence, as it is the main c
 
 
 The important feature of scope is that when we will determine the truth value of the sentence, it is only the parts underneath that node which are relevant in the truth value of the sentence at that node. So the scope describes the parts of the tree which are relevant for determining the truth value of that connective. 
-
-
-
-\newglossaryentry{main connective}{
-	name = main connective,
-	description = {the connective introduced last in the construction of a \gls{sentence of TFL}}
-}
-
-\newglossaryentry{scope}{
-	name = scope,
-	description = {the formula or formulae to which a connective is applied in the construction of a \gls{sentence of TFL}}
-}
-
 \section{More bracketing rules}\label{TFLconventions}
 \subsection{Binding strength}
 We give another rule for brackets. 
@@ -1395,7 +1391,7 @@ In arithmetic, there is a convention telling you in which order to apply operati
 We can describe this as that $\times$ binds more strongly than $+$. We apply an exactly analogous rule in logic: 
 $\eand$ and $\eor$ bind more strongly than $\eif$. You need to calculate their truth value before you calculate that with the $\eif$. 
 
-So $$A\eand B\eif C$$ is to be understood as shorthand for $$(A\eand B)\eif C$$ or, even more carefully: $((A\eand B)\eif C)$. The brackets are allowed to be dropped, writing simply $A\eand B\eif C$. 
+So $$A\eand B\eif C$$ is to be understood as shorthand for $(A\eand B)\eif C$ or, even more carefully: $((A\eand B)\eif C)$. The brackets are allowed to be dropped, writing simply $A\eand B\eif C$. 
 
 In $A\eand B\eif C$, the scope of $\eand$ is narrower than that of $\eif$. In determining the truth value, one first works out the truth value of $A\eand B$.  
 \begin{center}
@@ -1418,7 +1414,7 @@ In $A\eand B\eif C$, the scope of $\eand$ is narrower than that of $\eif$. In de
 \end{center}
 
 
-Similarly $$A\eand B \eif C\eor D$$ is shorthand for $$(A\eand B)\eif (C\eor D).$$ 
+Similarly $$A\eand B \eif C\eor D$$ is shorthand for $(A\eand B)\eif (C\eor D).$
 
 \begin{center}
 	\begin{minipage}{0.45\textwidth}
