@@ -1148,10 +1148,7 @@ When giving English sentences we have to give some mechanisms to indicate which 
 	
 	Consider $$A\eif \enot B$$
 	
-	This would be an appropriate symbolisation of:
-	\begin{samplesent}
-			\item If Alice is happy, then Beth is not happy.
-	\end{samplesent}
+
 	Its formation tree is: 
 	\begin{center}
 		\begin{forest}
@@ -1168,6 +1165,11 @@ When giving English sentences we have to give some mechanisms to indicate which 
 			[$\mainconnective{\enot}B$\\It is not the case that \ldots[$B$\\Beth is happy]]]
 		\end{forest}
 	\end{center}
+	
+		This would be an appropriate symbolisation of:
+	\begin{samplesent}
+		\item If Alice is happy, then Beth is not happy.
+	\end{samplesent}
 	
 	
 	The corresponding truth table is:
@@ -1238,18 +1240,18 @@ What about $A\eif\enot B$. We start with the atomic sentence $B$. Then we add a 
 	\end{forest}
 \end{center}
 
-This, however, gives us $(A\eif\enot B)$ rather than what we wrote, which was $A\eif\enot B$. 
+This, however, gives us $(A\eif\enot B)$ rather than what we wrote, which was $A\eif\enot B$. It has brackets. 
 Many of the sentences we have written so far are not strictly speaking sentences of TFL. Even $A\eand B$ isn't, strictly speaking, a sentence of TFL. Strictly speaking, only $(A\eand B)$ is a sentence of TFL. 
 
 We adopt a useful convention which allows us to write $A\eand B$ instead of the more cumbersome $(A\eand B)$; and $A\eif \enot B$ instead of $(A\eif \enot B)$:
 \begin{itemize}
 	\item One is allowed to drop the outermost brackets of a sentence. 
 \end{itemize}
-An alternative way of thinking about it: the brackets should always be there, but we are allowed to write them in invisible ink. 
-
 
 Thus we allow ourselves to write $A\eand B$ instead of the strict sentence $(A\eand B)$. However, we must remember to put the brackets back in, when we want to embed the sentence into a more complicated sentence!
 
+An alternative way of thinking about it: the brackets should always be there, but we are allowed to write them in invisible ink.\footnote{Thanks to Kevin Blackwell for this metaphor. }
+In our formation trees, we display this invisible ink in gray. When the sentence is written by itself, it can be dropped, but when it is included in another sentence, those brackets now need to be written. 
 
 \begin{center}
 	\begin{forest}
@@ -1269,7 +1271,7 @@ An important example is $$\enot A\eor B$$ The main connective of the sentence is
 has the following formation tree: 
 \begin{center}
 	\begin{forest}
-		[$\enot A\mainconnective{\eor}B$
+		[$\almostinvisibleopenbracket\enot A\mainconnective{\eor}B\almostinvisibleclosebracket$
 		[$\mainconnective{\enot} A$[$A$]]
 		[$B$]
 		]
@@ -1296,7 +1298,7 @@ Here, $\eif$ is the main connective. It has the following formation tree:
 \begin{center}
 	\begin{forest}
 		[$\enot (A\eand B)\mainconnective{\eif}C$
-		[$\mainconnective{\enot} (A\eand B)$[$A\mainconnective{\eand} B$[$A$][$B$]]]
+		[$\mainconnective{\enot} (A\eand B)$[$\almostinvisibleopenbracket A\mainconnective{\eand} B\almostinvisibleclosebracket$[$A$][$B$]]]
 		[$C$]
 		]
 	\end{forest}
@@ -1337,10 +1339,12 @@ One more example: consider $$\enot (\enot (\enot Q\eif (R\eand S))\eand \enot \e
 
 To add to our notion of  \gls{main connective}, we introduce the notion of \gls{scope}. 
 
-\begin{definition}The \define{scope} of a connective in a sentence is the sub-sentence for which that connective is the main connective.
+\begin{definition}The \define{scope} of an occurrence of a connective in a sentence is the sub-sentence for which that connective is the main connective.
 \end{definition}
 
-In the formation tree of a sentence, the scope of a connective is the subtree whose top node is the formula in which that connective is the main connective. Only that subtree is relevant to determining the truth value of that formula under a valuation.
+In the formation tree of a sentence, the scope of a connective is the sentence at the node where it is the main connective. It's another way to highlight the order in which to apply the truth rules when determining the truth value of the sentence. 
+
+
 
 For example, consider the sentence
 \[
@@ -1361,11 +1365,15 @@ Its formation tree is:
 	\end{forest}
 \end{center}
 
-We can also indicate these scopes linearly:
-\[\overbrace{\almostinvisibleopenbracket \underbrace{(P \eand Q)}_{\textcolor{blue}{\text{scope of }\eand}}\eor \underbrace{(\overbrace{\enot R}_{\textcolor{teal}{\text{scope of }\enot}}\eif S)}^{\textcolor{red}{\text{scope of }\eif}}\almostinvisibleclosebracket}^{\textcolor{yellow!80!black}{\text{scope of }\eor}}
+The scopes are:
+\[\overbrace{\almostinvisibleopenbracket \underbrace{(P \eand Q)}_{\textcolor{blue}{\text{scope of }\eand}}\eor \underbrace{(\overbrace{\enot R}^{\textcolor{teal}{\text{scope of }\enot}}\eif S)}_{\textcolor{red}{\text{scope of }\eif}}\almostinvisibleclosebracket}^{\textcolor{yellow!50!orange}{\text{scope of }\eor}}
 \]
 
-In this sentence, the scope of $\eor$ is the whole sentence, as it is the main connective of that whole sentence: it was the connective which was introduced last.  The scope of $\eand$ is $(P \eand Q)$, the scope of $\eif$ is $(\enot R \eif S)$, and the scope of $\enot$ is $\enot R$. 
+In this sentence, the scope of $\eor$ is the whole sentence, as it is the main connective of that whole sentence: it was the connective which was introduced last.  The scope of $\eand$ is $\almostinvisibleopenbracket P \eand Q\almostinvisibleclosebracket$, the scope of $\eif$ is $\almostinvisibleopenbracket\enot R \eif S\almostinvisibleclosebracket$, and the scope of $\enot$ is $\enot R$. 
+
+
+The important feature of scope is that when we will determine the truth value of the sentence, it is only the parts underneath that node which are relevant in the truth value of the sentence at that node. So the scope describes the parts of the tree which are relevant for determining the truth value of that connective. 
+
 
 
 \newglossaryentry{main connective}{
@@ -1381,11 +1389,58 @@ In this sentence, the scope of $\eor$ is the whole sentence, as it is the main c
 \section{More bracketing rules}\label{TFLconventions}
 \subsection{Binding strength}
 We give another rule for brackets. 
-$\eand$ and $\eor$ will be said to bind more strongly than $\eif$. This is like in arithmetic where $\times$ binds stronger than $+$. In arithmetic, you learn to treat $2+3\times 4$ as $2+(3\times 4)$. 
 
-So $$A\eand B\eif C$$ is to be understood as shorthand for $$(A\eand B)\eif C$$ or, even more carefully: $((A\eand B)\eif C)$. Similarly $$A\eand B \eif C\eor D$$ is shorthand for $$(A\eand B)\eif (C\eor D).$$ 
+In arithmetic, there is a convention telling you in which order to apply operations. You learn that you have to do a $\times$ calculation before the $+$, unless there are brackets instructing you otherwise. You learn to treat $2+3\times 4$ as $2+(3\times 4)$.
 
-There is no rule that tells us which of $\eand$ or $\eor$ is stronger. So $A\eand B\eor C$ is dangerously ambiguous: $(A\eand B)\eor C$ or $A\eand (B\eor C)$. 
+We can describe this as that $\times$ binds more strongly than $+$. We apply an exactly analogous rule in logic: 
+$\eand$ and $\eor$ bind more strongly than $\eif$. You need to calculate their truth value before you calculate that with the $\eif$. 
+
+So $$A\eand B\eif C$$ is to be understood as shorthand for $$(A\eand B)\eif C$$ or, even more carefully: $((A\eand B)\eif C)$. The brackets are allowed to be dropped, writing simply $A\eand B\eif C$. 
+
+In $A\eand B\eif C$, the scope of $\eand$ is narrower than that of $\eif$. In determining the truth value, one first works out the truth value of $A\eand B$.  
+\begin{center}
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\[
+		\overbrace{\underbrace{A\eand B}_{\text{scope of $\eand$}}\eif C}^{\text{scope of $\eif$}}
+		\]
+	\end{minipage}
+	\quad
+		\begin{minipage}{0.45\textwidth}
+		\centering
+		\begin{forest}
+			[$A\eand B\mainconnective{\eif} C$
+			[$A\mainconnective{\eand}B$[$A$][$B$]]
+			[$C$]
+			]
+		\end{forest}
+	\end{minipage}
+\end{center}
+
+
+Similarly $$A\eand B \eif C\eor D$$ is shorthand for $$(A\eand B)\eif (C\eor D).$$ 
+
+\begin{center}
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\[
+		\overbrace{\underbrace{A\eand B}_{\text{scope of $\eand$}}\eif \underbrace{C\eor D}_{\text{scope of $\eor$}}}^{\text{scope of $\eif$}}
+		\]
+	\end{minipage}
+	\quad
+		\begin{minipage}{0.45\textwidth}
+		\centering
+		\begin{forest}
+			[$A\eand B\mainconnective{\eif} C\eor D$
+			[$A\mainconnective{\eand}B$[$A$][$B$]]
+			[$C\mainconnective{\eor}D$[$C$][$D$]]
+			]
+		\end{forest}
+	\end{minipage}
+\end{center}
+
+
+There is no rule that tells us which of $\eand$ or $\eor$ is stronger. $A\eand B\eor C$ is dangerously ambiguous and must not be written. You have to include brackets, giving either $(A\eand B)\eor C$ or $A\eand (B\eor C)$. 
 
 \subsection{Brackets in strings of conjunctions or disjunctions}
 There is one final bracketing rule which we will use, although we will not properly talk about it until later: 
