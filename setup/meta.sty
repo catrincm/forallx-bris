@@ -9,7 +9,8 @@
 
 % ---------- Status toggle ----------
 \newif\iffinalversion
-%\finalversiontrue       % set \finalversiontrue at year end
+\finalversiontrue       % set \finalversiontrue at year end
+
 
 
 % ---------- Other settings ----------
@@ -32,6 +33,8 @@
 \newcommand{\MaintainerEmailLink}{\href{mailto:\MaintainerEmail}{\MaintainerEmail}}
 
 
+\iffinalversion \PassOptionsToPackage{disable}{todonotes} \fi
+
 % Full banner block used on the front matter
 \newcommand{\EditionBanner}{% 
 	{\fontsize{12pt}{16pt}\selectfont
@@ -43,6 +46,7 @@
 		\noindent 	
 		\iffinalversion
 		\noindent Final version from \AcademicYearText
+
 		
  
 		
