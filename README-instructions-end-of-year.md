@@ -12,4 +12,4 @@ Move the generated pdfs manually into /site/editions/.. Match the \AcademicYearP
 Remove \finalversiontrue so we're in in-progress
 Update year details in /setup/meta.sty and /setup/academic-year.txt
 
-4. Copy sty to current year teaching docs to protect against future changes. Backwards compatibility cannot be guaranteed. 
+4. Copy sty to current year teaching docs as record to protect against future changes. Backwards compatibility cannot be guaranteed. 
