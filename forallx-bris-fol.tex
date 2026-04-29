@@ -1948,26 +1948,58 @@ Since there is no interaction between the scope of $\exists y$ and $\forall y$ t
 
 
 \section{Sentences}
-Recall that we are largely concerned in logic with declarative sentences: sentences that can be either true or false. Many formulas are not sentences. Consider the following symbolization key:
-	\begin{ekey}
-		\item[\text{domain}] people
-		\item[Lxy] \gap{x} loves \gap{y}
-		\item[b] Boris
-	\end{ekey}
-Consider the atomic formula $Lzz$. Can it be true or false? You might think that it will be true just in case the person named by $z$ loves themself, in the same way that $Lbb$ is true just in case Boris (the person named by $b$) loves himself. \emph{However, $z$ is a variable, and does not name anyone or any thing.}
+Consider this formula, which we used to symbolise the English sentence `some vet likes every animal'. $$\exists x (Vx\eand\forall y(Ay\eif Lxy))$$
+Indicating the scope of the quantifiers we get: 
+\[
+\overbrace{
+  \customcoloredbox[red!10]{\exists x}
+  \bigl(
+    Vx
+    \eand
+    \underbrace{
+      \customcoloredbox[blue!10]{\forall y}
+      \bigl(
+        Ay
+        \eif
+        Lxy
+      \bigr)
+    }_{\textcolor{blue}{\text{scope of }\forall y}}
+  \bigr)
+}^{\textcolor{red}{\text{scope of }\exists x}}
+\]
+Looking at this, we can see that every occurrence of a variable occurs within the scope of a quantifier which binds that variable: 
+\[
+\overbrace{
+  \customcoloredbox[red!10]{\exists x}
+  \bigl(
+    V
+    \customcoloredbox[red!10][narrow]{x}
+    \eand
+    \underbrace{
+      \customcoloredbox[blue!10]{\forall y}
+      \bigl(
+        A
+        \customcoloredbox[blue!10][narrow]{y}
+        \eif
+        L
+        \customcoloredbox[red!10][narrow]{x}
+        \customcoloredbox[blue!10][narrow]{y}
+      \bigr)
+    }_{\textcolor{blue}{\text{scope of }\forall y}}
+  \bigr)
+}^{\textcolor{red}{\text{scope of }\exists x}}
+\]
 
-Of course, if we put an existential quantifier out front, obtaining $\exists zLzz$, then this would be true iff someone loves herself. Equally, if we wrote $\forall z Lzz$, this would be true iff everyone loves themself. The point is that we need a quantifier to tell us how to deal with a variable.
-
-To make this precise, we can use the construction of a formula. 
-\begin{definition}An occurrance of a variable being \define{free} is defined as follows:
-	\begin{itemize}
-		\item In an atomic formula, every occurance of a variable is free. 
-		\item An occurrance of a variable which is free in $\metaX$ or $\metaY$ is also free in $\enot\metaX$, $\metaX\eand\metaY$, $\metaX\eor\metaY$ and $\metaX\eif\metaY$. 
-		\item In $\forall v\metaX$ and $\exists v \metaX$, every occurrance of $v$ is now \define{bound}, any remaining occurrances of variables which were free are still free. 
-	\end{itemize}
-\end{definition}
-
-We can also use the notion of scope to characterise this. 
+Compare that to this formula:
+$$\forall y(Ay\eif L\yellowbox{x}y)$$
+This symbolises something of pseudo-English: `Every animal is liked by $x$'. But who does `$x$' refer to? 
+There is an occurrence of a variable which is not in the scope of a quantifier which binds it. Let's see some more examples:
+\begin{gather}
+H\yellowbox{x}\eand \enot P\yellowbox{x}\\ 
+\exists y(Ly\yellowbox{x}\eand \enot L\yellowbox{x}y)\\
+\underbrace{\forall x Hx}_{\text{scope of }\forall x}\eif \exists y R\customcoloredbox[yellow][narrow]{x}y
+\end{gather}
+In each case, there are some variable occurrences which are not in the scope of a quantifier binding them: the ones highlighted in yellow. We will call this being free. 
 	\begin{highlighted}
 		An occurrence of a variable \metav is bound if it is within the scope of either $\forall\metav$ or $\exists\metav$.
 
@@ -1986,15 +2018,49 @@ We can also use the notion of scope to characterise this.
   description = {an occurrence of a variable in a \gls{formula} which is not a \gls{bound variable}}
 }
 
+Consider this example and note that the highlighted occurrence of the variable occurs free. Even though there is a quantifier over $x$ in the sentence, it is not within the scope of that quantifier.
+\begin{equation}
+\underbrace{\forall x Hx}_{\text{scope of }\forall x}\eif \exists y R\customcoloredbox[yellow][narrow]{x}y
+\end{equation}
 
-For example, consider the formula
-	$$\forall x(Ex \eor Dy) \eif \exists z(Ex \eif Lzx)$$
-The scope of the universal quantifier $\forall x$ is $\forall x (Ex \eor Dy)$, so the first $x$ is bound by the universal quantifier. However, the second and third occurrence of $x$ are free. Equally, the $y$ is free. The scope of the existential quantifier $\exists z$ is $(Ex \eif Lzx)$, so $z$ is bound.
+
+What this means is that to know whether it is true, you need to specify who $x$ is. This won't be fixed by a model because it is important for the semantics that who $x$ refers to can vary. What this means is that it won't get a truth value on the model without the additional information given by a variable assignment specifying who $x$ is. 
+
+
+%Recall that we are largely concerned in logic with declarative sentences: sentences that can be either true or false. Many formulas are not sentences. Consider the following symbolization key:
+%	\begin{ekey}
+%		\item[\text{domain}] people
+%		\item[Lxy] \gap{x} loves \gap{y}
+%		\item[b] Boris
+%	\end{ekey}
+%Consider the atomic formula $Lzz$. Can it be true or false? You might think that it will be true just in case the person named by $z$ loves themself, in the same way that $Lbb$ is true just in case Boris (the person named by $b$) loves himself. \emph{However, $z$ is a variable, and does not name anyone or any thing.}
+%
+%Of course, if we put an existential quantifier out front, obtaining $\exists zLzz$, then this would be true iff someone loves herself. Equally, if we wrote $\forall z Lzz$, this would be true iff everyone loves themself. The point is that we need a quantifier to tell us how to deal with a variable.
+%
+%To make this precise, we can use the construction of a formula. 
+%\begin{definition}An occurrance of a variable being \define{free} is defined as follows:
+%	\begin{itemize}
+%		\item In an atomic formula, every occurance of a variable is free. 
+%		\item An occurrance of a variable which is free in $\metaX$ or $\metaY$ is also free in $\enot\metaX$, $\metaX\eand\metaY$, $\metaX\eor\metaY$ and $\metaX\eif\metaY$. 
+%		\item In $\forall v\metaX$ and $\exists v \metaX$, every occurrance of $v$ is now \define{bound}, any remaining occurrances of variables which were free are still free. 
+%	\end{itemize}
+%\end{definition}
+
+
+
+%
+%For example, consider the formula
+%	$$\overbrace{\forall x(Ex \eor Dy)}^{\text{scope of $\forall x$}} \eif \exists z(E\customcoloredbox[yellow][narrow]{x} \eif Lz\customcoloredbox[yellow][narrow]{x} )$$
+%The scope of the universal quantifier $\forall x$ is $\forall x (Ex \eor Dy)$, so the first $x$ is bound by the universal quantifier. However, the second and third occurrence of $x$ are free. Equally, the $y$ is free. The scope of the existential quantifier $\exists z$ is $(Ex \eif Lzx)$, so $z$ is bound.
 
 Finally we can say what a sentence of FOL is
 	\begin{definition}
 		A \define{sentence} of FOL is any formula of FOL that contains no free variables.
 	\end{definition}
+	
+It is sentences which are given truth values on a model. For formulas which still have free variables, they are only given truth values on a model with additional information specified by a variable assignment. 
+
+
 
 \newglossaryentry{sentence of FOL}{
   name = sentence of FOL,
