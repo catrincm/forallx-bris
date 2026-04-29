@@ -113,7 +113,7 @@ In particular:
 With the sentence `You will get both soup and salad' being true if and only if both `you will get soup' and `you will get salad' are true. It is appropriately governed by $\eand$. 
 \begin{center}
 	\begin{forest}
-		[You will get both soup and salad\\\ldots and \ldots\\$\textcolor{lightgray}{(}\ldots {\eand} \ldots\textcolor{lightgray}{)}$
+		[You will get both soup and salad\\\ldots and \ldots\\$\almostinvisibleopenbracket\ldots {\eand} \ldots\almostinvisibleclosebracket$
 		[You will get soup\\?]
 		[You will get salad\\?]
 		]
@@ -129,7 +129,7 @@ We can then build our symbolisation tree:
 \begin{center}
 	\begin{forest}
 		[You won't get both soup and salad.\\It is not the case that \ldots\\$\enot\ldots$
-[You will get both soup and salad\\\ldots and \ldots\\$\textcolor{lightgray}{(}\ldots {\eand} \ldots\textcolor{lightgray}{)}$
+[You will get both soup and salad\\\ldots and \ldots\\$\almostinvisibleopenbracket\ldots {\eand} \ldots\almostinvisibleclosebracket$
 [You will get soup\\$S_1$]
 [You will get salad\\$S_2$]
 ]
@@ -140,7 +140,7 @@ Now to obtain the symbolisation of our overall sentence we just need to work bac
 \begin{center}
 	\begin{forest}
 		[You won't get both soup and salad.\\It is not the case that \ldots\\$\mainconnective{\enot}\textcolor{blue}{(S_1\eand S_2)}$
-		[You will get both soup and salad\\\ldots and \ldots\\$\textcolor{lightgray}{(}\textcolor{blue}{S_1} \mainconnective{\eand} \textcolor{blue}{S_2} \textcolor{lightgray}{)}$
+		[You will get both soup and salad\\\ldots and \ldots\\$\almostinvisibleopenbracket\textcolor{blue}{S_1} \mainconnective{\eand} \textcolor{blue}{S_2} \almostinvisibleclosebracket$
 		[You will get soup\\$S_1$]
 		[You will get salad\\$S_2$]
 		]
@@ -186,7 +186,7 @@ We apply this strategy to break the sentence down:
 	\begin{forest}
 		[If John has a pet then he has a cat or a dog\\If \ldots then \ldots\\$\ldots\eif\ldots$
 		[John has a pet\\$P$]
-		[John has a cat or a dog\\\ldots or \ldots\\$\ldots\eor\ldots$
+		[John has a cat or a dog\\\ldots or \ldots\\$\almostinvisibleopenbracket\ldots\eor\ldots\almostinvisibleclosebracket$
 		[John has a cat\\$C$]
 		[John has a dog\\$D$]
 		]]
@@ -197,7 +197,7 @@ Which, when we put back together as:
 	\begin{forest}
 		[If John has a pet then he has a cat or a dog\\$\textcolor{blue}{P}\mainconnective{\eif}\textcolor{blue}{(C\eor D)}$
 		[John has a pet\\$P$]
-		[John has a cat or a dog\\$\textcolor{lightgray}{(}\textcolor{blue}{C}\mainconnective{\eor}\textcolor{blue}{D}\textcolor{lightgray}{)}$
+		[John has a cat or a dog\\$\almostinvisibleopenbracket\textcolor{blue}{C}\mainconnective{\eor}\textcolor{blue}{D}\almostinvisibleclosebracket$
 		[John has a cat\\$C$]
 		[John has a dog\\$D$]
 		]]
@@ -220,7 +220,7 @@ We can break the sentence down as follows:
 	\begin{forest}
 		[If Harry had cake then either Lotta or Karl did not\\If \ldots then \ldots\\$\ldots\eif\ldots$
 		[Harry had cake\\$H$]
-		[Either Lotta or Karl did not have cake\\\ldots or \ldots\\$\textcolor{lightgray}{(}\ldots\eor\ldots\textcolor{lightgray}{)}$
+		[Either Lotta or Karl did not have cake\\\ldots or \ldots\\$\almostinvisibleopenbracket\ldots\eor\ldots\almostinvisibleclosebracket$
 		[Lotta did not have cake\\It is not the case that \ldots\\$\enot\ldots$[Lotta had cake\\$L$]]
 		[Karl did not have cake\\It is not the case that \ldots\\$\enot\ldots$[Karl had cake\\$K$]]
 		]]
@@ -569,7 +569,7 @@ Every connective in TFL is truth-functional. We were able to give rules to deter
 %The truth value of a non-atomic sentence of TFL, such as $A\eand B$ depends on the truth values of $A$ and $B$. But once the truth values of $A$, $B$ and $C$ are provided, the truth value of $A\eand B$ is fixed. Indeed, this is the characteristic feature of \emph{truth functional logic}.
 
 \section{Non truth-functional connectives}
-In plenty of languages, e.g.~English, there are connectives that are not truth-functional. We here describe just two (Exercise: find further non-truth-functional connectives of English):
+In plenty of languages, for example English, there are connectives that are not truth-functional. We here describe just two (Exercise: find further non-truth-functional connectives of English):
 
 \subsection{Necessarily}
 
