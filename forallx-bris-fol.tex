@@ -674,7 +674,7 @@ This can also apply when things get complicated. We make use of all of our symbo
 		[All enthusiastic students are neither tired nor bored\\
 		For all $x$: if \ldots then \ldots\\
 		$\forall x(\ldots\eif\ldots)$
-		[$x$ is an enthusiastic student\\$Ex\eand Sx$]
+		[$x$ is an enthusiastic student\\$\almostinvisibleopenbracket Ex\eand Sx\almostinvisibleclosebracket$]
 		[$x$ is neither tired nor bored\\$\enot Tx\eand\enot Bx$\\\emph{or: $\enot(Tx\eor Bx)$}]
 		]
 	\end{forest}
@@ -1759,7 +1759,7 @@ In \cref{sec:TFLSentences}, we went straight from the presentation of the vocabu
 
 During our symbolisation strategy we have stages like symbolising ``$x$ is happy'' or ``$x$ likes someone''. These are not the sorts of things that are true or false outright. They are not sentences of English. To determine if they are true or false, not only do you need to know what the world is like (be given a model), you also need a specification of who $x$ is. 
 
-These are symbolised in FOL as $H\yellowbox{x}$ or $\exists y L\yellowbox{x}y$. They are not \emph{sentences} of FOL, but they are well-formed \emph{formulas}. Formulas are the sorts of things that form sentences when you put quantifiers in front of them. Sentences are special kinds of formulas, those which have no so-called free-variables. No additional specification of who $x$ is is needed in $\forall x\, Hx$. It is a sentence. 
+These are symbolised in FOL as $H\yellowbox{x}$ or $\exists y L\yellowbox{x}y$, and the variable $x$ is unbound. To know whether it is true, you need to know who $x$ is. These are not \emph{sentences} of FOL, but they are well-formed \emph{formulas}. Formulas are the sorts of things that form sentences when you put quantifiers in front of them. Sentences are special kinds of formulas, those which have no so-called free-variables. No additional specification of who $x$ is is needed in $\forall x\, Hx$. It is a sentence. 
 
 What counts as a formula of FOL is given by an inductive definition similar to that which we gave for TFL. 
 The starting point of this is the notion of an \emph{atomic formula}. In TFL we started our definition with the notion of an atomic sentence, which were just given to us in our vocabulary. In FOL, the starting point of our definition is the notion of an atomic formula. Atomic formulas will be given by the following definition:
