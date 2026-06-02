@@ -144,7 +144,7 @@ But, to start to understand the connectives we will ignore this for now and just
 \chapter{The connectives}\label{sec:Connectives}
 Whilst this provides a gloss on our new symbols of TFL, their role in TFL in terms of their contribution to the truth conditions of a sentence is explicitly specified. 
 %In \cref{ch:syntfl} we introduced the idea that an argument is valid if there is no interpretation on which all premises of the argument are true but the conclusion false. Accordingly, if we wish to make a start on making this idea more precise, we need to say when a sentence of TFL is true according to an interpretation and when it is false. The target of this chapter is to give precise rules to this effect. 
-The important feature of truth functional logic is that the truth value of a sentence such as `$A\eand B$' is determined entirely by the truth value of `$A$' and the truth value of `$B$'. 
+The important feature of truth functional logic is that the truth value of a sentence such as `$A\eand B$' is determined entirely by the truth value of `$A$' and the truth value of `$B$'. The truth value of $\enot A$ is determined entirely by the truth value of $A$. 
 
 \newglossaryentry{truth value}
 {
@@ -181,6 +181,8 @@ In which cases is `$\enot A$' true? Just when `$A$' is false:
 		F&T
 	\end{tabular}
 \end{center}
+
+The negation symbol of TFL, $\enot$, is defined to have this affect on the truth value of the sentence. Whether $\enot A$ is then a good symbolisation of a given sentence then depends on whether it is appropriately governed by this truth table.
 
 
 \section{Conjunction}
@@ -401,8 +403,7 @@ The material conditional is the best that can be done to capture the conditional
 As we highlighted, the order matters. So lets consider `$E\eif B$': if she is over eighteen then she is drinking beer. How does it differ from $B\eif E$? We can apply this rule, but we have to be careful which order to apply it in. To help make sure we apply it in the right order, it might be helpful to copy down the values for $E$ and $B$ before applying the rule: 
 \begin{center}
 	\begin{tabular}{rcc|c|def}
-		&&&&$E$&$\mainconnective{\eif}$&$B$\\
-		&$B$&$E$&$B\eif E$&$E$&&$B$\\\hline
+		&$B$&$E$&$B\eif E$&$E$&$\eif$&$B$\\\hline
 		$v_1$&T&T&T&T&&T\\
 		$v_2$&T&F&F&F&&T\\
 		$v_3$&F&T&T&T&&F\\
@@ -412,8 +413,7 @@ As we highlighted, the order matters. So lets consider `$E\eif B$': if she is ov
 and we can then apply the rule. We will write the answer underneath the `$\eif$'. As we have extra truth values hanging around in the table, we have highlighted the column of truth values which give the truth value for the sentence `$E\eif B$'.
 \begin{center}
 	\begin{tabular}{rcc|c|def}
-		&&&&$E$&$\mainconnective{\eif}$&$B$\\
-		&$B$&$E$&$B\eif E$&$E$&&$B$\\\hline
+		&$B$&$E$&$B\eif E$&$E$&$\eif$&$B$\\\hline
 		$v_1$&T&T&T&T&\TTbf{T}&T\\
 		$v_2$&T&F&F&F&\TTbf{T}&T\\
 		$v_3$&F&T&T&T&\TTbf{F}&F\\
@@ -790,11 +790,572 @@ If you want to capture an exclusive disjunction, you can use a more complex sent
 \end{practiceproblems}
 
 
-\chapter{Complex sentences of TFL}\label{sec:TFLSentences}
 
+
+\chapter{Use and mention}\label{sec:UseMention}
+We have talked a lot \emph{about} sentences. So we should pause to explain an important, and very general, point.
+
+\section{Quotation conventions}
+Consider these two sentences:
+	\begin{itemize}
+		\item Justin Trudeau is the Prime Minister.
+		\item The expression `Justin Trudeau' is composed of two uppercase letters and eleven lowercase letters
+	\end{itemize}
+When we want to talk about the Prime Minister, we \emph{use} his name. When we want to talk about the Prime Minister's name, we \emph{mention} that name, which we do by putting it in quotation marks.
+
+There is a general point here. When we want to talk about things in the world, we just \emph{use} words. When we want to talk about words, we typically have to \emph{mention} those words. We need to indicate that we are mentioning them, rather than using them. To do this, some convention is needed. We can put them in quotation marks, or display them centrally in the page (say). So this sentence:
+	\begin{itemize}
+		\item `Justin Trudeau' is the Prime Minister.
+	\end{itemize}
+says that some \emph{expression} is the Prime Minister. That's false. The \emph{man} is the Prime Minister; his \emph{name} isn't. Conversely, this sentence:
+	\begin{itemize}
+		\item Justin Trudeau is composed of two uppercase letters and eleven lowercase letters.
+	\end{itemize}
+also says something false: Justin Trudeau is a man, made of flesh rather than letters. One final example:
+	\begin{itemize}
+		\item ``\,`Justin Trudeau'\,'' is the name of `Justin Trudeau'.
+	\end{itemize}
+On the left-hand-side, here, we have the name of a name. On the right hand side, we have a name. Perhaps this kind of sentence only occurs in logic textbooks, but it is true nonetheless.
+
+Those are just general rules for quotation, and you should observe them carefully in all your work! To be clear, the quotation-marks here do not indicate reported speech. They indicate that you are moving from talking about an object, to talking about a name of that object.
+
+
+
+\section{Object language and metalanguage}
+These general quotation conventions are very important for us. After all, we are describing a formal language here, TFL, and so we must often \emph{mention} expressions from TFL.
+
+When we talk about a language, the language that we are talking about is called the \define{object language}. The language that we use to talk about the object language is called the \define{metalanguage}.
+\label{def:metalanguage}
+\newglossaryentry{object language}
+{
+name=object language,
+description={A language that is constructed and studied by logicians. In this textbook,
+ the object languages are TFL and FOL}
+}
+
+\newglossaryentry{metalanguage}
+{
+name=metalanguage,
+description={The language logicians use to talk about the object language. In this textbook, the metalanguage is English, supplemented by certain symbols like metavariables and technical terms like ``valid''}
+}
+
+For the most part, the object language in this chapter has been the formal language that we have been developing: TFL. The metalanguage is English. Not conversational English exactly, but English supplemented with some additional vocabulary to help us get along.
+
+Now, we have used uppercase letters as sentence letters of TFL:
+	$$A, B, C, P, Q, A_1, B_4, A_{25}, J_{375},\ldots$$
+These are sentences of the object language (TFL). They are not sentences of English. So we must not say, for example:
+	\begin{itemize}
+		\item $D$ is a sentence letter of TFL.
+	\end{itemize}
+Obviously, we are trying to come out with an English sentence that says something about the object language (TFL), but `$D$' is a sentence of TFL, and not part of English. So the preceding is gibberish, just like:
+	\begin{itemize}
+		\item \foreignlanguage{german}{Schnee ist weiß} is a German sentence.
+	\end{itemize}
+What we surely meant to say, in this case, is:
+	\begin{itemize}
+		\item `\foreignlanguage{german}{Schnee ist weiß}' is a German sentence.
+	\end{itemize}
+Equally, what we meant to say above is just:
+	\begin{itemize}
+		\item `$D$' is a sentence letter of TFL.
+	\end{itemize}
+The general point is that, whenever we want to talk in English about some specific expression of TFL, we need to indicate that we are \emph{mentioning} the expression, rather than \emph{using} it. We can either deploy quotation marks, or we can adopt some similar convention, such as  placing it centrally in the page.
+
+
+
+\section{Metavariables}\label{sec:Metavariables}
+However, we do not just want to talk about \emph{specific} expressions of TFL. We also want to be able to talk about \emph{any arbitrary} sentence of TFL. Indeed, we had to do this in \cref{sec:TFLSentences}, when we presented the recursive definition of a sentence of TFL. We used uppercase script letters to do this, namely:
+	$$\metaX, \metaY, \metaZ,\metaX_1,\metaY_1,\metaZ_1\ldots$$
+These symbols do not belong to TFL. Rather, they are part of our (augmented) metalanguage that we use to talk about \emph{any} expression of TFL. 
+
+To explain why we need them, recall the second clause of the recursive definition of a sentence of TFL:
+	\begin{itemize}
+		\item[2.] If $\metaX$ is a sentence, then $\enot \metaX$ is a sentence.
+	\end{itemize}
+This talks about \emph{arbitrary} sentences. If we had instead offered:
+	\begin{itemize}
+		\item[2$'$.] If `$A$' is a sentence, then `$\enot A$' is a sentence.
+	\end{itemize}
+this would not have allowed us to determine whether `$\enot B$' is a sentence. To emphasize:
+	\begin{highlighted}
+	  `$\metaX$',  is a symbol (called a \define{metavariable}) in augmented English, which we use to talk about expressions of TFL. 	`$A$' is a particular sentence letter of TFL.\end{highlighted}
+
+        \newglossaryentry{metavariables}
+{
+name=metavariables,
+description={A variable in the metalanguage that can represent any sentence in the object language}
+}
+But this last example raises a further complication, concerning quotation conventions. We did not include any quotation marks in the second clause of our inductive definition. Should we have done so?
+
+The problem is that the expression on the right-hand-side of this rule, i.e., `$\enot\metaX$', is not a sentence of English, since it contains~`$\enot$'. So we might try to write:
+	\begin{itemize}
+		\item[2$''$.] If \metaX is a sentence, then `$\enot \metaX$' is a sentence.
+	\end{itemize}
+But this is no good: `$\enot \metaX$' is not a TFL sentence, since `$\metaX$' is a symbol of (augmented) English rather than a symbol of TFL.
+
+What we really want to say is something like this:
+	\begin{itemize}
+		\item[2$'''$.] If \metaX is a sentence, then the result of placing the symbol `$\enot$' in front of the sentence \metaX is a sentence.
+	\end{itemize}
+	This is impeccable, but rather long-winded. %Quine introduced a convention that speeds things up here. In place of (2$''$), he suggested:
+%	\begin{numberlist}
+%		\item[2$'''$.] If \metaX and \metaY are sentences, then $\ulcorner (\metaX\eand\metaY)\urcorner$ is a sentence
+%	\end{numberlist}
+%The rectangular quote-marks are sometimes called `Quine quotes', after Quine. The general interpretation of an expression like `$\ulcorner (\metaX\eand\metaY)\urcorner$' is in terms of rules for concatenation.
+But we can avoid long-windedness by creating our own conventions. We can perfectly well stipulate that an expression like `$\enot \metaX$' should simply be read \emph{directly} in terms of rules for concatenation. So, \emph{officially}, the metalanguage expression `$\enot \metaX$'
+simply abbreviates:
+\begin{itemize}
+\item[]	the result of placing the symbol `$\enot$' in front of the sentence \metaX
+\end{itemize}
+and similarly, for expressions like `$(\metaX \eand \metaY)$', `$(\metaX \eor \metaY)$', etc.
+
+
+\section{Quotation conventions for arguments}
+One of our main purposes for using TFL is to study arguments. In English, the premises of an argument are often expressed by individual sentences, and the conclusion by a further sentence. Since we can symbolize English sentences, we can symbolize English arguments using TFL.
+
+Or rather, we can use TFL to symbolize each of the \emph{sentences} used in an English argument. However, TFL itself has no way to flag some of them as the \emph{premises} and another as the \emph{conclusion} of an argument.  (Contrast this with natural English, which uses words like `so', `therefore', etc., to mark that a sentence is the \emph{conclusion} of an argument.)
+
+%So, if we want to symbolize an \emph{argument} in TFL, what are we to do?
+
+%An obvious thought would be to add a new symbol to the \emph{object} language of TFL itself, which we could use to separate the premises from the conclusion of an argument. However, adding a new symbol to our object language would add significant complexity to that language, since that symbol would require an official syntax.\footnote{\emph{The following footnote should be read only after you have finished the entire book!} And it would require a semantics. Here, there are deep barriers concerning the semantics. First: an object-language symbol which adequately expressed `therefore' for TFL would not be truth-functional. (\emph{Exercise}: why?) Second: a paradox known as `validity Curry' shows that FOL itself \emph{cannot} be augmented with an adequate, object-language `therefore'.}
+
+So, we need another bit of notation. Suppose we want to symbolize the premises of an argument with $\metaX_1$, \dots,~$\metaX_n$ and the conclusion with $\metaZ$. Then we will write:
+$$\metaX_1, \ldots, \metaX_n \therefore \metaZ$$
+The role of the symbol `$\therefore$' is simply to indicate which sentences are the premises and which is the conclusion.
+
+%Strictly, this extra notation is \emph{unnecessary}. After all, we could always just write things down long-hand, saying: the premises of the argument are well symbolized by $\metaX_1, \ldots \metaX_n$, and the conclusion of the argument is well symbolized by $\metaZ$. But having some convention will save us some time. Equally, the particular convention we chose was fairly \emph{arbitrary}. After all, an equally good convention would have been to underline the conclusion of the argument. Still, this is the convention we will use.
+
+Strictly, the symbol `$\therefore$' will not be a part of the object language, but of the \emph{metalanguage}. As such, one might think that we would need to put quote-marks around the TFL-sentences which flank it. That is a sensible thought, but adding these quote-marks would make things harder to read. Moreover---and as above---recall that \emph{we} are stipulating some new conventions. So, we can simply stipulate that these quote-marks are unnecessary. That is, we can simply write:
+$$A, A \eif B \therefore B$$
+\emph{without any quotation marks}, to indicate an argument whose premises are (symbolized by) `$A$' and `$A \eif B$' and whose conclusion is (symbolized by)~`$B$'.
+
+
+\begin{practiceproblems}
+\problempart
+Add quotation marks to the following sentences where necessary:
+\begin{problemslist}
+\item \myanswer{`}$\enot$\myanswer{'}, \myanswer{`}$\eand$\myanswer{'}, \myanswer{`}$\eor$\myanswer{'} and \myanswer{`}$\eif$\myanswer{'} are the basic logical connectives of the language of TFL.
+\item In a well-formed sentence for every opening bracket `(' there must be a closing bracket \myanswer{`})\myanswer{'}.
+\item The sentence \myanswer{`}snow is white\myanswer{'} is true if and only if snow is white. 
+\item Kevin is a lecturer, whereas \myanswer{`}Kevin\myanswer{'} names Kevin and the latter is an expression of the language (and not a lecturer).
+\end{problemslist}
+
+\problempart
+Given our convention on metavariables what do the following expressions convey:
+\begin{problemslist}
+\item $\metaX\eand\metaY$\myanswer{\\the result of taking the sentence \metaY followed by `$\eand$' followed by \metaZ}
+\item $\metaY\eif\metaZ$\myanswer{\\the result of taking the sentence \metaY followed by `$\eif$' followed by \metaZ}
+\item $\enot(\metaY\eor\metaZ)$\myanswer{\\the result of placing `$\enot($' before the sentence \metaY, then adding `$\eor$', then \metaZ and finally `$)$'.}\todo{are these right???}
+\end{problemslist}
+
+\problempart
+Consider the sentence
+\begin{itemize}
+\item Sharky is so-called because of his teeth.
+\end{itemize}
+Is `Sharky' used or mentioned in the above sentence? Discuss.
+\end{practiceproblems}
+
+
+
+
+
+
+\chapter{Validity}
+
+\section{Validity}
+\subsection{Example}
+We are given a cards on the table which has a number on one side and a colour on the other side. You know a rule: `If the card is blue, it has an even number on it'. You can see the card is red. What can you conclude from this? You try to reason as follows: 
+\begin{earg}
+\prem If the card is blue, it has an even number on it. 
+\prem The card is not blue.
+\conc The card does not have an even number.
+\end{earg}
+Is this a good pattern of reasoning? Is it a valid argument? 
+
+We will symbolise this argument as: $$B\eif E,\; \enot B\; \therefore\; \enot E$$
+
+An argument is valid if the premises guarantee the conclusion. There is no way for the premises to be true and the conclusion false. 
+Whether the sentences in this argument are true or false depend on whether $B$ is true or false and whether $E$ is true or false. Here are the four possibilities: 
+\begin{center}
+	\begin{tabular}{rccl}
+		&$B$&$E$\\\hline
+		$v_1$&T&T&The card is blue and is even\\
+		$v_2$&T&F&The card is blue and is not even\\
+		$v_3$&F&T&The card is not blue and is even\\
+		$v_4$&F&F&The card is not blue and is not even\\
+	\end{tabular}
+\end{center}
+They are called ``valuations''. 
+
+\begin{definition}
+		A \define{valuation} is any assignment of truth values (true or false) to the atomic sentences.
+	\end{definition}
+
+        \newglossaryentry{valuation}
+{
+name=valuation,
+description={An assignment of \glspl{truth value} to particular atomic \glspl{sentence of TFL}}
+}
+
+What is special about the logic we are introducing here, called Truth Functional Logic, is that to know the truth value of any sentence, one just needs to specify the truth value of the atomic sentences, which is exactly what is given by a valuation. 
+
+Now, to check validity, we will evaluate whether the premises and conclusions are true or false in each of these valuations.
+
+\begin{center}
+	\begin{tabular}{rcc|c|c|cr}
+		&&&premise 1&premise 2&conclusion\\
+		&$B$&$E$&$B\eif E$&$\enot B$&$\enot E$\\\hline
+		$v_1$&T&T&T&F&F\\
+		$v_2$&T&F&F&F&T\\
+		$v_3$&F&T&\textbf{T}&\textbf{T}&\textbf{F}&$\leftsquigarrow$ counterexample\\
+		$v_4$&F&F&T&T&T\\
+	\end{tabular}
+\end{center}
+
+We look through these lines and see if we can find one of them where the premises are all true and the conclusion is false. We can: $v_3$!
+
+The card might be red but still have an even number on it. Nothing in the information you are given (i.e., the premises) rules out the possibility. Your drawing the conclusion the the card was odd was a mistake of reasoning. 
+
+\section{Definition of Validity}
+
+\begin{definition}\label{def:TFLvalid}A TFL-argument is \define{valid} if and only if there is no valuation on which all the premises are true but the conclusion is false. 
+	
+	\medskip 
+	That is, $X_1,\ldots,X_n\therefore Y$ is \define{valid} if and only if there is no valuation $v$ such that $X_1,\ldots,X_n$ are all true relative to $v$, but $Y$ is false relative to $v$.\end{definition}
+	
+	
+	
+	
+\begin{highlighted}
+To check {validity} with truth tables, draw a truth table for all the sentences simultaneously and look for a row like:
+
+%	To check \alert{validity} with truth tables, look for a row like:
+%\smallskip 
+\begin{center}
+	\begin{tabular}{r || c |c |c || c c}
+		Valuation & Premise $1$ & Premise $2$ & $\cdots$ & Conclusion\\
+		\hline
+		$v_1$&&&&\\
+		$\bigstar$ $v_2$  & T & T & T & {F} &$\leftsquigarrow$ counterexample\\
+		$v_3$&&&&\\
+		$v_4$&&&&
+	\end{tabular}\\ \textbf{Invalid}
+\end{center}
+%	
+
+%\smallskip
+
+If there is no such row, then it is \emph{valid}. 
+\end{highlighted}
+
+
+One needs to check every valuation to see if there is one which is a counterexample valuation.
+
+
+We will also say:
+\begin{definition}
+\metaY is a \define{logical consequence} of $\metaX_1,\ldots,\metaX_n$ if and only if there is no valuation on which $X_1,\ldots,X_n$ are true and $Y$ false. 
+\end{definition}
+That is, \metaY is a {logical consequence} of $\metaX_1,\ldots,\metaX_n$ if and only if $X_1,\ldots,X_n\therefore Y$ is valid. 
+
+	
+\subsection{Example}
+
+Consider this argument: 
+\begin{earg}
+	\prem The cook or the gardener did it.
+	\prem The cook did not do it.
+	\conc The gardener did it.
+\end{earg}
+
+We will follow the same approach:
+\begin{enumerate}
+	\item Symbolise the premises and conclusion.
+	\item List every valuation and calculate the truth value of the premises and conclusion on each valuation. 
+	\item Determine whether there is one possibility where the premises are all true and the conclusion is false. 
+\end{enumerate}
+
+Let:
+\begin{ekey}
+	\item[C]The cook did it.
+	\item[G] The gardener did it.
+\end{ekey}
+
+So the argument is:
+\[
+	C \eor G, \;\enot C \therefore G
+\]
+
+\begin{center}
+	\begin{tabular}{rcc|c|c|c}
+		&&&premise 1&premise 2&conclusion\\
+		&$C$&$G$&$C\eor G$&$\enot C$&$G$\\\hline
+		$v_1$&T&T&T&F&T\\
+		$v_2$&T&F&T&F&F\\
+		$v_3$&F&T&\textbf{T}&\textbf{T}&\textbf{T}\\
+		$v_4$&F&F&F&T&F\\
+	\end{tabular}
+\end{center}
+
+For this argument, there is no valuation where both the premises are true and the conclusion is false. It is only $v_3$ where the premises are both true, and on $v_3$ the conclusion is also true. So the argument is valid. 
+
+\subsection{More valuations}
+
+Consider this argument:
+\begin{earg}
+	\prem If Alex went to the party, then Beth went to the party.
+	\prem If Beth went to the party, then Chris went to the party.
+	\prem Alex went to the party.
+	\conc Chris went to the party.
+\end{earg}
+
+Using the symbolisation key:
+\begin{ekey}
+	\item[A] Alex went to the party.
+	\item[B] Beth went to the party.
+	\item[C] Chris went to the party.
+\end{ekey}
+
+The argument is symbolised as:
+\[
+	A \eif B,\; B \eif C,\; A \;\therefore\; C
+\]
+
+Now we need to again list all the valuations and determine the truth of each of the premises and the conclusion on each. Now we have three atomic sentences to deal with. 
+There are eight valuations:
+
+\begin{center}
+	\begin{tabular}{rccc}
+		&$A$&$B$&$C$\\\hline
+		$v_1$&T&T&T\\
+		$v_2$&T&T&F\\
+		$v_3$&T&F&T\\
+		$v_4$&T&F&F\\
+		$v_5$&F&T&T\\
+		$v_6$&F&T&F\\
+		$v_7$&F&F&T\\
+		$v_8$&F&F&F\\
+	\end{tabular}
+\end{center}
+
+\begin{center}
+	\begin{tabular}{rccc|c|c|c||c}
+		&&&&premise 1&premise 2&premise 3&conclusion\\
+		&$A$&$B$&$C$&$A \eif B$&$B \eif C$&$A$&$C$\\\hline
+		$v_1$&T&T&T&\textbf{T}&\textbf{T}&\textbf{T}&\textbf{T}\\
+		$v_2$&T&T&F&T&F&T&F\\
+		$v_3$&T&F&T&F&T&T&T\\
+		$v_4$&T&F&F&F&T&T&F\\
+		$v_5$&F&T&T&T&T&F&T\\
+		$v_6$&F&T&F&T&F&F&F\\
+		$v_7$&F&F&T&T&T&F&T\\
+		$v_8$&F&F&F&T&T&F&F\\
+	\end{tabular}
+\end{center}
+
+We check whether there is a valuation where the premises are all true and the conclusion is false. $v_1$ is the only valuation where the premises are all true, and on this valuation, the conclusion is also true. It is therefore a valid argument.
+
+
+
+
+\section{Determining all the valuations}\label{sec:ValsAll}
+
+Suppose we are interested in determining the validity of an argument. We need to consider all the valuations for the atomic sentences that appear in the argument. 
+
+
+If we are only interested in the atomic sentences $A$ there are two ways of assigning truth values to the atomic sentence $A$:
+\begin{center}
+	\begin{tabular}{ccccccc}
+		$A$\\\hline
+		T\\
+		F 
+	\end{tabular}
+\end{center}
+That is, there are two valuations for the atomic sentence $A$. 
+
+If we are interested in two atomic sentences, say $A$ and $B$, we need to consider all possible assignments of truth values to $A$ and to $B$. 
+
+Whatever the valuation assigns to $A$, it can assign either true or false to $B$. So we ``split'' each valuation we have so far into two versions, one which assigns $B$ as true and another assigning $B$ as false. 
+
+\begin{center}
+	\begin{tabular}{cccccc}
+		 $A$&$B$\\\hline
+	T&T\\
+	T&F\\
+	F&T\\
+	F&F
+	\end{tabular}
+\end{center}
+
+If we are also interested in a further atomic sentence, say $C$, we further split each of our valuations into two, one which also assigns $C$ as true, and one which assigns $C$ as false.
+
+\begin{center}
+	\begin{tabular}{cccc}
+		$A$&$B$&$C$&\\\hline
+		T& T &T&\\
+		T & T & F&\\
+		T & F & T& \\
+		T & F &F&\\
+		F & T &T&\\
+		F& T & F & \\
+		F & F & T &\\
+		F & F & F& 
+	\end{tabular}
+\end{center}
+
+
+What if we add a further atomic sentence, say $P_{235}$? We want to consider the valuations for atomic sentences $A,B,C,P_{235}$.
+For each valuation for $A,B,C$ there is a version of it where $P_{235}$ is true, and another where $P_{235}$ is false. We thus duplicate each line of the table so far and add these two possible truth values for $P_{235}$ in the two variants. 
+
+\begin{center} \begin{tabular}{cccc} $A$ & $B$ & $C$ & $P_{235}$\\\hline T & T & T & T\\ T & T & T & F\\ T & T & F & T\\ T & T & F & F\\ T & F & T & T\\ T & F & T & F\\ T & F & F & T\\ T & F & F & F\\ F & T & T & T\\ F & T & T & F\\ F & T & F & T\\ F & T & F & F\\ F & F & T & T\\ F & F & T & F\\ F & F & F & T\\ F & F & F & F \end{tabular} \end{center}
+
+
+The list of all possible valuations gets very big very fast. It doubles for each new atomic sentence. 
+
+There are $2^n$ ways to assign truth values to $n$ atomic sentences. Using truth tables to determine validity thus becomes quite difficult and it is one reason we consider an alternative method: that of proofs, which we will see in \cref{ch:NDTFL}.
+
+
+Here's one strategy that some people find useful for listing all the valuations. 
+
+\begin{itemize}
+	\item 	For $n$ atomic sentences, there are $2^n$ valuations. 
+	
+	\item Draw a table with the $n$ atomic sentences in the header row and count $2^n$ rows (make a mark). 
+	
+	\item We'll now fill out the `T' and `F''s in these $n$-columns and $2^n$ rows:
+\begin{itemize}
+	 \item	Start with the last atomic sentence, the right-most column and \emph{alternate} between `T’ and `F’ until you've filed out all $2^n$ rows. 
+	
+\item	Next consider the penultimate atomic sentence, the column to the left of the one just completed,  write \emph{two} ‘T’s, write two ‘F’s,
+	and repeat. 
+	
+\item	For the third-last atomic sentence letter, write \emph{four} ‘T’s followed
+	by four ‘F’s. This would yields an eight line truth table. 
+	
+\item	For the fourth-last atomic sentence, you have \emph{eight} ‘T’s followed by eight ‘F’s. 
+	
+\item	And so on until you get to the first atomic sentence.
+\end{itemize}
+\end{itemize}
+
+\section{Careful application of the definition}
+\subsection{Check all the valuations}
+Consider this argument:
+\begin{earg}
+	\prem If Ava studies, then Ava passes.
+	\prem Ava passes.
+	\conc Ava studies.
+\end{earg}
+
+Using the symbolisation key:
+\begin{ekey}
+	\item[S] Ava studies.
+	\item[P] Ava passes.
+\end{ekey}
+
+This argument is symbolised as:
+\[
+	S \eif P,\; P \therefore S
+\]
+
+\begin{center}
+	\begin{tabular}{rcc|c|c|c}
+		&&&premise 1&premise 2&conclusion\\
+		&$S$&$P$&$S \eif P$&$P$&$S$\\\hline
+		$v_1$&T&T&\textbf{T}&\textbf{T}&\textbf{T}\\
+		$v_2$&T&F&F&F&T\\
+		$v_3$&F&T&\textbf{T}&\textbf{T}&\textbf{F}\\
+		$v_4$&F&F&T&F&F\\
+	\end{tabular}
+\end{center}
+
+This argument is invalid. There is a valuation where the premises are true and the conclusion is false: $v_3$.
+It does not matter that there is another valuation where the premises and the conclusion are all true, namely $v_1$.
+
+Compare it to:
+\begin{center}
+	\begin{tabular}{rccc|c|c|c||c}
+		&&&&premise 1&premise 2&premise 3&conclusion\\
+		&$A$&$B$&$C$&$A \eif B$&$B \eif C$&$A\eor B$&$C$\\\hline
+		$v_1$&T&T&T&\textbf{T}&\textbf{T}&\textbf{T}&\textbf{T}\\
+		$v_2$&T&T&F&T&F&T&F\\
+		$v_3$&T&F&T&F&T&T&T\\
+		$v_4$&T&F&F&F&T&T&F\\
+		$v_5$&F&T&T&\textbf{T}&\textbf{T}&\textbf{T}&\textbf{T}\\
+		$v_6$&F&T&F&T&F&T&F\\
+		$v_7$&F&F&T&T&T&F&T\\
+		$v_8$&F&F&F&T&T&F&F\\
+	\end{tabular}
+\end{center}
+Again we have two valuations where the premises are all true, $v_1$ and $v_5$, but here the conclusion is true on both of them. 
+\subsection{Inconsistent premises}
+Consider:
+\begin{earg}
+	\prem Jenny is happy.
+	\prem Jenny is not happy.
+	\conc The moon is made of cheese.
+\end{earg}
+
+$$H,\,\enot H\,\therefore\, C$$
+
+We can draw out a truth table: 
+\begin{center}
+	\begin{tabular}{r c c | c | c | c}
+		&&& Premise 1 & Premise 2 & Conclusion\\
+		Valuation& $H$ & $C$ & $H$ & $\enot H$ & $C$\\[.3em]
+		\hline
+		$v_1:$ & T & T & T & F & T\\
+		$v_2:$ & T & F & T & F & F\\
+		$v_3:$ & F & T & F & T & T\\
+		$v_4:$ & F & F & F & T & F\\
+	\end{tabular}
+\end{center}
+This is a valid argument! There is no valuation where the premises are all true, and thus, no valuation where the premises are true and the conclusion is false. 
+
+Recall, validity is only a judgement about the connection between the premises and the conclusion. It does not imply that the conclusion is true, only that it follows from the premises. If the premises have flaws, then a valid argument isn't of much help, except to help us identify that they have flaws. This is a common pattern of reasoning: identify some proposals, and see where they lead. If what they lead to is implausible, and your argument was valid, there must be a mistake with the premises. 
+
+
+\section{Beyond Logical Validity}
+
+
+Some valuations might not correspond to conceptual possibilities. 
+Consider this argument: 
+\begin{earg}
+\prem Jonas is a puppy.
+\conc Jonas is dog.
+\end{earg}
+
+\begin{center}
+	\begin{tabular}{rcc|c||c}
+		&&&premise&conclusion\\
+		&$P$&$D$&$P$&$D$\\\hline
+		$v_1$&T&T&T&F\\
+		$v_2$&T&F&T&T\\
+		$v_3$&F&T&F&F\\
+		$v_4$&F&F&F&T\\
+	\end{tabular}
+\end{center}
+
+So, in $v_2$, the premise is true and the conclusion is false. Therefore, the argument is (logically) invalid.
+
+$v_2$, however, is not a conceptually possible valuation. Given what `puppy' and `dog' mean, $v_2$ is not possible. 
+Sometimes the notion of `conceptual validity' is introduced, which considers not every valuation but only those which are compatible with the meanings of the terms at stake. In this unit, we will instead say it is invalid but encourage you to include an additional implicit premise: $P\eif D$. 
+
+
+
+
+
+
+
+
+
+
+\chapter{Complex sentences of TFL}\label{sec:TFLSentences}
+\section{Forming complex sentences}
 We have introduced our new connectives and specified how the truth of a sentence like $\enot A$, $A\eand B$, $A\eor B$ and $A\eif B$ depends on the truth of $A$ and the truth of $B$. 
 
-Arguments which we are evaluating might make use of more complex sentences which do not have such simple logical forms but instead which use multiple connectives stacked on top of one another. For example, they might involve the following sentences. 
+These cover many arguments, but some involve sentences with more complex logical form, with multiple connectives. For example, they might involve the following sentences. 
 \begin{samplesent}
 	\item It is not the case that both Alice and Beth are happy.
 	\item \label{sent:exclAB}Alice or Beth is happy, and not both.
@@ -824,6 +1385,10 @@ Brackets play a similar role in mathematics to tell you which order to apply you
 \end{samplesent}
 
 Importantly, the language of TFL is designed to exclude any form of ambiguity. For example, $$A\eand B\eor C$$ will not be a sentence of TFL, brackets must be included. The syntactic/grammatical rules of the language of TFL will be such that only expressions that have a \emph{unique} reading can be sentences of TFL. To make this precise we now provide a formal definition of what it is to be a sentence in TFL.
+
+This will specify what counts as a sentence, and given a sentence, will help us determine in which order it was constructed and thus which order to apply our truth rules. 
+
+We will describe a procedure for constructing sentences of TFL:
 
 \begin{definition}\label{def:TFLsentences}
 	
@@ -860,34 +1425,53 @@ Importantly, the language of TFL is designed to exclude any form of ambiguity. F
 	description={A string of symbols in TFL that can be built up according to the recursive rules given on p.~\pageref{TFLsentences}}
 }
 
-The definition specifies rules according to which sentences of the language can be formed. 
+Definitions like this are called \emph{inductive definitions}. They begin with some specifiable base elements, and then present ways to generate indefinitely many more elements by compounding together previously established ones. To give you a better idea of what an inductive definition is, we can give an inductive definition of the idea of \emph{an ancestor of mine}. We specify a base clause.
+\begin{ebullet}
+	\item My parents are ancestors of mine.
+\end{ebullet}
+and then offer further clauses like:
+\begin{ebullet}
+	\item If x is an ancestor of mine, then x's parents are ancestors of mine.
+	\item Nothing else is an ancestor of mine.
+\end{ebullet}
+Using this definition, we can easily check to see whether someone is my ancestor: just check whether she is the parent of the parent of\ldots one of my parents. And the same is true for our inductive definition of sentences of TFL. Just as the inductive definition allows complex sentences to be built up from simpler parts, the definition allows us to decompose sentences into their simpler parts. Once we get down to atomic sentences, then we know we are ok.
 
+This tells us that $$\enot A$$ is a sentence: $A$ is a sentence by our base clause, then adding a negation in front of it obtains a new sentence. Further negations could still be added, obtaining $$\enot\enot A$$
 
-\section{A first example: introducing formation trees and the main connective}
-When given a TFL sentence, say $\enot (A\eand B)$, one can work out the order that the connectives were applied. We call this a \define{formation tree}. 
+It also tells us that $$(A\eand B)$$ is a sentence: $A$ is a sentence by our base clause, and so is $B$, then putting a `$\eand$' between them and adding brackets on the outside we get a further sentence. 
+
+We adopt a useful convention which allows us to write $A\eand B$ instead of the more cumbersome $(A\eand B)$; and $A\eif \enot B$ instead of $(A\eif \enot B)$:
+\begin{itemize}
+	\item One is allowed to drop the outermost brackets of a sentence. 
+\end{itemize}
+
+Thus we allow ourselves to write $A\eand B$ instead of the strict sentence $(A\eand B)$. However, we must remember to put the brackets back in, when we want to embed the sentence into a more complicated sentence!
+
+An alternative way of thinking about it: the brackets should always be there, but we are allowed to write them in invisible ink.\footnote{Thanks to Kevin Blackwell for this metaphor. }
+We will sometimes display this invisible ink in gray.
+$$\almostinvisibleopenbracket A\eand B\almostinvisibleclosebracket$$
+ When the sentence is written by itself, it can be dropped, but when it is included in another sentence, those brackets now need to be written. 
+
+So when we write $$\enot(A\eand B)$$ those brackets must no longer be invisible. 
 \begin{center}
 	\begin{forest}
-		[$\mainconnective{\enot} (A\eand B)$
-		[$( A\mainconnective{\eand}B)$
-		[$A$][$B$]
-		]
+		[${\enot}\ldots$
+		[$\almostinvisibleopenbracket\ldots{\eand} \ldots\almostinvisibleclosebracket$ [$A$][$B$]]
 		]
 	\end{forest}
 \end{center}
-$A$ and $B$ are both sentences of TFL according to our rule for atomic sentences; then $(A\eand B)$ is a sentence of TFL, according to the rule for $\eand$; then $\enot(A\eand B)$ is a sentence of TFL according to the rule for $\enot$. 
 
-This formation tree tells us in what order to read and apply the connectives. In fact, for every sentence of TFL, we will always be able to uniquely determine the order in which the connectives were introduced and thus the order that we need to calculate the truth value in. 
+We might indicate the construction of this sentence visually through the use of braces: 
+$$\enot\,{\underbrace{(A\eand B)}}$$
+
+This determining of the order of construction is important when knowing how to read it and how to apply the truth rules. 
 We can link to English again:
 \begin{center}
 	\begin{forest}
-		[$\mainconnective{\enot} (A\eand B)$\\It is not the case that \ldots
-		[$( A\mainconnective{\eand}B)$\\\ldots and \ldots
-		[$A$\\Alice is happy][$B$\\Beth is happy]
-		]
+		[${\enot}\ldots$\\It is not the case that \ldots
+		[$\almostinvisibleopenbracket\ldots{\eand} \ldots\almostinvisibleclosebracket$\\\ldots and \ldots [$A$\\Alice is happy][$B$\\Beth is happy]]
 		]
 	\end{forest}
-	
-
 \end{center}
 
 We will use the sentence $\enot (A\eand B)$ to be the symbolisation of the English sentence:
@@ -896,83 +1480,31 @@ We will use the sentence $\enot (A\eand B)$ to be the symbolisation of the Engli
 \end{samplesent}
 
 
-When drawing these trees we have highlighted a particular connective on each of our nodes. We call that connective the \define{main connective} of the sentence at that node.
-\begin{definition}The \define{main connective} of a sentence is the last connective that was introduced in the construction of the sentence.\end{definition}
-\newglossaryentry{main connective}{
-	name = main connective,
-	description = {the connective introduced last in the construction of a \gls{sentence of TFL}}
-}
 
+\subsection{Another example}
 
-This will then be important to know in what order to calculate the truth value of $\enot(A\eand B)$. 
-
-Whether $A\eand B$ is true depends on whether Alice is happy and whether Beth is happy.
-We said that there are four possibilities: 
-\begin{center}
-	\begin{tabular}{rcc|c}
-	&	$A$&$B$&$A\eand B$\\\hline
-	$v_1$&	T&T&T\\
-	$v_2$&	T&F&F\\
-	$v_3$&	F&T&F\\
-	$v_4$&	F&F&F
-	\end{tabular}
-\end{center}
-
-What about $\enot(A\eand B)$? This will make use of our truth rule for its main connective, $\enot$. The only difference now is that it is applied not to an atomic sentence but something that is more complicated. Recall the truth rule for $\enot$: 
-\begin{center}
-	\begin{tabular}{ccc}
-	If \metaX is:&&then $\enot\metaX$ is:\\
-	T &$\leadsto$& F\\
-	F &$\leadsto$& T
-\end{tabular}
-\end{center}
-
-So suppose we are in a case where neither Alice nor Beth are happy ($v_4$). Then $(A\eand B)$ is false. So $\enot(A\eand B)$ is true. To keep track of this reasoning in the four possibilities, we write the truth value of the sentence underneath its main connective, in this case, $\enot$. That is, in $v_1$, $\enot (A\eand B)$ is false, and in $v_2$, $v_3$ and $v_4$ it is true. 
-\begin{center}
-	\begin{tabular}{rcc|df}
-		&&&\tikzmarknode{r2_not}{$\mainconnective{\enot}$}&$(A\eand B)$\\[0.8em]
-		&	$A$&$B$&&$(A\,\tikzmarknode{r2_and}{\eand} \, B)$\\\hline\Tstrut
-		$v_1$&	T&T&\TTbf{F}&T\\
-		$v_2$&	T&F&\TTbf{T}&F\\
-		$v_3$&	F&T&\TTbf{T}&F\\
-		$v_4$&	F&F&\TTbf{T}&F
-	\end{tabular}
-		\begin{tikzpicture}[remember picture, overlay]
-		\tikzset{
-			arrowformationtree/.style={
-				-{Stealth[length=2.2mm,width=1.6mm]},
-				gray,
-				opacity=0.6
-			}
-		}
-		
-		% lower right conjunction -> negation
-		\draw[arrowformationtree] (r2_and) to[bend left=18] (r2_not);
-	\end{tikzpicture}
-\end{center}
-
-\section{A second example}
 Now consider 
 $$(A\eor B)\eand \enot(A\eand B)$$
-This sentence was formed as follows:
+This sentence is constructed in stages: 
 \begin{center}
 	\begin{forest}
-		[$(A\eor B)\mainconnective{\eand} \enot(A\eand B)$
-		[$(A\mainconnective{\eor} B)$[$A$][$B$]]
-		[$\mainconnective{\enot}(A\eand B)$
-		[$(A\mainconnective{\eand} B)$[$A$][$B$]]
+		[$\almostinvisibleopenbracket\ldots\eand\ldots\almostinvisibleclosebracket$
+		[$\almostinvisibleopenbracket\ldots{\eor} \ldots\almostinvisibleclosebracket$[$A$][$B$]]
+		[${\enot}\ldots$
+		[$\almostinvisibleopenbracket\ldots{\eand} \ldots\almostinvisibleclosebracket$ [$A$][$B$]]
 		]
-				]
+		]
 	\end{forest}
 \end{center}
-
-With some English reminders it is:
+Displayed with braces as:
+$$\underbrace{(A\eor B)}\eand \underbrace{\enot\underbrace{(A\eand B)}}$$
+It can be read as:
 \begin{center}
 	\begin{forest}
-		[$(A\eor B)\mainconnective{\eand} \enot(A\eand B)$\\\ldots and \ldots
-		[$(A\mainconnective{\eor} B)$\\\ldots or \ldots[$A$\\Alice is happy][$B$\\Beth is happy]]
-		[$\mainconnective{\enot}(A\eand B)$\\It is not the case that \ldots
-		[$(A\mainconnective{\eand} B)$\\\ldots and \ldots [$A$\\Alice is happy][$B$\\Beth is happy]]
+		[$\almostinvisibleopenbracket\ldots\eand\ldots\almostinvisibleclosebracket$\\\ldots and \ldots
+		[$\almostinvisibleopenbracket\ldots{\eor} \ldots\almostinvisibleclosebracket$\\\ldots or \ldots[$A$\\Alice is happy][$B$\\Beth is happy]]
+		[${\enot}\ldots$\\It is not the case that \ldots
+		[$\almostinvisibleopenbracket\ldots{\eand} \ldots\almostinvisibleclosebracket$\\\ldots and \ldots [$A$\\Alice is happy][$B$\\Beth is happy]]
 		]
 		]
 	\end{forest}
@@ -986,110 +1518,31 @@ Or, more concisely put:
 	\item Alice or Beth are happy, and not both. 
 \end{samplesent}
 
-Whether it is true or false depends on whether Alice is happy and whether Beth is happy. This is specified precisely in our formal language and that is what explains why our sentence of logic, $(A\eor B)\eand \enot(A\eand B)$ is an appropriate symbolisation of this sentence.
 
-The truth value for sentences of TFL are determined by applying the truth rules for the relevant connectives to the constituent parts. 
+\subsection{Another example}
+Consider $$(A\eand B)\eor C$$
 
-So the overall truth value for $(A\eor B)\eand \enot(A\eand B)$ will be determined according to the rule for $\eand$, depending on the truth values of $(A\eor B)$ and $\enot(A\eand B)$. The truth value for $A\eor B$ is simply determined by the truth values for $A$ and for $B$ using the rule for $\eor$; and the truth value for $\enot(A\eand B)$ also depends just on the truth value for $A$ and for $B$, as we've just calculated. 
-
-Recall the truth rule for $\eand$:
+It is formed as:
 \begin{center}
-	\begin{tabular}{cccc}
-		If \metaX is:&and \metaY is:&&then $\metaX\eand\metaY$ is:\\
-		T & T &$\leadsto$& T\\
-		T & F &$\leadsto$& F\\
-		F & T &$\leadsto$& F\\
-		F & F &$\leadsto$& F
-	\end{tabular}
+\begin{forest}
+[$\almostinvisibleopenbracket \ldots\eor\ldots\almostinvisibleclosebracket$
+[$\almostinvisibleopenbracket \ldots\eand \ldots\almostinvisibleclosebracket$
+[$A$][$B$]]
+[$C$]
+]
+\end{forest}
 \end{center}
-
-We now apply this truth rule to the values calculated for $(A\eor B)$ along with the value calculated for $\enot(A\eand B)$. 
-
- In $v_2$ and $v_3$ where just one of them is happy, then $(A\eor B)$ is true, and so is $\enot(A\eand B)$, and thus, $(A\eor B)\eand\enot(A\eand B)$ is true. 
-
- 
-In $v_1$ where they are both happy, then $\enot(A\eand B)$ is false, so the overall sentence $(A\eor B)\eand\enot(A\eand B)$  is false.
-
-In $v_4$, where neither of them is happy, then $(A\eor B)$ is false, so also $(A\eor B)\eand\enot(A\eand B)$  is false. 
-
-This is described more carefully in the following table: 
-
-
-%\begin{center}
-%	\begin{tabular}{rcc|deeeeeef}
-%		&&&$(A$ &$\eor$&$B)$&$\mainconnective{\eand}$& $\enot$& $(A$ & $\eand$ & $B)$\\
-%		&&&$(A$&{$\eor$} &$B)$&& $\mainconnective{\enot}$& $(A$ & $\eand$ & $B)$\\
-%	&	$A$ & $B$ & &&&& & $(A$ & $\eand$ & $B)$\\\hline
-%	$v_1$&	T & T &   & T &   & {F} & F &   & T &  \\
-%	$v_2$&	T & F &   & T &   & {T} & T &   & F &  \\
-%	$v_3$&	F & T &   & T &   & {T} & T &   & F &  \\
-%	$v_4$&	F & F &   & F &   &{F} & T &   & F &  \\
-%	\end{tabular}
-%\end{center}
-
-
+We can also indicate with braces $$\underbrace{(A\eand B)}\eor {C}$$
+We can link it with English:
 \begin{center}
-	\begin{tabular}{rcc|deeeeeef}
-		&&&
-		$(A$ & \tikzmarknode{r1_or}{$\eor$} & $B)$ &
-		\tikzmarknode{r1_and}{$\mainconnective{\eand}$} &
-		\tikzmarknode{r1_not}{$\enot$} &
-		$(A$ & $\eand$ & $B)$ \\[0.8em]
-		
-		&&&
-		$(A$ & {\tikzmarknode{r2_or}{$\eor$}} & $B)$ &&
-		\multicolumn{1}{c}{\tikzmarknode{r2_not}{$\mainconnective{\enot}$}} &
-		$(A$ &$\eand$& $B)$ \\[0.8em]
-		
-		& $A$ & $B$ & &&&&& $(A$ &  \tikzmarknode{r2_and}{$\eand$} & $B)$\\\hline
-		
-		$v_1$& T & T &   & T &   & \TTbf{F} & F &   & T &  \\
-		$v_2$& T & F &   & T &   & \TTbf{T} & T &   & F &  \\
-		$v_3$& F & T &   & T &   & \TTbf{T} & T &   & F &  \\
-		$v_4$& F & F &   & F &   & \TTbf{F} & T &   & F &  \\
-	\end{tabular}
-	
-	\begin{tikzpicture}[remember picture, overlay]
-		\tikzset{
-			arrowformationtree/.style={
-				-{Stealth[length=2.2mm,width=1.6mm]},
-				gray,
-				opacity=0.6
-			}
-		}
-		
-		% row 2 -> row 1
-		\draw[arrowformationtree] (r2_or)  to[bend left=18]  (r1_and);
-		\draw[arrowformationtree] (r2_not) to[bend right=18] (r1_and);
-		
-		% lower right conjunction -> negation
-		\draw[arrowformationtree] (r2_and) to[bend left=18] (r2_not);
-	\end{tikzpicture}
+\begin{forest}
+[$\almostinvisibleopenbracket \ldots\eor\ldots\almostinvisibleclosebracket$\\\ldots or \ldots
+[$\almostinvisibleopenbracket \ldots\eand \ldots\almostinvisibleclosebracket$\\\ldots and \ldots
+[$A$\\Alice is happy][$B$\\Beth is happy]]
+[$C$\\Charlie is happy]
+]
+\end{forest}
 \end{center}
-
-\section{An example with more atomic sentences}
-Consider
-	$$(A\eand B)\eor C$$
-Its main connective is $\eor$. It has the form $\metaX\eor\metaY$, with $\metaX$ as `$(A\eand B)$' and $\metaY$ as `$C$'.
-	\begin{center}
-		\begin{forest}
-			[$(A\eand B)\mainconnective{\eor} C$
-			[$(A\mainconnective{\eand} B)$[$A$][$B$]]
-			[$C$]
-			]
-		\end{forest}
-	\end{center}
-	
-With some English guidance this can be understood as:
-		\begin{center}
-		\begin{forest}
-			[$(A\eand B)\mainconnective{\eor} C$\\\ldots or \ldots
-			[$(A\mainconnective{\eand} B)$\\\ldots and \ldots[$A$\\Alice is happy][$B$\\Beth is happy]]
-			[$C$\\Charlie is happy]
-			]
-		\end{forest}
-	\end{center}
-	
 When giving English sentences we have to give some mechanisms to indicate which order to read it. Commas, or pauses when speaking, or words like `both' holding components of the sentence together. This is a sentence which might naturally be symbolised as $(A\eand B)\eor C$:
 \begin{samplesent}
 	\item  \label{sent:andor} Alice and Beth are both happy, or Charlie is happy
@@ -1103,243 +1556,24 @@ When giving English sentences we have to give some mechanisms to indicate which 
 		\item  Alice is happy and Beth is happy or Charlie is happy
 	\end{samplesent}
 	Here it is not at all clear whether it should be symbolised as $(A\eand B)\eor C$ or as $A\eand(B\eor C)$. Moreover, this isn't a purely stylistic choice: they mean different things and are true in different circumstances. They are not logically equivalent. The sentence is simply ambiguous. In logic, there is no ambiguity possible. You will not be allowed to write $A \eand B\eor C$. Instead, you have to either choose $(A\eand B)\eor C$ or $A\eand(B\eor C)$. 
-	
+	 
 
-	
-	Now, to determine the truth value of $(A\eand B)\eor C$ we will need to apply the rule for $\eor$ combining the truth value for $A\eand B$ with the truth value for $C$. 
-	Whether $A\eand B$ is true or false depends on the value of $A$ and that of $B$. So whether $(A\eand B)\eor C$ is true or false will depend on the value of $A$, $B$ and $C$. 
-	Whether 
-	\begin{samplesent}
-		\item[\ref{sent:andor}.]  Alice and Beth are both happy, or Charlie is happy
-	\end{samplesent}
-	is true or false depends on whether Alice is happy, whether Beth is happy and whether Charlie is happy. 
-	Now there are eight possibilities. There are eight possible combinations of whether these three people are happy or not. 
-	
-	The corresponding truth table is:
-	\begin{center}
-		\begin{tabular}{rccc|deeef}
-			&&&&
-			$(A$ & $\eand$ & $B)$ & \tikzmarknode{r3_or}{$\mainconnective{\eor}$} & $C$ \\[0.8em]
-			
-	& $A$ & $B$ & $C$ &
-			$(A$ &\tikzmarknode{r4_and}{$\mainconnective{\eand}$} & $B)$ &&\tikzmarknode{r4_C}{${C}$} \\\hline\Tstrut
-			
-			
-			$v_1$ & T & T & T &   & T &   & \TTbf{T} & T \\
-			$v_2$ & T & T & F &   & T &   & \TTbf{T} & F \\
-			$v_3$ & T & F & T &   & F &   & \TTbf{T} &  T\\
-			$v_4$ & T & F & F &   & F &   & \TTbf{F} &  F\\
-			$v_5$ & F & T & T &   & F &   & \TTbf{T} &  T\\
-			$v_6$ & F & T & F &   & F &   & \TTbf{F} &  F\\
-			$v_7$ & F & F & T &   & F &   & \TTbf{T} & T \\
-			$v_8$ & F & F & F &   & F &   & \TTbf{F} &  F\\
-		\end{tabular}
-		
-		\begin{tikzpicture}[remember picture, overlay]
-			\tikzset{
-				arrowformationtree/.style={
-					-{Stealth[length=2.2mm,width=1.6mm]},
-					gray,
-					opacity=0.6
-				}
-			}
-			
-			\draw[arrowformationtree] (r4_and) to[bend left=18] (r3_or);
-			\draw[arrowformationtree] (r4_C) to[bend right=18] (r3_or);
-		\end{tikzpicture}
-	\end{center}
-	
-	\section{No brackets with negation}
-	
-	Consider $$A\eif \enot B$$
-	
+\section{Defining Main Connective and Scope}
 
-	Its formation tree is: 
-	\begin{center}
-		\begin{forest}
-			[$A\mainconnective{\eif}\enot B$
-			[$A$][$\mainconnective{\enot}B$[$B$]]]
-		\end{forest}
-	\end{center}
-	
-	Which we can add some guiding English to as:
-		\begin{center}
-		\begin{forest}
-			[$A\mainconnective{\eif}\enot B$\\If\ldots then \ldots
-			[$A$\\Alice is happy]
-			[$\mainconnective{\enot}B$\\It is not the case that \ldots[$B$\\Beth is happy]]]
-		\end{forest}
-	\end{center}
-	
-		This would be an appropriate symbolisation of:
-	\begin{samplesent}
-		\item If Alice is happy, then Beth is not happy.
-	\end{samplesent}
-	
-	
-	The corresponding truth table is:
-	\begin{center}
-		\begin{tabular}{rcc|deeef}
-			&&&
-			$A$ & \tikzmarknode{r1_if}{$\mainconnective{\eif}$} & \tikzmarknode{r1_not}{$\enot$} & $B$ \\[0.8em]
-			
-			& $A$ &&\tikzmarknode{r2_A}{{$A$}}&& \tikzmarknode{r2_not}{${\enot}$} &$B$  \\\hline\Tstrut
-			
-			$v_1$ & T & T & T  & \TTbf{F} & F  \\
-			$v_2$ & T & F &  T & \TTbf{T} & T  \\
-			$v_3$ & F & T &  F & \TTbf{T} & F  \\
-			$v_4$ & F & F &  F & \TTbf{T} & T  \\
-		\end{tabular}
-		
-		\begin{tikzpicture}[remember picture, overlay]
-			\tikzset{
-				arrowformationtree/.style={
-					-{Stealth[length=2.2mm,width=1.6mm]},
-					gray,
-					opacity=0.6
-				}
-			}
-			
-			\draw[arrowformationtree] (r2_not) to[bend left=18] (r1_if);
-			\draw[arrowformationtree] (r2_A) to[bend left=28] (r1_if);
-		\end{tikzpicture}
-	\end{center}
-	
-	
-		You might notice here that we have not got any brackets in the sentence. You might be tempted to write:
-	
-	$$A\eif(\enot B)\qquad\leftsquigarrow \text{wrong!}$$
-	
-	That will not be a sentence of TFL. Negations do not introduce brackets.
-	
-	
-	\section{Let's get careful about brackets}
+Given any sentence of TFL, there is a unique way to read the sentence. 
+In each sentence there is a singe main connective. 
+\begin{definition}The \define{main connective} of a sentence is the last connective that was introduced in the construction of the sentence.\end{definition}
+\newglossaryentry{main connective}{
+	name = main connective,
+	description = {the connective introduced last in the construction of a \gls{sentence of TFL}}
+}
+In $(A\eand B)\eor C$, the main connective is $\eor$. In $A\eand(B\eor C)$, the main connective is $\eand$. 
 
-	We use brackets to identify how to read the sentence, but where they should be used is officially determined according to our precise rules for what counts as a sentence of TFL.
-	
-	When we were combining two sentences with one of our connectives, we are told to add brackets. Here were three of our rules for what counts as a sentence of TFL: 
-	\begin{itemize}
-		\item [3.-5.] If \metaX and \metaY are sentences then so are $(\metaX\eand\metaY)$, $(\metaX\eor\metaY)$ and $(\metaX\eif\metaY)$. 
-	\end{itemize}
-	But the rule for negation did not include brackets: 
-		\begin{itemize}
-		\item [2.] If \metaX is a sentence, then so is $\enot\metaX$.
-	\end{itemize}
-	
-Applying these rules we get:
-\begin{center}
-	\begin{forest}
-		[$\mainconnective{\enot} (A\eand B)$
-		[$\mainconnectivecolor{(} A\mainconnective{\eand}B\mainconnectivecolor{)}$
-		[$A$][$B$]
-		]
-		]
-	\end{forest}
-\end{center}
-
-What about $A\eif\enot B$. We start with the atomic sentence $B$. Then we add a negation symbol in front of it to get $\enot B$ -- no brackets included. Then we combine it with $A$ to get  $(A\eif\enot B)$
-	\begin{center}
-	\begin{forest}
-		[$\mainconnectivecolor{(}A\mainconnective{\eif}\enot B\mainconnectivecolor{)}$
-		[$A$][$\mainconnective{\enot}B$[$B$]]]
-	\end{forest}
-\end{center}
-
-This, however, gives us $(A\eif\enot B)$ rather than what we wrote, which was $A\eif\enot B$. It has brackets. 
-Many of the sentences we have written so far are not strictly speaking sentences of TFL. Even $A\eand B$ isn't, strictly speaking, a sentence of TFL. Strictly speaking, only $(A\eand B)$ is a sentence of TFL. 
-
-We adopt a useful convention which allows us to write $A\eand B$ instead of the more cumbersome $(A\eand B)$; and $A\eif \enot B$ instead of $(A\eif \enot B)$:
-\begin{itemize}
-	\item One is allowed to drop the outermost brackets of a sentence. 
-\end{itemize}
-
-Thus we allow ourselves to write $A\eand B$ instead of the strict sentence $(A\eand B)$. However, we must remember to put the brackets back in, when we want to embed the sentence into a more complicated sentence!
-
-An alternative way of thinking about it: the brackets should always be there, but we are allowed to write them in invisible ink.\footnote{Thanks to Kevin Blackwell for this metaphor. }
-In our formation trees, we display this invisible ink in gray. When the sentence is written by itself, it can be dropped, but when it is included in another sentence, those brackets now need to be written. 
-
-\begin{center}
-	\begin{forest}
-		[$\almostinvisibleopenbracket (A\eand B)\mainconnective{\eor} C\almostinvisibleclosebracket $
-		[$\almostinvisibleopenbracket A\mainconnective{\eand} B\almostinvisibleclosebracket $[$A$][$B$]]
-		[$C$]
-		]
-	\end{forest}
-\end{center}
-
-So we can write $$(A\eand B)\eor C$$ dropping the outer brackets from the strictly speaking formation $$((A\eand B)\eor C)$$ But we cannot drop the brackets in the inner `$(A\eand B)$'. This would result in $$A\eand B\eor C$$ which would be dangerously ambiguous.
+Another important notion is that of scope. 
 
 
 
-\subsection{Negation and connectives}
-An important example is $$\enot A\eor B$$ The main connective of the sentence is $\eor$. It 
-has the following formation tree: 
-\begin{center}
-	\begin{forest}
-		[$\almostinvisibleopenbracket\enot A\mainconnective{\eor}B\almostinvisibleclosebracket$
-		[$\mainconnective{\enot} A$[$A$]]
-		[$B$]
-		]
-	\end{forest}
-\end{center}
 
-We can see this because it can be obtained from dropping the outer brackets from the sentence $$\textcolor{gray}{(}\enot A\eor B\textcolor{gray}{)}$$ 
-
-To instead have $\enot$ as the main connective, one must include brackets: $$\enot(A\eor B).$$ These brackets cannot be dropped because they are inner brackets. 
-\begin{center}
-	\begin{forest}
-		[$\mainconnective{\enot} (A\eor B)$
-		[$\almostinvisibleopenbracket A\mainconnective{\eor}B\almostinvisibleclosebracket $
-		[$A$][$B$]
-		]
-		]
-	\end{forest}
-\end{center}
-
-One way you might want to think about it: $\enot$ binds more strongly than the other connectives. You should do it first, unless there's brackets telling you explicitly to first do something else. 
-
-Similarly $$\enot(A\eand B)\eif C$$
-Here, $\eif$ is the main connective. It has the following formation tree: 
-\begin{center}
-	\begin{forest}
-		[$\enot (A\eand B)\mainconnective{\eif}C$
-		[$\mainconnective{\enot} (A\eand B)$[$\almostinvisibleopenbracket A\mainconnective{\eand} B\almostinvisibleclosebracket$[$A$][$B$]]]
-		[$C$]
-		]
-	\end{forest}
-\end{center}
-
-One more example: consider $$\enot (\enot (\enot Q\eif (R\eand S))\eand \enot \enot (P\eor Q))$$ This has the formation tree:
-\begin{center}
-	\begin{forest}
-		[{$\mainconnective{\enot} (\enot (\enot Q\eif (R\eand S))\eand \enot \enot (P\eor Q))$}
-			[{$\almostinvisibleopenbracket\enot (\enot Q\eif (R\eand S))\mainconnective{\eand} \enot \enot (P\eor Q)\almostinvisibleclosebracket$}
-				[{$\mainconnective{\enot} (\enot Q\eif (R\eand S))$}
-					[{$\almostinvisibleopenbracket\enot Q\mainconnective{\eif}(R\eand S)\almostinvisibleclosebracket$}
-						[{$\mainconnective{\enot} Q$}
-							[{$Q$}]
-						]
-						[{$\almostinvisibleopenbracket R\mainconnective{\eand}S\almostinvisibleclosebracket$}
-							[{$R$}]
-							[{$S$}]
-						]
-					]
-				]
-				[{$\mainconnective{\enot}\enot (P\eor Q)$}
-					[{$\mainconnective{\enot} (P\eor Q)$}
-						[{$\almostinvisibleopenbracket P\mainconnective{\eor}Q\almostinvisibleclosebracket$}
-							[{$P$}]
-							[{$Q$}]
-						]
-					]
-				]
-			]
-		]
-	\end{forest}
-\end{center}
-
-
-\section{Scope}
 
 \newglossaryentry{scope}{
 	name = scope,
@@ -1351,37 +1585,187 @@ To add to our notion of main connective, we introduce the notion of \define{scop
 \begin{definition}The \define{scope} of an occurrence of a connective in a sentence is the sub-sentence for which that connective is the main connective.
 \end{definition}
 
-In the formation tree of a sentence, the scope of a connective is the sentence at the node where it is the main connective. It's another way to highlight the order in which to apply the truth rules when determining the truth value of the sentence. 
+For example, consider $$(A\eor B)\eand\enot(A\eand B)$$
 
+We can add braces to indicate how to read it. We also indicate the scope of each connective with the red dot on the brace. 
 
-
-For example, consider the sentence
 \[
-\almostinvisibleopenbracket(P \eand Q)\eor (\enot R \eif S))\almostinvisibleclosebracket
+\mathopen{\tikzmarknode{wholeopenbracket}{\almostinvisibleopenbracket}}
+\mathopen{(}
+	\mathord{\tikzmarknode{a}{A}}
+	\mathbin{\tikzmarknode{or}{\eor}}
+	\mathord{\tikzmarknode{b}{B}}
+\mathclose{)}
+\mathbin{\tikzmarknode{andouter}{\eand}}
+\mathord{\tikzmarknode{not}{\enot}}
+\mathopen{(}
+	\mathord{\tikzmarknode{a2}{A}}
+	\mathbin{\tikzmarknode{andinner}{\eand}}
+	\mathord{\tikzmarknode{b2}{B}}
+\mathclose{)}
+\mathclose{\tikzmarknode{wholeclosebracket}{\almostinvisibleclosebracket}}
 \]
 
-Its formation tree is:
-\begin{center}
-	\begin{forest}
-		[$\almostinvisibleopenbracket(P \eand Q){\customcoloredbox[yellow]{\eor}} (\enot R \eif S))\almostinvisibleclosebracket$,tikz={\node [draw,inner sep=7pt,yellow,fit to=tree,thick,rounded corners]{};}
-		[$\almostinvisibleopenbracket P{\customcoloredbox[blue!20]{\eand}}  Q\almostinvisibleclosebracket$,tikz={\node [draw,inner sep=0pt,blue,fit to=tree,thick,rounded corners]{};}[$P$][$Q$]]
-		[$\almostinvisibleopenbracket\enot R {\customcoloredbox[red!20]{\eif}}  S\almostinvisibleclosebracket$,tikz={\node [draw,inner sep=3pt,red,fit to=tree,thick,rounded corners]{};}
-		[${\customcoloredbox[teal!20]{\enot}}R$,tikz={\node [draw,inner sep=0pt,teal,fit to=tree,thick,rounded corners]{};}
-		[$R$]]
-		[$S$]
-		]
-		]
-	\end{forest}
-\end{center}
+\begin{tikzpicture}[remember picture,overlay]
+	% A or B
+	\scopefitbracewithcoordinate{a}{b}{or}[1]
 
-The scopes are:
-\[\overbrace{\almostinvisibleopenbracket \underbrace{(P \eand Q)}_{\textcolor{blue}{\text{scope of }\eand}}\eor \underbrace{(\overbrace{\enot R}^{\textcolor{teal}{\text{scope of }\enot}}\eif S)}_{\textcolor{red}{\text{scope of }\eif}}\almostinvisibleclosebracket}^{\textcolor{yellow!50!orange}{\text{scope of }\eor}}
+	% A and B
+	\scopefitbracewithcoordinate{a2}{b2}{andinner}[1]
+
+	% not (A and B)
+	\scopefitbracewithcoordinate{not}{b2}{not}[2]
+
+	% whole formula
+	\scopefitbracewithcoordinate{wholeopenbracket}{wholeclosebracket}{andouter}[3]
+\end{tikzpicture}
+\bigskip 
+
+
+We can more explicitly list the scope of each connective:
+
+\begin{itemize}
+	\item The scope of the central $\eand$ is the whole sentence: \\$(A \eor B)\eand \enot(A \eand B)$.\\
+	The main connective of the whole sentence is $\eand$: \\$(A \eor B)\mainconnective{\eand} \enot(A \eand B)$
+	
+	\item The scope of $\eor$ is $\almostinvisibleopenbracket A \eor B \almostinvisibleclosebracket$.\\
+	The main connective of $\almostinvisibleopenbracket A \eor B \almostinvisibleclosebracket$ is $\eor$.
+	
+	\item The scope of the right-hand $\eand$ is $\almostinvisibleopenbracket A \eand B \almostinvisibleclosebracket$.\\
+	The main connective of $\almostinvisibleopenbracket A \eand B \almostinvisibleclosebracket$ is $\eand$.
+	
+	\item The scope of $\enot$ is $ \enot(A \eand B) $.\\
+	The main connective of $ \enot(A \eand B) $ is $\enot$.
+	
+
+\end{itemize}
+
+For another example, consider: $$(P\eand Q)\eor \enot( R\eif \enot S)$$
+
+We can visually indicate scopes and main connectives as:
+
+\[
+\mathopen{\tikzmarknode{wholeopenbracket}{\almostinvisibleopenbracket}}
+\mathopen{(}
+	\mathord{\tikzmarknode{p}{P}}
+	\mathbin{\tikzmarknode{and}{\eand}}
+	\mathord{\tikzmarknode{q}{Q}}
+\mathclose{)}
+\mathbin{\tikzmarknode{or}{\eor}}
+\mathord{\tikzmarknode{notouter}{\enot}}
+\mathopen{(}
+	\mathord{\tikzmarknode{r}{R}}
+	\mathbin{\tikzmarknode{if}{\eif}}
+	\mathord{\tikzmarknode{notinner}{\enot}}
+	\mathord{\tikzmarknode{s}{S}}
+\mathclose{)}
+\mathclose{\tikzmarknode{wholeclosebracket}{\almostinvisibleclosebracket}}
+\]
+\begin{tikzpicture}[remember picture,overlay]
+	% P and Q
+	\scopefitbracewithcoordinate{p}{q}{and}[1]
+
+	% not S
+	\scopefitbracewithcoordinate{notinner}{s}{notinner}[1]
+
+	% R if not S
+	\scopefitbracewithcoordinate{r}{s}{if}[2]
+
+	% not (R if not S)
+	\scopefitbracewithcoordinate{notouter}{s}{notouter}[3]
+
+	% whole formula
+	\scopefitbracewithcoordinate{wholeopenbracket}{wholeclosebracket}{or}[4]
+\end{tikzpicture}
+\bigskip 
+
+
+We can more explicitly list the scope of each connective:
+
+\begin{itemize}
+	\item The scope of $\eor$ is the whole sentence, $((P \eand Q)\eor \enot(R \eif \enot S))$. \\The main connective of this whole sentence is $\eor$.
+We can more explicitly list the scope of each connective:
+
+	\item The scope of $\eand$ is $(P \eand Q)$.\\
+	The main connective of $(P \eand Q)$ is $\eand$.
+	
+	\item The scope of $\enot$ is $\enot S$.\\
+	The main connective of $\enot S$ is $\enot$.
+	
+	\item The scope of $\eif$ is $(R \eif \enot S)$.\\
+	The main connective of $(R \eif \enot S)$ is $\eif$.
+	
+	\item The scope of the outer $\enot$ is $\enot(R \eif \enot S)$.\\
+	The main connective of $\enot(R \eif \enot S)$ is the outer $\enot$.
+	
+\end{itemize}
+
+\section{Negations}
+\subsection{No brackets}
+
+When we were combining two sentences with one of our connectives, we are told to add brackets. Here were three of our rules for what counts as a sentence of TFL: 
+\begin{itemize}
+	\item [3.-5.] If \metaX and \metaY are sentences then so are $(\metaX\eand\metaY)$, $(\metaX\eor\metaY)$ and $(\metaX\eif\metaY)$. 
+\end{itemize}
+But the rule for negation did not include brackets: 
+	\begin{itemize}
+	\item [2.] If \metaX is a sentence, then so is $\enot\metaX$.
+\end{itemize}
+
+Using these rules we write: $$ A\eif\enot B$$ which is to be read as:
+$$\almostinvisibleopenbracket\minibrace{A}\eif\minibrace{\enot B}\almostinvisibleclosebracket$$
+
+You might be tempted to write:
+	
+	$$\almostinvisibleopenbracket A\eif(\enot B)\almostinvisibleclosebracket\qquad\leftsquigarrow \text{wrong!}$$
+	
+	That would be wrong. Negations do not introduce brackets.
+
+\subsection{Identifying scope with negations}
+An important example is $$\enot A\eor B$$ The main connective of the sentence is $\eor$. 
+It is to be understood as $$\minibrace{\enot A}\mainconnective{\eor}\minibrace{B}$$
+
+
+We can see this because it can be obtained from dropping the outer brackets from the sentence $$\almostinvisibleopenbracket\enot A\eor B\almostinvisibleclosebracket$$ 
+
+To instead have $\enot$ as the main connective, one must include brackets: $$\enot(A\eor B).$$ These brackets cannot be dropped because they are inner brackets. 
+
+One way you might want to think about it: $\enot$ binds more strongly than the other connectives. You should do it first, unless there's brackets telling you explicitly to first do something else. 
+
+Similarly, in $$\enot (A\eand B)\eif C$$
+The main connective is the $\eif$. 
+$$\enot (A\eand B)\mainconnective{\eif} C$$
+
+The scope of the $\enot$ is $\enot(A\eand B)$ rather than the whole sentence. 
+
+\[
+\mathopen{\tikzmarknode{wholeopenbracket}{\almostinvisibleopenbracket}}
+\mathord{\tikzmarknode{not}{\enot}}
+\mathopen{(}
+	\mathord{\tikzmarknode{a}{A}}
+	\mathbin{\tikzmarknode{and}{\eand}}
+	\mathord{\tikzmarknode{b}{B}}
+\mathclose{)}
+\mathbin{\tikzmarknode{if}{\eif}}
+\mathord{\tikzmarknode{c}{C}}
+\mathclose{\tikzmarknode{wholeclosebracket}{\almostinvisibleclosebracket}}
 \]
 
-In this sentence, the scope of $\eor$ is the whole sentence, as it is the main connective of that whole sentence: it was the connective which was introduced last.  The scope of $\eand$ is $\almostinvisibleopenbracket P \eand Q\almostinvisibleclosebracket$, the scope of $\eif$ is $\almostinvisibleopenbracket\enot R \eif S\almostinvisibleclosebracket$, and the scope of $\enot$ is $\enot R$. 
+\begin{tikzpicture}[remember picture,overlay]
+	% A and B
+	\scopefitbracewithcoordinate{a}{b}{and}[1]
+
+	% not (A and B)
+	\scopefitbracewithcoordinate{not}{b}{not}[2]
+	
+	% C
+	\scopebrace{c}
+
+	% whole formula
+	\scopefitbracewithcoordinate{wholeopenbracket}{wholeclosebracket}{if}[3]
+\end{tikzpicture}
 
 
-The important feature of scope is that when we will determine the truth value of the sentence, it is only the parts underneath that node which are relevant in the truth value of the sentence at that node. So the scope describes the parts of the tree which are relevant for determining the truth value of that connective. 
 \section{More bracketing rules}\label{TFLconventions}
 \subsection{Binding strength}
 We give another rule for brackets. 
@@ -1394,47 +1778,51 @@ $\eand$ and $\eor$ bind more strongly than $\eif$. You need to calculate their t
 So $$A\eand B\eif C$$ is to be understood as shorthand for $(A\eand B)\eif C$ or, even more carefully: $((A\eand B)\eif C)$. The brackets are allowed to be dropped, writing simply $A\eand B\eif C$. 
 
 In $A\eand B\eif C$, the scope of $\eand$ is narrower than that of $\eif$. In determining the truth value, one first works out the truth value of $A\eand B$.  
-\begin{center}
-	\begin{minipage}{0.45\textwidth}
-		\centering
-		\[
-		\overbrace{\underbrace{A\eand B}_{\text{scope of $\eand$}}\eif C}^{\text{scope of $\eif$}}
-		\]
-	\end{minipage}
-	\quad
-		\begin{minipage}{0.45\textwidth}
-		\centering
-		\begin{forest}
-			[$A\eand B\mainconnective{\eif} C$
-			[$A\mainconnective{\eand}B$[$A$][$B$]]
-			[$C$]
-			]
-		\end{forest}
-	\end{minipage}
-\end{center}
+\[
+\mathopen{\tikzmarknode{wholeopenbracket}{\almostinvisibleopenbracket}}
+\mathord{\tikzmarknode{a}{A}}
+\mathbin{\tikzmarknode{and}{\eand}}
+\mathord{\tikzmarknode{b}{B}}
+\mathbin{\tikzmarknode{if}{\eif}}
+\mathord{\tikzmarknode{c}{C}}
+\mathclose{\tikzmarknode{wholeclosebracket}{\almostinvisibleclosebracket}}
+\]
+
+\begin{tikzpicture}[remember picture,overlay]
+	% A and B
+	\scopefitbracewithcoordinate{a}{b}{and}[1]
+
+	% whole formula
+	\scopefitbracewithcoordinate{wholeopenbracket}{wholeclosebracket}{if}[2]
+	
+	\scopebrace{c}
+\end{tikzpicture}
+\smallskip 
 
 
 Similarly $$A\eand B \eif C\eor D$$ is shorthand for $(A\eand B)\eif (C\eor D).$
+\[
+\mathopen{\tikzmarknode{wholeopenbracket}{}}
+\mathord{\tikzmarknode{a}{A}}
+\mathbin{\tikzmarknode{and}{\eand}}
+\mathord{\tikzmarknode{b}{B}}
+\mathbin{\tikzmarknode{if}{\eif}}
+\mathord{\tikzmarknode{c}{C}}
+\mathbin{\tikzmarknode{or}{\eor}}
+\mathord{\tikzmarknode{d}{D}}
+\mathclose{\tikzmarknode{wholeclosebracket}{}}
+\]
 
-\begin{center}
-	\begin{minipage}{0.45\textwidth}
-		\centering
-		\[
-		\overbrace{\underbrace{A\eand B}_{\text{scope of $\eand$}}\eif \underbrace{C\eor D}_{\text{scope of $\eor$}}}^{\text{scope of $\eif$}}
-		\]
-	\end{minipage}
-	\quad
-		\begin{minipage}{0.45\textwidth}
-		\centering
-		\begin{forest}
-			[$A\eand B\mainconnective{\eif} C\eor D$
-			[$A\mainconnective{\eand}B$[$A$][$B$]]
-			[$C\mainconnective{\eor}D$[$C$][$D$]]
-			]
-		\end{forest}
-	\end{minipage}
-\end{center}
+\begin{tikzpicture}[remember picture,overlay]
+	% A and B
+	\scopefitbracewithcoordinate{a}{b}{and}
 
+	% whole formula
+	\scopefitbracewithcoordinate{wholeopenbracket}{wholeclosebracket}{if}[2]
+	
+	\scopefitbracewithcoordinate{c}{d}{or}
+\end{tikzpicture}
+\smallskip  
 
 There is no rule that tells us which of $\eand$ or $\eor$ is stronger. $A\eand B\eor C$ is dangerously ambiguous and must not be written. You have to include brackets, giving either $(A\eand B)\eor C$ or $A\eand (B\eor C)$. 
 
@@ -1470,20 +1858,6 @@ There is also no analogous rule for $\eif$: You must not write $P\eif Q\eif R$.
 
 
 
-\section{Inductive Definitions}
-We make one final comment about the syntax of TFL: a reflection on the kind of way we have defined what counts as a sentence of TFL
-
-The definition of a TFL-sentence is a so-called \emph{inductive} definition. Inductive definitions begin with some specifiable base elements, and then present ways to generate indefinitely many more elements by compounding together previously established ones. To give you a better idea of what an inductive definition is, we can give an inductive definition of the idea of \emph{an ancestor of mine}. We specify a base clause.
-\begin{ebullet}
-	\item My parents are ancestors of mine.
-\end{ebullet}
-and then offer further clauses like:
-\begin{ebullet}
-	\item If x is an ancestor of mine, then x's parents are ancestors of mine.
-	\item Nothing else is an ancestor of mine.
-\end{ebullet}
-Using this definition, we can easily check to see whether someone is my ancestor: just check whether she is the parent of the parent of\ldots one of my parents. And the same is true for our inductive definition of sentences of TFL. Just as the inductive definition allows complex sentences to be built up from simpler parts, the definition allows us to decompose sentences into their simpler parts. Once we get down to atomic sentences, then we know we are ok.
-
 
 
 \begin{practiceproblems}
@@ -1508,7 +1882,7 @@ Using this definition, we can easily check to see whether someone is my ancestor
 	
 	\problempart
 	\label{pr:wiffTFL}
-	For each of the following: (a) Is it a sentence of TFL, strictly speaking? (b) Is it a sentence of TFL, allowing for our relaxed bracketing conventions? (c) If the answer to (b) is yes, write down the formation tree of each sentence and determin the main connective at each node (if there is one). Is there a main connective for every node of the formation tree of a sentence.
+	For each of the following: (a) Is it a sentence of TFL, strictly speaking? (b) Is it a sentence of TFL, allowing for our relaxed bracketing conventions? (c) If the answer to (b) is yes, include braces indicating the scope of each connective.
 	\begin{problemslist}
 		\item $(A)$\hfill \myanswer{(a) no (b) no}
 		\item $J_{374} \eor \enot J_{374}$\hfill \myanswer{(a) no (b) yes}
@@ -1791,215 +2165,138 @@ Using this definition, we can easily check to see whether someone is my ancestor
 %\end{color}
 %
 
-\chapter{Use and mention}\label{sec:UseMention}
-We have talked a lot \emph{about} sentences. So we should pause to explain an important, and very general, point.
+\chapter{Truth Tables}
+In \cref{sec:Truth rules} we gave truth rules for the connectives of TFL. Now we will more carefully talk about applying them to complex sentences. 
 
-\section{Quotation conventions}
-Consider these two sentences:
-	\begin{itemize}
-		\item Justin Trudeau is the Prime Minister.
-		\item The expression `Justin Trudeau' is composed of two uppercase letters and eleven lowercase letters
-	\end{itemize}
-When we want to talk about the Prime Minister, we \emph{use} his name. When we want to talk about the Prime Minister's name, we \emph{mention} that name, which we do by putting it in quotation marks.
-
-There is a general point here. When we want to talk about things in the world, we just \emph{use} words. When we want to talk about words, we typically have to \emph{mention} those words. We need to indicate that we are mentioning them, rather than using them. To do this, some convention is needed. We can put them in quotation marks, or display them centrally in the page (say). So this sentence:
-	\begin{itemize}
-		\item `Justin Trudeau' is the Prime Minister.
-	\end{itemize}
-says that some \emph{expression} is the Prime Minister. That's false. The \emph{man} is the Prime Minister; his \emph{name} isn't. Conversely, this sentence:
-	\begin{itemize}
-		\item Justin Trudeau is composed of two uppercase letters and eleven lowercase letters.
-	\end{itemize}
-also says something false: Justin Trudeau is a man, made of flesh rather than letters. One final example:
-	\begin{itemize}
-		\item ``\,`Justin Trudeau'\,'' is the name of `Justin Trudeau'.
-	\end{itemize}
-On the left-hand-side, here, we have the name of a name. On the right hand side, we have a name. Perhaps this kind of sentence only occurs in logic textbooks, but it is true nonetheless.
-
-Those are just general rules for quotation, and you should observe them carefully in all your work! To be clear, the quotation-marks here do not indicate reported speech. They indicate that you are moving from talking about an object, to talking about a name of that object.
+We will make use of the truth rules along with our instructions about reading a sentence and which order it was formed. 
 
 
-
-\section{Object language and metalanguage}
-These general quotation conventions are very important for us. After all, we are describing a formal language here, TFL, and so we must often \emph{mention} expressions from TFL.
-
-When we talk about a language, the language that we are talking about is called the \define{object language}. The language that we use to talk about the object language is called the \define{metalanguage}.
-\label{def:metalanguage}
-\newglossaryentry{object language}
-{
-name=object language,
-description={A language that is constructed and studied by logicians. In this textbook,
- the object languages are TFL and FOL}
-}
-
-\newglossaryentry{metalanguage}
-{
-name=metalanguage,
-description={The language logicians use to talk about the object language. In this textbook, the metalanguage is English, supplemented by certain symbols like metavariables and technical terms like ``valid''}
-}
-
-For the most part, the object language in this chapter has been the formal language that we have been developing: TFL. The metalanguage is English. Not conversational English exactly, but English supplemented with some additional vocabulary to help us get along.
-
-Now, we have used uppercase letters as sentence letters of TFL:
-	$$A, B, C, P, Q, A_1, B_4, A_{25}, J_{375},\ldots$$
-These are sentences of the object language (TFL). They are not sentences of English. So we must not say, for example:
-	\begin{itemize}
-		\item $D$ is a sentence letter of TFL.
-	\end{itemize}
-Obviously, we are trying to come out with an English sentence that says something about the object language (TFL), but `$D$' is a sentence of TFL, and not part of English. So the preceding is gibberish, just like:
-	\begin{itemize}
-		\item \foreignlanguage{german}{Schnee ist weiß} is a German sentence.
-	\end{itemize}
-What we surely meant to say, in this case, is:
-	\begin{itemize}
-		\item `\foreignlanguage{german}{Schnee ist weiß}' is a German sentence.
-	\end{itemize}
-Equally, what we meant to say above is just:
-	\begin{itemize}
-		\item `$D$' is a sentence letter of TFL.
-	\end{itemize}
-The general point is that, whenever we want to talk in English about some specific expression of TFL, we need to indicate that we are \emph{mentioning} the expression, rather than \emph{using} it. We can either deploy quotation marks, or we can adopt some similar convention, such as  placing it centrally in the page.
-
-
-\section{Metavariables}\label{sec:Metavariables}
-However, we do not just want to talk about \emph{specific} expressions of TFL. We also want to be able to talk about \emph{any arbitrary} sentence of TFL. Indeed, we had to do this in \cref{sec:TFLSentences}, when we presented the recursive definition of a sentence of TFL. We used uppercase script letters to do this, namely:
-	$$\metaX, \metaY, \metaZ,\metaX_1,\metaY_1,\metaZ_1\ldots$$
-These symbols do not belong to TFL. Rather, they are part of our (augmented) metalanguage that we use to talk about \emph{any} expression of TFL. To explain why we need them, recall the second clause of the recursive definition of a sentence of TFL:
-	\begin{itemize}
-		\item[2.] If $\metaX$ is a sentence, then $\enot \metaX$ is a sentence.
-	\end{itemize}
-This talks about \emph{arbitrary} sentences. If we had instead offered:
-	\begin{itemize}
-		\item[2$'$.] If `$A$' is a sentence, then `$\enot A$' is a sentence.
-	\end{itemize}
-this would not have allowed us to determine whether `$\enot B$' is a sentence. To emphasize:
-	\begin{highlighted}
-	  `$\metaX$',  is a symbol (called a \define{metavariable}) in augmented English, which we use to talk about expressions of TFL. 	`$A$' is a particular sentence letter of TFL.\end{highlighted}
-
-        \newglossaryentry{metavariables}
-{
-name=metavariables,
-description={A variable in the metalanguage that can represent any sentence in the object language}
-}
-But this last example raises a further complication, concerning quotation conventions. We did not include any quotation marks in the second clause of our inductive definition. Should we have done so?
-
-The problem is that the expression on the right-hand-side of this rule, i.e., `$\enot\metaX$', is not a sentence of English, since it contains~`$\enot$'. So we might try to write:
-	\begin{itemize}
-		\item[2$''$.] If \metaX is a sentence, then `$\enot \metaX$' is a sentence.
-	\end{itemize}
-But this is no good: `$\enot \metaX$' is not a TFL sentence, since `$\metaX$' is a symbol of (augmented) English rather than a symbol of TFL.
-
-What we really want to say is something like this:
-	\begin{itemize}
-		\item[2$'''$.] If \metaX is a sentence, then the result of placing the symbol `$\enot$' in front of the sentence \metaX is a sentence.
-	\end{itemize}
-	This is impeccable, but rather long-winded. %Quine introduced a convention that speeds things up here. In place of (2$''$), he suggested:
-%	\begin{numberlist}
-%		\item[2$'''$.] If \metaX and \metaY are sentences, then $\ulcorner (\metaX\eand\metaY)\urcorner$ is a sentence
-%	\end{numberlist}
-%The rectangular quote-marks are sometimes called `Quine quotes', after Quine. The general interpretation of an expression like `$\ulcorner (\metaX\eand\metaY)\urcorner$' is in terms of rules for concatenation.
-But we can avoid long-windedness by creating our own conventions. We can perfectly well stipulate that an expression like `$\enot \metaX$' should simply be read \emph{directly} in terms of rules for concatenation. So, \emph{officially}, the metalanguage expression `$\enot \metaX$'
-simply abbreviates:
-\begin{itemize}
-\item[]	the result of placing the symbol `$\enot$' in front of the sentence \metaX
-\end{itemize}
-and similarly, for expressions like `$(\metaX \eand \metaY)$', `$(\metaX \eor \metaY)$', etc.
-
-
-\section{Quotation conventions for arguments}
-One of our main purposes for using TFL is to study arguments. In English, the premises of an argument are often expressed by individual sentences, and the conclusion by a further sentence. Since we can symbolize English sentences, we can symbolize English arguments using TFL.
-
-Or rather, we can use TFL to symbolize each of the \emph{sentences} used in an English argument. However, TFL itself has no way to flag some of them as the \emph{premises} and another as the \emph{conclusion} of an argument.  (Contrast this with natural English, which uses words like `so', `therefore', etc., to mark that a sentence is the \emph{conclusion} of an argument.)
-
-%So, if we want to symbolize an \emph{argument} in TFL, what are we to do?
-
-%An obvious thought would be to add a new symbol to the \emph{object} language of TFL itself, which we could use to separate the premises from the conclusion of an argument. However, adding a new symbol to our object language would add significant complexity to that language, since that symbol would require an official syntax.\footnote{\emph{The following footnote should be read only after you have finished the entire book!} And it would require a semantics. Here, there are deep barriers concerning the semantics. First: an object-language symbol which adequately expressed `therefore' for TFL would not be truth-functional. (\emph{Exercise}: why?) Second: a paradox known as `validity Curry' shows that FOL itself \emph{cannot} be augmented with an adequate, object-language `therefore'.}
-
-So, we need another bit of notation. Suppose we want to symbolize the premises of an argument with $\metaX_1$, \dots,~$\metaX_n$ and the conclusion with $\metaZ$. Then we will write:
-$$\metaX_1, \ldots, \metaX_n \therefore \metaZ$$
-The role of the symbol `$\therefore$' is simply to indicate which sentences are the premises and which is the conclusion.
-
-%Strictly, this extra notation is \emph{unnecessary}. After all, we could always just write things down long-hand, saying: the premises of the argument are well symbolized by $\metaX_1, \ldots \metaX_n$, and the conclusion of the argument is well symbolized by $\metaZ$. But having some convention will save us some time. Equally, the particular convention we chose was fairly \emph{arbitrary}. After all, an equally good convention would have been to underline the conclusion of the argument. Still, this is the convention we will use.
-
-Strictly, the symbol `$\therefore$' will not be a part of the object language, but of the \emph{metalanguage}. As such, one might think that we would need to put quote-marks around the TFL-sentences which flank it. That is a sensible thought, but adding these quote-marks would make things harder to read. Moreover---and as above---recall that \emph{we} are stipulating some new conventions. So, we can simply stipulate that these quote-marks are unnecessary. That is, we can simply write:
-$$A, A \eif B \therefore B$$
-\emph{without any quotation marks}, to indicate an argument whose premises are (symbolized by) `$A$' and `$A \eif B$' and whose conclusion is (symbolized by)~`$B$'.
-
-
-\begin{practiceproblems}
-\problempart
-Add quotation marks to the following sentences where necessary:
-\begin{problemslist}
-\item \myanswer{`}$\enot$\myanswer{'}, \myanswer{`}$\eand$\myanswer{'}, \myanswer{`}$\eor$\myanswer{'} and \myanswer{`}$\eif$\myanswer{'} are the basic logical connectives of the language of TFL.
-\item In a well-formed sentence for every opening bracket `(' there must be a closing bracket \myanswer{`})\myanswer{'}.
-\item The sentence \myanswer{`}snow is white\myanswer{'} is true if and only if snow is white. 
-\item Kevin is a lecturer, whereas \myanswer{`}Kevin\myanswer{'} names Kevin and the latter is an expression of the language (and not a lecturer).
-\end{problemslist}
-
-\problempart
-Given our convention on metavariables what do the following expressions convey:
-\begin{problemslist}
-\item $\metaX\eand\metaY$\myanswer{\\the result of taking the sentence \metaY followed by `$\eand$' followed by \metaZ}
-\item $\metaY\eif\metaZ$\myanswer{\\the result of taking the sentence \metaY followed by `$\eif$' followed by \metaZ}
-\item $\enot(\metaY\eor\metaZ)$\myanswer{\\the result of placing `$\enot($' before the sentence \metaY, then adding `$\eor$', then \metaZ and finally `$)$'.}\todo{are these right???}
-\end{problemslist}
-
-\problempart
-Consider the sentence
-\begin{itemize}
-\item Sharky is so-called because of his teeth.
-\end{itemize}
-Is `Sharky' used or mentioned in the above sentence? Discuss.
-\end{practiceproblems}
-
-
-
-
-
-
-\chapter{Truth on a Valuation}
-
-In \cref{sec:Truth rules} we gave truth rules for the connectives of TFL. Now we can apply them to complex sentences. 
-
-The truth rules associated with the connectives allow us to calculate the truth value of a complex sentences based on the truth values of its constituent parts. These may themselves be complex sentences. Ultimately we get to the atomic sentences and have to ask whether they are true or false. 
-A valuation is a specification of whether each atomic sentence is true or false.
-
-
-
-%In the previous section we have learned how truth values of constituent sentences determine the truth value of complex sentences. This means that if we are presented with the truth value of the relevant atomic sentences that appear in a complex sentence, we can determine whether that sentence is true or false.
-%
-%But how do we determine whether a given atomic sentence is true? This is where the notion of an \emph{interpretation} comes into the picture. An interpretation will stipulate (assign) truth values of particular atomic sentences. Let `$B$' stand for the English sentence `Ben is happy'. Then there is one interpretation according to which this is true, that is, $B$ will be assigned the value ``True'' on this interpretation. There is another interpretation according to which Ben is not happy, that is, $B$ is assigned the value ``False'' on this interpretation. In TFL an interpretation of the atomic sentences is called a \define{valuation}:
-
-\begin{definition}
-		A \define{valuation} is any assignment of truth values (true or false) to the atomic sentences of TFL.
-	\end{definition}
-
-        \newglossaryentry{valuation}
-{
-name=valuation,
-description={An assignment of \glspl{truth value} to particular atomic \glspl{sentence of TFL}}
-}
-
-
-For example a valuation $v$ might assign:
+Whether $A\eand B$ is true depends on whether Alice is happy and whether Beth is happy.
+There are four possible combinations. There are four valuations. Recall that a valuation is any assignment of true and false to each atomic sentence. 
 \begin{center}
-	\begin{tabular}{rccccccc}
-	&	$A$&$H$&$I$&$B$&$C_{35}$&\ldots\\\hline
-	$v$:&	F & T &F&F&F&T&\ldots
+	\begin{tabular}{rcc|c}
+	&	$A$&$B$&$A\eand B$\\\hline
+	$v_1$&	T&T&T\\
+	$v_2$&	T&F&F\\
+	$v_3$&	F&T&F\\
+	$v_4$&	F&F&F
 	\end{tabular}
 \end{center}
 
-If you give me a valuation, I can then use the rules to calculate the truth value of any sentence. 
-Sentences of TFL are true or false \emph{relative to a valuation}. 
-The valuation determines the truth values of the atomic sentences, and complex sentences are determined using the truth rules:
-\begin{definition}Let $v$ be a valuation. Then
-	\begin{enumerate}
-		\item An atomic sentence $X$ is true relative to $v$, if and only if $v$ assigns the value T to $X$.
-		\item For a sentence $\enot\metaX$, $(\metaX\eand\metaY)$, $(\metaX\eor\metaY)$, $(\metaX\eif\metaY)$, whether it is true or false relative to $v$ can be determined by applying the appropriate truth rule depending on whether $\metaX$ and $\metaY$ are true or false relative to $v$:
-%			\begin{tabular}{@{If \metaX is }c@{ relative to $v$, then $\enot\metaX$ is }c@{ relative to $v$}}
-%				true &false\\
-%				false &true
-%			\end{tabular}
+What about $\enot(A\eand B)$? This will make use of our truth rule for its main connective, $\enot$. The only difference now is that it is applied not to an atomic sentence but something that is more complicated. Recall the truth rule for $\enot$ describing whether $\enot \metaX$ is true or false on a valuation depending on whether $\metaX$ is true or false on that valuation. 
+\begin{center}
+	\begin{tabular}{ccc}
+	If \metaX is:&&then $\enot\metaX$ is:\\
+	T &$\leadsto$& F\\
+	F &$\leadsto$& T
+\end{tabular}
+\end{center}
+
+So suppose we are in a case where neither Alice nor Beth are happy ($v_4$). Then $(A\eand B)$ is false. So, according to our rule,  $\enot(A\eand B)$ is true. To keep track of this reasoning in the four possibilities, we write the truth value of the sentence underneath its main connective, in this case, $\enot$. That is, in $v_1$, $\enot (A\eand B)$ is false, and in $v_2$, $v_3$ and $v_4$ it is true. 
+\begin{center}
+	\begin{tabular}{rcc|d*{4}{e}f}
+		&$A$&$B$
+		&\tikzmarknode{not}{$\enot$}
+		&\tikzmarknode{openbracket}{$($}
+		&\tikzmarknode{a}{$A$}
+		&\tikzmarknode{and}{$\eand$}
+		&\tikzmarknode{b}{$B$}
+		&\tikzmarknode{closebracket}{$)$}
+		\\[3\scopebracedepthunit]\hline
+		\truthrowstart{truthline}$v_1$&T&T&\TTbf{F}& & & T & & \\
+		$v_2$&T&F&\TTbf{T}& & & F & & \\
+		$v_3$&F&T&\TTbf{T}& & & F & & \\
+		$v_4$&F&F&\TTbf{T}& & & F & &\\
+			&&&\tikzmarknode{negcolumn}{}
+				&&&\tikzmarknode{andcolumn}{}
+				&&
+	\end{tabular}
+
+
+	\begin{tikzpicture}[remember picture,overlay]
+		% A and B
+		\scopefitbracewithcoordinate{a}{b}{and}[1]
+
+		% not (A and B)
+		\scopefitbracewithcoordinate{not}{closebracket}{not}[2]
+
+		% truth-value arrows
+		\trutharrows{truthline}{and_brace,not_brace}
+		
+		\draw[-{Stealth[length=3pt]}] (andcolumn) to[bend left=40] (negcolumn);
+		
+	\end{tikzpicture}
+\end{center}
+We write the truth value for each sub-sentence underneath its main connective, as indicated by the red dot. We highlight the column giving the truth value for the overall sentence to indicate that it is the final answer, and the other column was just a calculation column. 
+
+
+
+\section{Definitions}
+Recall the definition:
+
+\begin{definition}
+		A \define{valuation} is any assignment of truth values (true or false) to the atomic sentences.
+\end{definition}
+
+We now say what a complete truth table is:
+\begin{definition}
+	A \define{complete truth table} for a sentence has a line for each valuation for the atomic sentences appearing in the sentence, and displays the truth value of the sentence on each of the valuations. 
+\end{definition}
+
+
+For example, a complete truth table is:
+\begin{center}
+	\begin{tabular}{rcc|l}
+		&$A$&$B$&$\enot(A\eand B)$\\\hline
+		$v_1$&T&T&F\\
+		$v_2$&T&F&T\\
+		$v_3$&F&T&T\\
+		$v_4$&F&F&T
+	\end{tabular}
+\end{center}
+Which one can also display with calculation stages, as we did above, where one then needs to highlight the column which gives the final answer:
+\begin{center}
+	\begin{tabular}{rcc|d*{4}{e}f}
+		&$A$&$B$
+		&\tikzmarknode{not}{$\enot$}
+		&\tikzmarknode{openbracket}{$($}
+		&\tikzmarknode{a}{$A$}
+		&\tikzmarknode{and}{$\eand$}
+		&\tikzmarknode{b}{$B$}
+		&\tikzmarknode{closebracket}{$)$}
+		\\[3\scopebracedepthunit]\hline
+		\truthrowstart{truthline}$v_1$&T&T&\TTbf{F}& & & T & & \\
+		$v_2$&T&F&\TTbf{T}& & & F & & \\
+		$v_3$&F&T&\TTbf{T}& & & F & & \\
+		$v_4$&F&F&\TTbf{T}& & & F & &
+	\end{tabular}
+
+
+	\begin{tikzpicture}[remember picture,overlay]
+		% A and B
+		\scopefitbracewithcoordinate{a}{b}{and}[1]
+
+		% not (A and B)
+		\scopefitbracewithcoordinate{not}{closebracket}{not}[2]
+
+		% truth-value arrows
+		\trutharrows{truthline}{and_brace,not_brace}
+		
+		
+	\end{tikzpicture}
+\end{center}
+
+
+We will now turn to giving further worked examples of determining complete truth tables. Before doing so, we recall the truth rules introduced in \cref{def:Truthint}:
+\begin{highlighted}
+	% 	Let $v$ be a valuation. 
+	%	\begin{enumerate}
+		%		\item An atomic sentence $X$ is true relative to $v$, if and only if $v$ assigns the value T to $X$.
+		%		\item A sentence $\enot\metaX$, $(\metaX\eand\metaY)$, $(\metaX\eor\metaY)$, $(\metaX\eif\metaY)$, whether it is true or false relative to $v$ can be determined by applying the appropriate truth rule depending on the truth of its constituant parts
+		%			\begin{tabular}{@{If \metaX is }c@{ relative to $v$, then $\enot\metaX$ is }c@{ relative to $v$}}
+			%				true &false\\
+			%				false &true
+			%			\end{tabular}
 		\begin{center}
 			\begin{tabular}{ccc}
 				If \metaX is:&&then $\enot\metaX$ is:\\
@@ -2009,7 +2306,7 @@ The valuation determines the truth values of the atomic sentences, and complex s
 		\end{center}
 		\begin{center}
 			\begin{tabular}{cccc}
-				If \metaX is:&and \metaY is:&&then $(\metaX\eand\metaY)$ is:\\
+				If \metaX is:&and \metaY is:&&then $\metaX\eand\metaY$ is:\\
 				T & T &$\leadsto$& T\\
 				T & F &$\leadsto$& F\\
 				F & T &$\leadsto$& F\\
@@ -2018,7 +2315,7 @@ The valuation determines the truth values of the atomic sentences, and complex s
 		\end{center}
 		\begin{center}
 			\begin{tabular}{cccc}
-				If \metaX is:&and \metaY is:&&then $(\metaX\eor\metaY)$ is:\\
+				If \metaX is:&and \metaY is:&&then $\metaX\eor\metaY$ is:\\
 				T & T &$\leadsto$& T\\
 				T & F &$\leadsto$& T\\
 				F & T &$\leadsto$& T\\
@@ -2027,476 +2324,31 @@ The valuation determines the truth values of the atomic sentences, and complex s
 		\end{center}
 		\begin{center}
 			\begin{tabular}{cccc}
-				If \metaX is:&and \metaY is:&&then $(\metaX\eif\metaY)$ is:\\
+				If \metaX is:&and \metaY is:&&then $\metaX\eif\metaY$ is:\\
 				T & T &$\leadsto$& T\\
 				T & F &$\leadsto$& F\\
 				F & T &$\leadsto$& T\\
 				F & F &$\leadsto$& T
 			\end{tabular}
 		\end{center}
-%		\item a sentence $\enot\metaX$ is true relative to $v$, if and only if $\metaX$ is false relative to $v$.
-%		\item a sentence $(\metaX\eand\metaY)$ is true relative to $v$, if and only if $\metaX$ and $\metaY$ are both true relative to $v$.
-%		\item a sentence $(\metaX\eor\metaY)$ is true relative to $v$, if and only if $\metaX$ or $\metaY$is true relative to $v$.
-%		\item a sentence $(\metaX\eif\metaY)$  is true relative to $v$, if and only if $\metaX$ is false or $\metaY$ is true relative to $v$
+		%		\item a sentence $\enot\metaX$ is true relative to $v$, if and only if $\metaX$ is false relative to $v$.
+		%		\item a sentence $(\metaX\eand\metaY)$ is true relative to $v$, if and only if $\metaX$ and $\metaY$ are both true relative to $v$.
+		%		\item a sentence $(\metaX\eor\metaY)$ is true relative to $v$, if and only if $\metaX$ or $\metaY$is true relative to $v$.
+		%		\item a sentence $(\metaX\eif\metaY)$  is true relative to $v$, if and only if $\metaX$ is false or $\metaY$ is true relative to $v$
 		%\item If \metaX and \metaY are sentences, then $(\metaX\eiff\metaY)$ is a sentence.
 		%\item Nothing else is a sentence.
-	\end{enumerate}
-\end{definition}
+		%	\end{enumerate}
+\end{highlighted}
 
-Consider 
-`$(\enot I\eand H)\eif H$'. We will determine whether it is true or false on the valuation given. 
-The idea is that we draw the formation tree and then work our way up the formation tree to, in stages, determine the value of our complex sentence.
-This is similar to as one might do in mathematics to determine the value of a complex equation in stages starting from the bottom of the tree:
-\begin{center}
-	\begin{forest}
-		[{$7\mainconnective{+}(5\times\sqrt{}4)$}, label=right:{\scriptsize $=17$}
-		[{$7$}]
-		[{$(5\mainconnective{\times} \sqrt{}4)$}, label=right:{\scriptsize $=10$}
-		[{$5$}]
-		[{$\mainconnective{\sqrt{}}{4}$}, label=right:{\scriptsize $=2$}
-		[{$4$}]
-		]
-		]
-		]
-	\end{forest}
-\end{center}
+To determine the complete truth table for an arbitrary sentence of TFL, one just needs to apply these truth rules in the right order, which is determined by considering the formation order of the sentence. 
 
-Or, it might be more similar to this maths question: Setting $x=7$, $y=5$ and $z=4$,  determine the value of $x+(y\times\sqrt{}z)$. 
-\begin{center}
-	\begin{forest}
-		[{$x\mainconnective{+}(y\times\sqrt{}z)$}, label=right:{\scriptsize $=17$}
-		[$x$, label=left:{\scriptsize $7=$}]
-		[{$y\mainconnective{\times}\sqrt{}z$}, label=right:{\scriptsize $=10$}
-		[$y$, label=left:{\scriptsize $5=$}]
-		[{$\mainconnective{\sqrt{}}z$}, label=right:{\scriptsize $=2$}
-		[$z$, label=right:{\scriptsize $=4$}]
-		]
-		]
-		]
-	\end{forest}
-\end{center}
+\section{Complete Truth Tables}
 
-Similarly for TFL, we use the valuation to set the values for our atomic sentences and then determine the values of our complex sentences by applying our truth rules. 
+Consider any sentence of TFL, for example $$(\enot I\eand H)\eif H$$
+Our task is to draw a complete truth table for this sentence. 
 
-Let us see an example. Consider 
-`$(\enot I\eand H)\eif H$'. 
-The formation tree will help us know what to do (see \cref{def:TFLsentences}):
-\begin{center}
-	\begin{forest}
-		[$(\enot I\eand H)\mainconnective{\eif} H$
-		[$(\enot I\mainconnective{\eor} H)$
-		[$\mainconnective{\enot} I$
-		[$I$]
-		]
-		[$H$]
-		]
-		[$H$]
-		]
-	\end{forest}
-\end{center}
+The first task is to identify the atomic sentences that appear in it, in this case $I$ and $H$, and list all the valuations, as described in \cref{sec:ValsAll}
 
-%Now, we will start by a slight reformatting of the formation tree. 
-%
-%\begin{center}
-%	\begin{tabular}{c c d e e ee e e f}
-%		
-%		&	& $($ & $\enot$ & $I$ & $\eor$ & $H$ & $)$ & $\mainconnective{\eif}$ & $H$ \\
-%		%&&&&&&&&T&
-%		\\[1ex]
-%		& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & $\mainconnective{\eor}$ & $H$ & $\mainconnectivecolor{)}$ & &$H$ \\
-%%			&&&&&T&&&&F
-%			\\[1ex]
-%		& & & $\mainconnective{\enot}$ & $I$ & & $H$ & & &\\
-%%			&&&F&&&F&&&
-%			\\[1ex]
-%		& & & & $I$ & & & & &  \\
-%%			&&&&T&&&&&
-%	\end{tabular}
-%\end{center}
-
-
-
-The lowest point on the tree is ${I}$. For the truth of this, we just consult the valuation. On this valuation:
-\begin{center}
-	\begin{tabular}{rccccccc}
-		&	$A$&${H}$&${I}$&$B$&$C_{35}$&\ldots\\\hline
-		$v$:&	F & T &F&F&F&T&\ldots
-	\end{tabular}
-\end{center}
-\begin{center}
-	\begin{forest}
-	[$(\enot I\eand H)\mainconnective{\eif} H$
-	[$(\enot I\mainconnective{\eor} H)$
-	[$\mainconnective{\enot} I$
-	[$I$\\False on $v$]
-	]
-	[$H$]
-	]
-	[$H$]
-	]
-\end{forest}
-\end{center}
-%\begin{center}
-%	\begin{tabular}{c c d e e ee e e f}
-%		
-%		&	& $($ & $\enot$ & $I$ & $\eor$ & $H$ & $)$ & $\mainconnective{\eif}$ & $H$ \\
-%		&&&&&&&&&
-%		\\[1ex]
-%		& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & $\mainconnective{\eor}$ & $H$ & $\mainconnectivecolor{)}$ & &$H$ \\
-%					&&&&&&&&&F
-%		\\[1ex]
-%		& & & $\mainconnective{\enot}$ & $I$ & & $H$ & & &\\
-%					&&&&&&F&&&
-%		\\[1ex]
-%		& & & & $I$ & & & & &  \\
-%					&&&&T&&&&&
-%	\end{tabular}
-%\end{center}
-
-The truth rule for $\enot$ tells us how the truth value of $\enot I$ depends on the truth of ${I}$. 
-Since ${I}$ is false on valuation $v$, by consulting the truth rule for $\neg$ we can se that $\enot I$ is true on the valuation $v$:
-\begin{center}
-	\begin{forest}
-		[$(\enot I\eand H)\mainconnective{\eif} H$
-		[$(\enot I\mainconnective{\eand} H)$
-		[$\mainconnective{\enot} I$\\True on $v$
-		[$I$\\False on $v$]
-		]
-		[$H$\\True on $v$]
-		]
-		[$H$]
-		]
-	\end{forest}
-\end{center}
-
-Then the rule for $\eand$ tells us how the truth value of $\enot I\eand H$ depends on the truths of $\enot I$ and ${H}$: as $\enot I$ is true (which we determined) and ${H}$ is true (consult the valuation), then $\enot I \eand H$ is also true on the valuation $v$.
-\begin{center}
-	\begin{forest}
-		[$(\enot I\eand H)\mainconnective{\eif} H$\\
-		[$(\enot I\mainconnective{\eand} H)$\\True on $v$
-		[$\mainconnective{\enot} I$\\True on $v$
-		[$I$\\False on $v$]
-		]
-		[$H$\\True on $v$]
-		]
-		[$H$\\True on $v$]
-		]
-	\end{forest}
-\end{center}
-Finally, the rule for $\eif$ tells us how the truth value of $(\enot I\eand H)\eif H$ depends on those of $(\enot I\eand H)$ and ${H}$.
-\begin{center}
-	\begin{forest}
-		[$(\enot I\eand H)\mainconnective{\eif} H$\\True on $v$
-		[$(\enot I\mainconnective{\eand} H)$\\True on $v$
-		[$\mainconnective{\enot} I$\\True on $v$
-		[$I$\\False on $v$]
-		]
-		[$H$\\True on $v$]
-		]
-		[$H$\\True on $v$]
-		]
-	\end{forest}
-\end{center}
-
-
-We will present this in a table:
-
-\begin{center}
-	\begin{tabular}{r c c| c c c c c c c c c}
-		&&
-		
-		& {(} & {\enot} & $I$ & {\eand} & $H$ & {)} & \tikzmarknode{r1_imp}{$\mainconnective{\eif}$}& $H$  \\[.2em]
-		
-		% Row 2: children of Row 1
-		&& &
-		\mainconnectivecolor{(}
-		& {\enot} & $I$ & \tikzmarknode{r2_and}{$\mainconnective{\eand}$} & $H$
-		& \mainconnectivecolor{)} & &
-		\tikzmarknode{r2_Hr}{$H$} & \\[.2em]
-		
-		% Row 3: children of Row 2 (left side)
-		&& & & \tikzmarknode{r3_not}{$\mainconnective{\enot}$} & $I$ & & \tikzmarknode{r3_Hl}{$H$} & & & \\[.2em]
-		
-		% Row 4: child of Row 3 (for the negation)
-		Valuation & $I$ & $H$ & & & \tikzmarknode{r4_I}{$I$} & & & && & \\[.2em]\hline
-		
-% % v1: I=T, H=T
-%$v_1:$ & T & T & & F & T & F & T & & \TTbf{T} & T \\
-%
-%% v2: I=T, H=F
-%$v_2:$ & T & F & & F & T & F & F & & \TTbf{T} & F \\
-
-% v3: I=F, H=T
-$v:$ & F & T & & T & F & T & T & & \TTbf{T} & T \\
-
-% v4: I=F, H=F
-%$v_4:$ & F & F & & T & F & F & F & & \TTbf{T} & F \\
-
-	\end{tabular}
-	
-	\begin{tikzpicture}[remember picture,overlay]
-		\tikzset{arrowformationtree/.style={-{Stealth[length=2.2mm,width=1.6mm]},gray,opacity=0.6}}
-		
-		% Row 2 -> Row 1
-		\draw[arrowformationtree] (r2_and) to[bend right=18] (r1_imp);
-		\draw[arrowformationtree] (r2_Hr)  to[bend left=18] (r1_imp);
-		
-		% Row 3 -> Row 2
-		\draw[arrowformationtree] (r3_not) to[bend right=18] (r2_and);
-		\draw[arrowformationtree] (r3_Hl)  to[bend left=18] (r2_and);
-		
-		% Row 4 -> Row 3
-		\draw[arrowformationtree] (r4_I) to[bend left=18] (r3_not);
-	\end{tikzpicture}
-\end{center}
-
-
-
-We do this because when we consider multiple valuations, we'll need to track where their answers are. 
-For example:
-
-
-\begin{center}
-	\begin{tabular}{r c c c| d e e e e e e e e e e e  e e f}
-		&&&
-		& \tikzmarknode{r1_outerneg}{$\mainconnective{\enot}$} & $( $ & $C$ & $\eor$ & $( $ & $D$ & $\eif$ & $( $ & $A$ & $\eor$ & $\enot$ & $D$ & $)$ & $)$ & $)$ \\[1em]
-		
-		% Row 2: parents of Row 3; child of Row 1
-		& & & &
-		& \mainconnectivecolor{(}
-		& $C$ & \tikzmarknode{r2_bigor}{$\mainconnective{\eor}$}
-		& $( $ & $D$ & ${\eif}$
-		& $( $ & $A$ & ${\eor}$
-		& ${\enot}$ & $D$
-		& $)$ & ${)}$& $\mainconnectivecolor{)}$ \\[1em]
-		
-		% Row 3: children of Row 2; parents of Row 4
-		& & & &
-		& & \tikzmarknode{r3_C}{$C$}
-		& &{\mainconnectivecolor{$($ }}
-		& $D$ & \tikzmarknode{r3_implies}{$\mainconnective{\eif}$}
-		& $( $ & $A$ & $\eor$ & ${\enot}$ & $D$
-		& $)$ & \tikzmarknode{r3_closeCond}{\mainconnectivecolor{)}} & \\[1em]
-		
-		% Row 4: children of Row 3; parents of Row 5
-		& & & & & & & & &
-		\tikzmarknode{r4_D}{$D$}
-		& & & $A$ & \tikzmarknode{r4_inneror}{$\mainconnective{\eor}$}
-		& $\enot$ & $D$ & & & \\[1em]
-		
-		% Row 5: children of Row 4; parent of Row 6
-		& & & & & & & & & & & &
-		\tikzmarknode{r5_A}{$A$}
-		& & \tikzmarknode{r5_not}{$\mainconnective{\enot}$}
-		& ${D}$ & & & \\[1em]
-		
-		% Row 6: child of Row 5
-		Valuation&$A$ &$C$ &$D$ & & & & & & & & & & & &
-		\tikzmarknode{r6_D}{$D$}
-		& & & \\[.2em]\hline
-		
-%		$v_1:$ & T & T & T & \TTbf{F} & & T & T & & T & T & & T & T & F & T & & & \\
-%		$v_2:$ & T & T & F & \TTbf{F} & & T & T & & F & T & & T & T & T & F & & & \\
-%		$v_3:$ & T & F & T & \TTbf{F} & & F & T & & T & T & & T & T & F & T & & & \\
-		$v:$ & T & F & F & \TTbf{F} & & F & T & & F & T & & T & T & T & F & & & \\
-		$v':$ & F & T & T & \TTbf{F} & & T & T & & T & F & & F & F & F & T & & & \\
-%		$v_6:$ & F & T & F & \TTbf{F} & & T & T & & F & T & & F & F & T & F & & & \\
-%		$v_7:$ & F & F & T & \TTbf{T} & & F & F & & T & F & & F & F & F & T & & & \\
-%		$v_8:$ & F & F & F & \TTbf{F} & & F & T & & F & T & & F & F & T & F & & & \\
-	\end{tabular}
-	\begin{tikzpicture}[remember picture,overlay]
-		\tikzset{arrowformationtree/.style={-{Stealth[length=2.2mm,width=1.6mm]},gray,opacity=0.6}}
-		
-		
-		% Row 2 -> Row 1
-		\draw[arrowformationtree] (r2_bigor) to[bend left=18] (r1_outerneg);
-		
-		% Row 3 -> Row 2
-		\draw[arrowformationtree] (r3_C)        to[bend right=18] (r2_bigor);     
-		\draw[arrowformationtree] (r3_implies) to[bend left=18] (r2_bigor);  
-		
-		% Row 4 -> Row 3
-		\draw[arrowformationtree] (r4_D)       to[bend right=18] (r3_implies);    
-		\draw[arrowformationtree] (r4_inneror) to[bend left=18] (r3_implies);   
-		
-		% Row 5 -> Row 4
-		\draw[arrowformationtree] (r5_A)   to[bend right=18] (r4_inneror);         
-		\draw[arrowformationtree] (r5_not) to[bend left=18] (r4_inneror);        
-		
-		% Row 6 -> Row 5
-		\draw[arrowformationtree] (r6_D) to[bend left=18] (r5_not);               
-	\end{tikzpicture}
-\end{center}
-
-\begin{practiceproblems}
-
-
-\problempart Determine the truth values for these sentences on this valuation:
-
-\begin{center}
-	\begin{tabular}{rccccccccc}
-		& $A$ & $B$ & $C$ & $D$ & $E$ & $H$ & $I$ & $J$ & $C_{35}$\\\hline
-		$v$: & F & F & F & T & F & T & F & T & F
-	\end{tabular}
-\end{center}
-
-\begin{problemslist}
-	\item $\,\enot A \eor (B \eif \enot (C \eor A))\,$
-	\item $\, (A \eand H) \eor (I \eand \enot B)\,$
-	\item $\, H \eif (A \eor C)\,$
-	\item $\, \enot (D \eand E)\,$
-	\item $\, (B \eif J) \eand (J \eif H)\,$
-	\item $\, (C \eor C_{35}) \eif H\,$
-	\item $\, \enot\enot A \eor \enot I\,$
-	\item $\, (A \eif B) \eif ((H \eand D) \eor \enot E)\,$
-	\item $\, ((J \eand \enot C )\eif D) \eand \enot (J \eand E)\,$
-	\item $\, (A \eor B) \eand (\enot A \eor \enot B)$
-	\item $\, (H \eif D) \eor (I \eif A)\,$
-\end{problemslist}
-
-	
-	\end{practiceproblems}
-
-\chapter{Truth Tables}
-\section{Validity and truth tables, the idea}\label{sec:valtt}
-In \cref{sec:Valid} we said that an argument was valid, if and only if there is no interpretation such that all premises are true but the conclusion false. At that point the definition was suggestive, but we lacked a clear understanding of `interpretation' and when a sentence is true relative to an interpretation. But for the language of TFL we can now turn the informal definition in a precise and rigorous definition as, for TFL, interpretations are given by valuations, assignments of truth values to the atomic sentences. 
-
-Recall that an argument consisted of a number of premises together with a conclusion. A TFL-argument then can be written as $X_1,\ldots,X_n\therefore Y$ where $X_1,\ldots,X_n$ and $Y$ are sentences of TFL, and $X_1,\ldots,X_n$ are the premises and $Y$ the conclusion of the argument.
-
-\begin{definition}\label{def:TFLvalid}A TFL-argument is valid if and only if there is no valuation on which all the premises are true but the conclusion is false. 
-	
-	That is, `$X_1,\ldots,X_n\therefore Y$' is \define{valid} if and only if there is no valuation $v$ such that $X_1$ is true relative to $v$ and $X_2$ is true relative to $v$, and so on, up to $X_n$ being true relative to $v$, but $Y$ is false relative to $v$.\end{definition}
-
-So to determine whether a TFL-argument is valid or not, we should show whether or not there is a valuation on which all premises are true but the conclusion false. 
-
-We have discussed how to determine the truth of a sentence relative to a single valuation. To determine whether an argument is valid or not we need to consider all valuations and ask whether there is at least one valuation where the premises are all true but the conclusion is false. 
-
-There are many different valuations. But to determine validity, we only need to consider the valuations' assignment to the atomic sentences that occur in the premises and the conclusion of the argument. Consider the argument:
-$$\enot C,\,D\eif C\therefore\enot  D$$
-To determine its validity, we only care about the truth values of the three sentence $\enot C$, $D\eif C$ and $\enot D$. So all that matters for our purposes is the valuation's assignment of truth values to the atomic sentences $C$ and $D$.
-
-There will be four possible such valuations. 
-\begin{center}
-	\begin{tabular}{rcc}
-		Valuation&$C$&$D$\\\hline
-		$v_1:$&T & T \\
-		$v_2:$&T & F \\
-		$v_3:$&F & T \\
-		$v_4:$&F & F \\
-	\end{tabular}
-\end{center}
-
-We need to determine the truth values of the three sentences, $\enot C$, $D\eif C$ and $\enot D$ on each valuation to determine whether the argument is valid. 
-
-This will result in:
- \begin{center}
-	\begin{tabular}{rcc||c|c||c}
-		Valuation&$C$&$D$&$\enot D$&$C\eif D$&$\enot C$\\\hline
-		$v_1:$&T & T & F & T & F\\
-		$v_2:$&T & F & T & F & F\\
-		$v_3:$&F & T & F & T & T\\
-		$v_4:$&F & F & {T}& {T} & {T}
-	\end{tabular}
-\end{center}
-
-$v_4$ is the only valuation on which both the premises (`$\enot D$' and `$C\eif D$') are true; and on this valuation, the conclusion (`$\enot C$') is also true. 
-There is thus no valuation where all the premises are true and the conclusion is false. So the argument is valid. 
-
-To allow you to determine this we will show how to construct so-called (complete) truth tables. 
- 
-\section{Determining all the valuations}
-
-Suppose we are interested in determining the validity of an argument. We need to consider all the valuations for the atomic sentences that appear in the argument. 
-
-
-If we are only interested in the atomic sentences $A$ there are two ways of assigning truth values to the atomic sentence $A$:
-\begin{center}
-	\begin{tabular}{ccccccc}
-		$A$\\\hline
-		T\\
-		F 
-	\end{tabular}
-\end{center}
-That is, there are two valuations for the atomic sentence $A$. 
-
-If we are interested in two atomic sentences, say $A$ and $B$, we need to consider all possible assignments of truth values to $A$ and to $B$. 
-
-Whatever the valuation assigns to $A$, it can assign either true or false to $B$. So we ``split'' each valuation we have so far into two versions, one which assigns $B$ as true and another assigning $B$ as false. 
-
-\begin{center}
-	\begin{tabular}{cccccc}
-		 $A$&$B$\\\hline
-	T&T\\
-	T&F\\
-	F&T\\
-	F&F
-	\end{tabular}
-\end{center}
-
-If we are also interested in a further atomic sentence, say $C$, we further split each of our valuations into two, one which also assigns $C$ as true, and one which assigns $C$ as false.
-
-\begin{center}
-	\begin{tabular}{cccc}
-		$A$&$B$&$C$&\\\hline
-		T& T &T&\\
-		T & T & F&\\
-		T & F & T& \\
-		T & F &F&\\
-		F & T &T&\\
-		F& T & F & \\
-		F & F & T &\\
-		F & F & F& 
-	\end{tabular}
-\end{center}
-
-
-What if we add a further atomic sentence, say $P_{235}$? We want to consider the valuations for atomic sentences $A,B,C,P_{235}$.
-For each valuation for $A,B,C$ there is a version of it where $P_{235}$ is true, and another where $P_{235}$ is false. We thus duplicate each line of the table so far and add these two possible truth values for $P_{235}$ in the two variants. 
-
-\begin{center} \begin{tabular}{cccc} $A$ & $B$ & $C$ & $P_{235}$\\\hline T & T & T & T\\ T & T & T & F\\ T & T & F & T\\ T & T & F & F\\ T & F & T & T\\ T & F & T & F\\ T & F & F & T\\ T & F & F & F\\ F & T & T & T\\ F & T & T & F\\ F & T & F & T\\ F & T & F & F\\ F & F & T & T\\ F & F & T & F\\ F & F & F & T\\ F & F & F & F \end{tabular} \end{center}
-
-
-The list of all possible valuations gets very big very fast. It doubles for each new atomic sentence. 
-
-There are $2^n$ ways to assign truth values to $n$ atomic sentences. Using truth tables to determine validity thus becomes quite difficult and it is one reason we consider an alternative method: that of proofs, which we will see in \cref{ch:NDTFL}.
-
-
-Here's one strategy that some people find useful for listing all the valuations. 
-
-\begin{itemize}
-	\item 	For $n$ atomic sentences, there are $2^n$ valuations. 
-	
-	\item Draw a table with the $n$ atomic sentences in the header row and count $2^n$ rows (make a mark). 
-	
-	\item We'll now fill out the `T' and `F''s in these $n$-columns and $2^n$ rows:
-\begin{itemize}
-	 \item	Start with the last atomic sentence, the right-most column and \emph{alternate} between `T’ and `F’ until you've filed out all $2^n$ rows. 
-	
-\item	Next consider the penultimate atomic sentence, the column to the left of the one just completed,  write \emph{two} ‘T’s, write two ‘F’s,
-	and repeat. 
-	
-\item	For the third-last atomic sentence letter, write \emph{four} ‘T’s followed
-	by four ‘F’s. This would yields an eight line truth table. 
-	
-\item	For the fourth-last atomic sentence, you have \emph{eight} ‘T’s followed by eight ‘F’s. 
-	
-\item	And so on until you get to the first atomic sentence.
-\end{itemize}
-\end{itemize}
-
-	
-\section{Complete truth tables for a sentence}
-
-
-
-\begin{definition}
-	A \define{complete truth table} for a sentence has a line for each valuation for the atomic sentences appearing in the sentence, and displays the truth value of the sentence on each of the valuations. 
-\end{definition}
-
-
-Consider the sentence `$(\enot I\eand H)\eif H$'. We will give a \emph{truth table} which lists all the valuations and says whether this sentence is true or false on each of them.
-
-The valuations assign either the value ``True'' or ``False'' to each atomic sentence. In this case we have two atomic sentences, $I$ and $H$, so we have four ($2^2$) valuations ($v_1,\dots,v_4$) each of which is a line in the truth table:
 \begin{center}
 	\begin{tabular}{ccc|c}
 		Valuation&$I$&$H$&$(\enot I\eand H)\eif H$\\\hline
@@ -2506,593 +2358,459 @@ The valuations assign either the value ``True'' or ``False'' to each atomic sent
 		$v_4$&F&F&
 	\end{tabular}
 \end{center}
-Our job is to fill out the truth values of `$(\enot I\eand H)\eif H$' on each of the four valuations.
 
-We have already shown how to do this on a particular valuation: one first writes down the formation tree of the sentence. (see \cref{def:TFLsentences}):
+We want to find out the truth values of `$(\enot I\eand H)\eif H$' on each of the four valuations.
+
+The next step is to identify the formation structure of this sentence, which we do by drawing braces: 
+
 \begin{center}
-	\begin{forest}
-		[$(\enot I\eand H)\mainconnective{\eif} H$
-		[$(\enot I\mainconnective{\eand} H)$
-		[$\mainconnective{\enot} I$
-		[$I$]
-		]
-		[$H$]
-		]
-		[$H$]
-		]
-	\end{forest}
-\end{center}
-The idea is that we work ourselves from \define{leaves} of the tree (the atomic sentence) to the \define{root} of the formation tree (the sentence that has been constructed). The truth rule for $\enot$ tells us how the truth value of $\enot I$ depends on the truth of $I$. Then the rule for $\eand$ tells us how the truth value of $\enot I\eand H$ depends on the truths of $\enot I$ and $H$; and finally, the rule for $\eif$ tells us how the truth value of $(\enot I\eand H)\eif H$ depends on those of $\enot I\eand H$ and $H$.
-
-
-We will record the truth value of each sub-sentence underneath its main connective. 
-So we will somewhat recreate the formation tree in the header of the truth table. 
-\begin{center}
-	\begin{tabular}{r c c| d e e ee e e f}
-\multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eand$ & $H$ & $)$ & \tikzmarknode{tt1_imp}{$\mainconnective{\eif}$} & $H$ \\[.4em]
-	&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & \tikzmarknode{tt1_and}{$\mainconnective{\eand}$} & $H$ & $\mainconnectivecolor{)}$ & &\tikzmarknode{tt1_Hr}{$H$} \\[.4em]
-	&	& & & \tikzmarknode{tt1_not}{$\mainconnective{\enot}$} & $I$  & & \tikzmarknode{tt1_Hl}{$H$} & & &\\[.4em]
-	&	& & & & \tikzmarknode{tt1_I}{$I$}& & & & &  \\\hline 
-	$v_1:$&T&T&\\
-	$v_2:$&T&F&\\
-	$v_3:$&F&T\\
-	$v_4:$&F&F
+	\begin{tabular}{d*{6}{e}f}
+%		&$I$&$H$
+		\tikzmarknode{open}{$($}
+		&\tikzmarknode{not}{$\enot$}
+		&\tikzmarknode{i}{$I$}
+		&\tikzmarknode{and}{$\eand$}
+		&\tikzmarknode{hleft}{$H$}
+		&\tikzmarknode{close}{$)$}
+		&\tikzmarknode{if}{$\eif$}
+		&\tikzmarknode{hright}{$H$}
 	\end{tabular}
-\end{center}
-
-\begin{tikzpicture}[remember picture,overlay]
-	\tikzset{arrowformationtree/.style={-{Stealth[length=2.2mm,width=1.6mm]},gray,opacity=0.6}}
-	\draw[arrowformationtree] (tt1_and) to[bend right=18] (tt1_imp);
-	\draw[arrowformationtree] (tt1_Hr)  to[bend left=18] (tt1_imp);
-	\draw[arrowformationtree] (tt1_not) to[bend right=18] (tt1_and);
-	\draw[arrowformationtree] (tt1_Hl)  to[bend left=18] (tt1_and);
-	\draw[arrowformationtree] (tt1_I)   to[bend left=18] (tt1_not);
-\end{tikzpicture}
-
-We will work our way up the formation tree, as displayed in the header of the table. 
-In the bottom line we just have `$I$', whose truth value is just specified by the valuation. So we can fill that out
-
-\begin{center}
-	\begin{tabular}{r c c| d e e ee e e fc}
-		\multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eand$ & $H$ & $)$ & \tikzmarknode{tt2_imp}{$\mainconnective{\eif}$} & $H$ \\[.4em]
-		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & \tikzmarknode{tt2_and}{$\mainconnective{\eand}$} & $H$ & $\mainconnectivecolor{)}$ & &\tikzmarknode{tt2_Hr}{$H$} \\[.4em]
-		&	& & & \tikzmarknode{tt2_not}{$\mainconnective{\enot}$} & $I$  & & \tikzmarknode{tt2_Hl}{$H$} & & &\\[.4em]
-		&	& & & & \tikzmarknode{tt2_I}{$I$}& & & & & &$\star$ \\\hline 
-		$v_1:$&T&T& & &T& & & & &\\
-		$v_2:$&T&F& & &F& & & & &\\
-		$v_3:$&F&T& & &T& & & & &\\
-		$v_4:$&F&F& & &F& & & & &\\
-		&&&&&$\star$&&&&&&
-	\end{tabular}
-\end{center}
-
-\begin{tikzpicture}[remember picture,overlay]
-	\tikzset{arrowformationtree/.style={-{Stealth[length=2.2mm,width=1.6mm]},gray,opacity=0.6}}
-	\draw[arrowformationtree] (tt2_and) to[bend right=18] (tt2_imp);
-	\draw[arrowformationtree] (tt2_Hr)  to[bend left=18] (tt2_imp);
-	\draw[arrowformationtree] (tt2_not) to[bend right=18] (tt2_and);
-	\draw[arrowformationtree] (tt2_Hl)  to[bend left=18] (tt2_and);
-	\draw[arrowformationtree] (tt2_I)   to[bend left=18] (tt2_not);
-\end{tikzpicture}
-
-The next line is to include the truth value for `$\enot I$' and the truth value for `$H$'. The truth value for `$H$' is just specified by the valuation so that can be copied across. 
-
-\begin{center}
-	\begin{tabular}{r c c| d e e ee e e f c}
-		\multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eand$ & $H$ & $)$ & \tikzmarknode{tt3_imp}{$\mainconnective{\eif}$} & $H$ &  \\[.4em]
-		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & \tikzmarknode{tt3_and}{$\mainconnective{\eand}$} & $H$ & $\mainconnectivecolor{)}$ & &\tikzmarknode{tt3_Hr}{$H$} & \\[.4em]
-		&	& & & \tikzmarknode{tt3_not}{$\mainconnective{\enot}$} & $I$  & & \tikzmarknode{tt3_Hl}{$H$} & & & & $\star$ \\[.4em]
-		&	& & & & \tikzmarknode{tt3_I}{$I$}& & & & &  & \\\hline 
-		$v_1:$&T&T& & &T& &T& & & &\\
-		$v_2:$&T&F& & &F& &T& & & &\\
-		$v_3:$&F&T& & &T& &F& & & &\\
-		$v_4:$&F&F& & &F& &F& & & &\\
-		&&&&&&&$\star$&&&&
-	\end{tabular}
-\end{center}
-
-\begin{tikzpicture}[remember picture,overlay]
-	\tikzset{arrowformationtree/.style={-{Stealth[length=2.2mm,width=1.6mm]},gray,opacity=0.6}}
-	\draw[arrowformationtree] (tt3_and) to[bend right=18] (tt3_imp);
-	\draw[arrowformationtree] (tt3_Hr)  to[bend left=18] (tt3_imp);
-	\draw[arrowformationtree] (tt3_not) to[bend right=18] (tt3_and);
-	\draw[arrowformationtree] (tt3_Hl)  to[bend left=18] (tt3_and);
-	\draw[arrowformationtree] (tt3_I)   to[bend left=18] (tt3_not);
-\end{tikzpicture}
-
-
-The truth value for `$\enot I$' is determined using the truth rule for negation:
-\begin{center}
-	\begin{tabular}{ccc}
-		If \metaX is & & then $\enot X$ is\\
-		T&$\leadsto$&F\\
-		F&$\leadsto$&T
-	\end{tabular}
-\end{center}
-So we take the truth value of `$I$' as recorded underneath that `$I$', and apply this rule to determine the truth value for `$\enot I$'. We record the answer underneath the main connective of `$\enot I$', the `$\enot$'. 
-This results in:
-
-\begin{center}
-	\begin{tabular}{r c c| d e e ee e e fc}
-		\multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eand$ & $H$ & $)$ & \tikzmarknode{tt4_imp}{$\mainconnective{\eif}$} & $H$ \\[.4em]
-		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & \tikzmarknode{tt4_and}{$\mainconnective{\eand}$} & $H$ & $\mainconnectivecolor{)}$ & &\tikzmarknode{tt4_Hr}{$H$} \\[.4em]
-		&	& & & \tikzmarknode{tt4_not}{$\mainconnective{\enot}$} & $I$  & & \tikzmarknode{tt4_Hl}{$H$} & & &&$\star$\\[.4em]
-		&	& & & & \tikzmarknode{tt4_I}{$I$}& & & & &  \\\hline 
-		$v_1:$&T&T& &F&T& &T& & &\\
-		$v_2:$&T&F& &T&F& &T& & &\\
-		$v_3:$&F&T& &F&T& &F& & &\\
-		$v_4:$&F&F& &T&F& &F& & &\\
-		&&&&\tikzmarknode{negI}{$\star$}&\tikzmark{I}
-	\end{tabular}
-\end{center}
-
-\begin{tikzpicture}[remember picture,overlay]
-	\tikzset{arrowformationtree/.style={-{Stealth[length=2.2mm,width=1.6mm]},gray,opacity=0.6}}
-	\draw[arrowformationtree] (tt4_and) to[bend right=18] (tt4_imp);
-	\draw[arrowformationtree] (tt4_Hr)  to[bend left=18] (tt4_imp);
-	\draw[arrowformationtree] (tt4_not) to[bend right=18] (tt4_and);
-	\draw[arrowformationtree] (tt4_Hl)  to[bend left=18] (tt4_and);
-	\draw[arrowformationtree] (tt4_I)   to[bend left=18] (tt4_not);
-\end{tikzpicture}
-
-\begin{tikzpicture}[remember picture,overlay]
-	\draw[-Stealth] (pic cs:I) to[bend left=35] (negI.south);
-\end{tikzpicture}
-
-
-
-The next line we need to add the truth value for `$H$' again, which is specified by the valuation, and the truth value for `$\enot I\eand H$'.
-For `$\enot I\eand H$' we will use the truth rule for $\eand$:
-\begin{center}
-	\begin{tabular}{ccccc}
-		If \metaX is&and \metaY is  && then $\metaX\eand \metaY$ is\\
-		T&T&$\leadsto$&T\\
-		T&F&$\leadsto$&F\\
-		F&T&$\leadsto$&F\\
-		F&F&$\leadsto$&F
-	\end{tabular}
-\end{center}
-
-So we take the truth value for `$\enot I$', as recorded underneath `$\enot$', and the truth value for `$H$', and apply this truth rule, writing the answer under its main connective, `$\eand$'. So we can fill out:
-
-
-
-\begin{center}
-	\begin{tabular}{r c c| d e e ee e e f c}
-		\multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eand$ & $H$ & $)$ & \tikzmarknode{tt5_imp}{$\mainconnective{\eif}$} & $H$ \\[.4em]
-		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & \tikzmarknode{tt5_and}{$\mainconnective{\eand}$} & $H$ & $\mainconnectivecolor{)}$ & &\tikzmarknode{tt5_Hr}{$H$}&$\star$ \\[.4em]
-		&	& & & \tikzmarknode{tt5_not}{$\mainconnective{\enot}$} & $I$  & & \tikzmarknode{tt5_Hl}{$H$} & & &\\[.4em]
-		&	& & & & \tikzmarknode{tt5_I}{$I$}& & & & &  \\\hline 
-		$v_1:$&T&T& &F&T&F&T& &&T\\
-		$v_2:$&T&F& &T&F&T&T& &&T\\
-		$v_3:$&F&T& &F&T&F&F& &&F\\
-		$v_4:$&F&F& &T&F&F&F& &&F\\
-&&&&\tikzmarknode{negI}{}&&\tikzmarknode{andStar}{$\star$}&\tikzmarknode{Hcol}{}&&
-
-	\end{tabular}
-\end{center}
-
-\begin{tikzpicture}[remember picture,overlay]
-	\tikzset{arrowformationtree/.style={-{Stealth[length=2.2mm,width=1.6mm]},gray,opacity=0.6}}
-	\draw[arrowformationtree] (tt5_and) to[bend right=18] (tt5_imp);
-	\draw[arrowformationtree] (tt5_Hr)  to[bend left=18] (tt5_imp);
-	\draw[arrowformationtree] (tt5_not) to[bend right=18] (tt5_and);
-	\draw[arrowformationtree] (tt5_Hl)  to[bend left=18] (tt5_and);
-	\draw[arrowformationtree] (tt5_I)   to[bend left=18] (tt5_not);
-\end{tikzpicture}
 
 	\begin{tikzpicture}[remember picture,overlay]
-	\draw[-Stealth] (negI) to[bend right=35] (andStar.south);
-	\draw[-Stealth] (Hcol.south) to[bend left=35] (andStar.south);
-\end{tikzpicture}
+		% not I
+		\scopefitbracewithcoordinate{not}{i}{not}[1]
 
+		% H on the left
+		\scopebrace{hleft}[1]
 
+		% H on the right
+		\scopebrace{hright}[1]
 
-Our final stage is to determine the truth value for `$(\enot I\eand H)\eif H$'
+		% (not I and H)
+		\scopefitbracewithcoordinate{not}{hleft}{and}[2]
 
-So we take our truth value we have determined for `$(\enot I\eand H)$', which is recorded underneath the `$\eand$', and the truth value for `$H$', and apply the truth rule for `$\eif$'
-\begin{center}
-	\begin{tabular}{cccc}
-		If \metaX is&and \metaY is  && then $\metaX\eif \metaY$ is\\
-		T&T&$\leadsto$&T\\
-		T&F&$\leadsto$&F\\
-		F&T&$\leadsto$&T\\
-		F&F&$\leadsto$&T
-	\end{tabular}
-\end{center}
-recording the answer underneath `$\eif$'. As this is the final stage, we have determined the truth value for the target sentence, `$(\enot I\eand H)\eif H$', so we will boldface this answer to indicate that it is our final answer, the truth value for `$(\enot I\eand H)\eif H$'. 
-
-
-\begin{center}
-	\begin{tabular}{r c c| d e e ee e e fc}
-		\multirow{4}{*}{Valuation}	&	\multirow{4}{*}{$H$}&\multirow{4}{*}{$I$}	& $($ & $\enot$ & $I$ & $\eand$ & $H$ & $)$ & \tikzmarknode{tt6_imp}{$\mainconnective{\eif}$} & $H$&$\star$ \\[.4em]
-		&	& & $\mainconnectivecolor{(}$ & $\enot$ & $I$ & \tikzmarknode{tt6_and}{$\mainconnective{\eand}$} & $H$ & $\mainconnectivecolor{)}$ & &\tikzmarknode{tt6_Hr}{$H$} \\[.4em]
-		&	& & & \tikzmarknode{tt6_not}{$\mainconnective{\enot}$} & $I$  & & \tikzmarknode{tt6_Hl}{$H$} & & &\\[.4em]
-		&	& & & & \tikzmarknode{tt6_I}{$I$}& & & & &  \\\hline 
-		$v_1:$&T&T& &F&T&F&T& &\TTbf{T}&T\\
-		$v_2:$&T&F& &T&F&T&T& &\TTbf{T}&T\\
-		$v_3:$&F&T& &F&T&F&F& &\TTbf{T}&F\\
-		$v_4:$&F&F& &T&F&F&F& &\TTbf{T}&F\\
-		&&&&&&\tikzmark{wedge}&&&\tikzmarknode{arrow}{$\star$}&\tikzmark{H2}&		
-		\end{tabular}
-	\end{center}
-
-\begin{tikzpicture}[remember picture,overlay]
-	\tikzset{arrowformationtree/.style={-{Stealth[length=2.2mm,width=1.6mm]},gray,opacity=0.6}}
-	\draw[arrowformationtree] (tt6_and) to[bend right=18] (tt6_imp);
-	\draw[arrowformationtree] (tt6_Hr)  to[bend left=18] (tt6_imp);
-	\draw[arrowformationtree] (tt6_not) to[bend right=18] (tt6_and);
-	\draw[arrowformationtree] (tt6_Hl)  to[bend left=18] (tt6_and);
-	\draw[arrowformationtree] (tt6_I)   to[bend left=18] (tt6_not);
-\end{tikzpicture}
-
-\begin{tikzpicture}[remember picture,overlay]
-\draw[-Stealth] (pic cs:wedge) to[bend right=35] (arrow.south);
-\draw[-Stealth] (pic cs:H2) to[bend left=35] (arrow.south);
-\end{tikzpicture}
-
-
-%%%%% The below has separate columns for the different subsetnences. 
-%
-%So to work out the truth values of $(\enot I\eand H)\eif H$ we first need to work out the truth values of $\enot I$ and $\enot I\eand H$. We expand our truth table with columns for each of these.
-%\begin{center}
-%	\begin{tabular}{ccc|c|c||c}
-%		Valuation&$I$&$H$&$\enot I$&$(\enot I\eand H)$&$(\enot I\eand H)\eif H$\\\hline
-%		$v_1$&T&T&&\\
-%		$v_2$&T&F&&\\
-%		$v_3$&F&T&&\\
-%		$v_4$&F&F&&
-%	\end{tabular}
-%\end{center}
-%The first step is $\enot I$. We use the truth table (rule) for negation:
-%\begin{center}
-%	\begin{tabular}{ccc}
-%		If \metaX is & & then $\enot X$ is\\
-%		T&$\leadsto$&F\\
-%		F&$\leadsto$&T
-%	\end{tabular}
-%\end{center}
-%Now, we can fill out:
-%
-%\begin{center}
-%	\begin{tabular}{ccc|c|c||c}
-%		Valuation&$I$&$H$&$\enot I$&$(\enot I\eand H)$&$(\enot I\eand H)\eif H$\\\hline
-%		$v_1$&T&T&F&\\
-%		$v_2$&T&F&F&\\
-%		$v_3$&F&T&T&\\
-%		$v_4$&F&F&T&
-%	\end{tabular}
-%\end{center}
-%We worked these out using the following instructions:
-%\begin{itemize}
-%	\item Go to the column for $I$ and for every valuation do the following:
-%	\begin{itemize}
-%		\item If the value of $I$ is T, then put F into the column of $\enot I$ at the line of the valuation.
-%		\item If the value of $I$ is F, then put T into the column of $\enot I$ at the line of the valuation.
-%	\end{itemize}
-%\end{itemize}
-%The next step is to consider $\enot I\eand H$. For this we will use the truth rule for $\eand$:
-%\begin{center}
-%	\begin{tabular}{ccccc}
-%		If \metaX is&and \metaY is  && then $\metaX\eand \metaY$ is\\
-%		T&T&$\leadsto$&T\\
-%		T&F&$\leadsto$&F\\
-%		F&T&$\leadsto$&F\\
-%		F&F&$\leadsto$&F
-%	\end{tabular}
-%\end{center}
-%Now, we can fill out:
-%\begin{center}
-%	\begin{tabular}{ccc|c|c||c}
-%		Valuation&$I$&$H$&$\enot I$&$(\enot I\eand H)$&$(\enot I\eand H)\eif H$\\\hline
-%		$v_1$&T&T&F&F\\
-%		$v_2$&T&F&F&F\\
-%		$v_3$&F&T&T&T\\
-%		$v_4$&F&F&T&F
-%	\end{tabular}
-%\end{center}
-%We worked these using the following instructions:
-%\begin{itemize}
-%	\item  For every valuation go to column $H$ and do the following:
-%	\begin{itemize}
-%		\item[$\dagger$]  If the value of $H$ is F, put F into column $(\enot I\eand H)$ at the line of the valuation.
-%		\item If the value of $H$ is T, go to column of $\enot I$:
-%		\begin{itemize}
-%			\item if the value of $\enot I$ is T, put T into column $(\enot I\eand H)$ and at the line of the valuation.
-%			\item if the value of $\enot I$ is F, put F into column $(\enot I\eand H)$ and at the line of the valuation.
-%		\end{itemize}
-%	\end{itemize}
-%\end{itemize}
-%The instruction $\dagger$ is justified by the truth rules of the conjunction: if one of the conjuncts has value F, the conjunction will also have value F.
-%
-%Now, finally, we need to look at $(\enot I\eand H)\eif H$, and will use the truth rule for $\eif$:
-%
-%\begin{center}
-%	\begin{tabular}{cccc}
-%		If \metaX is&and \metaY is  && then $\metaX\eif \metaY$ is\\
-%		T&T&$\leadsto$&T\\
-%		T&F&$\leadsto$&F\\
-%		F&T&$\leadsto$&T\\
-%		F&F&$\leadsto$&T
-%	\end{tabular}
-%\end{center}
-%Now, we can fill out:
-%\begin{center}
-%	\begin{tabular}{ccc|c|c||c}
-%		Valuation&$I$&$H$&$\enot I$&$(\enot I\eand H)$&$(\enot I\eand H)\eif H$\\\hline
-%		$v_1$&T&T&F&F&T\\
-%		$v_2$&T&F&F&F&T\\
-%		$v_3$&F&T&T&T&T\\
-%		$v_4$&F&F&T&F&T
-%	\end{tabular}
-%\end{center}
-%We worked these out by the following procedure:
-%\begin{itemize}
-%	\item  For every valuation go to column $(\enot I\eand H)$ and do the following:
-%	\begin{itemize}
-%		\item[$\star$]  If the value of $(\enot I\eand H)$ is F, put T into column $(\enot I\eand H)\eif H$ at the line of the valuation.
-%		\item If the value of $(\enot I\eand H)$ is T go to column $H$ and:
-%		\begin{itemize}
-%			\item if the value of $H$ is T, put T into column $(\enot I\eand H)\eif H$ at the line of the valuation.
-%			\item if the value of $H$ is F, put F into column $(\enot I\eand H)\eif H$ at the line of the valuation.
-%		\end{itemize}
-%	\end{itemize}
-%\end{itemize}
-%The instruction $\star$ is justified by the truth rules of the conditional: if the antecedent of the conditional has value F, then the conditional will also value T.
-%%\subsection{How to do truth tables}
-%
-%With this example in mind let us try to give a general instruction for constructing a truth table for a sentence $X$.
-%
-%\factoidbox{
-%	\begin{enumerate}
-%		\item Write down the formation tree of $X$.
-%		\item Find all atomic sentences on the tree. These will be the leaves of the tree.
-%		\item If you have found all atomic sentences, you can start the truth table:
-%		\begin{itemize}
-%			\item You will need a column for every atomic sentence.
-%			\item If there are $n$ atomic sentences, you will need $2^n$ valuations, that is, $2^n$ horizontal lines.
-%			\item Make sure you have correctly written down all the different valuations!
-%		\end{itemize}
-%		\item From the atomic sentences (the leaves of the tree) move upwards to the root (the sentence $X$) and
-%		\begin{itemize}
-%			\item for each node (constituent sentence) create a column in the truth table;
-%			\item make sure you correctly identify the main connective of the sentence heading the column;
-%			\item the root, that is, the sentence $X$ should be the last column of the truth table
-%		\end{itemize}
-%		\item Moving from left to right compute the truth values of each column
-%		\begin{itemize}
-%			\item Make sure you use the truth rule associated with the main connective of the sentence heading the column.
-%			\item Stay in one and the same valuation (horizontal line) when you compute the truth value of the column.
-%			\item Compute the truth value for every valuation.
-%		\end{itemize}
-%		\item You are done when you have computed the truth values of the column of $X$ \emph{and} there are no gaps in the truth table.
-%\end{enumerate}}
-
-
-
-
-%\begin{center}
-%	\begin{tabular}{r c c c| d e e e e e e e e e e e  e e f}
-	%		\multirow{6}{*}{Valuation} & \multirow{6}{*}{$A$} & \multirow{6}{*}{$C$} & \multirow{6}{*}{$D$}
-	%		& $\mainconnective{\enot}$ & $( $ & $C$ & $\eor$ & $( $ & $D$ & $\eif$ & $( $ & $A$ & $\eor$ & $\enot$ & $D$ & $)$ & $)$ & $)$ \\[.2em]
-	%	& & & & 
-	%& $\mainconnectivecolor{(}$ & $C$ & $\mainconnective{\eor}$ & $( $ & $D$ & ${\eif}$ & $( $ & $A$ & $\eor$ & ${\enot}$ & $D$ & $)$ & ${)}$ & $\mainconnectivecolor{)}$ \\[.2em]
-	%		
-	%		& & & & 
-	%		& & $C$ & & $\mainconnectivecolor{( }$ & $D$ & $\mainconnective{\eif}$ & $( $ & $A$ & $\eor$ & ${\enot}$ & $D$ & $)$ & $\mainconnectivecolor{)}$ & \\[.2em]
-	%		
-	%		& & & & & & & & & $D$ & & & $A$ & $\mainconnective{\eor}$ & $\enot$& $D$ & & & \\[.2em]
-	%		
-	%				& & & & & & & & & & & & $A$& &$\mainconnective{\enot}$ & ${D}$ & & & \\[.2em]
-	%				
-	%		& & & & & & & & & & & & & & & $D$ & & & \\[.2em]\hline
-	%		
-	%		
-	%		$v_1:$ & T & T & T & \TTbf{F} & & T & T & & T & T & & T & T & F & T & & & \\
-	%		$v_2:$ & T & T & F & \TTbf{F} & & T & T & & F & T & & T & T & T & F & & & \\
-	%		$v_3:$ & T & F & T & \TTbf{F} & & F & T & & T & T & & T & T & F & T & & & \\
-	%		$v_4:$ & T & F & F & \TTbf{F} & & F & T & & F & T & & T & T & T & F & & & \\
-	%		$v_5:$ & F & T & T & \TTbf{F} & & T & T & & T & F & & F & F & F & T & & & \\
-	%		$v_6:$ & F & T & F & \TTbf{F} & & T & T & & F & T & & F & F & T & F & & & \\
-	%		$v_7:$ & F & F & T & \TTbf{T} & & F & F & & T & F & & F & F & F & T & & & \\
-	%		$v_8:$ & F & F & F & \TTbf{F} & & F & T & & F & T & & F & F & T & F & & & \\
-	%		
-	%	\end{tabular}
-%\end{center}
-
-
-Here's another example. 
-
-\begin{center}
-	\begin{tabular}{r c c c| d e e e e e e e e e e e  e e f}
-		\multirow{6}{*}{Valuation} & \multirow{6}{*}{$A$} & \multirow{6}{*}{$C$} & \multirow{6}{*}{$D$}
-		& \tikzmarknode{r1_outerneg}{$\mainconnective{\enot}$} & $( $ & $C$ & $\eor$ & $( $ & $D$ & $\eif$ & $( $ & $A$ & $\eor$ & $\enot$ & $D$ & $)$ & $)$ & $)$ \\[1em]
-		
-		% Row 2: parents of Row 3; child of Row 1
-		& & & &
-		& \tikzmarknode{r2_openBigOr}{\mainconnectivecolor{(}}
-		& $C$ & \tikzmarknode{r2_bigor}{$\mainconnective{\eor}$}
-		& $( $ & $D$ & \tikzmarknode{r2_implies}{${\eif}$}
-		& $( $ & $A$ & \tikzmarknode{r2_inneror}{${\eor}$}
-		& \tikzmarknode{r2_not}{${\enot}$} & $D$
-		& $)$ & \tikzmarknode{r2_closeBigOr}{${)}$} & $\mainconnectivecolor{)}$ \\[1em]
-		
-		% Row 3: children of Row 2; parents of Row 4
-		& & & &
-		& & \tikzmarknode{r3_C}{$C$}
-		& &{\mainconnectivecolor{$($ }}
-		& $D$ & \tikzmarknode{r3_implies}{$\mainconnective{\eif}$}
-		& $( $ & $A$ & $\eor$ & ${\enot}$ & $D$
-		& $)$ & \tikzmarknode{r3_closeCond}{\mainconnectivecolor{)}} & \\[1em]
-		
-		% Row 4: children of Row 3; parents of Row 5
-		& & & & & & & & &
-		\tikzmarknode{r4_D}{$D$}
-		& & & $A$ & \tikzmarknode{r4_inneror}{$\mainconnective{\eor}$}
-		& $\enot$ & $D$ & & & \\[1em]
-		
-		% Row 5: children of Row 4; parent of Row 6
-		& & & & & & & & & & & &
-		\tikzmarknode{r5_A}{$A$}
-		& & \tikzmarknode{r5_not}{$\mainconnective{\enot}$}
-		& ${D}$ & & & \\[1em]
-		
-		% Row 6: child of Row 5
-		& & & & & & & & & & & & & & &
-		\tikzmarknode{r6_D}{$D$}
-		& & & \\[.2em]\hline
-		
-		$v_1:$ & T & T & T & \TTbf{F} & & T & T & & T & T & & T & T & F & T & & & \\
-		$v_2:$ & T & T & F & \TTbf{F} & & T & T & & F & T & & T & T & T & F & & & \\
-		$v_3:$ & T & F & T & \TTbf{F} & & F & T & & T & T & & T & T & F & T & & & \\
-		$v_4:$ & T & F & F & \TTbf{F} & & F & T & & F & T & & T & T & T & F & & & \\
-		$v_5:$ & F & T & T & \TTbf{F} & & T & T & & T & F & & F & F & F & T & & & \\
-		$v_6:$ & F & T & F & \TTbf{F} & & T & T & & F & T & & F & F & T & F & & & \\
-		$v_7:$ & F & F & T & \TTbf{T} & & F & F & & T & F & & F & F & F & T & & & \\
-		$v_8:$ & F & F & F & \TTbf{F} & & F & T & & F & T & & F & F & T & F & & & \\
-	\end{tabular}
-	\begin{tikzpicture}[remember picture,overlay]
-		\tikzset{arrowformationtree/.style={-{Stealth[length=2.2mm,width=1.6mm]},gray,opacity=0.6}}
-		
-		
-		% Row 2 -> Row 1
-		\draw[arrowformationtree] (r2_bigor) to[bend left=18] (r1_outerneg);
-		
-		% Row 3 -> Row 2
-		\draw[arrowformationtree] (r3_C)        to[bend left=18] (r2_bigor);     
-		\draw[arrowformationtree] (r3_implies) to[bend right=18] (r2_bigor);  
-		
-		% Row 4 -> Row 3
-		\draw[arrowformationtree] (r4_D)       to[bend left=18] (r3_implies);    
-		\draw[arrowformationtree] (r4_inneror) to[bend right=18] (r3_implies);   
-		
-		% Row 5 -> Row 4
-		\draw[arrowformationtree] (r5_A)   to[bend left=18] (r4_inneror);         
-		\draw[arrowformationtree] (r5_not) to[bend right=18] (r4_inneror);        
-		
-		% Row 6 -> Row 5
-		\draw[arrowformationtree] (r6_D) to[bend left=18] (r5_not);               
+		% whole formula
+		\scopefitbracewithcoordinate{open}{hright}{if}[3]
 	\end{tikzpicture}
 \end{center}
 
-\subsection{How to do truth tables}
 
-With this example in mind let us try to give a general instruction for constructing a truth table for a sentence $X$.
+We will apply the different truth rules in turn, and write the answer underneath the main connective of each sub-sentence
 
-
-\begin{highlighted}
-	\begin{enumerate}
-		\item Write down the formation tree of $X$. Set up the header of the truth table with lines matching the formation tree. 
-		\item Consider any atomic sentences which appear in \metaX. If you are doing a truth table for multiple sentences, you'll need to also consider those appearing in the other sentences. Write all these atomic sentences in the header row, at the beginning of the table. 
-		\item We now need to determine all the valuations, the different ways of assigning truth values to all these atomic sentences. If there are $n$ atomic sentences, there will be $2^n$ such valuations. Write them as the rows of the truth table. 
-		\item Work up through the formation tree, which has now been written as lines in the header of the truth table to determine the truth value of the consituant sentences of \metaX. Record its truth value underneath the main connective of that sentence.
-		\begin{itemize}
-			\item If it is an atomic sentence, just copy the truth values from the valuation.
-			\item If it is a complex sentence, apply the relevant truth rule to its consituatnt parts, remembering that their truth values are written underneath their main connectives.
-		\end{itemize}
-		\item Highlight or boldface the column under the main connective of the overall sentence, which provides our final answer.
-\end{enumerate}
-\end{highlighted}
-
-If you follow these outlines, you should be able to construct truth tables for arbitrary TFL sentences. Of course, the more complicated the sentences are, and the more atomic sentence letters they contain the longer and tedious the truth table---but the more important it becomes to painstakingly stick to the guidelines we have given.
-
-
-
-
-
-You can provide your answer without explicitly providing the header row matching the formation tree, unless explicitly requested. 
 \begin{center}
-	\begin{tabular}{r c c c| d e e e e e e e e e e e  e e f}
-	{Valuation} &{$A$} &{$C$} &{$D$}
-		& ${\enot}$ & $( $ & $C$ & $\eor$ & $( $ & $D$ & $\eif$ & $( $ & $A$ & $\eor$ & $\enot$ & $D$ & $)$ & $)$ & $)$  \\[.2em]\hline
+	\begin{tabular}{rcc|d*{6}{e}f}
+		&$I$&$H$
+		&\tikzmarknode{open}{$($}
+		&\tikzmarknode{not}{$\enot$}
+		&\tikzmarknode{i}{$I$}
+		&\tikzmarknode{and}{$\eand$}
+		&\tikzmarknode{hleft}{$H$}
+		&\tikzmarknode{close}{$)$}
+		&\tikzmarknode{if}{$\eif$}
+		&\tikzmarknode{hright}{$H$}
+		\\[4\scopebracedepthunit]\hline
+		\truthrowstart{truthline}
+				$v_1$&T&T&\\
+				$v_2$&T&F&\\
+				$v_3$&F&T&\\
+				$v_4$&F&F&
+	\end{tabular}
+
+	\begin{tikzpicture}[remember picture,overlay]
+		% not I
+		\scopefitbracewithcoordinate{not}{i}{not}[1]
+
+		% H on the left
+		\scopebrace{hleft}[1]
+
+		% H on the right
+		\scopebrace{hright}[1]
+
+		% (not I and H)
+		\scopefitbracewithcoordinate{not}{hleft}{and}[2]
+
+		% whole formula
+		\scopefitbracewithcoordinate{open}{hright}{if}[3]
 		
-		
-		$v_1:$ & T & T & T & \TTbf{F} & & T & T & & T & T & & T & T & F & T & & & \\
-		$v_2:$ & T & T & F & \TTbf{F} & & T & T & & F & T & & T & T & T & F & & & \\
-		$v_3:$ & T & F & T & \TTbf{F} & & F & T & & T & T & & T & T & F & T & & & \\
-		$v_4:$ & T & F & F & \TTbf{F} & & F & T & & F & T & & T & T & T & F & & & \\
-		$v_5:$ & F & T & T & \TTbf{F} & & T & T & & T & F & & F & F & F & T & & & \\
-		$v_6:$ & F & T & F & \TTbf{F} & & T & T & & F & T & & F & F & T & F & & & \\
-		$v_7:$ & F & F & T & \TTbf{T} & & F & F & & T & F & & F & F & F & T & & & \\
-		$v_8:$ & F & F & F & \TTbf{F} & & F & T & & F & T & & F & F & T & F & & & \\
-		
+			\trutharrows{truthline}{not_brace,hleft_brace,hright_brace,and_brace,if_brace}
+	\end{tikzpicture}
+\end{center}
+
+
+We cannot work out the truth of the overall sentence until we have determined the truth of its components. 
+
+\begin{center}
+	\begin{tabular}{rcc|d*{6}{e}f}
+		&$I$&$H$
+		&\tikzmarknode{open}{$($}
+		&\tikzmarknode{not}{$\enot$}
+		&\tikzmarknode{i}{$I$}
+		&\tikzmarknode{and}{$\eand$}
+		&\tikzmarknode{hleft}{$H$}
+		&\tikzmarknode{close}{$)$}
+		&\tikzmarknode{if}{$\eif$}
+		&\tikzmarknode{hright}{$H$}
+		\\[4\scopebracedepthunit]\hline
+		\truthrowstart{truthline}
+		$v_1$&T&T&&{F}&&&&&&\\
+		$v_2$&T&F&&{F}&&&&&&\\
+		$v_3$&F&T&&{T}&&&&&&\\
+		$v_4$&F&F&&{T}&&&&&&\\
+		&\tikzmarknode{Icolumn}{}&&&\tikzmarknode{negcolumn}{$\star$}&&&&&&
+	\end{tabular}
+
+	\begin{tikzpicture}[remember picture,overlay]
+		% not I
+		\scopefitbracewithcoordinate{not}{i}{not}[1]
+
+		% H on the left
+		\scopebrace{hleft}[1]
+
+		% H on the right
+		\scopebrace{hright}[1]
+
+		% (not I and H)
+		\scopefitbracewithcoordinate{not}{hleft}{and}[2]
+
+		% whole formula
+		\scopefitbracewithcoordinate{open}{hright}{if}[3]
+
+		% truth-value arrow for not I
+	\trutharrows{truthline}{not_brace,hleft_brace,hright_brace,and_brace,if_brace}
+
+		% curved arrow from I valuation column to the negation column
+\draw[-{Stealth[length=3pt]}]
+	(Icolumn) to[bend right=40] node[pos=.5,below] {$\enot$} (negcolumn);
+	\end{tikzpicture}
+\end{center}
+
+Now to determine the truth value for $\enot I\eand H$, we take our truth value for $\enot I$, which we have calculated, along with the truth value for $H$, and apply our rule for $\eand$. We first copy the value for $H$:
+
+\begin{center}
+	\begin{tabular}{rcc|d*{6}{e}f}
+		&$I$&$H$
+		&\tikzmarknode{open}{$($}
+		&\tikzmarknode{not}{$\enot$}
+		&\tikzmarknode{i}{$I$}
+		&\tikzmarknode{and}{$\eand$}
+		&\tikzmarknode{hleft}{$H$}
+		&\tikzmarknode{close}{$)$}
+		&\tikzmarknode{if}{$\eif$}
+		&\tikzmarknode{hright}{$H$}
+		\\[4\scopebracedepthunit]\hline
+		\truthrowstart{truthline}
+		$v_1$&T&T&&{F}&&&T&&&\\
+		$v_2$&T&F&&{F}&&&F&&&\\
+		$v_3$&F&T&&{T}&&&T&&&\\
+		$v_4$&F&F&&{T}&&&F&&&\\
+		&&\tikzmarknode{column1}{}&&&&&\tikzmarknode{currentcolumn}{$\star$}&&&
+	\end{tabular}
+
+	\begin{tikzpicture}[remember picture,overlay]
+		% not I
+		\scopefitbracewithcoordinate{not}{i}{not}[1]
+
+		% H on the left
+		\scopebrace{hleft}[1]
+
+		% H on the right
+		\scopebrace{hright}[1]
+
+		% (not I and H)
+		\scopefitbracewithcoordinate{not}{hleft}{and}[2]
+
+		% whole formula
+		\scopefitbracewithcoordinate{open}{hright}{if}[3]
+
+		% truth-value arrows
+	\trutharrows{truthline}{not_brace,hleft_brace,hright_brace,and_brace,if_brace}
+
+		% curved arrow from I valuation column to the negation column
+\draw[-{Stealth[length=3pt]}]
+	(column1) to[bend right=40] node[pos=.5,below] {copy} (currentcolumn);
+	\end{tikzpicture}
+	\medskip 
+\end{center} 
+
+Then we can apply the rule for $\eand$, applied to our two columns so far: 
+
+\begin{center}
+	\begin{tabular}{rcc|d*{6}{e}f}
+		&$I$&$H$
+		&\tikzmarknode{open}{$($}
+		&\tikzmarknode{not}{$\enot$}
+		&\tikzmarknode{i}{$I$}
+		&\tikzmarknode{and}{$\eand$}
+		&\tikzmarknode{hleft}{$H$}
+		&\tikzmarknode{close}{$)$}
+		&\tikzmarknode{if}{$\eif$}
+		&\tikzmarknode{hright}{$H$}
+		\\[4\scopebracedepthunit]\hline
+		\truthrowstart{truthline}
+		$v_1$&T&T&&{F}&&{F}&T&&&\\
+		$v_2$&T&F&&{F}&&{F}&F&&&\\
+		$v_3$&F&T&&{T}&&{T}&T&&&\\
+		$v_4$&F&F&&{T}&&{F}&F&&&\\
+		&&&&\tikzmarknode{column1}{}&&\tikzmarknode{currentcolumn}{$\star$}&\tikzmarknode{column2}{}&&&
+	\end{tabular}
+\begin{tikzpicture}[remember picture,overlay]
+	% not I
+	\scopefitbracewithcoordinate{not}{i}{not}[1]
+
+	% H on the left
+	\scopebrace{hleft}[1]
+
+	% H on the right
+	\scopebrace{hright}[1]
+
+	% (not I and H)
+	\scopefitbracewithcoordinate{not}{hleft}{and}[2]
+
+	% whole formula
+	\scopefitbracewithcoordinate{open}{hright}{if}[3]
+
+	% truth-value arrows for all current scopes
+	\trutharrows{truthline}{not_brace,hleft_brace,hright_brace,and_brace,if_brace}
+
+
+	% joined arrows showing the inputs for the conjunction
+	\coordinate (currentcolumnjoin) at ($(currentcolumn) + (0,-1.5em)$);
+
+	\node at ($(currentcolumnjoin)+(0,-0.2cm)$) {$\eand$};
+
+	\draw[-,shorten <=0.2cm]
+		(column1) to[bend right=20] (currentcolumnjoin);
+
+	\draw[-,shorten <=0.2cm]
+		(column2) to[bend left=20] (currentcolumnjoin);
+
+	\draw[-{Stealth[length=3pt]},shorten >=0.1cm]
+		(currentcolumnjoin) -- (currentcolumn);
+\end{tikzpicture}
+\bigskip 
+\end{center}
+
+We can then start looking at the truth value for our overall sentence, which will combine the truth value for $(\enot I\eand H)$ we have just calculated with the truth value for $H$, using the rule for $\eif$. To make sure we apply the rule for $\eif$ the right way around, we will copy across the truth value for $H$: 
+
+
+\begin{center}
+	\begin{tabular}{rcc|d*{6}{e}f}
+		&$I$&$H$
+		&\tikzmarknode{open}{$($}
+		&\tikzmarknode{not}{$\enot$}
+		&\tikzmarknode{i}{$I$}
+		&\tikzmarknode{and}{$\eand$}
+		&\tikzmarknode{hleft}{$H$}
+		&\tikzmarknode{close}{$)$}
+		&\tikzmarknode{if}{$\eif$}
+		&\tikzmarknode{hright}{$H$}
+		\\[4\scopebracedepthunit]\hline
+		\truthrowstart{truthline}
+		$v_1$&T&T&&{F}&&{F}&T&&&T\\
+		$v_2$&T&F&&{F}&&{F}&F&&&F\\
+		$v_3$&F&T&&{T}&&{T}&T&&&T\\
+		$v_4$&F&F&&{T}&&{F}&F&&&F\\
+		&&\tikzmarknode{column1}{}&&&&&&&&\tikzmarknode{currentcolumn}{$\star$}
+	\end{tabular}
+
+\begin{tikzpicture}[remember picture,overlay]
+	% not I
+	\scopefitbracewithcoordinate{not}{i}{not}[1]
+
+	% H on the left
+	\scopebrace{hleft}[1]
+
+	% H on the right
+	\scopebrace{hright}[1]
+
+	% (not I and H)
+	\scopefitbracewithcoordinate{not}{hleft}{and}[2]
+
+	% whole formula
+	\scopefitbracewithcoordinate{open}{hright}{if}[3]
+
+	% truth-value arrows for all current scopes
+	\trutharrows{truthline}{not_brace,hleft_brace,hright_brace,and_brace,if_brace}
+
+	% joined arrows showing that we copy across H
+	\draw[-{Stealth[length=3pt]},shorten >=0.2cm]
+		(column1) to[bend right=30] node[pos=.5,below] {copy} (currentcolumn);
+\end{tikzpicture}
+\medskip
+\end{center}
+
+Finally, we can apply our rule for $\eif$. 
+
+\begin{center}
+	\begin{tabular}{rcc|d*{6}{e}f}
+		&$I$&$H$
+		&\tikzmarknode{open}{$($}
+		&\tikzmarknode{not}{$\enot$}
+		&\tikzmarknode{i}{$I$}
+		&\tikzmarknode{and}{$\eand$}
+		&\tikzmarknode{hleft}{$H$}
+		&\tikzmarknode{close}{$)$}
+		&\tikzmarknode{if}{$\eif$}
+		&\tikzmarknode{hright}{$H$}
+		\\[4\scopebracedepthunit]\hline
+		\truthrowstart{truthline}
+		$v_1$&T&T&&{F}&&{F}&T&&\TTbf{T}&T\\
+		$v_2$&T&F&&{F}&&{F}&F&&\TTbf{T}&F\\
+		$v_3$&F&T&&{T}&&{T}&T&&\TTbf{T}&T\\
+		$v_4$&F&F&&{T}&&{F}&F&&\TTbf{T}&F\\
+		&&&&&&\tikzmarknode{column1}{}&&&\tikzmarknode{currentcolumn}{$\star$}&\tikzmarknode{column2}{}
+	\end{tabular}
+
+\begin{tikzpicture}[remember picture,overlay]
+	% not I
+	\scopefitbracewithcoordinate{not}{i}{not}[1]
+
+	% H on the left
+	\scopebrace{hleft}[1]
+
+	% H on the right
+	\scopebrace{hright}[1]
+
+	% (not I and H)
+	\scopefitbracewithcoordinate{not}{hleft}{and}[2]
+
+	% whole formula
+	\scopefitbracewithcoordinate{open}{hright}{if}[3]
+
+	% truth-value arrows for all current scopes
+	\trutharrows{truthline}{not_brace,hleft_brace,hright_brace,and_brace,if_brace}
+
+	% joined arrows showing the inputs for the conditional
+	\coordinate (currentcolumnjoin) at ($(currentcolumn) + (0,-1.4em)$);
+
+	\node at ($(currentcolumnjoin)+(0,-0.2cm)$) {$\eif$};
+
+	\draw[-,shorten <=0.2cm]
+		(column1) to[bend right=20] (currentcolumnjoin);
+
+	\draw[-,shorten <=0.2cm]
+		(column2) to[bend left=20] (currentcolumnjoin);
+
+	\draw[-{Stealth[length=3pt]},shorten >=0.1cm]
+		(currentcolumnjoin) -- (currentcolumn);
+\end{tikzpicture}
+\medskip
+\end{center}
+
+We highlight this final column as it indicates our final answer: it displays the truth value of the sentence on each valuation. 
+
+Now, many of these columns were calculation columns, and the answer could be given without including them, unless the question on the exam explicitly asks them to be given. That is, we could give the complete truth table as:
+
+
+
+\begin{center}
+	\begin{tabular}{rcc|c}
+		&$I$&$H$&$(\enot I\eand H)\eif H$\\\hline
+		$v_1$&T&T&T\\
+		$v_2$&T&F&T\\
+		$v_3$&F&T&T\\
+		$v_4$&F&F&T
 	\end{tabular}
 \end{center}
 
 
 
+\section{Complete truth tables for multiple sentences simultaneously}
 
-%
-%
-%When we do these in practice, our sentences can have many subsentences, consider, e.g.~$$\enot (B\eand(\enot B\eif \enot A)))$$ A tool for fitting our truth tables on a page is not to put all the subsentences out as separate entire columns to calculate, but to simply list the values underneath the main connective of the sentence. This is simply to keep the truth table more concise.
-%
-%We have a formation tree:
-%\begin{center}
-%		\begin{forest}
-%		[$\mainconnective{\enot}(B \eand (\enot B \eif \enot A))$
-%		[$\centrearoundmainconnective{(B }{\mainconnective{\eand}}{(\enot B \eif \enot A))}$
-%		[$B$]
-%		[$(\enot B \mainconnective{\eif} \enot A)$
-%		[$\mainconnective{\enot} B$
-%		[$B$]
-%		]
-%		[$\mainconnective{\enot} A$
-%		[$A$]
-%		]
-%		]
-%		]
-%		]
-%	\end{forest}
-%\end{center}
-%Instead of having a separate column for each subsentence:
-%\begin{center}
-%\begin{tabular}{cc|c|c|c|c|c}
-%	$A$ & $B$ & $\enot A$ & $\enot B$ & $(\enot B \mainconnective{\eif} \enot A)$ & $(B \mainconnective{\eand} (\enot B \eif \enot A))$ & $\mainconnective{\enot}(B \eand (\enot B \eif \enot A))$ \\\hline
-%	T & T & F & F & T & T & \textbf{F} \\
-%	T & F & F & T & F & F & \textbf{T} \\
-%	F & T & T & F & T & T & \textbf{F} \\
-%	F & F & T & T & T & F & \textbf{T} \\
-%\end{tabular}
-%\end{center}
-%
-%I could write it more concisely:
-%
-%
-%
-%
-%\begin{center}
-%	\begin{tabular}{c c | deeeeeeeeeef}
-%		\multirow{5}{*}{$A$} & \multirow{5}{*}{$B$} & $\mainconnective{\enot}$ & $($ & $B$ & $\eand$ & $($ & $\enot$ & $B$ & $\eif$ & $\enot$ & $A$ & $)$ & $)$ \\[.2em]
-%	&     &         & $\mainconnectivecolor{(}$ & $B$ & $\mainconnective{\eand}$ & $($ & $\enot$ & $B$ & $\eif$ & $\enot$ & $A$ & $)$ & $\mainconnectivecolor{)}$ \\[.2em]
-%	&     &         &     & $B$ &          & $\mainconnectivecolor{(}$ & $\enot$ & $B$ & $\mainconnective{\eif}$ & $\enot$ & $A$ & $\mainconnectivecolor{)}$ &  \\[.2em]
-%	&     &         &     &     &          &     & $\mainconnective{\enot}$ & $B$ &        & $\mainconnective{\enot}$ & $A$ &     &     \\[.2em]
-%	&     &         &     &     &          &     &         & $B$ &        &         & $A$ &     &     \\[.2em]\hline
-%	T & T & \TTbf{F }&   & \textcolor{gray}{T} & T &   & F & \textcolor{gray}{T} & T & F & \textcolor{gray}{T} &   &   \\
-%	T & F & \TTbf{T} &   & \textcolor{gray}{F} & F &   & T & \textcolor{gray}{F} & F & F & \textcolor{gray}{T} &   &   \\
-%	F & T & \TTbf{F} &   & \textcolor{gray}{T} & F &   & F & \textcolor{gray}{T} & T & T & \textcolor{gray}{F} &   &   \\
-%	F & F & \TTbf{T} &   & \textcolor{gray}{F} & F &   & T & \textcolor{gray}{F} & T & T & \textcolor{gray}{F} &   &   \\
-%\end{tabular}
-%\end{center}
-%
-%
-%One can also just do the header as a single line, but then make sure you also draw the formation tree, to keep track (and for the marker to see that you know what you're doing).
-%
-%\begin{center}
-%	\begin{tabular}{c c | deeeeeeeeeef}
-%	{$A$} & {$B$} & $\mainconnective{\enot}$ & $($ & $B$ & $\eand$ & $($ & $\enot$ & $B$ & $\eif$ & $\enot$ & $A$ & $)$ & $)$   \\\hline
-%	T & T & \TTbf{F }&   & \textcolor{gray}{T} & T &   & F & \textcolor{gray}{T} & T & F & \textcolor{gray}{T} &   &   \\
-%	T & F & \TTbf{T} &   & \textcolor{gray}{F} & F &   & T & \textcolor{gray}{F} & F & F & \textcolor{gray}{T} &   &   \\
-%	F & T & \TTbf{F} &   & \textcolor{gray}{T} & F &   & F & \textcolor{gray}{T} & T & T & \textcolor{gray}{F} &   &   \\
-%	F & F & \TTbf{T} &   & \textcolor{gray}{F} & F &   & T & \textcolor{gray}{F} & T & T & \textcolor{gray}{F} &   &   \\
-%\end{tabular}
-%\end{center}
-%
-%
-%
-%
-%One must always highlight the column under the main connective of the overall sentence, which provides our final answer. You should feel free to use whichever method you find easier.
+Often we will want to consider multiple sentences simultaneously. 
 
-There are tricks that mean you can miss out some of the gaps by using strategies such as: knowing that $\metaX$ is false is already enough to see that $\metaX\eand\metaY$ is false, so we don't need to continue to work out the truth value of $\metaY$. These ``shortcuts'' are discussed in \cref{sec:PartialTruthTable}, but we won't read it in this course.
+Consider the argument:
+$$\enot L \eif (J \eor L),\enot J\therefore (\enot L\eif J)$$
+We need to check whether there is any valuation which makes both $\enot L \eif (J \eor L)$ and $\enot J$ true whilst making $(\enot L\eif J) $ false. 
+
+We thus need to do complete truth tables for the three sentences simultaneously. 
+
+
+The atomic sentences that appear in the premises and conclusion are $J$ and $L$. So we will need to fill out a truth table
+
+\begin{center}
+	\begin{tabular}{rcc|c|c|c}
+		Valuation&$J$&$L$&$\enot L \eif (J \eor L)$&$\enot J$ & $(\enot L\eif J)$\\\hline
+		$v_1:$&T&T&&&\\
+		$v_2:$&T&F&&&\\
+		$v_3:$&F&T&&&\\
+		$v_4:$&F&F&&
+	\end{tabular}
+\end{center}
+
+We will work in stages, applying the appropriate truth rule as we go to determine the truth value of the sentence on each valuation. 
+
+The result will be:
+\begin{center}
+	\begin{tabular}{rcc|d*{6}{e}f|df|d*{4}{e}f}
+		Valuation&$J$&$L$
+		&\tikzmarknode{notLone}{$\enot$}
+		&\tikzmarknode{Lone}{$L$}
+		&\tikzmarknode{ifone}{$\eif$}
+		&\tikzmarknode{openone}{$($}
+		&\tikzmarknode{Jone}{$J$}
+		&\tikzmarknode{orone}{$\eor$}
+		&\tikzmarknode{Ltwo}{$L$}
+		&\tikzmarknode{closeone}{$)$}
+		&\tikzmarknode{notJ}{$\enot$}
+		&\tikzmarknode{Jtwo}{$J$}
+		&\tikzmarknode{opentwo}{$($}
+		&\tikzmarknode{notLtwo}{$\enot$}
+		&\tikzmarknode{Lthree}{$L$}
+		&\tikzmarknode{iftwo}{$\eif$}
+		&\tikzmarknode{Jthree}{$J$}
+		&\tikzmarknode{closetwo}{$)$}
+		\\[3\scopebracedepthunit]\hline
+		\truthrowstart{truthline}
+		$v_1:$&T&T
+		&F&&\TTbf{T}&&&T&&
+		&\TTbf{F}&
+		&&F&&\TTbf{T}&T&\\
+		$v_2:$&T&F
+		&T&&\TTbf{T}&&&T&&
+		&\TTbf{F}&
+		&&T&&\TTbf{T}&F&\\
+		$v_3:$&F&T
+		&F&&\TTbf{T}&&&T&&
+		&\TTbf{T}&
+		&&F&&\TTbf{T}&T&\\
+		$v_4:$&F&F
+		&T&&\TTbf{F}&&&F&&
+		&\TTbf{T}&
+		&&T&&\TTbf{F}&F&
+	\end{tabular}
+
+	\begin{tikzpicture}[remember picture,overlay]
+		% first sentence: not L if (J or L)
+		\scopefitbracewithcoordinate{notLone}{Lone}{notLone}[1]
+		\scopefitbracewithcoordinate{Jone}{Ltwo}{orone}[1]
+		\scopefitbracewithcoordinate{notLone}{closeone}{ifone}[2]
+
+
+
+
+		% third sentence: (not L if J)
+		\scopefitbracewithcoordinate{notLtwo}{Lthree}{notLtwo}[1]
+		\scopefitbracewithcoordinate{notLtwo}{Jthree}{iftwo}[2]
+		\scopebrace{Jthree}
+
+		% truth-value arrows
+		\trutharrows{truthline}{notLone_brace,orone_brace,ifone_brace,Jthree_brace,notLtwo_brace,iftwo_brace}
+	\end{tikzpicture}
+\end{center}
+
+
+Again, many of these are calculation stages, and an answer without calculation would be: 
+
+\begin{center}
+	\begin{tabular}{rcc|c|c|c}
+		Valuation&$J$&$L$&$\enot L \eif (J \eor L)$&$\enot J$&$(\enot L\eif J)$\\\hline
+		$v_1:$&T&T&T&F&T\\
+		$v_2:$&T&F&T&F&T\\
+		$v_3:$&F&T&T&T&T\\
+		$v_4:$&F&F&F&T&F
+	\end{tabular}
+\end{center}
 
 \begin{practiceproblems}\label{pr:TT:TTorC}
 	\problempart
@@ -3433,6 +3151,7 @@ If you want additional practice, you can construct truth tables for any of the s
 
 \end{practiceproblems}
 
+
 \chapter{Validity and the method of truth tables}
 \section{Validity}
 
@@ -3447,57 +3166,16 @@ Consider the argument:
 $$\enot L \eif (J \eor L),\enot J\therefore (\enot L\eif J)$$
 We need to check whether there is any valuation which makes both $\enot L \eif (J \eor L)$ and $\enot J$ true whilst making $(\enot L\eif J) $ false. 
 
-We so far have only done complete truth tables for single sentences. Now we need to do a complete truth table which simultaneously works for the three sentences, $\enot L \eif (J \eor L)$, $\enot J$ and $(\enot L\eif J)$.
-
-
-The atomic sentences that appear in the premises and conclusion are $J$ and $L$. So we will need to fill out a truth table
-
+The complete truth table for this argument is: 
 \begin{center}
 	\begin{tabular}{rcc|c|c|c}
-		Valuation&$J$&$L$&$\enot L \eif (J \eor L)$&$\enot J$ & $(\enot L\eif J)$\\\hline
-		$v_1:$&T&T&&&\\
-		$v_2:$&T&F&&&\\
-		$v_3:$&F&T&&&\\
-		$v_4:$&F&F&&
+		Valuation&$J$&$L$&$\enot L \eif (J \eor L)$&$\enot J$&$(\enot L\eif J)$\\\hline
+		$v_1:$&T&T&T&F&T\\
+		$v_2:$&T&F&T&F&T\\
+		$v_3:$&F&T&T&T&T\\
+		$v_4:$&F&F&F&T&F
 	\end{tabular}
 \end{center}
-
-We will work up through the formation tree of each of our three sentences, starting with the leaves, the atomic sentences, for which we consult the valuation, and applying the truth rules to determine the truth values of higher up sentences on that valuation. 
-
-The result will be:
-
-\begin{center}
-	\begin{tabular}{r c c | d e e eeeeee f | d f | d eeee e f}
-		\multirow{3}{*}{Valuation} & \multirow{3}{*}{$J$} & \multirow{3}{*}{$L$} 
-		& $\mainconnectivecolor{(}$ & $\enot$ & $L$ & $\mainconnective{\eif}$ & $($ & $J$ & $\eor$ & $L$ & $)$ & $\mainconnectivecolor{)}$
-		& $\mainconnective{\enot}$ & $J$
-		& $\mainconnectivecolor{(}$ & $\enot$ & $L$ & $\mainconnective{\eif}$ & $J$ & $\mainconnectivecolor{)}$ \\[.3em]
-		&&& & $\mainconnective{\enot}$ & $L$ & & $\mainconnectivecolor{(}$ & $J$ & $\mainconnective{\eor}$ & $L$ & $\mainconnectivecolor{)}$ & 
-		& & $J$
-		&& $\mainconnective{\enot}$ & $L$ & & $J$ & \\[.3em]
-		&&& & & $L$ & & & $J$ & & $L$ & & 
-		&& 
-		&& &$L$ & &  & \\[.3em]
-		\hline
-		$v_1:$ & T & T &
-		& F & \textcolor{gray!50}{T} & \TTbf{T} & & \textcolor{gray!50}{T} & T & \textcolor{gray!50}{T} & & &
-		\TTbf{F} & \textcolor{gray!50}{T} &
-		& F & \textcolor{gray!50}{T} & \TTbf{T} & \textcolor{gray!50}{T} & \\
-		$v_2:$ & T & F &
-		& T & \textcolor{gray!50}{F} & \TTbf{T} & & \textcolor{gray!50}{T} & T & \textcolor{gray!50}{F} & & &
-		\TTbf{F} & \textcolor{gray!50}{T} &
-		& T & \textcolor{gray!50}{F} & \TTbf{T} & \textcolor{gray!50}{T} & \\
-		$v_3:$ & F & T &
-		& F & \textcolor{gray!50}{T} & \TTbf{T} & & \textcolor{gray!50}{F} & T & \textcolor{gray!50}{T} & & &
-		\TTbf{T} & \textcolor{gray!50}{F} &
-		& F & \textcolor{gray!50}{T} & \TTbf{T} & \textcolor{gray!50}{F} & \\
-		$v_4:$ & F & F &
-		& T & \textcolor{gray!50}{F} & \TTbf{F} & & \textcolor{gray!50}{F} & F & \textcolor{gray!50}{F} & & &
-		\TTbf{T} & \textcolor{gray!50}{F} &
-		& T & \textcolor{gray!50}{F} & \TTbf{F} & \textcolor{gray!50}{F} & \\
-	\end{tabular}
-\end{center}
-
 
 The only valuation on which both `$\enot L \eif (J \eor L)$' and `$\enot J$' are true is $v_3$, and on $v_3$, `$\enot L\eif J$' is true. So there is no valuation where the premises are true and the conclusion is false. So the argument is valid. 
 
@@ -3537,6 +3215,66 @@ One needs to check every valuation to see if there is one which is a counterexam
 
 Consider all assignments of truth values to all the atomic sentences that appear in the premises or the conclusion.
 
+When doing this in practice, your truth table might include the calculation columns, but these are ignored for the purposes of determining validity. 
+
+\begin{center}
+	\begin{tabular}{rcc|d*{6}{e}f|df|d*{4}{e}f}
+		Valuation&$J$&$L$
+		&\tikzmarknode{notLone}{$\enot$}
+		&\tikzmarknode{Lone}{$L$}
+		&\tikzmarknode{ifone}{$\eif$}
+		&\tikzmarknode{openone}{$($}
+		&\tikzmarknode{Jone}{$J$}
+		&\tikzmarknode{orone}{$\eor$}
+		&\tikzmarknode{Ltwo}{$L$}
+		&\tikzmarknode{closeone}{$)$}
+		&\tikzmarknode{notJ}{$\enot$}
+		&\tikzmarknode{Jtwo}{$J$}
+		&\tikzmarknode{opentwo}{$($}
+		&\tikzmarknode{notLtwo}{$\enot$}
+		&\tikzmarknode{Lthree}{$L$}
+		&\tikzmarknode{iftwo}{$\eif$}
+		&\tikzmarknode{Jthree}{$J$}
+		&\tikzmarknode{closetwo}{$)$}
+		\\[3\scopebracedepthunit]\hline
+		\truthrowstart{truthline}
+		$v_1:$&T&T
+		&F&&\TTbf{T}&&&T&&
+		&\TTbf{F}&
+		&&F&&\TTbf{T}&T&\\
+		$v_2:$&T&F
+		&T&&\TTbf{T}&&&T&&
+		&\TTbf{F}&
+		&&T&&\TTbf{T}&F&\\
+		$v_3:$&F&T
+		&F&&\TTbf{T}&&&T&&
+		&\TTbf{T}&
+		&&F&&\TTbf{T}&T&\\
+		$v_4:$&F&F
+		&T&&\TTbf{F}&&&F&&
+		&\TTbf{T}&
+		&&T&&\TTbf{F}&F&
+	\end{tabular}
+
+	\begin{tikzpicture}[remember picture,overlay]
+		% first sentence: not L if (J or L)
+		\scopefitbracewithcoordinate{notLone}{Lone}{notLone}[1]
+		\scopefitbracewithcoordinate{Jone}{Ltwo}{orone}[1]
+		\scopefitbracewithcoordinate{notLone}{closeone}{ifone}[2]
+
+
+
+
+		% third sentence: (not L if J)
+		\scopefitbracewithcoordinate{notLtwo}{Lthree}{notLtwo}[1]
+		\scopefitbracewithcoordinate{notLtwo}{Jthree}{iftwo}[2]
+		\scopebrace{Jthree}
+
+		% truth-value arrows
+		\trutharrows{truthline}{notLone_brace,orone_brace,ifone_brace,Jthree_brace,notLtwo_brace,iftwo_brace}
+	\end{tikzpicture}
+\end{center}
+
 
 \subsection{Example}
 
@@ -3551,7 +3289,7 @@ $D\eif V,\;\enot D\;\therefore\;\enot V$
 \begin{center}
 	\begin{tabular}{r c c | def | df | df}
 		&&&\multicolumn{3}{c}{Premise 1}&\multicolumn{2}{c}{Premise 2}&\multicolumn{2}{c}{Conclusion}\\
-		Valuation & $D$ & $V$ & $D$ & $\mainconnective{\eif}$ & $V$ & $\mainconnective{\enot}$ & $D$ & $\mainconnective{\enot}$ & $V$\\[.3em]
+		Valuation & $D$ & $V$ & $D$ & ${\eif}$ & $V$ & ${\enot}$ & $D$ & ${\enot}$ & $V$\\[.3em]
 		%		Valuation & $D$ & $V$ & $D$ & &$V$& & $D$ &  & $V$\\
 		\hline
 		$v_1:$ & T & T & T & \TTbf{T} & T & \TTbf{F} & T & \TTbf{F} & T\\
@@ -3571,7 +3309,7 @@ $D\eif V,\;D\;\therefore\;V$
 \begin{center}
 	\begin{tabular}{r c c | def | c | c}
 		&&&\multicolumn{3}{c}{Premise 1}&\multicolumn{1}{c}{Premise 2}&\multicolumn{1}{c}{Conclusion}\\
-		Valuation & $D$ & $V$ & $D$ & $\mainconnective{\eif}$ & $V$ & $D$  & $V$ \\[.3em]
+		Valuation & $D$ & $V$ & $D$ & ${\eif}$ & $V$ & $D$  & $V$ \\[.3em]
 		%		Valuation & $D$ & $V$ & $D$ & & $V$ &  & \\
 		\hline
 		$v_1:$ & T & T & T & \TTbf{T} & T & \TTbf{T} &\TTbf{T}\\
@@ -3584,129 +3322,172 @@ $v_1$ is the only valuation where premises are both true, and on it, conclusion 
 
 \subsection{Example}
 
-%\begin{earg}
-%	\prem If I have a pet, then I have a cat or a dog.
-%	\prem I do not have a cat.
-%	\conc If I have a pet, then I have a dog. 
-%\end{earg}
-$P\eif(C\eor D)\,,\,\enot C\;\therefore P\eif D$
+\begin{earg}
+	\prem If I have a pet, then I have a cat or a dog.
+	\prem I do not have a cat.
+	\conc If I have a pet, then I have a dog. 
+\end{earg}
+
+\[
+	P\eif(C\eor D),\ \enot C \therefore P\eif D
+\]
 
 \begin{center}
-	\begin{tabular}{r c c c | d e e e e e f | d f || d e e e f}
-		&&&&\multicolumn{7}{c}{Premise 1} & \multicolumn{2}{c}{Premise 2} & \multicolumn{5}{c}{Conclusion}\\
-		% Row 1: main connectives and structure
-		Valuation & $P$ & $C$ & $D$
-		& $P$ & $\mainconnective{\eif}$ & $\mainconnectivecolor{(}$ & $C$ & $\eor$ & $D$ & $\mainconnectivecolor{)}$
-		& $\mainconnective{\enot}$ & $C$
-		& $\mainconnectivecolor{(}$ & $P$ & $\mainconnective{\eif}$ & $D$ & $\mainconnectivecolor{)}$ \\[.3em]
-		%		% Row 2: children of Row 1
-		%		&&&
-		%		& $P$ &  & $\mainconnectivecolor{(}$ & $C$ & $\mainconnective{\eor}$ & $D$ & $\mainconnectivecolor{)}$
-		%		&  & $C$
-		%		&  & $P$ &  & $D$ &  \\[.3em]
-		\hline
-		% v1
-		$v_1:$ & T & T & T
-		& \textcolor{gray!50}{T} & \TTbf{T} &  & \textcolor{gray!50}{T} & T & \textcolor{gray!50}{T} & 
-		& \TTbf{F} & \textcolor{gray!50}{T}
-		&  & \textcolor{gray!50}{T} & \TTbf{T} & \textcolor{gray!50}{T} &  \\
-		% v2
-		$v_2:$ & T & T & F
-		& \textcolor{gray!50}{T} & \TTbf{T} &  & \textcolor{gray!50}{T} & T & \textcolor{gray!50}{F} & 
-		& \TTbf{F} & \textcolor{gray!50}{T}
-		&  & \textcolor{gray!50}{T} & \TTbf{F} & \textcolor{gray!50}{F} &  \\
-		% v3
-		$v_3:$ & T & F & T
-		& \textcolor{gray!50}{T} & \TTbf{T} &  & \textcolor{gray!50}{F} & T & \textcolor{gray!50}{T} & 
-		& \TTbf{T} & \textcolor{gray!50}{F}
-		&  & \textcolor{gray!50}{T} & \TTbf{T} & \textcolor{gray!50}{T} &  \\
-		% v4
-		$v_4:$ & T & F & F
-		& \textcolor{gray!50}{T} & \TTbf{F} &  & \textcolor{gray!50}{F} & F & \textcolor{gray!50}{F} & 
-		& \TTbf{T} & \textcolor{gray!50}{F}
-		&  & \textcolor{gray!50}{T} & \TTbf{F} & \textcolor{gray!50}{F} &  \\
-		% v5
-		$v_5:$ & F & T & T
-		& \textcolor{gray!50}{F} & \TTbf{T} &  & \textcolor{gray!50}{T} & T & \textcolor{gray!50}{T} & 
-		& \TTbf{F} & \textcolor{gray!50}{T}
-		&  & \textcolor{gray!50}{F} & \TTbf{T} & \textcolor{gray!50}{T} &  \\
-		% v6
-		$v_6:$ & F & T & F
-		& \textcolor{gray!50}{F} & \TTbf{T} &  & \textcolor{gray!50}{T} & T & \textcolor{gray!50}{F} & 
-		& \TTbf{F} & \textcolor{gray!50}{T}
-		&  & \textcolor{gray!50}{F} & \TTbf{T} & \textcolor{gray!50}{F} &  \\
-		% v7
-		$v_7:$ & F & F & T
-		& \textcolor{gray!50}{F} & \TTbf{T} &  & \textcolor{gray!50}{F} & T & \textcolor{gray!50}{T} & 
-		& \TTbf{T} & \textcolor{gray!50}{F}
-		&  & \textcolor{gray!50}{F} & \TTbf{T} & \textcolor{gray!50}{T} &  \\
-		% v8
-		$v_8:$ & F & F & F
-		& \textcolor{gray!50}{F} & \TTbf{T} &  & \textcolor{gray!50}{F} & F & \textcolor{gray!50}{F} & 
-		& \TTbf{T} & \textcolor{gray!50}{F}
-		&  & \textcolor{gray!50}{F} & \TTbf{T} & \textcolor{gray!50}{F} &  \\
+	\begin{tabular}{rccc|d*{5}{e}f|df|def}
+		&&&&\multicolumn{7}{c|}{premise 1}
+		&\multicolumn{2}{c||}{prem 2}
+		&\multicolumn{3}{c}{conclusion}\\
+		&$P$&$C$&$D$
+		&\tikzmarknode{pone}{$P$}
+		&\tikzmarknode{ifone}{$\eif$}
+		&\tikzmarknode{openone}{$($}
+		&\tikzmarknode{cone}{$C$}
+		&\tikzmarknode{orone}{$\eor$}
+		&\tikzmarknode{done}{$D$}
+		&\tikzmarknode{closeone}{$)$}
+		&\tikzmarknode{nottwo}{$\enot$}
+		&\tikzmarknode{ctwo}{$C$}
+		&\tikzmarknode{pthree}{$P$}
+		&\tikzmarknode{ifthree}{$\eif$}
+		&\tikzmarknode{dthree}{$D$}
+		\\[3\scopebracedepthunit]\hline
+		\truthrowstart{truthline}
+		$v_1$&T&T&T
+		&T&\TTbf{T}&&&{T}&&
+		&\TTbf{F}&
+		&T&\TTbf{T}&T\\
+		$v_2$&T&T&F
+		&T&\TTbf{T}&&&{T}&&
+		&\TTbf{F}&
+		&T&\TTbf{F}&F\\
+		$v_3$&T&F&T
+		&T&\TTbf{\textbf{T}}&&&{T}&&
+		&\TTbf{\textbf{T}}&
+		&T&\TTbf{\textbf{T}}&T\\
+		$v_4$&T&F&F
+		&T&\TTbf{F}&&&{F}&&
+		&\TTbf{T}&
+		&T&\TTbf{F}&F\\
+		$v_5$&F&T&T
+		&F&\TTbf{T}&&&{T}&&
+		&\TTbf{F}&
+		&F&\TTbf{T}&T\\
+		$v_6$&F&T&F
+		&F&\TTbf{T}&&&{T}&&
+		&\TTbf{F}&
+		&F&\TTbf{T}&F\\
+		$v_7$&F&F&T
+		&F&\TTbf{\textbf{T}}&&&{T}&&
+		&\TTbf{\textbf{T}}&
+		&F&\TTbf{\textbf{T}}&T\\
+		$v_8$&F&F&F
+		&F&\TTbf{\textbf{T}}&&&{F}&&
+		&\TTbf{\textbf{T}}&
+		&F&\TTbf{\textbf{T}}&F
 	\end{tabular}
+
+	\begin{tikzpicture}[remember picture,overlay]
+	
+		\scopebrace{pone}
+		
+		% premise 1: P if (C or D)
+		\scopefitbracewithcoordinate{cone}{done}{orone}[1]
+		\scopefitbracewithcoordinate{pone}{closeone}{ifone}[2]
+
+%		% conclusion: P if D
+
+		% truth-value arrows
+		\trutharrows{truthline}{orone_brace,ifone_brace,pone_brace}
+	\end{tikzpicture}
 \end{center}
 
-This is valid.
+There is no valuation where both premises are true and the conclusion is false. So the argument is valid.
+
 
 
 \subsection{Example}
 
 
-$A\eor B,\,\enot (B\eand \enot C)\,\therefore \, \enot C\eor A$
+\[
+	A\eor B,\ \enot(B\eand \enot C) \therefore \enot C\eor A
+\]
+
 \begin{center}
-	\begin{tabular}{r c c c | def | deeeeef | deeeef}
-		&&&& \multicolumn{3}{c}{Premise 1} & \multicolumn{7}{c}{Premise 2} & \multicolumn{6}{c}{Conclusion}\\
-		Val & $A$ & $B$ & $C$
-		& $A$ & \mainconnective{$\eor$} & $B$
-		& \mainconnective{$\enot$} & {(} & $B$ & {$\eand$} & {$\enot$} & $C$ & {)}
-		& {(} & {$\enot$} & $C$ & \mainconnective{$\eor$} & $A$ & {)} \\[.3em]
-		\hline
-	$v_1:$ & T & T & T
-	& \textcolor{gray!50}{T} & \TTbf{T} & \textcolor{gray!50}{T}
-	& \TTbf{T} &  & \textcolor{gray!50}{T} & F & F & \textcolor{gray!50}{T} &
-	&  & F & \textcolor{gray!50}{T} & \TTbf{T} & \textcolor{gray!50}{T} &  \\
-	
-	$v_2:$ & T & T & F
-	& \textcolor{gray!50}{T} & \TTbf{T} & \textcolor{gray!50}{T}
-	& \TTbf{F} &  & \textcolor{gray!50}{T} & T & T & \textcolor{gray!50}{F} &
-	&  & T & \textcolor{gray!50}{F} & \TTbf{T} & \textcolor{gray!50}{T} &  \\
-	
-	$v_3:$ & T & F & T
-	& \textcolor{gray!50}{T} & \TTbf{T} & \textcolor{gray!50}{F}
-	& \TTbf{T} &  & \textcolor{gray!50}{F} & F & F & \textcolor{gray!50}{T} &
-	&  & F & \textcolor{gray!50}{T} & \TTbf{T} & \textcolor{gray!50}{T} &  \\
-	
-	$v_4:$ & T & F & F
-	& \textcolor{gray!50}{T} & \TTbf{T} & \textcolor{gray!50}{F}
-	& \TTbf{T} &  & \textcolor{gray!50}{F} & F & T & \textcolor{gray!50}{F} &
-	&  & T & \textcolor{gray!50}{F} & \TTbf{T} & \textcolor{gray!50}{T} &  \\
-	
-	$\bigstar$ $v_5:$ & F & T & T
-	& \textcolor{gray!50}{F} & \TTbf{T} & \textcolor{gray!50}{T}
-	& \TTbf{T} &  & \textcolor{gray!50}{T} & F & F & \textcolor{gray!50}{T} &
-	&  & F & \textcolor{gray!50}{T} & \TTbf{F} & \textcolor{gray!50}{F} &  \\
-	
-	$v_6:$ & F & T & F
-	& \textcolor{gray!50}{F} & \TTbf{T} & \textcolor{gray!50}{T}
-	& \TTbf{F} &  & \textcolor{gray!50}{T} & T & T & \textcolor{gray!50}{F} &
-	&  & T & \textcolor{gray!50}{F} & \TTbf{T} & \textcolor{gray!50}{F} &  \\
-	
-	$v_7:$ & F & F & T
-	& \textcolor{gray!50}{F} & \TTbf{F} & \textcolor{gray!50}{F}
-	& \TTbf{T} &  & \textcolor{gray!50}{F} & F & F & \textcolor{gray!50}{T} &
-	&  & F & \textcolor{gray!50}{T} & \TTbf{F} & \textcolor{gray!50}{F} &  \\
-	
-	$v_8:$ & F & F & F
-	& \textcolor{gray!50}{F} & \TTbf{F} & \textcolor{gray!50}{F}
-	& \TTbf{T} &  & \textcolor{gray!50}{F} & F & T & \textcolor{gray!50}{F} &
-	&  & T & \textcolor{gray!50}{F} & \TTbf{T} & \textcolor{gray!50}{F} &  \\
-	
+	\begin{tabular}{rccc|def|d*{5}{e}f||d*{2}{e}f}
+		&&&&\multicolumn{3}{c|}{premise 1}
+		&\multicolumn{7}{c||}{premise 2}
+		&\multicolumn{4}{c}{conclusion}\\
+		&$A$&$B$&$C$
+		&\tikzmarknode{aone}{$A$}
+		&\tikzmarknode{orone}{$\eor$}
+		&\tikzmarknode{bone}{$B$}
+		&\tikzmarknode{nottwo}{$\enot$}
+		&\tikzmarknode{opentwo}{$($}
+		&\tikzmarknode{btwo}{$B$}
+		&\tikzmarknode{andtwo}{$\eand$}
+		&\tikzmarknode{notCtwo}{$\enot$}
+		&\tikzmarknode{ctwo}{$C$}
+		&\tikzmarknode{closetwo}{$)$}
+		&\tikzmarknode{notCthree}{$\enot$}
+		&\tikzmarknode{cthree}{$C$}
+		&\tikzmarknode{orthree}{$\eor$}
+		&\tikzmarknode{athree}{$A$}
+		\\[4\scopebracedepthunit]\hline
+		\truthrowstart{truthline}
+		$v_1$&T&T&T
+		&&\TTbf{\textbf{T}}&
+		&\TTbf{\textbf{T}}&&T&F&F&&
+		&F&&\TTbf{\textbf{T}}&T\\
+		$v_2$&T&T&F
+		&&\TTbf{T}&
+		&\TTbf{F}&&T&T&T&&
+		&T&&\TTbf{T}&T\\
+		$v_3$&T&F&T
+		&&\TTbf{\textbf{T}}&
+		&\TTbf{\textbf{T}}&&F&F&F&&
+		&F&&\TTbf{\textbf{T}}&T\\
+		$v_4$&T&F&F
+		&&\TTbf{\textbf{T}}&
+		&\TTbf{\textbf{T}}&&F&F&T&&
+		&T&&\TTbf{\textbf{T}}&T\\
+		$v_5$&F&T&T
+		&&\TTbf{\textbf{T}}&
+		&\TTbf{\textbf{T}}&&T&F&F&&
+		&F&&\TTbf{\textbf{F}}&F\\
+		$v_6$&F&T&F
+		&&\TTbf{T}&
+		&\TTbf{F}&&T&T&T&&
+		&T&&\TTbf{T}&F\\
+		$v_7$&F&F&T
+		&&\TTbf{F}&
+		&\TTbf{T}&&F&F&F&&
+		&F&&\TTbf{F}&F\\
+		$v_8$&F&F&F
+		&&\TTbf{F}&
+		&\TTbf{T}&&F&F&T&&
+		&T&&\TTbf{T}&F
 	\end{tabular}
+
+	\begin{tikzpicture}[remember picture,overlay]
+		% premise 1: A or B
+		\scopefitbracewithcoordinate{aone}{bone}{orone}[1]
+
+		% premise 2: not (B and not C)
+		\scopefitbracewithcoordinate{notCtwo}{ctwo}{notCtwo}[1]
+		\scopefitbracewithcoordinate{btwo}{ctwo}{andtwo}[2]
+		\scopefitbracewithcoordinate{nottwo}{closetwo}{nottwo}[3]
+
+		% conclusion: not C or A
+		\scopefitbracewithcoordinate{notCthree}{cthree}{notCthree}[1]
+		\scopefitbracewithcoordinate{notCthree}{athree}{orthree}[2]
+
+		% truth-value arrows
+		\trutharrows{truthline}{orone_brace,notCtwo_brace,andtwo_brace,nottwo_brace,notCthree_brace,orthree_brace}
+	\end{tikzpicture}
 \end{center}
 
-On $v_5$, premises are both true but conclusion is false. The argument is invalid. 
+This argument is invalid. In $v_5$, both premises are true and the conclusion is false.
+
 
 
 

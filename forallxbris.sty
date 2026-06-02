@@ -509,12 +509,156 @@
 %   B. To draw graphs illustrating small finite interpretations.
 % All these drawings are done using tikz
 \RequirePackage{tikz}
-\usetikzlibrary{positioning,shapes,arrows,automata,positioning,shapes,shapes.misc,automata,decorations,decorations.pathreplacing,decorations.pathmorphing,shapes.misc,shadows,tikzmark,arrows.meta}
+\usetikzlibrary{positioning,shapes,arrows,automata,positioning,shapes,shapes.misc,automata,decorations,decorations.pathreplacing,decorations.pathmorphing,shapes.misc,shadows,tikzmark,arrows.meta,calc,fit}
+\RequirePackage{xparse}
 
 \tikzset{phantom_shape/.style={thick, fill=black!0, minimum width=30pt, minimum height=30pt}, % TB: renders the shape invisible
 grey_shape/.style={thick, fill=black!20, draw, minimum width=30pt, minimum height=30pt}, % TB: renders a light grey shape with a black outline
 white_shape/.style={thick, fill=black!0, draw, minimum width=30pt, minimum height=30pt} % TB: renders a white shape with a black outline
 }
+
+% Truth-table scope braces. Use \tikzmarknode in a table header to name
+% formula parts, then draw blue braces and green truth-value arrows in an
+% overlay tikzpicture.
+\newlength{\scopebracedepthunit}
+\setlength{\scopebracedepthunit}{5pt}
+
+\tikzset{
+	every tikzmarknode/.append style={
+		inner sep=0pt,
+		outer sep=0pt
+	},
+	trutharrow/.style={
+		-{Stealth[length=3pt]},
+		line width=0.3pt,
+		color=green
+	},
+	scopebrace/.style={
+		decorate,
+		decoration={brace,mirror,amplitude=2pt},
+		line width=1pt,
+		color=blue
+	},
+	scopebracemarkmainconnective/.style={
+		circle,
+		fill=red,
+		inner sep=1.3pt
+	},
+	% Draw a brace under a span of truth-table header nodes.
+	% Arguments:
+	%   #1 = left endpoint node
+	%   #2 = right endpoint node
+	%   #3 = depth multiplier; y-shift is #3 times \scopebracedepthunit
+	%        below the left node's baseline
+	%   #4 = name of the brace node created by this pic
+	pics/scope brace/.style n args={4}{
+		code={
+			\coordinate (#4-west) at ($ (#1.base -| #1.south west) + (0,-#3*\scopebracedepthunit) $);
+			\coordinate (#4-east) at ($ (#1.base -| #2.south east) + (0,-#3*\scopebracedepthunit) $);
+			\coordinate (#4-south) at ($ (#4-west)!0.5!(#4-east) + (0,-2pt) $);
+			\draw[scopebrace] (#4-west) -- (#4-east);
+			\node[
+				fit=(#4-west) (#4-east) (#4-south),
+				inner sep=0pt
+			] (#4) {};
+		}
+	}
+}
+
+% Low-level helper.
+% Arguments:
+%   #1 = left endpoint node
+%   #2 = right endpoint node
+%   #3 = depth multiplier; larger numbers move the brace further down
+%   #4 = base name for the new brace node; the actual node is #4_brace
+%   #5 = optional main-connective node; when present, add a red marker under it
+% Example:
+%   \scopebraceHelper{lpar}{Hr}{3}{imp}[imp]
+% draws imp_brace from lpar to Hr at depth 3 and marks imp.
+\NewDocumentCommand{\scopebraceHelper}{m m m m o}{%
+	\pic {scope brace={#1}{#2}{#3}{#4_brace}};%
+	\IfNoValueTF{#5}
+		{}
+		{%
+			\node[scopebracemarkmainconnective]
+				(#4_brace-connectivepoint)
+				at ($ (#5 |- #4_brace.north) + (0,-1pt) $) {};%
+		}%
+}
+
+% Usage:
+%   \scopebrace{target}
+%   \scopebrace{target}[depth]
+% The default depth is 1. The default brace name is target_brace.
+\NewDocumentCommand{\scopebrace}{m O{1}}{%
+	\scopebraceHelper{#1}{#1}{#2}{#1}%
+}
+
+% Usage:
+%   \scopefitbrace{leftNode}{rightNode}
+%   \scopefitbrace{leftNode}{rightNode}[depth]
+% The default depth is 1.
+\NewDocumentCommand{\scopefitbrace}{m m O{1}}{%
+	\scopebraceHelper{#1}{#2}{#3}{#1}%
+}
+
+% Usage:
+%   \scopefitbracewithcoordinate{leftNode}{rightNode}{coordinateNode}
+%   \scopefitbracewithcoordinate{leftNode}{rightNode}{coordinateNode}[depth]
+% The default depth is 1.
+\NewDocumentCommand{\scopefitbracewithcoordinate}{m m m O{1}}{%
+	\scopebraceHelper{#1}{#2}{#4}{#3}[#3]%
+}
+
+% Usage: \trutharrow{sourceName}{endpointLine}
+% Draws from sourceName-connectivepoint if a red marker exists; otherwise
+% starts from the bottom centre of the named brace.
+\NewDocumentCommand{\trutharrow}{m m}{%
+	\ifcsname pgf@sh@ns@#1-connectivepoint\endcsname
+		\draw[trutharrow] (#1-connectivepoint) -- (#1-connectivepoint |- #2);%
+	\else
+		\draw[trutharrow] (#1.south) -- (#1.south |- #2);%
+	\fi
+}
+
+% Usage: \trutharrows{endpointLine}{nameA,nameB,nameC}
+\NewDocumentCommand{\trutharrows}{m m}{%
+	\foreach \truthnode in {#2}{%
+		\trutharrow{\truthnode}{#1}%
+	}%
+}
+
+% Usage:
+%   \hline
+%     \truthrowstart{endpointLine}$v_1:$&...
+% Marks the horizontal line above the first truth-value row. The marker has
+% zero width and zero height, so it does not affect table spacing.
+\NewDocumentCommand{\truthrowstart}{m}{%
+	\makebox[0pt][l]{%
+		\raisebox{\dimexpr\ht\strutbox+\arrayrulewidth\relax}[0pt][0pt]{%
+			\tikzmarknode{#1}{}%
+		}%
+	}%
+}
+
+% Usage: \minibrace{formula}
+% Typesets formula normally, draws an overlay brace underneath it, and reserves
+% vertical depth for that brace without adding horizontal width.
+\newcounter{minibrace}
+\NewDocumentCommand{\minibrace}{m}{%
+	\tikzmarknode{braced}{#1}%
+	\makebox[0pt][l]{%
+		\tikz[remember picture, overlay]{%
+			\scopebrace{braced}%
+		}%
+	}%
+	\rule[-2\scopebracedepthunit]{0pt}{0pt}%
+}
+
+
+
+
+
 
 \RequirePackage{tikzpeople} % CCM for disjunctive reasoning eg
 
