@@ -18,7 +18,7 @@ Suppose we have symbolised
 as $Ha$
 with a symbolisation key
 \begin{ekey}
-	\item[\text{domain}] people
+%	\item[\text{domain}] people
 	\item[Px] \gap{x} is a philosopher
 	\item[Hx] \gap{x} is happy
 	\item[a] Alice
@@ -40,12 +40,13 @@ If we have symbolised
 as $\exists x(Px\eand Lxa)$
 To evaluate whether it is true, one needs to work out who Alice is, who the philosophers are, and whether one of them likes Alice.
 
+To evaluate $\forall x Sx$ we need to know what all the objects are, and whether they have property $S$. 
 
 The information needed to determine these matters is the following:
 \begin{itemize}
-	\item A domain. A collection of things/people.
+	\item A domain. A collection of objects. 
 	\item A specification of who/what (in the domain) does each name refer to. Who is `Alice'?
-	\item A specification of who/what (in the domain) does each predicate apply to. Who is happy? Who likes whom?
+	\item A specification of who/what (in the domain) does each predicate apply to. Who is happy? Who likes whom? Who has property $S$.
 \end{itemize}
 
 
@@ -53,7 +54,13 @@ The information needed to determine these matters is the following:
 
 
 
-When we give a model, we specify who/what is in the domain, who/what each name refers to, and who/what each predicate applies to. This is an example of a model: 
+When we give a model, we specify who/what is in the domain, who/what each name refers to, and who/what each predicate applies to. 
+
+
+
+
+
+This is an example of a model: 
 \begin{interp}
 	\item[\domain] $\Set{\text{Alice, Bob, Cathy, Denny}}$
 	\item[\denote{H}] $\Set{\text{Bob}}$

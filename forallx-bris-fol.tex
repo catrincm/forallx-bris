@@ -571,14 +571,14 @@ $\forall$ is read as ``for all'', and is also used to naturally paraphrase those
 \begin{highlighted}
 	$\forall x\ldots$ is read as:
 	\begin{itemize}
-		\item For all $x$ (in the domain): $\ldots$
+		\item For all $x$: $\ldots$
 	\end{itemize}
 	We also use it for:
 	\begin{itemize}
-		\item For everything (in the domain), $x$: $\ldots$
+		\item For everything, $x$: $\ldots$
 	\end{itemize}
 \end{highlighted}
-We will talk more about the domain in \cref{sec:domain}
+
 
 
 
@@ -644,7 +644,7 @@ Consider:
 \begin{samplesent}
 	\item Every enthusiastic student is not tired. 
 \end{samplesent}
-We see that it's main form is saying something about everyone. So we're expecting to use $\forall$. And then, we look for something to play the role of `\emph{this}' and `\emph{that}'. 
+We see that it's main form is saying something about everyone. So we're expecting to use $\forall$. $\forall x$ is understood as everything is like blah. What do we want to say of everything? We want to say, if it is like \emph{this} and \emph{that}. So we need to decide what to use to play the role of `\emph{this}' and `\emph{that}'. 
 Take this sentence and try to find things filling out $\ldots$, things about $x$, which results in a natural paraphrasing of the original sentence. 
 \begin{samplesent}
 	\item[] For all $x$: if \ldots, then \ldots. 
@@ -690,15 +690,15 @@ The Universal Quantifier, $\forall$, allows us to capture English notions like `
 \begin{highlighted}
 	$\exists x\ldots$ is read as:
 	\begin{itemize}
-		\item There exists at least one $x$ (in the domain): $\ldots$
+		\item There exists at least one $x$: $\ldots$
 	\end{itemize}
 	Or, shorter:
 		\begin{itemize}
-		\item There exists $x$ (in the domain): $\ldots$
+		\item There exists $x$: $\ldots$
 	\end{itemize}
 	We also use it for:
 	\begin{itemize}
-		\item For something (in the domain), $x$: $\ldots$
+		\item For something, $x$: $\ldots$
 %		\item There is some $x$ in the domain: $\ldots$
 	\end{itemize}
 \end{highlighted}
@@ -1184,138 +1184,138 @@ These strategies of breaking down the sentence and working on symbolising the co
 
 Let us now return to more carefully see the syntax of the language of FOL. How to read a sentence? Where do brackets go? 
 
-\section{Domains}
-\label{sec:domain}
-
-
-
-\begin{center}
-	\begin{tabular}{ll}
-		&How to read:\\\Tstrut
-	$\forall x\ldots$ & For all $x$ (in the domain): $\ldots$\\
-	$\exists x\ldots$ & There exists $x$ (in the domain): $\ldots$\\
-\end{tabular}
-\end{center}
-Let us now talk about the domain. 
-
-%If our symbolisation key provides 
+%\section{Domains}
+%\label{sec:domain}
+%
+%
+%
+%\begin{center}
+%	\begin{tabular}{ll}
+%		&How to read:\\\Tstrut
+%	$\forall x\ldots$ & For all $x$: $\ldots$\\
+%	$\exists x\ldots$ & There exists $x$: $\ldots$\\
+%\end{tabular}
+%\end{center}
+%Let us now talk about the domain. 
+%
+%%If our symbolisation key provides 
+%%\begin{ekey}
+%%	\item[Hx]\gap{x} is happy
+%%\end{ekey}
+%%we should read it as `every thing is happy'. 
+%%One might try to read it as `everyone is happy', but the kinds of things that can  be our $x$s might include non-people like dogs or trees. 
+%%
+%%What kinds of things are relevant here? Our symbolisation keys will specify how to read the predicates, such as `$H$' and the names, such as `$a$', but also will specify a domain. 
+%
+%Suppose I say
+%\begin{samplesent}\item Everyone has done the problem sheet.\end{samplesent}
+%then I do not mean to say that every person in the world has done the problem sheet. Arguably, I rather want to say that every student of the logic course has done the problem sheet. This suggests that how a quantifier is to be understood depends on the \define{domain}. The domain is the collection of things that we are talking about. Ultimately, using the notion of a domain the quantifier $\forall x$ should be understood as ``for all objects in the domain, $x$''. If the domain also contains dogs, or landmarks, then it also says something about those dogs, or landmarks. We say that the quantifiers \emph{range over} the objects in the domain.
+%
+%
+%This provides the link between the formal language and English and determines how to read sentences of FOL in English. 
+%\todo{is it a defn?}
+%\begin{highlighted}
+%	A \define{symbolisation key} for FOL specifies:\begin{itemize}
+%		\item A domain (what the quantifiers range over)
+%		\item How to understand the FOL-predicates
+%		\begin{itemize}
+%			\item They must be interpreted as properties or relations of objects in the domain. 
+%		\end{itemize}
+%		\item How to understand the FOL-names
+%		\begin{itemize}
+%			\item Each name must identify a member of the domain. 
+%		\end{itemize}
+%	\end{itemize}
+%\end{highlighted}
+%
+%For example:
 %\begin{ekey}
-%	\item[Hx]\gap{x} is happy
+%	\item[\text{domain}] people in this room
+%	\item[Hx]\gap{x} has completed the homework
+%	\item[g] Gregor 
 %\end{ekey}
-%we should read it as `every thing is happy'. 
-%One might try to read it as `everyone is happy', but the kinds of things that can  be our $x$s might include non-people like dogs or trees. 
+%Then $$\forall x Hx$$ is read as: 
+%\begin{samplesent}
+%\item	Everyone in this room has completed the homework.
+%\end{samplesent}
 %
-%What kinds of things are relevant here? Our symbolisation keys will specify how to read the predicates, such as `$H$' and the names, such as `$a$', but also will specify a domain. 
-
-Suppose I say
-\begin{samplesent}\item Everyone has done the problem sheet.\end{samplesent}
-then I do not mean to say that every person in the world has done the problem sheet. Arguably, I rather want to say that every student of the logic course has done the problem sheet. This suggests that how a quantifier is to be understood depends on the \define{domain}. The domain is the collection of things that we are talking about. Ultimately, using the notion of a domain the quantifier $\forall x$ should be understood as ``for all objects in the domain, $x$''. If the domain also contains dogs, or landmarks, then it also says something about those dogs, or landmarks. We say that the quantifiers \emph{range over} the objects in the domain.
-
-
-This provides the link between the formal language and English and determines how to read sentences of FOL in English. 
-\todo{is it a defn?}
-\begin{highlighted}
-	A \define{symbolisation key} for FOL specifies:\begin{itemize}
-		\item A domain (what the quantifiers range over)
-		\item How to understand the FOL-predicates
-		\begin{itemize}
-			\item They must be interpreted as properties or relations of objects in the domain. 
-		\end{itemize}
-		\item How to understand the FOL-names
-		\begin{itemize}
-			\item Each name must identify a member of the domain. 
-		\end{itemize}
-	\end{itemize}
-\end{highlighted}
-
-For example:
-\begin{ekey}
-	\item[\text{domain}] people in this room
-	\item[Hx]\gap{x} has completed the homework
-	\item[g] Gregor 
-\end{ekey}
-Then $$\forall x Hx$$ is read as: 
-\begin{samplesent}
-\item	Everyone in this room has completed the homework.
-\end{samplesent}
-
-
-
-If we want to also talk about dogs, or coins, or roses, then they have to be in the symbolisation key too. 
-If our symbolisation key includes 
-\begin{ekey}
-	\item[\text{domain}] people and dogs
-\end{ekey}
-and we want to symbolise
-\begin{samplesent}
-	\item	Everyone is happy
-\end{samplesent}
- then we have to add to our symbolisation key:
-\begin{ekey}
-	\item[Px] \gap{x} is a person
-\end{ekey}
-and then use $$\forall x(Px\eif Hx)$$
-
-
-
-
-\subsection{Picking a domain}
-The appropriate symbolization of an English language sentence in FOL will depend on the symbolization key. Choosing a key can be difficult. Suppose we want to symbolize the English sentence:
-\begin{samplesent}
-	\item\label{sent:pickdomainrose} Every rose has a thorn.
-\end{samplesent}	
-We might offer this symbolization key:
-\begin{ekey}
-	\item[Rx] \gap{x} is a rose
-	\item[Tx] \gap{x} has a thorn
-\end{ekey}
-According to our symbolization guideline \cref{sent:pickdomainrose} should then be symbolized as $\forall x(Rx \eif Tx)$. However, it remains to specify a domain. Without specific contextual information we must assume that the sentence makes a claim about all roses, that is, we should assume that the domain contains all roses. Also, arguable by saying that all roses have thorns we contrast roses to other tings in the domain: for if every object in the domain were a rose, it would suffice to say `Everything has a thorne'.  So in the case of \cref{sent:pickdomainrose} taking the domain to consist of flowers would be a good, plausible choice and picking the domain to consist of roses only would not be satisfactory. 
-
-
-
-% but we have not yet chosen a domain. If the domain contains all roses, this would be a good symbolization. Yet if the domain is merely \emph{things on my kitchen table}, then $\forall x(Rx \eif Tx)$ would only come close to covering the fact that every rose \emph{on my kitchen table} has a thorn. If there are no roses on my kitchen table, the sentence would be trivially true. This is not what we want. To symbolize \cref{sent:pickdomainrose} adequately, we need to include all the roses in the domain, but now we have two options.
 %
-%First, we can restrict the domain to include all roses but \emph{only} roses. Then \cref{sent:pickdomainrose} can, if we like, be symbolized with $\forall x Tx$. This is true iff everything in the domain has a thorn; since the domain is just the roses, this is true iff every rose has a thorn. By restricting the domain, we have been able to symbolize our English sentence with a very short sentence of FOL. So this approach can save us trouble, if every sentence that we want to deal with is about roses.
-
-More generally, in absence of specific contextual information about the domain, it is preferable to pick a domain that includes many things. that is, things besides roses: rhododendrons; rats; rifles; whatevers., and we will certainly need to include a more expansive domain if we simultaneously want to symbolize sentences like:
-\begin{samplesent}
-	\item\label{sent:pickdomaincowboy} Every cowboy sings a sad, sad song.
-\end{samplesent}
-Our domain must now include both all the roses (so that we can symbolize \cref{sent:pickdomainrose}) and all the cowboys (so that we can symbolize \cref{sent:pickdomaincowboy}). So we might offer the following symbolization key:
-\begin{ekey}
-	\item[\text{domain}] people and plants
-	\item[Cx] \gap{x} is a cowboy
-	\item[Sx] \gap{x} sings a sad, sad song
-	\item[Rx] \gap{x} is a rose
-	\item[Tx] \gap{x} has a thorn
-\end{ekey}
-Now we will have to symbolize \cref{sent:pickdomainrose} with $\forall x (Rx \eif Tx)$, since $\forall x Tx$ would symbolize the sentence `every person or plant has a thorn'. Similarly, we will have to symbolize \cref{sent:pickdomaincowboy} with $\forall x (Cx \eif Sx)$.
-
-In general, the universal quantifier can be used to symbolize the English expression `everyone' if the domain only contains people. If there are people and other things in the domain, then `everyone' must be treated as `every person'.
-
-
-
-
-
-
-
-
-
-
-
-%	\section{Clarification on Domains}\label{sec:Domain}
-
-In FOL, the domain must always include at least one thing. Moreover, in English we can infer `something is angry' from `Gregor is angry'. In FOL, then, we will want to be able to infer $\exists x Ax$ from $Ag$. So we will insist that each name must pick out exactly one thing in the domain.	
-
-\begin{highlighted}
-	A domain must have {at least} one member. 
-	
-	A name must pick out \emph{exactly} one member of the domain, but a member of the domain may be picked out by one name, many names, or none at all.
-	
-	Predicates must identify properties or relations of objects in the domain. 
-\end{highlighted}
-
-
+%
+%If we want to also talk about dogs, or coins, or roses, then they have to be in the symbolisation key too. 
+%If our symbolisation key includes 
+%\begin{ekey}
+%	\item[\text{domain}] people and dogs
+%\end{ekey}
+%and we want to symbolise
+%\begin{samplesent}
+%	\item	Everyone is happy
+%\end{samplesent}
+% then we have to add to our symbolisation key:
+%\begin{ekey}
+%	\item[Px] \gap{x} is a person
+%\end{ekey}
+%and then use $$\forall x(Px\eif Hx)$$
+%
+%
+%
+%
+%\subsection{Picking a domain}
+%The appropriate symbolization of an English language sentence in FOL will depend on the symbolization key. Choosing a key can be difficult. Suppose we want to symbolize the English sentence:
+%\begin{samplesent}
+%	\item\label{sent:pickdomainrose} Every rose has a thorn.
+%\end{samplesent}	
+%We might offer this symbolization key:
+%\begin{ekey}
+%	\item[Rx] \gap{x} is a rose
+%	\item[Tx] \gap{x} has a thorn
+%\end{ekey}
+%According to our symbolization guideline \cref{sent:pickdomainrose} should then be symbolized as $\forall x(Rx \eif Tx)$. However, it remains to specify a domain. Without specific contextual information we must assume that the sentence makes a claim about all roses, that is, we should assume that the domain contains all roses. Also, arguable by saying that all roses have thorns we contrast roses to other tings in the domain: for if every object in the domain were a rose, it would suffice to say `Everything has a thorne'.  So in the case of \cref{sent:pickdomainrose} taking the domain to consist of flowers would be a good, plausible choice and picking the domain to consist of roses only would not be satisfactory. 
+%
+%
+%
+%% but we have not yet chosen a domain. If the domain contains all roses, this would be a good symbolization. Yet if the domain is merely \emph{things on my kitchen table}, then $\forall x(Rx \eif Tx)$ would only come close to covering the fact that every rose \emph{on my kitchen table} has a thorn. If there are no roses on my kitchen table, the sentence would be trivially true. This is not what we want. To symbolize \cref{sent:pickdomainrose} adequately, we need to include all the roses in the domain, but now we have two options.
+%%
+%%First, we can restrict the domain to include all roses but \emph{only} roses. Then \cref{sent:pickdomainrose} can, if we like, be symbolized with $\forall x Tx$. This is true iff everything in the domain has a thorn; since the domain is just the roses, this is true iff every rose has a thorn. By restricting the domain, we have been able to symbolize our English sentence with a very short sentence of FOL. So this approach can save us trouble, if every sentence that we want to deal with is about roses.
+%
+%More generally, in absence of specific contextual information about the domain, it is preferable to pick a domain that includes many things. that is, things besides roses: rhododendrons; rats; rifles; whatevers., and we will certainly need to include a more expansive domain if we simultaneously want to symbolize sentences like:
+%\begin{samplesent}
+%	\item\label{sent:pickdomaincowboy} Every cowboy sings a sad, sad song.
+%\end{samplesent}
+%Our domain must now include both all the roses (so that we can symbolize \cref{sent:pickdomainrose}) and all the cowboys (so that we can symbolize \cref{sent:pickdomaincowboy}). So we might offer the following symbolization key:
+%\begin{ekey}
+%	\item[\text{domain}] people and plants
+%	\item[Cx] \gap{x} is a cowboy
+%	\item[Sx] \gap{x} sings a sad, sad song
+%	\item[Rx] \gap{x} is a rose
+%	\item[Tx] \gap{x} has a thorn
+%\end{ekey}
+%Now we will have to symbolize \cref{sent:pickdomainrose} with $\forall x (Rx \eif Tx)$, since $\forall x Tx$ would symbolize the sentence `every person or plant has a thorn'. Similarly, we will have to symbolize \cref{sent:pickdomaincowboy} with $\forall x (Cx \eif Sx)$.
+%
+%In general, the universal quantifier can be used to symbolize the English expression `everyone' if the domain only contains people. If there are people and other things in the domain, then `everyone' must be treated as `every person'.
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%%	\section{Clarification on Domains}\label{sec:Domain}
+%
+%In FOL, the domain must always include at least one thing. Moreover, in English we can infer `something is angry' from `Gregor is angry'. In FOL, then, we will want to be able to infer $\exists x Ax$ from $Ag$. So we will insist that each name must pick out exactly one thing in the domain.	
+%
+%\begin{highlighted}
+%	A domain must have {at least} one member. 
+%	
+%	A name must pick out \emph{exactly} one member of the domain, but a member of the domain may be picked out by one name, many names, or none at all.
+%	
+%	Predicates must identify properties or relations of objects in the domain. 
+%\end{highlighted}
+%
+%
 
 
 
@@ -1561,7 +1561,6 @@ In FOL, the domain must always include at least one thing. Moreover, in English 
 	\problempart
 	Using this symbolization key:
 	\begin{ekey}
-		\item[\text{domain}]  animals
 		\item[\atom{A}{x}] \gap{x} is an alligator
 		\item[\atom{M}{x}] \gap{x} is a monkey
 		\item[\atom{R}{x}] \gap{x} is a reptile
@@ -1597,7 +1596,7 @@ In FOL, the domain must always include at least one thing. Moreover, in English 
 		\problempart
 	Using the following symbolization key:
 	\begin{ekey}
-		\item[\text{domain}] people and dishes at a potluck
+%		\item[\text{domain}] people and dishes at a potluck
 		\item[\atom{R}{x}] \gap{x} has run out.
 		\item[\atom{T}{x}] \gap{x} is on the table.
 		\item[\atom{F}{x}] \gap{x} is food.
@@ -1633,7 +1632,7 @@ In FOL, the domain must always include at least one thing. Moreover, in English 
 	\label{pr:FOLballet}
 	Using the following symbolization key:
 	\begin{ekey}
-		\item[\text{domain}] people
+%		\item[\text{domain}] people
 		\item[\atom{D}{x}] \gap{x} dances ballet.
 		\item[\atom{F}{x}] \gap{x} is female.
 		\item[\atom{M}{x}] \gap{x} is male.
@@ -1852,6 +1851,7 @@ If our sentence only includes quantifiers and negations and none of these binary
 		]
 	\end{forest}
 \end{center}
+This is a sentence symbolising `Not everything is not happy'. 
 
 We can also add existential quantifiers, and mix up the variables in use, for example: 
 		\begin{center}
@@ -1902,7 +1902,7 @@ The \define{main logical operator} of a formula is the last logical operator ($\
 		The \define{scope} of an occurrence of a logical operator in a sentence is the sub-formula for which that operator is the main logical operator.
 	\end{definition}
 	
-In the formation tree of the sentence, the scope of a connective or quantifier is the sub-tree where it is the main logical operator of the formula at the top. Only that subtree is relevant to determining the truth value of that formula under each variable assignment.
+In the formation tree of the formula, the scope of a connective or quantifier is the sub-tree where it is the main logical operator of the formula at the top. Only that subtree is relevant to determining the truth value of that formula under each variable assignment.
 
 We give an example identifying the scope of each quantifier in this sentence:
 \begin{center}
@@ -1934,6 +1934,7 @@ We can also present this linearly:
 \]
 
 Since there is no interaction between the scope of $\exists y$ and $\forall y$ the same variable $y$ can be used in both places without confusion or danger, the evaluation is done entirely separately. 
+
 
 
 \newglossaryentry{main logical operator}{
@@ -2001,11 +2002,11 @@ H\yellowbox{x}\eand \enot P\yellowbox{x}\\
 \end{gather}
 In each case, there are some variable occurrences which are not in the scope of a quantifier binding them: the ones highlighted in yellow. We will call this being free. 
 	\begin{highlighted}
-		An occurrence of a variable \metav is bound if it is within the scope of either $\forall\metav$ or $\exists\metav$.
+		An occurrence of a variable \metav is \define{bound} if it is within the scope of either $\forall\metav$ or $\exists\metav$.
 
 		\bigskip
 
-		An occurrence of a variable \metav is free if it is not within the scope of either $\forall\metav$ or $\exists\metav$.
+		An occurrence of a variable \metav is \define{free} if it is not within the scope of either $\forall\metav$ or $\exists\metav$.
 	\end{highlighted}
 
 \newglossaryentry{bound variable}{
@@ -2023,8 +2024,7 @@ Consider this example and note that the highlighted occurrence of the variable o
 \underbrace{\forall x Hx}_{\text{scope of }\forall x}\eif \exists y R\customcoloredbox[yellow][narrow]{x}y
 \end{equation}
 
-
-What this means is that to know whether it is true, you need to specify who $x$ is. This won't be fixed by a model because it is important for the semantics that who $x$ refers to can vary. What this means is that it won't get a truth value on the model without the additional information given by a variable assignment specifying who $x$ is. 
+If a formula has a free variable, the formula doesn't get a fixed truth value in a model. To know whether it is true, you need to specify who $x$ is. This won't be fixed by a model because it is important for the semantics that who $x$ refers to can vary. What this means is that it won't get a truth value on the model without the additional information given by a variable assignment specifying who $x$ is. 
 
 
 %Recall that we are largely concerned in logic with declarative sentences: sentences that can be either true or false. Many formulas are not sentences. Consider the following symbolization key:
