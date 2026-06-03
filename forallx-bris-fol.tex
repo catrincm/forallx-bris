@@ -1804,38 +1804,88 @@ Formulas are constructed by starting with these and using either our TFL connect
 	description={A string of symbols in FOL that can be built up according to the recursive rules given on p.~\pageref{FOLformula}}
 	}
 	
-	As in TFL, we can display the construction of formulas using our formation trees (\cref{sec:TFLSentences}). Like in TFL, we will write outer brackets in invisible ink, which here is displayed in gray. Such outer brackets can be dropped when the formula is written by itself but must be included once it is embedded in a further formula. 
-		\begin{center}
-		\begin{forest}
-		[$\almostinvisibleopenbracket\enot(Dx\eand Db)\mainconnective{\eif} Lxy\almostinvisibleclosebracket$
-		[$\mainconnective{\enot}(Dx\eand Db)$
-		[$\almostinvisibleopenbracket Dx \mainconnective{\eand} Db\almostinvisibleclosebracket$
-		[$Dx$]
-		[$Db$]
-		]
-		]
-		[$Lxy$]
-		]
-		\end{forest}
-		\end{center}
-		This is exactly as in the case of TFL, the only difference is that the ``leaves'' of the tree have more structure to them: they're predicates applied to names or variables rather than simply the single atomic sentences that we had in TFL.
-
-FOL also allows us to add quantifiers with variables in the front of a formula we have. We can, for example, give:
+	As in TFL, we can construct more complex formulas from simple ones. Like in TFL, we will write outer brackets in invisible ink, which here is displayed in gray. Such outer brackets can be dropped when the formula is written by itself but must be included once it is embedded in a further formula. 
+	
 \begin{center}
 	\begin{forest}
-	[$\mainconnective{\forall x}(\enot(Dx\eand Db)\eif Lxy)$
-	[$\almostinvisibleopenbracket\enot(Dx\eand Db)\mainconnective{\eif} Lxy\almostinvisibleclosebracket$
-	[$\mainconnective{\enot}(Dx\eand Db)$
-	[$\almostinvisibleopenbracket Dx \mainconnective{\eand} Db\almostinvisibleclosebracket$
-	[$Dx$]
-	[$Db$]
-	]
-	]
-	[$Lxy$]
-	]
+	[$\almostinvisibleopenbracket\ldots \eif \ldots\almostinvisibleclosebracket$
+		[$\enot \ldots$
+			[$\almostinvisibleopenbracket\ldots \eand \ldots\almostinvisibleclosebracket$
+				[$Dx$]
+				[$Db$]
+			]
+		]
+		[$Lxy$]
 	]
 	\end{forest}
 \end{center}
+	
+	$$\enot(Dx\eand Db)\eif Lxy$$
+	
+	We can also display the construction of formulas by with braces, where we also indicate the main connective of the braced part of the sentence with a red dot. 
+	
+		\begin{center}
+		\(\tikzmarknode{lpar}{\almostinvisibleopenbracket}%
+		\tikzmarknode{not}{\enot}%
+		\tikzmarknode{inner_lpar}{(}%
+		\tikzmarknode{Dx}{Dx}%
+		\tikzmarknode{and}{\eand}%
+		\tikzmarknode{Db}{Db}%
+		\tikzmarknode{inner_rpar}{)}%
+		\tikzmarknode{if}{\eif}%
+		\tikzmarknode{Lxy}{Lxy}%
+		\tikzmarknode{rpar}{\almostinvisibleclosebracket}%
+		\rule[-4\scopebracedepthunit]{0pt}{0pt}\)
+		\end{center}
+		\begin{tikzpicture}[remember picture,overlay]
+			\scopebrace{Dx}
+			\scopebrace{Db}
+			\scopebrace{Lxy}
+			\scopefitbracewithcoordinate{inner_lpar}{inner_rpar}{and}[2]
+			\scopefitbracewithcoordinate{not}{inner_rpar}{not}[3]
+			\scopefitbracewithcoordinate{lpar}{rpar}{if}[4]
+		\end{tikzpicture}
+		This is exactly as in the case of TFL, the only difference is that the smallest components of the formula have more structure to them: they are predicates applied to names or variables rather than simply the single atomic sentences that we had in TFL.
+
+
+FOL also allows us to add quantifiers with variables in the front of a formula we have. We can thus construct $$\forall x(\enot(Dx\eand Db)\eif Lxy)$$ in this process:
+\begin{center}
+	\begin{forest}
+	[$\forall x\ldots$
+	[$\almostinvisibleopenbracket\ldots \eif \ldots\almostinvisibleclosebracket$
+		[$\enot \ldots$
+			[$\almostinvisibleopenbracket\ldots \eand \ldots\almostinvisibleclosebracket$
+				[$Dx$]
+				[$Db$]
+			]
+		]
+		[$Lxy$]
+	]]
+	\end{forest}
+\end{center}
+Or indicating this with scope braces:
+		\[		\tikzmarknode{allx}{\forall x}%
+		\tikzmarknode{lpar}{(}%
+		\tikzmarknode{not}{\enot}%
+		\tikzmarknode{inner_lpar}{(}%
+		\tikzmarknode{Dx}{Dx}%
+		\tikzmarknode{and}{\eand}%
+		\tikzmarknode{Db}{Db}%
+		\tikzmarknode{inner_rpar}{)}%
+		\tikzmarknode{if}{\eif}%
+		\tikzmarknode{Lxy}{Lxy}%
+		\tikzmarknode{rpar}{)}%
+		\rule[-4\scopebracedepthunit]{0pt}{0pt}\]
+		\begin{tikzpicture}[remember picture,overlay]
+			\scopebrace{Dx}
+			\scopebrace{Db}
+			\scopebrace{Lxy}
+			\scopefitbracewithcoordinate{inner_lpar}{inner_rpar}{and}[2]
+			\scopefitbracewithcoordinate{not}{inner_rpar}{not}[3]
+			\scopefitbracewithcoordinate{lpar}{rpar}{if}[4]
+			\scopefitbracewithcoordinate{allx}{rpar}{allx}[5]
+		\end{tikzpicture}
+		
 
 Note that the quantifier phrase, $\forall x$, does not itself add any new brackets. Brackets are only introduced with the binary connectives: $\eand,\eor,\eif$. 
 
@@ -1843,50 +1893,111 @@ If our sentence only includes quantifiers and negations and none of these binary
 
 \begin{center}
 	\begin{forest}
-		[$\mainconnective{\enot}\forall x\enot Hx$
-		[$\mainconnective{\forall x}\enot Hx$
-		[$\mainconnective{\enot}Hx$
-		[$Hx$]]
-		]
+		[$\enot\ldots$
+			[$\forall x\ldots$
+				[$\enot\ldots$
+					[$Hx$]
+				]
+			]
 		]
 	\end{forest}
 \end{center}
+Which is also usefully indicated with scope brackets: 
+\begin{center}
+	\(\tikzmarknode{outer_not}{\enot}%
+	\tikzmarknode{allx}{\forall x}%
+	\tikzmarknode{inner_not}{\enot}%
+	\tikzmarknode{Hx}{Hx}%
+	\rule[-4\scopebracedepthunit]{0pt}{0pt}\)
+\end{center}
+\begin{tikzpicture}[remember picture,overlay]
+	\scopebrace{Hx}
+	\scopefitbracewithcoordinate{inner_not}{Hx}{inner_not}[2]
+	\scopefitbracewithcoordinate{allx}{Hx}{allx}[3]
+	\scopefitbracewithcoordinate{outer_not}{Hx}{outer_not}[4]
+\end{tikzpicture}
 This is a sentence symbolising `Not everything is not happy'. 
 
 We can also add existential quantifiers, and mix up the variables in use, for example: 
-		\begin{center}
-		\begin{forest}
-			[$\mainconnective{\exists z}(Hz\eand\forall y (Ryz\eand \exists x Qx))$
-			[$\almostinvisibleopenbracket Hz\mainconnective{\eand}\forall y (Ryz\eand \exists x Qx)\almostinvisibleclosebracket$
-			[$\mainconnective{\forall y }(Ryz\eand\exists x Qx)$
-			[$\almostinvisibleopenbracket Ryz\mainconnective{\eand} \exists x Qx\almostinvisibleclosebracket$
-			[$Ryz$]
-			[$\mainconnective{\exists x} Qx$
-			[$Qx$]
+	\begin{center}
+	\begin{forest}
+		[$\exists z\ldots$
+			[$\almostinvisibleopenbracket\ldots\eand\ldots\almostinvisibleclosebracket$
+				[$Hz$]
+				[$\forall y\ldots$
+					[$\almostinvisibleopenbracket\ldots\eand\ldots\almostinvisibleclosebracket$
+						[$Ryz$]
+						[$\exists x\ldots$
+							[$Qx$]
+						]
+					]
+				]
 			]
-			]
-			]
-			]
-			]
-		\end{forest}
-	\end{center}
+		]
+	\end{forest}
+\end{center}
+Or indicating this with scope braces:
+\begin{center}
+	\(\tikzmarknode{existsz}{\exists z}%
+	\tikzmarknode{lpar}{(}%
+	\tikzmarknode{Hz}{Hz}%
+	\tikzmarknode{and}{\eand}%
+	\tikzmarknode{ally}{\forall y}%
+	\tikzmarknode{inner_lpar}{(}%
+	\tikzmarknode{Ryz}{Ryz}%
+	\tikzmarknode{inner_and}{\eand}%
+	\tikzmarknode{existsx}{\exists x}%
+	\tikzmarknode{Qx}{Qx}%
+	\tikzmarknode{inner_rpar}{)}%
+	\tikzmarknode{rpar}{)}%
+	\rule[-6\scopebracedepthunit]{0pt}{0pt}\)
+\end{center}
+\begin{tikzpicture}[remember picture,overlay]
+	\scopebrace{Hz}
+	\scopebrace{Ryz}
+	\scopebrace{Qx}
+	\scopefitbracewithcoordinate{existsx}{Qx}{existsx}[2]
+	\scopefitbracewithcoordinate{inner_lpar}{inner_rpar}{inner_and}[3]
+	\scopefitbracewithcoordinate{ally}{inner_rpar}{ally}[4]
+	\scopefitbracewithcoordinate{lpar}{rpar}{and}[5]
+	\scopefitbracewithcoordinate{existsz}{rpar}{existsz}[6]
+\end{tikzpicture}
 If no binary connectives are used, the quantifiers just get stacked on top of one another without no brackets.
-		\begin{center}
-		\begin{forest}
-			[$\mainconnective{\exists z}\forall y (Ryz\eand \exists x Qx)$
-			[$\mainconnective{\forall y }(Ryz\eand\exists x Qx)$
-			[$\almostinvisibleopenbracket Ryz\mainconnective{\eand} \exists x Qx\almostinvisibleclosebracket$
-			[$Ryz$]
-			[$\mainconnective{\exists x} Qx$
-			[$Qx$]
+	\begin{center}
+	\begin{forest}
+		[$\exists z\ldots$
+			[$\forall y\ldots$
+				[$\almostinvisibleopenbracket\ldots\eand\ldots\almostinvisibleclosebracket$
+					[$Ryz$]
+					[$\exists x\ldots$
+						[$Qx$]
+					]
+				]
 			]
-			]
-			]
-			]
-		\end{forest}
-	\end{center}
+		]
+	\end{forest}
+\end{center}
+Or indicating this with scope braces:
+\begin{center}
+	\(\tikzmarknode{existsz}{\exists z}%
+	\tikzmarknode{ally}{\forall y}%
+	\tikzmarknode{lpar}{(}%
+	\tikzmarknode{Ryz}{Ryz}%
+	\tikzmarknode{and}{\eand}%
+	\tikzmarknode{existsx}{\exists x}%
+	\tikzmarknode{Qx}{Qx}%
+	\tikzmarknode{rpar}{)}%
+	\rule[-5\scopebracedepthunit]{0pt}{0pt}\)
+\end{center}
+\begin{tikzpicture}[remember picture,overlay]
+	\scopebrace{Ryz}
+	\scopebrace{Qx}
+	\scopefitbracewithcoordinate{existsx}{Qx}{existsx}[2]
+	\scopefitbracewithcoordinate{lpar}{rpar}{and}[3]
+	\scopefitbracewithcoordinate{ally}{rpar}{ally}[4]
+	\scopefitbracewithcoordinate{existsz}{rpar}{existsz}[5]
+\end{tikzpicture}
 	
-	Moving up the formation tree is following one of the rules of the recursive specification of what it is to be a sentence.
 
 
 
@@ -1902,32 +2013,9 @@ The \define{main logical operator} of a formula is the last logical operator ($\
 		The \define{scope} of an occurrence of a logical operator in a sentence is the sub-formula for which that operator is the main logical operator.
 	\end{definition}
 	
-In the formation tree of the formula, the scope of a connective or quantifier is the sub-tree where it is the main logical operator of the formula at the top. Only that subtree is relevant to determining the truth value of that formula under each variable assignment.
 
-We give an example identifying the scope of each quantifier in this sentence:
-\begin{center}
-	\begin{forest}
-		[$\mainconnective{\enot}\exists z(\exists y(\forall x Rxy\eand Ryz)\eand \forall y Rzy)$
-		[{$\customcoloredbox[teal!20]{\exists z}(\exists y(\forall x Rxy\eand Ryz)\eand \forall y Rzy)$},tikz={\node [draw,inner sep=7pt,teal,fit to=tree,thick,rounded corners]{};}
-			[$(\exists y(\forall x Rxy\eand Ryz)\mainconnective{\eand}\exists y Rzy)$
-				[{$\customcoloredbox[blue!10]{\exists y}(\forall x Rxy\eand Ryz)$},tikz={\node [draw,blue,inner sep=3pt,fit to=tree,thick,rounded corners]{};}
-					[$(\forall x Rxy\mainconnective{\eand} Ryz)$
-						[{$\customcoloredbox[green!10]{\forall x}Rxy$},tikz={\node [draw,green,inner sep=0,fit to=tree,thick,rounded corners]{};}
-							[$Rxy$]
-						]
-						[$Ryz$]
-					]
-				]
-				[{$\customcoloredbox[red!10]{\forall y} Rzy$},tikz={\node [draw,red,inner sep=0,fit to=tree,thick,rounded corners]{};}
-					[$Rzy$]
-				]
-			]
-		]
-		]
-	\end{forest}
-\end{center}
 
-We can also present this linearly:
+
 
 \[
 \enot \overbrace{\exists z\bigl(\underbrace{\exists y(\overbrace{\forall x Rxy}^{\textcolor{green}{\text{scope of }\forall x}}\eand Ryz)}_{\textcolor{blue}{\text{scope of }\exists y}}\eand \underbrace{\forall y Rzy}_{\textcolor{red}{\text{scope of }\forall y}}\bigr)}^{\textcolor{teal}{\text{scope of }\exists z}}
