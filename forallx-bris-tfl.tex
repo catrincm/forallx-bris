@@ -1140,17 +1140,56 @@ There are eight valuations:
 \end{center}
 
 \begin{center}
-	\begin{tabular}{rccc|c|c|c||c}
-		&&&&premise 1&premise 2&premise 3&conclusion\\
-		&$A$&$B$&$C$&$A \eif B$&$B \eif C$&$A$&$C$\\\hline
-		$v_1$&T&T&T&\textbf{T}&\textbf{T}&\textbf{T}&\textbf{T}\\
-		$v_2$&T&T&F&T&F&T&F\\
-		$v_3$&T&F&T&F&T&T&T\\
-		$v_4$&T&F&F&F&T&T&F\\
-		$v_5$&F&T&T&T&T&F&T\\
-		$v_6$&F&T&F&T&F&F&F\\
-		$v_7$&F&F&T&T&T&F&T\\
-		$v_8$&F&F&F&T&T&F&F\\
+	\begin{tabular}{rccc|def|def|d|d}
+		&&&&\multicolumn{3}{c|}{premise 1}
+		&\multicolumn{3}{c|}{premise 2}
+		&\multicolumn{1}{c||}{premise 3}
+		&\multicolumn{1}{c}{conclusion}\\
+		&$A$&$B$&$C$
+		&$A$&$\eif$&$B$
+		&$B$&$\eif$&$C$
+		&$A$
+		&$C$\\\hline
+		$v_1$&T&T&T
+		&T&\TTbf{\textbf{T}}&T
+		&T&\TTbf{\textbf{T}}&T
+		&\TTbf{\textbf{T}}
+		&\TTbf{\textbf{T}}\\
+		$v_2$&T&T&F
+		&T&\TTbf{T}&T
+		&T&\TTbf{F}&F
+		&\TTbf{T}
+		&\TTbf{F}\\
+		$v_3$&T&F&T
+		&T&\TTbf{F}&F
+		&F&\TTbf{T}&T
+		&\TTbf{T}
+		&\TTbf{T}\\
+		$v_4$&T&F&F
+		&T&\TTbf{F}&F
+		&F&\TTbf{T}&F
+		&\TTbf{T}
+		&\TTbf{F}\\
+		$v_5$&F&T&T
+		&F&\TTbf{T}&T
+		&T&\TTbf{T}&T
+		&\TTbf{F}
+		&\TTbf{T}\\
+		$v_6$&F&T&F
+		&F&\TTbf{T}&T
+		&T&\TTbf{F}&F
+		&\TTbf{F}
+		&\TTbf{F}\\
+		$v_7$&F&F&T
+		&F&\TTbf{T}&F
+		&F&\TTbf{T}&T
+		&\TTbf{F}
+		&\TTbf{T}\\
+		$v_8$&F&F&F
+		&F&\TTbf{T}&F
+		&F&\TTbf{T}&F
+		&\TTbf{F}
+		&\TTbf{F}\\
 	\end{tabular}
 \end{center}
 
@@ -1631,11 +1670,12 @@ We can more explicitly list the scope of each connective:
 	\item The scope of $\eor$ is $\almostinvisibleopenbracket A \eor B \almostinvisibleclosebracket$.\\
 	The main connective of $\almostinvisibleopenbracket A \eor B \almostinvisibleclosebracket$ is $\eor$.
 	
+	\item The scope of $\enot$ is $ \enot(A \eand B) $.\\
+	The main connective of $ \enot(A \eand B) $ is $\enot$.
+	
 	\item The scope of the right-hand $\eand$ is $\almostinvisibleopenbracket A \eand B \almostinvisibleclosebracket$.\\
 	The main connective of $\almostinvisibleopenbracket A \eand B \almostinvisibleclosebracket$ is $\eand$.
 	
-	\item The scope of $\enot$ is $ \enot(A \eand B) $.\\
-	The main connective of $ \enot(A \eand B) $ is $\enot$.
 	
 
 \end{itemize}
@@ -2439,6 +2479,8 @@ We will apply the different truth rules in turn, and write the answer underneath
 
 We cannot work out the truth of the overall sentence until we have determined the truth of its components. 
 
+We first calculate $\enot I$, which is to simply apply the rule for $\enot$ from the truth value for $I$, which is specified directly by the valuation. 
+
 \begin{center}
 	\begin{tabular}{rcc|d*{6}{e}f}
 		&$I$&$H$
@@ -2484,7 +2526,7 @@ We cannot work out the truth of the overall sentence until we have determined th
 	\end{tikzpicture}
 \end{center}
 
-Now to determine the truth value for $\enot I\eand H$, we take our truth value for $\enot I$, which we have calculated, along with the truth value for $H$, and apply our rule for $\eand$. We first copy the value for $H$:
+Now to determine the truth value for $\enot I\eand H$, we take our truth value for $\enot I$, which we have calculated, along with the truth value for $H$, and apply our rule for $\eand$. For convenience, we first copy the value for $H$:
 
 \begin{center}
 	\begin{tabular}{rcc|d*{6}{e}f}
@@ -2574,17 +2616,17 @@ Then we can apply the rule for $\eand$, applied to our two columns so far:
 
 
 	% joined arrows showing the inputs for the conjunction
-	\coordinate (currentcolumnjoin) at ($(currentcolumn) + (0,-1.5em)$);
+	\coordinate (currentcolumnjoin) at ($(currentcolumn) + (0,-10pt)$);
 
 	\node at ($(currentcolumnjoin)+(0,-0.2cm)$) {$\eand$};
 
-	\draw[-,shorten <=0.2cm]
+	\draw[-]
 		(column1) to[bend right=20] (currentcolumnjoin);
 
-	\draw[-,shorten <=0.2cm]
+	\draw[-]
 		(column2) to[bend left=20] (currentcolumnjoin);
 
-	\draw[-{Stealth[length=3pt]},shorten >=0.1cm]
+	\draw[-{Stealth[length=3pt]}]
 		(currentcolumnjoin) -- (currentcolumn);
 \end{tikzpicture}
 \bigskip 
@@ -2633,7 +2675,7 @@ We can then start looking at the truth value for our overall sentence, which wil
 	\trutharrows{truthline}{not_brace,hleft_brace,hright_brace,and_brace,if_brace}
 
 	% joined arrows showing that we copy across H
-	\draw[-{Stealth[length=3pt]},shorten >=0.2cm]
+	\draw[-{Stealth[length=3pt]}]
 		(column1) to[bend right=30] node[pos=.5,below] {copy} (currentcolumn);
 \end{tikzpicture}
 \medskip
@@ -2681,17 +2723,17 @@ Finally, we can apply our rule for $\eif$.
 	\trutharrows{truthline}{not_brace,hleft_brace,hright_brace,and_brace,if_brace}
 
 	% joined arrows showing the inputs for the conditional
-	\coordinate (currentcolumnjoin) at ($(currentcolumn) + (0,-1.4em)$);
+	\coordinate (currentcolumnjoin) at ($(currentcolumn) + (0,-10pt)$);
 
 	\node at ($(currentcolumnjoin)+(0,-0.2cm)$) {$\eif$};
 
-	\draw[-,shorten <=0.2cm]
+	\draw[-]
 		(column1) to[bend right=20] (currentcolumnjoin);
 
-	\draw[-,shorten <=0.2cm]
+	\draw[-]
 		(column2) to[bend left=20] (currentcolumnjoin);
 
-	\draw[-{Stealth[length=3pt]},shorten >=0.1cm]
+	\draw[-{Stealth[length=3pt]}]
 		(currentcolumnjoin) -- (currentcolumn);
 \end{tikzpicture}
 \medskip
@@ -3335,7 +3377,7 @@ $v_1$ is the only valuation where premises are both true, and on it, conclusion 
 \begin{center}
 	\begin{tabular}{rccc|d*{5}{e}f|df|def}
 		&&&&\multicolumn{7}{c|}{premise 1}
-		&\multicolumn{2}{c||}{prem 2}
+		&\multicolumn{2}{c}{prem 2}
 		&\multicolumn{3}{c}{conclusion}\\
 		&$P$&$C$&$D$
 		&\tikzmarknode{pone}{$P$}
@@ -3413,7 +3455,7 @@ There is no valuation where both premises are true and the conclusion is false. 
 \]
 
 \begin{center}
-	\begin{tabular}{rccc|def|d*{5}{e}f||d*{2}{e}f}
+	\begin{tabular}{rccc|def|d*{5}{e}f|d*{2}{e}f}
 		&&&&\multicolumn{3}{c|}{premise 1}
 		&\multicolumn{7}{c||}{premise 2}
 		&\multicolumn{4}{c}{conclusion}\\
@@ -3598,7 +3640,7 @@ We have just seen an example where the premises are inconsistent: Here's the car
 	\begin{center}
 %		\begin{minipage}{.5\linewidth}
 %			\begin{center}
-				\begin{tabular}{r || c |c |c | c}
+				\begin{tabular}{r | c |c |c | c}
 					Valns & $\metaX_1$ & $\metaX_2$ & $\cdots$ & $\metaX_n$\\
 					\hline
 					$v_1$&&&&\\
@@ -3623,7 +3665,7 @@ If there is no such row then it is inconsistent.
 Inconsistent collections have truth tables more like: 
 %\begin{minipage}{.5\linewidth}
 	\begin{center}
-		\begin{tabular}{r || c |c |c | c}
+		\begin{tabular}{r | c |c |c | c}
 			Valns & $\metaX_1$ & $\metaX_2$ & $\cdots$ & $\metaX_n$\\
 			\hline
 			$v_1$&F&&&\\
