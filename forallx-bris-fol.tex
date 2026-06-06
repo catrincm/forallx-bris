@@ -751,7 +751,7 @@ When using the existential quantifier, $\exists$, we typically find it with $\ea
 		]
 	\end{forest}
 \end{center}
-
+giving $$\exists x(Cx\eand Px)$$
 \begin{samplesent}
 	\item Some enthusiastic student is not tired.
 \end{samplesent}
@@ -766,6 +766,9 @@ When using the existential quantifier, $\exists$, we typically find it with $\ea
 		]
 	\end{forest}
 \end{center}
+giving 
+$$\exists x((Ex\eand Sx)\eand\enot Tx)$$
+or $$\exists x(Ex\eand Sx\eand\enot Tx)$$
 
 
 \section{Quantifiers inside a sentence}
@@ -903,7 +906,7 @@ So we give:
 		]
 	\end{forest}
 \end{center}
-
+$$\forall x(Ax\eif Lcx)$$
 
 \section{Combining quantifiers}
 
@@ -1130,7 +1133,7 @@ So we give: $$\forall x(Vx\eif\exists y(Ay\eand Lxy))$$
 		]
 	\end{forest}
 \end{center}
-
+Giving:
 $$\forall x(Ax\eif\exists y (Vy\eand Lxy))$$
 
 These strategies can be applied with more complicated case
@@ -1151,6 +1154,7 @@ These strategies can be applied with more complicated case
 		]
 	\end{forest}
 \end{center}
+Giving:
 $$\forall x((Hx\eand Vx)\eif\forall y((Cy\eand Ay)\eif Lxy))$$
 With our rules for dropping brackets fully utilised we could just give:
 $$\forall x(Hx\eand Vx\eif\forall y(Cy\eand Ay\eif Lxy))$$
@@ -1162,7 +1166,7 @@ The remaining brackets cannot be dropped.
 
 \begin{center}
 	\begin{forest}
-		[Every vet who likes some animal which is not calm likes every calm animal.\\
+		[Every vet who likes some animal likes every calm animal.\\
 		For all $x$:   if \ldots then \ldots\\
 		$\forall x(\ldots\eif \ldots)$
 		[$x$ is vet who likes some animal\\\ldots and \ldots\\$\ldots\eand\ldots$
@@ -1178,7 +1182,8 @@ The remaining brackets cannot be dropped.
 		]
 	\end{forest}
 \end{center}
-
+giving: $$\forall x(Vx\eand \exists y (Ay\eand Lxy)\eif \forall y(Cy\eand Ay\eif Lxy))$$
+When evaluating this, the $y$ that appears on the left hand side, in the scope of the $\exists y$ quantifier, is evaluated entirely separately from the $y$ in the scope of the $\forall y$ quantifier. 
 
 These strategies of breaking down the sentence and working on symbolising the components separately using the symbolisation key can take you very far.
 

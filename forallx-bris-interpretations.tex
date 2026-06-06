@@ -86,9 +86,9 @@ with the associated picture:
 \begin{center}
 	\begin{tikzpicture}
 		\node (A) [alice,monitor,sword,minimum size=1cm] {Alice};
-		\node (B)[bob,evil,sword,minimum size=1cm,right=1.8cm of A] {Bob};
-		\node (C) [charlie,monitor,female, minimum size=1cm,below=1.2cm of A] {Cathy};
-		\node (D)[businessman,minimum size=1cm,skin=brown,below=1.2cm of B] {Denny};
+		\node (B)[bob,evil,sword,minimum size=1cm,right=1.2cm of A] {Bob};
+		\node (C) [charlie,monitor,female, minimum size=1cm,below=1cm of A] {Cathy};
+		\node (D)[businessman,minimum size=1cm,skin=brown,below=1cm of B] {Denny};
 %		\draw [->, thick] (A)--(D);
 %		\draw [->, thick] (A)--(C);
 	\end{tikzpicture}
@@ -174,7 +174,7 @@ So, here is a model, $\model$: \begin{interp}
 	%\item[\denote{G}] nothing
 \end{interp}
 
-Is `$Ca$' true in this model? To answer this, we simply ask if the object the model assigns to `$a$', in this case the person/image {Alice}, is a member of the set that the model assigns to `$C$', in this case $\{\text{Alice, Cathy}\}$. That is, `$Ca$' is true in $\model$ iff $$\denote{a}_\model\in\denote{C}_\model.$$ On this model, that is the question of whether $\text{{Alice}}\in\Set{\text{{Alice, Cathy}}}$. Since she is, it is true.
+Is `$Ca$' true in this model? To answer this, we simply ask if the object the model assigns to `$a$', in this case the person {Alice}, is a member of the set that the model assigns to `$C$', in this case $\{\text{Alice, Cathy}\}$. That is, `$Ca$' is true in $\model$ iff $$\denote{a}_\model\in\denote{C}_\model.$$ On this model, that is the question of whether $\text{{Alice}}\in\Set{\text{{Alice, Cathy}}}$. Since she is in this set, it is true.
 
 
 
@@ -258,12 +258,12 @@ What about $\forall x (Hx\eif Cx)$? This would symbolise \begin{samplesent}
 	\scopefitbracewithcoordinate{all}{rpar}{all}[3]
 \end{tikzpicture}
 
-The idea we've applied so far is that to determine the truth value of complex sentences one applies the rules for each connective applied to its constituent parts. The idea then is that we apply the rule for $\forall x$ to the value calculated for $(Hx\eif Cx)$. But to determine this, we need to answer whether $Hx$ or $Cx$ is true or false. But this is not answered by the model. The model doesn't specify who `$x$' is, and indeed that's important. It's important that the reference of $x$ can vary. 
+The idea we've applied so far is  to determine the truth value of complex sentences by applying the rules for each connective to its constituent parts. The idea then is that we apply the rule for $\forall x$ to the value calculated for $(Hx\eif Cx)$. But $Hx\eif Cx$ doesn't get a fixed truth value on the model because the model doesn't specify who `$x$' is, and indeed that's important. It's important that the reference of $x$ can vary. 
 
-To evaluate $Cx$, then we will need  an additional component: a variable assignment. This will specify the referent of the variables. Here we only care about the variable $x$, so we just need to specify who $x$ is, for example, $x\mapsto \text{Alice}$. We can then evaluate $Hx\eif Cx$ on this variable assignment. 
+To evaluate $Hx\eif Cx$, then we will need  an additional component: a variable assignment. This will specify the referent of the variables. Here we only care about the variable $x$, so we just need to specify who $x$ is, for example, $x\mapsto \text{Alice}$. We can then evaluate $Hx\eif Cx$ on this variable assignment. 
 \[\begin{array}{c|deeeef}
-	x &\tikzmarknode{lpar}{(}&\tikzmarknode{Hx}{Hx}&\tikzmarknode{if}{\eif} &\tikzmarknode{Cx}{Cx}&\tikzmarknode{rpar}{)}\\[3\scopebracedepthunit]\hline
-	\truthrowstart{truthline}\text{Alice}&&\false&\true&\TTcross
+	&\tikzmarknode{lpar}{}&\tikzmarknode{Hx}{Hx}&\tikzmarknode{if}{\eif} &\tikzmarknode{Cx}{Cx}&\tikzmarknode{rpar}{}\\[3\scopebracedepthunit]\hline
+	\truthrowstart{truthline}\model \text{ under } x\mapsto \text{Alice}&&\false&\true&\TTcross
 \end{array}\]
 \begin{tikzpicture}[remember picture,overlay]
 	\scopebrace{Hx}
@@ -271,24 +271,28 @@ To evaluate $Cx$, then we will need  an additional component: a variable assignm
 	\scopefitbracewithcoordinate{lpar}{rpar}{if}[2]
 	\trutharrows{truthline}{Hx_brace,Cx_brace,if_brace}
 \end{tikzpicture}
-But to evaluate $\forall x(Hx\eif Cx)$ we need to consider not only this variable assignment, but all the possible assignments of objects to the variable $x$. 
-\[\begin{array}{c|deeeef}
-	x &\tikzmarknode{lpar}{(}&\tikzmarknode{Hx}{Hx}&\tikzmarknode{if}{\eif} &\tikzmarknode{Cx}{Cx}&\tikzmarknode{rpar}{)}\\[3\scopebracedepthunit]\hline
-	\truthrowstart{truthline}\text{Al}&&\false&\true&\TTcross\\
-	\text{Bo}&&\true&\false&\false\\
-	\text{Ca}&&\false&\true&\TTcross\\
-	\text{De}&&\false&\true&\TTcross
-\end{array}\]
+Now, to evaluate $\forall x(Hx\eif Cx)$ we need to consider not only this variable assignment, but all the possible assignments of objects to the variable $x$. In this model, there are four:
+	\[\begin{array}{cc|deeef}
+		&&\tikzmarknode{lpar}{}&\tikzmarknode{Hx}{Hx}&\tikzmarknode{if}{\eif} &\tikzmarknode{Cx}{Cx}&\tikzmarknode{rpar}{}\\[3\scopebracedepthunit]\hline
+		\truthrowstart{truthline}\model &x&&&&&\\
+& \text{Alice}&&\false&\true&\TTcross&\\\varassigncline{2-7}
+&	\text{Bob}&&\true&\false&\false&\\\varassigncline{2-7}
+&	\text{Cathy}&&\false&\true&\TTcross&\\\varassigncline{2-7}
+&	\text{Denny}&&\false&\true&\TTcross&\\\varassigncline{2-7}\hline
+	\end{array}\]
 \begin{tikzpicture}[remember picture,overlay]
 	\scopebrace{Hx}
 	\scopebrace{Cx}
 	\scopefitbracewithcoordinate{lpar}{rpar}{if}[2]
 	\trutharrows{truthline}{Hx_brace,Cx_brace,if_brace}
 \end{tikzpicture}
-So is $\forall x(Hx\eif Cx)$ true or false? There is someone for whom $Hx$ is true but $Cx$ is false. There is some possible choice of someone for $x$ which makes $Hx\eif Cx$ false. This means $\forall x(Hx\eif Cx)$ is false in $\model$. We can write it out like this in a table. Underneath the variable we write out the possible assignments of objects to the variable and then evaluate the sub-sentences on those variable assignments. 
+
+When $x\mapsto$Bob, makes $Hx\eif Cx$ false. This means $\forall x(Hx\eif Cx)$ is false in $\model$. There is some assignment of an object in the domain to the variable $x$ on which $Hx\eif Cx$  is false. 
+
+We need to consider different variable assignments at the point of evaluating a quantifier. In the quantified $\forall x$, we will list the options of assignments of objects to $x$ underneath the $x$, and then write the truth value of $\forall x(Hx\eif Cx)$ underneath the quantifier: 
 \[\begin{array}{c|deeeeef}
 &\tikzmarknode{all}{\forall} &\tikzmarknode{x}{x} &\tikzmarknode{lpar}{(}&\tikzmarknode{Hx}{Hx}&\tikzmarknode{if}{\eif} &\tikzmarknode{Cx}{Cx}&\tikzmarknode{rpar}{)}\\[4\scopebracedepthunit]\hline
-\truthrowstart{truthline}\model &\false &	\\\varassigncline{3-8} 
+\truthrowstart{truthline}\model &\TTbf{\false} &	\\\varassigncline{3-8} 
 && \text{Al}&&\false&\true&\TTcross\\\varassigncline{3-8}
 &&	\text{Bo}&&\true&\false&\false\\\varassigncline{3-8}
 &&	\text{Ca}&&\false&\true&\TTcross\\\varassigncline{3-8}
@@ -299,10 +303,10 @@ So is $\forall x(Hx\eif Cx)$ true or false? There is someone for whom $Hx$ is tr
 	\scopebrace{Cx}
 	\scopefitbracewithcoordinate{lpar}{rpar}{if}[2]
 	\scopefitbracewithcoordinate{all}{rpar}{all}[3]
-	\trutharrows{truthline}{Hx_brace,Cx_brace,if_brace,all_brace}
+	\trutharrows{truthline}{Hx_brace,Cx_brace,if_brace,all_brace,x}
 \end{tikzpicture}
 
-Since we only need to consider the variable assignment $x\mapsto\text{Bo}$ we could just give:
+Since we only need to consider the variable assignment $x\mapsto\text{Bo}$ to show that it is false, we could just give:
 \[\begin{array}{c|deeeeef}
 	&	{\forall} &{x} &(&Hx&\eif &Cx&)\\\hline
 %	&&&&Hx&\mainconnective{\eif} &Cx\\
@@ -368,7 +372,7 @@ Here is the clause for $\exists$:
 	\scopebrace{Cx}
 	\scopefitbracewithcoordinate{lpar}{rpar}{and}[2]
 	\scopefitbracewithcoordinate{exists}{rpar}{exists}[3]
-	\trutharrows{truthline}{Sx_brace,Cx_brace,and_brace,exists_brace}
+	\trutharrows{truthline}{Sx_brace,Cx_brace,and_brace,exists_brace,x}
 \end{tikzpicture}
 
 Since we only need to consider the variable assignment $x\mapsto\text{Al}$ we could just give:
@@ -385,7 +389,7 @@ Since we only need to consider the variable assignment $x\mapsto\text{Al}$ we co
 	\scopebrace{Cx}
 	\scopefitbracewithcoordinate{lpar}{rpar}{and}[2]
 	\scopefitbracewithcoordinate{exists}{rpar}{exists}[3]
-	\trutharrows{truthline}{Sx_brace,Cx_brace,and_brace,exists_brace}
+	\trutharrows{truthline}{Sx_brace,Cx_brace,and_brace,exists_brace,x}
 \end{tikzpicture}
 
 But if the model makes $\exists x \metaX$ false, then you can only see that by checking every instance, so need to include all the variable assignments. 
@@ -696,7 +700,7 @@ In the same way that a three-place predicate picks out a ternary relation, an $n
 %
 %To make these ideas more precise, we would need to develop some \emph{set theory}. That would give us some precise tools for dealing with extensions and with ordered pairs (and ordered triples, etc.). However, set theory is not covered in this book, so we will leave these ideas at an imprecise level. Nevertheless, the general idea should be clear.
 
-\section{Models}\label{sec:model}\todo{call it ``model''?}
+\section{Models}\label{sec:model}
 
 In \cref{sec:Truth FOL monadic}, we introduced the idea of a model but we did not include relations. Now we can extend it to give the proper definition of a  \define{model}. Sentences of FOL will be true or false \emph{in a model}.
 
@@ -924,27 +928,11 @@ This is a lot to fill out. But the guidance is that you take shortcuts: don't ca
 	\varassigncline{4-16}
 	
 	% x = 3 block
-	& &  & 3 &  & \false & \true & . & . &  &  &  &  &  &  &  \\
-	%		\varassigncline{10-15}
-	%		& &  &   &  &   &   &   &   & 1 &  & . & . & . &  &  \\ 
-	%		\varassigncline{10-15}
-	%		& &  &   &  &   &   &   &   & 2 &  & . & . & . &  &  \\ 
-	%		\varassigncline{10-15}
-	%		& &  &   &  &   &   &   &   & 3 &  & . & . & . &  &  \\ 
-	%		\varassigncline{10-15}
-	%		& &  &   &  &   &   &   &   & 4 &  & . & . & . &  &  \\ 
+	& &  & 3 &  & \false & \true & \TTcross &  &  &  &  &  &  &  &  \\
 	\varassigncline{4-16}
 	
 	% x = 4 block
-	& &  & 4 &  & \false & \true & . & . &  &  &  &  &  &  &  \\
-	%		\varassigncline{10-15}
-	%		& &  &   &  &   &   &   &   & 1 &  & . & . & . &  &  \\ 
-	%		\varassigncline{10-15}
-	%		& &  &   &  &   &   &   &   & 2 &  & . & . & . &  &  \\ 
-	%		\varassigncline{10-15}
-	%		& &  &   &  &   &   &   &   & 3 &  & . & . & . &  &  \\ 
-	%		\varassigncline{10-15}
-	%		& &  &   &  &   &   &   &   & 4 &  & . & . & . &  &  \\ 
+	& &  & 4 &  & \false & \true & \TTcross &  &  &  &  &  &  &  &  \\
 	\hline
 	
 	
@@ -960,7 +948,7 @@ This is a lot to fill out. But the guidance is that you take shortcuts: don't ca
 	\varassigncline{4-16}
 	
 	% x = 2 block
-	& &  & 2 &  & \false & \true & . & &  &  &  &  &  &  &  \\
+	& &  & 2 &  & \false & \true & \TTcross & &  &  &  &  &  &  &  \\
 	\varassigncline{10-15}
 	%		& &  &   &  &   &   &   &   & 1 &  & . & . & . &  &  \\ 
 	%		\varassigncline{10-15}
@@ -1648,7 +1636,7 @@ In TFL, we simply listed all the valuations and checked whether there was such a
 
 
 \begin{highlighted}
-	To show an argument is invalid, one needs to find a counterexample model, a model where the premises are all true and the conclusion is false. 
+	To show an argument is invalid, one needs to find a counterexample model: a model where the premises are all true and the conclusion is false. 
 	
 	To show an argument is valid, one needs to reason about all models. We will instead give a proof.
 \end{highlighted}
