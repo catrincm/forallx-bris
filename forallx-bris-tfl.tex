@@ -1139,6 +1139,7 @@ There are eight valuations:
 	\end{tabular}
 \end{center}
 
+We can now use our truth rules to determine the truth of each sentence on each valuation. To aid this calculation, we first copy across the truth values for $A$, $B$ and $C$ to make sure we apply the truth rule for $\eif$ to the right values in the right order. We then highlight the column for the main connective, which provides the truth value for the overall sentence at each valuation, indicating  that the others were just calculation columns. 
 \begin{center}
 	\begin{tabular}{rccc|def|def|d|d}
 		&&&&\multicolumn{3}{c|}{premise 1}
@@ -1747,6 +1748,8 @@ We can more explicitly list the scope of each connective:
 
 \end{itemize}
 
+\bigskip % just to make sure the scope braces for the next example are on the right page...
+
 For another example, consider: $$(P\eand Q)\eor \enot( R\eif \enot S)$$
 
 We can visually indicate scopes and main connectives as:
@@ -1767,7 +1770,7 @@ We can visually indicate scopes and main connectives as:
 	\mathord{\tikzmarknode{s}{S}}
 \mathclose{)}
 \mathclose{\tikzmarknode{wholeclosebracket}{\almostinvisibleclosebracket}}
-\]
+\]\nopagebreak
 \begin{tikzpicture}[remember picture,overlay]
 	% P and Q
 	\scopefitbracewithcoordinate{p}{q}{and}[1]
