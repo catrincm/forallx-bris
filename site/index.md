@@ -13,24 +13,17 @@ Download links:
 -   [Previous Editions](https://catrincm.github.io/forallx-bris/editions/)
 
 
+This book was adapted by **Catrin Campbell-Moore** and **Johannes Stern** at the University of Bristol from 
+
+- *forall x: Calgary* by Aaron Thomas-Bolduc and Richard Zach (University of Calgary), licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+*forall x: Calgary* is based on: 
+
+- *forall x: Cambridge* by Tim Button (University of Cambridge), licensed under [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/).
+- *forall x* by P. D. Magnus (University at Albany, State University of New York), licensed under [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/).
 
 
-This book is based on forallx: Calgary by
-Aaron Thomas-Bolduc & Richard Zach
-University of Calgary
-used under a CC BY-SA 4.0 license, which is based on forallx: Cambridge, by
-Tim Button
-University of Cambridge
-used under a CC BY-SA 3.0 license, which is based in turn on forallx, by
-P.D. Magnus
-University at Albany, State University of New York
-used under a CC BY-SA 3.0 license.
-Then altered by
-Catrin Campbell-Moore and Johannes Stern
-University of Bristol
 
-
-[![Creative Commons License](https://i.creativecommons.org/l/by-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-sa/4.0/)
 
 This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).
 
