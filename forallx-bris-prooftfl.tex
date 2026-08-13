@@ -2372,8 +2372,9 @@ Now we know that the proof theoretic and truth-table methods are equivalent, we 
 %
 We can also use proof theoretic methods for determining other logical notions, such as being consistent. We summarise how one would define them in \cref{table:truth_tables_or_derivations}
 \begin{sidewaystable}
-\tabulinesep=1ex
-\begin{tabu}{X[.5,c,m] ||X[1,l,m] |X[1,l,m]}
+\renewcommand{\tabularxcolumn}[1]{m{#1}}
+\setlength{\extrarowheight}{1ex}
+\begin{tabularx}{\linewidth}{>{\hsize=.6\hsize\linewidth=\hsize\centering\arraybackslash}X || >{\hsize=1.2\hsize\linewidth=\hsize\raggedright\arraybackslash}X | >{\hsize=1.2\hsize\linewidth=\hsize\raggedright\arraybackslash}X}
 \textbf{Concept} 		&	\textbf{Truth table (semantic) definition} 	&	\textbf{Proof-theoretic (syntactic) definition} \\ \hline \hline
 
 Tautology   &	A sentence whose truth table only has Ts under the main connective & A sentence that can be derived without any premises.	 \\ \hline
@@ -2389,7 +2390,7 @@ Inconsistent sentences	&	Sentences which do not have a single line in their trut
 Consistent sentences	&	Sentences which have at least one line in their truth table where they are all true. & Sentences which are not inconsistent	\\ \hline
 
 Valid argument		&	An argument whose truth table has no lines where there are all Ts under main connectives for the premises and an F under the main connective for the conclusion.  & An argument where one can derive the conclusion from the premises	\\
-\end{tabu}
+\end{tabularx}
 \caption{Two ways to define logical concepts.}
 \label{table:truth_tables_or_derivations}
 \end{sidewaystable}
@@ -2398,8 +2399,9 @@ In fact, we can give general guidelines about when it's best to give proofs and 
 
 
 \begin{table}[h]
-\tabulinesep=1ex
-\begin{tabu}{X[.7,c,m] ||X[1,l,m] |X[1,l,m]}
+\renewcommand{\tabularxcolumn}[1]{m{#1}}
+\setlength{\extrarowheight}{1ex}
+\begin{tabularx}{\linewidth}{>{\hsize=.78\hsize\linewidth=\hsize\centering\arraybackslash}X || >{\hsize=1.11\hsize\linewidth=\hsize\raggedright\arraybackslash}X | >{\hsize=1.11\hsize\linewidth=\hsize\raggedright\arraybackslash}X}
 \textbf{Logical property} 	&	\textbf{To prove it present} 	&	\textbf{To prove it absent} \\ \hline \hline
 Being a tautology 		& Derive the sentence  						& Find the false line in the truth table for the sentence \\ \hline
 Being a contradiction 	&  Derive the negation of the sentence  		 & Find the true line in the truth table for the sentence\\ \hline
@@ -2407,7 +2409,7 @@ Contingency 			& Find a false line and a true line in the truth table for the se
 Equivalence 			& Derive each sentence from the other 		 & Find a line in the truth tables for the sentence where they have different values\\ \hline
 Consistency 		& Find a line in truth table for the sentence where they all are true & Derive a contradiction from the sentences\\ \hline
 Validity 				& Derive the conclusion from the premises & Find no line in the truth table where the premises are true and the conclusion false. \\
-\end{tabu}
+\end{tabularx}
 \caption{When to provide a truth table and when to provide a proof.}
 \label{table:ProofOrModel}
 \end{table}
