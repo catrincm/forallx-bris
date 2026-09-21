@@ -1181,15 +1181,15 @@ Here's one strategy that some people find useful for listing all the valuations.
 \subsection{Check all the valuations}
 Consider this argument:
 \begin{earg}
-	\prem If Ava studies, then Ava passes.
-	\prem Ava passes.
-	\conc Ava studies.
+	\prem If Ava studied, then Ava passed.
+	\prem Ava passed.
+	\conc Ava studied.
 \end{earg}
 
 Using the symbolisation key:
 \begin{ekey}
-	\item[S] Ava studies.
-	\item[P] Ava passes.
+	\item[S] Ava studied.
+	\item[P] Ava passed.
 \end{ekey}
 
 This argument is symbolised as:
@@ -1956,13 +1956,20 @@ There is also no analogous rule for $\eif$: You must not write $P\eif Q\eif R$.
 \subsection{Summarising our bracketing rules}\label{sec:TFLBrackets}
 \begin{definition}
 	\begin{itemize}
-		\item Outer brackets may be dropped.\\
+		\item Outer brackets may be dropped.
+		\begin{itemize}
+			\item []
 		$P\eand Q$ is an abbreviation of $(P\eand Q)$.
-		\item $\eand$ and $\eor$ bind more strongly than $\eif$.\\
-		$P\eand Q\eif R\eor S$  is an abbreviation of  $(P\eand Q)\eif (R\eor S)$
-		\item Brackets in strings of $\eand$ or $\eor$ may be dropped. \\A sentence with such brackets dropped is an abbreviation of one where they are added to the left.\\
-		$P\eand Q\eand R$  is an abbreviation of  $(P\eand Q)\eand R$.\\
-		$P\eor Q\eor R$  is an abbreviation of  $(P\eor Q)\eor R$.\\
+		\end{itemize}
+		\item $\eand$ and $\eor$ bind more strongly than $\eif$.
+		\begin{itemize}
+			\item [] $P\eand Q\eif R\eor S$  is an abbreviation of  $(P\eand Q)\eif (R\eor S)$
+		\end{itemize}
+		\item Brackets in strings of $\eand$ or $\eor$ may be dropped. \\A sentence with such brackets dropped is an abbreviation of one where they are added to the left.
+		\begin{itemize}
+			\item []$P\eand Q\eand R$  is an abbreviation of  $(P\eand Q)\eand R$.\item[]
+		$P\eor Q\eor R$  is an abbreviation of  $(P\eor Q)\eor R$.
+		\end{itemize}
 	\end{itemize} 
 \end{definition}
 
