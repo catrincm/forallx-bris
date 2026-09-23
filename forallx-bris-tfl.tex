@@ -98,22 +98,24 @@ description={A logical operator in TFL used to combine \glspl{atomic sentence} i
 }
 	\begin{table}[h]
 	\center
-	\begin{tabular}{l l l}
-
-	\textbf{symbol}&\textbf{what it is called}&\textbf{rough meaning}\\
-	\hline
-	\enot&negation&`It is not the case that$\ldots$'\\
-	\eand&conjunction&`$\ldots$\ and $\ldots$',\\
-	\eor&disjunction&`$\ldots$\ or $\ldots$'\\
-	\eif&conditional&`If $\ldots$\ then $\ldots$'\\
-	%\eiff&biconditional&`$\ldots$ if and only if $\ldots$'\\
-
+	\begin{tabular}{l l ll}
+		
+		\textbf{symbol}&\textbf{official name}&\textbf{rough meaning}&\textbf{read it}\\
+		\hline
+		\enot&negation&`It is not the case that$\ldots$'&not\\
+		\eand&conjunction&`$\ldots$\ and $\ldots$'&and \\
+		\eor&disjunction&`$\ldots$\ or $\ldots$'&or \\
+		\eif&conditional&`If $\ldots$\ then $\ldots$'&arrow\\
+		%\eiff&biconditional&`$\ldots$ if and only if $\ldots$'\\
+		
 	\end{tabular}
-	\end{table}
+\end{table}
+
+You may use the simple names `not', `and', `or', and `arrow' when reading the symbols. 
 
 %These are not the only connectives of English of interest. Others are, e.g., `unless', `neither \dots{} nor \dots', and `because'. We will see that the first two can be expressed by the connectives we will discuss, while the last cannot. `Because', in contrast to the others, is not \emph{truth functional}. In \cref{??} we shall explain what this means precisely.
 
-If we were to substitute declarative sentences for `\dots' in the right hand column of the table above, we obtain new English sentences. The language of truth-functional logic works in the same way: the connectives `\enot',`\eand',`\eor' and `\eif' combine other sentences. For example, the atomic sentences `$R$' and `$M$' combine with `$\eand$' to form the sentence `$R\eand M$'. If think of `$R$' and `$M$' as representing the English sentences
+If we were to substitute declarative sentences for `\dots' in the `meaning' column of the table above, we obtain new English sentences. The language of truth-functional logic works in the same way: the connectives `\enot',`\eand',`\eor' and `\eif' combine other sentences. For example, the atomic sentences `$R$' and `$M$' combine with `$\eand$' to form the sentence `$R\eand M$'. If think of `$R$' and `$M$' as representing the English sentences
 \begin{ekey}
 		\item[R] It is raining outside
 		\item[M] Jenny is miserable
