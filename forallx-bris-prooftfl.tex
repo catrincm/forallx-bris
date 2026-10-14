@@ -194,37 +194,6 @@ The full list of the rules can be found in \cref{glossary:quick ref}.
 %However, some rules will involve the tool of \emph{subproofs}, which introduces some complexity. So we begin just by giving the rules that don't do so.
 
 
-\section{Reiteration}\label{sec:Reiteration}
-The very first rule is so breathtakingly obvious that it is surprising we bother with it at all.
-
-If you already have shown something in the course of a proof, the \emph{reiteration rule} allows you to repeat it on a new line. For example:
-\begin{fitchproof}
-	\have[4]{a1}{A \eand B}
-	\have[$\vdots$]{}{\vdots}
-	\have[10]{a2}{A \eand B} \by{R}{a1}
-\end{fitchproof}
-This indicates that we have written `$A \eand B$' on line 4. Now, at some later line---line 10, for example---we have decided that we want to repeat this. So we write it down again. We also add a citation which justifies what we have written. In this case, we write `A', to indicate that we are using the reiteration rule, and we write `$4$', to indicate that we have applied it to line $4$.
-
-Here is a general expression of the rule:
-\begin{highlighted}
-\begin{fitchproof}
-	\ellipsesline
-	\have[m]{a}{\metaX}
-	\ellipsesline
-	\have[\ ]{c}{\metaX} \by{R}{a}
-\end{fitchproof}
-\end{highlighted}
-The point is that, if any sentence $\metaX$ occurs on some line, then we can repeat $\metaX$ on later lines. Each line of our proof must be justified by some rule, and here we have `R $m$'. This means: Reiteration, applied to line $m$.
-
-Two things need emphasising. First `$\metaX$' is not a sentence of TFL. Rather, it a symbol in the metalanguage, which we use when we want to talk about any sentence of TFL (see \cref{sec:UseMention}). Second, and similarly, `$m$' is not a numeral that will appear on a proof. Rather, it is a symbol in the metalanguage, which we use when we want to talk about any line number of a proof. In an actual proof, the lines are numbered `$1$', `$2$', `$3$', and so forth. But when we define the rule, we use variables to underscore the point that the rule may be applied at any point.
-
-Why might this be useful? For example, we can now show $A\,\therefore\,A$ is valid using the proof:
-\begin{fitchproof}
-\hypo{a}{A}
-\have{a}{A}\Reiteration{a}
-\end{fitchproof}
-The rule really becomes useful, though, once we are dealing with subproofs, which we will see in the next chapter.
-
 \section{Modus Ponens}
 Consider the following argument:
 	\begin{quote}
@@ -296,7 +265,7 @@ The two lines needed to apply this can come in either order.
 %% However, in the citation for $\eif$E, we always cite the conditional first, followed by the antecedent.
 
 
-We would typically now move to introducing Conditional Introduction. However, we will first do all the other rules of the system, because Conditional Introduction involves additional complexity.
+
 
 \section{Conjunction Introduction}
 Suppose we want to show that Alice and Beth both came to the party. One obvious way to do this would be as follows: first we show that Alice came to the party; then Beth came to the party; then we put these two demonstrations together, to obtain the conjunction.
@@ -308,8 +277,11 @@ Our natural deduction system will capture this thought straightforwardly. In the
 	\end{ekey}
 Perhaps we are working through a proof, and we have obtained `$A$' on line 8 and `$B$' on line 15. Then on any subsequent line we can obtain `$A \eand B$'. For example our proof might contain the following lines:
 \begin{fitchproof}
+	\ellipsesline
 	\have[8]{a}{A}\hspace*{1em}
+	\ellipsesline
 	\have[15]{b}{B}\hspace*{1em}
+	\ellipsesline
 	\have[23]{c}{A \eand B} \andI{a, b}\hspace*{1em}
 \end{fitchproof}
 Note that every line of our proof must either be an assumption, or must be justified by some rule. We cite `$\eand$I 8, 15' here to indicate that the line is obtained by the rule of conjunction introduction ($\eand$I) applied to lines 8 and 15.
@@ -356,6 +328,40 @@ and equally:
 	\have[\ ]{b}{\metaY} \andE{ab}
 \end{fitchproof}\end{highlighted}
 The point is simply that, when you have a conjunction on some line of a proof, you can obtain either of the conjuncts by {\eand}E. (One point, might be worth emphasising: you can only apply this rule when conjunction is the main logical operator. So you cannot infer `$D$' just from `$C \eor (D \eand E)$'!)
+
+
+\section{Reiteration}\label{sec:Reiteration}
+This rule is so breathtakingly obvious that it is surprising we bother with it at all.
+
+If you already have shown something in the course of a proof, the \emph{reiteration rule} allows you to repeat it on a new line. For example:
+\begin{fitchproof}
+	\have[$\vdots$]{}{\vdots}
+	\have[4]{a1}{A \eand B}
+	\have[$\vdots$]{}{\vdots}
+	\have[10]{a2}{A \eand B} \by{R}{a1}
+\end{fitchproof}
+This indicates that we have written `$A \eand B$' on line 4. Now, at some later line---line 10, for example---we have decided that we want to repeat this. So we write it down again. We also add a citation which justifies what we have written. In this case, we write `A', to indicate that we are using the reiteration rule, and we write `$4$', to indicate that we have applied it to line $4$.
+
+Here is a general expression of the rule:
+\begin{highlighted}
+	\begin{fitchproof}
+		\ellipsesline
+		\have[m]{a}{\metaX}
+		\ellipsesline
+		\have[\ ]{c}{\metaX} \by{R}{a}
+	\end{fitchproof}
+\end{highlighted}
+The point is that, if any sentence $\metaX$ occurs on some line, then we can repeat $\metaX$ on later lines. Each line of our proof must be justified by some rule, and here we have `R $m$'. This means: Reiteration, applied to line $m$.
+
+Two things need emphasising. First `$\metaX$' is not a sentence of TFL. Rather, it a symbol in the metalanguage, which we use when we want to talk about any sentence of TFL (see \cref{sec:UseMention}). Second, and similarly, `$m$' is not a numeral that will appear on a proof. Rather, it is a symbol in the metalanguage, which we use when we want to talk about any line number of a proof. In an actual proof, the lines are numbered `$1$', `$2$', `$3$', and so forth. But when we define the rule, we use variables to underscore the point that the rule may be applied at any point.
+
+Why might this be useful? For example, we can now show $A\,\therefore\,A$ is valid using the proof:
+\begin{fitchproof}
+	\hypo{a}{A}
+	\have{a}{A}\Reiteration{a}
+\end{fitchproof}
+The rule really becomes useful, though, once we are dealing with subproofs, which we will see in the next chapter.
+
 
 
 
