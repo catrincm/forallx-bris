@@ -888,9 +888,9 @@ One needs to check every valuation to see if there is one which is a counterexam
 
 We will also say:
 \begin{definition}
-\metaY is a \define{logical consequence} of $\metaX_1,\ldots,\metaX_n$ if and only if there is no valuation on which $X_1,\ldots,X_n$ are true and $Y$ false. 
+\metaY is a \define{logical consequence} of $\{\metaX_1,\ldots,\metaX_n\}$ if and only if there is no valuation on which $X_1,\ldots,X_n$ are true and $Y$ false. 
 \end{definition}
-That is, \metaY is a {logical consequence} of $\metaX_1,\ldots,\metaX_n$ if and only if $X_1,\ldots,X_n\therefore Y$ is valid. 
+That is, \metaY is a {logical consequence} of $\{\metaX_1,\ldots,\metaX_n\}$ if and only if $X_1,\ldots,X_n\therefore Y$ is valid. 
 
 	
 \subsection{Example}
@@ -3329,7 +3329,7 @@ The only valuation on which both `$\enot L \eif (J \eor L)$' and `$\enot J$' are
 
 We will also say:
 \begin{definition}
-	\metaY is a \define{logical consequence} of $\metaX_1,\ldots,\metaX_n$ if and only if $X_1,\ldots,X_n\therefore Y$ is {valid}
+	\metaY is a \define{logical consequence} of $\{\metaX_1,\ldots,\metaX_n\}$ if and only if $X_1,\ldots,X_n\therefore Y$ is {valid}
 \end{definition}
 
 One needs to check every valuation to see if there is one which is a counterexample valuation. 
@@ -3698,7 +3698,7 @@ We have just seen an example where the premises are inconsistent: Here's the car
 
 
 \begin{definition}
-	A collection of TFL-sentences $X_1,\ldots,X_n$ (with possibly $n=1$) is \define{consistent} iff there is a valuation relative to which $X_1,\ldots,X_n$ are true. Otherwise the collection is \define{inconsistent}.
+	A set of TFL-sentences $\{X_1,\ldots,X_n\}$ (with possibly $n=1$) is \define{consistent} iff there is a valuation relative to which $X_1,\ldots,X_n$ are true. Otherwise the collection is \define{inconsistent}.
 \end{definition}
 
 \newglossaryentry{consistency in TFL}
@@ -3712,7 +3712,7 @@ We have just seen an example where the premises are inconsistent: Here's the car
 
 
 \begin{highlighted}
-		To check if a collection is \define{consistent} with truth tables, look for a row like:
+		To check if a set of sentences is \define{consistent} with truth tables, look for a row like:
 	
 	
 	\smallskip 
@@ -4102,8 +4102,8 @@ One can show that `$(A \eand B) \eand C$' and  `$A \eand (B \eand C)$' are logic
 	\label{pr:TT:meta}
 	Are the following statements true? Why?
 	\begin{itemize}
-	\item if $Y$ is a logical consequence of $X$, then $X\eif Y$ is a logical truth.\myanswer{Yes}
-	\item if $X\eif Y$ is a logical truth, then $Y$ is a logical consequence of $X$.\myanswer{Yes}
+	\item if $Y$ is a logical consequence of $\{X\}$, then $X\eif Y$ is a logical truth.\myanswer{Yes}
+	\item if $X\eif Y$ is a logical truth, then $Y$ is a logical consequence of $\{X\}$.\myanswer{Yes}
 	\item if $X\eif Y\eand\enot Y$ is a logical truth, then $X$ is a logical contradiction.\myanswer{Yes}
 	\item if $X\eif Y\eand\enot Y$ is true relative to a valuation, then $X$ is a logical contradiction.\myanswer{No}
 	\item if $X\eor\enot X\eif Y$ is a logical truth, then $Y$ is a tautology.\myanswer{Yes}

@@ -1648,7 +1648,7 @@ In TFL, we simply listed all the valuations and checked whether there was such a
 The other logical notions also have corresponding definitions in FOL:
 
 \begin{definition}
-	\metaY is a \define{logical consequence} of $\metaX_1,\ldots,\metaX_n$ if and only if $X_1,\ldots,X_n\therefore Y$ is {valid}. That is, iff there is no model where $\metaX_1,\ldots, \metaX_n$ are true and $\metaY$ is false. 
+	\metaY is a \define{logical consequence} of $\{\metaX_1,\ldots,\metaX_n\}$ if and only if $X_1,\ldots,X_n\therefore Y$ is {valid}. That is, iff there is no model where $\metaX_1,\ldots, \metaX_n$ are all true and $\metaY$ is false. 
 \end{definition}
 
 \begin{definition}
@@ -1681,7 +1681,7 @@ An important example of logical equivalence is the close relationship between th
 
 
 \begin{definition}
-	A collection of FOL-sentences $X_1,\ldots,X_n$ (with possibly $n=1$) is \define{consistent} iff there is a model relative to which $X_1,\ldots,X_n$ are true. Otherwise the collection is \define{inconsistent}.
+	A set of FOL-sentences $\{X_1,\ldots,X_n\}$ is \define{consistent} iff there exists a model relative to which $X_1,\ldots,X_n$ are true. Otherwise the collection is \define{inconsistent}.
 \end{definition}
 
 %
